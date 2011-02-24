@@ -86,6 +86,9 @@ namespace ArtefaktGenerator
 
         public string occupation_name = "keine";
 
+        public enum Regelbasis : short { WDA = 0, SRD = 1 };
+
+        public Regelbasis regelbasis = Regelbasis.WDA;
 
         public bool debugMode = true;
     }

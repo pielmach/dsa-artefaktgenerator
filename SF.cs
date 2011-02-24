@@ -35,6 +35,8 @@ namespace ArtefaktGenerator
 
         public bool matrix = false;
 
+        public bool auxiliator = false;
+
         public bool stapel = false;
 
         public bool hyper = false;

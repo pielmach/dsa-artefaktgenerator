@@ -51,7 +51,7 @@
             this.version.Name = "version";
             this.version.Size = new System.Drawing.Size(22, 13);
             this.version.TabIndex = 1;
-            this.version.Text = "1.2";
+            this.version.Text = "2.0";
             // 
             // closeit
             // 

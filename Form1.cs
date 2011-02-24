@@ -124,12 +124,16 @@ namespace ArtefaktGenerator
                 type_matrix.Enabled = true;
                 arcanovi_matrix_lbl.Enabled = true;
                 arcanovi_matrix_change.Enabled = true;
+                sf_aux.Enabled = true;
             }
             else
             {
                 type_matrix.Enabled = false;
                 arcanovi_matrix_lbl.Enabled = false;
                 arcanovi_matrix_change.Enabled = false;
+                sf_aux.Enabled = false;
+                sf_aux.Checked = false;
+                artefakt.sf.auxiliator = false;
                 if (artefakt.typ == Artefakt.ArtefaktType.MATRIX)
                 {
                     type_charge.Checked = true;
@@ -226,6 +230,17 @@ namespace ArtefaktGenerator
 
             // update Max Ladungen for Destructibo
             destruct_aktive.Maximum = artefakt.loads;
+
+            // check for WDA basis
+            if (artefakt.regelbasis == Artefakt.Regelbasis.SRD)
+            {
+                sf_aux.Visible = false;
+
+            }
+            else 
+            {
+                sf_aux.Visible = true;
+            }
 
             if (automatischNeuberechenenToolStripMenuItem.Checked || force)
             {
@@ -462,7 +477,7 @@ namespace ArtefaktGenerator
                     if (arcanovi_taw >= 7 && artefakt.taw.magiekunde >= 7)
                     {
                         txt_create.AppendText("Erstellung der Artefaktthesis benötigt " + arcanovi_zfp + " ZE (=" + arcanovi_zfp * 2 + " h)\r\n");
-                        txt_create.AppendText("Zu Papier bringen mit Magiekunde & Malen/Zeichnen, zusammen erschwert um " + arcanovi_zfp + "\r\n\r\n");
+                        txt_create.AppendText("Zu Papier bringen mit Magiekunde & Malen/Zeichnen, zusammen erschwert um " + arcanovi_zfp + "\r\n");
                     }
                     else
                         txt_create.AppendText("Artefaktthesis kann nicht selber erstellt werden. TaW ARCANOVI bzw. Magiekunde zu gering.\r\n\r\n");
@@ -1346,6 +1361,22 @@ namespace ArtefaktGenerator
         private void cb_kristalle_CheckedChanged(object sender, EventArgs e)
         {
             artefakt.kristalle = cb_kristalle.Checked;
+            update(false);
+        }
+
+        private void wegeDerAlchimieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            artefakt.regelbasis = Artefakt.Regelbasis.WDA;
+            wegeDerAlchimieToolStripMenuItem.Checked = true;
+            staebeRingeDschinnenlampenToolStripMenuItem.Checked = false;
+            update(false);
+        }
+
+        private void staebeRingeDschinnenlampenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            artefakt.regelbasis = Artefakt.Regelbasis.SRD;
+            wegeDerAlchimieToolStripMenuItem.Checked = false;
+            staebeRingeDschinnenlampenToolStripMenuItem.Checked = true;
             update(false);
         }
 
