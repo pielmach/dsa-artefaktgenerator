@@ -46,6 +46,9 @@
             this.w20_10 = new System.Windows.Forms.ToolStripMenuItem();
             this.w20_105 = new System.Windows.Forms.ToolStripMenuItem();
             this.w20_20 = new System.Windows.Forms.ToolStripMenuItem();
+            this.regelbasis = new System.Windows.Forms.ToolStripMenuItem();
+            this.wegeDerAlchimieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.staebeRingeDschinnenlampenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.debugModusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.beendenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.programmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -128,13 +131,14 @@
             this.sf_semiII = new System.Windows.Forms.CheckBox();
             this.sf_matrix = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.sf_aux = new System.Windows.Forms.CheckBox();
             this.sf_ringkunde = new System.Windows.Forms.CheckBox();
             this.sf_hyper = new System.Windows.Forms.CheckBox();
             this.sf_stapel = new System.Windows.Forms.CheckBox();
+            this.sf_kraft = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rep_ach = new System.Windows.Forms.RadioButton();
             this.rep_mag = new System.Windows.Forms.RadioButton();
-            this.sf_kraft = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.matrix_stability = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -190,11 +194,27 @@
             this.label30 = new System.Windows.Forms.Label();
             this.limbus = new System.Windows.Forms.CheckBox();
             this.namenlos = new System.Windows.Forms.CheckBox();
-            this.regelbasis = new System.Windows.Forms.ToolStripMenuItem();
-            this.wegeDerAlchimieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.staebeRingeDschinnenlampenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sf_aux = new System.Windows.Forms.CheckBox();
             this.sFBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.type_aux = new System.Windows.Forms.RadioButton();
+            this.aux_stability = new System.Windows.Forms.GroupBox();
+            this.aux_unempfindlich = new System.Windows.Forms.RadioButton();
+            this.aux_verystable = new System.Windows.Forms.RadioButton();
+            this.aux_labil = new System.Windows.Forms.RadioButton();
+            this.aux_stable = new System.Windows.Forms.RadioButton();
+            this.aux_merkmal = new System.Windows.Forms.CheckBox();
+            this.special_ferngespuer = new System.Windows.Forms.CheckBox();
+            this.special_resistant = new System.Windows.Forms.CheckBox();
+            this.special_selfrepair = new System.Windows.Forms.CheckBox();
+            this.special_reversalis = new System.Windows.Forms.CheckBox();
+            this.special_variablerelease = new System.Windows.Forms.CheckBox();
+            this.special_schleier = new System.Windows.Forms.CheckBox();
+            this.special_eatmaterial = new System.Windows.Forms.CheckBox();
+            this.special_variable_var = new System.Windows.Forms.NumericUpDown();
+            this.special_ferngespuer_komp = new System.Windows.Forms.ComboBox();
+            this.lbl_special_komp = new System.Windows.Forms.Label();
+            this.special_ferngespuer_asp = new System.Windows.Forms.NumericUpDown();
+            this.lbl_special_asp = new System.Windows.Forms.Label();
+            this.special_eatmat_var = new System.Windows.Forms.NumericUpDown();
             this.menu.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -242,6 +262,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.special_ort_neben)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.special_ort_occ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sFBindingSource)).BeginInit();
+            this.aux_stability.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.special_variable_var)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.special_ferngespuer_asp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.special_eatmat_var)).BeginInit();
             this.SuspendLayout();
             // 
             // automatischNeuberechenenToolStripMenuItem
@@ -252,7 +276,7 @@
             this.automatischNeuberechenenToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
             this.automatischNeuberechenenToolStripMenuItem.Name = "automatischNeuberechenenToolStripMenuItem";
             this.automatischNeuberechenenToolStripMenuItem.Size = new System.Drawing.Size(414, 22);
-            this.automatischNeuberechenenToolStripMenuItem.Text = "Automatisch neuberechenen";
+            this.automatischNeuberechenenToolStripMenuItem.Text = "Automatisch neu berechenen";
             this.automatischNeuberechenenToolStripMenuItem.Click += new System.EventHandler(this.automatischNeuberechenenToolStripMenuItem_Click);
             // 
             // optionenToolStripMenuItem
@@ -405,6 +429,31 @@
             this.w20_20.Text = "als Pessimum annehmen";
             this.w20_20.Click += new System.EventHandler(this.w20_20_Click);
             // 
+            // regelbasis
+            // 
+            this.regelbasis.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.wegeDerAlchimieToolStripMenuItem,
+            this.staebeRingeDschinnenlampenToolStripMenuItem});
+            this.regelbasis.Name = "regelbasis";
+            this.regelbasis.Size = new System.Drawing.Size(414, 22);
+            this.regelbasis.Text = "Regelbasis";
+            // 
+            // wegeDerAlchimieToolStripMenuItem
+            // 
+            this.wegeDerAlchimieToolStripMenuItem.Checked = true;
+            this.wegeDerAlchimieToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.wegeDerAlchimieToolStripMenuItem.Name = "wegeDerAlchimieToolStripMenuItem";
+            this.wegeDerAlchimieToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
+            this.wegeDerAlchimieToolStripMenuItem.Text = "Wege der Alchimie (4.1)";
+            this.wegeDerAlchimieToolStripMenuItem.Click += new System.EventHandler(this.wegeDerAlchimieToolStripMenuItem_Click);
+            // 
+            // staebeRingeDschinnenlampenToolStripMenuItem
+            // 
+            this.staebeRingeDschinnenlampenToolStripMenuItem.Name = "staebeRingeDschinnenlampenToolStripMenuItem";
+            this.staebeRingeDschinnenlampenToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
+            this.staebeRingeDschinnenlampenToolStripMenuItem.Text = "Stäbe, Ringe, Dschinnenlampen (4.0)";
+            this.staebeRingeDschinnenlampenToolStripMenuItem.Click += new System.EventHandler(this.staebeRingeDschinnenlampenToolStripMenuItem_Click);
+            // 
             // debugModusToolStripMenuItem
             // 
             this.debugModusToolStripMenuItem.Checked = true;
@@ -555,10 +604,10 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(478, 326);
+            this.tabControl1.Location = new System.Drawing.Point(456, 345);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(508, 230);
+            this.tabControl1.Size = new System.Drawing.Size(508, 211);
             this.tabControl1.TabIndex = 17;
             // 
             // tabPage1
@@ -568,7 +617,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 23);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(500, 203);
+            this.tabPage1.Size = new System.Drawing.Size(500, 184);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Erschaffung";
             // 
@@ -577,11 +626,11 @@
             this.txt_create.AcceptsReturn = true;
             this.txt_create.AcceptsTab = true;
             this.txt_create.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txt_create.Location = new System.Drawing.Point(6, 5);
+            this.txt_create.Location = new System.Drawing.Point(3, 5);
             this.txt_create.Multiline = true;
             this.txt_create.Name = "txt_create";
             this.txt_create.ReadOnly = true;
-            this.txt_create.Size = new System.Drawing.Size(487, 195);
+            this.txt_create.Size = new System.Drawing.Size(490, 195);
             this.txt_create.TabIndex = 0;
             // 
             // tabPage2
@@ -885,13 +934,26 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.special_eatmat_var);
+            this.groupBox7.Controls.Add(this.lbl_special_asp);
+            this.groupBox7.Controls.Add(this.special_ferngespuer_asp);
+            this.groupBox7.Controls.Add(this.special_ferngespuer_komp);
+            this.groupBox7.Controls.Add(this.special_ferngespuer);
+            this.groupBox7.Controls.Add(this.lbl_special_komp);
+            this.groupBox7.Controls.Add(this.special_variable_var);
+            this.groupBox7.Controls.Add(this.special_eatmaterial);
+            this.groupBox7.Controls.Add(this.special_schleier);
+            this.groupBox7.Controls.Add(this.special_variablerelease);
+            this.groupBox7.Controls.Add(this.special_reversalis);
+            this.groupBox7.Controls.Add(this.special_selfrepair);
+            this.groupBox7.Controls.Add(this.special_resistant);
             this.groupBox7.Controls.Add(this.special_apport);
             this.groupBox7.Controls.Add(this.special_scent);
             this.groupBox7.Controls.Add(this.special_durable);
             this.groupBox7.Controls.Add(this.special_signet);
-            this.groupBox7.Location = new System.Drawing.Point(472, 157);
+            this.groupBox7.Location = new System.Drawing.Point(518, 157);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(132, 93);
+            this.groupBox7.Size = new System.Drawing.Size(269, 185);
             this.groupBox7.TabIndex = 20;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Spezielle Eigenschaften";
@@ -899,7 +961,7 @@
             // special_apport
             // 
             this.special_apport.AutoSize = true;
-            this.special_apport.Location = new System.Drawing.Point(6, 68);
+            this.special_apport.Location = new System.Drawing.Point(6, 60);
             this.special_apport.Name = "special_apport";
             this.special_apport.Size = new System.Drawing.Size(109, 18);
             this.special_apport.TabIndex = 3;
@@ -910,7 +972,7 @@
             // special_scent
             // 
             this.special_scent.AutoSize = true;
-            this.special_scent.Location = new System.Drawing.Point(6, 51);
+            this.special_scent.Location = new System.Drawing.Point(6, 45);
             this.special_scent.Name = "special_scent";
             this.special_scent.Size = new System.Drawing.Size(122, 18);
             this.special_scent.TabIndex = 2;
@@ -921,7 +983,7 @@
             // special_durable
             // 
             this.special_durable.AutoSize = true;
-            this.special_durable.Location = new System.Drawing.Point(6, 33);
+            this.special_durable.Location = new System.Drawing.Point(6, 30);
             this.special_durable.Name = "special_durable";
             this.special_durable.Size = new System.Drawing.Size(114, 18);
             this.special_durable.TabIndex = 1;
@@ -932,7 +994,7 @@
             // special_signet
             // 
             this.special_signet.AutoSize = true;
-            this.special_signet.Location = new System.Drawing.Point(6, 16);
+            this.special_signet.Location = new System.Drawing.Point(6, 15);
             this.special_signet.Name = "special_signet";
             this.special_signet.Size = new System.Drawing.Size(119, 18);
             this.special_signet.TabIndex = 0;
@@ -946,7 +1008,7 @@
             this.btn_update.Name = "btn_update";
             this.btn_update.Size = new System.Drawing.Size(100, 25);
             this.btn_update.TabIndex = 19;
-            this.btn_update.Text = "Neuberechnen";
+            this.btn_update.Text = "Neu berechnen";
             this.btn_update.UseVisualStyleBackColor = true;
             this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
             // 
@@ -970,17 +1032,17 @@
             this.material.FormattingEnabled = true;
             this.material.Location = new System.Drawing.Point(7, 16);
             this.material.Name = "material";
-            this.material.Size = new System.Drawing.Size(151, 22);
+            this.material.Size = new System.Drawing.Size(182, 22);
             this.material.TabIndex = 0;
             this.material.SelectedIndexChanged += new System.EventHandler(this.material_SelectedIndexChanged);
             // 
             // groupBox8
             // 
-            this.groupBox8.Controls.Add(this.cb_kristalle);
             this.groupBox8.Controls.Add(this.material);
-            this.groupBox8.Location = new System.Drawing.Point(610, 157);
+            this.groupBox8.Controls.Add(this.cb_kristalle);
+            this.groupBox8.Location = new System.Drawing.Point(793, 304);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(164, 93);
+            this.groupBox8.Size = new System.Drawing.Size(198, 57);
             this.groupBox8.TabIndex = 21;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Material";
@@ -988,7 +1050,7 @@
             // cb_kristalle
             // 
             this.cb_kristalle.AutoSize = true;
-            this.cb_kristalle.Location = new System.Drawing.Point(7, 44);
+            this.cb_kristalle.Location = new System.Drawing.Point(7, 38);
             this.cb_kristalle.Name = "cb_kristalle";
             this.cb_kristalle.Size = new System.Drawing.Size(114, 18);
             this.cb_kristalle.TabIndex = 1;
@@ -1126,7 +1188,7 @@
             this.semi_intervall.Controls.Add(this.semi_monat);
             this.semi_intervall.Controls.Add(this.semi_woche);
             this.semi_intervall.Controls.Add(this.semi_tag);
-            this.semi_intervall.Location = new System.Drawing.Point(173, 45);
+            this.semi_intervall.Location = new System.Drawing.Point(250, 45);
             this.semi_intervall.Name = "semi_intervall";
             this.semi_intervall.Size = new System.Drawing.Size(234, 38);
             this.semi_intervall.TabIndex = 6;
@@ -1218,7 +1280,7 @@
             // vielLadung
             // 
             this.vielLadung.AutoSize = true;
-            this.vielLadung.Location = new System.Drawing.Point(98, 19);
+            this.vielLadung.Location = new System.Drawing.Point(106, 19);
             this.vielLadung.Name = "vielLadung";
             this.vielLadung.Size = new System.Drawing.Size(104, 18);
             this.vielLadung.TabIndex = 8;
@@ -1229,7 +1291,7 @@
             // sf_semiI
             // 
             this.sf_semiI.AutoSize = true;
-            this.sf_semiI.Location = new System.Drawing.Point(491, 19);
+            this.sf_semiI.Location = new System.Drawing.Point(500, 19);
             this.sf_semiI.Name = "sf_semiI";
             this.sf_semiI.Size = new System.Drawing.Size(106, 18);
             this.sf_semiI.TabIndex = 5;
@@ -1241,7 +1303,7 @@
             // 
             this.sf_semiII.AutoSize = true;
             this.sf_semiII.Enabled = false;
-            this.sf_semiII.Location = new System.Drawing.Point(605, 19);
+            this.sf_semiII.Location = new System.Drawing.Point(612, 19);
             this.sf_semiII.Name = "sf_semiII";
             this.sf_semiII.Size = new System.Drawing.Size(110, 18);
             this.sf_semiII.TabIndex = 6;
@@ -1252,7 +1314,7 @@
             // sf_matrix
             // 
             this.sf_matrix.AutoSize = true;
-            this.sf_matrix.Location = new System.Drawing.Point(403, 19);
+            this.sf_matrix.Location = new System.Drawing.Point(412, 19);
             this.sf_matrix.Name = "sf_matrix";
             this.sf_matrix.Size = new System.Drawing.Size(82, 18);
             this.sf_matrix.TabIndex = 4;
@@ -1278,10 +1340,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Sonderfertigkeiten";
             // 
+            // sf_aux
+            // 
+            this.sf_aux.AutoSize = true;
+            this.sf_aux.Enabled = false;
+            this.sf_aux.Location = new System.Drawing.Point(844, 19);
+            this.sf_aux.Name = "sf_aux";
+            this.sf_aux.Size = new System.Drawing.Size(73, 18);
+            this.sf_aux.TabIndex = 9;
+            this.sf_aux.Text = "Auxiliator";
+            this.sf_aux.UseVisualStyleBackColor = true;
+            this.sf_aux.CheckedChanged += new System.EventHandler(this.sf_aux_CheckedChanged);
+            // 
             // sf_ringkunde
             // 
             this.sf_ringkunde.AutoSize = true;
-            this.sf_ringkunde.Location = new System.Drawing.Point(721, 19);
+            this.sf_ringkunde.Location = new System.Drawing.Point(728, 19);
             this.sf_ringkunde.Name = "sf_ringkunde";
             this.sf_ringkunde.Size = new System.Drawing.Size(110, 18);
             this.sf_ringkunde.TabIndex = 4;
@@ -1293,7 +1367,7 @@
             // 
             this.sf_hyper.AutoSize = true;
             this.sf_hyper.Enabled = false;
-            this.sf_hyper.Location = new System.Drawing.Point(293, 19);
+            this.sf_hyper.Location = new System.Drawing.Point(304, 19);
             this.sf_hyper.Name = "sf_hyper";
             this.sf_hyper.Size = new System.Drawing.Size(102, 18);
             this.sf_hyper.TabIndex = 3;
@@ -1304,13 +1378,24 @@
             // sf_stapel
             // 
             this.sf_stapel.AutoSize = true;
-            this.sf_stapel.Location = new System.Drawing.Point(203, 19);
+            this.sf_stapel.Location = new System.Drawing.Point(216, 19);
             this.sf_stapel.Name = "sf_stapel";
             this.sf_stapel.Size = new System.Drawing.Size(82, 18);
             this.sf_stapel.TabIndex = 2;
             this.sf_stapel.Text = "Stapeleffekt";
             this.sf_stapel.UseVisualStyleBackColor = true;
             this.sf_stapel.CheckedChanged += new System.EventHandler(this.sf_stapel_CheckedChanged);
+            // 
+            // sf_kraft
+            // 
+            this.sf_kraft.AutoSize = true;
+            this.sf_kraft.Location = new System.Drawing.Point(6, 19);
+            this.sf_kraft.Name = "sf_kraft";
+            this.sf_kraft.Size = new System.Drawing.Size(94, 18);
+            this.sf_kraft.TabIndex = 0;
+            this.sf_kraft.Text = "Kraftkontrolle";
+            this.sf_kraft.UseVisualStyleBackColor = true;
+            this.sf_kraft.CheckedChanged += new System.EventHandler(this.sf_kraft_CheckedChanged);
             // 
             // groupBox2
             // 
@@ -1347,20 +1432,11 @@
             this.rep_mag.UseVisualStyleBackColor = true;
             this.rep_mag.CheckedChanged += new System.EventHandler(this.rep_mag_CheckedChanged);
             // 
-            // sf_kraft
-            // 
-            this.sf_kraft.AutoSize = true;
-            this.sf_kraft.Location = new System.Drawing.Point(6, 19);
-            this.sf_kraft.Name = "sf_kraft";
-            this.sf_kraft.Size = new System.Drawing.Size(94, 18);
-            this.sf_kraft.TabIndex = 0;
-            this.sf_kraft.Text = "Kraftkontrolle";
-            this.sf_kraft.UseVisualStyleBackColor = true;
-            this.sf_kraft.CheckedChanged += new System.EventHandler(this.sf_kraft_CheckedChanged);
-            // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.aux_stability);
             this.groupBox3.Controls.Add(this.matrix_stability);
+            this.groupBox3.Controls.Add(this.type_aux);
             this.groupBox3.Controls.Add(this.semi_intervall);
             this.groupBox3.Controls.Add(this.temp_zeit);
             this.groupBox3.Controls.Add(this.type_semi);
@@ -1370,7 +1446,7 @@
             this.groupBox3.Controls.Add(this.type_temp);
             this.groupBox3.Location = new System.Drawing.Point(6, 157);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(460, 93);
+            this.groupBox3.Size = new System.Drawing.Size(506, 93);
             this.groupBox3.TabIndex = 13;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Artefakttyp";
@@ -1381,9 +1457,9 @@
             this.matrix_stability.Controls.Add(this.matrix_verystable);
             this.matrix_stability.Controls.Add(this.matrix_labil);
             this.matrix_stability.Controls.Add(this.matrix_stable);
-            this.matrix_stability.Location = new System.Drawing.Point(130, 45);
+            this.matrix_stability.Location = new System.Drawing.Point(92, 44);
             this.matrix_stability.Name = "matrix_stability";
-            this.matrix_stability.Size = new System.Drawing.Size(283, 38);
+            this.matrix_stability.Size = new System.Drawing.Size(286, 38);
             this.matrix_stability.TabIndex = 23;
             this.matrix_stability.TabStop = false;
             this.matrix_stability.Text = "Stabilität";
@@ -1606,7 +1682,7 @@
             // 
             // arcanovi_force
             // 
-            this.arcanovi_force.Location = new System.Drawing.Point(450, 25);
+            this.arcanovi_force.Location = new System.Drawing.Point(236, 39);
             this.arcanovi_force.Maximum = new decimal(new int[] {
             20,
             0,
@@ -1675,21 +1751,21 @@
             this.groupBox5.Controls.Add(this.label4);
             this.groupBox5.Location = new System.Drawing.Point(6, 256);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(768, 59);
+            this.groupBox5.Size = new System.Drawing.Size(433, 64);
             this.groupBox5.TabIndex = 15;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Probenzuschläge";
             // 
             // starkonst
             // 
-            this.starkonst.Location = new System.Drawing.Point(601, 25);
+            this.starkonst.Location = new System.Drawing.Point(387, 38);
             this.starkonst.Maximum = new decimal(new int[] {
-            20,
+            4,
             0,
             0,
             0});
             this.starkonst.Minimum = new decimal(new int[] {
-            20,
+            4,
             0,
             0,
             -2147483648});
@@ -1701,7 +1777,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(492, 28);
+            this.label26.Location = new System.Drawing.Point(278, 41);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(103, 14);
             this.label26.TabIndex = 17;
@@ -1710,7 +1786,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(344, 27);
+            this.label17.Location = new System.Drawing.Point(130, 41);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(99, 14);
             this.label17.TabIndex = 15;
@@ -1718,7 +1794,7 @@
             // 
             // artefakt_groesse
             // 
-            this.artefakt_groesse.Location = new System.Drawing.Point(302, 25);
+            this.artefakt_groesse.Location = new System.Drawing.Point(236, 17);
             this.artefakt_groesse.Maximum = new decimal(new int[] {
             5,
             0,
@@ -1732,7 +1808,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(225, 27);
+            this.label15.Location = new System.Drawing.Point(130, 19);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(72, 14);
             this.label15.TabIndex = 11;
@@ -1740,7 +1816,7 @@
             // 
             // probe_affine
             // 
-            this.probe_affine.Location = new System.Drawing.Point(183, 25);
+            this.probe_affine.Location = new System.Drawing.Point(88, 39);
             this.probe_affine.Maximum = new decimal(new int[] {
             4,
             0,
@@ -1758,26 +1834,16 @@
             // 
             // probe_ausloes
             // 
-            this.probe_ausloes.Location = new System.Drawing.Point(59, 25);
-            this.probe_ausloes.Maximum = new decimal(new int[] {
-            17,
-            0,
-            0,
-            0});
+            this.probe_ausloes.Location = new System.Drawing.Point(88, 16);
             this.probe_ausloes.Name = "probe_ausloes";
             this.probe_ausloes.Size = new System.Drawing.Size(36, 20);
             this.probe_ausloes.TabIndex = 8;
-            this.probe_ausloes.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.probe_ausloes.ValueChanged += new System.EventHandler(this.probe_ausloes_ValueChanged);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(101, 27);
+            this.label6.Location = new System.Drawing.Point(6, 41);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(83, 14);
             this.label6.TabIndex = 7;
@@ -1786,7 +1852,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 27);
+            this.label4.Location = new System.Drawing.Point(6, 18);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 14);
             this.label4.TabIndex = 3;
@@ -1803,9 +1869,9 @@
             "kl. Haus/Schiff (+6/+2W20)",
             "Palast/Burg (+9/+4W20)",
             "Berg (+12/+8W20)"});
-            this.artefakt_super_big.Location = new System.Drawing.Point(110, 127);
+            this.artefakt_super_big.Location = new System.Drawing.Point(110, 119);
             this.artefakt_super_big.Name = "artefakt_super_big";
-            this.artefakt_super_big.Size = new System.Drawing.Size(93, 22);
+            this.artefakt_super_big.Size = new System.Drawing.Size(83, 22);
             this.artefakt_super_big.TabIndex = 14;
             this.artefakt_super_big.Text = "nein";
             this.artefakt_super_big.SelectedIndexChanged += new System.EventHandler(this.artefakt_super_big_SelectedIndexChanged);
@@ -1813,7 +1879,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(3, 130);
+            this.label16.Location = new System.Drawing.Point(3, 122);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(100, 14);
             this.label16.TabIndex = 13;
@@ -1824,7 +1890,7 @@
             this.stapel.Enabled = false;
             this.stapel.Location = new System.Drawing.Point(156, 38);
             this.stapel.Maximum = new decimal(new int[] {
-            50,
+            3,
             0,
             0,
             0});
@@ -2010,9 +2076,9 @@
             this.groupBox11.Controls.Add(this.label16);
             this.groupBox11.Controls.Add(this.limbus);
             this.groupBox11.Controls.Add(this.namenlos);
-            this.groupBox11.Location = new System.Drawing.Point(780, 157);
+            this.groupBox11.Location = new System.Drawing.Point(793, 157);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(211, 158);
+            this.groupBox11.Size = new System.Drawing.Size(198, 144);
             this.groupBox11.TabIndex = 22;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Besonderes";
@@ -2024,7 +2090,7 @@
             0,
             0,
             0});
-            this.agribaal.Location = new System.Drawing.Point(6, 57);
+            this.agribaal.Location = new System.Drawing.Point(6, 52);
             this.agribaal.Maximum = new decimal(new int[] {
             70,
             0,
@@ -2038,7 +2104,7 @@
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(48, 60);
+            this.label32.Location = new System.Drawing.Point(46, 55);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(99, 14);
             this.label32.TabIndex = 23;
@@ -2046,7 +2112,7 @@
             // 
             // special_ort_neben
             // 
-            this.special_ort_neben.Location = new System.Drawing.Point(6, 104);
+            this.special_ort_neben.Location = new System.Drawing.Point(6, 99);
             this.special_ort_neben.Maximum = new decimal(new int[] {
             3,
             0,
@@ -2064,7 +2130,7 @@
             // 
             // special_ort_occ
             // 
-            this.special_ort_occ.Location = new System.Drawing.Point(6, 81);
+            this.special_ort_occ.Location = new System.Drawing.Point(6, 76);
             this.special_ort_occ.Maximum = new decimal(new int[] {
             3,
             0,
@@ -2083,7 +2149,7 @@
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(48, 108);
+            this.label31.Location = new System.Drawing.Point(46, 103);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(150, 14);
             this.label31.TabIndex = 21;
@@ -2092,7 +2158,7 @@
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(48, 84);
+            this.label30.Location = new System.Drawing.Point(46, 79);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(143, 14);
             this.label30.TabIndex = 19;
@@ -2112,7 +2178,7 @@
             // namenlos
             // 
             this.namenlos.AutoSize = true;
-            this.namenlos.Location = new System.Drawing.Point(6, 36);
+            this.namenlos.Location = new System.Drawing.Point(6, 33);
             this.namenlos.Name = "namenlos";
             this.namenlos.Size = new System.Drawing.Size(102, 18);
             this.namenlos.TabIndex = 0;
@@ -2120,45 +2186,263 @@
             this.namenlos.UseVisualStyleBackColor = true;
             this.namenlos.CheckedChanged += new System.EventHandler(this.namenlos_CheckedChanged);
             // 
-            // regelbasis
+            // type_aux
             // 
-            this.regelbasis.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.wegeDerAlchimieToolStripMenuItem,
-            this.staebeRingeDschinnenlampenToolStripMenuItem});
-            this.regelbasis.Name = "regelbasis";
-            this.regelbasis.Size = new System.Drawing.Size(414, 22);
-            this.regelbasis.Text = "Regelbasis";
+            this.type_aux.AutoSize = true;
+            this.type_aux.Enabled = false;
+            this.type_aux.Location = new System.Drawing.Point(417, 20);
+            this.type_aux.Name = "type_aux";
+            this.type_aux.Size = new System.Drawing.Size(69, 18);
+            this.type_aux.TabIndex = 24;
+            this.type_aux.Text = "auxiliator";
+            this.type_aux.UseVisualStyleBackColor = true;
+            this.type_aux.CheckedChanged += new System.EventHandler(this.type_aux_CheckedChanged);
             // 
-            // wegeDerAlchimieToolStripMenuItem
+            // aux_stability
             // 
-            this.wegeDerAlchimieToolStripMenuItem.Checked = true;
-            this.wegeDerAlchimieToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.wegeDerAlchimieToolStripMenuItem.Name = "wegeDerAlchimieToolStripMenuItem";
-            this.wegeDerAlchimieToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
-            this.wegeDerAlchimieToolStripMenuItem.Text = "Wege der Alchimie";
-            this.wegeDerAlchimieToolStripMenuItem.Click += new System.EventHandler(this.wegeDerAlchimieToolStripMenuItem_Click);
+            this.aux_stability.Controls.Add(this.aux_unempfindlich);
+            this.aux_stability.Controls.Add(this.aux_merkmal);
+            this.aux_stability.Controls.Add(this.aux_verystable);
+            this.aux_stability.Controls.Add(this.aux_labil);
+            this.aux_stability.Controls.Add(this.aux_stable);
+            this.aux_stability.Location = new System.Drawing.Point(122, 45);
+            this.aux_stability.Name = "aux_stability";
+            this.aux_stability.Size = new System.Drawing.Size(364, 38);
+            this.aux_stability.TabIndex = 24;
+            this.aux_stability.TabStop = false;
+            this.aux_stability.Text = "Stabilität";
+            this.aux_stability.Visible = false;
             // 
-            // staebeRingeDschinnenlampenToolStripMenuItem
+            // aux_unempfindlich
             // 
-            this.staebeRingeDschinnenlampenToolStripMenuItem.Name = "staebeRingeDschinnenlampenToolStripMenuItem";
-            this.staebeRingeDschinnenlampenToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
-            this.staebeRingeDschinnenlampenToolStripMenuItem.Text = "Stäbe, Ringe, Dschinnenlampen";
-            this.staebeRingeDschinnenlampenToolStripMenuItem.Click += new System.EventHandler(this.staebeRingeDschinnenlampenToolStripMenuItem_Click);
+            this.aux_unempfindlich.AutoSize = true;
+            this.aux_unempfindlich.Location = new System.Drawing.Point(193, 12);
+            this.aux_unempfindlich.Name = "aux_unempfindlich";
+            this.aux_unempfindlich.Size = new System.Drawing.Size(91, 18);
+            this.aux_unempfindlich.TabIndex = 3;
+            this.aux_unempfindlich.Text = "unempfindlich";
+            this.aux_unempfindlich.UseVisualStyleBackColor = true;
+            this.aux_unempfindlich.CheckedChanged += new System.EventHandler(this.aux_unempfindlich_CheckedChanged);
             // 
-            // sf_aux
+            // aux_verystable
             // 
-            this.sf_aux.AutoSize = true;
-            this.sf_aux.Enabled = false;
-            this.sf_aux.Location = new System.Drawing.Point(837, 19);
-            this.sf_aux.Name = "sf_aux";
-            this.sf_aux.Size = new System.Drawing.Size(73, 18);
-            this.sf_aux.TabIndex = 9;
-            this.sf_aux.Text = "Auxiliator";
-            this.sf_aux.UseVisualStyleBackColor = true;
+            this.aux_verystable.AutoSize = true;
+            this.aux_verystable.Checked = true;
+            this.aux_verystable.Location = new System.Drawing.Point(114, 12);
+            this.aux_verystable.Name = "aux_verystable";
+            this.aux_verystable.Size = new System.Drawing.Size(71, 18);
+            this.aux_verystable.TabIndex = 2;
+            this.aux_verystable.TabStop = true;
+            this.aux_verystable.Text = "sehr stabil";
+            this.aux_verystable.UseVisualStyleBackColor = true;
+            this.aux_verystable.CheckedChanged += new System.EventHandler(this.aux_verystable_CheckedChanged);
             // 
-            // sFBindingSource
+            // aux_labil
             // 
-            this.sFBindingSource.DataSource = typeof(ArtefaktGenerator.SF);
+            this.aux_labil.AutoSize = true;
+            this.aux_labil.Location = new System.Drawing.Point(8, 12);
+            this.aux_labil.Name = "aux_labil";
+            this.aux_labil.Size = new System.Drawing.Size(44, 18);
+            this.aux_labil.TabIndex = 0;
+            this.aux_labil.Text = "labil";
+            this.aux_labil.UseVisualStyleBackColor = true;
+            this.aux_labil.CheckedChanged += new System.EventHandler(this.aux_labil_CheckedChanged);
+            // 
+            // aux_stable
+            // 
+            this.aux_stable.AutoSize = true;
+            this.aux_stable.Location = new System.Drawing.Point(58, 12);
+            this.aux_stable.Name = "aux_stable";
+            this.aux_stable.Size = new System.Drawing.Size(49, 18);
+            this.aux_stable.TabIndex = 1;
+            this.aux_stable.Text = "stabil";
+            this.aux_stable.UseVisualStyleBackColor = true;
+            this.aux_stable.CheckedChanged += new System.EventHandler(this.aux_stable_CheckedChanged);
+            // 
+            // aux_merkmal
+            // 
+            this.aux_merkmal.AutoSize = true;
+            this.aux_merkmal.Location = new System.Drawing.Point(290, 13);
+            this.aux_merkmal.Name = "aux_merkmal";
+            this.aux_merkmal.Size = new System.Drawing.Size(68, 18);
+            this.aux_merkmal.TabIndex = 5;
+            this.aux_merkmal.Text = "Merkmal";
+            this.aux_merkmal.UseVisualStyleBackColor = true;
+            this.aux_merkmal.CheckedChanged += new System.EventHandler(this.aux_merkmal_CheckedChanged);
+            // 
+            // special_ferngespuer
+            // 
+            this.special_ferngespuer.AutoSize = true;
+            this.special_ferngespuer.Location = new System.Drawing.Point(6, 105);
+            this.special_ferngespuer.Name = "special_ferngespuer";
+            this.special_ferngespuer.Size = new System.Drawing.Size(76, 18);
+            this.special_ferngespuer.TabIndex = 4;
+            this.special_ferngespuer.Text = "Ferngespür";
+            this.special_ferngespuer.UseVisualStyleBackColor = true;
+            this.special_ferngespuer.CheckedChanged += new System.EventHandler(this.special_ferngespuer_CheckedChanged);
+            // 
+            // special_resistant
+            // 
+            this.special_resistant.AutoSize = true;
+            this.special_resistant.Location = new System.Drawing.Point(6, 75);
+            this.special_resistant.Name = "special_resistant";
+            this.special_resistant.Size = new System.Drawing.Size(128, 18);
+            this.special_resistant.TabIndex = 5;
+            this.special_resistant.Text = "Res. profaner Schaden";
+            this.special_resistant.UseVisualStyleBackColor = true;
+            this.special_resistant.CheckedChanged += new System.EventHandler(this.special_resistant_CheckedChanged);
+            // 
+            // special_selfrepair
+            // 
+            this.special_selfrepair.AutoSize = true;
+            this.special_selfrepair.Location = new System.Drawing.Point(6, 90);
+            this.special_selfrepair.Name = "special_selfrepair";
+            this.special_selfrepair.Size = new System.Drawing.Size(94, 18);
+            this.special_selfrepair.TabIndex = 6;
+            this.special_selfrepair.Text = "Selbstreparatur";
+            this.special_selfrepair.UseVisualStyleBackColor = true;
+            this.special_selfrepair.CheckedChanged += new System.EventHandler(this.special_selfrepair_CheckedChanged);
+            // 
+            // special_reversalis
+            // 
+            this.special_reversalis.AutoSize = true;
+            this.special_reversalis.Location = new System.Drawing.Point(6, 121);
+            this.special_reversalis.Name = "special_reversalis";
+            this.special_reversalis.Size = new System.Drawing.Size(103, 18);
+            this.special_reversalis.TabIndex = 7;
+            this.special_reversalis.Text = "Umkehrtalisman";
+            this.special_reversalis.UseVisualStyleBackColor = true;
+            this.special_reversalis.CheckedChanged += new System.EventHandler(this.special_reversalis_CheckedChanged);
+            // 
+            // special_variablerelease
+            // 
+            this.special_variablerelease.AutoSize = true;
+            this.special_variablerelease.Location = new System.Drawing.Point(6, 136);
+            this.special_variablerelease.Name = "special_variablerelease";
+            this.special_variablerelease.Size = new System.Drawing.Size(107, 18);
+            this.special_variablerelease.TabIndex = 8;
+            this.special_variablerelease.Text = "Variabler Auslöser";
+            this.special_variablerelease.UseVisualStyleBackColor = true;
+            this.special_variablerelease.CheckedChanged += new System.EventHandler(this.special_variablerelease_CheckedChanged);
+            // 
+            // special_schleier
+            // 
+            this.special_schleier.AutoSize = true;
+            this.special_schleier.Location = new System.Drawing.Point(6, 151);
+            this.special_schleier.Name = "special_schleier";
+            this.special_schleier.Size = new System.Drawing.Size(92, 18);
+            this.special_schleier.TabIndex = 9;
+            this.special_schleier.Text = "Verschleierung";
+            this.special_schleier.UseVisualStyleBackColor = true;
+            this.special_schleier.CheckedChanged += new System.EventHandler(this.special_schleier_CheckedChanged);
+            // 
+            // special_eatmaterial
+            // 
+            this.special_eatmaterial.AutoSize = true;
+            this.special_eatmaterial.Location = new System.Drawing.Point(6, 166);
+            this.special_eatmaterial.Name = "special_eatmaterial";
+            this.special_eatmaterial.Size = new System.Drawing.Size(120, 18);
+            this.special_eatmaterial.TabIndex = 10;
+            this.special_eatmaterial.Text = "Verzehrender Zauber";
+            this.special_eatmaterial.UseVisualStyleBackColor = true;
+            this.special_eatmaterial.CheckedChanged += new System.EventHandler(this.special_eatmaterial_CheckedChanged);
+            // 
+            // special_variable_var
+            // 
+            this.special_variable_var.Location = new System.Drawing.Point(119, 135);
+            this.special_variable_var.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.special_variable_var.Name = "special_variable_var";
+            this.special_variable_var.Size = new System.Drawing.Size(36, 20);
+            this.special_variable_var.TabIndex = 19;
+            this.special_variable_var.Visible = false;
+            this.special_variable_var.ValueChanged += new System.EventHandler(this.special_variable_var_ValueChanged);
+            // 
+            // special_ferngespuer_komp
+            // 
+            this.special_ferngespuer_komp.FormattingEnabled = true;
+            this.special_ferngespuer_komp.Items.AddRange(new object[] {
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H"});
+            this.special_ferngespuer_komp.Location = new System.Drawing.Point(133, 103);
+            this.special_ferngespuer_komp.Name = "special_ferngespuer_komp";
+            this.special_ferngespuer_komp.Size = new System.Drawing.Size(34, 22);
+            this.special_ferngespuer_komp.TabIndex = 26;
+            this.special_ferngespuer_komp.Text = "A";
+            this.special_ferngespuer_komp.Visible = false;
+            this.special_ferngespuer_komp.SelectedIndexChanged += new System.EventHandler(this.special_ferngespuer_komp_SelectedIndexChanged);
+            // 
+            // lbl_special_komp
+            // 
+            this.lbl_special_komp.AutoSize = true;
+            this.lbl_special_komp.Location = new System.Drawing.Point(88, 106);
+            this.lbl_special_komp.Name = "lbl_special_komp";
+            this.lbl_special_komp.Size = new System.Drawing.Size(39, 14);
+            this.lbl_special_komp.TabIndex = 25;
+            this.lbl_special_komp.Text = "Komp.";
+            this.lbl_special_komp.Visible = false;
+            // 
+            // special_ferngespuer_asp
+            // 
+            this.special_ferngespuer_asp.Location = new System.Drawing.Point(205, 104);
+            this.special_ferngespuer_asp.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.special_ferngespuer_asp.Name = "special_ferngespuer_asp";
+            this.special_ferngespuer_asp.Size = new System.Drawing.Size(36, 20);
+            this.special_ferngespuer_asp.TabIndex = 27;
+            this.special_ferngespuer_asp.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.special_ferngespuer_asp.Visible = false;
+            this.special_ferngespuer_asp.ValueChanged += new System.EventHandler(this.special_ferngespuer_asp_ValueChanged);
+            // 
+            // lbl_special_asp
+            // 
+            this.lbl_special_asp.AutoSize = true;
+            this.lbl_special_asp.Location = new System.Drawing.Point(173, 106);
+            this.lbl_special_asp.Name = "lbl_special_asp";
+            this.lbl_special_asp.Size = new System.Drawing.Size(26, 14);
+            this.lbl_special_asp.TabIndex = 28;
+            this.lbl_special_asp.Text = "AsP";
+            this.lbl_special_asp.Visible = false;
+            // 
+            // special_eatmat_var
+            // 
+            this.special_eatmat_var.Location = new System.Drawing.Point(129, 163);
+            this.special_eatmat_var.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.special_eatmat_var.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.special_eatmat_var.Name = "special_eatmat_var";
+            this.special_eatmat_var.Size = new System.Drawing.Size(36, 20);
+            this.special_eatmat_var.TabIndex = 29;
+            this.special_eatmat_var.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.special_eatmat_var.Visible = false;
+            this.special_eatmat_var.ValueChanged += new System.EventHandler(this.special_eatmat_var_ValueChanged);
             // 
             // Form1
             // 
@@ -2167,18 +2451,18 @@
             this.AutoScroll = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(996, 557);
+            this.Controls.Add(this.groupBox8);
+            this.Controls.Add(this.groupBox5);
+            this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox11);
             this.Controls.Add(this.menu);
-            this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.btn_update);
-            this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox6);
+            this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Form1";
             this.Text = "Das Schwarze Auge  -  ArtefaktGenerator";
@@ -2247,6 +2531,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.special_ort_neben)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.special_ort_occ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sFBindingSource)).EndInit();
+            this.aux_stability.ResumeLayout(false);
+            this.aux_stability.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.special_variable_var)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.special_ferngespuer_asp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.special_eatmat_var)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2420,6 +2709,26 @@
         private System.Windows.Forms.ToolStripMenuItem wegeDerAlchimieToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem staebeRingeDschinnenlampenToolStripMenuItem;
         private System.Windows.Forms.CheckBox sf_aux;
+        private System.Windows.Forms.RadioButton type_aux;
+        private System.Windows.Forms.GroupBox aux_stability;
+        private System.Windows.Forms.RadioButton aux_unempfindlich;
+        private System.Windows.Forms.RadioButton aux_verystable;
+        private System.Windows.Forms.RadioButton aux_labil;
+        private System.Windows.Forms.RadioButton aux_stable;
+        private System.Windows.Forms.CheckBox aux_merkmal;
+        private System.Windows.Forms.CheckBox special_eatmaterial;
+        private System.Windows.Forms.CheckBox special_schleier;
+        private System.Windows.Forms.CheckBox special_variablerelease;
+        private System.Windows.Forms.CheckBox special_reversalis;
+        private System.Windows.Forms.CheckBox special_selfrepair;
+        private System.Windows.Forms.CheckBox special_resistant;
+        private System.Windows.Forms.CheckBox special_ferngespuer;
+        private System.Windows.Forms.NumericUpDown special_variable_var;
+        private System.Windows.Forms.Label lbl_special_asp;
+        private System.Windows.Forms.NumericUpDown special_ferngespuer_asp;
+        private System.Windows.Forms.ComboBox special_ferngespuer_komp;
+        private System.Windows.Forms.Label lbl_special_komp;
+        private System.Windows.Forms.NumericUpDown special_eatmat_var;
 
     }
 }

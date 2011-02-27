@@ -40,7 +40,7 @@ namespace ArtefaktGenerator
 
         public Destructibo destructibo = new Destructibo();
 
-        public enum ArtefaktType : short { TEMP = 0, NORMAL = 1, RECHARGE = 2, MATRIX = 3, SEMI = 4 };
+        public enum ArtefaktType : short { TEMP = 0, NORMAL = 1, RECHARGE = 2, MATRIX = 3, SEMI = 4, AUX = 5 };
 
         public ArtefaktType typ = ArtefaktType.NORMAL;
 
@@ -56,6 +56,10 @@ namespace ArtefaktGenerator
 
         public MatrixType matrix_typ = MatrixType.SEHRSTABIL;
 
+        public MatrixType aux_typ = MatrixType.SEHRSTABIL;
+
+        public bool aux_merkmal = false;
+
         public bool spezial_siegel = false;
 
         public bool spezial_unzerbrechlich = false;
@@ -63,6 +67,28 @@ namespace ArtefaktGenerator
         public bool spezial_gespuer = false;
 
         public bool spezial_apport = false;
+
+        public bool spezial_ferngespuer = false;
+
+        public decimal spezial_ferngespuer_komp = 1;
+
+        public decimal spezial_ferngespuer_asp = 1;
+
+        public bool spezial_resistent = false;
+
+        public bool spezial_reperatur = false;
+
+        public bool spezial_reversalis = false;
+
+        public bool spezial_variablerausloeser = false;
+
+        public decimal spezial_variablerausloeser_var = 0;
+
+        public bool spezial_verschleierung = false;
+
+        public bool spezial_verzehrend = false;
+
+        public decimal spezial_verzehrend_var = 1;
 
         public bool nebeneffekte = true;
 

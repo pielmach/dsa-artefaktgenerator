@@ -33,6 +33,7 @@
             this.closeit = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.link = new System.Windows.Forms.LinkLabel();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // label1
@@ -55,7 +56,7 @@
             // 
             // closeit
             // 
-            this.closeit.Location = new System.Drawing.Point(197, 79);
+            this.closeit.Location = new System.Drawing.Point(197, 108);
             this.closeit.Name = "closeit";
             this.closeit.Size = new System.Drawing.Size(75, 23);
             this.closeit.TabIndex = 2;
@@ -82,11 +83,22 @@
             this.link.TabStop = true;
             this.link.Text = "www.dsa-hamburg.de";
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(43, 80);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(194, 13);
+            this.linkLabel1.TabIndex = 5;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "http://sourceforge.net/projects/artgen/";
+            // 
             // Info
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 114);
+            this.ClientSize = new System.Drawing.Size(284, 134);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.link);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.closeit);
@@ -106,5 +118,6 @@
         private System.Windows.Forms.Button closeit;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.LinkLabel link;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }

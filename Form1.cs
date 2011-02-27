@@ -52,6 +52,11 @@ namespace ArtefaktGenerator
             update(false);
         }
 
+        private bool WDA()
+        {
+            return artefakt.regelbasis == Artefakt.Regelbasis.WDA;
+        }
+
         private decimal Round(decimal x)
         {
             return Math.Round(x, MidpointRounding.AwayFromZero);
@@ -141,6 +146,21 @@ namespace ArtefaktGenerator
                 }
             }
 
+            // Aux Check
+            if(artefakt.sf.auxiliator)
+            {
+                type_aux.Enabled = true;
+            }
+            else
+            {
+                type_aux.Enabled = false;
+                if (artefakt.typ == Artefakt.ArtefaktType.AUX)
+                {
+                    type_charge.Checked = true;
+                    artefakt.typ = Artefakt.ArtefaktType.RECHARGE;
+                }
+            }
+
             // Semiperm. Check
             if (artefakt.sf.semi1)
             {
@@ -182,6 +202,15 @@ namespace ArtefaktGenerator
                 delStapelZauber();
             }
 
+            // Hyper check
+            if (artefakt.sf.hyper)
+            {
+                stapel.Maximum = 100;
+            }
+            else
+            {
+                stapel.Maximum = 3;
+            }
 
             //temporaer check
             if (artefakt.typ == Artefakt.ArtefaktType.TEMP)
@@ -204,7 +233,20 @@ namespace ArtefaktGenerator
             else
             {
                 matrix_stability.Visible = false;
-                probe_ausloes.Minimum = 1;
+                if (artefakt.regelbasis == Artefakt.Regelbasis.SRD)
+                    probe_ausloes.Minimum = 1;
+                else
+                    probe_ausloes.Minimum = 0;
+            }
+
+            //Aux Check
+            if (artefakt.typ == Artefakt.ArtefaktType.AUX)
+            {
+                aux_stability.Visible = true;
+            }
+            else
+            {
+                aux_stability.Visible = false;
             }
 
             // add magic
@@ -231,15 +273,142 @@ namespace ArtefaktGenerator
             // update Max Ladungen for Destructibo
             destruct_aktive.Maximum = artefakt.loads;
 
-            // check for WDA basis
-            if (artefakt.regelbasis == Artefakt.Regelbasis.SRD)
-            {
-                sf_aux.Visible = false;
+            //spezial spezial
+            if (artefakt.taw.arcanovi < 10) 
+            { 
+                special_signet.Enabled = false;
+                special_signet.Checked = false;
+                artefakt.spezial_siegel = false; 
+            }
+            else special_signet.Enabled = true;
 
+            // check for WDA basis
+            if (!WDA())
+            {
+                cb_kristalle.Visible = true;
+
+                sf_aux.Visible = false;
+                type_aux.Visible = false;
+                if (artefakt.typ == Artefakt.ArtefaktType.AUX)
+                {
+                    type_charge.Checked = true;
+                }
+                probe_ausloes.Minimum = 1;
+
+                special_schleier.Visible = false;
+                special_resistant.Visible = false;
+                special_reversalis.Visible = false;
+                special_selfrepair.Visible = false;
+                special_variablerelease.Visible = false;
+                special_ferngespuer.Visible = false;
+                special_eatmaterial.Visible = false;
+                lbl_special_asp.Visible = false;
+                lbl_special_komp.Visible = false;
+                special_ferngespuer_asp.Visible = false;
+                special_ferngespuer_komp.Visible = false;
+                special_variable_var.Visible = false;
+                special_eatmat_var.Visible = false;
+
+                // Afinität
+                probe_affine.Maximum = 4;
+                probe_affine.Minimum = -2;
             }
             else 
             {
+                type_aux.Visible = true;
                 sf_aux.Visible = true;
+                probe_ausloes.Minimum = 0;
+                // Kristalle
+                cb_kristalle.Visible = false;
+
+                // Temp Speicher
+                if (artefakt.taw.arcanovi < 12)
+                {
+                    if (type_temp.Checked)
+                        type_einaml.Checked = true;
+                    type_temp.Enabled = false;
+                }
+                else
+                    type_temp.Enabled = true;
+
+                special_schleier.Visible = true;
+                special_resistant.Visible = true;
+                special_reversalis.Visible = true;
+                special_selfrepair.Visible = true;
+                special_variablerelease.Visible = true;
+                special_ferngespuer.Visible = true;
+                special_eatmaterial.Visible = true;
+
+                // Afinität
+                probe_affine.Maximum = 3;
+                probe_affine.Minimum = -3;
+
+                //Spezial spezials
+                if (artefakt.taw.arcanovi < 12) 
+                {
+                    special_ferngespuer.Checked = false;
+                    artefakt.spezial_ferngespuer = false;
+                    special_ferngespuer.Enabled = false;
+                }
+                else
+                    special_ferngespuer.Enabled = true;
+
+                if (artefakt.taw.arcanovi < 12 || artefakt.typ != Artefakt.ArtefaktType.RECHARGE)
+                {
+                    special_variablerelease.Checked = false;
+                    artefakt.spezial_variablerausloeser = false;
+                    special_variablerelease.Enabled = false;
+                }
+                else
+                    special_variablerelease.Enabled = true;
+
+                if (artefakt.taw.arcanovi < 10)
+                {
+                    special_schleier.Enabled = false;
+                    special_schleier.Checked = false;
+                    artefakt.spezial_verschleierung = false;
+                }
+                else
+                    special_schleier.Enabled = true;
+
+                if (artefakt.taw.arcanovi_matrix < 15 || artefakt.typ != Artefakt.ArtefaktType.AUX)
+                {
+                    special_reversalis.Checked = false;
+                    special_reversalis.Enabled = false;
+                    artefakt.spezial_reversalis = false;
+                }
+                else
+                    special_reversalis.Enabled = true;
+
+                if ((artefakt.typ == Artefakt.ArtefaktType.NORMAL || artefakt.typ == Artefakt.ArtefaktType.TEMP) && (artefakt.loads <= 1))
+                    special_eatmaterial.Enabled = true;
+                else
+                {
+                    special_eatmaterial.Enabled = false;
+                    special_eatmaterial.Checked = false;
+                    artefakt.spezial_verzehrend = false;
+                }
+
+                if (special_variablerelease.Checked) special_variable_var.Visible = true;
+                else special_variable_var.Visible = false;
+
+                if (special_eatmaterial.Checked) special_eatmat_var.Visible = true;
+                else special_eatmat_var.Visible = false;
+
+                if (special_ferngespuer.Checked)
+                {
+                    lbl_special_asp.Visible = true;
+                    lbl_special_komp.Visible = true;
+                    special_ferngespuer_asp.Visible = true;
+                    special_ferngespuer_komp.Visible = true;
+                }
+                else
+                {
+                    lbl_special_asp.Visible = false;
+                    lbl_special_komp.Visible = false;
+                    special_ferngespuer_asp.Visible = false;
+                    special_ferngespuer_komp.Visible = false;
+                }
             }
 
             if (automatischNeuberechenenToolStripMenuItem.Checked || force)
@@ -276,11 +445,20 @@ namespace ArtefaktGenerator
 
                 decimal agribaal_zfp = artefakt.agribaal;
                 decimal arcanovi_erschwernis = artefakt.probe.affine + artefakt.probe.ausloeser + artefakt.probe.material + artefakt.material.arcanovi_mod + artefakt.probe.groesse + artefakt.probe.superBig_zuschlag + artefakt.probe.erzwingen + artefakt.probe.stars;
+                //spezielle Eigenschaften
                 if (artefakt.spezial_apport) arcanovi_erschwernis += 4;
                 if (artefakt.spezial_gespuer) arcanovi_erschwernis += 3;
                 if (artefakt.spezial_unzerbrechlich) arcanovi_erschwernis += 3;
+                if (WDA() && artefakt.spezial_ferngespuer) arcanovi_erschwernis += (5+artefakt.spezial_ferngespuer_komp);
+                if (WDA() && artefakt.spezial_resistent) arcanovi_erschwernis += 2;
+                if (WDA() && artefakt.typ == Artefakt.ArtefaktType.AUX && artefakt.spezial_reversalis) arcanovi_erschwernis += 4;
+                if (WDA() && artefakt.spezial_variablerausloeser) arcanovi_erschwernis += (2+artefakt.spezial_variablerausloeser_var);
+                if (WDA() && artefakt.spezial_verschleierung) arcanovi_erschwernis += 3;
+                if (WDA() && artefakt.spezial_verzehrend) arcanovi_erschwernis += 1;
+
                 if (artefakt.typ == Artefakt.ArtefaktType.RECHARGE) arcanovi_erschwernis += 5;
                 decimal magic_asp_mult = 1;
+                decimal magic_asp_mult_extra = 1;
 
                 if (artefakt.typ == Artefakt.ArtefaktType.SEMI)
                 {
@@ -309,10 +487,36 @@ namespace ArtefaktGenerator
                 {
                     switch (artefakt.matrix_typ)
                     {
-                        case Artefakt.MatrixType.STABIL: arcanovi_erschwernis += 2; break;
-                        case Artefakt.MatrixType.SEHRSTABIL: arcanovi_erschwernis += 4; break;
-                        case Artefakt.MatrixType.UNEMPFINDLICH: arcanovi_erschwernis += 6; break;
+                        case Artefakt.MatrixType.STABIL: arcanovi_erschwernis += 2; if (WDA()) magic_asp_mult = 2; break;
+                        case Artefakt.MatrixType.SEHRSTABIL: arcanovi_erschwernis += 4; if (WDA()) magic_asp_mult = 3; break;
+                        case Artefakt.MatrixType.UNEMPFINDLICH: arcanovi_erschwernis += 6; if (WDA()) magic_asp_mult = 4; break;
                         default: break;
+                    }
+                }
+                if (WDA())
+                {
+                    if (artefakt.typ == Artefakt.ArtefaktType.TEMP)
+                    {
+                        switch (artefakt.temp_typ)
+                        {
+                            case Artefakt.TempType.TAG: arcanovi_erschwernis += 5; break;
+                            case Artefakt.TempType.WOCHE: arcanovi_erschwernis += 7; break;
+                            case Artefakt.TempType.MONAT: arcanovi_erschwernis += 9; break;
+                            default: break;
+                        }
+                    }
+                    if (artefakt.typ == Artefakt.ArtefaktType.AUX)
+                    {
+                        arcanovi_erschwernis += 3;
+                        if (artefakt.aux_merkmal) arcanovi_erschwernis += 2;
+                        magic_asp_mult_extra = 3;
+                        switch (artefakt.aux_typ)
+                        {
+                            case Artefakt.MatrixType.STABIL: arcanovi_erschwernis += 3; magic_asp_mult = 2; break;
+                            case Artefakt.MatrixType.SEHRSTABIL: arcanovi_erschwernis += 6; magic_asp_mult = 3; break;
+                            case Artefakt.MatrixType.UNEMPFINDLICH: arcanovi_erschwernis += 9; magic_asp_mult = 4; break;
+                            default: break;
+                        }
                     }
                 }
 
@@ -342,7 +546,7 @@ namespace ArtefaktGenerator
                     if (artefakt.sf.rep == SF.SFType.ACH && ach_save.Checked) thismagic_asp = Round(thismagic_asp * 3 / 4);
                     if (artefakt.sf.kraftkontrolle) thismagic_asp -= 1;
 
-                    magic_asp += thismagic_asp * artefakt.loads * magic[i].staple * magic_asp_mult;
+                    magic_asp += thismagic_asp * artefakt.loads * magic[i].staple * magic_asp_mult * magic_asp_mult_extra;
                 }
                 if (artefakt.limbus)
                 {
@@ -368,6 +572,7 @@ namespace ArtefaktGenerator
                 switch (artefakt.typ)
                 {
                     case Artefakt.ArtefaktType.MATRIX: arcanovi_taw = artefakt.taw.arcanovi_matrix; break;
+                    case Artefakt.ArtefaktType.AUX: if (WDA()) arcanovi_taw = artefakt.taw.arcanovi_matrix; break;
                     case Artefakt.ArtefaktType.SEMI: arcanovi_taw = artefakt.taw.arcanovi_semi; break;
                     default: arcanovi_taw = artefakt.taw.arcanovi; break;
                 }
@@ -394,9 +599,12 @@ namespace ArtefaktGenerator
 
                 decimal arcanovi_asp = 0;
                 decimal arcanovi_special_w = 0;
+                decimal arcanovi_special_w_asp = 0;
+                decimal arcanovi_special_asp = 0;
                 //arcanovi_special_w += artefakt.probe.superBig_asp_w;
                 decimal arcanovi_base_asp = 0;
-                if (artefakt.typ == Artefakt.ArtefaktType.TEMP)
+                arcanovi_base_asp = 10;
+                if (!WDA() && artefakt.typ == Artefakt.ArtefaktType.TEMP)
                 {
                     switch (artefakt.temp_typ)
                     {
@@ -405,8 +613,6 @@ namespace ArtefaktGenerator
                         case Artefakt.TempType.MONAT: arcanovi_base_asp = 9; break;
                     }
                 }
-                else
-                    arcanovi_base_asp = 10;
 
                 // erzwingen auf base
                 decimal erzwingen_asp = 0;
@@ -432,8 +638,14 @@ namespace ArtefaktGenerator
                 if (artefakt.spezial_unzerbrechlich) arcanovi_special_w += 6;
                 if (artefakt.spezial_gespuer) arcanovi_special_w += 3;
                 if (artefakt.spezial_apport) arcanovi_special_w += 4;
+                if (WDA() && artefakt.spezial_ferngespuer) { arcanovi_special_w += 2; arcanovi_special_w_asp += artefakt.spezial_ferngespuer_asp; };
+                if (WDA() && artefakt.spezial_resistent) arcanovi_special_w += 4;
+                if (WDA() && artefakt.spezial_reperatur) arcanovi_special_w += 5;
+                if (WDA() && artefakt.spezial_reversalis) { arcanovi_special_w += 2; arcanovi_special_w_asp += 7; }
+                if (WDA() && artefakt.spezial_variablerausloeser) arcanovi_special_w += 2;
+                if (WDA() && artefakt.spezial_verschleierung) arcanovi_special_w += 3;
+                if (WDA() && artefakt.spezial_verzehrend) arcanovi_special_w_asp -= Round(artefakt.spezial_verzehrend_var/10);
 
-                decimal arcanovi_special_asp = 0;
                 for (int i = 0; i < arcanovi_special_w; i++)
                     arcanovi_special_asp += dice.W6;
                 if (artefakt.sf.ringkunde && arcanovi_special_asp > 0)
@@ -442,8 +654,10 @@ namespace ArtefaktGenerator
                     arcanovi_special_asp += dice.W20;
 
                 arcanovi_special_asp += artefakt.material.asp_mod;
+                arcanovi_special_asp += arcanovi_special_w_asp;
                 arcanovi_special_asp = Round(arcanovi_special_asp);
 
+                // pAsP
                 decimal pasp = 0;
                 dice.W6_Opt = Wuerfel.Optimum.LOW;
                 switch (artefakt.typ)
@@ -453,11 +667,12 @@ namespace ArtefaktGenerator
                     case Artefakt.ArtefaktType.RECHARGE: pasp = Round(Round((magic_asp + arcanovi_asp + arcanovi_special_asp) / 15)*artefakt.material.pasp_mod); break;
                     case Artefakt.ArtefaktType.MATRIX: pasp = Round(Round((magic_asp + arcanovi_asp + arcanovi_special_asp) / 20)*artefakt.material.pasp_mod); break;
                     case Artefakt.ArtefaktType.SEMI: pasp = Round(Round((magic_asp + arcanovi_asp + arcanovi_special_asp) / 10) * artefakt.material.pasp_mod); break;
+                    case Artefakt.ArtefaktType.AUX: if (WDA()) pasp = Round(Round((magic_asp + arcanovi_asp + arcanovi_special_asp) / 15) * artefakt.material.pasp_mod); break;
                     default: break;
                 }
                 if (pasp <= 0 && !(artefakt.typ == Artefakt.ArtefaktType.TEMP) && !(artefakt.kristalle))
                     pasp = 1;
-                if (artefakt.kristalle && pasp > 0) pasp -= 1;
+                if (!WDA() && artefakt.kristalle && pasp > 0) pasp -= 1;
 
                 // Erschwerniss Wirkende Zauber
                 decimal magic_erschwerniss = 2 + artefakt.material.wirkende_mod;
@@ -495,9 +710,9 @@ namespace ArtefaktGenerator
                         txt_create.AppendText("Erschwernis wirkende Sprüche: " + (magic_erschwerniss - agribaal_zfp) + "(erleichterung von " + agribaal_zfp + " durch Agribaal)\r\n");
                     txt_create.AppendText("AsP für wirkende Sprüche: " + magic_asp + "\r\n");
                     if (artefakt.sf.ringkunde)
-                        txt_create.AppendText("AsP gesamt: " + (magic_asp + arcanovi_asp) + " + " + arcanovi_special_w + " W6 / 2 + " + artefakt.probe.superBig_asp_w + " W20 = " + (magic_asp + arcanovi_asp + arcanovi_special_asp) + "\r\n");
+                        txt_create.AppendText("AsP gesamt: " + (magic_asp + arcanovi_asp) + " + " + arcanovi_special_w + " W6 + " + arcanovi_special_w_asp + " / 2 + " + artefakt.probe.superBig_asp_w + " W20 = " + (magic_asp + arcanovi_asp + arcanovi_special_asp) + "\r\n");
                     else
-                        txt_create.AppendText("AsP gesamt: " + (magic_asp + arcanovi_asp) + " + " + arcanovi_special_w + " W6 + " + artefakt.probe.superBig_asp_w + " W20 = " + (magic_asp + arcanovi_asp + arcanovi_special_asp) + "\r\n");
+                        txt_create.AppendText("AsP gesamt: " + (magic_asp + arcanovi_asp) + " + " + arcanovi_special_w + " W6 + " + arcanovi_special_w_asp + " + " + artefakt.probe.superBig_asp_w + " W20 = " + (magic_asp + arcanovi_asp + arcanovi_special_asp) + "\r\n");
                     
                     txt_create.AppendText("pAsP gesamt: " + pasp + "\r\n");
 
@@ -636,6 +851,7 @@ namespace ArtefaktGenerator
             sf_semiII.Checked = artefakt.sf.semi2;
             sf_stapel.Checked = artefakt.sf.stapel;
             sf_hyper.Checked = artefakt.sf.hyper;
+            sf_aux.Checked = artefakt.sf.auxiliator;
             vielLadung.Checked = artefakt.sf.vielfacheLadung;
             rep_mag.Checked = (artefakt.sf.rep == SF.SFType.OTHER);
             rep_ach.Checked = (artefakt.sf.rep == SF.SFType.ACH);
@@ -655,6 +871,7 @@ namespace ArtefaktGenerator
                 case Artefakt.ArtefaktType.RECHARGE: type_charge.Checked = true; break;
                 case Artefakt.ArtefaktType.MATRIX: type_matrix.Checked = true; break;
                 case Artefakt.ArtefaktType.SEMI: type_semi.Checked = true; break;
+                case Artefakt.ArtefaktType.AUX: type_aux.Checked = true; break;
             };
             switch (artefakt.temp_typ)
             {
@@ -669,6 +886,14 @@ namespace ArtefaktGenerator
                 case Artefakt.MatrixType.SEHRSTABIL: matrix_verystable.Checked = true; break;
                 case Artefakt.MatrixType.UNEMPFINDLICH: matrix_unempfindlich.Checked = true; break;
             };
+            switch (artefakt.aux_typ)
+            {
+                case Artefakt.MatrixType.LABIL: aux_labil.Checked = true; break;
+                case Artefakt.MatrixType.STABIL: aux_stable.Checked = true; break;
+                case Artefakt.MatrixType.SEHRSTABIL: aux_verystable.Checked = true; break;
+                case Artefakt.MatrixType.UNEMPFINDLICH: aux_unempfindlich.Checked = true; break;
+            };
+            aux_merkmal.Checked = artefakt.aux_merkmal;
             switch (artefakt.semi_typ)
             {
                 case Artefakt.SemiType.TAG: semi_tag.Checked = true; break;
@@ -681,6 +906,18 @@ namespace ArtefaktGenerator
             special_scent.Checked = artefakt.spezial_gespuer;
             special_durable.Checked = artefakt.spezial_unzerbrechlich;
             special_apport.Checked = artefakt.spezial_apport;
+            //WDA
+            special_eatmaterial.Checked = artefakt.spezial_verzehrend;
+            special_eatmat_var.Value = artefakt.spezial_verzehrend_var;
+            special_reversalis.Checked = artefakt.spezial_reversalis;
+            special_schleier.Checked = artefakt.spezial_verschleierung;
+            special_variablerelease.Checked = artefakt.spezial_variablerausloeser;
+            special_variable_var.Value = artefakt.spezial_variablerausloeser_var;
+            special_selfrepair.Checked = artefakt.spezial_reperatur;
+            special_ferngespuer.Checked = artefakt.spezial_ferngespuer;
+            special_ferngespuer_komp.SelectedIndex = (int)(artefakt.spezial_ferngespuer_komp - 1);
+            special_ferngespuer_asp.Value = artefakt.spezial_ferngespuer_asp;
+            special_resistant.Checked = artefakt.spezial_resistent;
             //Material
             for (int i = 0; i < mat.sammlung.Count; i++)
                 if (artefakt.material.name == mat.sammlung[i].name)
@@ -1040,6 +1277,48 @@ namespace ArtefaktGenerator
             update(false);
         }
 
+        private void special_ferngespuer_CheckedChanged(object sender, EventArgs e)
+        {
+            artefakt.spezial_ferngespuer = special_ferngespuer.Checked;
+            update(false);
+        }
+
+        private void special_resistant_CheckedChanged(object sender, EventArgs e)
+        {
+            artefakt.spezial_resistent = special_resistant.Checked;
+            update(false);
+        }
+
+        private void special_selfrepair_CheckedChanged(object sender, EventArgs e)
+        {
+            artefakt.spezial_reperatur = special_selfrepair.Checked;
+            update(false);
+        }
+
+        private void special_reversalis_CheckedChanged(object sender, EventArgs e)
+        {
+            artefakt.spezial_reversalis = special_reversalis.Checked;
+            update(false);
+        }
+
+        private void special_variablerelease_CheckedChanged(object sender, EventArgs e)
+        {
+            artefakt.spezial_variablerausloeser = special_variablerelease.Checked;
+            update(false);
+        }
+
+        private void special_schleier_CheckedChanged(object sender, EventArgs e)
+        {
+            artefakt.spezial_verschleierung = special_schleier.Checked;
+            update(false);
+        }
+
+        private void special_eatmaterial_CheckedChanged(object sender, EventArgs e)
+        {
+            artefakt.spezial_verzehrend = special_eatmaterial.Checked;
+            update(false);
+        }
+
         private void alleBerechnenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dice.W20 = 0;
@@ -1380,5 +1659,79 @@ namespace ArtefaktGenerator
             update(false);
         }
 
+        private void sf_aux_CheckedChanged(object sender, EventArgs e)
+        {
+            artefakt.sf.auxiliator = sf_aux.Checked;
+            update(false);
+        }
+
+        private void type_aux_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.type_aux.Checked)
+            {
+                artefakt.typ = Artefakt.ArtefaktType.AUX;
+                loads_lbl.Enabled = false;
+                loads.Enabled = false;
+                update(false);
+            }
+        }
+
+        private void aux_labil_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.aux_labil.Checked)
+                artefakt.aux_typ = Artefakt.MatrixType.LABIL;
+            update(false);
+        }
+
+        private void aux_stable_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.aux_stable.Checked)
+                artefakt.aux_typ = Artefakt.MatrixType.STABIL;
+            update(false);
+        }
+
+        private void aux_verystable_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.aux_verystable.Checked)
+                artefakt.aux_typ = Artefakt.MatrixType.SEHRSTABIL;
+            update(false);
+        }
+
+        private void aux_unempfindlich_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.aux_unempfindlich.Checked)
+                artefakt.aux_typ = Artefakt.MatrixType.UNEMPFINDLICH;
+            update(false);
+        }
+
+        private void aux_merkmal_CheckedChanged(object sender, EventArgs e)
+        {
+            artefakt.aux_merkmal = aux_merkmal.Checked;
+            update(false);
+        }
+
+        private void special_ferngespuer_komp_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            artefakt.spezial_ferngespuer_komp = special_ferngespuer_komp.SelectedIndex +1;
+            update(false);
+        }
+
+        private void special_ferngespuer_asp_ValueChanged(object sender, EventArgs e)
+        {
+            artefakt.spezial_ferngespuer_asp = special_ferngespuer_asp.Value;
+            update(false);
+        }
+
+        private void special_variable_var_ValueChanged(object sender, EventArgs e)
+        {
+            artefakt.spezial_variablerausloeser_var = special_variable_var.Value;
+            update(false);
+        }
+
+        private void special_eatmat_var_ValueChanged(object sender, EventArgs e)
+        {
+            artefakt.spezial_verzehrend_var = special_eatmat_var.Value;
+            update(false);
+        }
     }
 }

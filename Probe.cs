@@ -25,7 +25,7 @@ namespace ArtefaktGenerator
 {
     public class Probe
     {
-        public decimal ausloeser = 1;
+        public decimal ausloeser = 0;
         public decimal material = 0;
         public decimal affine = 0;
         public decimal groesse = 0;

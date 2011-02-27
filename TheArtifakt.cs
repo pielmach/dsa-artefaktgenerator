@@ -25,6 +25,7 @@ namespace ArtefaktGenerator
 {
     public class DasArtefakt
     {
+        public int compatibility = 2;
         public Artefakt artefakt;
         public List<Zauber> zauber;
 

@@ -14,8 +14,9 @@
     <FileAlignment>512</FileAlignment>
     <StartupObject>
     </StartupObject>
-    <ManifestCertificateThumbprint>9CE89EABEDE9D2A2A59B4108D14D32871F9F1646</ManifestCertificateThumbprint>
-    <ManifestKeyFile>ArtefaktGenerator_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestCertificateThumbprint>2124DDC605A987EA7F8928BAE6E8A6BA0A5F574A</ManifestCertificateThumbprint>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
     <GenerateManifests>true</GenerateManifests>
     <SignManifests>true</SignManifests>
     <IsWebBootstrapper>false</IsWebBootstrapper>
