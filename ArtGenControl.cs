@@ -1,33 +1,14 @@
-﻿/*
-    This file is part of ArtefaktGenerator.
- 
-    Copyright (C) 2009,2010 Mario Rauschenberg (www.dsa-hamburg.de)
-
-    ArtefaktGenerator is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License version 2 as published by
-    the Free Software Foundation.
-
-    ArtefaktGenerator is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with Foobar.  If not, see http://www.gnu.org/licenses/ .
-*/
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-//using System.Linq;
+using System.Data;
 using System.Text;
 using System.Windows.Forms;
 
 namespace ArtefaktGenerator
 {
-    public partial class Form1 : Form
+    public partial class ArtGenControl : UserControl
     {
         public Artefakt artefakt = new Artefakt();
         public List<Zauber> magic = new List<Zauber>();
@@ -37,7 +18,7 @@ namespace ArtefaktGenerator
 
         Info info = new Info();
 
-        public Form1()
+        public ArtGenControl()
         {
             mat = new MaterialSammlung(dice);
             InitializeComponent();
@@ -1319,115 +1300,6 @@ namespace ArtefaktGenerator
             update(false);
         }
 
-        private void alleBerechnenToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            dice.W20 = 0;
-            dice.W6 = 0;
-            if (alleBerechnenToolStripMenuItem.Checked)
-            {
-                w6AnnehmenToolStripMenuItem.Enabled = false;
-                w20ToolStripMenuItem.Enabled = false;
-            }
-            else
-            {
-                w6AnnehmenToolStripMenuItem.Enabled = true;
-                w20ToolStripMenuItem.Enabled = true;
-            }
-            update(false);
-        }
-
-        private void w6_1_Click(object sender, EventArgs e)
-        {
-            dice.W6 = 1;
-            if (!w6_1.Checked) w6_1.Checked = true;
-            w6_35.Checked = false;
-            w6_4.Checked = false;
-            w6_6.Checked = false;
-            update(false);
-        }
-
-        private void w6_6_Click(object sender, EventArgs e)
-        {
-            dice.W6 = 6;
-            if (!w6_6.Checked) w6_6.Checked = true;
-            w6_35.Checked = false;
-            w6_4.Checked = false;
-            w6_1.Checked = false;
-            update(false);
-        }
-
-        private void w6_35_Click(object sender, EventArgs e)
-        {
-            dice.W6 = 3.5m;
-            if (!w6_35.Checked) w6_35.Checked = true;
-            w6_1.Checked = false;
-            w6_4.Checked = false;
-            w6_6.Checked = false;
-            update(false);
-        }
-
-        private void w6_4_Click(object sender, EventArgs e)
-        {
-            dice.W6 = 4;
-            if (!w6_4.Checked) w6_4.Checked = true;
-            w6_1.Checked = false;
-            w6_35.Checked = false;
-            w6_6.Checked = false;
-            update(false);
-        }
-
-        private void w20_1_Click(object sender, EventArgs e)
-        {
-            dice.W20 = 1;
-            if (!w20_1.Checked) w20_1.Checked = true;
-            w20_10.Checked = false;
-            w20_105.Checked = false;
-            w20_20.Checked = false;
-            update(false);
-        }
-
-        private void w20_10_Click(object sender, EventArgs e)
-        {
-            dice.W20 = 10;
-            if (!w20_10.Checked) w20_10.Checked = true;
-            w20_1.Checked = false;
-            w20_105.Checked = false;
-            w20_20.Checked = false;
-            update(false);
-        }
-
-        private void w20_105_Click(object sender, EventArgs e)
-        {
-            dice.W20 = 10.5m;
-            if (!w20_105.Checked) w20_105.Checked = true;
-            w20_1.Checked = false;
-            w20_10.Checked = false;
-            w20_20.Checked = false;
-            update(false);
-        }
-
-        private void w20_20_Click(object sender, EventArgs e)
-        {
-            dice.W20 = 20;
-            if (!w20_20.Checked) w20_20.Checked = true;
-            w20_10.Checked = false;
-            w20_105.Checked = false;
-            w20_1.Checked = false;
-            update(false);
-        }
-
-        private void nebeneffekteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            artefakt.nebeneffekte = nebeneffekteToolStripMenuItem.Checked;
-            update(false);
-        }
-
-        private void occupationToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            artefakt.occupation = occupationToolStripMenuItem.Checked;
-            update(false);
-        }
-
         private void artefakt_groesse_ValueChanged(object sender, EventArgs e)
         {
             artefakt.probe.groesse = artefakt_groesse.Value;
@@ -1447,72 +1319,9 @@ namespace ArtefaktGenerator
             update(false);
         }
 
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            info.Show();
-        }
-
         private void hilfeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Hier gibts nix zu sehen!");
-        }
-
-        private void beendenToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void artefaktLadenToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.AddExtension = true;
-            openFileDialog.CheckFileExists = true;
-            openFileDialog.CheckPathExists = true;
-            openFileDialog.DefaultExt = ".artefakt";
-            openFileDialog.Filter = "Artefakte (*.artefakt)|*.artefakt";
-            openFileDialog.InitialDirectory = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
-            openFileDialog.Multiselect = false;
-            openFileDialog.ReadOnlyChecked = false;
-            openFileDialog.ShowReadOnly = false;
-            openFileDialog.Title = "Artefakt Laden";
-
-            if (MessageBox.Show("Alle nicht gespeicherten Änderungen am bisherigen Artefakt gehen verloren.\r\nWillst du wirklich ein anderes Artefakt laden?", "Hinweis", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
-            {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    System.IO.StreamReader reader = new System.IO.StreamReader(openFileDialog.OpenFile());
-
-                    string xml = reader.ReadToEnd();
-                    //string xml = System.IO.File.ReadAllText(@".\test.artefakt");
-                    DasArtefakt art = (DasArtefakt)DeserializeObject(xml);
-                    artefakt = art.artefakt;
-                    magic = art.zauber;
-                    reload();
-                    update(true);
-                }
-            }
-        }
-
-        private void artefaktSpeichernToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-
-            saveFileDialog1.Filter = "Artefakte (*.artefakt)|*.artefakt";
-            saveFileDialog1.FilterIndex = 1;
-            saveFileDialog1.RestoreDirectory = true;
-            saveFileDialog1.AddExtension = true;
-            saveFileDialog1.InitialDirectory = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
-            saveFileDialog1.OverwritePrompt = true;
-            saveFileDialog1.Title = "Artefakt speichern";
-            saveFileDialog1.CheckPathExists = true;
-
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                DasArtefakt art = new DasArtefakt(artefakt, magic);
-                string xml = SerializeObject(art);
-                System.IO.File.WriteAllText(@saveFileDialog1.FileName, xml);
-            }
         }
 
         private void material_SelectedIndexChanged(object sender, EventArgs e)
@@ -1556,12 +1365,6 @@ namespace ArtefaktGenerator
         private void loads_ValueChanged(object sender, EventArgs e)
         {
             artefakt.loads = loads.Value;
-            update(false);
-        }
-
-        private void debugModusToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            artefakt.debugMode = debugModusToolStripMenuItem.Checked;
             update(false);
         }
 
@@ -1626,36 +1429,9 @@ namespace ArtefaktGenerator
             update(false);
         }
 
-        private void neuesArtefaktToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Alle nicht gespeicherten Änderungen am bisherigen Artefakt gehen verloren.\r\nWillst du wirklich ein neues Artefakt beginnen?", "Hinweis", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
-            {
-                artefakt = new Artefakt();
-                magic = new List<Zauber>();
-                reload();
-                update(true);
-            }
-        }
-
         private void cb_kristalle_CheckedChanged(object sender, EventArgs e)
         {
             artefakt.kristalle = cb_kristalle.Checked;
-            update(false);
-        }
-
-        private void wegeDerAlchimieToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            artefakt.regelbasis = Artefakt.Regelbasis.WDA;
-            wegeDerAlchimieToolStripMenuItem.Checked = true;
-            staebeRingeDschinnenlampenToolStripMenuItem.Checked = false;
-            update(false);
-        }
-
-        private void staebeRingeDschinnenlampenToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            artefakt.regelbasis = Artefakt.Regelbasis.SRD;
-            wegeDerAlchimieToolStripMenuItem.Checked = false;
-            staebeRingeDschinnenlampenToolStripMenuItem.Checked = true;
             update(false);
         }
 
@@ -1712,7 +1488,7 @@ namespace ArtefaktGenerator
 
         private void special_ferngespuer_komp_SelectedIndexChanged(object sender, EventArgs e)
         {
-            artefakt.spezial_ferngespuer_komp = special_ferngespuer_komp.SelectedIndex +1;
+            artefakt.spezial_ferngespuer_komp = special_ferngespuer_komp.SelectedIndex + 1;
             update(false);
         }
 
