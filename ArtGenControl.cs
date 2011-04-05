@@ -6,6 +6,10 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 
+
+using NAppUpdate.Framework;
+using NAppUpdate.Framework.Sources;
+
 namespace ArtefaktGenerator
 {
     public partial class ArtGenControl : UserControl
@@ -30,7 +34,14 @@ namespace ArtefaktGenerator
 
             zauber_rep.SelectedIndex = 0;
 
+            UpdateManager updManager = UpdateManager.Instance;
+            updManager.UpdateFeedReader = new NAppUpdate.Framework.FeedReaders.NauXmlFeedReader();
+            updManager.UpdateSource = new NAppUpdate.Framework.Sources.SimpleWebSource("http://192.168.0.2/update/update.xml");
+            updManager.TempFolder = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ArtefaktGenerator\\Updates");
+
             update(false);
+
+            CheckForUpdates();
         }
 
         private bool WDA()
@@ -88,6 +99,80 @@ namespace ArtefaktGenerator
 
             return xs.Deserialize(memoryStream);
         }
+
+        private void OnPrepareUpdatesCompleted(bool succeeded)
+        {
+            if (!succeeded)
+            {
+                MessageBox.Show("Updates preperation failed. Check the feed and try again.");
+            }
+            else
+            {
+                // Get a local pointer to the UpdateManager instance
+                UpdateManager updManager = UpdateManager.Instance;
+
+                // This is a synchronous method by design, make sure to save all user work before calling
+                // it as it might restart your application
+                if (!updManager.ApplyUpdates())
+                    MessageBox.Show("Error while trying to install software updates");
+            }
+        }
+
+        private void OnCheckUpdatesComplete(int e)
+        {
+            if (e >= 1)
+            {
+                updatesToolStripMenuItem.Text = "Update verfügbar - hier klicken zum installieren";
+                updatesToolStripMenuItem.ForeColor = Color.Green;
+                updatesToolStripMenuItem.Enabled = true;
+            } 
+            else
+            {
+                updatesToolStripMenuItem.Text = "kein Update verfügbar";
+                updatesToolStripMenuItem.Enabled = false;
+            }
+        }
+
+        private void CheckForUpdates()
+        {
+            updatesToolStripMenuItem.Text = "Suche nach updates...";
+
+            // Get a local pointer to the UpdateManager instance
+            UpdateManager updManager = UpdateManager.Instance;
+
+            // Only check for updates if we haven't done so already
+/*            if (updManager.State != UpdateManager.UpdateProcessState.NotChecked)
+            {
+                MessageBox.Show("Update process has already initialized; current state: " + updManager.State.ToString());
+                return;
+            }
+            */
+            try
+            {
+                // Check for updates - returns true if relevant updates are found (after processing all the tasks and
+                // conditions)
+                // Throws exceptions in case of bad arguments or unexpected results
+                updManager.CheckForUpdateAsync(OnCheckUpdatesComplete);
+
+            }
+            catch (Exception ex)
+            {
+                if (ex is NAppUpdateException)
+                {
+                    // This indicates a feed or network error; ex will contain all the info necessary
+                    // to deal with that
+                    updatesToolStripMenuItem.Text = "kein Update verfügbar";
+                    updatesToolStripMenuItem.Enabled = false;
+                }
+                else
+                {
+                    updatesToolStripMenuItem.Text = "kein Update verfügbar";
+                    updatesToolStripMenuItem.Enabled = false; 
+                    //MessageBox.Show(ex.ToString());
+                }
+            }
+        }
+
 
 
         private void update(bool force)
@@ -1508,6 +1593,37 @@ namespace ArtefaktGenerator
         {
             artefakt.spezial_verzehrend_var = special_eatmat_var.Value;
             update(false);
+        }
+
+        private void ArtGenControl_SizeChanged(object sender, EventArgs e)
+        {
+            /*
+            //968; 516
+            if (this.Size.Height < 515 || this.Size.Width < 967)
+                this.Font = new System.Drawing.Font( this.Font.Name, 7.0f,
+                this.Font.Style, this.Font.Unit,
+                this.Font.GdiCharSet, this.Font.GdiVerticalFont );
+            else
+                this.Font = new System.Drawing.Font(this.Font.Name, 8.25f,
+                this.Font.Style, this.Font.Unit,
+                this.Font.GdiCharSet, this.Font.GdiVerticalFont);
+             */
+        }
+
+        private void updatesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UpdateManager updManager = UpdateManager.Instance;
+            DialogResult dr = MessageBox.Show(
+        "Möchtest du jetzt das Update installieren? Alle nicht gespeicherten Änderungen gehen dabei verloren!",
+        "Update installieren",
+         MessageBoxButtons.YesNo);
+
+            if (dr == DialogResult.Yes)
+            {
+                updManager.PrepareUpdatesAsync(OnPrepareUpdatesCompleted);
+                this.Enabled = false;
+
+            }
         }
     }
 }

@@ -28,17 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.notify = new System.Windows.Forms.NotifyIcon(this.components);
             this.artGenControl1 = new ArtefaktGenerator.ArtGenControl();
             this.SuspendLayout();
+            // 
+            // notify
+            // 
+            this.notify.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.notify.Visible = true;
             // 
             // artGenControl1
             // 
             this.artGenControl1.AutoScroll = true;
             this.artGenControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.artGenControl1.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.artGenControl1.Location = new System.Drawing.Point(0, -1);
+            this.artGenControl1.BackColor = System.Drawing.SystemColors.Control;
+            this.artGenControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.artGenControl1.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.artGenControl1.Location = new System.Drawing.Point(0, 0);
+            this.artGenControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.artGenControl1.Name = "artGenControl1";
-            this.artGenControl1.Size = new System.Drawing.Size(996, 557);
+            this.artGenControl1.Size = new System.Drawing.Size(996, 559);
             this.artGenControl1.TabIndex = 0;
             // 
             // ArtGen
@@ -47,7 +57,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(996, 557);
+            this.ClientSize = new System.Drawing.Size(996, 559);
             this.Controls.Add(this.artGenControl1);
             this.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "ArtGen";
@@ -59,6 +69,7 @@
         #endregion
 
         private ArtGenControl artGenControl1;
+        private System.Windows.Forms.NotifyIcon notify;
 
 
     }

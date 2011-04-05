@@ -43,14 +43,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.special_eatmat_var = new System.Windows.Forms.NumericUpDown();
             this.lbl_special_asp = new System.Windows.Forms.Label();
             this.special_ferngespuer_asp = new System.Windows.Forms.NumericUpDown();
             this.special_ferngespuer_komp = new System.Windows.Forms.ComboBox();
             this.special_ferngespuer = new System.Windows.Forms.CheckBox();
             this.lbl_special_komp = new System.Windows.Forms.Label();
             this.special_variable_var = new System.Windows.Forms.NumericUpDown();
-            this.special_eatmaterial = new System.Windows.Forms.CheckBox();
             this.special_schleier = new System.Windows.Forms.CheckBox();
             this.special_variablerelease = new System.Windows.Forms.CheckBox();
             this.special_reversalis = new System.Windows.Forms.CheckBox();
@@ -60,6 +58,8 @@
             this.special_scent = new System.Windows.Forms.CheckBox();
             this.special_durable = new System.Windows.Forms.CheckBox();
             this.special_signet = new System.Windows.Forms.CheckBox();
+            this.special_eatmaterial = new System.Windows.Forms.CheckBox();
+            this.special_eatmat_var = new System.Windows.Forms.NumericUpDown();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.agribaal = new System.Windows.Forms.NumericUpDown();
             this.label32 = new System.Windows.Forms.Label();
@@ -129,16 +129,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.komp_combo = new System.Windows.Forms.ComboBox();
-            this.label18 = new System.Windows.Forms.Label();
             this.zauber_rep = new System.Windows.Forms.ComboBox();
             this.zauber_del = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.lbl_staple = new System.Windows.Forms.Label();
             this.loads_lbl = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.zauber_add = new System.Windows.Forms.Button();
             this.zauber_list = new System.Windows.Forms.ListView();
             this.name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -150,6 +145,11 @@
             this.stapel = new System.Windows.Forms.NumericUpDown();
             this.loads = new System.Windows.Forms.NumericUpDown();
             this.zauber = new System.Windows.Forms.MaskedTextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lbl_staple = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.txt_create = new System.Windows.Forms.TextBox();
@@ -205,6 +205,7 @@
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hilfeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox8.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.starkonst)).BeginInit();
@@ -213,9 +214,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.probe_affine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.probe_ausloes)).BeginInit();
             this.groupBox7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.special_eatmat_var)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.special_ferngespuer_asp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.special_variable_var)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.special_eatmat_var)).BeginInit();
             this.groupBox11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.agribaal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.special_ort_neben)).BeginInit();
@@ -281,7 +282,7 @@
             this.cb_kristalle.AutoSize = true;
             this.cb_kristalle.Location = new System.Drawing.Point(7, 38);
             this.cb_kristalle.Name = "cb_kristalle";
-            this.cb_kristalle.Size = new System.Drawing.Size(114, 18);
+            this.cb_kristalle.Size = new System.Drawing.Size(108, 17);
             this.cb_kristalle.TabIndex = 1;
             this.cb_kristalle.Text = "Kristalle (-1 pAsP)";
             this.cb_kristalle.UseVisualStyleBackColor = true;
@@ -448,30 +449,6 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Spezielle Eigenschaften";
             // 
-            // special_eatmat_var
-            // 
-            this.special_eatmat_var.Location = new System.Drawing.Point(129, 163);
-            this.special_eatmat_var.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.special_eatmat_var.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.special_eatmat_var.Name = "special_eatmat_var";
-            this.special_eatmat_var.Size = new System.Drawing.Size(36, 20);
-            this.special_eatmat_var.TabIndex = 29;
-            this.special_eatmat_var.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.special_eatmat_var.Visible = false;
-            this.special_eatmat_var.ValueChanged += new System.EventHandler(this.special_eatmat_var_ValueChanged);
-            // 
             // lbl_special_asp
             // 
             this.lbl_special_asp.AutoSize = true;
@@ -526,7 +503,7 @@
             this.special_ferngespuer.AutoSize = true;
             this.special_ferngespuer.Location = new System.Drawing.Point(6, 105);
             this.special_ferngespuer.Name = "special_ferngespuer";
-            this.special_ferngespuer.Size = new System.Drawing.Size(76, 18);
+            this.special_ferngespuer.Size = new System.Drawing.Size(79, 17);
             this.special_ferngespuer.TabIndex = 4;
             this.special_ferngespuer.Text = "Ferngespür";
             this.special_ferngespuer.UseVisualStyleBackColor = true;
@@ -556,23 +533,12 @@
             this.special_variable_var.Visible = false;
             this.special_variable_var.ValueChanged += new System.EventHandler(this.special_variable_var_ValueChanged);
             // 
-            // special_eatmaterial
-            // 
-            this.special_eatmaterial.AutoSize = true;
-            this.special_eatmaterial.Location = new System.Drawing.Point(6, 166);
-            this.special_eatmaterial.Name = "special_eatmaterial";
-            this.special_eatmaterial.Size = new System.Drawing.Size(120, 18);
-            this.special_eatmaterial.TabIndex = 10;
-            this.special_eatmaterial.Text = "Verzehrender Zauber";
-            this.special_eatmaterial.UseVisualStyleBackColor = true;
-            this.special_eatmaterial.CheckedChanged += new System.EventHandler(this.special_eatmaterial_CheckedChanged);
-            // 
             // special_schleier
             // 
             this.special_schleier.AutoSize = true;
             this.special_schleier.Location = new System.Drawing.Point(6, 151);
             this.special_schleier.Name = "special_schleier";
-            this.special_schleier.Size = new System.Drawing.Size(92, 18);
+            this.special_schleier.Size = new System.Drawing.Size(96, 17);
             this.special_schleier.TabIndex = 9;
             this.special_schleier.Text = "Verschleierung";
             this.special_schleier.UseVisualStyleBackColor = true;
@@ -583,7 +549,7 @@
             this.special_variablerelease.AutoSize = true;
             this.special_variablerelease.Location = new System.Drawing.Point(6, 136);
             this.special_variablerelease.Name = "special_variablerelease";
-            this.special_variablerelease.Size = new System.Drawing.Size(107, 18);
+            this.special_variablerelease.Size = new System.Drawing.Size(110, 17);
             this.special_variablerelease.TabIndex = 8;
             this.special_variablerelease.Text = "Variabler Auslöser";
             this.special_variablerelease.UseVisualStyleBackColor = true;
@@ -594,7 +560,7 @@
             this.special_reversalis.AutoSize = true;
             this.special_reversalis.Location = new System.Drawing.Point(6, 121);
             this.special_reversalis.Name = "special_reversalis";
-            this.special_reversalis.Size = new System.Drawing.Size(103, 18);
+            this.special_reversalis.Size = new System.Drawing.Size(101, 17);
             this.special_reversalis.TabIndex = 7;
             this.special_reversalis.Text = "Umkehrtalisman";
             this.special_reversalis.UseVisualStyleBackColor = true;
@@ -605,7 +571,7 @@
             this.special_selfrepair.AutoSize = true;
             this.special_selfrepair.Location = new System.Drawing.Point(6, 90);
             this.special_selfrepair.Name = "special_selfrepair";
-            this.special_selfrepair.Size = new System.Drawing.Size(94, 18);
+            this.special_selfrepair.Size = new System.Drawing.Size(97, 17);
             this.special_selfrepair.TabIndex = 6;
             this.special_selfrepair.Text = "Selbstreparatur";
             this.special_selfrepair.UseVisualStyleBackColor = true;
@@ -616,7 +582,7 @@
             this.special_resistant.AutoSize = true;
             this.special_resistant.Location = new System.Drawing.Point(6, 75);
             this.special_resistant.Name = "special_resistant";
-            this.special_resistant.Size = new System.Drawing.Size(128, 18);
+            this.special_resistant.Size = new System.Drawing.Size(136, 17);
             this.special_resistant.TabIndex = 5;
             this.special_resistant.Text = "Res. profaner Schaden";
             this.special_resistant.UseVisualStyleBackColor = true;
@@ -627,7 +593,7 @@
             this.special_apport.AutoSize = true;
             this.special_apport.Location = new System.Drawing.Point(6, 60);
             this.special_apport.Name = "special_apport";
-            this.special_apport.Size = new System.Drawing.Size(109, 18);
+            this.special_apport.Size = new System.Drawing.Size(109, 17);
             this.special_apport.TabIndex = 3;
             this.special_apport.Text = "Magischer Apport";
             this.special_apport.UseVisualStyleBackColor = true;
@@ -638,7 +604,7 @@
             this.special_scent.AutoSize = true;
             this.special_scent.Location = new System.Drawing.Point(6, 45);
             this.special_scent.Name = "special_scent";
-            this.special_scent.Size = new System.Drawing.Size(122, 18);
+            this.special_scent.Size = new System.Drawing.Size(131, 17);
             this.special_scent.TabIndex = 2;
             this.special_scent.Text = "Gespür des Schöpfers";
             this.special_scent.UseVisualStyleBackColor = true;
@@ -649,7 +615,7 @@
             this.special_durable.AutoSize = true;
             this.special_durable.Location = new System.Drawing.Point(6, 30);
             this.special_durable.Name = "special_durable";
-            this.special_durable.Size = new System.Drawing.Size(114, 18);
+            this.special_durable.Size = new System.Drawing.Size(114, 17);
             this.special_durable.TabIndex = 1;
             this.special_durable.Text = "Unzerbrechlichkeit";
             this.special_durable.UseVisualStyleBackColor = true;
@@ -660,11 +626,46 @@
             this.special_signet.AutoSize = true;
             this.special_signet.Location = new System.Drawing.Point(6, 15);
             this.special_signet.Name = "special_signet";
-            this.special_signet.Size = new System.Drawing.Size(119, 18);
+            this.special_signet.Size = new System.Drawing.Size(120, 17);
             this.special_signet.TabIndex = 0;
             this.special_signet.Text = "Siegel und Zertifikat";
             this.special_signet.UseVisualStyleBackColor = true;
             this.special_signet.CheckedChanged += new System.EventHandler(this.special_signet_CheckedChanged);
+            // 
+            // special_eatmaterial
+            // 
+            this.special_eatmaterial.AutoSize = true;
+            this.special_eatmaterial.Location = new System.Drawing.Point(6, 166);
+            this.special_eatmaterial.Name = "special_eatmaterial";
+            this.special_eatmaterial.Size = new System.Drawing.Size(126, 17);
+            this.special_eatmaterial.TabIndex = 10;
+            this.special_eatmaterial.Text = "Verzehrender Zauber";
+            this.special_eatmaterial.UseVisualStyleBackColor = true;
+            this.special_eatmaterial.CheckedChanged += new System.EventHandler(this.special_eatmaterial_CheckedChanged);
+            // 
+            // special_eatmat_var
+            // 
+            this.special_eatmat_var.Location = new System.Drawing.Point(129, 163);
+            this.special_eatmat_var.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.special_eatmat_var.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.special_eatmat_var.Name = "special_eatmat_var";
+            this.special_eatmat_var.Size = new System.Drawing.Size(36, 20);
+            this.special_eatmat_var.TabIndex = 29;
+            this.special_eatmat_var.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.special_eatmat_var.Visible = false;
+            this.special_eatmat_var.ValueChanged += new System.EventHandler(this.special_eatmat_var_ValueChanged);
             // 
             // groupBox11
             // 
@@ -798,7 +799,7 @@
             this.limbus.AutoSize = true;
             this.limbus.Location = new System.Drawing.Point(6, 15);
             this.limbus.Name = "limbus";
-            this.limbus.Size = new System.Drawing.Size(132, 18);
+            this.limbus.Size = new System.Drawing.Size(132, 17);
             this.limbus.TabIndex = 1;
             this.limbus.Text = "Erschaffung im Limbus";
             this.limbus.UseVisualStyleBackColor = true;
@@ -809,7 +810,7 @@
             this.namenlos.AutoSize = true;
             this.namenlos.Location = new System.Drawing.Point(6, 33);
             this.namenlos.Name = "namenlos";
-            this.namenlos.Size = new System.Drawing.Size(102, 18);
+            this.namenlos.Size = new System.Drawing.Size(107, 17);
             this.namenlos.TabIndex = 0;
             this.namenlos.Text = "Namenlose Tage";
             this.namenlos.UseVisualStyleBackColor = true;
@@ -817,7 +818,7 @@
             // 
             // btn_update
             // 
-            this.btn_update.Location = new System.Drawing.Point(891, 36);
+            this.btn_update.Location = new System.Drawing.Point(889, 43);
             this.btn_update.Name = "btn_update";
             this.btn_update.Size = new System.Drawing.Size(100, 25);
             this.btn_update.TabIndex = 19;
@@ -849,7 +850,7 @@
             this.sf_aux.Enabled = false;
             this.sf_aux.Location = new System.Drawing.Point(844, 19);
             this.sf_aux.Name = "sf_aux";
-            this.sf_aux.Size = new System.Drawing.Size(73, 18);
+            this.sf_aux.Size = new System.Drawing.Size(68, 17);
             this.sf_aux.TabIndex = 9;
             this.sf_aux.Text = "Auxiliator";
             this.sf_aux.UseVisualStyleBackColor = true;
@@ -860,7 +861,7 @@
             this.sf_ringkunde.AutoSize = true;
             this.sf_ringkunde.Location = new System.Drawing.Point(728, 19);
             this.sf_ringkunde.Name = "sf_ringkunde";
-            this.sf_ringkunde.Size = new System.Drawing.Size(110, 18);
+            this.sf_ringkunde.Size = new System.Drawing.Size(118, 17);
             this.sf_ringkunde.TabIndex = 4;
             this.sf_ringkunde.Text = "Ringkunde gelesen";
             this.sf_ringkunde.UseVisualStyleBackColor = true;
@@ -871,7 +872,7 @@
             this.vielLadung.AutoSize = true;
             this.vielLadung.Location = new System.Drawing.Point(106, 19);
             this.vielLadung.Name = "vielLadung";
-            this.vielLadung.Size = new System.Drawing.Size(104, 18);
+            this.vielLadung.Size = new System.Drawing.Size(109, 17);
             this.vielLadung.TabIndex = 8;
             this.vielLadung.Text = "Vielfache Ladung";
             this.vielLadung.UseVisualStyleBackColor = true;
@@ -883,7 +884,7 @@
             this.sf_semiII.Enabled = false;
             this.sf_semiII.Location = new System.Drawing.Point(612, 19);
             this.sf_semiII.Name = "sf_semiII";
-            this.sf_semiII.Size = new System.Drawing.Size(110, 18);
+            this.sf_semiII.Size = new System.Drawing.Size(110, 17);
             this.sf_semiII.TabIndex = 6;
             this.sf_semiII.Text = "Semipermanenz II";
             this.sf_semiII.UseVisualStyleBackColor = true;
@@ -894,7 +895,7 @@
             this.sf_semiI.AutoSize = true;
             this.sf_semiI.Location = new System.Drawing.Point(500, 19);
             this.sf_semiI.Name = "sf_semiI";
-            this.sf_semiI.Size = new System.Drawing.Size(106, 18);
+            this.sf_semiI.Size = new System.Drawing.Size(107, 17);
             this.sf_semiI.TabIndex = 5;
             this.sf_semiI.Text = "Semipermanenz I";
             this.sf_semiI.UseVisualStyleBackColor = true;
@@ -905,7 +906,7 @@
             this.sf_matrix.AutoSize = true;
             this.sf_matrix.Location = new System.Drawing.Point(412, 19);
             this.sf_matrix.Name = "sf_matrix";
-            this.sf_matrix.Size = new System.Drawing.Size(82, 18);
+            this.sf_matrix.Size = new System.Drawing.Size(81, 17);
             this.sf_matrix.TabIndex = 4;
             this.sf_matrix.Text = "Matrixgeber";
             this.sf_matrix.UseVisualStyleBackColor = true;
@@ -917,7 +918,7 @@
             this.sf_hyper.Enabled = false;
             this.sf_hyper.Location = new System.Drawing.Point(304, 19);
             this.sf_hyper.Name = "sf_hyper";
-            this.sf_hyper.Size = new System.Drawing.Size(102, 18);
+            this.sf_hyper.Size = new System.Drawing.Size(103, 17);
             this.sf_hyper.TabIndex = 3;
             this.sf_hyper.Text = "Hypervehemenz";
             this.sf_hyper.UseVisualStyleBackColor = true;
@@ -928,7 +929,7 @@
             this.sf_stapel.AutoSize = true;
             this.sf_stapel.Location = new System.Drawing.Point(216, 19);
             this.sf_stapel.Name = "sf_stapel";
-            this.sf_stapel.Size = new System.Drawing.Size(82, 18);
+            this.sf_stapel.Size = new System.Drawing.Size(83, 17);
             this.sf_stapel.TabIndex = 2;
             this.sf_stapel.Text = "Stapeleffekt";
             this.sf_stapel.UseVisualStyleBackColor = true;
@@ -939,7 +940,7 @@
             this.sf_kraft.AutoSize = true;
             this.sf_kraft.Location = new System.Drawing.Point(6, 19);
             this.sf_kraft.Name = "sf_kraft";
-            this.sf_kraft.Size = new System.Drawing.Size(94, 18);
+            this.sf_kraft.Size = new System.Drawing.Size(88, 17);
             this.sf_kraft.TabIndex = 0;
             this.sf_kraft.Text = "Kraftkontrolle";
             this.sf_kraft.UseVisualStyleBackColor = true;
@@ -961,7 +962,7 @@
             this.rep_ach.AutoSize = true;
             this.rep_ach.Location = new System.Drawing.Point(92, 16);
             this.rep_ach.Name = "rep_ach";
-            this.rep_ach.Size = new System.Drawing.Size(44, 18);
+            this.rep_ach.Size = new System.Drawing.Size(44, 17);
             this.rep_ach.TabIndex = 2;
             this.rep_ach.Text = "Ach";
             this.rep_ach.UseVisualStyleBackColor = true;
@@ -973,7 +974,7 @@
             this.rep_mag.Checked = true;
             this.rep_mag.Location = new System.Drawing.Point(6, 16);
             this.rep_mag.Name = "rep_mag";
-            this.rep_mag.Size = new System.Drawing.Size(76, 18);
+            this.rep_mag.Size = new System.Drawing.Size(79, 17);
             this.rep_mag.TabIndex = 1;
             this.rep_mag.TabStop = true;
             this.rep_mag.Text = "Mag/Hex...";
@@ -1019,7 +1020,7 @@
             this.aux_unempfindlich.AutoSize = true;
             this.aux_unempfindlich.Location = new System.Drawing.Point(193, 12);
             this.aux_unempfindlich.Name = "aux_unempfindlich";
-            this.aux_unempfindlich.Size = new System.Drawing.Size(91, 18);
+            this.aux_unempfindlich.Size = new System.Drawing.Size(90, 17);
             this.aux_unempfindlich.TabIndex = 3;
             this.aux_unempfindlich.Text = "unempfindlich";
             this.aux_unempfindlich.UseVisualStyleBackColor = true;
@@ -1030,7 +1031,7 @@
             this.aux_merkmal.AutoSize = true;
             this.aux_merkmal.Location = new System.Drawing.Point(290, 13);
             this.aux_merkmal.Name = "aux_merkmal";
-            this.aux_merkmal.Size = new System.Drawing.Size(68, 18);
+            this.aux_merkmal.Size = new System.Drawing.Size(66, 17);
             this.aux_merkmal.TabIndex = 5;
             this.aux_merkmal.Text = "Merkmal";
             this.aux_merkmal.UseVisualStyleBackColor = true;
@@ -1042,7 +1043,7 @@
             this.aux_verystable.Checked = true;
             this.aux_verystable.Location = new System.Drawing.Point(114, 12);
             this.aux_verystable.Name = "aux_verystable";
-            this.aux_verystable.Size = new System.Drawing.Size(71, 18);
+            this.aux_verystable.Size = new System.Drawing.Size(72, 17);
             this.aux_verystable.TabIndex = 2;
             this.aux_verystable.TabStop = true;
             this.aux_verystable.Text = "sehr stabil";
@@ -1054,7 +1055,7 @@
             this.aux_labil.AutoSize = true;
             this.aux_labil.Location = new System.Drawing.Point(8, 12);
             this.aux_labil.Name = "aux_labil";
-            this.aux_labil.Size = new System.Drawing.Size(44, 18);
+            this.aux_labil.Size = new System.Drawing.Size(43, 17);
             this.aux_labil.TabIndex = 0;
             this.aux_labil.Text = "labil";
             this.aux_labil.UseVisualStyleBackColor = true;
@@ -1065,7 +1066,7 @@
             this.aux_stable.AutoSize = true;
             this.aux_stable.Location = new System.Drawing.Point(58, 12);
             this.aux_stable.Name = "aux_stable";
-            this.aux_stable.Size = new System.Drawing.Size(49, 18);
+            this.aux_stable.Size = new System.Drawing.Size(49, 17);
             this.aux_stable.TabIndex = 1;
             this.aux_stable.Text = "stabil";
             this.aux_stable.UseVisualStyleBackColor = true;
@@ -1089,7 +1090,7 @@
             this.matrix_unempfindlich.AutoSize = true;
             this.matrix_unempfindlich.Location = new System.Drawing.Point(193, 12);
             this.matrix_unempfindlich.Name = "matrix_unempfindlich";
-            this.matrix_unempfindlich.Size = new System.Drawing.Size(91, 18);
+            this.matrix_unempfindlich.Size = new System.Drawing.Size(90, 17);
             this.matrix_unempfindlich.TabIndex = 3;
             this.matrix_unempfindlich.Text = "unempfindlich";
             this.matrix_unempfindlich.UseVisualStyleBackColor = true;
@@ -1101,7 +1102,7 @@
             this.matrix_verystable.Checked = true;
             this.matrix_verystable.Location = new System.Drawing.Point(114, 12);
             this.matrix_verystable.Name = "matrix_verystable";
-            this.matrix_verystable.Size = new System.Drawing.Size(71, 18);
+            this.matrix_verystable.Size = new System.Drawing.Size(72, 17);
             this.matrix_verystable.TabIndex = 2;
             this.matrix_verystable.TabStop = true;
             this.matrix_verystable.Text = "sehr stabil";
@@ -1113,7 +1114,7 @@
             this.matrix_labil.AutoSize = true;
             this.matrix_labil.Location = new System.Drawing.Point(8, 12);
             this.matrix_labil.Name = "matrix_labil";
-            this.matrix_labil.Size = new System.Drawing.Size(44, 18);
+            this.matrix_labil.Size = new System.Drawing.Size(43, 17);
             this.matrix_labil.TabIndex = 0;
             this.matrix_labil.Text = "labil";
             this.matrix_labil.UseVisualStyleBackColor = true;
@@ -1124,7 +1125,7 @@
             this.matrix_stable.AutoSize = true;
             this.matrix_stable.Location = new System.Drawing.Point(58, 12);
             this.matrix_stable.Name = "matrix_stable";
-            this.matrix_stable.Size = new System.Drawing.Size(49, 18);
+            this.matrix_stable.Size = new System.Drawing.Size(49, 17);
             this.matrix_stable.TabIndex = 1;
             this.matrix_stable.Text = "stabil";
             this.matrix_stable.UseVisualStyleBackColor = true;
@@ -1136,7 +1137,7 @@
             this.type_aux.Enabled = false;
             this.type_aux.Location = new System.Drawing.Point(417, 20);
             this.type_aux.Name = "type_aux";
-            this.type_aux.Size = new System.Drawing.Size(69, 18);
+            this.type_aux.Size = new System.Drawing.Size(66, 17);
             this.type_aux.TabIndex = 24;
             this.type_aux.Text = "auxiliator";
             this.type_aux.UseVisualStyleBackColor = true;
@@ -1161,7 +1162,7 @@
             this.semi_jahr.AutoSize = true;
             this.semi_jahr.Location = new System.Drawing.Point(181, 13);
             this.semi_jahr.Name = "semi_jahr";
-            this.semi_jahr.Size = new System.Drawing.Size(44, 18);
+            this.semi_jahr.Size = new System.Drawing.Size(45, 17);
             this.semi_jahr.TabIndex = 3;
             this.semi_jahr.Text = "Jahr";
             this.semi_jahr.UseVisualStyleBackColor = true;
@@ -1173,7 +1174,7 @@
             this.semi_monat.Checked = true;
             this.semi_monat.Location = new System.Drawing.Point(120, 13);
             this.semi_monat.Name = "semi_monat";
-            this.semi_monat.Size = new System.Drawing.Size(56, 18);
+            this.semi_monat.Size = new System.Drawing.Size(55, 17);
             this.semi_monat.TabIndex = 2;
             this.semi_monat.TabStop = true;
             this.semi_monat.Text = "Monat";
@@ -1185,7 +1186,7 @@
             this.semi_woche.AutoSize = true;
             this.semi_woche.Location = new System.Drawing.Point(54, 13);
             this.semi_woche.Name = "semi_woche";
-            this.semi_woche.Size = new System.Drawing.Size(57, 18);
+            this.semi_woche.Size = new System.Drawing.Size(60, 17);
             this.semi_woche.TabIndex = 1;
             this.semi_woche.Text = "Woche";
             this.semi_woche.UseVisualStyleBackColor = true;
@@ -1196,7 +1197,7 @@
             this.semi_tag.AutoSize = true;
             this.semi_tag.Location = new System.Drawing.Point(6, 13);
             this.semi_tag.Name = "semi_tag";
-            this.semi_tag.Size = new System.Drawing.Size(42, 18);
+            this.semi_tag.Size = new System.Drawing.Size(44, 17);
             this.semi_tag.TabIndex = 0;
             this.semi_tag.Text = "Tag";
             this.semi_tag.UseVisualStyleBackColor = true;
@@ -1220,7 +1221,7 @@
             this.temp_monat.AutoSize = true;
             this.temp_monat.Location = new System.Drawing.Point(110, 13);
             this.temp_monat.Name = "temp_monat";
-            this.temp_monat.Size = new System.Drawing.Size(56, 18);
+            this.temp_monat.Size = new System.Drawing.Size(55, 17);
             this.temp_monat.TabIndex = 2;
             this.temp_monat.Text = "Monat";
             this.temp_monat.UseVisualStyleBackColor = true;
@@ -1232,7 +1233,7 @@
             this.temp_woche.Checked = true;
             this.temp_woche.Location = new System.Drawing.Point(53, 13);
             this.temp_woche.Name = "temp_woche";
-            this.temp_woche.Size = new System.Drawing.Size(57, 18);
+            this.temp_woche.Size = new System.Drawing.Size(60, 17);
             this.temp_woche.TabIndex = 1;
             this.temp_woche.TabStop = true;
             this.temp_woche.Text = "Woche";
@@ -1244,7 +1245,7 @@
             this.temp_tag.AutoSize = true;
             this.temp_tag.Location = new System.Drawing.Point(7, 13);
             this.temp_tag.Name = "temp_tag";
-            this.temp_tag.Size = new System.Drawing.Size(42, 18);
+            this.temp_tag.Size = new System.Drawing.Size(44, 17);
             this.temp_tag.TabIndex = 0;
             this.temp_tag.Text = "Tag";
             this.temp_tag.UseVisualStyleBackColor = true;
@@ -1256,7 +1257,7 @@
             this.type_semi.Enabled = false;
             this.type_semi.Location = new System.Drawing.Point(315, 20);
             this.type_semi.Name = "type_semi";
-            this.type_semi.Size = new System.Drawing.Size(96, 18);
+            this.type_semi.Size = new System.Drawing.Size(96, 17);
             this.type_semi.TabIndex = 4;
             this.type_semi.Text = "semipermanent";
             this.type_semi.UseVisualStyleBackColor = true;
@@ -1268,7 +1269,7 @@
             this.type_matrix.Enabled = false;
             this.type_matrix.Location = new System.Drawing.Point(229, 20);
             this.type_matrix.Name = "type_matrix";
-            this.type_matrix.Size = new System.Drawing.Size(80, 18);
+            this.type_matrix.Size = new System.Drawing.Size(79, 17);
             this.type_matrix.TabIndex = 3;
             this.type_matrix.Text = "matrixgeber";
             this.type_matrix.UseVisualStyleBackColor = true;
@@ -1279,7 +1280,7 @@
             this.type_charge.AutoSize = true;
             this.type_charge.Location = new System.Drawing.Point(153, 20);
             this.type_charge.Name = "type_charge";
-            this.type_charge.Size = new System.Drawing.Size(66, 18);
+            this.type_charge.Size = new System.Drawing.Size(69, 17);
             this.type_charge.TabIndex = 2;
             this.type_charge.Text = "aufladbar";
             this.type_charge.UseVisualStyleBackColor = true;
@@ -1291,7 +1292,7 @@
             this.type_einaml.Checked = true;
             this.type_einaml.Location = new System.Drawing.Point(83, 20);
             this.type_einaml.Name = "type_einaml";
-            this.type_einaml.Size = new System.Drawing.Size(64, 18);
+            this.type_einaml.Size = new System.Drawing.Size(63, 17);
             this.type_einaml.TabIndex = 1;
             this.type_einaml.TabStop = true;
             this.type_einaml.Text = "einmalig";
@@ -1303,7 +1304,7 @@
             this.type_temp.AutoSize = true;
             this.type_temp.Location = new System.Drawing.Point(9, 20);
             this.type_temp.Name = "type_temp";
-            this.type_temp.Size = new System.Drawing.Size(68, 18);
+            this.type_temp.Size = new System.Drawing.Size(66, 17);
             this.type_temp.TabIndex = 0;
             this.type_temp.Text = "temporär";
             this.type_temp.UseVisualStyleBackColor = true;
@@ -1569,15 +1570,6 @@
             this.komp_combo.TabIndex = 24;
             this.komp_combo.Text = "A";
             // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(242, 22);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(28, 14);
-            this.label18.TabIndex = 23;
-            this.label18.Text = "Rep.";
-            // 
             // zauber_rep
             // 
             this.zauber_rep.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
@@ -1619,25 +1611,6 @@
             this.label10.TabIndex = 19;
             this.label10.Text = "->";
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(196, 23);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(26, 14);
-            this.label9.TabIndex = 18;
-            this.label9.Text = "AsP";
-            // 
-            // lbl_staple
-            // 
-            this.lbl_staple.AutoSize = true;
-            this.lbl_staple.Enabled = false;
-            this.lbl_staple.Location = new System.Drawing.Point(153, 23);
-            this.lbl_staple.Name = "lbl_staple";
-            this.lbl_staple.Size = new System.Drawing.Size(35, 14);
-            this.lbl_staple.TabIndex = 17;
-            this.lbl_staple.Text = "Stapel";
-            // 
             // loads_lbl
             // 
             this.loads_lbl.AutoSize = true;
@@ -1646,24 +1619,6 @@
             this.loads_lbl.Size = new System.Drawing.Size(51, 14);
             this.loads_lbl.TabIndex = 16;
             this.loads_lbl.Text = "Ladungen";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(113, 23);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 14);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "Komp.";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 23);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 14);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "Zauber";
             // 
             // zauber_add
             // 
@@ -1792,6 +1747,52 @@
             this.zauber.Size = new System.Drawing.Size(104, 20);
             this.zauber.TabIndex = 1;
             this.zauber.Text = "Manifesto";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(242, 22);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(28, 14);
+            this.label18.TabIndex = 23;
+            this.label18.Text = "Rep.";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(196, 23);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(26, 14);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "AsP";
+            // 
+            // lbl_staple
+            // 
+            this.lbl_staple.AutoSize = true;
+            this.lbl_staple.Enabled = false;
+            this.lbl_staple.Location = new System.Drawing.Point(153, 23);
+            this.lbl_staple.Name = "lbl_staple";
+            this.lbl_staple.Size = new System.Drawing.Size(35, 14);
+            this.lbl_staple.TabIndex = 17;
+            this.lbl_staple.Text = "Stapel";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(113, 23);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(39, 14);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Komp.";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 14);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Zauber";
             // 
             // tabControl1
             // 
@@ -2081,7 +2082,8 @@
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.programmToolStripMenuItem,
             this.optionenToolStripMenuItem,
-            this.infoToolStripMenuItem});
+            this.infoToolStripMenuItem,
+            this.updatesToolStripMenuItem});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
             this.menu.Size = new System.Drawing.Size(996, 24);
@@ -2318,15 +2320,24 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
             this.aboutToolStripMenuItem.Text = "Über";
             // 
             // hilfeToolStripMenuItem
             // 
             this.hilfeToolStripMenuItem.Name = "hilfeToolStripMenuItem";
-            this.hilfeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.hilfeToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
             this.hilfeToolStripMenuItem.Text = "Hilfe";
             this.hilfeToolStripMenuItem.Visible = false;
+            // 
+            // updatesToolStripMenuItem
+            // 
+            this.updatesToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.updatesToolStripMenuItem.Enabled = false;
+            this.updatesToolStripMenuItem.Name = "updatesToolStripMenuItem";
+            this.updatesToolStripMenuItem.Size = new System.Drawing.Size(133, 20);
+            this.updatesToolStripMenuItem.Text = "suche nach updates...";
+            this.updatesToolStripMenuItem.Click += new System.EventHandler(this.updatesToolStripMenuItem_Click);
             // 
             // ArtGenControl
             // 
@@ -2347,7 +2358,7 @@
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.tabControl1);
-            this.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Times New Roman", 8.25F);
             this.Name = "ArtGenControl";
             this.Size = new System.Drawing.Size(996, 557);
             this.groupBox8.ResumeLayout(false);
@@ -2361,9 +2372,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.probe_ausloes)).EndInit();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.special_eatmat_var)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.special_ferngespuer_asp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.special_variable_var)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.special_eatmat_var)).EndInit();
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.agribaal)).EndInit();
@@ -2600,5 +2611,6 @@
         private System.Windows.Forms.ToolStripMenuItem infoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hilfeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem updatesToolStripMenuItem;
     }
 }
