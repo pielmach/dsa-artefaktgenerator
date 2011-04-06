@@ -20,8 +20,6 @@ namespace ArtefaktGenerator
         private MaterialSammlung mat;
         private Occupation occ = new Occupation();
 
-        Info info = new Info();
-
         public ArtGenControl()
         {
             mat = new MaterialSammlung(dice);
@@ -36,7 +34,7 @@ namespace ArtefaktGenerator
 
             UpdateManager updManager = UpdateManager.Instance;
             updManager.UpdateFeedReader = new NAppUpdate.Framework.FeedReaders.NauXmlFeedReader();
-            updManager.UpdateSource = new NAppUpdate.Framework.Sources.SimpleWebSource("http://192.168.0.2/update/update.xml");
+            updManager.UpdateSource = new NAppUpdate.Framework.Sources.SimpleWebSource("http://www.dsa-hamburg.de/artgen/update/update.xml");
             updManager.TempFolder = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ArtefaktGenerator\\Updates");
 
             update(false);
@@ -137,7 +135,6 @@ namespace ArtefaktGenerator
         {
             updatesToolStripMenuItem.Text = "Suche nach updates...";
 
-            // Get a local pointer to the UpdateManager instance
             UpdateManager updManager = UpdateManager.Instance;
 
             // Only check for updates if we haven't done so already
@@ -149,18 +146,12 @@ namespace ArtefaktGenerator
             */
             try
             {
-                // Check for updates - returns true if relevant updates are found (after processing all the tasks and
-                // conditions)
-                // Throws exceptions in case of bad arguments or unexpected results
                 updManager.CheckForUpdateAsync(OnCheckUpdatesComplete);
-
             }
             catch (Exception ex)
             {
                 if (ex is NAppUpdateException)
                 {
-                    // This indicates a feed or network error; ex will contain all the info necessary
-                    // to deal with that
                     updatesToolStripMenuItem.Text = "kein Update verfügbar";
                     updatesToolStripMenuItem.Enabled = false;
                 }
@@ -168,7 +159,6 @@ namespace ArtefaktGenerator
                 {
                     updatesToolStripMenuItem.Text = "kein Update verfügbar";
                     updatesToolStripMenuItem.Enabled = false; 
-                    //MessageBox.Show(ex.ToString());
                 }
             }
         }
@@ -1622,7 +1612,9 @@ namespace ArtefaktGenerator
             {
                 updManager.PrepareUpdatesAsync(OnPrepareUpdatesCompleted);
                 this.Enabled = false;
-
+                updatesToolStripMenuItem.Text = "Update wird installiert...";
+                updatesToolStripMenuItem.ForeColor = Color.Green;
+                updatesToolStripMenuItem.Enabled = false;
             }
         }
     }

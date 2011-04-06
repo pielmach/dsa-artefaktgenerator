@@ -2316,17 +2316,18 @@
             this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
             this.infoToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
             this.infoToolStripMenuItem.Text = "Info";
+            this.infoToolStripMenuItem.Visible = false;
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aboutToolStripMenuItem.Text = "Über";
             // 
             // hilfeToolStripMenuItem
             // 
             this.hilfeToolStripMenuItem.Name = "hilfeToolStripMenuItem";
-            this.hilfeToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
+            this.hilfeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.hilfeToolStripMenuItem.Text = "Hilfe";
             this.hilfeToolStripMenuItem.Visible = false;
             // 
