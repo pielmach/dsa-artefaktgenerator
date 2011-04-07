@@ -1587,7 +1587,6 @@ namespace ArtefaktGenerator
 
         private void ArtGenControl_SizeChanged(object sender, EventArgs e)
         {
-            /*
             //968; 516
             if (this.Size.Height < 515 || this.Size.Width < 967)
                 this.Font = new System.Drawing.Font( this.Font.Name, 7.0f,
@@ -1597,7 +1596,6 @@ namespace ArtefaktGenerator
                 this.Font = new System.Drawing.Font(this.Font.Name, 8.25f,
                 this.Font.Style, this.Font.Unit,
                 this.Font.GdiCharSet, this.Font.GdiVerticalFont);
-             */
         }
 
         private void updatesToolStripMenuItem_Click(object sender, EventArgs e)

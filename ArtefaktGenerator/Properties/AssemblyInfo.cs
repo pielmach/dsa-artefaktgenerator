@@ -1,25 +1,6 @@
-﻿/*
-    This file is part of ArtefaktGenerator.
- 
-    Copyright (C) 2009,2010 Mario Rauschenberg (www.dsa-hamburg.de)
-
-    ArtefaktGenerator is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License version 2 as published by
-    the Free Software Foundation.
-
-    ArtefaktGenerator is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with Foobar.  If not, see http://www.gnu.org/licenses/ .
-*/
-
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using System.Resources;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
@@ -27,9 +8,9 @@ using System.Resources;
 [assembly: AssemblyTitle("ArtefaktGenerator")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("dsa-hamburg.de")]
+[assembly: AssemblyCompany("Microsoft")]
 [assembly: AssemblyProduct("ArtefaktGenerator")]
-[assembly: AssemblyCopyright("Copyright ©  2009,2010,2011")]
+[assembly: AssemblyCopyright("Copyright © Microsoft 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -39,7 +20,7 @@ using System.Resources;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("682077a4-b246-49ba-91b8-6c95944a857d")]
+[assembly: Guid("6af01155-f7a6-443d-ad30-7161c7729863")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -53,4 +34,3 @@ using System.Resources;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("2.1.0.0")]
 [assembly: AssemblyFileVersion("2.1.0.0")]
-[assembly: NeutralResourcesLanguageAttribute("de")]

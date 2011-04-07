@@ -2197,7 +2197,7 @@
             // 
             this.alleBerechnenToolStripMenuItem.CheckOnClick = true;
             this.alleBerechnenToolStripMenuItem.Name = "alleBerechnenToolStripMenuItem";
-            this.alleBerechnenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.alleBerechnenToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.alleBerechnenToolStripMenuItem.Text = "alle zufällig";
             this.alleBerechnenToolStripMenuItem.Click += new System.EventHandler(this.alleBerechnenToolStripMenuItem_Click);
             // 
@@ -2209,7 +2209,7 @@
             this.w6_4,
             this.w6_6});
             this.w6AnnehmenToolStripMenuItem.Name = "w6AnnehmenToolStripMenuItem";
-            this.w6AnnehmenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.w6AnnehmenToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.w6AnnehmenToolStripMenuItem.Text = "W6";
             // 
             // w6_1
@@ -2254,7 +2254,7 @@
             this.w20_105,
             this.w20_20});
             this.w20ToolStripMenuItem.Name = "w20ToolStripMenuItem";
-            this.w20ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.w20ToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.w20ToolStripMenuItem.Text = "W20";
             // 
             // w20_1
@@ -2380,6 +2380,7 @@
             this.Font = new System.Drawing.Font("Times New Roman", 8.25F);
             this.Name = "ArtGenControl";
             this.Size = new System.Drawing.Size(996, 557);
+            this.SizeChanged += new System.EventHandler(this.ArtGenControl_SizeChanged);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.groupBox5.ResumeLayout(false);

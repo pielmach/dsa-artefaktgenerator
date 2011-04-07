@@ -68,7 +68,7 @@
 
         #endregion
 
-        private ArtGenControl artGenControl1;
+        private ArtefaktGenerator.ArtGenControl artGenControl1;
         private System.Windows.Forms.NotifyIcon notify;
 
 
