@@ -2106,24 +2106,28 @@
             this.neuesArtefaktToolStripMenuItem.Name = "neuesArtefaktToolStripMenuItem";
             this.neuesArtefaktToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.neuesArtefaktToolStripMenuItem.Text = "neues Artefakt";
+            this.neuesArtefaktToolStripMenuItem.Click += new System.EventHandler(this.neuesArtefaktToolStripMenuItem_Click);
             // 
             // artefaktLadenToolStripMenuItem
             // 
             this.artefaktLadenToolStripMenuItem.Name = "artefaktLadenToolStripMenuItem";
             this.artefaktLadenToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.artefaktLadenToolStripMenuItem.Text = "Artefakt laden";
+            this.artefaktLadenToolStripMenuItem.Click += new System.EventHandler(this.artefaktLadenToolStripMenuItem_Click);
             // 
             // artefaktSpeichernToolStripMenuItem
             // 
             this.artefaktSpeichernToolStripMenuItem.Name = "artefaktSpeichernToolStripMenuItem";
             this.artefaktSpeichernToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.artefaktSpeichernToolStripMenuItem.Text = "Artefakt speichern";
+            this.artefaktSpeichernToolStripMenuItem.Click += new System.EventHandler(this.artefaktSpeichernToolStripMenuItem_Click);
             // 
             // beendenToolStripMenuItem
             // 
             this.beendenToolStripMenuItem.Name = "beendenToolStripMenuItem";
             this.beendenToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.beendenToolStripMenuItem.Text = "Beenden";
+            this.beendenToolStripMenuItem.Click += new System.EventHandler(this.beendenToolStripMenuItem_Click);
             // 
             // optionenToolStripMenuItem
             // 
@@ -2148,6 +2152,7 @@
             this.automatischNeuberechenenToolStripMenuItem.Name = "automatischNeuberechenenToolStripMenuItem";
             this.automatischNeuberechenenToolStripMenuItem.Size = new System.Drawing.Size(414, 22);
             this.automatischNeuberechenenToolStripMenuItem.Text = "Automatisch neu berechenen";
+            this.automatischNeuberechenenToolStripMenuItem.Click += new System.EventHandler(this.automatischNeuberechenenToolStripMenuItem_Click);
             // 
             // ach_save
             // 
@@ -2166,6 +2171,7 @@
             this.nebeneffekteToolStripMenuItem.Name = "nebeneffekteToolStripMenuItem";
             this.nebeneffekteToolStripMenuItem.Size = new System.Drawing.Size(414, 22);
             this.nebeneffekteToolStripMenuItem.Text = "Nebeneffekte";
+            this.nebeneffekteToolStripMenuItem.Click += new System.EventHandler(this.nebeneffekteToolStripMenuItem_Click);
             // 
             // occupationToolStripMenuItem
             // 
@@ -2175,6 +2181,7 @@
             this.occupationToolStripMenuItem.Name = "occupationToolStripMenuItem";
             this.occupationToolStripMenuItem.Size = new System.Drawing.Size(414, 22);
             this.occupationToolStripMenuItem.Text = "Occupation";
+            this.occupationToolStripMenuItem.Click += new System.EventHandler(this.occupationToolStripMenuItem_Click);
             // 
             // würfelergebnisseToolStripMenuItem
             // 
@@ -2190,8 +2197,9 @@
             // 
             this.alleBerechnenToolStripMenuItem.CheckOnClick = true;
             this.alleBerechnenToolStripMenuItem.Name = "alleBerechnenToolStripMenuItem";
-            this.alleBerechnenToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.alleBerechnenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.alleBerechnenToolStripMenuItem.Text = "alle zufällig";
+            this.alleBerechnenToolStripMenuItem.Click += new System.EventHandler(this.alleBerechnenToolStripMenuItem_Click);
             // 
             // w6AnnehmenToolStripMenuItem
             // 
@@ -2201,7 +2209,7 @@
             this.w6_4,
             this.w6_6});
             this.w6AnnehmenToolStripMenuItem.Name = "w6AnnehmenToolStripMenuItem";
-            this.w6AnnehmenToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.w6AnnehmenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.w6AnnehmenToolStripMenuItem.Text = "W6";
             // 
             // w6_1
@@ -2210,6 +2218,7 @@
             this.w6_1.Name = "w6_1";
             this.w6_1.Size = new System.Drawing.Size(206, 22);
             this.w6_1.Text = "als Optimum annehmen";
+            this.w6_1.Click += new System.EventHandler(this.w6_1_Click);
             // 
             // w6_35
             // 
@@ -2219,6 +2228,7 @@
             this.w6_35.Name = "w6_35";
             this.w6_35.Size = new System.Drawing.Size(206, 22);
             this.w6_35.Text = "als 3,5 annehmen";
+            this.w6_35.Click += new System.EventHandler(this.w6_35_Click);
             // 
             // w6_4
             // 
@@ -2226,6 +2236,7 @@
             this.w6_4.Name = "w6_4";
             this.w6_4.Size = new System.Drawing.Size(206, 22);
             this.w6_4.Text = "als 4 annehmen";
+            this.w6_4.Click += new System.EventHandler(this.w6_4_Click);
             // 
             // w6_6
             // 
@@ -2233,6 +2244,7 @@
             this.w6_6.Name = "w6_6";
             this.w6_6.Size = new System.Drawing.Size(206, 22);
             this.w6_6.Text = "als Pessimum annehmen";
+            this.w6_6.Click += new System.EventHandler(this.w6_6_Click);
             // 
             // w20ToolStripMenuItem
             // 
@@ -2242,7 +2254,7 @@
             this.w20_105,
             this.w20_20});
             this.w20ToolStripMenuItem.Name = "w20ToolStripMenuItem";
-            this.w20ToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.w20ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.w20ToolStripMenuItem.Text = "W20";
             // 
             // w20_1
@@ -2251,6 +2263,7 @@
             this.w20_1.Name = "w20_1";
             this.w20_1.Size = new System.Drawing.Size(206, 22);
             this.w20_1.Text = "als Optimum annehmen";
+            this.w20_1.Click += new System.EventHandler(this.w20_1_Click);
             // 
             // w20_10
             // 
@@ -2258,6 +2271,7 @@
             this.w20_10.Name = "w20_10";
             this.w20_10.Size = new System.Drawing.Size(206, 22);
             this.w20_10.Text = "als 10 annehmen";
+            this.w20_10.Click += new System.EventHandler(this.w20_10_Click);
             // 
             // w20_105
             // 
@@ -2266,6 +2280,7 @@
             this.w20_105.Name = "w20_105";
             this.w20_105.Size = new System.Drawing.Size(206, 22);
             this.w20_105.Text = "als 10,5 annehmen";
+            this.w20_105.Click += new System.EventHandler(this.w20_105_Click);
             // 
             // w20_20
             // 
@@ -2273,6 +2288,7 @@
             this.w20_20.Name = "w20_20";
             this.w20_20.Size = new System.Drawing.Size(206, 22);
             this.w20_20.Text = "als Pessimum annehmen";
+            this.w20_20.Click += new System.EventHandler(this.w20_20_Click);
             // 
             // regelbasis
             // 
@@ -2290,12 +2306,14 @@
             this.wegeDerAlchimieToolStripMenuItem.Name = "wegeDerAlchimieToolStripMenuItem";
             this.wegeDerAlchimieToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.wegeDerAlchimieToolStripMenuItem.Text = "Wege der Alchimie (4.1)";
+            this.wegeDerAlchimieToolStripMenuItem.Click += new System.EventHandler(this.wegeDerAlchimieToolStripMenuItem_Click);
             // 
             // staebeRingeDschinnenlampenToolStripMenuItem
             // 
             this.staebeRingeDschinnenlampenToolStripMenuItem.Name = "staebeRingeDschinnenlampenToolStripMenuItem";
             this.staebeRingeDschinnenlampenToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.staebeRingeDschinnenlampenToolStripMenuItem.Text = "Stäbe, Ringe, Dschinnenlampen (4.0)";
+            this.staebeRingeDschinnenlampenToolStripMenuItem.Click += new System.EventHandler(this.staebeRingeDschinnenlampenToolStripMenuItem_Click);
             // 
             // debugModusToolStripMenuItem
             // 
@@ -2321,13 +2339,13 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
             this.aboutToolStripMenuItem.Text = "Über";
             // 
             // hilfeToolStripMenuItem
             // 
             this.hilfeToolStripMenuItem.Name = "hilfeToolStripMenuItem";
-            this.hilfeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.hilfeToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
             this.hilfeToolStripMenuItem.Text = "Hilfe";
             this.hilfeToolStripMenuItem.Visible = false;
             // 

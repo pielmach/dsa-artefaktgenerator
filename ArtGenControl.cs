@@ -1617,5 +1617,203 @@ namespace ArtefaktGenerator
                 updatesToolStripMenuItem.Enabled = false;
             }
         }
+
+
+        #region MenuItems
+
+        private void neuesArtefaktToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Alle nicht gespeicherten Änderungen am bisherigen Artefakt gehen verloren.\r\nWillst du wirklich ein neues Artefakt beginnen?", "Hinweis", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+            {
+                artefakt = new Artefakt();
+                magic = new List<Zauber>();
+                reload();
+                update(true);
+            }
+        }
+
+        private void beendenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void artefaktLadenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.AddExtension = true;
+            openFileDialog.CheckFileExists = true;
+            openFileDialog.CheckPathExists = true;
+            openFileDialog.DefaultExt = ".artefakt";
+            openFileDialog.Filter = "Artefakte (*.artefakt)|*.artefakt";
+            openFileDialog.InitialDirectory = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            openFileDialog.Multiselect = false;
+            openFileDialog.ReadOnlyChecked = false;
+            openFileDialog.ShowReadOnly = false;
+            openFileDialog.Title = "Artefakt Laden";
+
+            if (MessageBox.Show("Alle nicht gespeicherten Änderungen am bisherigen Artefakt gehen verloren.\r\nWillst du wirklich ein anderes Artefakt laden?", "Hinweis", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+            {
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    System.IO.StreamReader reader = new System.IO.StreamReader(openFileDialog.OpenFile());
+
+                    string xml = reader.ReadToEnd();
+                    //string xml = System.IO.File.ReadAllText(@".\test.artefakt");
+                    DasArtefakt art = (DasArtefakt)DeserializeObject(xml);
+                    artefakt = art.artefakt;
+                    magic = art.zauber;
+                    reload();
+                    update(true);
+                }
+            }
+        }
+
+        private void artefaktSpeichernToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+            saveFileDialog1.Filter = "Artefakte (*.artefakt)|*.artefakt";
+            saveFileDialog1.FilterIndex = 1;
+            saveFileDialog1.RestoreDirectory = true;
+            saveFileDialog1.AddExtension = true;
+            saveFileDialog1.InitialDirectory = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            saveFileDialog1.OverwritePrompt = true;
+            saveFileDialog1.Title = "Artefakt speichern";
+            saveFileDialog1.CheckPathExists = true;
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                DasArtefakt art = new DasArtefakt(artefakt, magic);
+                string xml = SerializeObject(art);
+                System.IO.File.WriteAllText(@saveFileDialog1.FileName, xml);
+            }
+        }
+
+        private void nebeneffekteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            artefakt.nebeneffekte = nebeneffekteToolStripMenuItem.Checked;
+            update(false);
+        }
+
+        private void occupationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            artefakt.occupation = occupationToolStripMenuItem.Checked;
+            update(false);
+        }
+
+        private void alleBerechnenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dice.W20 = 0;
+            dice.W6 = 0;
+            if (alleBerechnenToolStripMenuItem.Checked)
+            {
+                w6AnnehmenToolStripMenuItem.Enabled = false;
+                w20ToolStripMenuItem.Enabled = false;
+            }
+            else
+            {
+                w6AnnehmenToolStripMenuItem.Enabled = true;
+                w20ToolStripMenuItem.Enabled = true;
+            }
+            update(false);
+        }
+
+        private void w6_1_Click(object sender, EventArgs e)
+        {
+            dice.W6 = 1;
+            if (!w6_1.Checked) w6_1.Checked = true;
+            w6_35.Checked = false;
+            w6_4.Checked = false;
+            w6_6.Checked = false;
+            update(false);
+        }
+
+        private void w6_6_Click(object sender, EventArgs e)
+        {
+            dice.W6 = 6;
+            if (!w6_6.Checked) w6_6.Checked = true;
+            w6_35.Checked = false;
+            w6_4.Checked = false;
+            w6_1.Checked = false;
+            update(false);
+        }
+
+        private void w6_35_Click(object sender, EventArgs e)
+        {
+            dice.W6 = 3.5m;
+            if (!w6_35.Checked) w6_35.Checked = true;
+            w6_1.Checked = false;
+            w6_4.Checked = false;
+            w6_6.Checked = false;
+            update(false);
+        }
+
+        private void w6_4_Click(object sender, EventArgs e)
+        {
+            dice.W6 = 4;
+            if (!w6_4.Checked) w6_4.Checked = true;
+            w6_1.Checked = false;
+            w6_35.Checked = false;
+            w6_6.Checked = false;
+            update(false);
+        }
+
+        private void w20_1_Click(object sender, EventArgs e)
+        {
+            dice.W20 = 1;
+            if (!w20_1.Checked) w20_1.Checked = true;
+            w20_10.Checked = false;
+            w20_105.Checked = false;
+            w20_20.Checked = false;
+            update(false);
+        }
+
+        private void w20_10_Click(object sender, EventArgs e)
+        {
+            dice.W20 = 10;
+            if (!w20_10.Checked) w20_10.Checked = true;
+            w20_1.Checked = false;
+            w20_105.Checked = false;
+            w20_20.Checked = false;
+            update(false);
+        }
+
+        private void w20_105_Click(object sender, EventArgs e)
+        {
+            dice.W20 = 10.5m;
+            if (!w20_105.Checked) w20_105.Checked = true;
+            w20_1.Checked = false;
+            w20_10.Checked = false;
+            w20_20.Checked = false;
+            update(false);
+        }
+
+        private void w20_20_Click(object sender, EventArgs e)
+        {
+            dice.W20 = 20;
+            if (!w20_20.Checked) w20_20.Checked = true;
+            w20_10.Checked = false;
+            w20_105.Checked = false;
+            w20_1.Checked = false;
+            update(false);
+        }
+
+        private void wegeDerAlchimieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            artefakt.regelbasis = Artefakt.Regelbasis.WDA;
+            wegeDerAlchimieToolStripMenuItem.Checked = true;
+            staebeRingeDschinnenlampenToolStripMenuItem.Checked = false;
+            update(false);
+        }
+
+        private void staebeRingeDschinnenlampenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            artefakt.regelbasis = Artefakt.Regelbasis.SRD;
+            wegeDerAlchimieToolStripMenuItem.Checked = false;
+            staebeRingeDschinnenlampenToolStripMenuItem.Checked = true;
+            update(false);
+        }
+        #endregion
+
     }
 }
