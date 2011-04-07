@@ -20,10 +20,22 @@ namespace ArtefaktGenerator
         private MaterialSammlung mat;
         private Occupation occ = new Occupation();
 
-        public ArtGenControl()
+        public ArtGenControl() : this (false)
+        {
+        }
+
+        public ArtGenControl(bool plugInMode)
         {
             mat = new MaterialSammlung(dice);
             InitializeComponent();
+
+            // Disable Non-PlugIn fields
+            if (plugInMode)
+            {
+                updatesToolStripMenuItem.Visible = false;
+                beendenToolStripMenuItem.Visible = false;
+            }
+
             for (int i = 0; i < mat.sammlung.Count; i++)
             {
                 material.Items.Add(mat.sammlung[i].name);
@@ -32,14 +44,17 @@ namespace ArtefaktGenerator
 
             zauber_rep.SelectedIndex = 0;
 
-            UpdateManager updManager = UpdateManager.Instance;
-            updManager.UpdateFeedReader = new NAppUpdate.Framework.FeedReaders.NauXmlFeedReader();
-            updManager.UpdateSource = new NAppUpdate.Framework.Sources.SimpleWebSource("http://www.dsa-hamburg.de/artgen/update/update.xml");
-            updManager.TempFolder = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ArtefaktGenerator\\Updates");
+            if(!plugInMode)
+            {
+                UpdateManager updManager = UpdateManager.Instance;
+                updManager.UpdateFeedReader = new NAppUpdate.Framework.FeedReaders.NauXmlFeedReader();
+                updManager.UpdateSource = new NAppUpdate.Framework.Sources.SimpleWebSource("http://www.dsa-hamburg.de/artgen/update/update.xml");
+                updManager.TempFolder = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ArtefaktGenerator\\Updates");
+            }
 
             update(false);
-
-            CheckForUpdates();
+            if (!plugInMode)
+                CheckForUpdates();
         }
 
         private bool WDA()

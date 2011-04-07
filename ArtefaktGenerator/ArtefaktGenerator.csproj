@@ -1,5 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(TargetingClr2Framework)' == 'true'">
+    <ResGenExecuteAsTool>true</ResGenExecuteAsTool>
+    <ResGenToolArchitecture>ManagedIL</ResGenToolArchitecture>
+    <ResGenTrackerSdkPath>$(SDK40ToolsPath)\x64</ResGenTrackerSdkPath>
+  </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
