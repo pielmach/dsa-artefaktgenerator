@@ -33,7 +33,7 @@ namespace ArtefaktGenerator
             if (plugInMode)
             {
                 updatesToolStripMenuItem.Visible = false;
-                beendenToolStripMenuItem.Visible = false;
+                programmToolStripMenuItem1.Visible = false;
             }
 
             for (int i = 0; i < mat.sammlung.Count; i++)
@@ -44,13 +44,13 @@ namespace ArtefaktGenerator
 
             zauber_rep.SelectedIndex = 0;
 
-            if(!plugInMode)
-            {
-                UpdateManager updManager = UpdateManager.Instance;
-                updManager.UpdateFeedReader = new NAppUpdate.Framework.FeedReaders.NauXmlFeedReader();
+            UpdateManager updManager = UpdateManager.Instance;
+            updManager.UpdateFeedReader = new NAppUpdate.Framework.FeedReaders.NauXmlFeedReader();
+            updManager.TempFolder = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ArtefaktGenerator\\Updates");
+            if (!plugInMode)
                 updManager.UpdateSource = new NAppUpdate.Framework.Sources.SimpleWebSource("http://www.dsa-hamburg.de/artgen/update/update.xml");
-                updManager.TempFolder = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ArtefaktGenerator\\Updates");
-            }
+            else
+                updManager.UpdateSource = new NAppUpdate.Framework.Sources.SimpleWebSource("http://www.dsa-hamburg.de/artgen/update/updatedll.xml");
 
             update(false);
             if (!plugInMode)
@@ -117,7 +117,8 @@ namespace ArtefaktGenerator
         {
             if (!succeeded)
             {
-                MessageBox.Show("Updates preperation failed. Check the feed and try again.");
+                MessageBox.Show("Update fehlgeschlagen!");
+                this.Enabled = true;
             }
             else
             {
@@ -138,11 +139,14 @@ namespace ArtefaktGenerator
                 updatesToolStripMenuItem.Text = "Update verfügbar - hier klicken zum installieren";
                 updatesToolStripMenuItem.ForeColor = Color.Green;
                 updatesToolStripMenuItem.Enabled = true;
+                updateInstallierenToolStripMenuItem.Enabled = true;
+                updateInstallierenToolStripMenuItem.ForeColor = Color.Green;
             } 
             else
             {
                 updatesToolStripMenuItem.Text = "kein Update verfügbar";
                 updatesToolStripMenuItem.Enabled = false;
+                updateInstallierenToolStripMenuItem.Enabled = false;
             }
         }
 
@@ -169,11 +173,13 @@ namespace ArtefaktGenerator
                 {
                     updatesToolStripMenuItem.Text = "kein Update verfügbar";
                     updatesToolStripMenuItem.Enabled = false;
+                    updateInstallierenToolStripMenuItem.Enabled = false;
                 }
                 else
                 {
                     updatesToolStripMenuItem.Text = "kein Update verfügbar";
-                    updatesToolStripMenuItem.Enabled = false; 
+                    updatesToolStripMenuItem.Enabled = false;
+                    updateInstallierenToolStripMenuItem.Enabled = false;
                 }
             }
         }
@@ -1613,6 +1619,25 @@ namespace ArtefaktGenerator
                 this.Font.GdiCharSet, this.Font.GdiVerticalFont);
         }
 
+        #region MenuItems
+
+
+        private void beendenToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void updateSuchenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CheckForUpdates();
+        }
+
+
+        private void updateInstallierenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            updatesToolStripMenuItem_Click(this,new EventArgs());
+        }
+
         private void updatesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UpdateManager updManager = UpdateManager.Instance;
@@ -1631,9 +1656,6 @@ namespace ArtefaktGenerator
             }
         }
 
-
-        #region MenuItems
-
         private void neuesArtefaktToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Alle nicht gespeicherten Änderungen am bisherigen Artefakt gehen verloren.\r\nWillst du wirklich ein neues Artefakt beginnen?", "Hinweis", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
@@ -1643,10 +1665,6 @@ namespace ArtefaktGenerator
                 reload();
                 update(true);
             }
-        }
-
-        private void beendenToolStripMenuItem_Click(object sender, EventArgs e)
-        {
         }
 
         private void artefaktLadenToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1777,6 +1795,7 @@ namespace ArtefaktGenerator
             if (!w20_1.Checked) w20_1.Checked = true;
             w20_10.Checked = false;
             w20_105.Checked = false;
+            w20_11.Checked = false;
             w20_20.Checked = false;
             update(false);
         }
@@ -1787,6 +1806,7 @@ namespace ArtefaktGenerator
             if (!w20_10.Checked) w20_10.Checked = true;
             w20_1.Checked = false;
             w20_105.Checked = false;
+            w20_11.Checked = false;
             w20_20.Checked = false;
             update(false);
         }
@@ -1797,6 +1817,18 @@ namespace ArtefaktGenerator
             if (!w20_105.Checked) w20_105.Checked = true;
             w20_1.Checked = false;
             w20_10.Checked = false;
+            w20_11.Checked = false;
+            w20_20.Checked = false;
+            update(false);
+        }
+
+        private void w20_11_Click(object sender, EventArgs e)
+        {
+            dice.W20 = 11m;
+            if (!w20_11.Checked) w20_11.Checked = true;
+            w20_1.Checked = false;
+            w20_10.Checked = false;
+            w20_105.Checked = false;
             w20_20.Checked = false;
             update(false);
         }
@@ -1807,6 +1839,7 @@ namespace ArtefaktGenerator
             if (!w20_20.Checked) w20_20.Checked = true;
             w20_10.Checked = false;
             w20_105.Checked = false;
+            w20_11.Checked = false;
             w20_1.Checked = false;
             update(false);
         }
@@ -1827,6 +1860,5 @@ namespace ArtefaktGenerator
             update(false);
         }
         #endregion
-
     }
 }

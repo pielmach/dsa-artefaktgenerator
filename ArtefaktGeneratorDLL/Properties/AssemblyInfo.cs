@@ -27,9 +27,9 @@ using System.Resources;
 [assembly: AssemblyTitle("ArtefaktGenerator")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("dsa-hamburg.de")]
+[assembly: AssemblyCompany("DSA-Hamburg.de")]
 [assembly: AssemblyProduct("ArtefaktGenerator")]
-[assembly: AssemblyCopyright("Copyright ©  2009,2010,2011")]
+[assembly: AssemblyCopyright("Copyright © 2009,2010,2011 Mario Rauschenberg")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
