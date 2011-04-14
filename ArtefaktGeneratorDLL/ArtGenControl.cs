@@ -786,10 +786,17 @@ namespace ArtefaktGenerator
                     else
                         txt_create.AppendText("Erschwernis wirkende Sprüche: " + (magic_erschwerniss - agribaal_zfp) + "(erleichterung von " + agribaal_zfp + " durch Agribaal)\r\n");
                     txt_create.AppendText("AsP für wirkende Sprüche: " + magic_asp + "\r\n");
+
+                    string sArcanoviSpecialAsP = "";
+                    string sArcanoviSpecialDiv = ""; 
+                    if (arcanovi_special_w_asp > 0)
+                        sArcanoviSpecialAsP = " + " + arcanovi_special_w_asp;
                     if (artefakt.sf.ringkunde)
-                        txt_create.AppendText("AsP gesamt: " + (magic_asp + arcanovi_asp) + " + " + arcanovi_special_w + " W6 + " + arcanovi_special_w_asp + " / 2 + " + artefakt.probe.superBig_asp_w + " W20 = " + (magic_asp + arcanovi_asp + arcanovi_special_asp) + "\r\n");
+                        sArcanoviSpecialDiv = "/ 2";
+                    if (artefakt.sf.ringkunde)
+                        txt_create.AppendText("AsP gesamt: " + (magic_asp + arcanovi_asp) + " + (" + arcanovi_special_w + " W6" + sArcanoviSpecialAsP + ") " + sArcanoviSpecialDiv + " + " + artefakt.probe.superBig_asp_w + " W20 = " + (magic_asp + arcanovi_asp + arcanovi_special_asp) + "\r\n");
                     else
-                        txt_create.AppendText("AsP gesamt: " + (magic_asp + arcanovi_asp) + " + " + arcanovi_special_w + " W6 + " + arcanovi_special_w_asp + " + " + artefakt.probe.superBig_asp_w + " W20 = " + (magic_asp + arcanovi_asp + arcanovi_special_asp) + "\r\n");
+                        txt_create.AppendText("AsP gesamt: " + (magic_asp + arcanovi_asp) + " + " + arcanovi_special_w + " W6" + sArcanoviSpecialAsP + sArcanoviSpecialDiv + " + " + artefakt.probe.superBig_asp_w + " W20 = " + (magic_asp + arcanovi_asp + arcanovi_special_asp) + "\r\n");
                     
                     txt_create.AppendText("pAsP gesamt: " + pasp + "\r\n");
 
