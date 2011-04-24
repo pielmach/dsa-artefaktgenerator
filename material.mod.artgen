@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MaterialSammlung xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<sammlung>
+		<Material>
+			<name>Mein Material</name> <!-- Name des neuen Materials -->
+			<arcanovi_mod>0</arcanovi_mod> <!-- Erschwernis(+) oder Erleichertung(-) auf Arcanovi -->
+			<wirkende_mod>0</wirkende_mod> <!-- Erschwernis/Erleichertung auf wirkende Zauber -->
+			<asp_mod>0</asp_mod> <!-- aenderung der ASP-Kosten -->
+			<pasp_mod>1</pasp_mod> <!-- pAsP multiplikator -->
+			<occupation_mod>0</occupation_mod> <!-- Erschwernis/Erleichertung auf Okkupations-Probe -->
+			<occupation_art_mod>0</occupation_art_mod> <!-- Erschwernis/Erleichertung auf Art der Okkupation -->
+			<nebenwirkung_mod>0</nebenwirkung_mod> <!-- Erschwernis/Erleichertung der Nebenwirkungsprobe -->
+			<nebenwirkung_art_mod>0</nebenwirkung_art_mod> <!-- Erschwernis/Erleichertung der Art der Nebenwirkung -->
+		</Material>
+		<!--
+		<Material>
+			...
+		</Material>
+		-->
+	</sammlung>
+</MaterialSammlung>

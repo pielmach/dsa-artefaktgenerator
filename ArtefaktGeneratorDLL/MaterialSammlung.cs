@@ -20,12 +20,31 @@ using System;
 using System.Collections.Generic;
 //using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace ArtefaktGenerator
 {
     public class MaterialSammlung
     {
         public List<Material> sammlung = new List<Material>();
+
+        public MaterialSammlung() { }
+
+        private Byte[] StringToUTF8ByteArray(String pXmlString)
+        {
+            UTF8Encoding encoding = new UTF8Encoding();
+            Byte[] byteArray = encoding.GetBytes(pXmlString);
+            return byteArray;
+        }
+        
+        public Object loadMod(String pXmlizedString)
+        {
+            System.Xml.Serialization.XmlSerializer xs = new System.Xml.Serialization.XmlSerializer(typeof(MaterialSammlung));
+            System.IO.MemoryStream memoryStream = new System.IO.MemoryStream(StringToUTF8ByteArray(pXmlizedString));
+            System.Xml.XmlTextWriter xmlTextWriter = new System.Xml.XmlTextWriter(memoryStream, Encoding.UTF8);
+
+            return xs.Deserialize(memoryStream);
+        }
 
         public MaterialSammlung(Wuerfel dice)
         {
@@ -61,6 +80,23 @@ namespace ArtefaktGenerator
             sammlung.Add(new Material("Hölleneisen",0,0,1,0,0,0,0,0));
             sammlung.Add(new Material("Arkanoferrit", 0, 0, 0, 1, 2, 0, 0, 0));
             sammlung.Add(new Material("Gwen Petryl",0,0,-1,0,0,0,0,0));
+
+            try
+            {
+                System.IO.StreamReader reader = new System.IO.StreamReader("material.mod.artgen");
+
+                string xml = reader.ReadToEnd();
+                //string xml = System.IO.File.ReadAllText(@".\test.artefakt");
+                MaterialSammlung mod = (MaterialSammlung)loadMod(xml);
+                for (int i = 0; i < mod.sammlung.Count; i++)
+                {
+                    sammlung.Add(mod.sammlung[i]);
+                }
+            }
+            catch (System.Exception ex)
+            {
+            }
+
 
         }
     }

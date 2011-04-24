@@ -26,8 +26,8 @@ namespace ArtefaktGenerator
 
         public ArtGenControl(bool plugInMode)
         {
-            mat = new MaterialSammlung(dice);
             InitializeComponent();
+            mat = new MaterialSammlung(dice);
 
             // Disable Non-PlugIn fields
             if (plugInMode)
