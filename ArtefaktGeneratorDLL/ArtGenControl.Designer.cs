@@ -75,7 +75,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.sf_aux = new System.Windows.Forms.CheckBox();
             this.sf_ringkunde = new System.Windows.Forms.CheckBox();
-            this.vielLadung = new System.Windows.Forms.CheckBox();
+            this.sf_vielLadung = new System.Windows.Forms.CheckBox();
             this.sf_semiII = new System.Windows.Forms.CheckBox();
             this.sf_semiI = new System.Windows.Forms.CheckBox();
             this.sf_matrix = new System.Windows.Forms.CheckBox();
@@ -835,7 +835,7 @@
             // 
             this.groupBox1.Controls.Add(this.sf_aux);
             this.groupBox1.Controls.Add(this.sf_ringkunde);
-            this.groupBox1.Controls.Add(this.vielLadung);
+            this.groupBox1.Controls.Add(this.sf_vielLadung);
             this.groupBox1.Controls.Add(this.sf_semiII);
             this.groupBox1.Controls.Add(this.sf_semiI);
             this.groupBox1.Controls.Add(this.sf_matrix);
@@ -872,16 +872,16 @@
             this.sf_ringkunde.UseVisualStyleBackColor = true;
             this.sf_ringkunde.CheckedChanged += new System.EventHandler(this.sf_ringkunde_CheckedChanged);
             // 
-            // vielLadung
+            // sf_vielLadung
             // 
-            this.vielLadung.AutoSize = true;
-            this.vielLadung.Location = new System.Drawing.Point(106, 19);
-            this.vielLadung.Name = "vielLadung";
-            this.vielLadung.Size = new System.Drawing.Size(109, 17);
-            this.vielLadung.TabIndex = 8;
-            this.vielLadung.Text = "Vielfache Ladung";
-            this.vielLadung.UseVisualStyleBackColor = true;
-            this.vielLadung.CheckedChanged += new System.EventHandler(this.vielLadung_CheckedChanged);
+            this.sf_vielLadung.AutoSize = true;
+            this.sf_vielLadung.Location = new System.Drawing.Point(106, 19);
+            this.sf_vielLadung.Name = "sf_vielLadung";
+            this.sf_vielLadung.Size = new System.Drawing.Size(109, 17);
+            this.sf_vielLadung.TabIndex = 8;
+            this.sf_vielLadung.Text = "Vielfache Ladung";
+            this.sf_vielLadung.UseVisualStyleBackColor = true;
+            this.sf_vielLadung.CheckedChanged += new System.EventHandler(this.vielLadung_CheckedChanged);
             // 
             // sf_semiII
             // 
@@ -2192,6 +2192,7 @@
             this.ach_save.Name = "ach_save";
             this.ach_save.Size = new System.Drawing.Size(414, 22);
             this.ach_save.Text = "Kostenersparnis für wirkende Zauber bei Rep. ACH einberechnen";
+            this.ach_save.Click += new System.EventHandler(this.ach_save_Click);
             // 
             // nebeneffekteToolStripMenuItem
             // 
@@ -2551,7 +2552,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox sf_aux;
         private System.Windows.Forms.CheckBox sf_ringkunde;
-        private System.Windows.Forms.CheckBox vielLadung;
+        private System.Windows.Forms.CheckBox sf_vielLadung;
         private System.Windows.Forms.CheckBox sf_semiII;
         private System.Windows.Forms.CheckBox sf_semiI;
         private System.Windows.Forms.CheckBox sf_matrix;

@@ -5,6 +5,7 @@
       <Description>- Auto-Update System</Description>
       <Conditions>
         <FileVersionCondition what="below" version="2.1.0.0" />
+		<FileVersionCondition what="above" version="2.0.0.0" />
       </Conditions>
     </FileUpdateTask>
   </Tasks>

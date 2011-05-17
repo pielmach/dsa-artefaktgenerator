@@ -57,6 +57,134 @@ namespace ArtefaktGenerator
                 CheckForUpdates();
         }
 
+        /*
+         * plugInHero
+         * 
+         * use the function parameters to set the values of the sf's and taw's.
+         * All values must be set, however certain values may be irrelevant.
+         * Example: when not setting sfMatrixgeber, the value of tawArcanoviMatrix is irrelevant,
+         * as the field gets deactivated.
+         * 
+         * @return The return value is false, if an illegal combination of sf's is chosen
+         * (e.g. sfHypervehemenz without sfStapeleffekt) - otherwise it is true. 
+         * The taw's are NOT range checked, however they must be positive.
+         */
+        public bool plugInHero (
+            SF.SFType representation, 
+            bool sfKraftkontrolle, 
+            bool sfVielfacheLadung, 
+            bool sfStapeleffekt, 
+            bool sfHypervehemenz, 
+            bool sfMatrixgeber,
+            bool sfSemipermI,
+            bool sfSemipermII,
+            bool sfRingkunde,
+            bool sfAuxiliator,
+            uint tawArcanovi,
+            uint tawArcanoviMatrix,
+            uint tawArcanoviSemi,
+            uint tawOdem,
+            uint tawAnalys,
+            uint tawDestructibo,
+            uint tawMagiekunde
+            )
+        {
+            if (
+                (sfHypervehemenz && !sfStapeleffekt)
+                || (sfSemipermII && !sfSemipermI)
+                || (sfAuxiliator && !sfMatrixgeber)
+                )
+                return false;
+            
+            // set values
+            artefakt.sf.rep = representation;
+            if (representation == SF.SFType.OTHER)
+            {
+                rep_mag.Checked = true;
+                rep_ach.Checked = false;
+            }
+            else
+            {
+                rep_mag.Checked = false;
+                rep_ach.Checked = true;
+            }
+            artefakt.sf.kraftkontrolle = sfKraftkontrolle;
+            sf_kraft.Checked = sfKraftkontrolle;
+            artefakt.sf.vielfacheLadung = sfVielfacheLadung;
+            sf_vielLadung.Checked = sfVielfacheLadung;
+            artefakt.sf.stapel = sfStapeleffekt;
+            sf_stapel.Checked = sfStapeleffekt;
+            artefakt.sf.hyper = sfHypervehemenz;
+            sf_hyper.Checked = sfHypervehemenz;
+            artefakt.sf.matrix = sfMatrixgeber;
+            sf_matrix.Checked = sfMatrixgeber;
+            artefakt.sf.semi1 = sfSemipermI;
+            sf_semiI.Checked = sfSemipermI;
+            artefakt.sf.semi2 = sfSemipermII;
+            sf_semiII.Checked = sfSemipermII;
+            artefakt.sf.ringkunde = sfRingkunde;
+            sf_ringkunde.Checked = sfRingkunde;
+            artefakt.sf.auxiliator = sfAuxiliator;
+            sf_aux.Checked = sfAuxiliator;
+
+            artefakt.taw.arcanovi = tawArcanovi;
+            arcanovi_change.Value = tawArcanovi;
+            artefakt.taw.arcanovi_matrix = tawArcanoviMatrix;
+            arcanovi_matrix_change.Value = tawArcanoviMatrix;
+            artefakt.taw.arcanovi_semi = tawArcanoviSemi;
+            arcanovi_semi_change.Value = tawArcanoviSemi;
+            artefakt.taw.analys = tawAnalys;
+            analys_change.Value = tawAnalys;
+            artefakt.taw.destructibo = tawDestructibo;
+            destruct_change.Value = tawDestructibo;
+            artefakt.taw.magiekunde = tawMagiekunde;
+            magiekunde_change.Value = tawMagiekunde;
+            artefakt.taw.odem = tawOdem;
+            odem_change.Value = tawOdem;
+
+            update(true);
+
+            return true;
+        }
+
+        public void plugInLoadArtefakt()
+        {
+            artefaktLadenToolStripMenuItem_Click(null, null);
+        }
+
+        public void plugInSaveArtefakt()
+        {
+            artefaktSpeichernToolStripMenuItem_Click(null, null);
+        }
+
+        public void plugInNewArtefakt()
+        {
+            neuesArtefaktToolStripMenuItem_Click(null, null);
+        }
+
+        public void plugInOptions(
+            Artefakt.Regelbasis regelbasis,
+            bool autoNeuBerechnen = true,
+            bool okkupation = true,
+            bool nebeneffekte = true,
+            bool achazEinsparung = true
+            )
+        {
+            artefakt.regelbasis = regelbasis;
+            if (regelbasis == Artefakt.Regelbasis.WDA)
+            {
+                wegeDerAlchimieToolStripMenuItem.Checked = true;
+                staebeRingeDschinnenlampenToolStripMenuItem.Checked = false;
+            }
+            else
+            {
+                wegeDerAlchimieToolStripMenuItem.Checked = false;
+                staebeRingeDschinnenlampenToolStripMenuItem.Checked = true;
+            }
+
+        }
+
+
         private bool WDA()
         {
             return artefakt.regelbasis == Artefakt.Regelbasis.WDA;
@@ -936,7 +1064,7 @@ namespace ArtefaktGenerator
             sf_stapel.Checked = artefakt.sf.stapel;
             sf_hyper.Checked = artefakt.sf.hyper;
             sf_aux.Checked = artefakt.sf.auxiliator;
-            vielLadung.Checked = artefakt.sf.vielfacheLadung;
+            sf_vielLadung.Checked = artefakt.sf.vielfacheLadung;
             rep_mag.Checked = (artefakt.sf.rep == SF.SFType.OTHER);
             rep_ach.Checked = (artefakt.sf.rep == SF.SFType.ACH);
             //TAW
@@ -1219,7 +1347,7 @@ namespace ArtefaktGenerator
 
         private void vielLadung_CheckedChanged(object sender, EventArgs e)
         {
-            artefakt.sf.vielfacheLadung = vielLadung.Checked;
+            artefakt.sf.vielfacheLadung = sf_vielLadung.Checked;
             update(false);
         }
 
@@ -1867,5 +1995,10 @@ namespace ArtefaktGenerator
             update(false);
         }
         #endregion
+
+        private void ach_save_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
