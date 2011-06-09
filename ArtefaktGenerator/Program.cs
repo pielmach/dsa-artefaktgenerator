@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace ArtefaktGenerator
+namespace ArtefaktGeneratorApp
 {
     static class Program
     {
@@ -14,7 +14,7 @@ namespace ArtefaktGenerator
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ArtGen());
+            Application.Run(new ArtGenApp());
         }
     }
 }

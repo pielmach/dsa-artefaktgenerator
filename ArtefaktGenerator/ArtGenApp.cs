@@ -25,11 +25,11 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace ArtefaktGenerator
+namespace ArtefaktGeneratorApp
 {
-    public partial class ArtGen : Form
+    public partial class ArtGenApp : Form
     {
-        public ArtGen()
+        public ArtGenApp()
         {
             InitializeComponent();
         }

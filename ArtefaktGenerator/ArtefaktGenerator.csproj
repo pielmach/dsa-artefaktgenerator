@@ -13,8 +13,8 @@
     <ProjectGuid>{625D2A2F-7362-4E49-8CB1-163D54F483A5}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ArtefaktGenerator</RootNamespace>
-    <AssemblyName>ArtefaktGenerator</AssemblyName>
+    <RootNamespace>ArtefaktGeneratorApp</RootNamespace>
+    <AssemblyName>ArtefaktGeneratorApp</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -90,11 +90,7 @@
     <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ArtGen">
-      <HintPath>..\ArtefaktGeneratorDLL\bin\Release\ArtGen.dll</HintPath>
-    </Reference>
-    <Reference Include="NAppUpdate.Framework, Version=0.1.0.0, Culture=neutral, PublicKeyToken=238c0c42c160926f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="NAppUpdate.Framework">
       <HintPath>..\NAppUpdate.Framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -105,14 +101,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArtGen.cs">
+    <Compile Include="ArtGenApp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ArtGen.Designer.cs">
-      <DependentUpon>ArtGen.cs</DependentUpon>
+    <Compile Include="ArtGenApp.Designer.cs">
+      <DependentUpon>ArtGenApp.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ArtGenApp.resx">
+      <DependentUpon>ArtGenApp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -150,6 +149,12 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ArtefaktGeneratorDLL\ArtefaktGeneratorDLL.csproj">
+      <Project>{F156CD3C-E2B2-4353-815A-2D425B452860}</Project>
+      <Name>ArtefaktGeneratorDLL</Name>
+    </ProjectReference>
   </ItemGroup>
   <!--<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />-->
   <Import Project="$(MSBuildExtensionsPath)\Ilmerge.CSharp.targets" />

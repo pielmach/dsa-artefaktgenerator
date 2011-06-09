@@ -1,6 +1,6 @@
-﻿namespace ArtefaktGenerator
+﻿namespace ArtefaktGeneratorApp
 {
-    partial class ArtGen
+    partial class ArtGenApp
     {
         /// <summary>
         /// Required designer variable.
@@ -28,15 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.notify = new System.Windows.Forms.NotifyIcon(this.components);
             this.artGenControl1 = new ArtefaktGenerator.ArtGenControl();
             this.SuspendLayout();
-            // 
-            // notify
-            // 
-            this.notify.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.notify.Visible = true;
             // 
             // artGenControl1
             // 
@@ -51,7 +44,7 @@
             this.artGenControl1.Size = new System.Drawing.Size(996, 559);
             this.artGenControl1.TabIndex = 0;
             // 
-            // ArtGen
+            // ArtGenApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -60,7 +53,7 @@
             this.ClientSize = new System.Drawing.Size(996, 559);
             this.Controls.Add(this.artGenControl1);
             this.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Name = "ArtGen";
+            this.Name = "ArtGenApp";
             this.Text = "Das Schwarze Auge  -  ArtefaktGenerator";
             this.ResumeLayout(false);
 
@@ -69,7 +62,6 @@
         #endregion
 
         private ArtefaktGenerator.ArtGenControl artGenControl1;
-        private System.Windows.Forms.NotifyIcon notify;
 
 
     }

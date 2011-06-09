@@ -129,7 +129,6 @@
     <EmbeddedResource Include="ArtGenControl.resx">
       <DependentUpon>ArtGenControl.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="ArtefaktGenerator_TemporaryKey.pfx" />
     <None Include="ArtGen.snk" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
