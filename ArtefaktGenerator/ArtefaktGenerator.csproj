@@ -55,8 +55,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>
-    </StartupObject>
+    <StartupObject>ArtefaktGeneratorApp.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
@@ -90,9 +89,6 @@
     <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NAppUpdate.Framework">
-      <HintPath>..\NAppUpdate.Framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -154,6 +150,10 @@
     <ProjectReference Include="..\ArtefaktGeneratorDLL\ArtefaktGeneratorDLL.csproj">
       <Project>{F156CD3C-E2B2-4353-815A-2D425B452860}</Project>
       <Name>ArtefaktGeneratorDLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NAppUpdate.Framework\NAppUpdate.Framework.csproj">
+      <Project>{5C07EBDF-D43F-4BE9-B560-D7A443C0EDCE}</Project>
+      <Name>NAppUpdate.Framework</Name>
     </ProjectReference>
   </ItemGroup>
   <!--<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />-->

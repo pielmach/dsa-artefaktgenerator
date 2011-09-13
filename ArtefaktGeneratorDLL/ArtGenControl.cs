@@ -227,7 +227,6 @@ namespace ArtefaktGenerator
 
             catch (Exception e)
             {
-                System.Console.WriteLine(e);
                 return null;
             }
         }
@@ -961,12 +960,14 @@ namespace ArtefaktGenerator
 
                 decimal analys_erschwernis = 0;
                 analys_erschwernis -= Math.Floor(odem_zfpstar / 2);
+                //TODO: What is this?
                 if (analys_erschwernis > artefakt.taw.analys) analys_erschwernis = -artefakt.taw.analys;
 
                 decimal tawMagie = artefakt.taw.magiekunde - 7;
                 if (tawMagie > 0) analys_erschwernis -= Math.Floor(tawMagie/3);
 
                 // TODO: KRISTALL pAsP
+                // TODO: PASP ZAEHLEN ALS MINUS / WHAT ABOUT HOHE ASP?
                 analys_erschwernis += Math.Floor(arcanovi_zfp / 5) + Math.Floor(arcanovi_erschwernis / 2) + pasp + artefakt.analys.bes_komlexitaet + artefakt.analys.mr + artefakt.analys.tarnzauber;
 
                 if (!(eigene_rep_count >= (magic.Count / 2))) analys_erschwernis += 2;

@@ -75,11 +75,11 @@ namespace ArtefaktGenerator
             sammlung.Add(new Material("Bosparanie",4,0,0,1,0,0,0,0));
 
             //WDA
-            sammlung.Add(new Material("Knochenblei",0,0,0,0,-3,0,0,0));
-            sammlung.Add(new Material("Krakensilber",0,0,0,0,-3,0,0,0));
-            sammlung.Add(new Material("Hölleneisen",0,0,1,0,0,0,0,0));
+            sammlung.Add(new Material("Knochenblei",0,0,0,1,-3,0,0,0));
+            sammlung.Add(new Material("Krakensilber",0,0,0,1,-3,0,0,0));
+            sammlung.Add(new Material("Hölleneisen",0,0,1,1,0,0,0,0));
             sammlung.Add(new Material("Arkanoferrit", 0, 0, 0, 1, 2, 0, 0, 0));
-            sammlung.Add(new Material("Gwen Petryl",0,0,-1,0,0,0,0,0));
+            sammlung.Add(new Material("Gwen Petryl",0,0,-1,1,0,0,0,0));
 
             try
             {

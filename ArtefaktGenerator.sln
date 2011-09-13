@@ -6,7 +6,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtefaktGenerator", "ArtefaktGenerator\ArtefaktGenerator.csproj", "{625D2A2F-7362-4E49-8CB1-163D54F483A5}"
 	ProjectSection(ProjectDependencies) = postProject
 		{F156CD3C-E2B2-4353-815A-2D425B452860} = {F156CD3C-E2B2-4353-815A-2D425B452860}
+		{5C07EBDF-D43F-4BE9-B560-D7A443C0EDCE} = {5C07EBDF-D43F-4BE9-B560-D7A443C0EDCE}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NAppUpdate.Framework", "NAppUpdate.Framework\NAppUpdate.Framework.csproj", "{5C07EBDF-D43F-4BE9-B560-D7A443C0EDCE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +42,16 @@ Global
 		{625D2A2F-7362-4E49-8CB1-163D54F483A5}.Release|Mixed Platforms.Build.0 = Release|x86
 		{625D2A2F-7362-4E49-8CB1-163D54F483A5}.Release|x86.ActiveCfg = Release|x86
 		{625D2A2F-7362-4E49-8CB1-163D54F483A5}.Release|x86.Build.0 = Release|x86
+		{5C07EBDF-D43F-4BE9-B560-D7A443C0EDCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C07EBDF-D43F-4BE9-B560-D7A443C0EDCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C07EBDF-D43F-4BE9-B560-D7A443C0EDCE}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{5C07EBDF-D43F-4BE9-B560-D7A443C0EDCE}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5C07EBDF-D43F-4BE9-B560-D7A443C0EDCE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5C07EBDF-D43F-4BE9-B560-D7A443C0EDCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C07EBDF-D43F-4BE9-B560-D7A443C0EDCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C07EBDF-D43F-4BE9-B560-D7A443C0EDCE}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{5C07EBDF-D43F-4BE9-B560-D7A443C0EDCE}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{5C07EBDF-D43F-4BE9-B560-D7A443C0EDCE}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
