@@ -770,10 +770,10 @@
             this.artefakt_super_big.FormattingEnabled = true;
             this.artefakt_super_big.Items.AddRange(new object[] {
             "nein",
-            "Kutsche (+3/+W20)",
-            "kl. Haus/Schiff (+6/+2W20)",
-            "Palast/Burg (+9/+4W20)",
-            "Berg (+12/+8W20)"});
+            "Kutsche",
+            "kl. Haus/Schiff",
+            "Palast/Burg",
+            "Berg"});
             this.artefakt_super_big.Location = new System.Drawing.Point(110, 119);
             this.artefakt_super_big.Name = "artefakt_super_big";
             this.artefakt_super_big.Size = new System.Drawing.Size(83, 22);
@@ -1963,9 +1963,9 @@
             this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage3.Controls.Add(this.groupBox10);
             this.tabPage3.Controls.Add(this.txt_destruct);
-            this.tabPage3.Location = new System.Drawing.Point(4, 23);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(500, 184);
+            this.tabPage3.Size = new System.Drawing.Size(500, 185);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Zerstörung";
             // 
@@ -2406,7 +2406,7 @@
             this.lblInfo.Name = "lblInfo";
             this.lblInfo.Size = new System.Drawing.Size(209, 14);
             this.lblInfo.TabIndex = 24;
-            this.lblInfo.Text = "ArtefaktGenerator 2.1 by DSA-Hamburg.de";
+            this.lblInfo.Text = "ArtefaktGenerator 2.2 by DSA-Hamburg.de";
             // 
             // ArtGenControl
             // 

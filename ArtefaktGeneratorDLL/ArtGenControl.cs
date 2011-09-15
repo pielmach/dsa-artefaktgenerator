@@ -486,6 +486,42 @@ namespace ArtefaktGenerator
             }
             else special_signet.Enabled = true;
 
+            // super_big
+            if (WDA())
+            {
+                switch (artefakt_super_big.SelectedIndex)
+                {
+                    case 0: artefakt.probe.superBig_zuschlag = 0; artefakt.probe.superBig_asp_w = 0; break;
+                    case 1: artefakt.probe.superBig_zuschlag = 5; artefakt.probe.superBig_asp_w = 2; break;
+                    case 2: artefakt.probe.superBig_zuschlag = 10; artefakt.probe.superBig_asp_w = 4; break;
+                    case 3: artefakt.probe.superBig_zuschlag = 15; artefakt.probe.superBig_asp_w = 8; break;
+                    case 4: artefakt.probe.superBig_zuschlag = 20; artefakt.probe.superBig_asp_w = 16; break;
+                }
+            }
+            else
+            {
+                switch (artefakt_super_big.SelectedIndex)
+                {
+                    case 0: artefakt.probe.superBig_zuschlag = 0; artefakt.probe.superBig_asp_w = 0; break;
+                    case 1: artefakt.probe.superBig_zuschlag = 3; artefakt.probe.superBig_asp_w = 1; break;
+                    case 2: artefakt.probe.superBig_zuschlag = 6; artefakt.probe.superBig_asp_w = 2; break;
+                    case 3: artefakt.probe.superBig_zuschlag = 9; artefakt.probe.superBig_asp_w = 4; break;
+                    case 4: artefakt.probe.superBig_zuschlag = 12; artefakt.probe.superBig_asp_w = 8; break;
+                }
+            }
+            if (artefakt_super_big.SelectedIndex != 0)
+            {
+                artefakt_groesse.Enabled = false;
+                label15.Enabled = false;
+            }
+            else
+            {
+                artefakt_groesse.Enabled = true;
+                label15.Enabled = true;
+            }
+
+
+
             // check for WDA basis
             if (!WDA())
             {
@@ -648,7 +684,8 @@ namespace ArtefaktGenerator
                 }
 
                 decimal agribaal_zfp = artefakt.agribaal;
-                decimal arcanovi_erschwernis = artefakt.probe.affine + artefakt.probe.ausloeser + artefakt.probe.material + artefakt.material.arcanovi_mod + artefakt.probe.groesse + artefakt.probe.superBig_zuschlag + artefakt.probe.erzwingen + artefakt.probe.stars;
+                decimal arcanovi_erschwernis = artefakt.probe.affine + artefakt.probe.ausloeser + artefakt.probe.material + artefakt.material.arcanovi_mod + artefakt.probe.superBig_zuschlag + artefakt.probe.erzwingen + artefakt.probe.stars;
+                if (artefakt.probe.superBig_zuschlag == 0) arcanovi_erschwernis += artefakt.probe.groesse;
                 //spezielle Eigenschaften
                 if (artefakt.spezial_apport) arcanovi_erschwernis += 4;
                 if (artefakt.spezial_gespuer) arcanovi_erschwernis += 3;
@@ -953,7 +990,19 @@ namespace ArtefaktGenerator
                     txt_create.AppendText("Artefakt nicht möglich. ZfW Arcanovi zu gering.");
 
                 // Analys
-                decimal odem_erschwernis = arcanovi_erschwernis;
+                decimal odem_erschwernis = 0;
+                if (WDA())
+                {
+                    odem_erschwernis -= pasp;
+                    odem_erschwernis += Math.Floor(arcanovi_erschwernis / 2) + artefakt.analys.mr + artefakt.analys.tarnzauber;
+                    if (magic_asp > 30)
+                        odem_erschwernis -= Math.Ceiling((magic_asp - 30) / 10);
+                    else
+                        odem_erschwernis += Math.Ceiling((magic_asp - 30) / 5);
+                }
+                else
+                    odem_erschwernis = arcanovi_erschwernis;
+
                 decimal odem_zfpstar = artefakt.taw.odem - odem_erschwernis;
                 if (odem_zfpstar < 0) odem_zfpstar = 0;
                 if (odem_zfpstar > artefakt.taw.odem) odem_zfpstar = artefakt.taw.odem;
@@ -961,13 +1010,13 @@ namespace ArtefaktGenerator
                 decimal analys_erschwernis = 0;
                 analys_erschwernis -= Math.Floor(odem_zfpstar / 2);
                 //TODO: What is this?
-                if (analys_erschwernis > artefakt.taw.analys) analys_erschwernis = -artefakt.taw.analys;
+                //if (analys_erschwernis > artefakt.taw.analys) analys_erschwernis = -artefakt.taw.analys;
 
                 decimal tawMagie = artefakt.taw.magiekunde - 7;
                 if (tawMagie > 0) analys_erschwernis -= Math.Floor(tawMagie/3);
 
                 // TODO: KRISTALL pAsP
-                // TODO: PASP ZAEHLEN ALS MINUS / WHAT ABOUT HOHE ASP?
+                // TODO: WHAT ABOUT HOHE ASP?
                 analys_erschwernis += Math.Floor(arcanovi_zfp / 5) + Math.Floor(arcanovi_erschwernis / 2) + pasp + artefakt.analys.bes_komlexitaet + artefakt.analys.mr + artefakt.analys.tarnzauber;
 
                 if (!(eigene_rep_count >= (magic.Count / 2))) analys_erschwernis += 2;
@@ -1141,7 +1190,8 @@ namespace ArtefaktGenerator
             agribaal.Value = artefakt.agribaal;
             special_ort_occ.Value = artefakt.special_ort_occ;
             special_ort_neben.Value = artefakt.special_ort_neben;
-            artefakt_super_big.SelectedIndex = (int)(artefakt.probe.superBig_zuschlag / 3);
+            //artefakt_super_big.SelectedIndex = (int)(artefakt.probe.superBig_zuschlag / 3);
+            artefakt_super_big.SelectedIndex = 0; 
             //Probenzuschlaege
             probe_ausloes.Value = artefakt.probe.ausloeser;
             probe_affine.Value = artefakt.probe.affine;
@@ -1540,14 +1590,6 @@ namespace ArtefaktGenerator
 
         private void artefakt_super_big_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (artefakt_super_big.SelectedIndex)
-            {
-                case 0: artefakt.probe.superBig_zuschlag = 0; artefakt.probe.superBig_asp_w = 0; break;
-                case 1: artefakt.probe.superBig_zuschlag = 3; artefakt.probe.superBig_asp_w = 1; break;
-                case 2: artefakt.probe.superBig_zuschlag = 6; artefakt.probe.superBig_asp_w = 2; break;
-                case 3: artefakt.probe.superBig_zuschlag = 9; artefakt.probe.superBig_asp_w = 4; break;
-                case 4: artefakt.probe.superBig_zuschlag = 12; artefakt.probe.superBig_asp_w = 8; break;
-            }
             update(false);
         }
 
