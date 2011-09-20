@@ -6,6 +6,7 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 
+using System.Text.RegularExpressions;
 
 using NAppUpdate.Framework;
 using NAppUpdate.Framework.Sources;
@@ -57,6 +58,93 @@ namespace ArtefaktGenerator
                 CheckForUpdates();
         }
 
+
+        /*
+         * plugInHeroFromXml
+         * 
+         * Use this function to import the values of an Hero from the popular "Helden-Software".
+         * 
+         * @param xml: The XML-String as exported from the Helden-Software
+         * 
+         * @return The return value is false, if an illegal combination of sf's is chosen
+         * (e.g. sfHypervehemenz without sfStapeleffekt) - otherwise it is true. 
+         * The taw's are NOT range checked, however they must be positive.
+         * Faulty TaW's or non-existing TaW's are considered to be 0
+         */
+        public bool plugInHeroFromXml(string xml)
+        {
+            bool kraftkontrolle = Regex.IsMatch(xml, "sonderfertigkeit name=\"Kraftkontrolle\"");
+            bool vielLadung = Regex.IsMatch(xml, "sonderfertigkeit name=\"Vielfache Ladungen\"");
+            bool stapeleffekt = Regex.IsMatch(xml, "sonderfertigkeit name=\"Stapeleffekt\"");
+            bool hyper = Regex.IsMatch(xml, "sonderfertigkeit name=\"Hypervehemenz\"");
+            bool matrixgeber = Regex.IsMatch(xml, "sonderfertigkeit name=\"Matrixgeber\"");
+            bool semiI = Regex.IsMatch(xml, "sonderfertigkeit name=\"Semipermanenz I\"");
+            bool semiII = Regex.IsMatch(xml, "sonderfertigkeit name=\"Semipermanenz II\"");
+            bool aux = Regex.IsMatch(xml, "sonderfertigkeit name=\"Auxiliator\"");
+
+            bool isMag = Regex.IsMatch(xml, "sonderfertigkeit name=\"Repräsentation: Magier\"");
+            bool isAchaz = Regex.IsMatch(xml, "sonderfertigkeit name=\"Repräsentation: Kristallomant\"");
+
+            uint magiekunde = 0;
+            uint analys = 0;
+            uint arcanovi = 0;
+            uint arcanovi_matrix = 0;
+            uint arcanovi_semi = 0;
+            uint odem = 0;
+            uint destructibo = 0;
+
+            string[] te = Regex.Split(xml, "talent.*name=\"Magiekunde\" probe=\".*\" value=\"(.*)\".*");
+            try
+            {
+                magiekunde = Convert.ToUInt32(te[1]);
+            }
+            catch (System.Exception ex) { }
+
+            te = Regex.Split(xml, "zauber.*name=\"Analys Arkanstruktur\" probe=\".*\" value=\"(.*)\".*variante");
+            try
+            {
+                analys = Convert.ToUInt32(te[1]);
+            }
+            catch (System.Exception ex) { }
+
+            te = Regex.Split(xml, "zauber.*name=\"Arcanovi Artefakt\" probe=\".*\" value=\"(.*)\".*variante=\"\"");
+            try
+            {
+                arcanovi = Convert.ToUInt32(te[1]);
+            }
+            catch (System.Exception ex) { }
+
+            te = Regex.Split(xml, "zauber.*name=\"Arcanovi Artefakt\" probe=\".*\" value=\"(.*)\".*variante=\"Matrixgeber\"");
+            try
+            {
+                arcanovi_matrix = Convert.ToUInt32(te[1]);
+            }
+            catch (System.Exception ex) { }
+
+            te = Regex.Split(xml, "zauber.*name=\"Arcanovi Artefakt\" probe=\".*\" value=\"(.*)\".*variante=\"Semipermanenz\"");
+            try
+            {
+                arcanovi_semi = Convert.ToUInt32(te[1]);
+            }
+            catch (System.Exception ex) { }
+
+            te = Regex.Split(xml, "zauber.*name=\"Odem Arcanum\" probe=\".*\" value=\"(.*)\".*variante");
+            try
+            {
+                odem = Convert.ToUInt32(te[1]);
+            }
+            catch (System.Exception ex) { }
+
+            te = Regex.Split(xml, "zauber.*name=\"Destructibo Arcanitas\" probe=\".*\" value=\"(.*)\".*variante");
+            try
+            {
+                destructibo = Convert.ToUInt32(te[1]);
+            }
+            catch (System.Exception ex) { }
+
+            return plugInHero((isMag ? SF.SFType.OTHER : SF.SFType.ACH), kraftkontrolle, vielLadung, stapeleffekt, hyper, matrixgeber, semiI, semiII, false, aux, arcanovi, arcanovi_matrix, arcanovi_semi, odem, analys, destructibo, magiekunde);
+        }
+
         /*
          * plugInHero
          * 
@@ -98,50 +186,25 @@ namespace ArtefaktGenerator
             
             // set values
             artefakt.sf.rep = representation;
-            if (representation == SF.SFType.OTHER)
-            {
-                rep_mag.Checked = true;
-                rep_ach.Checked = false;
-            }
-            else
-            {
-                rep_mag.Checked = false;
-                rep_ach.Checked = true;
-            }
             artefakt.sf.kraftkontrolle = sfKraftkontrolle;
-            sf_kraft.Checked = sfKraftkontrolle;
             artefakt.sf.vielfacheLadung = sfVielfacheLadung;
-            sf_vielLadung.Checked = sfVielfacheLadung;
             artefakt.sf.stapel = sfStapeleffekt;
-            sf_stapel.Checked = sfStapeleffekt;
             artefakt.sf.hyper = sfHypervehemenz;
-            sf_hyper.Checked = sfHypervehemenz;
             artefakt.sf.matrix = sfMatrixgeber;
-            sf_matrix.Checked = sfMatrixgeber;
             artefakt.sf.semi1 = sfSemipermI;
-            sf_semiI.Checked = sfSemipermI;
             artefakt.sf.semi2 = sfSemipermII;
-            sf_semiII.Checked = sfSemipermII;
             artefakt.sf.ringkunde = sfRingkunde;
-            sf_ringkunde.Checked = sfRingkunde;
             artefakt.sf.auxiliator = sfAuxiliator;
-            sf_aux.Checked = sfAuxiliator;
 
             artefakt.taw.arcanovi = tawArcanovi;
-            arcanovi_change.Value = tawArcanovi;
             artefakt.taw.arcanovi_matrix = tawArcanoviMatrix;
-            arcanovi_matrix_change.Value = tawArcanoviMatrix;
             artefakt.taw.arcanovi_semi = tawArcanoviSemi;
-            arcanovi_semi_change.Value = tawArcanoviSemi;
             artefakt.taw.analys = tawAnalys;
-            analys_change.Value = tawAnalys;
             artefakt.taw.destructibo = tawDestructibo;
-            destruct_change.Value = tawDestructibo;
             artefakt.taw.magiekunde = tawMagiekunde;
-            magiekunde_change.Value = tawMagiekunde;
             artefakt.taw.odem = tawOdem;
-            odem_change.Value = tawOdem;
 
+            reload();
             update(true);
 
             return true;
@@ -2042,6 +2105,33 @@ namespace ArtefaktGenerator
         private void ach_save_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void importHeldensoftwareToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.AddExtension = true;
+            openFileDialog.CheckFileExists = true;
+            openFileDialog.CheckPathExists = true;
+            openFileDialog.DefaultExt = ".xml";
+            openFileDialog.Filter = "Helden-Software XML-Export (*.xml)|*.xml";
+            openFileDialog.InitialDirectory = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            openFileDialog.Multiselect = false;
+            openFileDialog.ReadOnlyChecked = false;
+            openFileDialog.ShowReadOnly = false;
+            openFileDialog.Title = "Held aus Heldensoftware importieren";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                System.IO.StreamReader reader = new System.IO.StreamReader(openFileDialog.OpenFile());
+
+                string xml = reader.ReadToEnd();
+
+                if (!plugInHeroFromXml(xml))
+                {
+                    MessageBox.Show("Mit dem Held stimmt etwas nicht...", "Held völlig kaputt!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                }
+            }
         }
     }
 }
