@@ -30,6 +30,8 @@ namespace ArtefaktGenerator
     [XmlRootAttribute(ElementName = "Artefakt", IsNullable = false)]
     public class Artefakt
     {
+        public string heldName = "";
+
         public SF sf = new SF();
 
         public TaW taw = new TaW();

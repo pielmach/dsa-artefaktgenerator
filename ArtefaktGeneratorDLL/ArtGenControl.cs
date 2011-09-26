@@ -47,12 +47,14 @@ namespace ArtefaktGenerator
 
             UpdateManager updManager = UpdateManager.Instance;
             updManager.UpdateFeedReader = new NAppUpdate.Framework.FeedReaders.NauXmlFeedReader();
-            updManager.TempFolder = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ArtefaktGenerator\\Updates");
+            updManager.TempFolder = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ArtefaktGenerator");
+            MessageBox.Show(updManager.TempFolder);
             if (!plugInMode)
                 updManager.UpdateSource = new NAppUpdate.Framework.Sources.SimpleWebSource("http://www.dsa-hamburg.de/artgen/update/update.xml");
             else
                 updManager.UpdateSource = new NAppUpdate.Framework.Sources.SimpleWebSource("http://www.dsa-hamburg.de/artgen/update/updatedll.xml");
 
+            reload();
             update(false);
             if (!plugInMode)
                 CheckForUpdates();
@@ -92,6 +94,8 @@ namespace ArtefaktGenerator
             uint arcanovi_semi = 0;
             uint odem = 0;
             uint destructibo = 0;
+
+            string name = "";
 
             string[] te = Regex.Split(xml, "talent.*name=\"Magiekunde\" probe=\".*\" value=\"(.*)\".*");
             try
@@ -142,7 +146,16 @@ namespace ArtefaktGenerator
             }
             catch (System.Exception ex) { }
 
-            return plugInHero((isMag ? SF.SFType.OTHER : SF.SFType.ACH), kraftkontrolle, vielLadung, stapeleffekt, hyper, matrixgeber, semiI, semiII, false, aux, arcanovi, arcanovi_matrix, arcanovi_semi, odem, analys, destructibo, magiekunde);
+            //<held key="1316061294421" name="Kein Name">
+            te = Regex.Split(xml, "held key=\".*\" name=\"(.*)\".*");
+            try
+            {
+                name = te[1];
+            }
+            catch (System.Exception ex) { }
+
+
+            return plugInHero(name,(isMag ? SF.SFType.OTHER : SF.SFType.ACH), kraftkontrolle, vielLadung, stapeleffekt, hyper, matrixgeber, semiI, semiII, false, aux, arcanovi, arcanovi_matrix, arcanovi_semi, odem, analys, destructibo, magiekunde);
         }
 
         /*
@@ -157,7 +170,8 @@ namespace ArtefaktGenerator
          * (e.g. sfHypervehemenz without sfStapeleffekt) - otherwise it is true. 
          * The taw's are NOT range checked, however they must be positive.
          */
-        public bool plugInHero (
+        public bool plugInHero(
+            string name,
             SF.SFType representation, 
             bool sfKraftkontrolle, 
             bool sfVielfacheLadung, 
@@ -183,7 +197,7 @@ namespace ArtefaktGenerator
                 || (sfAuxiliator && !sfMatrixgeber)
                 )
                 return false;
-            
+
             // set values
             artefakt.sf.rep = representation;
             artefakt.sf.kraftkontrolle = sfKraftkontrolle;
@@ -204,10 +218,34 @@ namespace ArtefaktGenerator
             artefakt.taw.magiekunde = tawMagiekunde;
             artefakt.taw.odem = tawOdem;
 
+            artefakt.heldName = name;
+
             reload();
             update(true);
 
             return true;
+        }
+        public bool plugInHero (
+            SF.SFType representation, 
+            bool sfKraftkontrolle, 
+            bool sfVielfacheLadung, 
+            bool sfStapeleffekt, 
+            bool sfHypervehemenz, 
+            bool sfMatrixgeber,
+            bool sfSemipermI,
+            bool sfSemipermII,
+            bool sfRingkunde,
+            bool sfAuxiliator,
+            uint tawArcanovi,
+            uint tawArcanoviMatrix,
+            uint tawArcanoviSemi,
+            uint tawOdem,
+            uint tawAnalys,
+            uint tawDestructibo,
+            uint tawMagiekunde
+            )
+        {
+            return plugInHero("", representation, sfKraftkontrolle, sfVielfacheLadung, sfStapeleffekt, sfHypervehemenz, sfMatrixgeber, sfSemipermI, sfSemipermII, sfRingkunde, sfAuxiliator, tawArcanovi, tawArcanoviMatrix, tawArcanoviSemi, tawOdem, tawAnalys, tawDestructibo, tawMagiekunde);
         }
 
         public void plugInLoadArtefakt()
@@ -1168,6 +1206,11 @@ namespace ArtefaktGenerator
 
         private void reload()
         {
+            // Name
+            if (artefakt.heldName != "")
+                hero_name.Text = "Held: " + artefakt.heldName;
+            else
+                hero_name.Text = "";
             //SF
             sf_kraft.Checked = artefakt.sf.kraftkontrolle;
             sf_matrix.Checked = artefakt.sf.matrix;
@@ -2107,7 +2150,7 @@ namespace ArtefaktGenerator
 
         }
 
-        private void importHeldensoftwareToolStripMenuItem_Click(object sender, EventArgs e)
+        private void importHeldensoftwareToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.AddExtension = true;

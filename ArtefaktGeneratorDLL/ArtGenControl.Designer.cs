@@ -212,6 +212,7 @@
             this.updatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblInfo = new System.Windows.Forms.Label();
             this.importHeldensoftwareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hero_name = new System.Windows.Forms.Label();
             this.groupBox8.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.starkonst)).BeginInit();
@@ -2100,6 +2101,7 @@
             // programmToolStripMenuItem1
             // 
             this.programmToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.importHeldensoftwareToolStripMenuItem,
             this.updateSuchenToolStripMenuItem,
             this.updateInstallierenToolStripMenuItem,
             this.beendenToolStripMenuItem1});
@@ -2110,7 +2112,7 @@
             // updateSuchenToolStripMenuItem
             // 
             this.updateSuchenToolStripMenuItem.Name = "updateSuchenToolStripMenuItem";
-            this.updateSuchenToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.updateSuchenToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.updateSuchenToolStripMenuItem.Text = "Update suchen";
             this.updateSuchenToolStripMenuItem.Click += new System.EventHandler(this.updateSuchenToolStripMenuItem_Click);
             // 
@@ -2118,14 +2120,14 @@
             // 
             this.updateInstallierenToolStripMenuItem.Enabled = false;
             this.updateInstallierenToolStripMenuItem.Name = "updateInstallierenToolStripMenuItem";
-            this.updateInstallierenToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.updateInstallierenToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.updateInstallierenToolStripMenuItem.Text = "Update installieren";
             this.updateInstallierenToolStripMenuItem.Click += new System.EventHandler(this.updateInstallierenToolStripMenuItem_Click);
             // 
             // beendenToolStripMenuItem1
             // 
             this.beendenToolStripMenuItem1.Name = "beendenToolStripMenuItem1";
-            this.beendenToolStripMenuItem1.Size = new System.Drawing.Size(172, 22);
+            this.beendenToolStripMenuItem1.Size = new System.Drawing.Size(196, 22);
             this.beendenToolStripMenuItem1.Text = "Beenden";
             this.beendenToolStripMenuItem1.Click += new System.EventHandler(this.beendenToolStripMenuItem1_Click);
             // 
@@ -2134,8 +2136,7 @@
             this.programmToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.neuesArtefaktToolStripMenuItem,
             this.artefaktLadenToolStripMenuItem,
-            this.artefaktSpeichernToolStripMenuItem,
-            this.importHeldensoftwareToolStripMenuItem});
+            this.artefaktSpeichernToolStripMenuItem});
             this.programmToolStripMenuItem.Name = "programmToolStripMenuItem";
             this.programmToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.programmToolStripMenuItem.Text = "Artefakt";
@@ -2143,21 +2144,21 @@
             // neuesArtefaktToolStripMenuItem
             // 
             this.neuesArtefaktToolStripMenuItem.Name = "neuesArtefaktToolStripMenuItem";
-            this.neuesArtefaktToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.neuesArtefaktToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.neuesArtefaktToolStripMenuItem.Text = "Neu";
             this.neuesArtefaktToolStripMenuItem.Click += new System.EventHandler(this.neuesArtefaktToolStripMenuItem_Click);
             // 
             // artefaktLadenToolStripMenuItem
             // 
             this.artefaktLadenToolStripMenuItem.Name = "artefaktLadenToolStripMenuItem";
-            this.artefaktLadenToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.artefaktLadenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.artefaktLadenToolStripMenuItem.Text = "Laden";
             this.artefaktLadenToolStripMenuItem.Click += new System.EventHandler(this.artefaktLadenToolStripMenuItem_Click);
             // 
             // artefaktSpeichernToolStripMenuItem
             // 
             this.artefaktSpeichernToolStripMenuItem.Name = "artefaktSpeichernToolStripMenuItem";
-            this.artefaktSpeichernToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.artefaktSpeichernToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.artefaktSpeichernToolStripMenuItem.Text = "Speichern";
             this.artefaktSpeichernToolStripMenuItem.Click += new System.EventHandler(this.artefaktSpeichernToolStripMenuItem_Click);
             // 
@@ -2415,7 +2416,17 @@
             this.importHeldensoftwareToolStripMenuItem.Name = "importHeldensoftwareToolStripMenuItem";
             this.importHeldensoftwareToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.importHeldensoftwareToolStripMenuItem.Text = "Import Heldensoftware";
-            this.importHeldensoftwareToolStripMenuItem.Click += new System.EventHandler(this.importHeldensoftwareToolStripMenuItem_Click);
+            this.importHeldensoftwareToolStripMenuItem.Click += new System.EventHandler(this.importHeldensoftwareToolStripMenuItem_Click_1);
+            // 
+            // hero_name
+            // 
+            this.hero_name.AutoSize = true;
+            this.hero_name.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hero_name.Location = new System.Drawing.Point(154, 43);
+            this.hero_name.Name = "hero_name";
+            this.hero_name.Size = new System.Drawing.Size(36, 14);
+            this.hero_name.TabIndex = 25;
+            this.hero_name.Text = "Held: ";
             // 
             // ArtGenControl
             // 
@@ -2423,6 +2434,7 @@
             this.AutoScroll = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.hero_name);
             this.Controls.Add(this.lblInfo);
             this.Controls.Add(this.menu);
             this.Controls.Add(this.groupBox8);
@@ -2697,5 +2709,6 @@
         private System.Windows.Forms.ToolStripMenuItem updateInstallierenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem beendenToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem importHeldensoftwareToolStripMenuItem;
+        private System.Windows.Forms.Label hero_name;
     }
 }
