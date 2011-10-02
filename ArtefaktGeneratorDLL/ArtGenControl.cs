@@ -20,7 +20,7 @@ namespace ArtefaktGenerator
         private Wuerfel dice = new Wuerfel();
         private MaterialSammlung mat;
         private Occupation occ = new Occupation();
-
+		
         public ArtGenControl() : this (false)
         {
         }
@@ -44,24 +44,33 @@ namespace ArtefaktGenerator
             material.SelectedItem = ("kein");
 
             zauber_rep.SelectedIndex = 0;
-
+			
             UpdateManager updManager = UpdateManager.Instance;
             updManager.UpdateFeedReader = new NAppUpdate.Framework.FeedReaders.NauXmlFeedReader();
             updManager.TempFolder = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ArtefaktGenerator");
-            MessageBox.Show(updManager.TempFolder);
             if (!plugInMode)
                 updManager.UpdateSource = new NAppUpdate.Framework.Sources.SimpleWebSource("http://www.dsa-hamburg.de/artgen/update/update.xml");
             else
                 updManager.UpdateSource = new NAppUpdate.Framework.Sources.SimpleWebSource("http://www.dsa-hamburg.de/artgen/update/updatedll.xml");
 
+			if (isLinux())
+				updatesToolStripMenuItem.Visible = false;
+			
             reload();
             update(false);
-            if (!plugInMode)
+            if (!plugInMode && !isLinux())
                 CheckForUpdates();
         }
 
-
-        /*
+		
+		
+		public bool isLinux()
+		{
+			int p = (int) Environment.OSVersion.Platform;
+		    return (p == 4) || (p == 6) || (p == 128);
+		}
+		
+		/*
          * plugInHeroFromXml
          * 
          * Use this function to import the values of an Hero from the popular "Helden-Software".

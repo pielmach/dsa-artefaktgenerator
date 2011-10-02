@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using NAppUpdate.Framework.Common;
 
 namespace NAppUpdate.Framework.Conditions
 {
-    public interface IUpdateCondition
+    public interface IUpdateCondition : INauFieldsHolder
     {
-        IDictionary<string, string> Attributes { get; }
-        bool IsMet(NAppUpdate.Framework.Tasks.IUpdateTask task);
+        bool IsMet(Tasks.IUpdateTask task);
     }
 }
