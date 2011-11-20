@@ -33,13 +33,10 @@ namespace ArtefaktGeneratorApp
 
         public ArtGenApp()
         {
-            InitializeComponent();
+            LadeHelden loader = new LadeHelden();
+            helden = loader.heldenList;
 
-            if (!artGenControl1.isLinux())
-            {
-                LadeHelden loader = new LadeHelden();
-                helden = loader.heldenList;
-            }
+            InitializeComponent();
         }
 
         private void ArtGenApp_Shown(object sender, EventArgs e)
