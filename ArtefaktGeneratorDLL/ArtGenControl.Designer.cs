@@ -177,6 +177,7 @@
             this.txt_destruct = new System.Windows.Forms.TextBox();
             this.menu = new System.Windows.Forms.MenuStrip();
             this.programmToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.importHeldensoftwareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateSuchenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateInstallierenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.beendenToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -211,7 +212,6 @@
             this.hilfeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblInfo = new System.Windows.Forms.Label();
-            this.importHeldensoftwareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hero_name = new System.Windows.Forms.Label();
             this.groupBox8.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -451,7 +451,7 @@
             this.groupBox7.Controls.Add(this.special_eatmat_var);
             this.groupBox7.Location = new System.Drawing.Point(518, 157);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(269, 185);
+            this.groupBox7.Size = new System.Drawing.Size(269, 187);
             this.groupBox7.TabIndex = 20;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Spezielle Eigenschaften";
@@ -642,7 +642,7 @@
             // special_eatmaterial
             // 
             this.special_eatmaterial.AutoSize = true;
-            this.special_eatmaterial.Location = new System.Drawing.Point(6, 166);
+            this.special_eatmaterial.Location = new System.Drawing.Point(6, 167);
             this.special_eatmaterial.Name = "special_eatmaterial";
             this.special_eatmaterial.Size = new System.Drawing.Size(120, 18);
             this.special_eatmaterial.TabIndex = 10;
@@ -1603,20 +1603,20 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(319, 66);
+            this.label11.Location = new System.Drawing.Point(319, 72);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(17, 14);
+            this.label11.Size = new System.Drawing.Size(18, 14);
             this.label11.TabIndex = 20;
-            this.label11.Text = "->";
+            this.label11.Text = "→";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(319, 41);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(17, 14);
+            this.label10.Size = new System.Drawing.Size(18, 14);
             this.label10.TabIndex = 19;
-            this.label10.Text = "->";
+            this.label10.Text = "→";
             // 
             // loads_lbl
             // 
@@ -2109,6 +2109,13 @@
             this.programmToolStripMenuItem1.Size = new System.Drawing.Size(76, 20);
             this.programmToolStripMenuItem1.Text = "Programm";
             // 
+            // importHeldensoftwareToolStripMenuItem
+            // 
+            this.importHeldensoftwareToolStripMenuItem.Name = "importHeldensoftwareToolStripMenuItem";
+            this.importHeldensoftwareToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.importHeldensoftwareToolStripMenuItem.Text = "Import Heldensoftware";
+            this.importHeldensoftwareToolStripMenuItem.Click += new System.EventHandler(this.importHeldensoftwareToolStripMenuItem_Click_1);
+            // 
             // updateSuchenToolStripMenuItem
             // 
             this.updateSuchenToolStripMenuItem.Name = "updateSuchenToolStripMenuItem";
@@ -2144,21 +2151,21 @@
             // neuesArtefaktToolStripMenuItem
             // 
             this.neuesArtefaktToolStripMenuItem.Name = "neuesArtefaktToolStripMenuItem";
-            this.neuesArtefaktToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.neuesArtefaktToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.neuesArtefaktToolStripMenuItem.Text = "Neu";
             this.neuesArtefaktToolStripMenuItem.Click += new System.EventHandler(this.neuesArtefaktToolStripMenuItem_Click);
             // 
             // artefaktLadenToolStripMenuItem
             // 
             this.artefaktLadenToolStripMenuItem.Name = "artefaktLadenToolStripMenuItem";
-            this.artefaktLadenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.artefaktLadenToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.artefaktLadenToolStripMenuItem.Text = "Laden";
             this.artefaktLadenToolStripMenuItem.Click += new System.EventHandler(this.artefaktLadenToolStripMenuItem_Click);
             // 
             // artefaktSpeichernToolStripMenuItem
             // 
             this.artefaktSpeichernToolStripMenuItem.Name = "artefaktSpeichernToolStripMenuItem";
-            this.artefaktSpeichernToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.artefaktSpeichernToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.artefaktSpeichernToolStripMenuItem.Text = "Speichern";
             this.artefaktSpeichernToolStripMenuItem.Click += new System.EventHandler(this.artefaktSpeichernToolStripMenuItem_Click);
             // 
@@ -2410,13 +2417,6 @@
             this.lblInfo.Size = new System.Drawing.Size(209, 14);
             this.lblInfo.TabIndex = 24;
             this.lblInfo.Text = "ArtefaktGenerator 2.2 by DSA-Hamburg.de";
-            // 
-            // importHeldensoftwareToolStripMenuItem
-            // 
-            this.importHeldensoftwareToolStripMenuItem.Name = "importHeldensoftwareToolStripMenuItem";
-            this.importHeldensoftwareToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.importHeldensoftwareToolStripMenuItem.Text = "Import Heldensoftware";
-            this.importHeldensoftwareToolStripMenuItem.Click += new System.EventHandler(this.importHeldensoftwareToolStripMenuItem_Click_1);
             // 
             // hero_name
             // 
