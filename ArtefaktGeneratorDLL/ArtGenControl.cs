@@ -93,8 +93,14 @@ namespace ArtefaktGenerator
             bool semiII = Regex.IsMatch(xml, "sonderfertigkeit name=\"Semipermanenz II\"");
             bool aux = Regex.IsMatch(xml, "sonderfertigkeit name=\"Auxiliator\"");
 
-            bool isMag = Regex.IsMatch(xml, "sonderfertigkeit name=\"Repräsentation: Magier\"");
-            bool isAchaz = Regex.IsMatch(xml, "sonderfertigkeit name=\"Repräsentation: Kristallomant\"");
+            bool isMag = Regex.IsMatch(xml, "sonderfertigkeit (kommentar=\"[^\"]*\" )?name=\"Repräsentation: Magier\"");
+            bool isAchaz = Regex.IsMatch(xml, "sonderfertigkeit (kommentar=\"[^\"]*\" )?name=\"Repräsentation: Kristallomant\"");
+
+            // Default: Magier
+            if (!isMag && !isAchaz)
+            {
+                isMag = true;
+            }
 
             uint magiekunde = 0;
             uint analys = 0;

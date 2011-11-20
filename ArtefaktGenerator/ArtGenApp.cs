@@ -29,10 +29,32 @@ namespace ArtefaktGeneratorApp
 {
     public partial class ArtGenApp : Form
     {
+        private List<Held> helden;
+
         public ArtGenApp()
         {
             InitializeComponent();
+
+            if (!artGenControl1.isLinux())
+            {
+                LadeHelden loader = new LadeHelden();
+                helden = loader.heldenList;
+            }
         }
 
+        private void ArtGenApp_Shown(object sender, EventArgs e)
+        {
+            if (helden != null)
+            {
+                HeldAuswahl auswahl = new HeldAuswahl(this, helden);
+                auswahl.StartPosition = FormStartPosition.CenterParent;
+                auswahl.ShowDialog(this);
+            }
+        }
+
+        public void loadHero(string xml)
+        {
+            artGenControl1.plugInHeroFromXml(xml);
+        }
     }
 }

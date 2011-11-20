@@ -55,6 +55,7 @@
             this.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "ArtGenApp";
             this.Text = "Das Schwarze Auge  -  ArtefaktGenerator";
+            this.Shown += new System.EventHandler(this.ArtGenApp_Shown);
             this.ResumeLayout(false);
 
         }
