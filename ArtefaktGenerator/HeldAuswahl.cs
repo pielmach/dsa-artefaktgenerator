@@ -34,12 +34,12 @@ namespace ArtefaktGeneratorApp
             Held held = (Held) heroList.SelectedItem;
             parent.loadHero(held.xml);
 
-            Dispose();
+            this.Close();
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            Dispose();
+            this.Close();
         }
     }
 }

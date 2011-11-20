@@ -89,6 +89,9 @@
     <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\Ionic.Zip.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -103,10 +106,21 @@
     <Compile Include="ArtGenApp.Designer.cs">
       <DependentUpon>ArtGenApp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Held.cs" />
+    <Compile Include="HeldAuswahl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HeldAuswahl.Designer.cs">
+      <DependentUpon>HeldAuswahl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LadeHelden.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ArtGenApp.resx">
       <DependentUpon>ArtGenApp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HeldAuswahl.resx">
+      <DependentUpon>HeldAuswahl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
