@@ -59,7 +59,7 @@ namespace ArtefaktGenerator
             openFileDialog.CheckFileExists = true;
             openFileDialog.CheckPathExists = true;
             openFileDialog.DefaultExt = ".xml";
-            openFileDialog.Filter = "Helden-Software XML-Export (*.xml)|*.xml";
+            openFileDialog.Filter = "Helden-Software XML-Export|*.xml|Helden-Software Archiv|*.zip.hld";
             openFileDialog.InitialDirectory = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
             openFileDialog.Multiselect = false;
             openFileDialog.ReadOnlyChecked = false;
