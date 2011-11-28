@@ -2167,29 +2167,14 @@ namespace ArtefaktGenerator
 
         private void importHeldensoftwareToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.AddExtension = true;
-            openFileDialog.CheckFileExists = true;
-            openFileDialog.CheckPathExists = true;
-            openFileDialog.DefaultExt = ".xml";
-            openFileDialog.Filter = "Helden-Software XML-Export (*.xml)|*.xml";
-            openFileDialog.InitialDirectory = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
-            openFileDialog.Multiselect = false;
-            openFileDialog.ReadOnlyChecked = false;
-            openFileDialog.ShowReadOnly = false;
-            openFileDialog.Title = "Held aus Heldensoftware importieren";
+            showSelectHeroDialog(Form.ActiveForm);
+        }
 
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                System.IO.StreamReader reader = new System.IO.StreamReader(openFileDialog.OpenFile());
-
-                string xml = reader.ReadToEnd();
-
-                if (!plugInHeroFromXml(xml))
-                {
-                    MessageBox.Show("Mit dem Held stimmt etwas nicht...", "Held völlig kaputt!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
-                }
-            }
+        public void showSelectHeroDialog(Form form)
+        {
+            HeldAuswahl auswahl = new HeldAuswahl(this, LadeHelden.ladeHelden());
+            auswahl.StartPosition = FormStartPosition.CenterParent;
+            auswahl.ShowDialog(form);
         }
     }
 }

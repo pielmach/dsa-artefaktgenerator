@@ -24,34 +24,20 @@ using System.Drawing;
 //using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using ArtefaktGenerator;
 
 namespace ArtefaktGeneratorApp
 {
     public partial class ArtGenApp : Form
     {
-        private List<Held> helden;
-
         public ArtGenApp()
         {
-            LadeHelden loader = new LadeHelden();
-            helden = loader.heldenList;
-
             InitializeComponent();
         }
 
         private void ArtGenApp_Shown(object sender, EventArgs e)
         {
-            if (helden != null)
-            {
-                HeldAuswahl auswahl = new HeldAuswahl(this, helden);
-                auswahl.StartPosition = FormStartPosition.CenterParent;
-                auswahl.ShowDialog(this);
-            }
-        }
-
-        public void loadHero(string xml)
-        {
-            artGenControl1.plugInHeroFromXml(xml);
+            artGenControl1.showSelectHeroDialog(this);
         }
     }
 }

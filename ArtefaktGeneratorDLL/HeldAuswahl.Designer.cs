@@ -1,4 +1,4 @@
-﻿namespace ArtefaktGeneratorApp
+﻿namespace ArtefaktGenerator
 {
     partial class HeldAuswahl
     {
@@ -31,6 +31,7 @@
             this.cancelButton = new System.Windows.Forms.Button();
             this.okButton = new System.Windows.Forms.Button();
             this.heroList = new System.Windows.Forms.ListBox();
+            this.importButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cancelButton
@@ -69,6 +70,17 @@
             this.heroList.TabIndex = 2;
             this.heroList.SelectedIndexChanged += new System.EventHandler(this.heroList_SelectedIndexChanged);
             // 
+            // importButton
+            // 
+            this.importButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.importButton.Location = new System.Drawing.Point(13, 141);
+            this.importButton.Name = "importButton";
+            this.importButton.Size = new System.Drawing.Size(75, 23);
+            this.importButton.TabIndex = 3;
+            this.importButton.Text = "Import ...";
+            this.importButton.UseVisualStyleBackColor = true;
+            this.importButton.Click += new System.EventHandler(this.importButton_Click);
+            // 
             // HeldAuswahl
             // 
             this.AcceptButton = this.okButton;
@@ -76,6 +88,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(347, 176);
+            this.Controls.Add(this.importButton);
             this.Controls.Add(this.heroList);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.cancelButton);
@@ -90,5 +103,6 @@
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.ListBox heroList;
+        private System.Windows.Forms.Button importButton;
     }
 }
