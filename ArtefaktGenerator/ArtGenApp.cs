@@ -24,6 +24,7 @@ using System.Drawing;
 //using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using ArtefaktGenerator;
 
 namespace ArtefaktGeneratorApp
 {
@@ -34,5 +35,9 @@ namespace ArtefaktGeneratorApp
             InitializeComponent();
         }
 
+        private void ArtGenApp_Shown(object sender, EventArgs e)
+        {
+            artGenControl1.showSelectHeroDialog(this);
+        }
     }
 }
