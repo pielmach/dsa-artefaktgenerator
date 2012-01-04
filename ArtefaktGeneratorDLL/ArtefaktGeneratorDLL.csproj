@@ -110,22 +110,15 @@
     <Compile Include="Analys.cs" />
     <Compile Include="Artefakt.cs" />
     <Compile Include="Destructibo.cs" />
+    <Compile Include="Generator.cs" />
+    <Compile Include="GUI.cs" />
     <Compile Include="Held.cs" />
-    <Compile Include="HeldAuswahl.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="HeldAuswahl.Designer.cs">
-      <DependentUpon>HeldAuswahl.cs</DependentUpon>
-    </Compile>
     <Compile Include="LadeHelden.cs" />
     <Compile Include="Material.cs" />
     <Compile Include="MaterialSammlung.cs" />
     <Compile Include="Occupation.cs" />
     <Compile Include="Probe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="HeldAuswahl.resx">
-      <DependentUpon>HeldAuswahl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -136,9 +129,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ArtGenControl.resx">
-      <DependentUpon>ArtGenControl.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="ArtGen.snk" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -152,12 +142,6 @@
     <Compile Include="SF.cs" />
     <Compile Include="TaW.cs" />
     <Compile Include="TheArtifakt.cs" />
-    <Compile Include="ArtGenControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ArtGenControl.Designer.cs">
-      <DependentUpon>ArtGenControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="Wuerfel.cs" />
     <Compile Include="Zauber.cs" />
   </ItemGroup>

@@ -20,7 +20,9 @@ namespace ArtefaktGenerator
         private Wuerfel dice = new Wuerfel();
         private MaterialSammlung mat;
         private Occupation occ = new Occupation();
-		
+
+        public GUI gui = new GUI();
+
         public ArtGenControl() : this (false)
         {
         }
@@ -69,7 +71,33 @@ namespace ArtefaktGenerator
 			int p = (int) Environment.OSVersion.Platform;
 		    return (p == 4) || (p == 6) || (p == 128);
 		}
-		
+
+        private void ClrBfrChk(object sender, GroupBox groupbox)
+        {
+
+            if (!((RadioButton)sender).Checked)
+            {
+
+                foreach (Control radioBtn in groupbox.Controls)
+                {
+
+                    RadioButton RdBtn = radioBtn as RadioButton;
+
+                    if (RdBtn != null)
+                    {
+
+                        RdBtn.Checked = false;
+
+                    }
+
+                }
+
+            }
+
+        }
+
+ 
+
 		/*
          * plugInHeroFromXml
          * 
@@ -1346,20 +1374,12 @@ namespace ArtefaktGenerator
 
         private void rep_ach_CheckedChanged(object sender, EventArgs e)
         {
-            if (this.rep_ach.Checked)
-            {
-                artefakt.sf.rep = SF.SFType.ACH;
-                update(false);
-            }
+
         }
 
         private void rep_mag_CheckedChanged(object sender, EventArgs e)
         {
-            if (this.rep_mag.Checked)
-            {
-                artefakt.sf.rep = SF.SFType.OTHER;
-                update(false);
-            }
+
         }
 
         private void sf_stapel_CheckedChanged(object sender, EventArgs e)
@@ -2175,6 +2195,38 @@ namespace ArtefaktGenerator
             HeldAuswahl auswahl = new HeldAuswahl(this, LadeHelden.ladeHelden());
             auswahl.StartPosition = FormStartPosition.CenterParent;
             auswahl.ShowDialog(form);
+        }
+
+        private void ArtGenControl_Load(object sender, EventArgs e)
+        {
+            this.groupBox2.DataBindings.Add("Selected", gui, "sfRepresentation", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_kraft.DataBindings.Add("Checked", gui, "sfKraftkontrolle", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_vielLadung.DataBindings.Add("Checked", gui, "sfVielfacheLadung", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_stapel.DataBindings.Add("Checked", gui, "sfStapeleffekt", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_hyper.DataBindings.Add("Checked", gui, "sfHypervehemenz", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_matrix.DataBindings.Add("Checked", gui, "sfMatrixgeber", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_semiI.DataBindings.Add("Checked", gui, "sfSemipermanenz1", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_semiII.DataBindings.Add("Checked", gui, "sfSemipermanenz2", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_semiII.DataBindings.Add("Enabled", gui, "sfSemipermanenz2Enabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_ringkunde.DataBindings.Add("Checked", gui, "sfRingkunde", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_aux.DataBindings.Add("Checked", gui, "sfAuxiliator", false, DataSourceUpdateMode.OnPropertyChanged);
+
+            this.arcanovi_change.DataBindings.Add("Value", gui, "tawArcanovi", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.arcanovi_matrix_change.DataBindings.Add("Value", gui, "tawArcanoviMatrix", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.arcanovi_matrix_change.DataBindings.Add("Enabled", gui, "tawArcanoviMatrixEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.arcanovi_semi_change.DataBindings.Add("Value", gui, "tawArcanoviSemipermanenz", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.arcanovi_semi_change.DataBindings.Add("Enabled", gui, "tawArcanoviSemipermanenzEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.arcanovi_change.DataBindings.Add("Value", gui, "tawOdem", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.arcanovi_change.DataBindings.Add("Value", gui, "tawAnalys", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.arcanovi_change.DataBindings.Add("Value", gui, "tawMagiekunde", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.arcanovi_change.DataBindings.Add("Value", gui, "tawDestructibo", false, DataSourceUpdateMode.OnPropertyChanged);
+
+            this.artefakttyp.DataBindings.Add("Selected", gui, "artefakttyp", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.artefakttyp_matrix.DataBindings.Add("Selected", gui, "artefakttypMatrix", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.artefakttyp_matrix.DataBindings.Add("Visible", gui, "artefakttypMatrixVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.artefakttyp_aux.DataBindings.Add("Selected", gui, "artefakttypAuxiliator", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.artefakttyp_aux.DataBindings.Add("Visible", gui, "artefakttypAuxiliatorVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.aux_merkmal.DataBindings.Add("Checked", gui, "artefakttypAuxiliatorMerkmal", false, DataSourceUpdateMode.OnPropertyChanged);
         }
     }
 }

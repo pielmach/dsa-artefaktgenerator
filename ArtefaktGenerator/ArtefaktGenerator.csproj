@@ -106,10 +106,28 @@
     <Compile Include="ArtGenApp.Designer.cs">
       <DependentUpon>ArtGenApp.cs</DependentUpon>
     </Compile>
+    <Compile Include="ArtGenControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ArtGenControl.Designer.cs">
+      <DependentUpon>ArtGenControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HeldAuswahl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HeldAuswahl.Designer.cs">
+      <DependentUpon>HeldAuswahl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ArtGenApp.resx">
       <DependentUpon>ArtGenApp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArtGenControl.resx">
+      <DependentUpon>ArtGenControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HeldAuswahl.resx">
+      <DependentUpon>HeldAuswahl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -122,6 +140,8 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
+    <None Include="Properties\DataSources\ArtefaktGenerator.Generator.datasource" />
+    <None Include="Properties\DataSources\ArtefaktGenerator.GUI.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -153,6 +173,10 @@
     <ProjectReference Include="..\ArtefaktGeneratorDLL\ArtefaktGeneratorDLL.csproj">
       <Project>{F156CD3C-E2B2-4353-815A-2D425B452860}</Project>
       <Name>ArtefaktGeneratorDLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CustomControls\CustomControls.csproj">
+      <Project>{76484579-F5AE-449F-A4DF-B1748F0B998B}</Project>
+      <Name>CustomControls</Name>
     </ProjectReference>
     <ProjectReference Include="..\NAppUpdate.Framework\NAppUpdate.Framework.csproj">
       <Project>{5C07EBDF-D43F-4BE9-B560-D7A443C0EDCE}</Project>

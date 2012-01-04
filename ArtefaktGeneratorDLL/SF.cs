@@ -18,8 +18,9 @@
 
 using System;
 using System.Collections.Generic;
-//using System.Linq;
 using System.Text;
+using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace ArtefaktGenerator
 {
@@ -46,5 +47,6 @@ namespace ArtefaktGenerator
         public bool semi2 = false;
 
         public bool ringkunde = false;
+
     }
 }
