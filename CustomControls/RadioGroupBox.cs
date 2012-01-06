@@ -31,16 +31,23 @@ namespace CustomControls
                 }
 
 
-                RadioButton res = null;
+                //RadioButton res = null;
                 foreach (RadioButton radio in radioButton)
                 {
-                    if (radio.Tag != null && int.TryParse(radio.Tag.ToString(), out val) && val == value)
-                        res = radio;
-                }
-                if (res != null)
-                {
-                    res.Checked = true;
-                    _selected = val;
+                    try
+                    {
+                        int.TryParse(radio.Tag.ToString(), out val);
+                    }
+                    catch (System.Exception ex)
+                    {
+                    	
+                    }
+                    if (radio.Tag != null && val == value)
+                    {
+                        radio.Checked = true;
+                        _selected = value;
+                        break;
+                    }
                 }
             }
         }
