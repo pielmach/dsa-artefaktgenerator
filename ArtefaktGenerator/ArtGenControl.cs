@@ -30,7 +30,7 @@ namespace ArtefaktGenerator
         public ArtGenControl(bool plugInMode)
         {
             InitializeComponent();
-            mat = new MaterialSammlung(dice);
+            //mat = new MaterialSammlung(dice);
 
             // Disable Non-PlugIn fields
             if (plugInMode)
@@ -38,13 +38,13 @@ namespace ArtefaktGenerator
                 updatesToolStripMenuItem.Visible = false;
                 programmToolStripMenuItem1.Visible = false;
             }
-
+            /*
             for (int i = 0; i < mat.sammlung.Count; i++)
             {
                 material.Items.Add(mat.sammlung[i].name);
             }
             material.SelectedItem = ("kein");
-
+            */
             zauber_rep.SelectedIndex = 0;
 			
             UpdateManager updManager = UpdateManager.Instance;
@@ -601,7 +601,7 @@ namespace ArtefaktGenerator
             }
             */
             // add magic
-            zauber_list.Items.Clear();
+            //zauber_list.Items.Clear();
             /*
             zauber_list.BeginUpdate(); ;
             for (int i = 0; i < magic.Count; i++)
@@ -668,7 +668,7 @@ namespace ArtefaktGenerator
             }
 
 
-
+            // TODO UMSETZEN
             // check for WDA basis
             if (!WDA())
             {
@@ -1336,9 +1336,11 @@ namespace ArtefaktGenerator
             special_ferngespuer_asp.Value = artefakt.spezial_ferngespuer_asp;
             special_resistant.Checked = artefakt.spezial_resistent;
             //Material
+            /*
             for (int i = 0; i < mat.sammlung.Count; i++)
                 if (artefakt.material.name == mat.sammlung[i].name)
                     material.SelectedIndex = i;
+             */
             //Besonderes
             limbus.Checked = artefakt.limbus;
             namenlos.Checked = artefakt.namenlos;
@@ -1522,12 +1524,16 @@ namespace ArtefaktGenerator
             else
                 zauber.eigene_rep = false;
 
-            magic.Add(zauber);
+            //magic.Add(zauber);
+            BindingList<Zauber> z = gui.zauberListe;
+            z.Add(zauber);
+            gui.zauberListe = z;
             update(false);
         }
 
         private void zauber_del_Click(object sender, EventArgs e)
         {
+            /*
             ListView.SelectedListViewItemCollection col = zauber_list.SelectedItems;
             for (int i = 0; i < col.Count; i++)
             {
@@ -1539,6 +1545,14 @@ namespace ArtefaktGenerator
                         break;
                     }
                 }
+            }*/
+            try
+            {
+                gui.zauberListe.RemoveAt(zauber_listbox.SelectedIndex);
+            }
+            catch (System.Exception ex)
+            {
+                	
             }
             update(false);
         }
@@ -1747,6 +1761,7 @@ namespace ArtefaktGenerator
 
         private void material_SelectedIndexChanged(object sender, EventArgs e)
         {
+            material.Focus();
             update(false);
         }
 
@@ -2059,24 +2074,26 @@ namespace ArtefaktGenerator
 
         private void alleBerechnenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dice.W20 = 0;
-            dice.W6 = 0;
+            gui.W20 = 0;
+            gui.W6 = 0;
             if (alleBerechnenToolStripMenuItem.Checked)
             {
                 w6AnnehmenToolStripMenuItem.Enabled = false;
                 w20ToolStripMenuItem.Enabled = false;
+                gui.optionAllesBerechnen = true;
             }
             else
             {
                 w6AnnehmenToolStripMenuItem.Enabled = true;
                 w20ToolStripMenuItem.Enabled = true;
+                gui.optionAllesBerechnen = false;
             }
             update(false);
         }
 
         private void w6_1_Click(object sender, EventArgs e)
         {
-            dice.W6 = 1;
+            gui.W6 = 1;
             if (!w6_1.Checked) w6_1.Checked = true;
             w6_35.Checked = false;
             w6_4.Checked = false;
@@ -2086,7 +2103,7 @@ namespace ArtefaktGenerator
 
         private void w6_6_Click(object sender, EventArgs e)
         {
-            dice.W6 = 6;
+            gui.W6 = 6;
             if (!w6_6.Checked) w6_6.Checked = true;
             w6_35.Checked = false;
             w6_4.Checked = false;
@@ -2096,7 +2113,7 @@ namespace ArtefaktGenerator
 
         private void w6_35_Click(object sender, EventArgs e)
         {
-            dice.W6 = 3.5m;
+            gui.W6 = 3.5m;
             if (!w6_35.Checked) w6_35.Checked = true;
             w6_1.Checked = false;
             w6_4.Checked = false;
@@ -2106,7 +2123,7 @@ namespace ArtefaktGenerator
 
         private void w6_4_Click(object sender, EventArgs e)
         {
-            dice.W6 = 4;
+            gui.W6 = 4;
             if (!w6_4.Checked) w6_4.Checked = true;
             w6_1.Checked = false;
             w6_35.Checked = false;
@@ -2116,7 +2133,7 @@ namespace ArtefaktGenerator
 
         private void w20_1_Click(object sender, EventArgs e)
         {
-            dice.W20 = 1;
+            gui.W20 = 1;
             if (!w20_1.Checked) w20_1.Checked = true;
             w20_10.Checked = false;
             w20_105.Checked = false;
@@ -2127,7 +2144,7 @@ namespace ArtefaktGenerator
 
         private void w20_10_Click(object sender, EventArgs e)
         {
-            dice.W20 = 10;
+            gui.W20 = 10;
             if (!w20_10.Checked) w20_10.Checked = true;
             w20_1.Checked = false;
             w20_105.Checked = false;
@@ -2138,7 +2155,7 @@ namespace ArtefaktGenerator
 
         private void w20_105_Click(object sender, EventArgs e)
         {
-            dice.W20 = 10.5m;
+            gui.W20 = 10.5m;
             if (!w20_105.Checked) w20_105.Checked = true;
             w20_1.Checked = false;
             w20_10.Checked = false;
@@ -2149,7 +2166,7 @@ namespace ArtefaktGenerator
 
         private void w20_11_Click(object sender, EventArgs e)
         {
-            dice.W20 = 11m;
+            gui.W20 = 11m;
             if (!w20_11.Checked) w20_11.Checked = true;
             w20_1.Checked = false;
             w20_10.Checked = false;
@@ -2160,7 +2177,7 @@ namespace ArtefaktGenerator
 
         private void w20_20_Click(object sender, EventArgs e)
         {
-            dice.W20 = 20;
+            gui.W20 = 20;
             if (!w20_20.Checked) w20_20.Checked = true;
             w20_10.Checked = false;
             w20_105.Checked = false;
@@ -2190,7 +2207,10 @@ namespace ArtefaktGenerator
 
         private void ach_save_Click(object sender, EventArgs e)
         {
-
+            if (ach_save.Checked)
+                gui.optionAchSave = true;
+            else
+                gui.optionAchSave = false;
         }
 
         private void importHeldensoftwareToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -2285,14 +2305,29 @@ namespace ArtefaktGenerator
             this.artefakt_super_big.DataBindings.Add("SelectedIndex", gui, "extraExtraGross", false, DataSourceUpdateMode.OnPropertyChanged);
             this.cb_kristalle.DataBindings.Add("Checked", gui, "extraKristalle", false, DataSourceUpdateMode.OnPropertyChanged);
             this.cb_kristalle.DataBindings.Add("Visible", gui, "extraKristalleVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.material.DataSource = gui.material;
+            this.material.DataBindings.Add("SelectedIndex", gui, "selectedMaterial", false, DataSourceUpdateMode.OnPropertyChanged);
 
             this.probe_ausloes.DataBindings.Add("Value", gui, "probeAusloeser", false, DataSourceUpdateMode.OnPropertyChanged);
             this.probe_affine.DataBindings.Add("Value", gui, "probeAffin", false, DataSourceUpdateMode.OnPropertyChanged);
             this.artefakt_groesse.DataBindings.Add("Value", gui, "probeGroesse", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.artefakt_groesse.DataBindings.Add("Enabled", gui, "probeGroesseEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
             this.arcanovi_force.DataBindings.Add("Value", gui, "probeErzwingen", false, DataSourceUpdateMode.OnPropertyChanged);
             this.starkonst.DataBindings.Add("Value", gui, "probeSterne", false, DataSourceUpdateMode.OnPropertyChanged);
 
+            this.zauber_listbox.DataSource = gui.zauberListe;
+            this.loads.DataBindings.Add("Value", gui, "zauberLadungen", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.loads.DataBindings.Add("Enabled", gui, "zauberLadungenEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.loads_lbl.DataBindings.Add("Enabled", gui, "zauberLadungenEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+
+            this.txt_create.DataBindings.Add("Text", gui, "resultArcanovi", false, DataSourceUpdateMode.OnPropertyChanged);
+            
+
             gui.WDA = true;
+            gui.W6 = 3.5M;
+            gui.W20 = 11;
+            material.SelectedItem = ("kein");
         }
+
     }
 }

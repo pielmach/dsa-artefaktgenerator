@@ -30,8 +30,8 @@ namespace ArtefaktGenerator
         private void InitializeComponent()
         {
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.material = new System.Windows.Forms.ComboBox();
             this.cb_kristalle = new System.Windows.Forms.CheckBox();
+            this.material = new System.Windows.Forms.ComboBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.starkonst = new System.Windows.Forms.NumericUpDown();
             this.label26 = new System.Windows.Forms.Label();
@@ -99,6 +99,7 @@ namespace ArtefaktGenerator
             this.arcanovi_matrix_lbl = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.zauber_listbox = new System.Windows.Forms.ListBox();
             this.komp_combo = new System.Windows.Forms.ComboBox();
             this.zauber_rep = new System.Windows.Forms.ComboBox();
             this.zauber_del = new System.Windows.Forms.Button();
@@ -274,27 +275,25 @@ namespace ArtefaktGenerator
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Material";
             // 
+            // cb_kristalle
+            // 
+            this.cb_kristalle.AutoSize = true;
+            this.cb_kristalle.Location = new System.Drawing.Point(7, 36);
+            this.cb_kristalle.Name = "cb_kristalle";
+            this.cb_kristalle.Size = new System.Drawing.Size(108, 17);
+            this.cb_kristalle.TabIndex = 1;
+            this.cb_kristalle.Text = "Kristalle (-1 pAsP)";
+            this.cb_kristalle.UseVisualStyleBackColor = true;
+            this.cb_kristalle.CheckedChanged += new System.EventHandler(this.cb_kristalle_CheckedChanged);
+            // 
             // material
             // 
-            this.material.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.material.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.material.FormattingEnabled = true;
             this.material.Location = new System.Drawing.Point(7, 16);
             this.material.Name = "material";
             this.material.Size = new System.Drawing.Size(182, 22);
             this.material.TabIndex = 0;
             this.material.SelectedIndexChanged += new System.EventHandler(this.material_SelectedIndexChanged);
-            // 
-            // cb_kristalle
-            // 
-            this.cb_kristalle.AutoSize = true;
-            this.cb_kristalle.Location = new System.Drawing.Point(7, 36);
-            this.cb_kristalle.Name = "cb_kristalle";
-            this.cb_kristalle.Size = new System.Drawing.Size(114, 18);
-            this.cb_kristalle.TabIndex = 1;
-            this.cb_kristalle.Text = "Kristalle (-1 pAsP)";
-            this.cb_kristalle.UseVisualStyleBackColor = true;
-            this.cb_kristalle.CheckedChanged += new System.EventHandler(this.cb_kristalle_CheckedChanged);
             // 
             // groupBox5
             // 
@@ -1143,6 +1142,7 @@ namespace ArtefaktGenerator
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.zauber_listbox);
             this.groupBox6.Controls.Add(this.komp_combo);
             this.groupBox6.Controls.Add(this.zauber_rep);
             this.groupBox6.Controls.Add(this.zauber_del);
@@ -1166,6 +1166,15 @@ namespace ArtefaktGenerator
             this.groupBox6.TabIndex = 16;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Wirkende Zauber";
+            // 
+            // zauber_listbox
+            // 
+            this.zauber_listbox.FormattingEnabled = true;
+            this.zauber_listbox.ItemHeight = 14;
+            this.zauber_listbox.Location = new System.Drawing.Point(6, 88);
+            this.zauber_listbox.Name = "zauber_listbox";
+            this.zauber_listbox.Size = new System.Drawing.Size(309, 144);
+            this.zauber_listbox.TabIndex = 25;
             // 
             // komp_combo
             // 
@@ -1436,7 +1445,7 @@ namespace ArtefaktGenerator
             this.txt_create.AcceptsReturn = true;
             this.txt_create.AcceptsTab = true;
             this.txt_create.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txt_create.Location = new System.Drawing.Point(3, 5);
+            this.txt_create.Location = new System.Drawing.Point(4, 4);
             this.txt_create.Multiline = true;
             this.txt_create.Name = "txt_create";
             this.txt_create.ReadOnly = true;
@@ -2703,5 +2712,6 @@ namespace ArtefaktGenerator
         private RadioButton semi_monat;
         private RadioButton semi_woche;
         private RadioButton semi_tag;
+        private ListBox zauber_listbox;
     }
 }

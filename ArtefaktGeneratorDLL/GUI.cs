@@ -8,7 +8,12 @@ namespace ArtefaktGenerator
     public class GUI : INotifyPropertyChanged
     {
         private Artefakt artefakt = new Artefakt();
-        private List<Zauber> magic = new List<Zauber>();
+        private BindingList<Zauber> magic = new BindingList<Zauber>();
+        private Wuerfel dice = new Wuerfel();
+        private MaterialSammlung mat;
+        private Occupation occ = new Occupation();
+
+        public GUI() { mat = new MaterialSammlung(dice); }
 
         #region Options
         public bool WDA
@@ -52,7 +57,22 @@ namespace ArtefaktGenerator
                     spezialVerzehrendVisible = false;
                     spezialVerzehrend = false;
                 }
+                extraExtraGross = extraExtraGross;
+                RaisePropertyChanged("WDA");
             }
+        }
+
+        private bool _achSave;
+        public bool optionAchSave
+        {
+            get { return _achSave; }
+            set { _achSave = value; RaisePropertyChanged("optionAchSave"); }
+        }
+        private bool _allesBerechnen;
+        public bool optionAllesBerechnen
+        {
+            get { return _allesBerechnen; }
+            set { _allesBerechnen = value; RaisePropertyChanged("optionAllesBerechnen"); }
         }
 
         #endregion
@@ -597,12 +617,54 @@ namespace ArtefaktGenerator
             get { return _extraExtraGross; }
             set { 
                 _extraExtraGross = value;
+                if (WDA)
+                {
+                    switch (value)
+                    {
+                        case 0: artefakt.probe.superBig_zuschlag = 0; artefakt.probe.superBig_asp_w = 0; break;
+                        case 1: artefakt.probe.superBig_zuschlag = 5; artefakt.probe.superBig_asp_w = 2; break;
+                        case 2: artefakt.probe.superBig_zuschlag = 10; artefakt.probe.superBig_asp_w = 4; break;
+                        case 3: artefakt.probe.superBig_zuschlag = 15; artefakt.probe.superBig_asp_w = 8; break;
+                        case 4: artefakt.probe.superBig_zuschlag = 20; artefakt.probe.superBig_asp_w = 16; break;
+                    }
+                }
+                else
+                {
+                    switch (value)
+                    {
+                        case 0: artefakt.probe.superBig_zuschlag = 0; artefakt.probe.superBig_asp_w = 0; break;
+                        case 1: artefakt.probe.superBig_zuschlag = 3; artefakt.probe.superBig_asp_w = 1; break;
+                        case 2: artefakt.probe.superBig_zuschlag = 6; artefakt.probe.superBig_asp_w = 2; break;
+                        case 3: artefakt.probe.superBig_zuschlag = 9; artefakt.probe.superBig_asp_w = 4; break;
+                        case 4: artefakt.probe.superBig_zuschlag = 12; artefakt.probe.superBig_asp_w = 8; break;
+                    }
+                }
+                if (value != 0)
+                {
+                    probeGroesseEnabled = false;
+                }
+                else
+                {
+                    probeGroesse = 0;
+                    probeGroesseEnabled = true;
+                }
                 RaisePropertyChanged("extraExtraGross"); 
             }
         }
 
         //Material
+        public List<Material> material
+        {
+            get { return mat.getList(); }
+            set {}
+        }
 
+        int _selectedMaterial;
+        public int selectedMaterial
+        {
+            get { return _selectedMaterial; }
+            set { _selectedMaterial = value; RaisePropertyChanged("selectedMaterial"); }
+        }
 
         public bool extraKristalle
         {
@@ -625,6 +687,7 @@ namespace ArtefaktGenerator
             get { return (int)artefakt.probe.ausloeser; }
             set { artefakt.probe.ausloeser = (decimal)value; RaisePropertyChanged("probeAusloeser"); }
         }
+
         public int probeAffin
         {
             get { return (int)artefakt.probe.affine; }
@@ -635,6 +698,13 @@ namespace ArtefaktGenerator
             get { return (int)artefakt.probe.groesse; }
             set { artefakt.probe.groesse = (decimal)value; RaisePropertyChanged("probeGroesse"); }
         }
+        public bool _probeGroesseEnabled;
+        public bool probeGroesseEnabled
+        {
+            get { return _probeGroesseEnabled; ; }
+            set { _probeGroesseEnabled = value; RaisePropertyChanged("probeGroesseEnabled"); }
+        }
+
         public int probeErzwingen
         {
             get { return (int)artefakt.probe.erzwingen; }
@@ -645,6 +715,55 @@ namespace ArtefaktGenerator
             get { return (int)artefakt.probe.stars; }
             set { artefakt.probe.stars = (decimal)value; RaisePropertyChanged("probeSterne"); }
         }
+        #endregion
+
+        #region Zauber Liste
+
+        public BindingList<Zauber> zauberListe
+        {
+            get { return magic; }
+            set {
+                magic = value; RaisePropertyChanged("zauberListe");
+            }
+        }
+
+        public int zauberLadungen
+        {
+            get { return (int)artefakt.loads; }
+            set { artefakt.loads = (decimal)value; RaisePropertyChanged("zauberLadungen"); }
+        }
+        public bool _zauberLadungenEnabled;
+        public bool zauberLadungenEnabled
+        {
+            get { return _zauberLadungenEnabled; }
+            set { _zauberLadungenEnabled = value; RaisePropertyChanged("zauberLadungenEnabled"); }
+        }
+        #endregion
+
+        #region Results
+
+        private string _resArcanovi;
+        public string resultArcanovi
+        {
+            get { return _resArcanovi; }
+            set { _resArcanovi = value; RaisePropertyChanged("resultArcanovi"); }
+        }
+
+        #endregion
+
+        #region Dice
+
+        public decimal W6
+        {
+            get { return dice.W6; }
+            set { dice.W6 = value; RaisePropertyChanged("W6"); }
+        }
+        public decimal W20
+        {
+            get { return dice.W20; }
+            set { dice.W20 = value; RaisePropertyChanged("W20"); }
+        }
+
         #endregion
 
         #region Implement INotifyPropertyChanged
@@ -658,8 +777,455 @@ namespace ArtefaktGenerator
 
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
 
+            if (propertyName != "resultArcanovi")
+                generateArtefakt();
+
         }
 
         #endregion
+
+        #region Control Functions
+
+        private decimal Round(decimal x)
+        {
+            return Math.Round(x, MidpointRounding.AwayFromZero);
+        }
+
+        public void generateArtefakt()
+        {
+            resultArcanovi = "";
+            
+            // Material reinit
+            mat = new MaterialSammlung(dice);
+            artefakt.material = mat.sammlung[selectedMaterial];
+
+            if (magic.Count >= 1)
+            {
+                // DEBUG
+                decimal agribaal_zfp = artefakt.agribaal;
+                decimal arcanovi_erschwernis = artefakt.probe.affine + artefakt.probe.ausloeser + artefakt.probe.material + artefakt.material.arcanovi_mod + artefakt.probe.superBig_zuschlag + artefakt.probe.erzwingen + artefakt.probe.stars;
+                if (artefakt.probe.superBig_zuschlag == 0) arcanovi_erschwernis += artefakt.probe.groesse;
+                //spezielle Eigenschaften
+                if (artefakt.spezial_apport) arcanovi_erschwernis += 4;
+                if (artefakt.spezial_gespuer) arcanovi_erschwernis += 3;
+                if (artefakt.spezial_unzerbrechlich) arcanovi_erschwernis += 3;
+                if (WDA && artefakt.spezial_ferngespuer) arcanovi_erschwernis += (5 + artefakt.spezial_ferngespuer_komp);
+                if (WDA && artefakt.spezial_resistent) arcanovi_erschwernis += 2;
+                if (WDA && artefakt.typ == Artefakt.ArtefaktType.AUX && artefakt.spezial_reversalis) arcanovi_erschwernis += 4;
+                if (WDA && artefakt.spezial_variablerausloeser) arcanovi_erschwernis += (2 + artefakt.spezial_variablerausloeser_var);
+                if (WDA && artefakt.spezial_verschleierung) arcanovi_erschwernis += 3;
+                if (WDA && artefakt.spezial_verzehrend) arcanovi_erschwernis += 1;
+
+                if (artefakt.typ == Artefakt.ArtefaktType.RECHARGE) arcanovi_erschwernis += 5;
+                decimal magic_asp_mult = 1;
+                decimal magic_asp_mult_extra = 1;
+
+                if (artefakt.typ == Artefakt.ArtefaktType.SEMI)
+                {
+                    if (artefakt.typ == Artefakt.ArtefaktType.SEMI && artefakt.sf.semi1 && !(artefakt.sf.semi2))
+                    {
+                        switch (artefakt.semi_typ)
+                        {
+                            case Artefakt.SemiType.MONAT: arcanovi_erschwernis += 3; magic_asp_mult = 2; break;
+                            case Artefakt.SemiType.WOCHE: arcanovi_erschwernis += 6; magic_asp_mult = 3; break;
+                            case Artefakt.SemiType.TAG: arcanovi_erschwernis += 9; magic_asp_mult = 5; break;
+                            default: magic_asp_mult = 1; break;
+                        }
+                    }
+                    if (artefakt.typ == Artefakt.ArtefaktType.SEMI && artefakt.sf.semi1 && artefakt.sf.semi2)
+                    {
+                        switch (artefakt.semi_typ)
+                        {
+                            case Artefakt.SemiType.MONAT: arcanovi_erschwernis += 3; magic_asp_mult = 1; break;
+                            case Artefakt.SemiType.WOCHE: arcanovi_erschwernis += 6; magic_asp_mult = 2; break;
+                            case Artefakt.SemiType.TAG: arcanovi_erschwernis += 9; magic_asp_mult = 4; break;
+                            default: magic_asp_mult = 1; break;
+                        }
+                    }
+                }
+                if (artefakt.typ == Artefakt.ArtefaktType.MATRIX)
+                {
+                    switch (artefakt.matrix_typ)
+                    {
+                        case Artefakt.MatrixType.STABIL: arcanovi_erschwernis += 2; if (WDA) magic_asp_mult = 2; break;
+                        case Artefakt.MatrixType.SEHRSTABIL: arcanovi_erschwernis += 4; if (WDA) magic_asp_mult = 3; break;
+                        case Artefakt.MatrixType.UNEMPFINDLICH: arcanovi_erschwernis += 6; if (WDA) magic_asp_mult = 4; break;
+                        default: break;
+                    }
+                }
+                if (WDA)
+                {
+                    if (artefakt.typ == Artefakt.ArtefaktType.TEMP)
+                    {
+                        switch (artefakt.temp_typ)
+                        {
+                            case Artefakt.TempType.TAG: arcanovi_erschwernis += 5; break;
+                            case Artefakt.TempType.WOCHE: arcanovi_erschwernis += 7; break;
+                            case Artefakt.TempType.MONAT: arcanovi_erschwernis += 9; break;
+                            default: break;
+                        }
+                    }
+                    if (artefakt.typ == Artefakt.ArtefaktType.AUX)
+                    {
+                        arcanovi_erschwernis += 3;
+                        if (artefakt.aux_merkmal) arcanovi_erschwernis += 2;
+                        magic_asp_mult_extra = 3;
+                        switch (artefakt.aux_typ)
+                        {
+                            case Artefakt.MatrixType.STABIL: arcanovi_erschwernis += 3; magic_asp_mult = 2; break;
+                            case Artefakt.MatrixType.SEHRSTABIL: arcanovi_erschwernis += 6; magic_asp_mult = 3; break;
+                            case Artefakt.MatrixType.UNEMPFINDLICH: arcanovi_erschwernis += 9; magic_asp_mult = 4; break;
+                            default: break;
+                        }
+                    }
+                }
+
+                decimal arcanovi_zfp = 0;
+                decimal magic_asp = 0;
+                decimal eigene_rep_count = 0;
+                for (int i = 0; i < magic.Count; i++)
+                {
+                    // Rep
+                    if (magic[i].eigene_rep) eigene_rep_count++;
+                    // komplexität
+                    switch (magic[i].komp)
+                    {
+                        case "A": break;
+                        case "B": arcanovi_zfp += 1 * artefakt.loads * magic_asp_mult; break;
+                        case "C": arcanovi_zfp += 1 * artefakt.loads * magic_asp_mult; break;
+                        case "D": arcanovi_zfp += 2 * artefakt.loads * magic_asp_mult; break;
+                        case "E": arcanovi_zfp += 2 * artefakt.loads * magic_asp_mult; break;
+                        default: arcanovi_zfp += 3 * artefakt.loads * magic_asp_mult; break;
+                    }
+                    // Ladungen
+                    //arcanovi_zfp += (magic[i].load - 1) * 3;
+                    // Stapel
+                    if (magic[i].staple > 1) arcanovi_zfp += magic[i].staple * 2;
+                    // AsP wirkende Sprüche
+                    decimal thismagic_asp = magic[i].asp;
+                    if (artefakt.sf.rep == SF.SFType.ACH && optionAchSave) thismagic_asp = Round(thismagic_asp * 3 / 4);
+                    if (artefakt.sf.kraftkontrolle) thismagic_asp -= 1;
+
+                    magic_asp += thismagic_asp * artefakt.loads * magic[i].staple * magic_asp_mult * magic_asp_mult_extra;
+                }
+                if (artefakt.limbus)
+                {
+                    magic_asp = Round(magic_asp / 10);
+                    arcanovi_erschwernis += 15;
+                }
+                if (magic_asp <= 0) magic_asp = 1;
+
+                //arcanovi_zfp += artefakt.loads * magic.Count;
+                if (artefakt.typ != Artefakt.ArtefaktType.MATRIX)//&& artefakt.typ != Artefakt.ArtefaktType.SEMI)
+                    arcanovi_zfp += (artefakt.loads - 1) * 3;
+
+                // TODO: Vielfache Ladung nur bei Ladnugsbasiert?
+                if (magic.Count > 1)
+                {
+                    if (artefakt.sf.vielfacheLadung)
+                        arcanovi_zfp += magic.Count * artefakt.loads * magic_asp_mult;
+                    else
+                        arcanovi_zfp += (((magic.Count * artefakt.loads * magic_asp_mult) - 1) * magic.Count * artefakt.loads) / 2;
+                }
+
+                decimal arcanovi_taw = 0;
+                switch (artefakt.typ)
+                {
+                    case Artefakt.ArtefaktType.MATRIX: arcanovi_taw = artefakt.taw.arcanovi_matrix; break;
+                    case Artefakt.ArtefaktType.AUX: if (WDA) arcanovi_taw = artefakt.taw.arcanovi_matrix; break;
+                    case Artefakt.ArtefaktType.SEMI: arcanovi_taw = artefakt.taw.arcanovi_semi; break;
+                    default: arcanovi_taw = artefakt.taw.arcanovi; break;
+                }
+
+                // Arcanovi mit Agribaal
+                decimal arcanovi_count = 0;
+                decimal agribaal_for_arcanovi = agribaal_zfp;
+                while (true)
+                {
+                    decimal arcanovi_taw_new = arcanovi_taw - arcanovi_erschwernis;
+                    if (arcanovi_taw_new == 0) arcanovi_taw_new = 1;
+                    if (arcanovi_taw_new > arcanovi_taw) arcanovi_taw_new = arcanovi_taw;
+                    if (arcanovi_taw_new > 0)
+                        arcanovi_count = Math.Ceiling(arcanovi_zfp / arcanovi_taw_new);
+                    if ((arcanovi_taw_new < 0 || arcanovi_count > 1) && agribaal_zfp > 0)
+                    {
+                        --agribaal_zfp;
+                        --arcanovi_erschwernis;
+                    }
+                    else break;
+                }
+                if (arcanovi_count == 0) arcanovi_count = 1;
+                agribaal_for_arcanovi = agribaal_for_arcanovi - agribaal_zfp;
+
+                decimal arcanovi_asp = 0;
+                decimal arcanovi_special_w = 0;
+                decimal arcanovi_special_w_asp = 0;
+                decimal arcanovi_special_asp = 0;
+                //arcanovi_special_w += artefakt.probe.superBig_asp_w;
+                decimal arcanovi_base_asp = 0;
+                arcanovi_base_asp = 10;
+                if (!WDA && artefakt.typ == Artefakt.ArtefaktType.TEMP)
+                {
+                    switch (artefakt.temp_typ)
+                    {
+                        case Artefakt.TempType.TAG: arcanovi_base_asp = 5; break;
+                        case Artefakt.TempType.WOCHE: arcanovi_base_asp = 7; break;
+                        case Artefakt.TempType.MONAT: arcanovi_base_asp = 9; break;
+                    }
+                }
+
+                // erzwingen auf base
+                decimal erzwingen_asp = 0;
+                for (int i = 0; i < -artefakt.probe.erzwingen; i++)
+                {
+                    if (i > 0) erzwingen_asp = erzwingen_asp * 2;
+                    else erzwingen_asp = 1;
+                }
+                arcanovi_base_asp += erzwingen_asp;
+
+                if (artefakt.sf.rep == SF.SFType.ACH)
+                    arcanovi_base_asp = Round(arcanovi_base_asp * 3 / 4);
+                if (artefakt.sf.kraftkontrolle)
+                    arcanovi_base_asp = arcanovi_base_asp - 1;
+                if (artefakt.limbus)
+                    arcanovi_base_asp = Round(arcanovi_base_asp / 10);
+
+                arcanovi_asp += arcanovi_count * arcanovi_base_asp;
+
+
+                // Spezielle eigenschaften
+                if (artefakt.spezial_siegel) arcanovi_special_w += 1;
+                if (artefakt.spezial_unzerbrechlich) arcanovi_special_w += 6;
+                if (artefakt.spezial_gespuer) arcanovi_special_w += 3;
+                if (artefakt.spezial_apport) arcanovi_special_w += 4;
+                if (WDA && artefakt.spezial_ferngespuer) { arcanovi_special_w += 2; arcanovi_special_w_asp += artefakt.spezial_ferngespuer_asp; };
+                if (WDA && artefakt.spezial_resistent) arcanovi_special_w += 4;
+                if (WDA && artefakt.spezial_reperatur) arcanovi_special_w += 5;
+                if (WDA && artefakt.spezial_reversalis) { arcanovi_special_w += 2; arcanovi_special_w_asp += 7; }
+                if (WDA && artefakt.spezial_variablerausloeser) arcanovi_special_w += 2;
+                if (WDA && artefakt.spezial_verschleierung) arcanovi_special_w += 3;
+                if (WDA && artefakt.spezial_verzehrend) arcanovi_special_w_asp -= Round(artefakt.spezial_verzehrend_var / 10);
+
+                for (int i = 0; i < arcanovi_special_w; i++)
+                    arcanovi_special_asp += dice.W6;
+                if (artefakt.sf.ringkunde && arcanovi_special_asp > 0)
+                    arcanovi_special_asp /= 2;
+                for (int i = 0; i < artefakt.probe.superBig_asp_w; i++)
+                    arcanovi_special_asp += dice.W20;
+
+                arcanovi_special_asp += artefakt.material.asp_mod;
+                arcanovi_special_asp += arcanovi_special_w_asp;
+                arcanovi_special_asp = Round(arcanovi_special_asp);
+
+                // pAsP
+                decimal pasp = 0;
+                dice.W6_Opt = Wuerfel.Optimum.LOW;
+                switch (artefakt.typ)
+                {
+                    case Artefakt.ArtefaktType.TEMP: pasp = Round(Round((Math.Floor((magic_asp + arcanovi_asp + arcanovi_special_asp) / 20)) / 2) * artefakt.material.pasp_mod); break;
+                    case Artefakt.ArtefaktType.NORMAL: pasp = Round(Math.Floor((magic_asp + arcanovi_asp + arcanovi_special_asp) / 20) * artefakt.material.pasp_mod); break;
+                    case Artefakt.ArtefaktType.RECHARGE: pasp = Round(Round((magic_asp + arcanovi_asp + arcanovi_special_asp) / 15) * artefakt.material.pasp_mod); break;
+                    case Artefakt.ArtefaktType.MATRIX: pasp = Round(Round((magic_asp + arcanovi_asp + arcanovi_special_asp) / 20) * artefakt.material.pasp_mod); break;
+                    case Artefakt.ArtefaktType.SEMI: pasp = Round(Round((magic_asp + arcanovi_asp + arcanovi_special_asp) / 10) * artefakt.material.pasp_mod); break;
+                    case Artefakt.ArtefaktType.AUX: if (WDA) pasp = Round(Round((magic_asp + arcanovi_asp + arcanovi_special_asp) / 15) * artefakt.material.pasp_mod); break;
+                    default: break;
+                }
+                if (pasp <= 0 && !(artefakt.typ == Artefakt.ArtefaktType.TEMP) && !(artefakt.kristalle))
+                    pasp = 1;
+                if (!WDA && artefakt.kristalle && pasp > 0) pasp -= 1;
+
+                // Erschwerniss Wirkende Zauber
+                decimal magic_erschwerniss = 2 + artefakt.material.wirkende_mod;
+
+                // Nebeneffekte
+                decimal neben_probe_count = Math.Floor(pasp / 2);
+                decimal neben_count = 0;
+                decimal neben_agribaal_mod = (artefakt.agribaal > 0) ? -3 : 0;
+                for (int i = 0; i < neben_probe_count; i++)
+                    if ((dice.W20 + artefakt.material.nebenwirkung_mod + artefakt.special_ort_neben + neben_agribaal_mod) <= pasp) neben_count++;
+                List<decimal> nebens = new List<decimal>();
+                for (int i = 0; i < neben_count; i++)
+                    nebens.Add(dice.W20 + dice.W20 + artefakt.material.nebenwirkung_art_mod);
+
+                if ((arcanovi_taw - arcanovi_erschwernis >= 0))
+                {
+                    if (arcanovi_taw >= 7 && artefakt.taw.magiekunde >= 7)
+                    {
+                        resultArcanovi += ("Erstellung der Artefaktthesis benötigt " + arcanovi_zfp + " ZE (=" + arcanovi_zfp * 2 + " h)\r\n");
+                        resultArcanovi += ("Zu Papier bringen mit Magiekunde & Malen/Zeichnen, zusammen erschwert um " + arcanovi_zfp + "\r\n");
+                    }
+                    else
+                        resultArcanovi += ("Artefaktthesis kann nicht selber erstellt werden. TaW ARCANOVI bzw. Magiekunde zu gering.\r\n\r\n");
+
+                    if (artefakt.agribaal == 0)
+                        resultArcanovi += ("Erschwernis für Arcanovi: " + arcanovi_erschwernis + "\r\n");
+                    else
+                        resultArcanovi += ("Erschwernis für Arcanovi: " + arcanovi_erschwernis + " (erleichterung von " + agribaal_for_arcanovi + " durch Agribaal)\r\n");
+
+                    resultArcanovi += ("Erforderliche Arcanovi ZfP*: " + arcanovi_zfp + "\r\n");
+                    resultArcanovi += ("Bester Fall: " + arcanovi_count + " Arcanovi für " + arcanovi_asp + " AsP\r\n");
+                    if (artefakt.agribaal == 0)
+                        resultArcanovi += ("Erschwernis wirkende Sprüche: " + magic_erschwerniss + "\r\n");
+                    else
+                        resultArcanovi += ("Erschwernis wirkende Sprüche: " + (magic_erschwerniss - agribaal_zfp) + "(erleichterung von " + agribaal_zfp + " durch Agribaal)\r\n");
+                    resultArcanovi += ("AsP für wirkende Sprüche: " + magic_asp + "\r\n");
+
+                    string sArcanoviSpecialAsP = "";
+                    string sArcanoviSpecialDiv = "";
+                    if (arcanovi_special_w_asp > 0)
+                        sArcanoviSpecialAsP = " + " + arcanovi_special_w_asp;
+                    if (artefakt.sf.ringkunde)
+                        sArcanoviSpecialDiv = "/ 2";
+                    if (artefakt.sf.ringkunde)
+                        resultArcanovi += ("AsP gesamt: " + (magic_asp + arcanovi_asp) + " + (" + arcanovi_special_w + " W6" + sArcanoviSpecialAsP + ") " + sArcanoviSpecialDiv + " + " + artefakt.probe.superBig_asp_w + " W20 = " + (magic_asp + arcanovi_asp + arcanovi_special_asp) + "\r\n");
+                    else
+                        resultArcanovi += ("AsP gesamt: " + (magic_asp + arcanovi_asp) + " + " + arcanovi_special_w + " W6" + sArcanoviSpecialAsP + sArcanoviSpecialDiv + " + " + artefakt.probe.superBig_asp_w + " W20 = " + (magic_asp + arcanovi_asp + arcanovi_special_asp) + "\r\n");
+
+                    resultArcanovi += ("pAsP gesamt: " + pasp + "\r\n");
+
+                    //Nebens
+                    resultArcanovi += ("Anzahl Nebeneffektproben: " + neben_probe_count + "\r\n");
+                    if (artefakt.nebeneffekte && optionAllesBerechnen)
+                    {
+                        resultArcanovi += ("\t" + neben_count + " Nebeneffekte (");
+                        for (int i = 0; i < nebens.Count; i++)
+                            resultArcanovi += (" " + nebens[i]);
+                        resultArcanovi += (")\r\n");
+                    }
+                    //Occupation
+                    if (artefakt.occupation && optionAllesBerechnen)
+                    {
+                        decimal occ_wurf = dice.W20;
+                        decimal limbus_mod = artefakt.limbus ? -7 : 0;
+                        decimal namenlos_mod = artefakt.namenlos ? -3 : 0;
+                        decimal agribaal_mod = (artefakt.agribaal > 0) ? -3 : 0;
+                        if ((occ_wurf + artefakt.material.occupation_mod + limbus_mod + namenlos_mod + artefakt.special_ort_occ + agribaal_mod) <= pasp)
+                            resultArcanovi += ("Occupation: " + occ.occupationName(dice.W20 + artefakt.material.occupation_art_mod) + "\r\n");
+                        else resultArcanovi += ("Occupation: keine\r\n");
+                    }
+
+                }
+                else
+                    resultArcanovi += ("Artefakt nicht möglich. ZfW Arcanovi zu gering.");
+
+                // Analys
+                /*
+                decimal odem_erschwernis = 0;
+                if (WDA)
+                {
+                    odem_erschwernis -= pasp;
+                    odem_erschwernis += Math.Floor(arcanovi_erschwernis / 2) + artefakt.analys.mr + artefakt.analys.tarnzauber;
+                    if (magic_asp > 30)
+                        odem_erschwernis -= Math.Ceiling((magic_asp - 30) / 10);
+                    else
+                        odem_erschwernis += Math.Ceiling((magic_asp - 30) / 5);
+                }
+                else
+                    odem_erschwernis = arcanovi_erschwernis;
+
+                decimal odem_zfpstar = artefakt.taw.odem - odem_erschwernis;
+                if (odem_zfpstar < 0) odem_zfpstar = 0;
+                if (odem_zfpstar > artefakt.taw.odem) odem_zfpstar = artefakt.taw.odem;
+
+                decimal analys_erschwernis = 0;
+                analys_erschwernis -= Math.Floor(odem_zfpstar / 2);
+                //TODO: What is this?
+                //if (analys_erschwernis > artefakt.taw.analys) analys_erschwernis = -artefakt.taw.analys;
+
+                decimal tawMagie = artefakt.taw.magiekunde - 7;
+                if (tawMagie > 0) analys_erschwernis -= Math.Floor(tawMagie / 3);
+
+                // TODO: KRISTALL pAsP
+                // TODO: WHAT ABOUT HOHE ASP?
+                analys_erschwernis += Math.Floor(arcanovi_zfp / 5) + Math.Floor(arcanovi_erschwernis / 2) + pasp + artefakt.analys.bes_komlexitaet + artefakt.analys.mr + artefakt.analys.tarnzauber;
+
+                if (!(eigene_rep_count >= (magic.Count / 2))) analys_erschwernis += 2;
+
+                if (artefakt.analys.misslungen) analys_erschwernis += 3;
+
+                decimal txt_analys_erschwernis = analys_erschwernis;
+                if (analys_erschwernis < 0) analys_erschwernis = 0;
+                decimal analys_count = 0;
+                if ((artefakt.taw.analys - analys_erschwernis) > 0)
+                {
+                    analys_count = Math.Ceiling(19 / (artefakt.taw.analys - analys_erschwernis));
+                    decimal analys_asp = 10;
+                    if (artefakt.sf.rep == SF.SFType.ACH && ach_save.Checked) analys_asp = 8;
+                    if (artefakt.sf.kraftkontrolle) analys_asp -= (1 + analys_count);
+                    if (artefakt.sf.rep == SF.SFType.ACH && ach_save.Checked)
+                        analys_asp += (analys_count - 1) * 2;
+                    else
+                        analys_asp += (analys_count - 1) * 3;
+
+                    txt_analys.AppendText("ODEM erschwert um " + odem_erschwernis + " (maximal " + odem_zfpstar + " ZfP*)\r\n");
+                    txt_analys.AppendText("ANALYS erschwert um " + txt_analys_erschwernis + "\r\n");
+                    txt_analys.AppendText("Bester Fall: Vollständige Entschlüsselung nach " + analys_count + " ANALYS\r\n");
+                    txt_analys.AppendText("Kosten für ODEM & ANALYS: " + analys_asp + "AsP\r\n");
+                }
+                else
+                {
+                    txt_analys.AppendText("Artefakt nicht analysierbar. TaW ANALYS zu gering.");
+                }
+
+                // Destructibo
+                decimal destruct_erschwernis = 0;
+
+                if (artefakt.destructibo.infinitum) destruct_erschwernis += 12;
+                else destruct_erschwernis += 1;
+
+                destruct_erschwernis += eigene_rep_count * 2 * (artefakt.loads * magic_asp_mult);
+                destruct_erschwernis += (magic.Count - eigene_rep_count) * 4 * (artefakt.loads * magic_asp_mult);
+
+                destruct_erschwernis += (artefakt.loads - artefakt.destructibo.aktive_loads);
+                destruct_erschwernis += artefakt.destructibo.aktive_loads * 3;
+
+                destruct_erschwernis += pasp;
+
+                destruct_erschwernis += artefakt.destructibo.mr;
+
+                destruct_erschwernis += artefakt.destructibo.komplex;
+
+                txt_destruct.AppendText("Erschwernis DESTRUCTIBO: " + destruct_erschwernis + "\r\n");
+
+                // Destructibo Einstimmung
+                decimal destruct_einstimmung = Math.Floor(artefakt.taw.analys / 4);
+                txt_destruct.AppendText("Maximal " + (destruct_einstimmung * 4) + " Stunden Einstimmung\r\n");
+                destruct_erschwernis -= destruct_einstimmung;
+
+                decimal destruct_analys_asp = 0;
+                if (artefakt.taw.destructibo - destruct_erschwernis >= 0)
+                    txt_destruct.AppendText("Bester Fall: 0 ANALYS\r\n");
+                else if (Math.Floor((artefakt.taw.analys - analys_erschwernis) / 3) > 0)
+                {
+                    decimal destruct_analys_count = Math.Ceiling((destruct_erschwernis - artefakt.taw.destructibo) / Math.Floor((artefakt.taw.analys - analys_erschwernis) / 3));
+                    destruct_analys_asp = 10;
+                    if (artefakt.sf.rep == SF.SFType.ACH && ach_save.Checked) destruct_analys_asp = 8;
+                    if (artefakt.sf.kraftkontrolle) destruct_analys_asp -= 2;
+                    if (artefakt.sf.rep == SF.SFType.ACH && ach_save.Checked)
+                        destruct_analys_asp += (destruct_analys_count - 1) * 2;
+                    else
+                        destruct_analys_asp += (destruct_analys_count - 1) * 3;
+
+                    txt_destruct.AppendText("Bester Fall: " + destruct_analys_count + " ANALYS für insg. " + destruct_analys_asp + " AsP\r\n");
+
+                    destruct_erschwernis -= Math.Floor(destruct_analys_count * (artefakt.taw.analys - analys_erschwernis) / 3);
+                }
+                if (artefakt.taw.destructibo - destruct_erschwernis >= 0 || Math.Floor((artefakt.taw.analys - analys_erschwernis) / 3) > 0)
+                {
+                    txt_destruct.AppendText("DESTRUCTIBO Gesamterschwernis: " + destruct_erschwernis + "\r\n");
+                    txt_destruct.AppendText("Gesamt-AsP Kosten: " + (destruct_analys_asp + (magic_asp + arcanovi_asp + arcanovi_special_asp)) + "\r\n");
+                    decimal destruct_pasp = Round((magic_asp + arcanovi_asp + arcanovi_special_asp) / 20);
+                    if (destruct_pasp <= 0) destruct_pasp = 1;
+                    txt_destruct.AppendText("pAsP Kosten: " + destruct_pasp + "\r\n");
+                }
+                else
+                    txt_destruct.AppendText("Zerstörung nicht möglich TaW DESTRUCTIBO bzw. ANALYS zu gering.\r\n");
+                */
+            }
+
+        }
+
+        #endregion
+
     }
 }

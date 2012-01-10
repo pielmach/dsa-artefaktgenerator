@@ -30,6 +30,11 @@ namespace ArtefaktGenerator
 
         public MaterialSammlung() { }
 
+        public List<Material> getList()
+        {
+            return sammlung;
+        }
+
         private Byte[] StringToUTF8ByteArray(String pXmlString)
         {
             UTF8Encoding encoding = new UTF8Encoding();

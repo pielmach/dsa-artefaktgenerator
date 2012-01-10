@@ -67,5 +67,10 @@ namespace ArtefaktGenerator
             this.nebenwirkung_mod = nebenwirkung_mod;
             this.nebenwirkung_art_mod = nebenwirkung_art_mod;
         }
+
+        public override string ToString()
+        {
+            return name;
+        }
     }
 }
