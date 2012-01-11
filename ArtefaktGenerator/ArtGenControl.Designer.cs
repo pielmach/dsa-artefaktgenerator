@@ -72,7 +72,6 @@ namespace ArtefaktGenerator
             this.label16 = new System.Windows.Forms.Label();
             this.limbus = new System.Windows.Forms.CheckBox();
             this.namenlos = new System.Windows.Forms.CheckBox();
-            this.btn_update = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.sf_aux = new System.Windows.Forms.CheckBox();
             this.sf_ringkunde = new System.Windows.Forms.CheckBox();
@@ -114,7 +113,7 @@ namespace ArtefaktGenerator
             this.count_asp = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.rep = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.asp = new System.Windows.Forms.NumericUpDown();
-            this.stapel = new System.Windows.Forms.NumericUpDown();
+            this.stapelung = new System.Windows.Forms.NumericUpDown();
             this.loads = new System.Windows.Forms.NumericUpDown();
             this.zauber = new System.Windows.Forms.MaskedTextBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -160,8 +159,6 @@ namespace ArtefaktGenerator
             this.optionenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.automatischNeuberechenenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ach_save = new System.Windows.Forms.ToolStripMenuItem();
-            this.nebeneffekteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.occupationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.würfelergebnisseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alleBerechnenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.w6AnnehmenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -178,7 +175,6 @@ namespace ArtefaktGenerator
             this.regelbasis = new System.Windows.Forms.ToolStripMenuItem();
             this.wegeDerAlchimieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.staebeRingeDschinnenlampenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.debugModusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hilfeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -241,7 +237,7 @@ namespace ArtefaktGenerator
             ((System.ComponentModel.ISupportInitialize)(this.arcanovi_change)).BeginInit();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.asp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stapel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stapelung)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loads)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -284,7 +280,6 @@ namespace ArtefaktGenerator
             this.cb_kristalle.TabIndex = 1;
             this.cb_kristalle.Text = "Kristalle (-1 pAsP)";
             this.cb_kristalle.UseVisualStyleBackColor = true;
-            this.cb_kristalle.CheckedChanged += new System.EventHandler(this.cb_kristalle_CheckedChanged);
             // 
             // material
             // 
@@ -293,7 +288,6 @@ namespace ArtefaktGenerator
             this.material.Name = "material";
             this.material.Size = new System.Drawing.Size(182, 22);
             this.material.TabIndex = 0;
-            this.material.SelectedIndexChanged += new System.EventHandler(this.material_SelectedIndexChanged);
             // 
             // groupBox5
             // 
@@ -330,7 +324,6 @@ namespace ArtefaktGenerator
             this.starkonst.Name = "starkonst";
             this.starkonst.Size = new System.Drawing.Size(36, 20);
             this.starkonst.TabIndex = 18;
-            this.starkonst.ValueChanged += new System.EventHandler(this.starkonst_ValueChanged);
             // 
             // label26
             // 
@@ -352,7 +345,6 @@ namespace ArtefaktGenerator
             this.arcanovi_force.Name = "arcanovi_force";
             this.arcanovi_force.Size = new System.Drawing.Size(36, 20);
             this.arcanovi_force.TabIndex = 16;
-            this.arcanovi_force.ValueChanged += new System.EventHandler(this.arcanovi_force_ValueChanged);
             // 
             // label17
             // 
@@ -374,7 +366,6 @@ namespace ArtefaktGenerator
             this.artefakt_groesse.Name = "artefakt_groesse";
             this.artefakt_groesse.Size = new System.Drawing.Size(36, 20);
             this.artefakt_groesse.TabIndex = 12;
-            this.artefakt_groesse.ValueChanged += new System.EventHandler(this.artefakt_groesse_ValueChanged);
             // 
             // label15
             // 
@@ -401,7 +392,6 @@ namespace ArtefaktGenerator
             this.probe_affine.Name = "probe_affine";
             this.probe_affine.Size = new System.Drawing.Size(36, 20);
             this.probe_affine.TabIndex = 10;
-            this.probe_affine.ValueChanged += new System.EventHandler(this.probe_affine_ValueChanged);
             // 
             // probe_ausloes
             // 
@@ -409,7 +399,6 @@ namespace ArtefaktGenerator
             this.probe_ausloes.Name = "probe_ausloes";
             this.probe_ausloes.Size = new System.Drawing.Size(36, 20);
             this.probe_ausloes.TabIndex = 8;
-            this.probe_ausloes.ValueChanged += new System.EventHandler(this.probe_ausloes_ValueChanged);
             // 
             // label6
             // 
@@ -467,6 +456,11 @@ namespace ArtefaktGenerator
             // special_ferngespuer_asp
             // 
             this.special_ferngespuer_asp.Location = new System.Drawing.Point(205, 104);
+            this.special_ferngespuer_asp.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.special_ferngespuer_asp.Name = "special_ferngespuer_asp";
             this.special_ferngespuer_asp.Size = new System.Drawing.Size(36, 20);
             this.special_ferngespuer_asp.TabIndex = 27;
@@ -475,7 +469,6 @@ namespace ArtefaktGenerator
             0,
             0,
             0});
-            this.special_ferngespuer_asp.ValueChanged += new System.EventHandler(this.special_ferngespuer_asp_ValueChanged);
             // 
             // special_ferngespuer_komp
             // 
@@ -494,7 +487,6 @@ namespace ArtefaktGenerator
             this.special_ferngespuer_komp.Size = new System.Drawing.Size(34, 22);
             this.special_ferngespuer_komp.TabIndex = 26;
             this.special_ferngespuer_komp.Text = "A";
-            this.special_ferngespuer_komp.SelectedIndexChanged += new System.EventHandler(this.special_ferngespuer_komp_SelectedIndexChanged);
             // 
             // special_ferngespuer
             // 
@@ -505,7 +497,6 @@ namespace ArtefaktGenerator
             this.special_ferngespuer.TabIndex = 4;
             this.special_ferngespuer.Text = "Ferngespür";
             this.special_ferngespuer.UseVisualStyleBackColor = true;
-            this.special_ferngespuer.CheckedChanged += new System.EventHandler(this.special_ferngespuer_CheckedChanged);
             // 
             // lbl_special_komp
             // 
@@ -527,7 +518,6 @@ namespace ArtefaktGenerator
             this.special_variable_var.Name = "special_variable_var";
             this.special_variable_var.Size = new System.Drawing.Size(36, 20);
             this.special_variable_var.TabIndex = 19;
-            this.special_variable_var.ValueChanged += new System.EventHandler(this.special_variable_var_ValueChanged);
             // 
             // special_schleier
             // 
@@ -538,7 +528,6 @@ namespace ArtefaktGenerator
             this.special_schleier.TabIndex = 9;
             this.special_schleier.Text = "Verschleierung";
             this.special_schleier.UseVisualStyleBackColor = true;
-            this.special_schleier.CheckedChanged += new System.EventHandler(this.special_schleier_CheckedChanged);
             // 
             // special_variablerelease
             // 
@@ -549,7 +538,6 @@ namespace ArtefaktGenerator
             this.special_variablerelease.TabIndex = 8;
             this.special_variablerelease.Text = "Variabler Auslöser";
             this.special_variablerelease.UseVisualStyleBackColor = true;
-            this.special_variablerelease.CheckedChanged += new System.EventHandler(this.special_variablerelease_CheckedChanged);
             // 
             // special_reversalis
             // 
@@ -560,7 +548,6 @@ namespace ArtefaktGenerator
             this.special_reversalis.TabIndex = 7;
             this.special_reversalis.Text = "Umkehrtalisman";
             this.special_reversalis.UseVisualStyleBackColor = true;
-            this.special_reversalis.CheckedChanged += new System.EventHandler(this.special_reversalis_CheckedChanged);
             // 
             // special_selfrepair
             // 
@@ -571,7 +558,6 @@ namespace ArtefaktGenerator
             this.special_selfrepair.TabIndex = 6;
             this.special_selfrepair.Text = "Selbstreparatur";
             this.special_selfrepair.UseVisualStyleBackColor = true;
-            this.special_selfrepair.CheckedChanged += new System.EventHandler(this.special_selfrepair_CheckedChanged);
             // 
             // special_resistant
             // 
@@ -582,7 +568,6 @@ namespace ArtefaktGenerator
             this.special_resistant.TabIndex = 5;
             this.special_resistant.Text = "Res. profaner Schaden";
             this.special_resistant.UseVisualStyleBackColor = true;
-            this.special_resistant.CheckedChanged += new System.EventHandler(this.special_resistant_CheckedChanged);
             // 
             // special_apport
             // 
@@ -593,7 +578,6 @@ namespace ArtefaktGenerator
             this.special_apport.TabIndex = 3;
             this.special_apport.Text = "Magischer Apport";
             this.special_apport.UseVisualStyleBackColor = true;
-            this.special_apport.CheckedChanged += new System.EventHandler(this.special_apport_CheckedChanged);
             // 
             // special_scent
             // 
@@ -604,7 +588,6 @@ namespace ArtefaktGenerator
             this.special_scent.TabIndex = 2;
             this.special_scent.Text = "Gespür des Schöpfers";
             this.special_scent.UseVisualStyleBackColor = true;
-            this.special_scent.CheckedChanged += new System.EventHandler(this.special_scent_CheckedChanged);
             // 
             // special_durable
             // 
@@ -615,7 +598,6 @@ namespace ArtefaktGenerator
             this.special_durable.TabIndex = 1;
             this.special_durable.Text = "Unzerbrechlichkeit";
             this.special_durable.UseVisualStyleBackColor = true;
-            this.special_durable.CheckedChanged += new System.EventHandler(this.special_durable_CheckedChanged);
             // 
             // special_signet
             // 
@@ -626,7 +608,6 @@ namespace ArtefaktGenerator
             this.special_signet.TabIndex = 0;
             this.special_signet.Text = "Siegel und Zertifikat";
             this.special_signet.UseVisualStyleBackColor = true;
-            this.special_signet.CheckedChanged += new System.EventHandler(this.special_signet_CheckedChanged);
             // 
             // special_eatmaterial
             // 
@@ -637,7 +618,6 @@ namespace ArtefaktGenerator
             this.special_eatmaterial.TabIndex = 10;
             this.special_eatmaterial.Text = "Verzehrender Zauber";
             this.special_eatmaterial.UseVisualStyleBackColor = true;
-            this.special_eatmaterial.CheckedChanged += new System.EventHandler(this.special_eatmaterial_CheckedChanged);
             // 
             // special_eatmat_var
             // 
@@ -655,7 +635,6 @@ namespace ArtefaktGenerator
             0,
             0,
             0});
-            this.special_eatmat_var.ValueChanged += new System.EventHandler(this.special_eatmat_var_ValueChanged);
             // 
             // groupBox11
             // 
@@ -692,7 +671,6 @@ namespace ArtefaktGenerator
             this.agribaal.Name = "agribaal";
             this.agribaal.Size = new System.Drawing.Size(36, 20);
             this.agribaal.TabIndex = 24;
-            this.agribaal.ValueChanged += new System.EventHandler(this.agribaal_ValueChanged);
             // 
             // label32
             // 
@@ -719,7 +697,6 @@ namespace ArtefaktGenerator
             this.special_ort_neben.Name = "special_ort_neben";
             this.special_ort_neben.Size = new System.Drawing.Size(36, 20);
             this.special_ort_neben.TabIndex = 22;
-            this.special_ort_neben.ValueChanged += new System.EventHandler(this.special_ort_neben_ValueChanged);
             // 
             // special_ort_occ
             // 
@@ -737,7 +714,6 @@ namespace ArtefaktGenerator
             this.special_ort_occ.Name = "special_ort_occ";
             this.special_ort_occ.Size = new System.Drawing.Size(36, 20);
             this.special_ort_occ.TabIndex = 20;
-            this.special_ort_occ.ValueChanged += new System.EventHandler(this.special_ort_occ_ValueChanged);
             // 
             // label31
             // 
@@ -764,7 +740,6 @@ namespace ArtefaktGenerator
             this.artefakt_super_big.Size = new System.Drawing.Size(83, 22);
             this.artefakt_super_big.TabIndex = 14;
             this.artefakt_super_big.Text = "nein";
-            this.artefakt_super_big.SelectedIndexChanged += new System.EventHandler(this.artefakt_super_big_SelectedIndexChanged);
             // 
             // label30
             // 
@@ -793,7 +768,6 @@ namespace ArtefaktGenerator
             this.limbus.TabIndex = 1;
             this.limbus.Text = "Erschaffung im Limbus";
             this.limbus.UseVisualStyleBackColor = true;
-            this.limbus.CheckedChanged += new System.EventHandler(this.limbus_CheckedChanged);
             // 
             // namenlos
             // 
@@ -804,17 +778,6 @@ namespace ArtefaktGenerator
             this.namenlos.TabIndex = 0;
             this.namenlos.Text = "Namenlose Tage";
             this.namenlos.UseVisualStyleBackColor = true;
-            this.namenlos.CheckedChanged += new System.EventHandler(this.namenlos_CheckedChanged);
-            // 
-            // btn_update
-            // 
-            this.btn_update.Location = new System.Drawing.Point(889, 43);
-            this.btn_update.Name = "btn_update";
-            this.btn_update.Size = new System.Drawing.Size(100, 25);
-            this.btn_update.TabIndex = 19;
-            this.btn_update.Text = "Neu berechnen";
-            this.btn_update.UseVisualStyleBackColor = true;
-            this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
             // 
             // groupBox1
             // 
@@ -963,7 +926,6 @@ namespace ArtefaktGenerator
             0,
             0,
             0});
-            this.destruct_change.ValueChanged += new System.EventHandler(this.destruct_change_ValueChanged);
             // 
             // label14
             // 
@@ -990,7 +952,6 @@ namespace ArtefaktGenerator
             0,
             0,
             0});
-            this.magiekunde_change.ValueChanged += new System.EventHandler(this.magiekunde_change_ValueChanged);
             // 
             // label13
             // 
@@ -1017,7 +978,6 @@ namespace ArtefaktGenerator
             0,
             0,
             0});
-            this.analys_change.ValueChanged += new System.EventHandler(this.analys_change_ValueChanged);
             // 
             // label12
             // 
@@ -1044,7 +1004,6 @@ namespace ArtefaktGenerator
             0,
             0,
             0});
-            this.odem_change.ValueChanged += new System.EventHandler(this.odem_change_ValueChanged);
             // 
             // label8
             // 
@@ -1072,7 +1031,6 @@ namespace ArtefaktGenerator
             0,
             0,
             0});
-            this.arcanovi_semi_change.ValueChanged += new System.EventHandler(this.arcanovi_semi_change_ValueChanged);
             // 
             // arcanovi_matrix_change
             // 
@@ -1091,7 +1049,6 @@ namespace ArtefaktGenerator
             0,
             0,
             0});
-            this.arcanovi_matrix_change.ValueChanged += new System.EventHandler(this.arcanovi_matrix_change_ValueChanged);
             // 
             // arcanovi_change
             // 
@@ -1109,7 +1066,6 @@ namespace ArtefaktGenerator
             0,
             0,
             0});
-            this.arcanovi_change.ValueChanged += new System.EventHandler(this.arcanovi_change_ValueChanged);
             // 
             // arcanovi_semi_lbl
             // 
@@ -1152,7 +1108,7 @@ namespace ArtefaktGenerator
             this.groupBox6.Controls.Add(this.zauber_add);
             this.groupBox6.Controls.Add(this.zauber_list);
             this.groupBox6.Controls.Add(this.asp);
-            this.groupBox6.Controls.Add(this.stapel);
+            this.groupBox6.Controls.Add(this.stapelung);
             this.groupBox6.Controls.Add(this.loads);
             this.groupBox6.Controls.Add(this.zauber);
             this.groupBox6.Controls.Add(this.label18);
@@ -1318,24 +1274,23 @@ namespace ArtefaktGenerator
             0,
             0});
             // 
-            // stapel
+            // stapelung
             // 
-            this.stapel.Enabled = false;
-            this.stapel.Location = new System.Drawing.Point(156, 38);
-            this.stapel.Maximum = new decimal(new int[] {
+            this.stapelung.Location = new System.Drawing.Point(156, 38);
+            this.stapelung.Maximum = new decimal(new int[] {
             3,
             0,
             0,
             0});
-            this.stapel.Minimum = new decimal(new int[] {
+            this.stapelung.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.stapel.Name = "stapel";
-            this.stapel.Size = new System.Drawing.Size(36, 20);
-            this.stapel.TabIndex = 10;
-            this.stapel.Value = new decimal(new int[] {
+            this.stapelung.Name = "stapelung";
+            this.stapelung.Size = new System.Drawing.Size(36, 20);
+            this.stapelung.TabIndex = 10;
+            this.stapelung.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -1362,7 +1317,6 @@ namespace ArtefaktGenerator
             0,
             0,
             0});
-            this.loads.ValueChanged += new System.EventHandler(this.loads_ValueChanged);
             // 
             // zauber
             // 
@@ -1492,7 +1446,6 @@ namespace ArtefaktGenerator
             this.analys_cloack.Name = "analys_cloack";
             this.analys_cloack.Size = new System.Drawing.Size(36, 20);
             this.analys_cloack.TabIndex = 24;
-            this.analys_cloack.ValueChanged += new System.EventHandler(this.analys_cloack_ValueChanged);
             // 
             // label23
             // 
@@ -1511,7 +1464,6 @@ namespace ArtefaktGenerator
             this.analys_broken.Size = new System.Drawing.Size(15, 14);
             this.analys_broken.TabIndex = 20;
             this.analys_broken.UseVisualStyleBackColor = true;
-            this.analys_broken.CheckedChanged += new System.EventHandler(this.analys_broken_CheckedChanged);
             // 
             // label22
             // 
@@ -1533,7 +1485,6 @@ namespace ArtefaktGenerator
             this.analys_komplex.Name = "analys_komplex";
             this.analys_komplex.Size = new System.Drawing.Size(36, 20);
             this.analys_komplex.TabIndex = 18;
-            this.analys_komplex.ValueChanged += new System.EventHandler(this.analys_komplex_ValueChanged);
             // 
             // label25
             // 
@@ -1555,7 +1506,6 @@ namespace ArtefaktGenerator
             this.analys_mr.Name = "analys_mr";
             this.analys_mr.Size = new System.Drawing.Size(36, 20);
             this.analys_mr.TabIndex = 22;
-            this.analys_mr.ValueChanged += new System.EventHandler(this.analys_mr_ValueChanged);
             // 
             // label24
             // 
@@ -1616,7 +1566,6 @@ namespace ArtefaktGenerator
             this.destruct_aktive.Name = "destruct_aktive";
             this.destruct_aktive.Size = new System.Drawing.Size(36, 20);
             this.destruct_aktive.TabIndex = 24;
-            this.destruct_aktive.ValueChanged += new System.EventHandler(this.destruct_aktive_ValueChanged);
             // 
             // lbl_infi
             // 
@@ -1635,7 +1584,6 @@ namespace ArtefaktGenerator
             this.destruct_infinitum.Size = new System.Drawing.Size(15, 14);
             this.destruct_infinitum.TabIndex = 20;
             this.destruct_infinitum.UseVisualStyleBackColor = true;
-            this.destruct_infinitum.CheckedChanged += new System.EventHandler(this.destruct_infinitum_CheckedChanged);
             // 
             // label27
             // 
@@ -1657,7 +1605,6 @@ namespace ArtefaktGenerator
             this.destruct_komplex.Name = "destruct_komplex";
             this.destruct_komplex.Size = new System.Drawing.Size(36, 20);
             this.destruct_komplex.TabIndex = 18;
-            this.destruct_komplex.ValueChanged += new System.EventHandler(this.destruct_komplex_ValueChanged);
             // 
             // label28
             // 
@@ -1679,7 +1626,6 @@ namespace ArtefaktGenerator
             this.destruct_mr.Name = "destruct_mr";
             this.destruct_mr.Size = new System.Drawing.Size(36, 20);
             this.destruct_mr.TabIndex = 22;
-            this.destruct_mr.ValueChanged += new System.EventHandler(this.destruct_mr_ValueChanged);
             // 
             // label29
             // 
@@ -1791,11 +1737,8 @@ namespace ArtefaktGenerator
             this.optionenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.automatischNeuberechenenToolStripMenuItem,
             this.ach_save,
-            this.nebeneffekteToolStripMenuItem,
-            this.occupationToolStripMenuItem,
             this.würfelergebnisseToolStripMenuItem,
-            this.regelbasis,
-            this.debugModusToolStripMenuItem});
+            this.regelbasis});
             this.optionenToolStripMenuItem.Name = "optionenToolStripMenuItem";
             this.optionenToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.optionenToolStripMenuItem.Text = "Optionen";
@@ -1809,7 +1752,7 @@ namespace ArtefaktGenerator
             this.automatischNeuberechenenToolStripMenuItem.Name = "automatischNeuberechenenToolStripMenuItem";
             this.automatischNeuberechenenToolStripMenuItem.Size = new System.Drawing.Size(414, 22);
             this.automatischNeuberechenenToolStripMenuItem.Text = "Automatisch neu berechenen";
-            this.automatischNeuberechenenToolStripMenuItem.Click += new System.EventHandler(this.automatischNeuberechenenToolStripMenuItem_Click);
+            this.automatischNeuberechenenToolStripMenuItem.Visible = false;
             // 
             // ach_save
             // 
@@ -1820,26 +1763,6 @@ namespace ArtefaktGenerator
             this.ach_save.Size = new System.Drawing.Size(414, 22);
             this.ach_save.Text = "Kostenersparnis für wirkende Zauber bei Rep. ACH einberechnen";
             this.ach_save.Click += new System.EventHandler(this.ach_save_Click);
-            // 
-            // nebeneffekteToolStripMenuItem
-            // 
-            this.nebeneffekteToolStripMenuItem.Checked = true;
-            this.nebeneffekteToolStripMenuItem.CheckOnClick = true;
-            this.nebeneffekteToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.nebeneffekteToolStripMenuItem.Name = "nebeneffekteToolStripMenuItem";
-            this.nebeneffekteToolStripMenuItem.Size = new System.Drawing.Size(414, 22);
-            this.nebeneffekteToolStripMenuItem.Text = "Nebeneffekte";
-            this.nebeneffekteToolStripMenuItem.Click += new System.EventHandler(this.nebeneffekteToolStripMenuItem_Click);
-            // 
-            // occupationToolStripMenuItem
-            // 
-            this.occupationToolStripMenuItem.Checked = true;
-            this.occupationToolStripMenuItem.CheckOnClick = true;
-            this.occupationToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.occupationToolStripMenuItem.Name = "occupationToolStripMenuItem";
-            this.occupationToolStripMenuItem.Size = new System.Drawing.Size(414, 22);
-            this.occupationToolStripMenuItem.Text = "Occupation";
-            this.occupationToolStripMenuItem.Click += new System.EventHandler(this.occupationToolStripMenuItem_Click);
             // 
             // würfelergebnisseToolStripMenuItem
             // 
@@ -1981,17 +1904,6 @@ namespace ArtefaktGenerator
             this.staebeRingeDschinnenlampenToolStripMenuItem.Text = "Stäbe, Ringe, Dschinnenlampen (4.0)";
             this.staebeRingeDschinnenlampenToolStripMenuItem.Click += new System.EventHandler(this.staebeRingeDschinnenlampenToolStripMenuItem_Click);
             // 
-            // debugModusToolStripMenuItem
-            // 
-            this.debugModusToolStripMenuItem.Checked = true;
-            this.debugModusToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.debugModusToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic);
-            this.debugModusToolStripMenuItem.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.debugModusToolStripMenuItem.Name = "debugModusToolStripMenuItem";
-            this.debugModusToolStripMenuItem.Size = new System.Drawing.Size(414, 22);
-            this.debugModusToolStripMenuItem.Text = "Debug-Modus";
-            this.debugModusToolStripMenuItem.Visible = false;
-            // 
             // infoToolStripMenuItem
             // 
             this.infoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -2068,7 +1980,6 @@ namespace ArtefaktGenerator
             this.temp_monat.Tag = "2";
             this.temp_monat.Text = "Monat";
             this.temp_monat.UseVisualStyleBackColor = true;
-            this.temp_monat.CheckedChanged += new System.EventHandler(this.temp_monat_CheckedChanged);
             // 
             // temp_woche
             // 
@@ -2080,7 +1991,6 @@ namespace ArtefaktGenerator
             this.temp_woche.Tag = "1";
             this.temp_woche.Text = "Woche";
             this.temp_woche.UseVisualStyleBackColor = true;
-            this.temp_woche.CheckedChanged += new System.EventHandler(this.temp_woche_CheckedChanged);
             // 
             // temp_tag
             // 
@@ -2094,7 +2004,6 @@ namespace ArtefaktGenerator
             this.temp_tag.Tag = "0";
             this.temp_tag.Text = "Tag";
             this.temp_tag.UseVisualStyleBackColor = true;
-            this.temp_tag.CheckedChanged += new System.EventHandler(this.temp_tag_CheckedChanged);
             // 
             // artefakttyp
             // 
@@ -2201,7 +2110,6 @@ namespace ArtefaktGenerator
             this.aux_unempfindlich.Tag = "4";
             this.aux_unempfindlich.Text = "unempfindlich";
             this.aux_unempfindlich.UseVisualStyleBackColor = true;
-            this.aux_unempfindlich.CheckedChanged += new System.EventHandler(this.aux_unempfindlich_CheckedChanged);
             // 
             // aux_labil
             // 
@@ -2213,7 +2121,6 @@ namespace ArtefaktGenerator
             this.aux_labil.Tag = "0";
             this.aux_labil.Text = "labil";
             this.aux_labil.UseVisualStyleBackColor = true;
-            this.aux_labil.CheckedChanged += new System.EventHandler(this.aux_labil_CheckedChanged);
             // 
             // aux_merkmal
             // 
@@ -2224,7 +2131,6 @@ namespace ArtefaktGenerator
             this.aux_merkmal.TabIndex = 5;
             this.aux_merkmal.Text = "Merkmal";
             this.aux_merkmal.UseVisualStyleBackColor = true;
-            this.aux_merkmal.CheckedChanged += new System.EventHandler(this.aux_merkmal_CheckedChanged);
             // 
             // aux_stable
             // 
@@ -2236,7 +2142,6 @@ namespace ArtefaktGenerator
             this.aux_stable.Tag = "1";
             this.aux_stable.Text = "stabil";
             this.aux_stable.UseVisualStyleBackColor = true;
-            this.aux_stable.CheckedChanged += new System.EventHandler(this.aux_stable_CheckedChanged);
             // 
             // aux_verystable
             // 
@@ -2250,7 +2155,6 @@ namespace ArtefaktGenerator
             this.aux_verystable.Tag = "3";
             this.aux_verystable.Text = "sehr stabil";
             this.aux_verystable.UseVisualStyleBackColor = true;
-            this.aux_verystable.CheckedChanged += new System.EventHandler(this.aux_verystable_CheckedChanged);
             // 
             // artefakttyp_matrix
             // 
@@ -2276,7 +2180,6 @@ namespace ArtefaktGenerator
             this.matrix_unempfindlich.Tag = "3";
             this.matrix_unempfindlich.Text = "unempfindlich";
             this.matrix_unempfindlich.UseVisualStyleBackColor = true;
-            this.matrix_unempfindlich.CheckedChanged += new System.EventHandler(this.matrix_unempfindlich_CheckedChanged);
             // 
             // matrix_verystable
             // 
@@ -2288,7 +2191,6 @@ namespace ArtefaktGenerator
             this.matrix_verystable.Tag = "2";
             this.matrix_verystable.Text = "sehr stabil";
             this.matrix_verystable.UseVisualStyleBackColor = true;
-            this.matrix_verystable.CheckedChanged += new System.EventHandler(this.matrix_verystable_CheckedChanged);
             // 
             // matrix_stable
             // 
@@ -2300,7 +2202,6 @@ namespace ArtefaktGenerator
             this.matrix_stable.Tag = "1";
             this.matrix_stable.Text = "stabil";
             this.matrix_stable.UseVisualStyleBackColor = true;
-            this.matrix_stable.CheckedChanged += new System.EventHandler(this.matrix_stable_CheckedChanged);
             // 
             // matrix_labil
             // 
@@ -2314,7 +2215,6 @@ namespace ArtefaktGenerator
             this.matrix_labil.Tag = "0";
             this.matrix_labil.Text = "labil";
             this.matrix_labil.UseVisualStyleBackColor = true;
-            this.matrix_labil.CheckedChanged += new System.EventHandler(this.matrix_labil_CheckedChanged);
             // 
             // type_temp
             // 
@@ -2326,7 +2226,6 @@ namespace ArtefaktGenerator
             this.type_temp.Tag = "0";
             this.type_temp.Text = "temporär";
             this.type_temp.UseVisualStyleBackColor = true;
-            this.type_temp.CheckedChanged += new System.EventHandler(this.type_temp_CheckedChanged);
             // 
             // type_einaml
             // 
@@ -2338,7 +2237,6 @@ namespace ArtefaktGenerator
             this.type_einaml.Tag = "1";
             this.type_einaml.Text = "einmalig";
             this.type_einaml.UseVisualStyleBackColor = true;
-            this.type_einaml.CheckedChanged += new System.EventHandler(this.type_einaml_CheckedChanged);
             // 
             // type_aux
             // 
@@ -2351,7 +2249,6 @@ namespace ArtefaktGenerator
             this.type_aux.Tag = "5";
             this.type_aux.Text = "auxiliator";
             this.type_aux.UseVisualStyleBackColor = true;
-            this.type_aux.CheckedChanged += new System.EventHandler(this.type_aux_CheckedChanged);
             // 
             // type_charge
             // 
@@ -2363,7 +2260,6 @@ namespace ArtefaktGenerator
             this.type_charge.Tag = "2";
             this.type_charge.Text = "aufladbar";
             this.type_charge.UseVisualStyleBackColor = true;
-            this.type_charge.CheckedChanged += new System.EventHandler(this.type_charge_CheckedChanged);
             // 
             // type_matrix
             // 
@@ -2376,7 +2272,6 @@ namespace ArtefaktGenerator
             this.type_matrix.Tag = "3";
             this.type_matrix.Text = "matrixgeber";
             this.type_matrix.UseVisualStyleBackColor = true;
-            this.type_matrix.CheckedChanged += new System.EventHandler(this.type_matrix_CheckedChanged);
             // 
             // type_semi
             // 
@@ -2391,7 +2286,6 @@ namespace ArtefaktGenerator
             this.type_semi.Tag = "4";
             this.type_semi.Text = "semipermanent";
             this.type_semi.UseVisualStyleBackColor = true;
-            this.type_semi.CheckedChanged += new System.EventHandler(this.type_semi_CheckedChanged);
             // 
             // groupBox2
             // 
@@ -2444,7 +2338,6 @@ namespace ArtefaktGenerator
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox11);
-            this.Controls.Add(this.btn_update);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox6);
@@ -2487,7 +2380,7 @@ namespace ArtefaktGenerator
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.asp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.stapel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stapelung)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loads)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -2570,7 +2463,6 @@ namespace ArtefaktGenerator
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.CheckBox limbus;
         private System.Windows.Forms.CheckBox namenlos;
-        private System.Windows.Forms.Button btn_update;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox sf_aux;
         private System.Windows.Forms.CheckBox sf_ringkunde;
@@ -2636,7 +2528,7 @@ namespace ArtefaktGenerator
         private System.Windows.Forms.ColumnHeader count_asp;
         private System.Windows.Forms.ColumnHeader rep;
         private System.Windows.Forms.NumericUpDown asp;
-        private System.Windows.Forms.NumericUpDown stapel;
+        private System.Windows.Forms.NumericUpDown stapelung;
         private System.Windows.Forms.NumericUpDown loads;
         private System.Windows.Forms.MaskedTextBox zauber;
         private System.Windows.Forms.TabControl tabControl1;
@@ -2672,8 +2564,6 @@ namespace ArtefaktGenerator
         private System.Windows.Forms.ToolStripMenuItem optionenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem automatischNeuberechenenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ach_save;
-        private System.Windows.Forms.ToolStripMenuItem nebeneffekteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem occupationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem würfelergebnisseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem alleBerechnenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem w6AnnehmenToolStripMenuItem;
@@ -2689,7 +2579,6 @@ namespace ArtefaktGenerator
         private System.Windows.Forms.ToolStripMenuItem regelbasis;
         private System.Windows.Forms.ToolStripMenuItem wegeDerAlchimieToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem staebeRingeDschinnenlampenToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem debugModusToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem infoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hilfeToolStripMenuItem;

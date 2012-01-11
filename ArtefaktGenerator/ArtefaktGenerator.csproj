@@ -118,6 +118,7 @@
     <Compile Include="HeldAuswahl.Designer.cs">
       <DependentUpon>HeldAuswahl.cs</DependentUpon>
     </Compile>
+    <Compile Include="LadeHelden.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ArtGenApp.resx">

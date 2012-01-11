@@ -15,13 +15,7 @@ namespace ArtefaktGenerator
 {
     public partial class ArtGenControl : UserControl
     {
-        public Artefakt artefakt = new Artefakt();
-        public List<Zauber> magic = new List<Zauber>();
-        private Wuerfel dice = new Wuerfel();
-        private MaterialSammlung mat;
-        private Occupation occ = new Occupation();
-
-        public GUI gui = new GUI();
+        public Controller controller = new Controller();
 
         public ArtGenControl() : this (false)
         {
@@ -30,7 +24,6 @@ namespace ArtefaktGenerator
         public ArtGenControl(bool plugInMode)
         {
             InitializeComponent();
-            //mat = new MaterialSammlung(dice);
 
             // Disable Non-PlugIn fields
             if (plugInMode)
@@ -38,14 +31,6 @@ namespace ArtefaktGenerator
                 updatesToolStripMenuItem.Visible = false;
                 programmToolStripMenuItem1.Visible = false;
             }
-            /*
-            for (int i = 0; i < mat.sammlung.Count; i++)
-            {
-                material.Items.Add(mat.sammlung[i].name);
-            }
-            material.SelectedItem = ("kein");
-            */
-            zauber_rep.SelectedIndex = 0;
 			
             UpdateManager updManager = UpdateManager.Instance;
             updManager.UpdateFeedReader = new NAppUpdate.Framework.FeedReaders.NauXmlFeedReader();
@@ -58,8 +43,6 @@ namespace ArtefaktGenerator
 			if (isLinux())
 				updatesToolStripMenuItem.Visible = false;
 			
-            reload();
-            update(false);
             if (!plugInMode && !isLinux())
                 CheckForUpdates();
         }
@@ -72,316 +55,10 @@ namespace ArtefaktGenerator
 		    return (p == 4) || (p == 6) || (p == 128);
 		}
 
-        private void ClrBfrChk(object sender, GroupBox groupbox)
+
+        public void plugInHeroFromXml(string xml)
         {
-
-            if (!((RadioButton)sender).Checked)
-            {
-
-                foreach (Control radioBtn in groupbox.Controls)
-                {
-
-                    RadioButton RdBtn = radioBtn as RadioButton;
-
-                    if (RdBtn != null)
-                    {
-
-                        RdBtn.Checked = false;
-
-                    }
-
-                }
-
-            }
-
-        }
-
- 
-
-		/*
-         * plugInHeroFromXml
-         * 
-         * Use this function to import the values of an Hero from the popular "Helden-Software".
-         * 
-         * @param xml: The XML-String as exported from the Helden-Software
-         * 
-         * @return The return value is false, if an illegal combination of sf's is chosen
-         * (e.g. sfHypervehemenz without sfStapeleffekt) - otherwise it is true. 
-         * The taw's are NOT range checked, however they must be positive.
-         * Faulty TaW's or non-existing TaW's are considered to be 0
-         */
-        public bool plugInHeroFromXml(string xml)
-        {
-            bool kraftkontrolle = Regex.IsMatch(xml, "sonderfertigkeit name=\"Kraftkontrolle\"");
-            bool vielLadung = Regex.IsMatch(xml, "sonderfertigkeit name=\"Vielfache Ladungen\"");
-            bool stapeleffekt = Regex.IsMatch(xml, "sonderfertigkeit name=\"Stapeleffekt\"");
-            bool hyper = Regex.IsMatch(xml, "sonderfertigkeit name=\"Hypervehemenz\"");
-            bool matrixgeber = Regex.IsMatch(xml, "sonderfertigkeit name=\"Matrixgeber\"");
-            bool semiI = Regex.IsMatch(xml, "sonderfertigkeit name=\"Semipermanenz I\"");
-            bool semiII = Regex.IsMatch(xml, "sonderfertigkeit name=\"Semipermanenz II\"");
-            bool aux = Regex.IsMatch(xml, "sonderfertigkeit name=\"Auxiliator\"");
-
-            bool isMag = Regex.IsMatch(xml, "sonderfertigkeit (kommentar=\"[^\"]*\" )?name=\"Repräsentation: Magier\"");
-            bool isAchaz = Regex.IsMatch(xml, "sonderfertigkeit (kommentar=\"[^\"]*\" )?name=\"Repräsentation: Kristallomant\"");
-
-            // Default: Magier
-            if (!isMag && !isAchaz)
-            {
-                isMag = true;
-            }
-
-            uint magiekunde = 0;
-            uint analys = 0;
-            uint arcanovi = 0;
-            uint arcanovi_matrix = 0;
-            uint arcanovi_semi = 0;
-            uint odem = 0;
-            uint destructibo = 0;
-
-            string name = "";
-
-            string[] te = Regex.Split(xml, "talent.*name=\"Magiekunde\" probe=\".*\" value=\"(.*)\".*");
-            try
-            {
-                magiekunde = Convert.ToUInt32(te[1]);
-            }
-            catch (System.Exception ex) { }
-
-            te = Regex.Split(xml, "zauber.*name=\"Analys Arkanstruktur\" probe=\".*\" value=\"(.*)\".*variante");
-            try
-            {
-                analys = Convert.ToUInt32(te[1]);
-            }
-            catch (System.Exception ex) { }
-
-            te = Regex.Split(xml, "zauber.*name=\"Arcanovi Artefakt\" probe=\".*\" value=\"(.*)\".*variante=\"\"");
-            try
-            {
-                arcanovi = Convert.ToUInt32(te[1]);
-            }
-            catch (System.Exception ex) { }
-
-            te = Regex.Split(xml, "zauber.*name=\"Arcanovi Artefakt\" probe=\".*\" value=\"(.*)\".*variante=\"Matrixgeber\"");
-            try
-            {
-                arcanovi_matrix = Convert.ToUInt32(te[1]);
-            }
-            catch (System.Exception ex) { }
-
-            te = Regex.Split(xml, "zauber.*name=\"Arcanovi Artefakt\" probe=\".*\" value=\"(.*)\".*variante=\"Semipermanenz\"");
-            try
-            {
-                arcanovi_semi = Convert.ToUInt32(te[1]);
-            }
-            catch (System.Exception ex) { }
-
-            te = Regex.Split(xml, "zauber.*name=\"Odem Arcanum\" probe=\".*\" value=\"(.*)\".*variante");
-            try
-            {
-                odem = Convert.ToUInt32(te[1]);
-            }
-            catch (System.Exception ex) { }
-
-            te = Regex.Split(xml, "zauber.*name=\"Destructibo Arcanitas\" probe=\".*\" value=\"(.*)\".*variante");
-            try
-            {
-                destructibo = Convert.ToUInt32(te[1]);
-            }
-            catch (System.Exception ex) { }
-
-            //<held key="1316061294421" name="Kein Name">
-            te = Regex.Split(xml, "held key=\".*\" name=\"(.*)\".*");
-            try
-            {
-                name = te[1];
-            }
-            catch (System.Exception ex) { }
-
-
-            return plugInHero(name,(isMag ? SF.SFType.OTHER : SF.SFType.ACH), kraftkontrolle, vielLadung, stapeleffekt, hyper, matrixgeber, semiI, semiII, false, aux, arcanovi, arcanovi_matrix, arcanovi_semi, odem, analys, destructibo, magiekunde);
-        }
-
-        /*
-         * plugInHero
-         * 
-         * use the function parameters to set the values of the sf's and taw's.
-         * All values must be set, however certain values may be irrelevant.
-         * Example: when not setting sfMatrixgeber, the value of tawArcanoviMatrix is irrelevant,
-         * as the field gets deactivated.
-         * 
-         * @return The return value is false, if an illegal combination of sf's is chosen
-         * (e.g. sfHypervehemenz without sfStapeleffekt) - otherwise it is true. 
-         * The taw's are NOT range checked, however they must be positive.
-         */
-        public bool plugInHero(
-            string name,
-            SF.SFType representation, 
-            bool sfKraftkontrolle, 
-            bool sfVielfacheLadung, 
-            bool sfStapeleffekt, 
-            bool sfHypervehemenz, 
-            bool sfMatrixgeber,
-            bool sfSemipermI,
-            bool sfSemipermII,
-            bool sfRingkunde,
-            bool sfAuxiliator,
-            uint tawArcanovi,
-            uint tawArcanoviMatrix,
-            uint tawArcanoviSemi,
-            uint tawOdem,
-            uint tawAnalys,
-            uint tawDestructibo,
-            uint tawMagiekunde
-            )
-        {
-            if (
-                (sfHypervehemenz && !sfStapeleffekt)
-                || (sfSemipermII && !sfSemipermI)
-                || (sfAuxiliator && !sfMatrixgeber)
-                )
-                return false;
-
-            // set values
-            artefakt.sf.rep = representation;
-            artefakt.sf.kraftkontrolle = sfKraftkontrolle;
-            artefakt.sf.vielfacheLadung = sfVielfacheLadung;
-            artefakt.sf.stapel = sfStapeleffekt;
-            artefakt.sf.hyper = sfHypervehemenz;
-            artefakt.sf.matrix = sfMatrixgeber;
-            artefakt.sf.semi1 = sfSemipermI;
-            artefakt.sf.semi2 = sfSemipermII;
-            artefakt.sf.ringkunde = sfRingkunde;
-            artefakt.sf.auxiliator = sfAuxiliator;
-
-            artefakt.taw.arcanovi = tawArcanovi;
-            artefakt.taw.arcanovi_matrix = tawArcanoviMatrix;
-            artefakt.taw.arcanovi_semi = tawArcanoviSemi;
-            artefakt.taw.analys = tawAnalys;
-            artefakt.taw.destructibo = tawDestructibo;
-            artefakt.taw.magiekunde = tawMagiekunde;
-            artefakt.taw.odem = tawOdem;
-
-            artefakt.heldName = name;
-
-            reload();
-            update(true);
-
-            return true;
-        }
-        public bool plugInHero (
-            SF.SFType representation, 
-            bool sfKraftkontrolle, 
-            bool sfVielfacheLadung, 
-            bool sfStapeleffekt, 
-            bool sfHypervehemenz, 
-            bool sfMatrixgeber,
-            bool sfSemipermI,
-            bool sfSemipermII,
-            bool sfRingkunde,
-            bool sfAuxiliator,
-            uint tawArcanovi,
-            uint tawArcanoviMatrix,
-            uint tawArcanoviSemi,
-            uint tawOdem,
-            uint tawAnalys,
-            uint tawDestructibo,
-            uint tawMagiekunde
-            )
-        {
-            return plugInHero("", representation, sfKraftkontrolle, sfVielfacheLadung, sfStapeleffekt, sfHypervehemenz, sfMatrixgeber, sfSemipermI, sfSemipermII, sfRingkunde, sfAuxiliator, tawArcanovi, tawArcanoviMatrix, tawArcanoviSemi, tawOdem, tawAnalys, tawDestructibo, tawMagiekunde);
-        }
-
-        public void plugInLoadArtefakt()
-        {
-            artefaktLadenToolStripMenuItem_Click(null, null);
-        }
-
-        public void plugInSaveArtefakt()
-        {
-            artefaktSpeichernToolStripMenuItem_Click(null, null);
-        }
-
-        public void plugInNewArtefakt()
-        {
-            neuesArtefaktToolStripMenuItem_Click(null, null);
-        }
-
-        public void plugInOptions(
-            Artefakt.Regelbasis regelbasis,
-            bool autoNeuBerechnen = true,
-            bool okkupation = true,
-            bool nebeneffekte = true,
-            bool achazEinsparung = true
-            )
-        {
-            artefakt.regelbasis = regelbasis;
-            if (regelbasis == Artefakt.Regelbasis.WDA)
-            {
-                wegeDerAlchimieToolStripMenuItem.Checked = true;
-                staebeRingeDschinnenlampenToolStripMenuItem.Checked = false;
-            }
-            else
-            {
-                wegeDerAlchimieToolStripMenuItem.Checked = false;
-                staebeRingeDschinnenlampenToolStripMenuItem.Checked = true;
-            }
-
-        }
-
-
-        private bool WDA()
-        {
-            return artefakt.regelbasis == Artefakt.Regelbasis.WDA;
-        }
-
-        private decimal Round(decimal x)
-        {
-            return Math.Round(x, MidpointRounding.AwayFromZero);
-        }
-
-        private String UTF8ByteArrayToString(Byte[] characters)
-        {
-            UTF8Encoding encoding = new UTF8Encoding();
-            String constructedString = encoding.GetString(characters);
-            return (constructedString);
-        }
-
-
-        private Byte[] StringToUTF8ByteArray(String pXmlString)
-        {
-            UTF8Encoding encoding = new UTF8Encoding();
-            Byte[] byteArray = encoding.GetBytes(pXmlString);
-            return byteArray;
-        }
-
-        public String SerializeObject(Object pObject)
-        {
-            try
-            {
-                String XmlizedString = null;
-                System.IO.MemoryStream memoryStream = new System.IO.MemoryStream();
-                System.Xml.Serialization.XmlSerializer xs = new System.Xml.Serialization.XmlSerializer(typeof(DasArtefakt));
-                System.Xml.XmlTextWriter xmlTextWriter = new System.Xml.XmlTextWriter(memoryStream, Encoding.UTF8);
-
-                xs.Serialize(xmlTextWriter, pObject);
-                memoryStream = (System.IO.MemoryStream)xmlTextWriter.BaseStream;
-                XmlizedString = UTF8ByteArrayToString(memoryStream.ToArray());
-                return XmlizedString;
-            }
-
-            catch (Exception e)
-            {
-                return null;
-            }
-        }
-
-        public Object DeserializeObject(String pXmlizedString)
-        {
-            System.Xml.Serialization.XmlSerializer xs = new System.Xml.Serialization.XmlSerializer(typeof(DasArtefakt));
-            System.IO.MemoryStream memoryStream = new System.IO.MemoryStream(StringToUTF8ByteArray(pXmlizedString));
-            System.Xml.XmlTextWriter xmlTextWriter = new System.Xml.XmlTextWriter(memoryStream, Encoding.UTF8);
-
-            return xs.Deserialize(memoryStream);
+            controller.plugInHeroFromXml(xml);
         }
 
         private void OnPrepareUpdatesCompleted(bool succeeded)
@@ -806,7 +483,7 @@ namespace ArtefaktGenerator
         }
 
         private void calcCreate()
-        {
+        {/*
             txt_create.ResetText();
             txt_analys.ResetText();
             txt_destruct.ResetText();
@@ -1248,11 +925,12 @@ namespace ArtefaktGenerator
                 }
                 else
                     txt_destruct.AppendText("Zerstörung nicht möglich TaW DESTRUCTIBO bzw. ANALYS zu gering.\r\n");
-            }
+            }*/
         }
 
         private void reload()
         {
+            /*
             // Name
             if (artefakt.heldName != "")
                 hero_name.Text = "Held: " + artefakt.heldName;
@@ -1317,6 +995,7 @@ namespace ArtefaktGenerator
                 case Artefakt.SemiType.MONAT: semi_monat.Checked = true; break;
                 case Artefakt.SemiType.JAHR: semi_jahr.Checked = true; break;
                      * */
+            /*
             };
             // Spezielle eigenschaften
             special_signet.Checked = artefakt.spezial_siegel;
@@ -1341,6 +1020,7 @@ namespace ArtefaktGenerator
                 if (artefakt.material.name == mat.sammlung[i].name)
                     material.SelectedIndex = i;
              */
+            /*
             //Besonderes
             limbus.Checked = artefakt.limbus;
             namenlos.Checked = artefakt.namenlos;
@@ -1367,148 +1047,7 @@ namespace ArtefaktGenerator
             destruct_aktive.Value = artefakt.destructibo.aktive_loads;
             //ladungen
             loads.Value = artefakt.loads;
-        }
-
-        private void delStapelZauber()
-        {
-            // TODO: DELTE all with staples
-        }
-
-        private void sf_kraft_CheckedChanged(object sender, EventArgs e)
-        {
-            artefakt.sf.kraftkontrolle = sf_kraft.Checked;
-            update(false);
-        }
-
-        private void rep_ach_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rep_mag_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void sf_stapel_CheckedChanged(object sender, EventArgs e)
-        {
-            artefakt.sf.stapel = sf_stapel.Checked;
-            update(false);
-        }
-
-        private void sf_hyper_CheckedChanged(object sender, EventArgs e)
-        {
-            artefakt.sf.hyper = sf_hyper.Checked;
-            update(false);
-        }
-
-        private void sf_matrix_CheckedChanged(object sender, EventArgs e)
-        {
-            artefakt.sf.matrix = sf_matrix.Checked;
-            update(false);
-        }
-
-        private void sf_semiI_CheckedChanged(object sender, EventArgs e)
-        {
-            artefakt.sf.semi1 = sf_semiI.Checked;
-            update(false);
-        }
-
-        private void sf_semiII_CheckedChanged(object sender, EventArgs e)
-        {
-            artefakt.sf.semi2 = sf_semiII.Checked;
-            update(false);
-        }
-
-        private void sf_ringkunde_CheckedChanged(object sender, EventArgs e)
-        {
-            artefakt.sf.ringkunde = sf_ringkunde.Checked;
-            update(false);
-        }
-
-        private void type_temp_CheckedChanged(object sender, EventArgs e)
-        {
-//             if (this.type_temp.Checked)
-//             {
-//                 artefakt.typ = Artefakt.ArtefaktType.TEMP;
-//                 loads_lbl.Enabled = true;
-//                 loads.Enabled = true;
-//                 update(false);
-//             }
-        }
-
-        private void type_einaml_CheckedChanged(object sender, EventArgs e)
-        {
-//             if (this.type_einaml.Checked)
-//             {
-//                 artefakt.typ = Artefakt.ArtefaktType.NORMAL;
-//                 loads_lbl.Enabled = true;
-//                 loads.Enabled = true;
-//                 update(false);
-//             }
-        }
-
-        private void type_charge_CheckedChanged(object sender, EventArgs e)
-        {
-//             if (this.type_charge.Checked)
-//             {
-//                 artefakt.typ = Artefakt.ArtefaktType.RECHARGE;
-//                 loads_lbl.Enabled = true;
-//                 loads.Enabled = true;
-//                 update(false);
-//             }
-        }
-
-        private void type_matrix_CheckedChanged(object sender, EventArgs e)
-        {
-//             if (this.type_matrix.Checked)
-//             {
-//                 artefakt.typ = Artefakt.ArtefaktType.MATRIX;
-//                 loads_lbl.Enabled = false;
-//                 loads.Enabled = false;
-//                 update(false);
-//             }
-        }
-
-        private void type_semi_CheckedChanged(object sender, EventArgs e)
-        {
-//             if (this.type_semi.Checked)
-//             {
-//                 artefakt.typ = Artefakt.ArtefaktType.SEMI;
-//                 loads_lbl.Enabled = true;
-//                 loads.Enabled = true;
-//                 update(false);
-//             }
-        }
-
-        private void arcanovi_change_ValueChanged(object sender, EventArgs e)
-        {
-            artefakt.taw.arcanovi = this.arcanovi_change.Value;
-            update(false);
-        }
-
-        private void arcanovi_matrix_change_ValueChanged(object sender, EventArgs e)
-        {
-            artefakt.taw.arcanovi_matrix = this.arcanovi_matrix_change.Value;
-            update(false);
-        }
-
-        private void arcanovi_semi_change_ValueChanged(object sender, EventArgs e)
-        {
-            artefakt.taw.arcanovi_semi = this.arcanovi_semi_change.Value;
-            update(false);
-        }
-
-        private void probe_ausloes_ValueChanged(object sender, EventArgs e)
-        {
-            artefakt.probe.ausloeser = this.probe_ausloes.Value;
-            update(false);
-        }
-
-        private void probe_affine_ValueChanged(object sender, EventArgs e)
-        {
-            artefakt.probe.affine = this.probe_affine.Value;
-            update(false);
+             * */
         }
 
         private void zauber_add_Click(object sender, EventArgs e)
@@ -1516,7 +1055,7 @@ namespace ArtefaktGenerator
             Zauber zauber = new Zauber();
             zauber.asp = this.asp.Value;
             //zauber.load = this.loads.Value;
-            zauber.staple = this.stapel.Value;
+            zauber.staple = this.stapelung.Value;
             zauber.komp = this.komp_combo.Text;
             zauber.name = this.zauber.Text;
             if (this.zauber_rep.SelectedIndex == 0)
@@ -1525,425 +1064,23 @@ namespace ArtefaktGenerator
                 zauber.eigene_rep = false;
 
             //magic.Add(zauber);
-            BindingList<Zauber> z = gui.zauberListe;
+            BindingList<Zauber> z = controller.zauberListe;
             z.Add(zauber);
-            gui.zauberListe = z;
+            controller.zauberListe = z;
             update(false);
         }
 
         private void zauber_del_Click(object sender, EventArgs e)
         {
-            /*
-            ListView.SelectedListViewItemCollection col = zauber_list.SelectedItems;
-            for (int i = 0; i < col.Count; i++)
-            {
-                for (int j = 0; j < magic.Count; j++)
-                {
-                    if (magic[j].name == col[i].Text)
-                    {
-                        magic.RemoveAt(j);
-                        break;
-                    }
-                }
-            }*/
             try
             {
-                gui.zauberListe.RemoveAt(zauber_listbox.SelectedIndex);
+                controller.zauberListe.RemoveAt(zauber_listbox.SelectedIndex);
+                controller.zauberListe = controller.zauberListe;
             }
             catch (System.Exception ex)
             {
                 	
             }
-            update(false);
-        }
-
-        private void vielLadung_CheckedChanged(object sender, EventArgs e)
-        {
-            artefakt.sf.vielfacheLadung = sf_vielLadung.Checked;
-            update(false);
-        }
-
-        private void temp_tag_CheckedChanged(object sender, EventArgs e)
-        {
-//             if (this.temp_tag.Checked)
-//                 artefakt.temp_typ = Artefakt.TempType.TAG;
-//             update(false);
-        }
-
-        private void temp_woche_CheckedChanged(object sender, EventArgs e)
-        {
-//             if (this.temp_woche.Checked)
-//                 artefakt.temp_typ = Artefakt.TempType.WOCHE;
-//             update(false);
-        }
-
-        private void temp_monat_CheckedChanged(object sender, EventArgs e)
-        {
-//             if (this.temp_monat.Checked)
-//                 artefakt.temp_typ = Artefakt.TempType.MONAT;
-//             update(false);
-        }
-
-        private void matrix_labil_CheckedChanged(object sender, EventArgs e)
-        {
-//             if (this.matrix_labil.Checked)
-//                 artefakt.matrix_typ = Artefakt.MatrixType.LABIL;
-//             update(false);
-        }
-
-        private void matrix_stable_CheckedChanged(object sender, EventArgs e)
-        {
-//             if (this.matrix_stable.Checked)
-//                 artefakt.matrix_typ = Artefakt.MatrixType.STABIL;
-//             update(false);
-        }
-
-        private void matrix_verystable_CheckedChanged(object sender, EventArgs e)
-        {
-//             if (this.matrix_verystable.Checked)
-//                 artefakt.matrix_typ = Artefakt.MatrixType.SEHRSTABIL;
-//             update(false);
-        }
-
-        private void matrix_unempfindlich_CheckedChanged(object sender, EventArgs e)
-        {
-//             if (this.matrix_unempfindlich.Checked)
-//                 artefakt.matrix_typ = Artefakt.MatrixType.UNEMPFINDLICH;
-//             update(false);
-        }
-
-        private void semi_tag_CheckedChanged(object sender, EventArgs e)
-        {
-//             if (this.semi_tag.Checked)
-//                 artefakt.semi_typ = Artefakt.SemiType.TAG;
-//             update(false);
-        }
-
-        private void semi_woche_CheckedChanged(object sender, EventArgs e)
-        {
-//             if (this.semi_woche.Checked)
-//                 artefakt.semi_typ = Artefakt.SemiType.WOCHE;
-//             update(false);
-        }
-
-        private void semi_monat_CheckedChanged(object sender, EventArgs e)
-        {
-//             if (this.semi_monat.Checked)
-//                 artefakt.semi_typ = Artefakt.SemiType.MONAT;
-//             update(false);
-        }
-
-        private void semi_jahr_CheckedChanged(object sender, EventArgs e)
-        {
-//             if (this.semi_jahr.Checked)
-//                 artefakt.semi_typ = Artefakt.SemiType.JAHR;
-//             update(false);
-        }
-
-        private void odem_change_ValueChanged(object sender, EventArgs e)
-        {
-            artefakt.taw.odem = odem_change.Value;
-            update(false);
-        }
-
-        private void analys_change_ValueChanged(object sender, EventArgs e)
-        {
-            artefakt.taw.analys = analys_change.Value;
-            update(false);
-        }
-
-        private void magiekunde_change_ValueChanged(object sender, EventArgs e)
-        {
-            artefakt.taw.magiekunde = magiekunde_change.Value;
-            update(false);
-        }
-
-        private void destruct_change_ValueChanged(object sender, EventArgs e)
-        {
-            artefakt.taw.destructibo = destruct_change.Value;
-            update(false);
-        }
-
-        private void automatischNeuberechenenToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //if (!automatischNeuberechenenToolStripMenuItem.Checked)
-            //    btn_update.Visible = true;
-            //else
-            //    btn_update.Visible = false;
-        }
-
-        private void btn_update_Click(object sender, EventArgs e)
-        {
-            update(true);
-        }
-
-        private void special_signet_CheckedChanged(object sender, EventArgs e)
-        {
-            artefakt.spezial_siegel = special_signet.Checked;
-            update(false);
-        }
-
-        private void special_durable_CheckedChanged(object sender, EventArgs e)
-        {
-            artefakt.spezial_unzerbrechlich = special_durable.Checked;
-            update(false);
-        }
-
-        private void special_scent_CheckedChanged(object sender, EventArgs e)
-        {
-            artefakt.spezial_gespuer = special_scent.Checked;
-            update(false);
-        }
-
-        private void special_apport_CheckedChanged(object sender, EventArgs e)
-        {
-            artefakt.spezial_apport = special_apport.Checked;
-            update(false);
-        }
-
-        private void special_ferngespuer_CheckedChanged(object sender, EventArgs e)
-        {
-            artefakt.spezial_ferngespuer = special_ferngespuer.Checked;
-            update(false);
-        }
-
-        private void special_resistant_CheckedChanged(object sender, EventArgs e)
-        {
-            artefakt.spezial_resistent = special_resistant.Checked;
-            update(false);
-        }
-
-        private void special_selfrepair_CheckedChanged(object sender, EventArgs e)
-        {
-            artefakt.spezial_reperatur = special_selfrepair.Checked;
-            update(false);
-        }
-
-        private void special_reversalis_CheckedChanged(object sender, EventArgs e)
-        {
-            artefakt.spezial_reversalis = special_reversalis.Checked;
-            update(false);
-        }
-
-        private void special_variablerelease_CheckedChanged(object sender, EventArgs e)
-        {
-            artefakt.spezial_variablerausloeser = special_variablerelease.Checked;
-            update(false);
-        }
-
-        private void special_schleier_CheckedChanged(object sender, EventArgs e)
-        {
-            artefakt.spezial_verschleierung = special_schleier.Checked;
-            update(false);
-        }
-
-        private void special_eatmaterial_CheckedChanged(object sender, EventArgs e)
-        {
-            artefakt.spezial_verzehrend = special_eatmaterial.Checked;
-            update(false);
-        }
-
-        private void artefakt_groesse_ValueChanged(object sender, EventArgs e)
-        {
-            artefakt.probe.groesse = artefakt_groesse.Value;
-            update(false);
-        }
-
-        private void artefakt_super_big_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            update(false);
-        }
-
-        private void hilfeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Hier gibts nix zu sehen!");
-        }
-
-        private void material_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            material.Focus();
-            update(false);
-        }
-
-        private void arcanovi_force_ValueChanged(object sender, EventArgs e)
-        {
-            artefakt.probe.erzwingen = -arcanovi_force.Value;
-            update(false);
-        }
-
-        private void analys_broken_CheckedChanged(object sender, EventArgs e)
-        {
-            if (analys_broken.Checked)
-                artefakt.analys.misslungen = true;
-            else
-                artefakt.analys.misslungen = false;
-            update(false);
-        }
-
-        private void analys_komplex_ValueChanged(object sender, EventArgs e)
-        {
-            artefakt.analys.bes_komlexitaet = analys_komplex.Value;
-            update(false);
-        }
-
-        private void analys_mr_ValueChanged(object sender, EventArgs e)
-        {
-            artefakt.analys.mr = analys_mr.Value;
-            update(false);
-        }
-
-        private void analys_cloack_ValueChanged(object sender, EventArgs e)
-        {
-            artefakt.analys.tarnzauber = analys_cloack.Value;
-            update(false);
-        }
-
-        private void loads_ValueChanged(object sender, EventArgs e)
-        {
-            artefakt.loads = loads.Value;
-            update(false);
-        }
-
-        private void destruct_infinitum_CheckedChanged(object sender, EventArgs e)
-        {
-            artefakt.destructibo.infinitum = destruct_infinitum.Checked;
-            update(false);
-        }
-
-        private void destruct_komplex_ValueChanged(object sender, EventArgs e)
-        {
-            artefakt.destructibo.komplex = destruct_komplex.Value;
-            update(false);
-        }
-
-        private void destruct_mr_ValueChanged(object sender, EventArgs e)
-        {
-            artefakt.destructibo.mr = destruct_mr.Value;
-            update(false);
-        }
-
-        private void destruct_aktive_ValueChanged(object sender, EventArgs e)
-        {
-            artefakt.destructibo.aktive_loads = destruct_aktive.Value;
-            update(false);
-        }
-
-        private void starkonst_ValueChanged(object sender, EventArgs e)
-        {
-            artefakt.probe.stars = starkonst.Value;
-            update(false);
-        }
-
-
-        private void limbus_CheckedChanged(object sender, EventArgs e)
-        {
-            artefakt.limbus = limbus.Checked;
-            update(false);
-        }
-
-        private void namenlos_CheckedChanged(object sender, EventArgs e)
-        {
-            artefakt.namenlos = namenlos.Checked;
-            update(false);
-        }
-
-        private void special_ort_occ_ValueChanged(object sender, EventArgs e)
-        {
-            artefakt.special_ort_occ = special_ort_occ.Value;
-            update(false);
-        }
-
-        private void special_ort_neben_ValueChanged(object sender, EventArgs e)
-        {
-            artefakt.special_ort_neben = special_ort_neben.Value;
-            update(false);
-        }
-
-        private void agribaal_ValueChanged(object sender, EventArgs e)
-        {
-            artefakt.agribaal = agribaal.Value;
-            update(false);
-        }
-
-        private void cb_kristalle_CheckedChanged(object sender, EventArgs e)
-        {
-//             artefakt.kristalle = cb_kristalle.Checked;
-//             update(false);
-        }
-
-        private void sf_aux_CheckedChanged(object sender, EventArgs e)
-        {
-//             artefakt.sf.auxiliator = sf_aux.Checked;
-//             update(false);
-        }
-
-        private void type_aux_CheckedChanged(object sender, EventArgs e)
-        {
-//             if (this.type_aux.Checked)
-//             {
-//                 artefakt.typ = Artefakt.ArtefaktType.AUX;
-//                 loads_lbl.Enabled = false;
-//                 loads.Enabled = false;
-//                 update(false);
-//             }
-        }
-
-        private void aux_labil_CheckedChanged(object sender, EventArgs e)
-        {
-//             if (this.aux_labil.Checked)
-//                 artefakt.aux_typ = Artefakt.MatrixType.LABIL;
-//             update(false);
-        }
-
-        private void aux_stable_CheckedChanged(object sender, EventArgs e)
-        {
-//             if (this.aux_stable.Checked)
-//                 artefakt.aux_typ = Artefakt.MatrixType.STABIL;
-//             update(false);
-        }
-
-        private void aux_verystable_CheckedChanged(object sender, EventArgs e)
-        {
-//             if (this.aux_verystable.Checked)
-//                 artefakt.aux_typ = Artefakt.MatrixType.SEHRSTABIL;
-//             update(false);
-        }
-
-        private void aux_unempfindlich_CheckedChanged(object sender, EventArgs e)
-        {
-//             if (this.aux_unempfindlich.Checked)
-//                 artefakt.aux_typ = Artefakt.MatrixType.UNEMPFINDLICH;
-//             update(false);
-        }
-
-        private void aux_merkmal_CheckedChanged(object sender, EventArgs e)
-        {
-//             artefakt.aux_merkmal = aux_merkmal.Checked;
-//             update(false);
-        }
-
-        private void special_ferngespuer_komp_SelectedIndexChanged(object sender, EventArgs e)
-        {
-//             artefakt.spezial_ferngespuer_komp = special_ferngespuer_komp.SelectedIndex + 1;
-//             update(false);
-        }
-
-        private void special_ferngespuer_asp_ValueChanged(object sender, EventArgs e)
-        {
-//             artefakt.spezial_ferngespuer_asp = special_ferngespuer_asp.Value;
-//             update(false);
-        }
-
-        private void special_variable_var_ValueChanged(object sender, EventArgs e)
-        {
-//             artefakt.spezial_variablerausloeser_var = special_variable_var.Value;
-//             update(false);
-        }
-
-        private void special_eatmat_var_ValueChanged(object sender, EventArgs e)
-        {
-//             artefakt.spezial_verzehrend_var = special_eatmat_var.Value;
-//             update(false);
         }
 
         private void ArtGenControl_SizeChanged(object sender, EventArgs e)
@@ -2000,10 +1137,7 @@ namespace ArtefaktGenerator
         {
             if (MessageBox.Show("Alle nicht gespeicherten Änderungen am bisherigen Artefakt gehen verloren.\r\nWillst du wirklich ein neues Artefakt beginnen?", "Hinweis", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
             {
-                artefakt = new Artefakt();
-                magic = new List<Zauber>();
-                reload();
-                update(true);
+                controller.clearArtefakt();
             }
         }
 
@@ -2030,11 +1164,8 @@ namespace ArtefaktGenerator
 
                     string xml = reader.ReadToEnd();
                     //string xml = System.IO.File.ReadAllText(@".\test.artefakt");
-                    DasArtefakt art = (DasArtefakt)DeserializeObject(xml);
-                    artefakt = art.artefakt;
-                    magic = art.zauber;
-                    reload();
-                    update(true);
+
+                    controller.loadArtefakt(xml);
                 }
             }
         }
@@ -2054,163 +1185,147 @@ namespace ArtefaktGenerator
 
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                DasArtefakt art = new DasArtefakt(artefakt, magic);
-                string xml = SerializeObject(art);
-                System.IO.File.WriteAllText(@saveFileDialog1.FileName, xml);
+                System.IO.File.WriteAllText(@saveFileDialog1.FileName, controller.saveArtefakt());
             }
         }
 
         private void nebeneffekteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            artefakt.nebeneffekte = nebeneffekteToolStripMenuItem.Checked;
-            update(false);
+//             artefakt.nebeneffekte = nebeneffekteToolStripMenuItem.Checked;
+//             update(false);
         }
 
         private void occupationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            artefakt.occupation = occupationToolStripMenuItem.Checked;
-            update(false);
+//             artefakt.occupation = occupationToolStripMenuItem.Checked;
+//             update(false);
         }
 
         private void alleBerechnenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            gui.W20 = 0;
-            gui.W6 = 0;
+            controller.W20 = 0;
+            controller.W6 = 0;
             if (alleBerechnenToolStripMenuItem.Checked)
             {
                 w6AnnehmenToolStripMenuItem.Enabled = false;
                 w20ToolStripMenuItem.Enabled = false;
-                gui.optionAllesBerechnen = true;
+                controller.optionAllesBerechnen = true;
             }
             else
             {
                 w6AnnehmenToolStripMenuItem.Enabled = true;
                 w20ToolStripMenuItem.Enabled = true;
-                gui.optionAllesBerechnen = false;
+                controller.optionAllesBerechnen = false;
             }
-            update(false);
         }
 
         private void w6_1_Click(object sender, EventArgs e)
         {
-            gui.W6 = 1;
+            controller.W6 = 1;
             if (!w6_1.Checked) w6_1.Checked = true;
             w6_35.Checked = false;
             w6_4.Checked = false;
             w6_6.Checked = false;
-            update(false);
         }
 
         private void w6_6_Click(object sender, EventArgs e)
         {
-            gui.W6 = 6;
+            controller.W6 = 6;
             if (!w6_6.Checked) w6_6.Checked = true;
             w6_35.Checked = false;
             w6_4.Checked = false;
             w6_1.Checked = false;
-            update(false);
         }
 
         private void w6_35_Click(object sender, EventArgs e)
         {
-            gui.W6 = 3.5m;
+            controller.W6 = 3.5m;
             if (!w6_35.Checked) w6_35.Checked = true;
             w6_1.Checked = false;
             w6_4.Checked = false;
             w6_6.Checked = false;
-            update(false);
         }
 
         private void w6_4_Click(object sender, EventArgs e)
         {
-            gui.W6 = 4;
+            controller.W6 = 4;
             if (!w6_4.Checked) w6_4.Checked = true;
             w6_1.Checked = false;
             w6_35.Checked = false;
             w6_6.Checked = false;
-            update(false);
         }
 
         private void w20_1_Click(object sender, EventArgs e)
         {
-            gui.W20 = 1;
+            controller.W20 = 1;
             if (!w20_1.Checked) w20_1.Checked = true;
             w20_10.Checked = false;
             w20_105.Checked = false;
             w20_11.Checked = false;
             w20_20.Checked = false;
-            update(false);
         }
 
         private void w20_10_Click(object sender, EventArgs e)
         {
-            gui.W20 = 10;
+            controller.W20 = 10;
             if (!w20_10.Checked) w20_10.Checked = true;
             w20_1.Checked = false;
             w20_105.Checked = false;
             w20_11.Checked = false;
             w20_20.Checked = false;
-            update(false);
         }
 
         private void w20_105_Click(object sender, EventArgs e)
         {
-            gui.W20 = 10.5m;
+            controller.W20 = 10.5m;
             if (!w20_105.Checked) w20_105.Checked = true;
             w20_1.Checked = false;
             w20_10.Checked = false;
             w20_11.Checked = false;
             w20_20.Checked = false;
-            update(false);
         }
 
         private void w20_11_Click(object sender, EventArgs e)
         {
-            gui.W20 = 11m;
+            controller.W20 = 11m;
             if (!w20_11.Checked) w20_11.Checked = true;
             w20_1.Checked = false;
             w20_10.Checked = false;
             w20_105.Checked = false;
             w20_20.Checked = false;
-            update(false);
         }
 
         private void w20_20_Click(object sender, EventArgs e)
         {
-            gui.W20 = 20;
+            controller.W20 = 20;
             if (!w20_20.Checked) w20_20.Checked = true;
             w20_10.Checked = false;
             w20_105.Checked = false;
             w20_11.Checked = false;
             w20_1.Checked = false;
-            update(false);
         }
 
         private void wegeDerAlchimieToolStripMenuItem_Click(object sender, EventArgs e)
         {
-//             artefakt.regelbasis = Artefakt.Regelbasis.WDA;
-            gui.WDA = true;
+            controller.WDA = true;
             wegeDerAlchimieToolStripMenuItem.Checked = true;
             staebeRingeDschinnenlampenToolStripMenuItem.Checked = false;
-            update(false);
         }
 
         private void staebeRingeDschinnenlampenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-//            artefakt.regelbasis = Artefakt.Regelbasis.SRD;
-            gui.WDA = false;
+            controller.WDA = false;
             wegeDerAlchimieToolStripMenuItem.Checked = false;
             staebeRingeDschinnenlampenToolStripMenuItem.Checked = true;
-            update(false);
         }
         #endregion
 
         private void ach_save_Click(object sender, EventArgs e)
         {
             if (ach_save.Checked)
-                gui.optionAchSave = true;
+                controller.optionAchSave = true;
             else
-                gui.optionAchSave = false;
+                controller.optionAchSave = false;
         }
 
         private void importHeldensoftwareToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -2227,106 +1342,137 @@ namespace ArtefaktGenerator
 
         private void ArtGenControl_Load(object sender, EventArgs e)
         {
-            this.groupBox2.DataBindings.Add("Selected", gui, "sfRepresentation", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.sf_kraft.DataBindings.Add("Checked", gui, "sfKraftkontrolle", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.sf_vielLadung.DataBindings.Add("Checked", gui, "sfVielfacheLadung", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.sf_stapel.DataBindings.Add("Checked", gui, "sfStapeleffekt", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.sf_hyper.DataBindings.Add("Checked", gui, "sfHypervehemenz", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.sf_hyper.DataBindings.Add("Enabled", gui, "sfHypervehemenzEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.sf_matrix.DataBindings.Add("Checked", gui, "sfMatrixgeber", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.sf_semiI.DataBindings.Add("Checked", gui, "sfSemipermanenz1", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.sf_semiII.DataBindings.Add("Checked", gui, "sfSemipermanenz2", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.sf_semiII.DataBindings.Add("Enabled", gui, "sfSemipermanenz2Enabled", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.sf_ringkunde.DataBindings.Add("Checked", gui, "sfRingkunde", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.sf_aux.DataBindings.Add("Checked", gui, "sfAuxiliator", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.sf_aux.DataBindings.Add("Enabled", gui, "sfAuxiliatorEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.sf_aux.DataBindings.Add("Visible", gui, "sfAuxiliatorVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.hero_name.DataBindings.Add("Text", controller, "heldName",false, DataSourceUpdateMode.OnPropertyChanged);
 
-            this.arcanovi_change.DataBindings.Add("Value", gui, "tawArcanovi", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.arcanovi_matrix_change.DataBindings.Add("Value", gui, "tawArcanoviMatrix", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.arcanovi_matrix_change.DataBindings.Add("Enabled", gui, "tawArcanoviMatrixEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.arcanovi_matrix_lbl.DataBindings.Add("Enabled", gui, "tawArcanoviMatrixEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.arcanovi_semi_change.DataBindings.Add("Value", gui, "tawArcanoviSemipermanenz", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.arcanovi_semi_change.DataBindings.Add("Enabled", gui, "tawArcanoviSemipermanenzEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.odem_change.DataBindings.Add("Value", gui, "tawOdem", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.analys_change.DataBindings.Add("Value", gui, "tawAnalys", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.magiekunde_change.DataBindings.Add("Value", gui, "tawMagiekunde", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.destruct_change.DataBindings.Add("Value", gui, "tawDestructibo", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.groupBox2.DataBindings.Add("Selected", controller, "sfRepresentation", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_kraft.DataBindings.Add("Checked", controller, "sfKraftkontrolle", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_vielLadung.DataBindings.Add("Checked", controller, "sfVielfacheLadung", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_stapel.DataBindings.Add("Checked", controller, "sfStapeleffekt", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_hyper.DataBindings.Add("Checked", controller, "sfHypervehemenz", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_hyper.DataBindings.Add("Enabled", controller, "sfHypervehemenzEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_matrix.DataBindings.Add("Checked", controller, "sfMatrixgeber", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_semiI.DataBindings.Add("Checked", controller, "sfSemipermanenz1", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_semiII.DataBindings.Add("Checked", controller, "sfSemipermanenz2", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_semiII.DataBindings.Add("Enabled", controller, "sfSemipermanenz2Enabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_ringkunde.DataBindings.Add("Checked", controller, "sfRingkunde", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_aux.DataBindings.Add("Checked", controller, "sfAuxiliator", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_aux.DataBindings.Add("Enabled", controller, "sfAuxiliatorEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_aux.DataBindings.Add("Visible", controller, "sfAuxiliatorVisible", false, DataSourceUpdateMode.OnPropertyChanged);
 
-            this.artefakttyp.DataBindings.Add("Selected", gui, "artefakttyp", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.type_matrix.DataBindings.Add("Enabled", gui, "sfMatrixgeber", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.type_semi.DataBindings.Add("Enabled", gui, "artefakttypSemipermanenzEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.type_aux.DataBindings.Add("Enabled", gui, "artefakttypAuxiliatorEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.type_aux.DataBindings.Add("Visible", gui, "sfAuxiliatorVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.artefakttyp_temp.DataBindings.Add("Selected", gui, "artefakttypTemp", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.artefakttyp_temp.DataBindings.Add("Visible", gui, "artefakttypTempVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.artefakttyp_matrix.DataBindings.Add("Selected", gui, "artefakttypMatrix", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.artefakttyp_matrix.DataBindings.Add("Visible", gui, "artefakttypMatrixVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.artefakttyp_semi.DataBindings.Add("Selected", gui, "artefakttypSemipermanenz", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.artefakttyp_semi.DataBindings.Add("Visible", gui, "artefakttypSemipermanenzVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.artefakttyp_aux.DataBindings.Add("Selected", gui, "artefakttypAuxiliator", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.artefakttyp_aux.DataBindings.Add("Visible", gui, "artefakttypAuxiliatorVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.aux_merkmal.DataBindings.Add("Checked", gui, "artefakttypAuxiliatorMerkmal", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.arcanovi_change.DataBindings.Add("Value", controller, "tawArcanovi", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.arcanovi_matrix_change.DataBindings.Add("Value", controller, "tawArcanoviMatrix", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.arcanovi_matrix_change.DataBindings.Add("Enabled", controller, "tawArcanoviMatrixEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.arcanovi_matrix_lbl.DataBindings.Add("Enabled", controller, "tawArcanoviMatrixEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.arcanovi_semi_change.DataBindings.Add("Value", controller, "tawArcanoviSemipermanenz", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.arcanovi_semi_change.DataBindings.Add("Enabled", controller, "tawArcanoviSemipermanenzEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.odem_change.DataBindings.Add("Value", controller, "tawOdem", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.analys_change.DataBindings.Add("Value", controller, "tawAnalys", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.magiekunde_change.DataBindings.Add("Value", controller, "tawMagiekunde", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.destruct_change.DataBindings.Add("Value", controller, "tawDestructibo", false, DataSourceUpdateMode.OnPropertyChanged);
 
-            this.special_signet.DataBindings.Add("Checked", gui, "spezialSiegel", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.special_durable.DataBindings.Add("Checked", gui, "spezialUnzerbrechlich", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.special_scent.DataBindings.Add("Checked", gui, "spezialGespuer", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.special_apport.DataBindings.Add("Checked", gui, "spezialApport", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.special_resistant.DataBindings.Add("Checked", gui, "spezialResistenz", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.special_resistant.DataBindings.Add("Visible", gui, "spezialResistenzVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.special_selfrepair.DataBindings.Add("Checked", gui, "spezialSelbstreparatur", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.special_selfrepair.DataBindings.Add("Visible", gui, "spezialSelbstreparaturVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.special_ferngespuer.DataBindings.Add("Checked", gui, "spezialFerngespuer", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.special_ferngespuer.DataBindings.Add("Visible", gui, "spezialFerngespuerVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.lbl_special_asp.DataBindings.Add("Visible", gui, "spezialFerngespuerVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.lbl_special_komp.DataBindings.Add("Visible", gui, "spezialFerngespuerVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.special_ferngespuer_komp.DataBindings.Add("Visible", gui, "spezialFerngespuerVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.special_ferngespuer_asp.DataBindings.Add("Visible", gui, "spezialFerngespuerVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.special_ferngespuer_asp.DataBindings.Add("Value", gui, "spezialFerngespuerAsp", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.special_ferngespuer_komp.DataBindings.Add("SelectedValue", gui, "spezialFerngespuerKomp", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.special_reversalis.DataBindings.Add("Checked", gui, "spezialUmkehrtalisman", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.special_reversalis.DataBindings.Add("Visible", gui, "spezialUmkehrtalismanVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.special_variablerelease.DataBindings.Add("Checked", gui, "spezialVariablerAusloeser", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.special_variablerelease.DataBindings.Add("Visible", gui, "spezialVariablerAusloeserVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.special_variable_var.DataBindings.Add("Value", gui, "spezialVariablerAusloeserVar", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.special_variable_var.DataBindings.Add("Visible", gui, "spezialVariablerAusloeserVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.special_schleier.DataBindings.Add("Checked", gui, "spezialVerschleierung", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.special_schleier.DataBindings.Add("Visible", gui, "spezialVerschleierungVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.special_eatmaterial.DataBindings.Add("Checked", gui, "spezialVerzehrend", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.special_eatmaterial.DataBindings.Add("Visible", gui, "spezialVerzehrendVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.special_eatmat_var.DataBindings.Add("Value", gui, "spezialVerzehrendVar", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.special_eatmat_var.DataBindings.Add("Visible", gui, "spezialVerzehrendVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.artefakttyp.DataBindings.Add("Selected", controller, "artefakttyp", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.type_matrix.DataBindings.Add("Enabled", controller, "sfMatrixgeber", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.type_semi.DataBindings.Add("Enabled", controller, "artefakttypSemipermanenzEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.type_aux.DataBindings.Add("Enabled", controller, "artefakttypAuxiliatorEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.type_temp.DataBindings.Add("Enabled", controller, "artefakttypTempEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.type_aux.DataBindings.Add("Visible", controller, "sfAuxiliatorVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.artefakttyp_temp.DataBindings.Add("Selected", controller, "artefakttypTemp", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.artefakttyp_temp.DataBindings.Add("Visible", controller, "artefakttypTempVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.artefakttyp_matrix.DataBindings.Add("Selected", controller, "artefakttypMatrix", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.artefakttyp_matrix.DataBindings.Add("Visible", controller, "artefakttypMatrixVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.artefakttyp_semi.DataBindings.Add("Selected", controller, "artefakttypSemipermanenz", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.artefakttyp_semi.DataBindings.Add("Visible", controller, "artefakttypSemipermanenzVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.artefakttyp_aux.DataBindings.Add("Selected", controller, "artefakttypAuxiliator", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.artefakttyp_aux.DataBindings.Add("Visible", controller, "artefakttypAuxiliatorVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.aux_merkmal.DataBindings.Add("Checked", controller, "artefakttypAuxiliatorMerkmal", false, DataSourceUpdateMode.OnPropertyChanged);
 
-            this.limbus.DataBindings.Add("Checked", gui, "extraMadeInLimbus", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.namenlos.DataBindings.Add("Checked", gui, "extraNamenloseTage", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.agribaal.DataBindings.Add("Value", gui, "extraAgribaal", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.special_ort_occ.DataBindings.Add("Value", gui, "extraOkkupation", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.special_ort_neben.DataBindings.Add("Value", gui, "extraNebeneffekt", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.artefakt_super_big.DataBindings.Add("SelectedIndex", gui, "extraExtraGross", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.cb_kristalle.DataBindings.Add("Checked", gui, "extraKristalle", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.cb_kristalle.DataBindings.Add("Visible", gui, "extraKristalleVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.material.DataSource = gui.material;
-            this.material.DataBindings.Add("SelectedIndex", gui, "selectedMaterial", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_signet.DataBindings.Add("Checked", controller, "spezialSiegel", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_signet.DataBindings.Add("Enabled", controller, "spezialSiegelEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_durable.DataBindings.Add("Checked", controller, "spezialUnzerbrechlich", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_scent.DataBindings.Add("Checked", controller, "spezialGespuer", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_apport.DataBindings.Add("Checked", controller, "spezialApport", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_resistant.DataBindings.Add("Checked", controller, "spezialResistenz", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_resistant.DataBindings.Add("Visible", controller, "spezialResistenzVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_selfrepair.DataBindings.Add("Checked", controller, "spezialSelbstreparatur", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_selfrepair.DataBindings.Add("Visible", controller, "spezialSelbstreparaturVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_ferngespuer.DataBindings.Add("Checked", controller, "spezialFerngespuer", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_ferngespuer.DataBindings.Add("Visible", controller, "spezialFerngespuerVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_ferngespuer.DataBindings.Add("Enabled", controller, "spezialFerngespuerEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.lbl_special_asp.DataBindings.Add("Visible", controller, "spezialFerngespuerVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.lbl_special_komp.DataBindings.Add("Visible", controller, "spezialFerngespuerVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.lbl_special_asp.DataBindings.Add("Enabled", controller, "spezialFerngespuerEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.lbl_special_komp.DataBindings.Add("Enabled", controller, "spezialFerngespuerEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_ferngespuer_komp.DataBindings.Add("Visible", controller, "spezialFerngespuerVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_ferngespuer_asp.DataBindings.Add("Visible", controller, "spezialFerngespuerVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_ferngespuer_komp.DataBindings.Add("Enabled", controller, "spezialFerngespuerEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_ferngespuer_asp.DataBindings.Add("Enabled", controller, "spezialFerngespuerEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_ferngespuer_asp.DataBindings.Add("Value", controller, "spezialFerngespuerAsp", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_ferngespuer_komp.DataBindings.Add("SelectedValue", controller, "spezialFerngespuerKomp", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_reversalis.DataBindings.Add("Checked", controller, "spezialUmkehrtalisman", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_reversalis.DataBindings.Add("Visible", controller, "spezialUmkehrtalismanVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_reversalis.DataBindings.Add("Enabled", controller, "spezialUmkehrtalismanEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_variablerelease.DataBindings.Add("Checked", controller, "spezialVariablerAusloeser", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_variablerelease.DataBindings.Add("Visible", controller, "spezialVariablerAusloeserVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_variablerelease.DataBindings.Add("Enabled", controller, "spezialVariablerAusloeserEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_variable_var.DataBindings.Add("Value", controller, "spezialVariablerAusloeserVar", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_variable_var.DataBindings.Add("Visible", controller, "spezialVariablerAusloeserVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_variable_var.DataBindings.Add("Enabled", controller, "spezialVariablerAusloeserEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_schleier.DataBindings.Add("Checked", controller, "spezialVerschleierung", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_schleier.DataBindings.Add("Visible", controller, "spezialVerschleierungVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_schleier.DataBindings.Add("Enabled", controller, "spezialVerschleierungEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_eatmaterial.DataBindings.Add("Checked", controller, "spezialVerzehrend", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_eatmaterial.DataBindings.Add("Visible", controller, "spezialVerzehrendVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_eatmaterial.DataBindings.Add("Enabled", controller, "spezialVerzehrendEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_eatmat_var.DataBindings.Add("Value", controller, "spezialVerzehrendVar", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_eatmat_var.DataBindings.Add("Visible", controller, "spezialVerzehrendVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_eatmat_var.DataBindings.Add("Enabled", controller, "spezialVerzehrendEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
 
-            this.probe_ausloes.DataBindings.Add("Value", gui, "probeAusloeser", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.probe_affine.DataBindings.Add("Value", gui, "probeAffin", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.artefakt_groesse.DataBindings.Add("Value", gui, "probeGroesse", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.artefakt_groesse.DataBindings.Add("Enabled", gui, "probeGroesseEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.arcanovi_force.DataBindings.Add("Value", gui, "probeErzwingen", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.starkonst.DataBindings.Add("Value", gui, "probeSterne", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.limbus.DataBindings.Add("Checked", controller, "extraMadeInLimbus", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.namenlos.DataBindings.Add("Checked", controller, "extraNamenloseTage", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.agribaal.DataBindings.Add("Value", controller, "extraAgribaal", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_ort_occ.DataBindings.Add("Value", controller, "extraOkkupation", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_ort_neben.DataBindings.Add("Value", controller, "extraNebeneffekt", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.artefakt_super_big.DataBindings.Add("SelectedIndex", controller, "extraExtraGross", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.cb_kristalle.DataBindings.Add("Checked", controller, "extraKristalle", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.cb_kristalle.DataBindings.Add("Visible", controller, "extraKristalleVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.material.DataSource = controller.material;
+            this.material.DataBindings.Add("SelectedIndex", controller, "selectedMaterial", false, DataSourceUpdateMode.OnPropertyChanged);
 
-            this.zauber_listbox.DataSource = gui.zauberListe;
-            this.loads.DataBindings.Add("Value", gui, "zauberLadungen", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.loads.DataBindings.Add("Enabled", gui, "zauberLadungenEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.loads_lbl.DataBindings.Add("Enabled", gui, "zauberLadungenEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.probe_ausloes.DataBindings.Add("Value", controller, "probeAusloeser", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.probe_affine.DataBindings.Add("Value", controller, "probeAffin", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.probe_affine.DataBindings.Add("Maximum", controller, "probeAffinMax", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.probe_affine.DataBindings.Add("Minimum", controller, "probeAffinMin", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.artefakt_groesse.DataBindings.Add("Value", controller, "probeGroesse", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.artefakt_groesse.DataBindings.Add("Enabled", controller, "probeGroesseEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.arcanovi_force.DataBindings.Add("Value", controller, "probeErzwingen", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.starkonst.DataBindings.Add("Value", controller, "probeSterne", false, DataSourceUpdateMode.OnPropertyChanged);
 
-            this.txt_create.DataBindings.Add("Text", gui, "resultArcanovi", false, DataSourceUpdateMode.OnPropertyChanged);
-            
+            this.zauber_listbox.DataSource = controller.zauberListe;
+            this.stapelung.DataBindings.Add("Maximum", controller, "zauberStapelMax", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.stapelung.DataBindings.Add("Enabled", controller, "zauberStapelEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.lbl_staple.DataBindings.Add("Enabled", controller, "zauberStapelEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.loads.DataBindings.Add("Value", controller, "zauberLadungen", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.loads.DataBindings.Add("Enabled", controller, "zauberLadungenEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.loads_lbl.DataBindings.Add("Enabled", controller, "zauberLadungenEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
 
-            gui.WDA = true;
-            gui.W6 = 3.5M;
-            gui.W20 = 11;
-            material.SelectedItem = ("kein");
+            this.txt_create.DataBindings.Add("Text", controller, "resultArcanovi", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.txt_analys.DataBindings.Add("Text", controller, "resultAnalys", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.txt_destruct.DataBindings.Add("Text", controller, "resultDestructibo", false, DataSourceUpdateMode.OnPropertyChanged);
+
+            this.analys_broken.DataBindings.Add("Checked", controller, "analysMisslungen", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.analys_komplex.DataBindings.Add("Value", controller, "analysKomplex", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.analys_mr.DataBindings.Add("Value", controller, "analysMR", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.analys_cloack.DataBindings.Add("Value", controller, "analysTarnzauber", false, DataSourceUpdateMode.OnPropertyChanged);
+
+            this.destruct_infinitum.DataBindings.Add("Checked", controller, "destructiboInfinitum", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.destruct_komplex.DataBindings.Add("Value", controller, "destructiboKomplex", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.destruct_mr.DataBindings.Add("Value", controller, "destructiboMR", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.destruct_aktive.DataBindings.Add("Value", controller, "destructiboAktiveLadungen", false, DataSourceUpdateMode.OnPropertyChanged);
+
+            controller.init();
+
+            stapelung.Minimum = 1;
+            zauber_rep.SelectedIndex = 0;
         }
 
     }

@@ -37,7 +37,7 @@ namespace ArtefaktGeneratorApp
 
         private void ArtGenApp_Shown(object sender, EventArgs e)
         {
-            artGenControl1.showSelectHeroDialog(this);
+            //artGenControl1.showSelectHeroDialog(this);
         }
     }
 }

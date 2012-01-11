@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel;
+using System.Text.RegularExpressions;
+using System.Reflection;
 
 namespace ArtefaktGenerator
 {
-    public class GUI : INotifyPropertyChanged
+    public class Controller : INotifyPropertyChanged
     {
         private Artefakt artefakt = new Artefakt();
         private BindingList<Zauber> magic = new BindingList<Zauber>();
@@ -13,7 +15,7 @@ namespace ArtefaktGenerator
         private MaterialSammlung mat;
         private Occupation occ = new Occupation();
 
-        public GUI() { mat = new MaterialSammlung(dice); }
+        public Controller() { mat = new MaterialSammlung(dice); }
 
         #region Options
         public bool WDA
@@ -34,6 +36,16 @@ namespace ArtefaktGenerator
                     spezialVariablerAusloeserVisible = true;
                     spezialVerschleierungVisible = true;
                     spezialVerzehrendVisible = true;
+
+                    probeAffinMax = 3;
+                    probeAffinMin = -3;
+
+                    if (tawArcanovi < 12)
+                    {
+                        if (artefakttyp == (int)Artefakt.ArtefaktType.TEMP)
+                            artefakttyp = (int)Artefakt.ArtefaktType.NORMAL;
+                        artefakttypTempEnabled = false;
+                    }
                 }
                 else
                 {
@@ -56,6 +68,11 @@ namespace ArtefaktGenerator
                     spezialVerschleierung = false;
                     spezialVerzehrendVisible = false;
                     spezialVerzehrend = false;
+
+                    probeAffinMax = 4;
+                    probeAffinMin = -2;
+
+                    artefakttypTempEnabled = true;
                 }
                 extraExtraGross = extraExtraGross;
                 RaisePropertyChanged("WDA");
@@ -73,6 +90,12 @@ namespace ArtefaktGenerator
         {
             get { return _allesBerechnen; }
             set { _allesBerechnen = value; RaisePropertyChanged("optionAllesBerechnen"); }
+        }
+
+        public string heldName
+        {
+            get { return artefakt.heldName; }
+            set { artefakt.heldName = value; RaisePropertyChanged("heldName"); }
         }
 
         #endregion
@@ -135,11 +158,27 @@ namespace ArtefaktGenerator
                 if (value)
                 {
                     sfHypervehemenzEnabled = true;
+                    zauberStapelEnabled = true;
                 }
                 else
                 {
                     sfHypervehemenzEnabled = false;
                     sfHypervehemenz = false;
+                    zauberStapelEnabled = false;
+
+                    BindingList<Zauber> z = zauberListe;
+                    for (int i = 0; i < z.Count; i++ )
+                    {
+                        if (z[i].staple > 1)
+                        {
+                            Zauber zx = z[i];
+                            zx.staple = 1;
+                            z.RemoveAt(i);
+                            z.Add(zx);
+                        }
+                    }
+                    zauberListe = z;
+
                 }
                 RaisePropertyChanged("sfStapeleffekt");
             }
@@ -153,10 +192,14 @@ namespace ArtefaktGenerator
             set
             {
                 artefakt.sf.hyper = value;
+                if (value)
+                    zauberStapelMax = 1000;
+                else
+                    zauberStapelMax = 3;
                 RaisePropertyChanged("sfHypervehemenz");
             }
         }
-        public bool _sfHypervehemenzEnabled;
+        private bool _sfHypervehemenzEnabled;
         public bool sfHypervehemenzEnabled
         {
             get
@@ -227,7 +270,7 @@ namespace ArtefaktGenerator
                 RaisePropertyChanged("sfSemipermanenz2");
             }
         }
-        public bool semi2_enabled;
+        private bool semi2_enabled;
         public bool sfSemipermanenz2Enabled
         {
             get
@@ -272,7 +315,7 @@ namespace ArtefaktGenerator
                 RaisePropertyChanged("sfAuxiliator");
             }
         }
-        public bool _sfAuxiliatorEnabled;
+        private bool _sfAuxiliatorEnabled;
         public bool sfAuxiliatorEnabled
         {
             get
@@ -285,7 +328,7 @@ namespace ArtefaktGenerator
                 RaisePropertyChanged("sfAuxiliatorEnabled");
             }
         }
-        public bool _sfAuxiliatorVisible;
+        private bool _sfAuxiliatorVisible;
         public bool sfAuxiliatorVisible
         {
             get
@@ -311,14 +354,56 @@ namespace ArtefaktGenerator
         public int tawArcanovi
         {
             get { return (int)artefakt.taw.arcanovi; }
-            set { artefakt.taw.arcanovi = (decimal)value; RaisePropertyChanged("tawArcanovi"); }
+            set { 
+                artefakt.taw.arcanovi = (decimal)value;
+                if (value < 10)
+                {
+                    spezialSiegel = false;
+                    spezialSiegelEnabled = false;
+                    spezialVerschleierung = false;
+                    spezialVerschleierungEnabled = false;
+                }
+                else
+                {
+                    spezialSiegelEnabled = true;
+                    spezialVerschleierungEnabled = true;
+                }
+                if (value < 12)
+                {
+                    spezialFerngespuer = false;
+                    spezialFerngespuerEnabled = false;
+                    spezialVariablerAusloeserEnabled = false;
+                    spezialVariablerAusloeser = false;
+                    if (WDA && artefakt.typ == Artefakt.ArtefaktType.TEMP)
+                        artefakttyp = (int)Artefakt.ArtefaktType.NORMAL;
+                    if (WDA) artefakttypTempEnabled = false;
+                }
+                else
+                {
+                    spezialFerngespuerEnabled = true;
+                    spezialVariablerAusloeserEnabled = true;
+                    artefakttypTempEnabled = true;
+                    if (artefakttyp == (int)Artefakt.ArtefaktType.RECHARGE) spezialVariablerAusloeserEnabled = true;
+                }
+                RaisePropertyChanged("tawArcanovi");
+            }
         }
         public int tawArcanoviMatrix
         {
             get { return (int)artefakt.taw.arcanovi_matrix; }
-            set { artefakt.taw.arcanovi_matrix = (decimal)value; RaisePropertyChanged("tawArcanoviMatrix"); }
+            set { 
+                artefakt.taw.arcanovi_matrix = (decimal)value; 
+                if (value < 15)
+                {
+                    spezialUmkehrtalisman = false;
+                    spezialUmkehrtalismanEnabled = false;
+                }
+                else if (artefakttyp == (int)Artefakt.ArtefaktType.AUX)
+                    spezialUmkehrtalismanEnabled = true;
+                RaisePropertyChanged("tawArcanoviMatrix"); 
+            }
         }
-        public bool _tawArcanoviMatrixEnabled;
+        private bool _tawArcanoviMatrixEnabled;
         public bool tawArcanoviMatrixEnabled
         {
             get { return _tawArcanoviMatrixEnabled; }
@@ -329,7 +414,7 @@ namespace ArtefaktGenerator
             get { return (int)artefakt.taw.arcanovi_semi; }
             set { artefakt.taw.arcanovi_semi = (decimal)value; RaisePropertyChanged("tawArcanoviSemipermanenz"); }
         }
-        public bool _tawArcanoviSemipermanenzEnabled;
+        private bool _tawArcanoviSemipermanenzEnabled;
         public bool tawArcanoviSemipermanenzEnabled
         {
             get { return _tawArcanoviSemipermanenzEnabled; }
@@ -370,14 +455,33 @@ namespace ArtefaktGenerator
                         artefakttypTempVisible = true;
                 else artefakttypTempVisible = false;
                 if (artefakt.typ == Artefakt.ArtefaktType.MATRIX)
+                {
                     artefakttypMatrixVisible = true;
-                else artefakttypMatrixVisible = false;
+                    zauberLadungenEnabled = false;
+                    zauberLadungen = 1;
+                }
+                else
+                {
+                    artefakttypMatrixVisible = false;
+                    zauberLadungenEnabled = true;
+                }
                 if (artefakt.typ == Artefakt.ArtefaktType.SEMI)
                     artefakttypSemipermanenzVisible = true;
                 else artefakttypSemipermanenzVisible = false;
                 if (artefakt.typ == Artefakt.ArtefaktType.AUX)
+                {
                     artefakttypAuxiliatorVisible = true;
+                    if (tawArcanoviMatrix >= 15) spezialUmkehrtalismanEnabled = true;
+                    else spezialUmkehrtalismanEnabled = false;
+                }
                 else artefakttypAuxiliatorVisible = false;
+                if (artefakt.typ == Artefakt.ArtefaktType.RECHARGE && tawArcanovi >= 12)
+                    spezialVariablerAusloeserEnabled = true;
+                else spezialVariablerAusloeserEnabled = false;
+                if ((artefakt.typ == Artefakt.ArtefaktType.NORMAL || artefakt.typ == Artefakt.ArtefaktType.TEMP) && zauberLadungen == 1)
+                    spezialVerzehrendEnabled = true;
+                else
+                    spezialVerzehrendEnabled = false;
 
                 RaisePropertyChanged("artefakttyp"); 
             }
@@ -388,11 +492,17 @@ namespace ArtefaktGenerator
             get { return (int)artefakt.temp_typ; }
             set { artefakt.temp_typ = (Artefakt.TempType)value; RaisePropertyChanged("artefakttypTemp"); }
         }
-        public bool _artefakttypTempVisible;
+        private bool _artefakttypTempVisible;
         public bool artefakttypTempVisible
         {
             get { return _artefakttypTempVisible; }
             set { _artefakttypTempVisible = value; RaisePropertyChanged("artefakttypTempVisible"); }
+        }
+        private bool _artefakttypTempEnabled;
+        public bool artefakttypTempEnabled
+        {
+            get { return _artefakttypTempEnabled; }
+            set { _artefakttypTempEnabled = value; RaisePropertyChanged("artefakttypTempEnabled"); }
         }
 
         public int artefakttypMatrix
@@ -400,7 +510,7 @@ namespace ArtefaktGenerator
             get { return (int)artefakt.matrix_typ; }
             set { artefakt.matrix_typ = (Artefakt.MatrixType)value; RaisePropertyChanged("artefakttypMatrix"); }
         }
-        public bool _artefakttypMatrixVisible;
+        private bool _artefakttypMatrixVisible;
         public bool artefakttypMatrixVisible
         {
             get { return _artefakttypMatrixVisible; }
@@ -412,13 +522,13 @@ namespace ArtefaktGenerator
             get { return (int)artefakt.semi_typ; }
             set { artefakt.semi_typ = (Artefakt.SemiType)value; RaisePropertyChanged("artefakttypSemipermanenz"); }
         }
-        public bool _artefakttypSemipermanenzVisible;
+        private bool _artefakttypSemipermanenzVisible;
         public bool artefakttypSemipermanenzVisible
         {
             get { return _artefakttypSemipermanenzVisible; }
             set { _artefakttypSemipermanenzVisible = value; RaisePropertyChanged("artefakttypSemipermanenzVisible"); }
         }
-        public bool _artefakttypSemipermanenzEnabled;
+        private bool _artefakttypSemipermanenzEnabled;
         public bool artefakttypSemipermanenzEnabled
         {
             get { return _artefakttypSemipermanenzEnabled; }
@@ -430,13 +540,13 @@ namespace ArtefaktGenerator
             get { return (int)artefakt.aux_typ; }
             set { artefakt.aux_typ = (Artefakt.MatrixType)value; RaisePropertyChanged("artefakttypAuxiliator"); }
         }
-        public bool _artefakttypAuxiliatorVisible;
+        private bool _artefakttypAuxiliatorVisible;
         public bool artefakttypAuxiliatorVisible
         {
             get { return _artefakttypAuxiliatorVisible; }
             set { _artefakttypAuxiliatorVisible = value; RaisePropertyChanged("artefakttypAuxiliatorVisible"); }
         }
-        public bool _artefakttypAuxiliatorEnabled;
+        private bool _artefakttypAuxiliatorEnabled;
         public bool artefakttypAuxiliatorEnabled
         {
             get { return _artefakttypAuxiliatorEnabled; }
@@ -457,6 +567,13 @@ namespace ArtefaktGenerator
             get { return artefakt.spezial_siegel; }
             set { artefakt.spezial_siegel = value; RaisePropertyChanged("spezialSiegel"); }
         }
+        private bool _spezialSiegelEnabled;
+        public bool spezialSiegelEnabled
+        {
+            get { return _spezialSiegelEnabled; }
+            set { _spezialSiegelEnabled = value; RaisePropertyChanged("spezialSiegelEnabled"); }
+        }
+
         public bool spezialUnzerbrechlich
         {
             get { return artefakt.spezial_unzerbrechlich; }
@@ -478,7 +595,7 @@ namespace ArtefaktGenerator
             get { return artefakt.spezial_resistent; }
             set { artefakt.spezial_resistent = value; RaisePropertyChanged("spezialResistenz"); }
         }
-        public bool _spezialResistenzVisible;
+        private bool _spezialResistenzVisible;
         public bool spezialResistenzVisible
         {
             get { return _spezialResistenzVisible; }
@@ -490,7 +607,7 @@ namespace ArtefaktGenerator
             get { return artefakt.spezial_reperatur; }
             set { artefakt.spezial_reperatur = value; RaisePropertyChanged("spezialSelbstreparatur"); }
         }
-        public bool _spezialSelbstreparaturVisible;
+        private bool _spezialSelbstreparaturVisible;
         public bool spezialSelbstreparaturVisible
         {
             get { return _spezialSelbstreparaturVisible; }
@@ -502,11 +619,17 @@ namespace ArtefaktGenerator
             get { return artefakt.spezial_ferngespuer; }
             set { artefakt.spezial_ferngespuer = value; RaisePropertyChanged("spezialFerngespuer"); }
         }
-        public bool _spezialFerngespuerVisible;
+        private bool _spezialFerngespuerVisible;
         public bool spezialFerngespuerVisible
         {
             get { return _spezialFerngespuerVisible; }
             set { _spezialFerngespuerVisible = value; RaisePropertyChanged("spezialFerngespuerVisible"); }
+        }
+        private bool _spezialFerngespuerEnabled;
+        public bool spezialFerngespuerEnabled
+        {
+            get { return _spezialFerngespuerEnabled; }
+            set { _spezialFerngespuerEnabled = value; RaisePropertyChanged("spezialFerngespuerEnabled"); }
         }
         public int spezialFerngespuerAsp
         {
@@ -524,11 +647,17 @@ namespace ArtefaktGenerator
             get { return artefakt.spezial_reversalis; }
             set { artefakt.spezial_reversalis = value; RaisePropertyChanged("spezialUmkehrtalisman"); }
         }
-        public bool _spezialUmkehrtalismanVisible;
+        private bool _spezialUmkehrtalismanVisible;
         public bool spezialUmkehrtalismanVisible
         {
             get { return _spezialUmkehrtalismanVisible; }
             set { _spezialUmkehrtalismanVisible = value; RaisePropertyChanged("spezialUmkehrtalismanVisible"); }
+        }
+        private bool _spezialUmkehrtalismanEnabled;
+        public bool spezialUmkehrtalismanEnabled
+        {
+            get { return _spezialUmkehrtalismanEnabled; }
+            set { _spezialUmkehrtalismanEnabled = value; RaisePropertyChanged("spezialUmkehrtalismanEnabled"); }
         }
 
         public bool spezialVariablerAusloeser
@@ -536,11 +665,17 @@ namespace ArtefaktGenerator
             get { return artefakt.spezial_variablerausloeser; }
             set { artefakt.spezial_variablerausloeser = value; RaisePropertyChanged("spezialVariablerAusloeser"); }
         }
-        public bool _spezialVariablerAusloeserVisible;
+        private bool _spezialVariablerAusloeserVisible;
         public bool spezialVariablerAusloeserVisible
         {
             get { return _spezialVariablerAusloeserVisible; }
             set { _spezialVariablerAusloeserVisible = value; RaisePropertyChanged("spezialVariablerAusloeserVisible"); }
+        }
+        private bool _spezialVariablerAusloeserEnabled;
+        public bool spezialVariablerAusloeserEnabled
+        {
+            get { return _spezialVariablerAusloeserEnabled; }
+            set { _spezialVariablerAusloeserEnabled = value; RaisePropertyChanged("spezialVariablerAusloeserEnabled"); }
         }
         public int spezialVariablerAusloeserVar
         {
@@ -553,11 +688,17 @@ namespace ArtefaktGenerator
             get { return artefakt.spezial_verschleierung; }
             set { artefakt.spezial_verschleierung = value; RaisePropertyChanged("spezialVerschleierung"); }
         }
-        public bool _spezialVerschleierungVisible;
+        private bool _spezialVerschleierungVisible;
         public bool spezialVerschleierungVisible
         {
             get { return _spezialVerschleierungVisible; }
             set { _spezialVerschleierungVisible = value; RaisePropertyChanged("spezialVerschleierungVisible"); }
+        }
+        private bool _spezialVerschleierungEnabled;
+        public bool spezialVerschleierungEnabled
+        {
+            get { return _spezialVerschleierungEnabled; }
+            set { _spezialVerschleierungEnabled = value; RaisePropertyChanged("spezialVerschleierungEnabled"); }
         }
 
         public bool spezialVerzehrend
@@ -565,11 +706,17 @@ namespace ArtefaktGenerator
             get { return artefakt.spezial_verzehrend; }
             set { artefakt.spezial_verzehrend = value; RaisePropertyChanged("spezialVerzehrend"); }
         }
-        public bool _spezialVerzehrendVisible;
+        private bool _spezialVerzehrendVisible;
         public bool spezialVerzehrendVisible
         {
             get { return _spezialVerzehrendVisible; }
             set { _spezialVerzehrendVisible = value; RaisePropertyChanged("spezialVerzehrendVisible"); }
+        }
+        private bool _spezialVerzehrendEnabled;
+        public bool spezialVerzehrendEnabled
+        {
+            get { return _spezialVerzehrendEnabled; }
+            set { _spezialVerzehrendEnabled = value; RaisePropertyChanged("spezialVerzehrendEnabled"); }
         }
         public int spezialVerzehrendVar
         {
@@ -611,7 +758,7 @@ namespace ArtefaktGenerator
             set { artefakt.special_ort_neben = (decimal)value; RaisePropertyChanged("extraNebeneffekt"); }
         }
 
-        public int _extraExtraGross;
+        private int _extraExtraGross;
         public int extraExtraGross
         {
             get { return _extraExtraGross; }
@@ -659,7 +806,7 @@ namespace ArtefaktGenerator
             set {}
         }
 
-        int _selectedMaterial;
+        private int _selectedMaterial;
         public int selectedMaterial
         {
             get { return _selectedMaterial; }
@@ -671,7 +818,7 @@ namespace ArtefaktGenerator
             get { return artefakt.kristalle; }
             set { artefakt.kristalle = value; RaisePropertyChanged("extraKristalle"); }
         }
-        public bool _extraKristalleVisible;
+        private bool _extraKristalleVisible;
         public bool extraKristalleVisible
         {
             get { return _extraKristalleVisible; }
@@ -693,12 +840,25 @@ namespace ArtefaktGenerator
             get { return (int)artefakt.probe.affine; }
             set { artefakt.probe.affine = (decimal)value; RaisePropertyChanged("probeAffin"); }
         }
+        private int _probeAffinMax;
+        public int probeAffinMax
+        {
+            get { return _probeAffinMax; }
+            set { _probeAffinMax = value; RaisePropertyChanged("probeAffinMax"); }
+        }
+        private int _probeAffinMin;
+        public int probeAffinMin
+        {
+            get { return _probeAffinMin; }
+            set { _probeAffinMin = value; RaisePropertyChanged("probeAffinMin"); }
+        }
+
         public int probeGroesse
         {
             get { return (int)artefakt.probe.groesse; }
             set { artefakt.probe.groesse = (decimal)value; RaisePropertyChanged("probeGroesse"); }
         }
-        public bool _probeGroesseEnabled;
+        private bool _probeGroesseEnabled;
         public bool probeGroesseEnabled
         {
             get { return _probeGroesseEnabled; ; }
@@ -719,9 +879,22 @@ namespace ArtefaktGenerator
 
         #region Zauber Liste
 
+        private bool _zauberStapelEnabled;
+        public bool zauberStapelEnabled
+        {
+            get { return _zauberStapelEnabled; }
+            set { _zauberStapelEnabled = value; RaisePropertyChanged("zauberStapelEnabled"); }
+        }
+        private int _zauberStapelMax;
+        public int zauberStapelMax
+        {
+            get { return _zauberStapelMax; }
+            set { _zauberStapelMax = value; RaisePropertyChanged("zauberStapelMax"); }
+        }
+
         public BindingList<Zauber> zauberListe
         {
-            get { return magic; }
+            get { magic.AllowEdit = true; return magic; }
             set {
                 magic = value; RaisePropertyChanged("zauberListe");
             }
@@ -732,7 +905,7 @@ namespace ArtefaktGenerator
             get { return (int)artefakt.loads; }
             set { artefakt.loads = (decimal)value; RaisePropertyChanged("zauberLadungen"); }
         }
-        public bool _zauberLadungenEnabled;
+        private bool _zauberLadungenEnabled;
         public bool zauberLadungenEnabled
         {
             get { return _zauberLadungenEnabled; }
@@ -747,6 +920,20 @@ namespace ArtefaktGenerator
         {
             get { return _resArcanovi; }
             set { _resArcanovi = value; RaisePropertyChanged("resultArcanovi"); }
+        }
+
+        private string _resAnalys;
+        public string resultAnalys
+        {
+            get { return _resAnalys; }
+            set { _resAnalys = value; RaisePropertyChanged("resultAnalys"); }
+        }
+
+        private string _resDestructibo;
+        public string resultDestructibo
+        {
+            get { return _resDestructibo; }
+            set { _resDestructibo = value; RaisePropertyChanged("resultDestructibo"); }
         }
 
         #endregion
@@ -766,6 +953,56 @@ namespace ArtefaktGenerator
 
         #endregion
 
+        #region Analys Specifics
+
+        public bool analysMisslungen
+        {
+            get { return artefakt.analys.misslungen; }
+            set { artefakt.analys.misslungen = value; RaisePropertyChanged("analysMisslungen"); }
+        }
+        public int analysKomplex
+        {
+            get { return (int)artefakt.analys.bes_komlexitaet; }
+            set { artefakt.analys.bes_komlexitaet = (int)value; RaisePropertyChanged("analysKomplex"); }
+        }
+        public int analysMR
+        {
+            get { return (int)artefakt.analys.mr; }
+            set { artefakt.analys.mr = (int)value; RaisePropertyChanged("analysMR"); }
+        }
+        public int analysTarnzauber
+        {
+            get { return (int)artefakt.analys.tarnzauber; }
+            set { artefakt.analys.tarnzauber = (int)value; RaisePropertyChanged("analysTarnzauber"); }
+        }
+
+        #endregion
+
+        #region Destructibo Specifics
+
+        public bool destructiboInfinitum
+        {
+            get { return artefakt.destructibo.infinitum; }
+            set { artefakt.destructibo.infinitum = value; RaisePropertyChanged("destructiboInfinitum"); }
+        }
+        public int destructiboKomplex
+        {
+            get { return (int)artefakt.destructibo.komplex; }
+            set { artefakt.destructibo.komplex = (int)value; RaisePropertyChanged("destructiboKomplex"); }
+        }
+        public int destructiboMR
+        {
+            get { return (int)artefakt.destructibo.mr; }
+            set { artefakt.destructibo.mr = (int)value; RaisePropertyChanged("destructiboMR"); }
+        }
+        public int destructiboAktiveLadungen
+        {
+            get { return (int)artefakt.destructibo.aktive_loads; }
+            set { artefakt.destructibo.aktive_loads = (int)value; RaisePropertyChanged("destructiboAktiveLadungen"); }
+        }
+
+        #endregion
+
         #region Implement INotifyPropertyChanged
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -777,7 +1014,7 @@ namespace ArtefaktGenerator
 
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
 
-            if (propertyName != "resultArcanovi")
+            if (propertyName != "resultArcanovi" && propertyName != "resultAnalys" && propertyName != "resultDestructibo")
                 generateArtefakt();
 
         }
@@ -791,9 +1028,155 @@ namespace ArtefaktGenerator
             return Math.Round(x, MidpointRounding.AwayFromZero);
         }
 
+        private String UTF8ByteArrayToString(Byte[] characters)
+        {
+            UTF8Encoding encoding = new UTF8Encoding();
+            String constructedString = encoding.GetString(characters);
+            return (constructedString);
+        }
+
+
+        private Byte[] StringToUTF8ByteArray(String pXmlString)
+        {
+            UTF8Encoding encoding = new UTF8Encoding();
+            Byte[] byteArray = encoding.GetBytes(pXmlString);
+            return byteArray;
+        }
+
+        private void reInitArtefakt()
+        {
+            heldName = heldName;
+            WDA = WDA;
+            optionAchSave = optionAchSave;
+            optionAllesBerechnen = optionAllesBerechnen;
+            sfHypervehemenz = sfHypervehemenz;
+            sfVielfacheLadung = sfVielfacheLadung;
+            sfKraftkontrolle = sfKraftkontrolle;
+            sfRepresentation = sfRepresentation;
+            sfAuxiliator = sfAuxiliator;
+            sfKraftkontrolle = sfKraftkontrolle;
+            sfRingkunde = sfRingkunde;
+            sfSemipermanenz2 = sfSemipermanenz2;
+            sfStapeleffekt = sfStapeleffekt;
+            sfSemipermanenz1 = sfSemipermanenz1;
+            tawArcanovi = tawArcanovi;
+            tawArcanoviMatrix = tawArcanoviMatrix;
+            tawArcanoviSemipermanenz = tawArcanoviSemipermanenz;
+            tawMagiekunde = tawMagiekunde;
+            tawOdem = tawOdem;
+            tawDestructibo = tawDestructibo;
+            tawAnalys = tawAnalys;
+            artefakttyp = artefakttyp;
+            artefakttypAuxiliator = artefakttypAuxiliator;
+            artefakttypMatrix = artefakttypMatrix;
+            artefakttypTemp = artefakttypTemp;
+            artefakttypSemipermanenz = artefakttypSemipermanenz;
+
+            BindingList<Zauber> z = zauberListe;
+            zauberListe = z;
+        }
+
+        public String SerializeObject(Object pObject)
+        {
+            try
+            {
+                String XmlizedString = null;
+                System.IO.MemoryStream memoryStream = new System.IO.MemoryStream();
+                System.Xml.Serialization.XmlSerializer xs = new System.Xml.Serialization.XmlSerializer(typeof(DasArtefakt));
+                System.Xml.XmlTextWriter xmlTextWriter = new System.Xml.XmlTextWriter(memoryStream, Encoding.UTF8);
+
+                xs.Serialize(xmlTextWriter, pObject);
+                memoryStream = (System.IO.MemoryStream)xmlTextWriter.BaseStream;
+                XmlizedString = UTF8ByteArrayToString(memoryStream.ToArray());
+                return XmlizedString;
+            }
+
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        public Object DeserializeObject(String pXmlizedString)
+        {
+            System.Xml.Serialization.XmlSerializer xs = new System.Xml.Serialization.XmlSerializer(typeof(DasArtefakt));
+            System.IO.MemoryStream memoryStream = new System.IO.MemoryStream(StringToUTF8ByteArray(pXmlizedString));
+            System.Xml.XmlTextWriter xmlTextWriter = new System.Xml.XmlTextWriter(memoryStream, Encoding.UTF8);
+
+            return xs.Deserialize(memoryStream);
+        }
+
+        public void init()
+        {
+            WDA = true;
+            optionAchSave = true;
+            optionAllesBerechnen = false;
+
+            tawArcanovi = tawArcanovi;
+            tawArcanoviMatrix = tawArcanoviMatrix;
+            sfStapeleffekt = sfStapeleffekt;
+            W6 = 3.5M;
+            W20 = 11;
+
+        }
+
+        public void loadArtefakt(string xmlArtefakt)
+        {
+            DasArtefakt art = (DasArtefakt)DeserializeObject(xmlArtefakt);
+            magic.Clear();
+            for (int i = 0; i < art.zauber.Count; i++ )
+                magic.Add(art.zauber[i]);
+
+            artefakt = art.artefakt;
+
+            if (WDA)
+            {
+                switch ((int)artefakt.probe.superBig_zuschlag)
+                {
+                    case 0: extraExtraGross = 0; break;
+                    case 5: extraExtraGross = 1; break;
+                    case 10: extraExtraGross = 2; break;
+                    case 15: extraExtraGross = 3; break;
+                    case 20: extraExtraGross = 4; break;
+                }
+            }
+            else
+            {
+                switch ((int)artefakt.probe.superBig_zuschlag)
+                {
+                    case 0: extraExtraGross = 0; break;
+                    case 3: extraExtraGross = 1; break;
+                    case 6: extraExtraGross = 2; break;
+                    case 9: extraExtraGross = 3; break;
+                    case 12: extraExtraGross = 4; break;
+                }
+            }
+            selectedMaterial = 0;
+
+            reInitArtefakt();
+        }
+
+        public string saveArtefakt()
+        {
+            DasArtefakt art = new DasArtefakt(artefakt, magic);
+            string xml = SerializeObject(art);
+            return xml;
+        }
+
+        public void clearArtefakt()
+        {
+            artefakt = new Artefakt();
+            zauberListe.Clear();
+            extraExtraGross = 0;
+            selectedMaterial = 0;
+            reInitArtefakt();
+        }
+
         public void generateArtefakt()
         {
             resultArcanovi = "";
+            resultAnalys = "";
+            resultDestructibo = "";
             
             // Material reinit
             mat = new MaterialSammlung(dice);
@@ -1085,15 +1468,15 @@ namespace ArtefaktGenerator
 
                     //Nebens
                     resultArcanovi += ("Anzahl Nebeneffektproben: " + neben_probe_count + "\r\n");
-                    if (artefakt.nebeneffekte && optionAllesBerechnen)
+                    if (optionAllesBerechnen)
                     {
                         resultArcanovi += ("\t" + neben_count + " Nebeneffekte (");
                         for (int i = 0; i < nebens.Count; i++)
                             resultArcanovi += (" " + nebens[i]);
-                        resultArcanovi += (")\r\n");
+                        resultArcanovi += (" )\r\n");
                     }
                     //Occupation
-                    if (artefakt.occupation && optionAllesBerechnen)
+                    if (optionAllesBerechnen)
                     {
                         decimal occ_wurf = dice.W20;
                         decimal limbus_mod = artefakt.limbus ? -7 : 0;
@@ -1109,7 +1492,7 @@ namespace ArtefaktGenerator
                     resultArcanovi += ("Artefakt nicht möglich. ZfW Arcanovi zu gering.");
 
                 // Analys
-                /*
+                
                 decimal odem_erschwernis = 0;
                 if (WDA)
                 {
@@ -1150,21 +1533,21 @@ namespace ArtefaktGenerator
                 {
                     analys_count = Math.Ceiling(19 / (artefakt.taw.analys - analys_erschwernis));
                     decimal analys_asp = 10;
-                    if (artefakt.sf.rep == SF.SFType.ACH && ach_save.Checked) analys_asp = 8;
+                    if (artefakt.sf.rep == SF.SFType.ACH && optionAchSave) analys_asp = 8;
                     if (artefakt.sf.kraftkontrolle) analys_asp -= (1 + analys_count);
-                    if (artefakt.sf.rep == SF.SFType.ACH && ach_save.Checked)
+                    if (artefakt.sf.rep == SF.SFType.ACH && optionAchSave)
                         analys_asp += (analys_count - 1) * 2;
                     else
                         analys_asp += (analys_count - 1) * 3;
 
-                    txt_analys.AppendText("ODEM erschwert um " + odem_erschwernis + " (maximal " + odem_zfpstar + " ZfP*)\r\n");
-                    txt_analys.AppendText("ANALYS erschwert um " + txt_analys_erschwernis + "\r\n");
-                    txt_analys.AppendText("Bester Fall: Vollständige Entschlüsselung nach " + analys_count + " ANALYS\r\n");
-                    txt_analys.AppendText("Kosten für ODEM & ANALYS: " + analys_asp + "AsP\r\n");
+                    resultAnalys += ("ODEM erschwert um " + odem_erschwernis + " (maximal " + odem_zfpstar + " ZfP*)\r\n");
+                    resultAnalys += ("ANALYS erschwert um " + txt_analys_erschwernis + "\r\n");
+                    resultAnalys += ("Bester Fall: Vollständige Entschlüsselung nach " + analys_count + " ANALYS\r\n");
+                    resultAnalys += ("Kosten für ODEM & ANALYS: " + analys_asp + "AsP\r\n");
                 }
                 else
                 {
-                    txt_analys.AppendText("Artefakt nicht analysierbar. TaW ANALYS zu gering.");
+                    resultAnalys += ("Artefakt nicht analysierbar. TaW ANALYS zu gering.");
                 }
 
                 // Destructibo
@@ -1185,44 +1568,236 @@ namespace ArtefaktGenerator
 
                 destruct_erschwernis += artefakt.destructibo.komplex;
 
-                txt_destruct.AppendText("Erschwernis DESTRUCTIBO: " + destruct_erschwernis + "\r\n");
+                resultDestructibo += ("Erschwernis DESTRUCTIBO: " + destruct_erschwernis + "\r\n");
 
                 // Destructibo Einstimmung
                 decimal destruct_einstimmung = Math.Floor(artefakt.taw.analys / 4);
-                txt_destruct.AppendText("Maximal " + (destruct_einstimmung * 4) + " Stunden Einstimmung\r\n");
+                resultDestructibo += ("Maximal " + (destruct_einstimmung * 4) + " Stunden Einstimmung\r\n");
                 destruct_erschwernis -= destruct_einstimmung;
 
                 decimal destruct_analys_asp = 0;
                 if (artefakt.taw.destructibo - destruct_erschwernis >= 0)
-                    txt_destruct.AppendText("Bester Fall: 0 ANALYS\r\n");
+                    resultDestructibo += ("Bester Fall: 0 ANALYS\r\n");
                 else if (Math.Floor((artefakt.taw.analys - analys_erschwernis) / 3) > 0)
                 {
                     decimal destruct_analys_count = Math.Ceiling((destruct_erschwernis - artefakt.taw.destructibo) / Math.Floor((artefakt.taw.analys - analys_erschwernis) / 3));
                     destruct_analys_asp = 10;
-                    if (artefakt.sf.rep == SF.SFType.ACH && ach_save.Checked) destruct_analys_asp = 8;
+                    if (artefakt.sf.rep == SF.SFType.ACH && optionAchSave) destruct_analys_asp = 8;
                     if (artefakt.sf.kraftkontrolle) destruct_analys_asp -= 2;
-                    if (artefakt.sf.rep == SF.SFType.ACH && ach_save.Checked)
+                    if (artefakt.sf.rep == SF.SFType.ACH && optionAchSave)
                         destruct_analys_asp += (destruct_analys_count - 1) * 2;
                     else
                         destruct_analys_asp += (destruct_analys_count - 1) * 3;
 
-                    txt_destruct.AppendText("Bester Fall: " + destruct_analys_count + " ANALYS für insg. " + destruct_analys_asp + " AsP\r\n");
+                    resultDestructibo += ("Bester Fall: " + destruct_analys_count + " ANALYS für insg. " + destruct_analys_asp + " AsP\r\n");
 
                     destruct_erschwernis -= Math.Floor(destruct_analys_count * (artefakt.taw.analys - analys_erschwernis) / 3);
                 }
                 if (artefakt.taw.destructibo - destruct_erschwernis >= 0 || Math.Floor((artefakt.taw.analys - analys_erschwernis) / 3) > 0)
                 {
-                    txt_destruct.AppendText("DESTRUCTIBO Gesamterschwernis: " + destruct_erschwernis + "\r\n");
-                    txt_destruct.AppendText("Gesamt-AsP Kosten: " + (destruct_analys_asp + (magic_asp + arcanovi_asp + arcanovi_special_asp)) + "\r\n");
+                    resultDestructibo += ("DESTRUCTIBO Gesamterschwernis: " + destruct_erschwernis + "\r\n");
+                    resultDestructibo += ("Gesamt-AsP Kosten: " + (destruct_analys_asp + (magic_asp + arcanovi_asp + arcanovi_special_asp)) + "\r\n");
                     decimal destruct_pasp = Round((magic_asp + arcanovi_asp + arcanovi_special_asp) / 20);
                     if (destruct_pasp <= 0) destruct_pasp = 1;
-                    txt_destruct.AppendText("pAsP Kosten: " + destruct_pasp + "\r\n");
+                    resultDestructibo += ("pAsP Kosten: " + destruct_pasp + "\r\n");
                 }
                 else
-                    txt_destruct.AppendText("Zerstörung nicht möglich TaW DESTRUCTIBO bzw. ANALYS zu gering.\r\n");
-                */
+                    resultDestructibo += ("Zerstörung nicht möglich TaW DESTRUCTIBO bzw. ANALYS zu gering.\r\n");
             }
 
+        }
+
+        #endregion
+
+        #region PlugIn Functions
+        /*
+         * plugInHeroFromXml
+         * 
+         * Use this function to import the values of an Hero from the popular "Helden-Software".
+         * 
+         * @param xml: The XML-String as exported from the Helden-Software
+         * 
+         * @return The return value is false, if an illegal combination of sf's is chosen
+         * (e.g. sfHypervehemenz without sfStapeleffekt) - otherwise it is true. 
+         * The taw's are NOT range checked, however they must be positive.
+         * Faulty TaW's or non-existing TaW's are considered to be 0
+         */
+        public bool plugInHeroFromXml(string xml)
+        {
+            bool kraftkontrolle = Regex.IsMatch(xml, "sonderfertigkeit name=\"Kraftkontrolle\"");
+            bool vielLadung = Regex.IsMatch(xml, "sonderfertigkeit name=\"Vielfache Ladungen\"");
+            bool stapeleffekt = Regex.IsMatch(xml, "sonderfertigkeit name=\"Stapeleffekt\"");
+            bool hyper = Regex.IsMatch(xml, "sonderfertigkeit name=\"Hypervehemenz\"");
+            bool matrixgeber = Regex.IsMatch(xml, "sonderfertigkeit name=\"Matrixgeber\"");
+            bool semiI = Regex.IsMatch(xml, "sonderfertigkeit name=\"Semipermanenz I\"");
+            bool semiII = Regex.IsMatch(xml, "sonderfertigkeit name=\"Semipermanenz II\"");
+            bool aux = Regex.IsMatch(xml, "sonderfertigkeit name=\"Auxiliator\"");
+
+            bool isMag = Regex.IsMatch(xml, "sonderfertigkeit (kommentar=\"[^\"]*\" )?name=\"Repräsentation: Magier\"");
+            bool isAchaz = Regex.IsMatch(xml, "sonderfertigkeit (kommentar=\"[^\"]*\" )?name=\"Repräsentation: Kristallomant\"");
+
+            // Default: Magier
+            if (!isMag && !isAchaz)
+            {
+                isMag = true;
+            }
+
+            uint magiekunde = 0;
+            uint analys = 0;
+            uint arcanovi = 0;
+            uint arcanovi_matrix = 0;
+            uint arcanovi_semi = 0;
+            uint odem = 0;
+            uint destructibo = 0;
+
+            string name = "";
+
+            string[] te = Regex.Split(xml, "talent.*name=\"Magiekunde\" probe=\".*\" value=\"(.*)\".*");
+            try
+            {
+                magiekunde = Convert.ToUInt32(te[1]);
+            }
+            catch (System.Exception ex) { }
+
+            te = Regex.Split(xml, "zauber.*name=\"Analys Arkanstruktur\" probe=\".*\" value=\"(.*)\".*variante");
+            try
+            {
+                analys = Convert.ToUInt32(te[1]);
+            }
+            catch (System.Exception ex) { }
+
+            te = Regex.Split(xml, "zauber.*name=\"Arcanovi Artefakt\" probe=\".*\" value=\"(.*)\".*variante=\"\"");
+            try
+            {
+                arcanovi = Convert.ToUInt32(te[1]);
+            }
+            catch (System.Exception ex) { }
+
+            te = Regex.Split(xml, "zauber.*name=\"Arcanovi Artefakt\" probe=\".*\" value=\"(.*)\".*variante=\"Matrixgeber\"");
+            try
+            {
+                arcanovi_matrix = Convert.ToUInt32(te[1]);
+            }
+            catch (System.Exception ex) { }
+
+            te = Regex.Split(xml, "zauber.*name=\"Arcanovi Artefakt\" probe=\".*\" value=\"(.*)\".*variante=\"Semipermanenz\"");
+            try
+            {
+                arcanovi_semi = Convert.ToUInt32(te[1]);
+            }
+            catch (System.Exception ex) { }
+
+            te = Regex.Split(xml, "zauber.*name=\"Odem Arcanum\" probe=\".*\" value=\"(.*)\".*variante");
+            try
+            {
+                odem = Convert.ToUInt32(te[1]);
+            }
+            catch (System.Exception ex) { }
+
+            te = Regex.Split(xml, "zauber.*name=\"Destructibo Arcanitas\" probe=\".*\" value=\"(.*)\".*variante");
+            try
+            {
+                destructibo = Convert.ToUInt32(te[1]);
+            }
+            catch (System.Exception ex) { }
+
+            //<held key="1316061294421" name="Kein Name">
+            te = Regex.Split(xml, "held key=\".*\" name=\"(.*)\".*");
+            try
+            {
+                name = te[1];
+            }
+            catch (System.Exception ex) { }
+
+
+            return plugInHero(name, (isMag ? SF.SFType.OTHER : SF.SFType.ACH), kraftkontrolle, vielLadung, stapeleffekt, hyper, matrixgeber, semiI, semiII, false, aux, arcanovi, arcanovi_matrix, arcanovi_semi, odem, analys, destructibo, magiekunde);
+        }
+
+        /*
+         * plugInHero
+         * 
+         * use the function parameters to set the values of the sf's and taw's.
+         * All values must be set, however certain values may be irrelevant.
+         * Example: when not setting sfMatrixgeber, the value of tawArcanoviMatrix is irrelevant,
+         * as the field gets deactivated.
+         * 
+         * @return The return value is false, if an illegal combination of sf's is chosen
+         * (e.g. sfHypervehemenz without sfStapeleffekt) - otherwise it is true. 
+         * The taw's are NOT range checked, however they must be positive.
+         */
+        public bool plugInHero(
+            string name,
+            SF.SFType representation,
+            bool sfKraftkontrolle,
+            bool sfVielfacheLadung,
+            bool sfStapeleffekt,
+            bool sfHypervehemenz,
+            bool sfMatrixgeber,
+            bool sfSemipermI,
+            bool sfSemipermII,
+            bool sfRingkunde,
+            bool sfAuxiliator,
+            uint tawArcanovi,
+            uint tawArcanoviMatrix,
+            uint tawArcanoviSemi,
+            uint tawOdem,
+            uint tawAnalys,
+            uint tawDestructibo,
+            uint tawMagiekunde
+            )
+        {
+            if (
+                (sfHypervehemenz && !sfStapeleffekt)
+                || (sfSemipermII && !sfSemipermI)
+                || (sfAuxiliator && !sfMatrixgeber)
+                )
+                return false;
+
+            // set values
+            this.sfRepresentation = (int)representation;
+            this.sfKraftkontrolle = sfKraftkontrolle;
+            this.sfVielfacheLadung = sfVielfacheLadung;
+            this.sfStapeleffekt = sfStapeleffekt;
+            this.sfHypervehemenz = sfHypervehemenz;
+            this.sfMatrixgeber = sfMatrixgeber;
+            this.sfSemipermanenz1 = sfSemipermI;
+            this.sfSemipermanenz2 = sfSemipermII;
+            this.sfRingkunde = sfRingkunde;
+            this.sfAuxiliator = sfAuxiliator;
+
+            this.tawArcanovi = (int)tawArcanovi;
+            this.tawArcanoviMatrix = (int)tawArcanoviMatrix;
+            this.tawArcanoviSemipermanenz = (int)tawArcanoviSemi;
+            this.tawAnalys = (int)tawAnalys;
+            this.tawDestructibo = (int)tawDestructibo;
+            this.tawMagiekunde = (int)tawMagiekunde;
+            this.tawOdem = (int)tawOdem;
+
+            this.heldName = name;
+
+            return true;
+        }
+        public bool plugInHero(
+            SF.SFType representation,
+            bool sfKraftkontrolle,
+            bool sfVielfacheLadung,
+            bool sfStapeleffekt,
+            bool sfHypervehemenz,
+            bool sfMatrixgeber,
+            bool sfSemipermI,
+            bool sfSemipermII,
+            bool sfRingkunde,
+            bool sfAuxiliator,
+            uint tawArcanovi,
+            uint tawArcanoviMatrix,
+            uint tawArcanoviSemi,
+            uint tawOdem,
+            uint tawAnalys,
+            uint tawDestructibo,
+            uint tawMagiekunde
+            )
+        {
+            return plugInHero("", representation, sfKraftkontrolle, sfVielfacheLadung, sfStapeleffekt, sfHypervehemenz, sfMatrixgeber, sfSemipermI, sfSemipermII, sfRingkunde, sfAuxiliator, tawArcanovi, tawArcanoviMatrix, tawArcanoviSemi, tawOdem, tawAnalys, tawDestructibo, tawMagiekunde);
         }
 
         #endregion

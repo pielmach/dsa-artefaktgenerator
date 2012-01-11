@@ -32,6 +32,7 @@
             this.okButton = new System.Windows.Forms.Button();
             this.heroList = new System.Windows.Forms.ListBox();
             this.importButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cancelButton
@@ -64,9 +65,9 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.heroList.FormattingEnabled = true;
-            this.heroList.Location = new System.Drawing.Point(12, 12);
+            this.heroList.Location = new System.Drawing.Point(12, 25);
             this.heroList.Name = "heroList";
-            this.heroList.Size = new System.Drawing.Size(323, 121);
+            this.heroList.Size = new System.Drawing.Size(323, 108);
             this.heroList.TabIndex = 2;
             this.heroList.SelectedIndexChanged += new System.EventHandler(this.heroList_SelectedIndexChanged);
             // 
@@ -75,11 +76,20 @@
             this.importButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.importButton.Location = new System.Drawing.Point(13, 141);
             this.importButton.Name = "importButton";
-            this.importButton.Size = new System.Drawing.Size(75, 23);
+            this.importButton.Size = new System.Drawing.Size(99, 23);
             this.importButton.TabIndex = 3;
-            this.importButton.Text = "Import ...";
+            this.importButton.Text = "Import von XML...";
             this.importButton.UseVisualStyleBackColor = true;
             this.importButton.Click += new System.EventHandler(this.importButton_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Gefundene Helden:";
             // 
             // HeldAuswahl
             // 
@@ -88,6 +98,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(347, 176);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.importButton);
             this.Controls.Add(this.heroList);
             this.Controls.Add(this.okButton);
@@ -95,6 +106,7 @@
             this.Name = "HeldAuswahl";
             this.Text = "Held auswählen";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -104,5 +116,6 @@
         private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.ListBox heroList;
         private System.Windows.Forms.Button importButton;
+        private System.Windows.Forms.Label label1;
     }
 }
