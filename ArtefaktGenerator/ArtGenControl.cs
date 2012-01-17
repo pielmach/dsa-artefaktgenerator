@@ -1343,7 +1343,6 @@ namespace ArtefaktGenerator
         private void ArtGenControl_Load(object sender, EventArgs e)
         {
             this.hero_name.DataBindings.Add("Text", controller, "heldName",false, DataSourceUpdateMode.OnPropertyChanged);
-
             this.groupBox2.DataBindings.Add("Selected", controller, "sfRepresentation", false, DataSourceUpdateMode.OnPropertyChanged);
             this.sf_kraft.DataBindings.Add("Checked", controller, "sfKraftkontrolle", false, DataSourceUpdateMode.OnPropertyChanged);
             this.sf_vielLadung.DataBindings.Add("Checked", controller, "sfVielfacheLadung", false, DataSourceUpdateMode.OnPropertyChanged);

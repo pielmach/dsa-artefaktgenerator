@@ -106,8 +106,10 @@
   <ItemGroup>
     <Compile Include="Analys.cs" />
     <Compile Include="Artefakt.cs" />
+    <Compile Include="Controller.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Destructibo.cs" />
-    <Compile Include="Controller.cs" />
     <Compile Include="Held.cs" />
     <Compile Include="Material.cs" />
     <Compile Include="MaterialSammlung.cs" />

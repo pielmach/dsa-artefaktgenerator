@@ -141,8 +141,6 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
-    <None Include="Properties\DataSources\ArtefaktGenerator.Generator.datasource" />
-    <None Include="Properties\DataSources\ArtefaktGenerator.GUI.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
