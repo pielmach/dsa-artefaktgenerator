@@ -1474,5 +1474,10 @@ namespace ArtefaktGenerator
             zauber_rep.SelectedIndex = 0;
         }
 
+        private void exportierenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controller.exportArtefaktAsPDF();
+        }
+
     }
 }

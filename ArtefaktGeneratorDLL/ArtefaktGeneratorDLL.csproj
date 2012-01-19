@@ -114,6 +114,7 @@
     <Compile Include="Material.cs" />
     <Compile Include="MaterialSammlung.cs" />
     <Compile Include="Occupation.cs" />
+    <Compile Include="PDFExport.cs" />
     <Compile Include="Probe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -173,6 +174,12 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\sharpPDF\sharpPDF.csproj">
+      <Project>{00B4A076-B134-4E93-BF98-E716FD302EC7}</Project>
+      <Name>sharpPDF</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

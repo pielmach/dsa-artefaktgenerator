@@ -181,6 +181,10 @@
       <Project>{5C07EBDF-D43F-4BE9-B560-D7A443C0EDCE}</Project>
       <Name>NAppUpdate.Framework</Name>
     </ProjectReference>
+    <ProjectReference Include="..\sharpPDF\sharpPDF.csproj">
+      <Project>{00B4A076-B134-4E93-BF98-E716FD302EC7}</Project>
+      <Name>sharpPDF</Name>
+    </ProjectReference>
   </ItemGroup>
   <!--<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />-->
   <Import Project="$(MSBuildExtensionsPath)\Ilmerge.CSharp.targets" />
