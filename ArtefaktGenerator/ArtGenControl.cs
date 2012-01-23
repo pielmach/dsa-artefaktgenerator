@@ -1476,7 +1476,26 @@ namespace ArtefaktGenerator
 
         private void exportierenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controller.exportArtefaktAsPDF();
+            SaveFileDialog saveFileDialog2 = new SaveFileDialog();
+
+            saveFileDialog2.Filter = "PDF (*.pdf)|*.pdf";
+            saveFileDialog2.FilterIndex = 1;
+            saveFileDialog2.RestoreDirectory = true;
+            saveFileDialog2.AddExtension = true;
+            saveFileDialog2.InitialDirectory = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            saveFileDialog2.OverwritePrompt = true;
+            saveFileDialog2.Title = "Artefakt als PDF exportieren";
+            saveFileDialog2.CheckPathExists = true;
+
+            if (controller.zauberListe.Count > 0)
+            {
+                if (saveFileDialog2.ShowDialog() == DialogResult.OK)
+                {
+                    controller.exportArtefaktAsPDF(saveFileDialog2.FileName);
+                }
+            }
+            else
+                MessageBox.Show("Dein Artefakt hat keine wirkenden Zauber!", "Fehler");
         }
 
     }

@@ -1167,10 +1167,10 @@ namespace ArtefaktGenerator
             return xml;
         }
 
-        public void exportArtefaktAsPDF()
+        public void exportArtefaktAsPDF(string path)
         {
             DasArtefakt art = new DasArtefakt(artefakt,magic);
-            PDFExport.saveArtefaktAsPDF(art,@"C:\test.pdf");
+            PDFExport.saveArtefaktAsPDF(art,path);
         }
 
         public void clearArtefakt()
