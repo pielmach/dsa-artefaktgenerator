@@ -1315,7 +1315,7 @@ namespace ArtefaktGenerator
                         arcanovi_zfp += (artefakt.loads - 1) * 3;
 
                     // TODO: Vielfache Ladung nur bei Ladnugsbasiert?
-                    if (magic.Count > 1)
+                    if (artefakt.loads > 1)
                     {
                         if (artefakt.sf.vielfacheLadung)
                             arcanovi_zfp += magic.Count * artefakt.loads * magic_asp_mult;
