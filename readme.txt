@@ -6,4 +6,6 @@ GPLv2 License (gplv2.txt)
 
 Sourcecode kostenlos auf Anfrage.
 
-NAppUpdateFramework by Itamar Syn-Hershko under Apache Licesense 2.0 (apache2.txt)
+Uses NAppUpdateFramework by Itamar Syn-Hershko under Apache Licesense 2.0 (apache2.txt)
+
+Uses sharpPDF by Andrea Canegrati under LGPL

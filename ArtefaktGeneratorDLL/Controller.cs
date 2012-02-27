@@ -1283,14 +1283,29 @@ namespace ArtefaktGenerator
                         // Rep
                         if (magic[i].eigene_rep) eigene_rep_count++;
                         // komplexität
-                        switch (magic[i].komp)
+                        if (WDA && artefakt.typ == Artefakt.ArtefaktType.SEMI)
                         {
-                            case "A": break;
-                            case "B": arcanovi_zfp += 1 * artefakt.loads * magic_asp_mult; break;
-                            case "C": arcanovi_zfp += 1 * artefakt.loads * magic_asp_mult; break;
-                            case "D": arcanovi_zfp += 2 * artefakt.loads * magic_asp_mult; break;
-                            case "E": arcanovi_zfp += 2 * artefakt.loads * magic_asp_mult; break;
-                            default: arcanovi_zfp += 3 * artefakt.loads * magic_asp_mult; break;
+                            switch (magic[i].komp)
+                            {
+                                case "A": break;
+                                case "B": arcanovi_zfp += 1 * magic_asp_mult + artefakt.loads - 1; break;
+                                case "C": arcanovi_zfp += 1 * magic_asp_mult + artefakt.loads - 1; break;
+                                case "D": arcanovi_zfp += 2 * magic_asp_mult + artefakt.loads - 1; break;
+                                case "E": arcanovi_zfp += 2 * magic_asp_mult + artefakt.loads - 1; break;
+                                default: arcanovi_zfp += 3 * magic_asp_mult + artefakt.loads - 1; break;
+                            }
+                        }
+                        else
+                        {
+                            switch (magic[i].komp)
+                            {
+                                case "A": break;
+                                case "B": arcanovi_zfp += 1 * artefakt.loads * magic_asp_mult; break;
+                                case "C": arcanovi_zfp += 1 * artefakt.loads * magic_asp_mult; break;
+                                case "D": arcanovi_zfp += 2 * artefakt.loads * magic_asp_mult; break;
+                                case "E": arcanovi_zfp += 2 * artefakt.loads * magic_asp_mult; break;
+                                default: arcanovi_zfp += 3 * artefakt.loads * magic_asp_mult; break;
+                            }
                         }
                         // Ladungen
                         //arcanovi_zfp += (magic[i].load - 1) * 3;
@@ -1300,6 +1315,7 @@ namespace ArtefaktGenerator
                         decimal thismagic_asp = magic[i].asp;
                         if (artefakt.sf.rep == SF.SFType.ACH && optionAchSave) thismagic_asp = Round(thismagic_asp * 3 / 4);
                         if (artefakt.sf.kraftkontrolle) thismagic_asp -= 1;
+                        if (thismagic_asp == 0) thismagic_asp = 1;
 
                         magic_asp += thismagic_asp * artefakt.loads * magic[i].staple * magic_asp_mult * magic_asp_mult_extra;
                     }
@@ -1315,12 +1331,12 @@ namespace ArtefaktGenerator
                         arcanovi_zfp += (artefakt.loads - 1) * 3;
 
                     // TODO: Vielfache Ladung nur bei Ladnugsbasiert?
-                    if (artefakt.loads > 1)
+                    if (artefakt.loads > 1 || magic.Count > 1)
                     {
                         if (artefakt.sf.vielfacheLadung)
                             arcanovi_zfp += magic.Count * artefakt.loads * magic_asp_mult;
                         else
-                            arcanovi_zfp += (((magic.Count * artefakt.loads * magic_asp_mult) - 1) * magic.Count * artefakt.loads) / 2;
+                            arcanovi_zfp += Round((((magic.Count * artefakt.loads * magic_asp_mult) - 1) * magic.Count * artefakt.loads) / 2);
                     }
 
                     decimal arcanovi_taw = 0;
@@ -1417,7 +1433,7 @@ namespace ArtefaktGenerator
                     dice.W6_Opt = Wuerfel.Optimum.LOW;
                     switch (artefakt.typ)
                     {
-                        case Artefakt.ArtefaktType.TEMP: pasp = Round(Round((Math.Floor((magic_asp + arcanovi_asp + arcanovi_special_asp) / 20)) / 2) * artefakt.material.pasp_mod); break;
+                        case Artefakt.ArtefaktType.TEMP: pasp = Round(Math.Floor((Math.Floor((magic_asp + arcanovi_asp + arcanovi_special_asp) / 20)) / 2) * artefakt.material.pasp_mod); break;
                         case Artefakt.ArtefaktType.NORMAL: pasp = Round(Math.Floor((magic_asp + arcanovi_asp + arcanovi_special_asp) / 20) * artefakt.material.pasp_mod); break;
                         case Artefakt.ArtefaktType.RECHARGE: pasp = Round(Round((magic_asp + arcanovi_asp + arcanovi_special_asp) / 15) * artefakt.material.pasp_mod); break;
                         case Artefakt.ArtefaktType.MATRIX: pasp = Round(Round((magic_asp + arcanovi_asp + arcanovi_special_asp) / 20) * artefakt.material.pasp_mod); break;
