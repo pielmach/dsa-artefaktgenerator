@@ -29,6 +29,7 @@ namespace ArtefaktGenerator
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.cb_kristalle = new System.Windows.Forms.CheckBox();
             this.material = new System.Windows.Forms.ComboBox();
@@ -156,6 +157,7 @@ namespace ArtefaktGenerator
             this.neuesArtefaktToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.artefaktLadenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.artefaktSpeichernToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportierenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.automatischNeuberechenenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ach_save = new System.Windows.Forms.ToolStripMenuItem();
@@ -211,7 +213,7 @@ namespace ArtefaktGenerator
             this.groupBox2 = new CustomControls.RadioGroupBox();
             this.rep_ach = new System.Windows.Forms.RadioButton();
             this.rep_mag = new System.Windows.Forms.RadioButton();
-            this.exportierenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox8.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.starkonst)).BeginInit();
@@ -846,6 +848,7 @@ namespace ArtefaktGenerator
             this.sf_semiI.Size = new System.Drawing.Size(107, 17);
             this.sf_semiI.TabIndex = 5;
             this.sf_semiI.Text = "Semipermanenz I";
+            this.toolTip1.SetToolTip(this.sf_semiI, "Wähle aus, ob der Held die Sonderfertigkeit \"Semipermanenz I\" besitzt.");
             this.sf_semiI.UseVisualStyleBackColor = true;
             // 
             // sf_matrix
@@ -1404,6 +1407,7 @@ namespace ArtefaktGenerator
             this.txt_create.Multiline = true;
             this.txt_create.Name = "txt_create";
             this.txt_create.ReadOnly = true;
+            this.txt_create.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txt_create.Size = new System.Drawing.Size(490, 177);
             this.txt_create.TabIndex = 0;
             // 
@@ -1716,23 +1720,30 @@ namespace ArtefaktGenerator
             // neuesArtefaktToolStripMenuItem
             // 
             this.neuesArtefaktToolStripMenuItem.Name = "neuesArtefaktToolStripMenuItem";
-            this.neuesArtefaktToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.neuesArtefaktToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.neuesArtefaktToolStripMenuItem.Text = "Neu";
             this.neuesArtefaktToolStripMenuItem.Click += new System.EventHandler(this.neuesArtefaktToolStripMenuItem_Click);
             // 
             // artefaktLadenToolStripMenuItem
             // 
             this.artefaktLadenToolStripMenuItem.Name = "artefaktLadenToolStripMenuItem";
-            this.artefaktLadenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.artefaktLadenToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.artefaktLadenToolStripMenuItem.Text = "Laden";
             this.artefaktLadenToolStripMenuItem.Click += new System.EventHandler(this.artefaktLadenToolStripMenuItem_Click);
             // 
             // artefaktSpeichernToolStripMenuItem
             // 
             this.artefaktSpeichernToolStripMenuItem.Name = "artefaktSpeichernToolStripMenuItem";
-            this.artefaktSpeichernToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.artefaktSpeichernToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.artefaktSpeichernToolStripMenuItem.Text = "Speichern";
             this.artefaktSpeichernToolStripMenuItem.Click += new System.EventHandler(this.artefaktSpeichernToolStripMenuItem_Click);
+            // 
+            // exportierenToolStripMenuItem
+            // 
+            this.exportierenToolStripMenuItem.Name = "exportierenToolStripMenuItem";
+            this.exportierenToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.exportierenToolStripMenuItem.Text = "Exportieren";
+            this.exportierenToolStripMenuItem.Click += new System.EventHandler(this.exportierenToolStripMenuItem_Click);
             // 
             // optionenToolStripMenuItem
             // 
@@ -2325,12 +2336,12 @@ namespace ArtefaktGenerator
             this.rep_mag.Text = "Mag/Hex...";
             this.rep_mag.UseVisualStyleBackColor = true;
             // 
-            // exportierenToolStripMenuItem
+            // toolTip1
             // 
-            this.exportierenToolStripMenuItem.Name = "exportierenToolStripMenuItem";
-            this.exportierenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.exportierenToolStripMenuItem.Text = "Exportieren";
-            this.exportierenToolStripMenuItem.Click += new System.EventHandler(this.exportierenToolStripMenuItem_Click);
+            this.toolTip1.AutoPopDelay = 50000;
+            this.toolTip1.InitialDelay = 500;
+            this.toolTip1.ReshowDelay = 100;
+            this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
             // ArtGenControl
             // 
@@ -2612,5 +2623,6 @@ namespace ArtefaktGenerator
         private RadioButton semi_tag;
         private ListBox zauber_listbox;
         private ToolStripMenuItem exportierenToolStripMenuItem;
+        private ToolTip toolTip1;
     }
 }

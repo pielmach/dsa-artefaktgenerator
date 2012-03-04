@@ -10,11 +10,15 @@ namespace ArtefaktGenerator
 {
     public class Controller : INotifyPropertyChanged
     {
+
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
+
         private Artefakt artefakt = new Artefakt();
         private BindingList<Zauber> magic = new BindingList<Zauber>();
         private Wuerfel dice = new Wuerfel();
         private MaterialSammlung mat;
         private Occupation occ = new Occupation();
+        private Nebeneffekte nebeneffekte = new Nebeneffekte();
 
         public Controller() { mat = new MaterialSammlung(dice); }
 
@@ -1006,15 +1010,13 @@ namespace ArtefaktGenerator
 
         #region Implement INotifyPropertyChanged
 
-        public event PropertyChangedEventHandler PropertyChanged = delegate { };
-
-        public void RaisePropertyChanged(string propertyName)
+        protected void RaisePropertyChanged(string propertyName)
         {
 
             PropertyChangedEventHandler handler = this.PropertyChanged;
             if (handler != null)
             {
-                var e = new PropertyChangedEventArgs(propertyName);
+                PropertyChangedEventArgs e = new PropertyChangedEventArgs(propertyName);
                 handler(this, e);
             }
 
@@ -1454,9 +1456,12 @@ namespace ArtefaktGenerator
                     decimal neben_agribaal_mod = (artefakt.agribaal > 0) ? -3 : 0;
                     for (int i = 0; i < neben_probe_count; i++)
                         if ((dice.W20 + artefakt.material.nebenwirkung_mod + artefakt.special_ort_neben + neben_agribaal_mod) <= pasp) neben_count++;
-                    List<decimal> nebens = new List<decimal>();
+                    List<string> nebens = new List<string>();
                     for (int i = 0; i < neben_count; i++)
-                        nebens.Add(dice.W20 + dice.W20 + artefakt.material.nebenwirkung_art_mod);
+                    {
+                        int number = (int)(dice.W20 + dice.W20 + artefakt.material.nebenwirkung_art_mod);
+                        nebens.Add("\t" + number + ": " + nebeneffekte.getNebeneffektDescr(WDA,number) + "\r\n");
+                    }
 
                     if ((arcanovi_taw - arcanovi_erschwernis >= 0))
                     {
@@ -1495,13 +1500,13 @@ namespace ArtefaktGenerator
                         resArcanovi += ("pAsP gesamt: " + pasp + "\r\n");
 
                         //Nebens
-                        resArcanovi += ("Anzahl Nebeneffektproben: " + neben_probe_count + "\r\n");
+                        resArcanovi += ("Anzahl Nebeneffektproben: " + neben_probe_count);
                         if (optionAllesBerechnen)
                         {
-                            resArcanovi += ("\t" + neben_count + " Nebeneffekte (");
+                            resArcanovi += (" => " + neben_count + " Nebeneffekte");
                             for (int i = 0; i < nebens.Count; i++)
-                                resArcanovi += (" " + nebens[i]);
-                            resArcanovi += (" )\r\n");
+                                resArcanovi += (nebens[i]);
+                            //resArcanovi += (" )\r\n");
                         }
                         //Occupation
                         if (optionAllesBerechnen)

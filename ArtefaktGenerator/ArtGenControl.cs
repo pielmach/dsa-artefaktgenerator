@@ -24,7 +24,7 @@ namespace ArtefaktGenerator
         public ArtGenControl(bool plugInMode)
         {
             InitializeComponent();
-
+            
             // Disable Non-PlugIn fields
             if (plugInMode)
             {

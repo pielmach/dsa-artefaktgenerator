@@ -113,6 +113,7 @@
     <Compile Include="Held.cs" />
     <Compile Include="Material.cs" />
     <Compile Include="MaterialSammlung.cs" />
+    <Compile Include="Nebeneffekte.cs" />
     <Compile Include="Occupation.cs" />
     <Compile Include="PDFExport.cs" />
     <Compile Include="Probe.cs" />
