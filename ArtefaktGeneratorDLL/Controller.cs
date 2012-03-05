@@ -96,6 +96,12 @@ namespace ArtefaktGenerator
             get { return _allesBerechnen; }
             set { _allesBerechnen = value; RaisePropertyChanged("optionAllesBerechnen"); }
         }
+        private bool _nebeneffekteNeuWuerfeln;
+        public bool optionNebeneffekteNeuWuerfeln
+        {
+            get { return _nebeneffekteNeuWuerfeln; }
+            set { _nebeneffekteNeuWuerfeln = value; RaisePropertyChanged("nebeneffekteNeuWuerfeln"); }
+        }
 
         public string heldName
         {
@@ -1117,11 +1123,12 @@ namespace ArtefaktGenerator
             WDA = true;
             optionAchSave = true;
             optionAllesBerechnen = false;
+            optionNebeneffekteNeuWuerfeln = true;
 
             tawArcanovi = tawArcanovi;
             tawArcanoviMatrix = tawArcanoviMatrix;
             sfStapeleffekt = sfStapeleffekt;
-            W6 = 3.5M;
+            W6 = 4;
             W20 = 11;
 
         }
@@ -1456,12 +1463,35 @@ namespace ArtefaktGenerator
                     decimal neben_agribaal_mod = (artefakt.agribaal > 0) ? -3 : 0;
                     for (int i = 0; i < neben_probe_count; i++)
                         if ((dice.W20 + artefakt.material.nebenwirkung_mod + artefakt.special_ort_neben + neben_agribaal_mod) <= pasp) neben_count++;
-                    List<string> nebens = new List<string>();
-                    for (int i = 0; i < neben_count; i++)
+                    List<int> nebensNumbers = new List<int>();
+                    int nRun = 0;
+                    int ignoredNebens = 0;
+                    // This is to check for doubles
+                    while(true)
                     {
                         int number = (int)(dice.W20 + dice.W20 + artefakt.material.nebenwirkung_art_mod);
-                        nebens.Add("\t" + number + ": " + nebeneffekte.getNebeneffektDescr(WDA,number) + "\r\n");
+                        // check for double descr
+                        bool addNumber = true;
+                        foreach (int elem in nebensNumbers)
+                        {
+                            if (nebeneffekte.getNebeneffektDescr(WDA, elem) == nebeneffekte.getNebeneffektDescr(WDA, number))
+                            {
+                                addNumber = false;
+                                break;
+                            }
+                        }
+                        if (addNumber) nebensNumbers.Insert(nebensNumbers.Count, number);
+                        else if (optionNebeneffekteNeuWuerfeln)
+                            continue;
+                        else
+                            ignoredNebens++;
+                        nRun++;
+                        if (nRun >= neben_count) break;
                     }
+                    nebensNumbers.Sort();
+                    List<string> nebens = new List<string>();
+                    foreach(int elem in nebensNumbers)
+                        nebens.Add("\t" + elem + ": " + nebeneffekte.getNebeneffektDescr(WDA, elem) + "\r\n");
 
                     if ((arcanovi_taw - arcanovi_erschwernis >= 0))
                     {
@@ -1503,7 +1533,7 @@ namespace ArtefaktGenerator
                         resArcanovi += ("Anzahl Nebeneffektproben: " + neben_probe_count);
                         if (optionAllesBerechnen)
                         {
-                            resArcanovi += (" => " + neben_count + " Nebeneffekte");
+                            resArcanovi += (" => " + (neben_count - ignoredNebens) + " Nebeneffekte\r\n");
                             for (int i = 0; i < nebens.Count; i++)
                                 resArcanovi += (nebens[i]);
                             //resArcanovi += (" )\r\n");

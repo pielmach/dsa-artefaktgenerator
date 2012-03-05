@@ -94,5 +94,17 @@ namespace ArtefaktGenerator.Properties {
                 this["showHeldenImport"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool reRollNeben {
+            get {
+                return ((bool)(this["reRollNeben"]));
+            }
+            set {
+                this["reRollNeben"] = value;
+            }
+        }
     }
 }

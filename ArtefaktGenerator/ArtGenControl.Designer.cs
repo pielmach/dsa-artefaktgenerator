@@ -177,6 +177,8 @@ namespace ArtefaktGenerator
             this.regelbasis = new System.Windows.Forms.ToolStripMenuItem();
             this.wegeDerAlchimieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.staebeRingeDschinnenlampenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.heldenimportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hilfeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -214,8 +216,9 @@ namespace ArtefaktGenerator
             this.rep_ach = new System.Windows.Forms.RadioButton();
             this.rep_mag = new System.Windows.Forms.RadioButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.heldenimportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nebenwirkungenMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.nebenReRollToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nebenIgnoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox8.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.starkonst)).BeginInit();
@@ -1752,8 +1755,9 @@ namespace ArtefaktGenerator
             this.optionenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.automatischNeuberechenenToolStripMenuItem,
             this.ach_save,
-            this.würfelergebnisseToolStripMenuItem,
             this.regelbasis,
+            this.würfelergebnisseToolStripMenuItem,
+            this.nebenwirkungenMenuItem1,
             this.toolStripSeparator1,
             this.heldenimportToolStripMenuItem});
             this.optionenToolStripMenuItem.Name = "optionenToolStripMenuItem";
@@ -1920,6 +1924,18 @@ namespace ArtefaktGenerator
             this.staebeRingeDschinnenlampenToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.staebeRingeDschinnenlampenToolStripMenuItem.Text = "Stäbe, Ringe, Dschinnenlampen (4.0)";
             this.staebeRingeDschinnenlampenToolStripMenuItem.Click += new System.EventHandler(this.staebeRingeDschinnenlampenToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(411, 6);
+            // 
+            // heldenimportToolStripMenuItem
+            // 
+            this.heldenimportToolStripMenuItem.CheckOnClick = true;
+            this.heldenimportToolStripMenuItem.Name = "heldenimportToolStripMenuItem";
+            this.heldenimportToolStripMenuItem.Size = new System.Drawing.Size(414, 22);
+            this.heldenimportToolStripMenuItem.Text = "Helden Software Import beim Start anzeigen";
             // 
             // infoToolStripMenuItem
             // 
@@ -2347,17 +2363,30 @@ namespace ArtefaktGenerator
             this.toolTip1.ReshowDelay = 100;
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
-            // toolStripSeparator1
+            // nebenwirkungenMenuItem1
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(411, 6);
+            this.nebenwirkungenMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nebenReRollToolStripMenuItem,
+            this.nebenIgnoreToolStripMenuItem});
+            this.nebenwirkungenMenuItem1.Name = "nebenwirkungenMenuItem1";
+            this.nebenwirkungenMenuItem1.Size = new System.Drawing.Size(414, 22);
+            this.nebenwirkungenMenuItem1.Text = "Nebeneffekte";
             // 
-            // heldenimportToolStripMenuItem
+            // nebenReRollToolStripMenuItem
             // 
-            this.heldenimportToolStripMenuItem.CheckOnClick = true;
-            this.heldenimportToolStripMenuItem.Name = "heldenimportToolStripMenuItem";
-            this.heldenimportToolStripMenuItem.Size = new System.Drawing.Size(414, 22);
-            this.heldenimportToolStripMenuItem.Text = "Helden Software Import beim Start anzeigen";
+            this.nebenReRollToolStripMenuItem.Checked = true;
+            this.nebenReRollToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.nebenReRollToolStripMenuItem.Name = "nebenReRollToolStripMenuItem";
+            this.nebenReRollToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.nebenReRollToolStripMenuItem.Text = "Doppelte neu auswürfeln";
+            this.nebenReRollToolStripMenuItem.Click += new System.EventHandler(this.nebenReRollToolStripMenuItem_Click);
+            // 
+            // nebenIgnoreToolStripMenuItem
+            // 
+            this.nebenIgnoreToolStripMenuItem.Name = "nebenIgnoreToolStripMenuItem";
+            this.nebenIgnoreToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.nebenIgnoreToolStripMenuItem.Text = "Doppelte ignorieren";
+            this.nebenIgnoreToolStripMenuItem.Click += new System.EventHandler(this.nebenIgnoreToolStripMenuItem_Click);
             // 
             // ArtGenControl
             // 
@@ -2642,5 +2671,8 @@ namespace ArtefaktGenerator
         private ToolTip toolTip1;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripMenuItem heldenimportToolStripMenuItem;
+        private ToolStripMenuItem nebenwirkungenMenuItem1;
+        private ToolStripMenuItem nebenReRollToolStripMenuItem;
+        private ToolStripMenuItem nebenIgnoreToolStripMenuItem;
     }
 }

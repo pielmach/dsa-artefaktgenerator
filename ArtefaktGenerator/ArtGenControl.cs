@@ -1486,6 +1486,9 @@ namespace ArtefaktGenerator
             wegeDerAlchimieToolStripMenuItem.Checked = controller.WDA;
             staebeRingeDschinnenlampenToolStripMenuItem.Checked = !controller.WDA;
             heldenimportToolStripMenuItem.Checked = ArtefaktGenerator.Properties.Settings.Default.showHeldenImport;
+            controller.optionNebeneffekteNeuWuerfeln = ArtefaktGenerator.Properties.Settings.Default.reRollNeben;
+            nebenReRollToolStripMenuItem.Checked = controller.optionNebeneffekteNeuWuerfeln;
+            nebenIgnoreToolStripMenuItem.Checked = !controller.optionNebeneffekteNeuWuerfeln;
             switch(ArtefaktGenerator.Properties.Settings.Default.diceW6)
             {
                 case 0: w6_1_Click(this, null); break;
@@ -1524,6 +1527,7 @@ namespace ArtefaktGenerator
             if (controller.W20 == 20) ArtefaktGenerator.Properties.Settings.Default.diceW20 = 4;
             ArtefaktGenerator.Properties.Settings.Default.diceRandom = controller.optionAllesBerechnen;
             ArtefaktGenerator.Properties.Settings.Default.showHeldenImport = heldenimportToolStripMenuItem.Checked;
+            ArtefaktGenerator.Properties.Settings.Default.reRollNeben = controller.optionNebeneffekteNeuWuerfeln;
             Properties.Settings.Default.Save();
         }
 
@@ -1549,6 +1553,20 @@ namespace ArtefaktGenerator
             }
             else
                 MessageBox.Show("Dein Artefakt hat keine wirkenden Zauber!", "Fehler");
+        }
+
+        private void nebenReRollToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controller.optionNebeneffekteNeuWuerfeln = true;
+            nebenReRollToolStripMenuItem.Checked = true;
+            nebenIgnoreToolStripMenuItem.Checked = false;
+        }
+
+        private void nebenIgnoreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controller.optionNebeneffekteNeuWuerfeln = false;
+            nebenIgnoreToolStripMenuItem.Checked = true;
+            nebenReRollToolStripMenuItem.Checked = false;
         }
 
     }
