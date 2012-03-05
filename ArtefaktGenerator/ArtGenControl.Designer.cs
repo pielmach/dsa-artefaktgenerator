@@ -214,6 +214,8 @@ namespace ArtefaktGenerator
             this.rep_ach = new System.Windows.Forms.RadioButton();
             this.rep_mag = new System.Windows.Forms.RadioButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.heldenimportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox8.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.starkonst)).BeginInit();
@@ -1720,29 +1722,29 @@ namespace ArtefaktGenerator
             // neuesArtefaktToolStripMenuItem
             // 
             this.neuesArtefaktToolStripMenuItem.Name = "neuesArtefaktToolStripMenuItem";
-            this.neuesArtefaktToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.neuesArtefaktToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.neuesArtefaktToolStripMenuItem.Text = "Neu";
             this.neuesArtefaktToolStripMenuItem.Click += new System.EventHandler(this.neuesArtefaktToolStripMenuItem_Click);
             // 
             // artefaktLadenToolStripMenuItem
             // 
             this.artefaktLadenToolStripMenuItem.Name = "artefaktLadenToolStripMenuItem";
-            this.artefaktLadenToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.artefaktLadenToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.artefaktLadenToolStripMenuItem.Text = "Laden";
             this.artefaktLadenToolStripMenuItem.Click += new System.EventHandler(this.artefaktLadenToolStripMenuItem_Click);
             // 
             // artefaktSpeichernToolStripMenuItem
             // 
             this.artefaktSpeichernToolStripMenuItem.Name = "artefaktSpeichernToolStripMenuItem";
-            this.artefaktSpeichernToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.artefaktSpeichernToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.artefaktSpeichernToolStripMenuItem.Text = "Speichern";
             this.artefaktSpeichernToolStripMenuItem.Click += new System.EventHandler(this.artefaktSpeichernToolStripMenuItem_Click);
             // 
             // exportierenToolStripMenuItem
             // 
             this.exportierenToolStripMenuItem.Name = "exportierenToolStripMenuItem";
-            this.exportierenToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.exportierenToolStripMenuItem.Text = "Exportieren";
+            this.exportierenToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.exportierenToolStripMenuItem.Text = "Exportieren als PDF";
             this.exportierenToolStripMenuItem.Click += new System.EventHandler(this.exportierenToolStripMenuItem_Click);
             // 
             // optionenToolStripMenuItem
@@ -1751,7 +1753,9 @@ namespace ArtefaktGenerator
             this.automatischNeuberechenenToolStripMenuItem,
             this.ach_save,
             this.würfelergebnisseToolStripMenuItem,
-            this.regelbasis});
+            this.regelbasis,
+            this.toolStripSeparator1,
+            this.heldenimportToolStripMenuItem});
             this.optionenToolStripMenuItem.Name = "optionenToolStripMenuItem";
             this.optionenToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.optionenToolStripMenuItem.Text = "Optionen";
@@ -1791,7 +1795,7 @@ namespace ArtefaktGenerator
             // 
             this.alleBerechnenToolStripMenuItem.CheckOnClick = true;
             this.alleBerechnenToolStripMenuItem.Name = "alleBerechnenToolStripMenuItem";
-            this.alleBerechnenToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.alleBerechnenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.alleBerechnenToolStripMenuItem.Text = "alle zufällig";
             this.alleBerechnenToolStripMenuItem.Click += new System.EventHandler(this.alleBerechnenToolStripMenuItem_Click);
             // 
@@ -1803,7 +1807,7 @@ namespace ArtefaktGenerator
             this.w6_4,
             this.w6_6});
             this.w6AnnehmenToolStripMenuItem.Name = "w6AnnehmenToolStripMenuItem";
-            this.w6AnnehmenToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.w6AnnehmenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.w6AnnehmenToolStripMenuItem.Text = "W6";
             // 
             // w6_1
@@ -1849,7 +1853,7 @@ namespace ArtefaktGenerator
             this.w20_11,
             this.w20_20});
             this.w20ToolStripMenuItem.Name = "w20ToolStripMenuItem";
-            this.w20ToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.w20ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.w20ToolStripMenuItem.Text = "W20";
             // 
             // w20_1
@@ -2343,6 +2347,18 @@ namespace ArtefaktGenerator
             this.toolTip1.ReshowDelay = 100;
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(411, 6);
+            // 
+            // heldenimportToolStripMenuItem
+            // 
+            this.heldenimportToolStripMenuItem.CheckOnClick = true;
+            this.heldenimportToolStripMenuItem.Name = "heldenimportToolStripMenuItem";
+            this.heldenimportToolStripMenuItem.Size = new System.Drawing.Size(414, 22);
+            this.heldenimportToolStripMenuItem.Text = "Helden Software Import beim Start anzeigen";
+            // 
             // ArtGenControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -2624,5 +2640,7 @@ namespace ArtefaktGenerator
         private ListBox zauber_listbox;
         private ToolStripMenuItem exportierenToolStripMenuItem;
         private ToolTip toolTip1;
+        private ToolStripSeparator toolStripSeparator1;
+        private ToolStripMenuItem heldenimportToolStripMenuItem;
     }
 }

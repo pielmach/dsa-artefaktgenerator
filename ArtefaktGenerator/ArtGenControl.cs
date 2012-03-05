@@ -132,8 +132,6 @@ namespace ArtefaktGenerator
             }
         }
 
-
-
         private void update(bool force)
         {
             /*
@@ -1203,10 +1201,10 @@ namespace ArtefaktGenerator
 
         private void alleBerechnenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controller.W20 = 0;
-            controller.W6 = 0;
             if (alleBerechnenToolStripMenuItem.Checked)
             {
+                controller.W20 = 0;
+                controller.W6 = 0;
                 w6AnnehmenToolStripMenuItem.Enabled = false;
                 w20ToolStripMenuItem.Enabled = false;
                 controller.optionAllesBerechnen = true;
@@ -1216,6 +1214,15 @@ namespace ArtefaktGenerator
                 w6AnnehmenToolStripMenuItem.Enabled = true;
                 w20ToolStripMenuItem.Enabled = true;
                 controller.optionAllesBerechnen = false;
+                if (w6_1.Checked) controller.W6 = 1;
+                if (w6_35.Checked) controller.W6 = 3.5m;
+                if (w6_4.Checked) controller.W6 = 4;
+                if (w6_6.Checked) controller.W6 = 6;
+                if (w20_1.Checked) controller.W20 = 1;
+                if (w20_10.Checked) controller.W20 = 10;
+                if (w20_105.Checked) controller.W20 = 10.5m;
+                if (w20_11.Checked) controller.W20 = 11;
+                if (w20_20.Checked) controller.W20 = 20;
             }
         }
 
@@ -1472,6 +1479,52 @@ namespace ArtefaktGenerator
 
             stapelung.Minimum = 1;
             zauber_rep.SelectedIndex = 0;
+
+            controller.optionAchSave = ArtefaktGenerator.Properties.Settings.Default.saveAch;
+            ach_save.Checked = controller.optionAchSave;
+            controller.WDA = ArtefaktGenerator.Properties.Settings.Default.WDA;
+            wegeDerAlchimieToolStripMenuItem.Checked = controller.WDA;
+            staebeRingeDschinnenlampenToolStripMenuItem.Checked = !controller.WDA;
+            heldenimportToolStripMenuItem.Checked = ArtefaktGenerator.Properties.Settings.Default.showHeldenImport;
+            switch(ArtefaktGenerator.Properties.Settings.Default.diceW6)
+            {
+                case 0: w6_1_Click(this, null); break;
+                case 1: w6_35_Click(this, null); break;
+                case 2: w6_4_Click(this, null); break;
+                case 3: w6_6_Click(this, null); break;
+            }
+            switch (ArtefaktGenerator.Properties.Settings.Default.diceW20)
+            {
+                case 0: w20_1_Click(this, null); break;
+                case 1: w20_10_Click(this, null); break;
+                case 2: w20_105_Click(this, null); break;
+                case 3: w20_11_Click(this, null); break;
+                case 4: w20_20_Click(this, null); break;
+            }
+            if (ArtefaktGenerator.Properties.Settings.Default.diceRandom)
+            {
+                alleBerechnenToolStripMenuItem.Checked = true;
+                alleBerechnenToolStripMenuItem_Click(this, null);
+            }
+
+        }
+
+        public void saveOptions()
+        {
+            ArtefaktGenerator.Properties.Settings.Default.saveAch = controller.optionAchSave;
+            ArtefaktGenerator.Properties.Settings.Default.WDA = controller.WDA;
+            if (controller.W6 == 1) ArtefaktGenerator.Properties.Settings.Default.diceW6 = 0;
+            if (controller.W6 == 3.5m) ArtefaktGenerator.Properties.Settings.Default.diceW6 = 1;
+            if (controller.W6 == 4) ArtefaktGenerator.Properties.Settings.Default.diceW6 = 2;
+            if (controller.W6 == 6) ArtefaktGenerator.Properties.Settings.Default.diceW6 = 3;
+            if (controller.W20 == 1) ArtefaktGenerator.Properties.Settings.Default.diceW20 = 0;
+            if (controller.W20 == 10) ArtefaktGenerator.Properties.Settings.Default.diceW20 = 1;
+            if (controller.W20 == 10.5m) ArtefaktGenerator.Properties.Settings.Default.diceW20 = 2;
+            if (controller.W20 == 11) ArtefaktGenerator.Properties.Settings.Default.diceW20 = 3;
+            if (controller.W20 == 20) ArtefaktGenerator.Properties.Settings.Default.diceW20 = 4;
+            ArtefaktGenerator.Properties.Settings.Default.diceRandom = controller.optionAllesBerechnen;
+            ArtefaktGenerator.Properties.Settings.Default.showHeldenImport = heldenimportToolStripMenuItem.Checked;
+            Properties.Settings.Default.Save();
         }
 
         private void exportierenToolStripMenuItem_Click(object sender, EventArgs e)
