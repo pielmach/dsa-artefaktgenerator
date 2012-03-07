@@ -161,6 +161,9 @@ namespace ArtefaktGenerator
             this.optionenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.automatischNeuberechenenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ach_save = new System.Windows.Forms.ToolStripMenuItem();
+            this.regelbasis = new System.Windows.Forms.ToolStripMenuItem();
+            this.wegeDerAlchimieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.staebeRingeDschinnenlampenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.würfelergebnisseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alleBerechnenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.w6AnnehmenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -174,9 +177,9 @@ namespace ArtefaktGenerator
             this.w20_105 = new System.Windows.Forms.ToolStripMenuItem();
             this.w20_11 = new System.Windows.Forms.ToolStripMenuItem();
             this.w20_20 = new System.Windows.Forms.ToolStripMenuItem();
-            this.regelbasis = new System.Windows.Forms.ToolStripMenuItem();
-            this.wegeDerAlchimieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.staebeRingeDschinnenlampenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nebenwirkungenMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.nebenReRollToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nebenIgnoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.heldenimportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -216,9 +219,6 @@ namespace ArtefaktGenerator
             this.rep_ach = new System.Windows.Forms.RadioButton();
             this.rep_mag = new System.Windows.Forms.RadioButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.nebenwirkungenMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.nebenReRollToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nebenIgnoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox8.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.starkonst)).BeginInit();
@@ -428,6 +428,7 @@ namespace ArtefaktGenerator
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.special_eatmat_var);
             this.groupBox7.Controls.Add(this.lbl_special_asp);
             this.groupBox7.Controls.Add(this.special_ferngespuer_asp);
             this.groupBox7.Controls.Add(this.special_ferngespuer_komp);
@@ -444,7 +445,6 @@ namespace ArtefaktGenerator
             this.groupBox7.Controls.Add(this.special_durable);
             this.groupBox7.Controls.Add(this.special_signet);
             this.groupBox7.Controls.Add(this.special_eatmaterial);
-            this.groupBox7.Controls.Add(this.special_eatmat_var);
             this.groupBox7.Location = new System.Drawing.Point(518, 157);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(269, 187);
@@ -501,7 +501,7 @@ namespace ArtefaktGenerator
             this.special_ferngespuer.AutoSize = true;
             this.special_ferngespuer.Location = new System.Drawing.Point(6, 105);
             this.special_ferngespuer.Name = "special_ferngespuer";
-            this.special_ferngespuer.Size = new System.Drawing.Size(79, 17);
+            this.special_ferngespuer.Size = new System.Drawing.Size(76, 18);
             this.special_ferngespuer.TabIndex = 4;
             this.special_ferngespuer.Text = "Ferngespür";
             this.special_ferngespuer.UseVisualStyleBackColor = true;
@@ -532,7 +532,7 @@ namespace ArtefaktGenerator
             this.special_schleier.AutoSize = true;
             this.special_schleier.Location = new System.Drawing.Point(6, 151);
             this.special_schleier.Name = "special_schleier";
-            this.special_schleier.Size = new System.Drawing.Size(96, 17);
+            this.special_schleier.Size = new System.Drawing.Size(92, 18);
             this.special_schleier.TabIndex = 9;
             this.special_schleier.Text = "Verschleierung";
             this.special_schleier.UseVisualStyleBackColor = true;
@@ -542,7 +542,7 @@ namespace ArtefaktGenerator
             this.special_variablerelease.AutoSize = true;
             this.special_variablerelease.Location = new System.Drawing.Point(6, 136);
             this.special_variablerelease.Name = "special_variablerelease";
-            this.special_variablerelease.Size = new System.Drawing.Size(110, 17);
+            this.special_variablerelease.Size = new System.Drawing.Size(107, 18);
             this.special_variablerelease.TabIndex = 8;
             this.special_variablerelease.Text = "Variabler Auslöser";
             this.special_variablerelease.UseVisualStyleBackColor = true;
@@ -552,7 +552,7 @@ namespace ArtefaktGenerator
             this.special_reversalis.AutoSize = true;
             this.special_reversalis.Location = new System.Drawing.Point(6, 121);
             this.special_reversalis.Name = "special_reversalis";
-            this.special_reversalis.Size = new System.Drawing.Size(101, 17);
+            this.special_reversalis.Size = new System.Drawing.Size(103, 18);
             this.special_reversalis.TabIndex = 7;
             this.special_reversalis.Text = "Umkehrtalisman";
             this.special_reversalis.UseVisualStyleBackColor = true;
@@ -562,7 +562,7 @@ namespace ArtefaktGenerator
             this.special_selfrepair.AutoSize = true;
             this.special_selfrepair.Location = new System.Drawing.Point(6, 90);
             this.special_selfrepair.Name = "special_selfrepair";
-            this.special_selfrepair.Size = new System.Drawing.Size(97, 17);
+            this.special_selfrepair.Size = new System.Drawing.Size(94, 18);
             this.special_selfrepair.TabIndex = 6;
             this.special_selfrepair.Text = "Selbstreparatur";
             this.special_selfrepair.UseVisualStyleBackColor = true;
@@ -572,7 +572,7 @@ namespace ArtefaktGenerator
             this.special_resistant.AutoSize = true;
             this.special_resistant.Location = new System.Drawing.Point(6, 75);
             this.special_resistant.Name = "special_resistant";
-            this.special_resistant.Size = new System.Drawing.Size(136, 17);
+            this.special_resistant.Size = new System.Drawing.Size(128, 18);
             this.special_resistant.TabIndex = 5;
             this.special_resistant.Text = "Res. profaner Schaden";
             this.special_resistant.UseVisualStyleBackColor = true;
@@ -582,7 +582,7 @@ namespace ArtefaktGenerator
             this.special_apport.AutoSize = true;
             this.special_apport.Location = new System.Drawing.Point(6, 60);
             this.special_apport.Name = "special_apport";
-            this.special_apport.Size = new System.Drawing.Size(109, 17);
+            this.special_apport.Size = new System.Drawing.Size(109, 18);
             this.special_apport.TabIndex = 3;
             this.special_apport.Text = "Magischer Apport";
             this.special_apport.UseVisualStyleBackColor = true;
@@ -592,7 +592,7 @@ namespace ArtefaktGenerator
             this.special_scent.AutoSize = true;
             this.special_scent.Location = new System.Drawing.Point(6, 45);
             this.special_scent.Name = "special_scent";
-            this.special_scent.Size = new System.Drawing.Size(131, 17);
+            this.special_scent.Size = new System.Drawing.Size(122, 18);
             this.special_scent.TabIndex = 2;
             this.special_scent.Text = "Gespür des Schöpfers";
             this.special_scent.UseVisualStyleBackColor = true;
@@ -602,7 +602,7 @@ namespace ArtefaktGenerator
             this.special_durable.AutoSize = true;
             this.special_durable.Location = new System.Drawing.Point(6, 30);
             this.special_durable.Name = "special_durable";
-            this.special_durable.Size = new System.Drawing.Size(114, 17);
+            this.special_durable.Size = new System.Drawing.Size(114, 18);
             this.special_durable.TabIndex = 1;
             this.special_durable.Text = "Unzerbrechlichkeit";
             this.special_durable.UseVisualStyleBackColor = true;
@@ -612,7 +612,7 @@ namespace ArtefaktGenerator
             this.special_signet.AutoSize = true;
             this.special_signet.Location = new System.Drawing.Point(6, 15);
             this.special_signet.Name = "special_signet";
-            this.special_signet.Size = new System.Drawing.Size(120, 17);
+            this.special_signet.Size = new System.Drawing.Size(119, 18);
             this.special_signet.TabIndex = 0;
             this.special_signet.Text = "Siegel und Zertifikat";
             this.special_signet.UseVisualStyleBackColor = true;
@@ -622,7 +622,7 @@ namespace ArtefaktGenerator
             this.special_eatmaterial.AutoSize = true;
             this.special_eatmaterial.Location = new System.Drawing.Point(6, 167);
             this.special_eatmaterial.Name = "special_eatmaterial";
-            this.special_eatmaterial.Size = new System.Drawing.Size(126, 17);
+            this.special_eatmaterial.Size = new System.Drawing.Size(120, 18);
             this.special_eatmaterial.TabIndex = 10;
             this.special_eatmaterial.Text = "Verzehrender Zauber";
             this.special_eatmaterial.UseVisualStyleBackColor = true;
@@ -1785,6 +1785,31 @@ namespace ArtefaktGenerator
             this.ach_save.Text = "Kostenersparnis für wirkende Zauber bei Rep. ACH einberechnen";
             this.ach_save.Click += new System.EventHandler(this.ach_save_Click);
             // 
+            // regelbasis
+            // 
+            this.regelbasis.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.wegeDerAlchimieToolStripMenuItem,
+            this.staebeRingeDschinnenlampenToolStripMenuItem});
+            this.regelbasis.Name = "regelbasis";
+            this.regelbasis.Size = new System.Drawing.Size(414, 22);
+            this.regelbasis.Text = "Regelbasis";
+            // 
+            // wegeDerAlchimieToolStripMenuItem
+            // 
+            this.wegeDerAlchimieToolStripMenuItem.Checked = true;
+            this.wegeDerAlchimieToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.wegeDerAlchimieToolStripMenuItem.Name = "wegeDerAlchimieToolStripMenuItem";
+            this.wegeDerAlchimieToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
+            this.wegeDerAlchimieToolStripMenuItem.Text = "Wege der Alchimie (4.1)";
+            this.wegeDerAlchimieToolStripMenuItem.Click += new System.EventHandler(this.wegeDerAlchimieToolStripMenuItem_Click);
+            // 
+            // staebeRingeDschinnenlampenToolStripMenuItem
+            // 
+            this.staebeRingeDschinnenlampenToolStripMenuItem.Name = "staebeRingeDschinnenlampenToolStripMenuItem";
+            this.staebeRingeDschinnenlampenToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
+            this.staebeRingeDschinnenlampenToolStripMenuItem.Text = "Stäbe, Ringe, Dschinnenlampen (4.0)";
+            this.staebeRingeDschinnenlampenToolStripMenuItem.Click += new System.EventHandler(this.staebeRingeDschinnenlampenToolStripMenuItem_Click);
+            // 
             // würfelergebnisseToolStripMenuItem
             // 
             this.würfelergebnisseToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1799,7 +1824,7 @@ namespace ArtefaktGenerator
             // 
             this.alleBerechnenToolStripMenuItem.CheckOnClick = true;
             this.alleBerechnenToolStripMenuItem.Name = "alleBerechnenToolStripMenuItem";
-            this.alleBerechnenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.alleBerechnenToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.alleBerechnenToolStripMenuItem.Text = "alle zufällig";
             this.alleBerechnenToolStripMenuItem.Click += new System.EventHandler(this.alleBerechnenToolStripMenuItem_Click);
             // 
@@ -1811,7 +1836,7 @@ namespace ArtefaktGenerator
             this.w6_4,
             this.w6_6});
             this.w6AnnehmenToolStripMenuItem.Name = "w6AnnehmenToolStripMenuItem";
-            this.w6AnnehmenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.w6AnnehmenToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.w6AnnehmenToolStripMenuItem.Text = "W6";
             // 
             // w6_1
@@ -1857,7 +1882,7 @@ namespace ArtefaktGenerator
             this.w20_11,
             this.w20_20});
             this.w20ToolStripMenuItem.Name = "w20ToolStripMenuItem";
-            this.w20ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.w20ToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.w20ToolStripMenuItem.Text = "W20";
             // 
             // w20_1
@@ -1900,30 +1925,30 @@ namespace ArtefaktGenerator
             this.w20_20.Text = "als Pessimum annehmen";
             this.w20_20.Click += new System.EventHandler(this.w20_20_Click);
             // 
-            // regelbasis
+            // nebenwirkungenMenuItem1
             // 
-            this.regelbasis.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.wegeDerAlchimieToolStripMenuItem,
-            this.staebeRingeDschinnenlampenToolStripMenuItem});
-            this.regelbasis.Name = "regelbasis";
-            this.regelbasis.Size = new System.Drawing.Size(414, 22);
-            this.regelbasis.Text = "Regelbasis";
+            this.nebenwirkungenMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nebenReRollToolStripMenuItem,
+            this.nebenIgnoreToolStripMenuItem});
+            this.nebenwirkungenMenuItem1.Name = "nebenwirkungenMenuItem1";
+            this.nebenwirkungenMenuItem1.Size = new System.Drawing.Size(414, 22);
+            this.nebenwirkungenMenuItem1.Text = "Nebeneffekte";
             // 
-            // wegeDerAlchimieToolStripMenuItem
+            // nebenReRollToolStripMenuItem
             // 
-            this.wegeDerAlchimieToolStripMenuItem.Checked = true;
-            this.wegeDerAlchimieToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.wegeDerAlchimieToolStripMenuItem.Name = "wegeDerAlchimieToolStripMenuItem";
-            this.wegeDerAlchimieToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
-            this.wegeDerAlchimieToolStripMenuItem.Text = "Wege der Alchimie (4.1)";
-            this.wegeDerAlchimieToolStripMenuItem.Click += new System.EventHandler(this.wegeDerAlchimieToolStripMenuItem_Click);
+            this.nebenReRollToolStripMenuItem.Checked = true;
+            this.nebenReRollToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.nebenReRollToolStripMenuItem.Name = "nebenReRollToolStripMenuItem";
+            this.nebenReRollToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.nebenReRollToolStripMenuItem.Text = "Doppelte neu auswürfeln";
+            this.nebenReRollToolStripMenuItem.Click += new System.EventHandler(this.nebenReRollToolStripMenuItem_Click);
             // 
-            // staebeRingeDschinnenlampenToolStripMenuItem
+            // nebenIgnoreToolStripMenuItem
             // 
-            this.staebeRingeDschinnenlampenToolStripMenuItem.Name = "staebeRingeDschinnenlampenToolStripMenuItem";
-            this.staebeRingeDschinnenlampenToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
-            this.staebeRingeDschinnenlampenToolStripMenuItem.Text = "Stäbe, Ringe, Dschinnenlampen (4.0)";
-            this.staebeRingeDschinnenlampenToolStripMenuItem.Click += new System.EventHandler(this.staebeRingeDschinnenlampenToolStripMenuItem_Click);
+            this.nebenIgnoreToolStripMenuItem.Name = "nebenIgnoreToolStripMenuItem";
+            this.nebenIgnoreToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.nebenIgnoreToolStripMenuItem.Text = "Doppelte ignorieren";
+            this.nebenIgnoreToolStripMenuItem.Click += new System.EventHandler(this.nebenIgnoreToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -2362,31 +2387,6 @@ namespace ArtefaktGenerator
             this.toolTip1.InitialDelay = 500;
             this.toolTip1.ReshowDelay = 100;
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            // 
-            // nebenwirkungenMenuItem1
-            // 
-            this.nebenwirkungenMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.nebenReRollToolStripMenuItem,
-            this.nebenIgnoreToolStripMenuItem});
-            this.nebenwirkungenMenuItem1.Name = "nebenwirkungenMenuItem1";
-            this.nebenwirkungenMenuItem1.Size = new System.Drawing.Size(414, 22);
-            this.nebenwirkungenMenuItem1.Text = "Nebeneffekte";
-            // 
-            // nebenReRollToolStripMenuItem
-            // 
-            this.nebenReRollToolStripMenuItem.Checked = true;
-            this.nebenReRollToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.nebenReRollToolStripMenuItem.Name = "nebenReRollToolStripMenuItem";
-            this.nebenReRollToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.nebenReRollToolStripMenuItem.Text = "Doppelte neu auswürfeln";
-            this.nebenReRollToolStripMenuItem.Click += new System.EventHandler(this.nebenReRollToolStripMenuItem_Click);
-            // 
-            // nebenIgnoreToolStripMenuItem
-            // 
-            this.nebenIgnoreToolStripMenuItem.Name = "nebenIgnoreToolStripMenuItem";
-            this.nebenIgnoreToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.nebenIgnoreToolStripMenuItem.Text = "Doppelte ignorieren";
-            this.nebenIgnoreToolStripMenuItem.Click += new System.EventHandler(this.nebenIgnoreToolStripMenuItem_Click);
             // 
             // ArtGenControl
             // 

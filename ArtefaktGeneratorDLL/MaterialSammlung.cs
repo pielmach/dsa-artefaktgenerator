@@ -85,13 +85,14 @@ namespace ArtefaktGenerator
             sammlung.Add(new Material("Hölleneisen",0,0,1,1,0,0,0,0));
             sammlung.Add(new Material("Arkanoferrit", 0, 0, 0, 1, 2, 0, 0, 0));
             sammlung.Add(new Material("Gwen Petryl",0,0,-1,1,0,0,0,0));
+            sammlung.Add(new Material("Flüssigkeit",+3,0,0,1,0,0,0,0));
+            sammlung.Add(new Material("Gas", +7, 0, 0, 1, 0, 0, 0, 0));
 
             try
             {
                 System.IO.StreamReader reader = new System.IO.StreamReader("material.mod.artgen");
 
                 string xml = reader.ReadToEnd();
-                //string xml = System.IO.File.ReadAllText(@".\test.artefakt");
                 MaterialSammlung mod = (MaterialSammlung)loadMod(xml);
                 for (int i = 0; i < mod.sammlung.Count; i++)
                 {

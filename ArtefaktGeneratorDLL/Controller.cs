@@ -1467,7 +1467,7 @@ namespace ArtefaktGenerator
                     int nRun = 0;
                     int ignoredNebens = 0;
                     // This is to check for doubles
-                    while(true)
+                    while (neben_probe_count > 0)
                     {
                         int number = (int)(dice.W20 + dice.W20 + artefakt.material.nebenwirkung_art_mod);
                         // check for double descr
@@ -1531,13 +1531,15 @@ namespace ArtefaktGenerator
 
                         //Nebens
                         resArcanovi += ("Anzahl Nebeneffektproben: " + neben_probe_count);
-                        if (optionAllesBerechnen)
+                        if (optionAllesBerechnen && neben_probe_count > 0)
                         {
                             resArcanovi += (" => " + (neben_count - ignoredNebens) + " Nebeneffekte\r\n");
                             for (int i = 0; i < nebens.Count; i++)
                                 resArcanovi += (nebens[i]);
                             //resArcanovi += (" )\r\n");
                         }
+                        else resArcanovi += "\r\n";
+
                         //Occupation
                         if (optionAllesBerechnen)
                         {
