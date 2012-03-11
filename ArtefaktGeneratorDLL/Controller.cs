@@ -1467,7 +1467,7 @@ namespace ArtefaktGenerator
                     int nRun = 0;
                     int ignoredNebens = 0;
                     // This is to check for doubles
-                    while (neben_probe_count > 0)
+                    while (neben_count > 0)
                     {
                         int number = (int)(dice.W20 + dice.W20 + artefakt.material.nebenwirkung_art_mod);
                         // check for double descr
