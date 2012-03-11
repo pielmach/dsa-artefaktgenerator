@@ -48,5 +48,6 @@ namespace ArtefaktGenerator
 
         public bool ringkunde = false;
 
+        public bool kraftspeicher = false;
     }
 }

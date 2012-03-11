@@ -19,6 +19,7 @@ namespace ArtefaktGenerator
         private MaterialSammlung mat;
         private Occupation occ = new Occupation();
         private Nebeneffekte nebeneffekte = new Nebeneffekte();
+        private Kraftspeicher kraftspeicher = new Kraftspeicher();
 
         public Controller() { mat = new MaterialSammlung(dice); }
 
@@ -307,6 +308,23 @@ namespace ArtefaktGenerator
                 RaisePropertyChanged("sfRingkunde");
             }
         }
+        public bool sfKraftspeicher
+        {
+            get
+            {
+                return artefakt.sf.kraftspeicher;
+            }
+            set
+            {
+                artefakt.sf.kraftspeicher = value;
+                if (!artefakt.sf.kraftspeicher && artefakt.typ == Artefakt.ArtefaktType.SPEICHER)
+                {
+                    artefakttyp = (int)Artefakt.ArtefaktType.NORMAL;
+                }
+                RaisePropertyChanged("sfKraftspeicher");
+            }
+        }
+
         public bool sfAuxiliator
         {
             get { return artefakt.sf.auxiliator; }
@@ -463,8 +481,21 @@ namespace ArtefaktGenerator
             set { 
                 artefakt.typ = (Artefakt.ArtefaktType)value;
                 if (artefakt.typ == Artefakt.ArtefaktType.TEMP)
-                        artefakttypTempVisible = true;
+                    artefakttypTempVisible = true;
                 else artefakttypTempVisible = false;
+                if (artefakt.typ == Artefakt.ArtefaktType.SPEICHER)
+                {
+                    artefakttypKraftspeicherVisible = true;
+                    spezialFerngespuerEnabled = false;
+                    wirkendeZauberEnabled = false;
+                    selectedMaterial = 0;
+                }
+                else
+                {
+                    artefakttypKraftspeicherVisible = false;
+                    spezialFerngespuerEnabled = true;
+                    wirkendeZauberEnabled = true;
+                }
                 if (artefakt.typ == Artefakt.ArtefaktType.MATRIX)
                 {
                     artefakttypMatrixVisible = true;
@@ -544,6 +575,23 @@ namespace ArtefaktGenerator
         {
             get { return _artefakttypSemipermanenzEnabled; }
             set { _artefakttypSemipermanenzEnabled = value; RaisePropertyChanged("artefakttypSemipermanenzEnabled"); }
+        }
+        public int artefakttypKraftspeicher
+        {
+            get { return (int)artefakt.kraftspeicher_asp; }
+            set { artefakt.kraftspeicher_asp = (decimal)value; RaisePropertyChanged("artefakttypKraftspeicher"); }
+        }
+        private bool _artefakttypKraftspeicherVisible;
+        public bool artefakttypKraftspeicherVisible
+        {
+            get { return _artefakttypKraftspeicherVisible; }
+            set { _artefakttypKraftspeicherVisible = value; RaisePropertyChanged("artefakttypKraftspeicherVisible"); }
+        }
+        private bool _wirkendeZauberEnabled;
+        public bool wirkendeZauberEnabled
+        {
+            get { return _wirkendeZauberEnabled; }
+            set { _wirkendeZauberEnabled = value; RaisePropertyChanged("wirkendeZauberEnabled"); }
         }
 
         public int artefakttypAuxiliator
@@ -1124,6 +1172,7 @@ namespace ArtefaktGenerator
             optionAchSave = true;
             optionAllesBerechnen = false;
             optionNebeneffekteNeuWuerfeln = true;
+            wirkendeZauberEnabled = true;
 
             tawArcanovi = tawArcanovi;
             tawArcanoviMatrix = tawArcanoviMatrix;
@@ -1193,17 +1242,17 @@ namespace ArtefaktGenerator
 
         public void generateArtefakt()
         {
-            if (zauberListe.Count > 0)
+            string resArcanovi = "";
+            string resAnalys = "";
+            string resDestructibo = "";
+
+            if (zauberListe.Count > 0 || artefakt.typ == Artefakt.ArtefaktType.SPEICHER)
             {
-                string resArcanovi = "";
-                string resAnalys = "";
-                string resDestructibo = "";
-            
                 // Material reinit
                 mat = new MaterialSammlung(dice);
                 artefakt.material = mat.sammlung[selectedMaterial];
 
-                if (magic.Count >= 1)
+                if (magic.Count >= 1 || artefakt.typ == Artefakt.ArtefaktType.SPEICHER)
                 {
                     // DEBUG
                     decimal agribaal_zfp = artefakt.agribaal;
@@ -1328,6 +1377,8 @@ namespace ArtefaktGenerator
 
                         magic_asp += thismagic_asp * artefakt.loads * magic[i].staple * magic_asp_mult * magic_asp_mult_extra;
                     }
+                    if (artefakt.typ == Artefakt.ArtefaktType.SPEICHER)
+                        magic_asp = artefakt.kraftspeicher_asp;
                     if (artefakt.limbus)
                     {
                         magic_asp = Round(magic_asp / 10);
@@ -1448,6 +1499,10 @@ namespace ArtefaktGenerator
                         case Artefakt.ArtefaktType.MATRIX: pasp = Round(Round((magic_asp + arcanovi_asp + arcanovi_special_asp) / 20) * artefakt.material.pasp_mod); break;
                         case Artefakt.ArtefaktType.SEMI: pasp = Round(Round((magic_asp + arcanovi_asp + arcanovi_special_asp) / 10) * artefakt.material.pasp_mod); break;
                         case Artefakt.ArtefaktType.AUX: if (WDA) pasp = Round(Round((magic_asp + arcanovi_asp + arcanovi_special_asp) / 15) * artefakt.material.pasp_mod); break;
+                        case Artefakt.ArtefaktType.SPEICHER: 
+                            pasp = Round(Math.Floor((magic_asp + arcanovi_asp + arcanovi_special_asp) / 20) * artefakt.material.pasp_mod);
+                            if (!WDA) pasp += Round(dice.W6 / 2);
+                            break;
                         default: break;
                     }
                     if (pasp <= 0 && !(artefakt.typ == Artefakt.ArtefaktType.TEMP) && !(artefakt.kristalle))
@@ -1509,12 +1564,19 @@ namespace ArtefaktGenerator
                             resArcanovi += ("Erschwernis für Arcanovi: " + arcanovi_erschwernis + " (erleichterung von " + agribaal_for_arcanovi + " durch Agribaal)\r\n");
 
                         resArcanovi += ("Erforderliche Arcanovi ZfP*: " + arcanovi_zfp + "\r\n");
-                        resArcanovi += ("Bester Fall: " + arcanovi_count + " Arcanovi für " + arcanovi_asp + " AsP\r\n");
-                        if (artefakt.agribaal == 0)
-                            resArcanovi += ("Erschwernis wirkende Sprüche: " + magic_erschwerniss + "\r\n");
+                        if (!(artefakt.typ == Artefakt.ArtefaktType.SPEICHER))
+                        {
+                            resArcanovi += ("Bester Fall: " + arcanovi_count + " Arcanovi für " + arcanovi_asp + " AsP\r\n");
+                            if (artefakt.agribaal == 0)
+                                resArcanovi += ("Erschwernis wirkende Sprüche: " + magic_erschwerniss + "\r\n");
+                            else
+                                resArcanovi += ("Erschwernis wirkende Sprüche: " + (magic_erschwerniss - agribaal_zfp) + "(erleichterung von " + agribaal_zfp + " durch Agribaal)\r\n");
+                            resArcanovi += ("AsP für wirkende Sprüche: " + magic_asp + "\r\n");
+                        }
                         else
-                            resArcanovi += ("Erschwernis wirkende Sprüche: " + (magic_erschwerniss - agribaal_zfp) + "(erleichterung von " + agribaal_zfp + " durch Agribaal)\r\n");
-                        resArcanovi += ("AsP für wirkende Sprüche: " + magic_asp + "\r\n");
+                        {
+                            resArcanovi += ("speicherbare AsP: " + magic_asp + "\r\n");
+                        }
 
                         string sArcanoviSpecialAsP = "";
                         string sArcanoviSpecialDiv = "";
@@ -1527,7 +1589,16 @@ namespace ArtefaktGenerator
                         else
                             resArcanovi += ("AsP gesamt: " + (magic_asp + arcanovi_asp) + " + " + arcanovi_special_w + " W6" + sArcanoviSpecialAsP + sArcanoviSpecialDiv + " + " + artefakt.probe.superBig_asp_w + " W20 = " + (magic_asp + arcanovi_asp + arcanovi_special_asp) + "\r\n");
 
-                        resArcanovi += ("pAsP gesamt: " + pasp + "\r\n");
+                        if (!(artefakt.typ == Artefakt.ArtefaktType.SPEICHER) || WDA)
+                            resArcanovi += ("pAsP gesamt: " + pasp + "\r\n");
+                        else resArcanovi += ("pAsP gesamt: " + pasp + " (inkl. W3)\r\n");
+
+                        //Kraftspeicher Einschränkung
+                        if (optionAllesBerechnen)
+                        {
+                            int number = (int)(dice.W6 + dice.W6 + arcanovi_taw - arcanovi_erschwernis);
+                            resArcanovi += ("Einschränkung: " + number + ": " + (kraftspeicher.getEinschraenkungDescr(WDA, number)) + " (angenommen maximale ZfP*)\r\n");
+                        }
 
                         //Nebens
                         resArcanovi += ("Anzahl Nebeneffektproben: " + neben_probe_count);
@@ -1669,11 +1740,11 @@ namespace ArtefaktGenerator
                     else
                         resDestructibo += ("Zerstörung nicht möglich TaW DESTRUCTIBO bzw. ANALYS zu gering.\r\n");
 
-                    if (resArcanovi != resultArcanovi) resultArcanovi = resArcanovi;
-                    if (resAnalys != resultAnalys) resultAnalys = resAnalys;
-                    if (resDestructibo != resultDestructibo) resultDestructibo = resDestructibo;
                 }
             }
+            if (resArcanovi != resultArcanovi) resultArcanovi = resArcanovi;
+            if (resAnalys != resultAnalys) resultAnalys = resAnalys;
+            if (resDestructibo != resultDestructibo) resultDestructibo = resDestructibo;
 
         }
 

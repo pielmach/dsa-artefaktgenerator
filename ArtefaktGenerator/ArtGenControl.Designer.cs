@@ -30,7 +30,7 @@ namespace ArtefaktGenerator
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.materialGroup = new System.Windows.Forms.GroupBox();
             this.cb_kristalle = new System.Windows.Forms.CheckBox();
             this.material = new System.Windows.Forms.ComboBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -45,6 +45,7 @@ namespace ArtefaktGenerator
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.special_eatmat_var = new System.Windows.Forms.NumericUpDown();
             this.lbl_special_asp = new System.Windows.Forms.Label();
             this.special_ferngespuer_asp = new System.Windows.Forms.NumericUpDown();
             this.special_ferngespuer_komp = new System.Windows.Forms.ComboBox();
@@ -61,7 +62,6 @@ namespace ArtefaktGenerator
             this.special_durable = new System.Windows.Forms.CheckBox();
             this.special_signet = new System.Windows.Forms.CheckBox();
             this.special_eatmaterial = new System.Windows.Forms.CheckBox();
-            this.special_eatmat_var = new System.Windows.Forms.NumericUpDown();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.agribaal = new System.Windows.Forms.NumericUpDown();
             this.label32 = new System.Windows.Forms.Label();
@@ -74,15 +74,16 @@ namespace ArtefaktGenerator
             this.limbus = new System.Windows.Forms.CheckBox();
             this.namenlos = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.sf_aux = new System.Windows.Forms.CheckBox();
-            this.sf_ringkunde = new System.Windows.Forms.CheckBox();
-            this.sf_vielLadung = new System.Windows.Forms.CheckBox();
-            this.sf_semiII = new System.Windows.Forms.CheckBox();
-            this.sf_semiI = new System.Windows.Forms.CheckBox();
-            this.sf_matrix = new System.Windows.Forms.CheckBox();
-            this.sf_hyper = new System.Windows.Forms.CheckBox();
-            this.sf_stapel = new System.Windows.Forms.CheckBox();
             this.sf_kraft = new System.Windows.Forms.CheckBox();
+            this.sf_hyper = new System.Windows.Forms.CheckBox();
+            this.sf_vielLadung = new System.Windows.Forms.CheckBox();
+            this.sf_stapel = new System.Windows.Forms.CheckBox();
+            this.sf_matrix = new System.Windows.Forms.CheckBox();
+            this.sf_semiI = new System.Windows.Forms.CheckBox();
+            this.sf_semiII = new System.Windows.Forms.CheckBox();
+            this.sf_ringkunde = new System.Windows.Forms.CheckBox();
+            this.sf_kraftspeicher = new System.Windows.Forms.CheckBox();
+            this.sf_aux = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.destruct_change = new System.Windows.Forms.NumericUpDown();
             this.label14 = new System.Windows.Forms.Label();
@@ -98,7 +99,7 @@ namespace ArtefaktGenerator
             this.arcanovi_semi_lbl = new System.Windows.Forms.Label();
             this.arcanovi_matrix_lbl = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.wirkendeZauber = new System.Windows.Forms.GroupBox();
             this.zauber_listbox = new System.Windows.Forms.ListBox();
             this.komp_combo = new System.Windows.Forms.ComboBox();
             this.zauber_rep = new System.Windows.Forms.ComboBox();
@@ -193,33 +194,36 @@ namespace ArtefaktGenerator
             this.temp_woche = new System.Windows.Forms.RadioButton();
             this.temp_tag = new System.Windows.Forms.RadioButton();
             this.artefakttyp = new CustomControls.RadioGroupBox();
-            this.artefakttyp_semi = new CustomControls.RadioGroupBox();
-            this.semi_jahr = new System.Windows.Forms.RadioButton();
-            this.semi_monat = new System.Windows.Forms.RadioButton();
-            this.semi_woche = new System.Windows.Forms.RadioButton();
-            this.semi_tag = new System.Windows.Forms.RadioButton();
-            this.artefakttyp_aux = new CustomControls.RadioGroupBox();
-            this.aux_unempfindlich = new System.Windows.Forms.RadioButton();
-            this.aux_labil = new System.Windows.Forms.RadioButton();
-            this.aux_merkmal = new System.Windows.Forms.CheckBox();
-            this.aux_stable = new System.Windows.Forms.RadioButton();
-            this.aux_verystable = new System.Windows.Forms.RadioButton();
-            this.artefakttyp_matrix = new CustomControls.RadioGroupBox();
-            this.matrix_unempfindlich = new System.Windows.Forms.RadioButton();
-            this.matrix_verystable = new System.Windows.Forms.RadioButton();
-            this.matrix_stable = new System.Windows.Forms.RadioButton();
-            this.matrix_labil = new System.Windows.Forms.RadioButton();
+            this.type_speicher_value = new System.Windows.Forms.NumericUpDown();
+            this.lbl_type_speicher_val = new System.Windows.Forms.Label();
+            this.type_speicher = new System.Windows.Forms.RadioButton();
             this.type_temp = new System.Windows.Forms.RadioButton();
             this.type_einaml = new System.Windows.Forms.RadioButton();
             this.type_aux = new System.Windows.Forms.RadioButton();
             this.type_charge = new System.Windows.Forms.RadioButton();
             this.type_matrix = new System.Windows.Forms.RadioButton();
             this.type_semi = new System.Windows.Forms.RadioButton();
+            this.artefakttyp_semi = new CustomControls.RadioGroupBox();
+            this.semi_monat = new System.Windows.Forms.RadioButton();
+            this.semi_woche = new System.Windows.Forms.RadioButton();
+            this.semi_tag = new System.Windows.Forms.RadioButton();
+            this.semi_jahr = new System.Windows.Forms.RadioButton();
+            this.artefakttyp_aux = new CustomControls.RadioGroupBox();
+            this.aux_labil = new System.Windows.Forms.RadioButton();
+            this.aux_merkmal = new System.Windows.Forms.CheckBox();
+            this.aux_stable = new System.Windows.Forms.RadioButton();
+            this.aux_verystable = new System.Windows.Forms.RadioButton();
+            this.aux_unempfindlich = new System.Windows.Forms.RadioButton();
+            this.artefakttyp_matrix = new CustomControls.RadioGroupBox();
+            this.matrix_unempfindlich = new System.Windows.Forms.RadioButton();
+            this.matrix_verystable = new System.Windows.Forms.RadioButton();
+            this.matrix_stable = new System.Windows.Forms.RadioButton();
+            this.matrix_labil = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new CustomControls.RadioGroupBox();
             this.rep_ach = new System.Windows.Forms.RadioButton();
             this.rep_mag = new System.Windows.Forms.RadioButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.groupBox8.SuspendLayout();
+            this.materialGroup.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.starkonst)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.arcanovi_force)).BeginInit();
@@ -227,9 +231,9 @@ namespace ArtefaktGenerator
             ((System.ComponentModel.ISupportInitialize)(this.probe_affine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.probe_ausloes)).BeginInit();
             this.groupBox7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.special_eatmat_var)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.special_ferngespuer_asp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.special_variable_var)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.special_eatmat_var)).BeginInit();
             this.groupBox11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.agribaal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.special_ort_neben)).BeginInit();
@@ -243,7 +247,7 @@ namespace ArtefaktGenerator
             ((System.ComponentModel.ISupportInitialize)(this.arcanovi_semi_change)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.arcanovi_matrix_change)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.arcanovi_change)).BeginInit();
-            this.groupBox6.SuspendLayout();
+            this.wirkendeZauber.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.asp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stapelung)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loads)).BeginInit();
@@ -262,22 +266,23 @@ namespace ArtefaktGenerator
             this.menu.SuspendLayout();
             this.artefakttyp_temp.SuspendLayout();
             this.artefakttyp.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.type_speicher_value)).BeginInit();
             this.artefakttyp_semi.SuspendLayout();
             this.artefakttyp_aux.SuspendLayout();
             this.artefakttyp_matrix.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox8
+            // materialGroup
             // 
-            this.groupBox8.Controls.Add(this.cb_kristalle);
-            this.groupBox8.Controls.Add(this.material);
-            this.groupBox8.Location = new System.Drawing.Point(793, 304);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(198, 57);
-            this.groupBox8.TabIndex = 21;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Material";
+            this.materialGroup.Controls.Add(this.cb_kristalle);
+            this.materialGroup.Controls.Add(this.material);
+            this.materialGroup.Location = new System.Drawing.Point(793, 304);
+            this.materialGroup.Name = "materialGroup";
+            this.materialGroup.Size = new System.Drawing.Size(198, 57);
+            this.materialGroup.TabIndex = 21;
+            this.materialGroup.TabStop = false;
+            this.materialGroup.Text = "Material";
             // 
             // cb_kristalle
             // 
@@ -309,16 +314,16 @@ namespace ArtefaktGenerator
             this.groupBox5.Controls.Add(this.probe_ausloes);
             this.groupBox5.Controls.Add(this.label6);
             this.groupBox5.Controls.Add(this.label4);
-            this.groupBox5.Location = new System.Drawing.Point(6, 256);
+            this.groupBox5.Location = new System.Drawing.Point(635, 157);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(433, 64);
+            this.groupBox5.Size = new System.Drawing.Size(153, 204);
             this.groupBox5.TabIndex = 15;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Probenzuschläge";
             // 
             // starkonst
             // 
-            this.starkonst.Location = new System.Drawing.Point(387, 38);
+            this.starkonst.Location = new System.Drawing.Point(111, 108);
             this.starkonst.Maximum = new decimal(new int[] {
             4,
             0,
@@ -336,7 +341,7 @@ namespace ArtefaktGenerator
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(278, 41);
+            this.label26.Location = new System.Drawing.Point(6, 111);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(103, 14);
             this.label26.TabIndex = 17;
@@ -344,7 +349,7 @@ namespace ArtefaktGenerator
             // 
             // arcanovi_force
             // 
-            this.arcanovi_force.Location = new System.Drawing.Point(236, 39);
+            this.arcanovi_force.Location = new System.Drawing.Point(111, 85);
             this.arcanovi_force.Maximum = new decimal(new int[] {
             20,
             0,
@@ -357,7 +362,7 @@ namespace ArtefaktGenerator
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(130, 41);
+            this.label17.Location = new System.Drawing.Point(6, 87);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(99, 14);
             this.label17.TabIndex = 15;
@@ -365,7 +370,7 @@ namespace ArtefaktGenerator
             // 
             // artefakt_groesse
             // 
-            this.artefakt_groesse.Location = new System.Drawing.Point(236, 17);
+            this.artefakt_groesse.Location = new System.Drawing.Point(111, 62);
             this.artefakt_groesse.Maximum = new decimal(new int[] {
             5,
             0,
@@ -378,7 +383,7 @@ namespace ArtefaktGenerator
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(130, 19);
+            this.label15.Location = new System.Drawing.Point(6, 64);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(72, 14);
             this.label15.TabIndex = 11;
@@ -386,7 +391,7 @@ namespace ArtefaktGenerator
             // 
             // probe_affine
             // 
-            this.probe_affine.Location = new System.Drawing.Point(88, 39);
+            this.probe_affine.Location = new System.Drawing.Point(111, 39);
             this.probe_affine.Maximum = new decimal(new int[] {
             4,
             0,
@@ -403,7 +408,7 @@ namespace ArtefaktGenerator
             // 
             // probe_ausloes
             // 
-            this.probe_ausloes.Location = new System.Drawing.Point(88, 16);
+            this.probe_ausloes.Location = new System.Drawing.Point(111, 16);
             this.probe_ausloes.Name = "probe_ausloes";
             this.probe_ausloes.Size = new System.Drawing.Size(36, 20);
             this.probe_ausloes.TabIndex = 8;
@@ -445,17 +450,34 @@ namespace ArtefaktGenerator
             this.groupBox7.Controls.Add(this.special_durable);
             this.groupBox7.Controls.Add(this.special_signet);
             this.groupBox7.Controls.Add(this.special_eatmaterial);
-            this.groupBox7.Location = new System.Drawing.Point(518, 157);
+            this.groupBox7.Location = new System.Drawing.Point(7, 252);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(269, 187);
+            this.groupBox7.Size = new System.Drawing.Size(622, 90);
             this.groupBox7.TabIndex = 20;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Spezielle Eigenschaften";
             // 
+            // special_eatmat_var
+            // 
+            this.special_eatmat_var.Location = new System.Drawing.Point(520, 38);
+            this.special_eatmat_var.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.special_eatmat_var.Name = "special_eatmat_var";
+            this.special_eatmat_var.Size = new System.Drawing.Size(36, 20);
+            this.special_eatmat_var.TabIndex = 29;
+            this.special_eatmat_var.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // lbl_special_asp
             // 
             this.lbl_special_asp.AutoSize = true;
-            this.lbl_special_asp.Location = new System.Drawing.Point(173, 106);
+            this.lbl_special_asp.Location = new System.Drawing.Point(554, 65);
             this.lbl_special_asp.Name = "lbl_special_asp";
             this.lbl_special_asp.Size = new System.Drawing.Size(26, 14);
             this.lbl_special_asp.TabIndex = 28;
@@ -463,7 +485,7 @@ namespace ArtefaktGenerator
             // 
             // special_ferngespuer_asp
             // 
-            this.special_ferngespuer_asp.Location = new System.Drawing.Point(205, 104);
+            this.special_ferngespuer_asp.Location = new System.Drawing.Point(582, 62);
             this.special_ferngespuer_asp.Minimum = new decimal(new int[] {
             1,
             0,
@@ -490,7 +512,7 @@ namespace ArtefaktGenerator
             "F",
             "G",
             "H"});
-            this.special_ferngespuer_komp.Location = new System.Drawing.Point(133, 103);
+            this.special_ferngespuer_komp.Location = new System.Drawing.Point(520, 62);
             this.special_ferngespuer_komp.Name = "special_ferngespuer_komp";
             this.special_ferngespuer_komp.Size = new System.Drawing.Size(34, 22);
             this.special_ferngespuer_komp.TabIndex = 26;
@@ -499,9 +521,9 @@ namespace ArtefaktGenerator
             // special_ferngespuer
             // 
             this.special_ferngespuer.AutoSize = true;
-            this.special_ferngespuer.Location = new System.Drawing.Point(6, 105);
+            this.special_ferngespuer.Location = new System.Drawing.Point(394, 63);
             this.special_ferngespuer.Name = "special_ferngespuer";
-            this.special_ferngespuer.Size = new System.Drawing.Size(76, 18);
+            this.special_ferngespuer.Size = new System.Drawing.Size(79, 17);
             this.special_ferngespuer.TabIndex = 4;
             this.special_ferngespuer.Text = "Ferngespür";
             this.special_ferngespuer.UseVisualStyleBackColor = true;
@@ -509,7 +531,7 @@ namespace ArtefaktGenerator
             // lbl_special_komp
             // 
             this.lbl_special_komp.AutoSize = true;
-            this.lbl_special_komp.Location = new System.Drawing.Point(88, 106);
+            this.lbl_special_komp.Location = new System.Drawing.Point(476, 64);
             this.lbl_special_komp.Name = "lbl_special_komp";
             this.lbl_special_komp.Size = new System.Drawing.Size(39, 14);
             this.lbl_special_komp.TabIndex = 25;
@@ -517,7 +539,7 @@ namespace ArtefaktGenerator
             // 
             // special_variable_var
             // 
-            this.special_variable_var.Location = new System.Drawing.Point(119, 135);
+            this.special_variable_var.Location = new System.Drawing.Point(520, 13);
             this.special_variable_var.Maximum = new decimal(new int[] {
             50,
             0,
@@ -526,13 +548,14 @@ namespace ArtefaktGenerator
             this.special_variable_var.Name = "special_variable_var";
             this.special_variable_var.Size = new System.Drawing.Size(36, 20);
             this.special_variable_var.TabIndex = 19;
+            this.special_variable_var.ValueChanged += new System.EventHandler(this.special_variable_var_ValueChanged);
             // 
             // special_schleier
             // 
             this.special_schleier.AutoSize = true;
-            this.special_schleier.Location = new System.Drawing.Point(6, 151);
+            this.special_schleier.Location = new System.Drawing.Point(132, 63);
             this.special_schleier.Name = "special_schleier";
-            this.special_schleier.Size = new System.Drawing.Size(92, 18);
+            this.special_schleier.Size = new System.Drawing.Size(96, 17);
             this.special_schleier.TabIndex = 9;
             this.special_schleier.Text = "Verschleierung";
             this.special_schleier.UseVisualStyleBackColor = true;
@@ -540,19 +563,20 @@ namespace ArtefaktGenerator
             // special_variablerelease
             // 
             this.special_variablerelease.AutoSize = true;
-            this.special_variablerelease.Location = new System.Drawing.Point(6, 136);
+            this.special_variablerelease.Location = new System.Drawing.Point(394, 15);
             this.special_variablerelease.Name = "special_variablerelease";
-            this.special_variablerelease.Size = new System.Drawing.Size(107, 18);
+            this.special_variablerelease.Size = new System.Drawing.Size(110, 17);
             this.special_variablerelease.TabIndex = 8;
             this.special_variablerelease.Text = "Variabler Auslöser";
             this.special_variablerelease.UseVisualStyleBackColor = true;
+            this.special_variablerelease.CheckedChanged += new System.EventHandler(this.special_variablerelease_CheckedChanged);
             // 
             // special_reversalis
             // 
             this.special_reversalis.AutoSize = true;
-            this.special_reversalis.Location = new System.Drawing.Point(6, 121);
+            this.special_reversalis.Location = new System.Drawing.Point(6, 63);
             this.special_reversalis.Name = "special_reversalis";
-            this.special_reversalis.Size = new System.Drawing.Size(103, 18);
+            this.special_reversalis.Size = new System.Drawing.Size(101, 17);
             this.special_reversalis.TabIndex = 7;
             this.special_reversalis.Text = "Umkehrtalisman";
             this.special_reversalis.UseVisualStyleBackColor = true;
@@ -560,9 +584,9 @@ namespace ArtefaktGenerator
             // special_selfrepair
             // 
             this.special_selfrepair.AutoSize = true;
-            this.special_selfrepair.Location = new System.Drawing.Point(6, 90);
+            this.special_selfrepair.Location = new System.Drawing.Point(266, 39);
             this.special_selfrepair.Name = "special_selfrepair";
-            this.special_selfrepair.Size = new System.Drawing.Size(94, 18);
+            this.special_selfrepair.Size = new System.Drawing.Size(97, 17);
             this.special_selfrepair.TabIndex = 6;
             this.special_selfrepair.Text = "Selbstreparatur";
             this.special_selfrepair.UseVisualStyleBackColor = true;
@@ -570,9 +594,9 @@ namespace ArtefaktGenerator
             // special_resistant
             // 
             this.special_resistant.AutoSize = true;
-            this.special_resistant.Location = new System.Drawing.Point(6, 75);
+            this.special_resistant.Location = new System.Drawing.Point(132, 39);
             this.special_resistant.Name = "special_resistant";
-            this.special_resistant.Size = new System.Drawing.Size(128, 18);
+            this.special_resistant.Size = new System.Drawing.Size(136, 17);
             this.special_resistant.TabIndex = 5;
             this.special_resistant.Text = "Res. profaner Schaden";
             this.special_resistant.UseVisualStyleBackColor = true;
@@ -580,9 +604,9 @@ namespace ArtefaktGenerator
             // special_apport
             // 
             this.special_apport.AutoSize = true;
-            this.special_apport.Location = new System.Drawing.Point(6, 60);
+            this.special_apport.Location = new System.Drawing.Point(6, 39);
             this.special_apport.Name = "special_apport";
-            this.special_apport.Size = new System.Drawing.Size(109, 18);
+            this.special_apport.Size = new System.Drawing.Size(109, 17);
             this.special_apport.TabIndex = 3;
             this.special_apport.Text = "Magischer Apport";
             this.special_apport.UseVisualStyleBackColor = true;
@@ -590,9 +614,9 @@ namespace ArtefaktGenerator
             // special_scent
             // 
             this.special_scent.AutoSize = true;
-            this.special_scent.Location = new System.Drawing.Point(6, 45);
+            this.special_scent.Location = new System.Drawing.Point(266, 15);
             this.special_scent.Name = "special_scent";
-            this.special_scent.Size = new System.Drawing.Size(122, 18);
+            this.special_scent.Size = new System.Drawing.Size(131, 17);
             this.special_scent.TabIndex = 2;
             this.special_scent.Text = "Gespür des Schöpfers";
             this.special_scent.UseVisualStyleBackColor = true;
@@ -600,9 +624,9 @@ namespace ArtefaktGenerator
             // special_durable
             // 
             this.special_durable.AutoSize = true;
-            this.special_durable.Location = new System.Drawing.Point(6, 30);
+            this.special_durable.Location = new System.Drawing.Point(132, 15);
             this.special_durable.Name = "special_durable";
-            this.special_durable.Size = new System.Drawing.Size(114, 18);
+            this.special_durable.Size = new System.Drawing.Size(114, 17);
             this.special_durable.TabIndex = 1;
             this.special_durable.Text = "Unzerbrechlichkeit";
             this.special_durable.UseVisualStyleBackColor = true;
@@ -612,7 +636,7 @@ namespace ArtefaktGenerator
             this.special_signet.AutoSize = true;
             this.special_signet.Location = new System.Drawing.Point(6, 15);
             this.special_signet.Name = "special_signet";
-            this.special_signet.Size = new System.Drawing.Size(119, 18);
+            this.special_signet.Size = new System.Drawing.Size(120, 17);
             this.special_signet.TabIndex = 0;
             this.special_signet.Text = "Siegel und Zertifikat";
             this.special_signet.UseVisualStyleBackColor = true;
@@ -620,29 +644,12 @@ namespace ArtefaktGenerator
             // special_eatmaterial
             // 
             this.special_eatmaterial.AutoSize = true;
-            this.special_eatmaterial.Location = new System.Drawing.Point(6, 167);
+            this.special_eatmaterial.Location = new System.Drawing.Point(394, 39);
             this.special_eatmaterial.Name = "special_eatmaterial";
-            this.special_eatmaterial.Size = new System.Drawing.Size(120, 18);
+            this.special_eatmaterial.Size = new System.Drawing.Size(126, 17);
             this.special_eatmaterial.TabIndex = 10;
             this.special_eatmaterial.Text = "Verzehrender Zauber";
             this.special_eatmaterial.UseVisualStyleBackColor = true;
-            // 
-            // special_eatmat_var
-            // 
-            this.special_eatmat_var.Location = new System.Drawing.Point(129, 163);
-            this.special_eatmat_var.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.special_eatmat_var.Name = "special_eatmat_var";
-            this.special_eatmat_var.Size = new System.Drawing.Size(36, 20);
-            this.special_eatmat_var.TabIndex = 29;
-            this.special_eatmat_var.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // groupBox11
             // 
@@ -789,102 +796,22 @@ namespace ArtefaktGenerator
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.sf_aux);
-            this.groupBox1.Controls.Add(this.sf_ringkunde);
-            this.groupBox1.Controls.Add(this.sf_vielLadung);
-            this.groupBox1.Controls.Add(this.sf_semiII);
-            this.groupBox1.Controls.Add(this.sf_semiI);
-            this.groupBox1.Controls.Add(this.sf_matrix);
-            this.groupBox1.Controls.Add(this.sf_hyper);
-            this.groupBox1.Controls.Add(this.sf_stapel);
             this.groupBox1.Controls.Add(this.sf_kraft);
+            this.groupBox1.Controls.Add(this.sf_hyper);
+            this.groupBox1.Controls.Add(this.sf_vielLadung);
+            this.groupBox1.Controls.Add(this.sf_stapel);
+            this.groupBox1.Controls.Add(this.sf_matrix);
+            this.groupBox1.Controls.Add(this.sf_semiI);
+            this.groupBox1.Controls.Add(this.sf_semiII);
+            this.groupBox1.Controls.Add(this.sf_ringkunde);
+            this.groupBox1.Controls.Add(this.sf_kraftspeicher);
+            this.groupBox1.Controls.Add(this.sf_aux);
             this.groupBox1.Location = new System.Drawing.Point(6, 67);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(985, 46);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Sonderfertigkeiten";
-            // 
-            // sf_aux
-            // 
-            this.sf_aux.AutoSize = true;
-            this.sf_aux.Location = new System.Drawing.Point(844, 19);
-            this.sf_aux.Name = "sf_aux";
-            this.sf_aux.Size = new System.Drawing.Size(68, 17);
-            this.sf_aux.TabIndex = 9;
-            this.sf_aux.Text = "Auxiliator";
-            this.sf_aux.UseVisualStyleBackColor = true;
-            // 
-            // sf_ringkunde
-            // 
-            this.sf_ringkunde.AutoSize = true;
-            this.sf_ringkunde.Location = new System.Drawing.Point(728, 19);
-            this.sf_ringkunde.Name = "sf_ringkunde";
-            this.sf_ringkunde.Size = new System.Drawing.Size(118, 17);
-            this.sf_ringkunde.TabIndex = 4;
-            this.sf_ringkunde.Text = "Ringkunde gelesen";
-            this.sf_ringkunde.UseVisualStyleBackColor = true;
-            // 
-            // sf_vielLadung
-            // 
-            this.sf_vielLadung.AutoSize = true;
-            this.sf_vielLadung.Location = new System.Drawing.Point(106, 19);
-            this.sf_vielLadung.Name = "sf_vielLadung";
-            this.sf_vielLadung.Size = new System.Drawing.Size(109, 17);
-            this.sf_vielLadung.TabIndex = 8;
-            this.sf_vielLadung.Text = "Vielfache Ladung";
-            this.sf_vielLadung.UseVisualStyleBackColor = true;
-            // 
-            // sf_semiII
-            // 
-            this.sf_semiII.AutoSize = true;
-            this.sf_semiII.Location = new System.Drawing.Point(612, 19);
-            this.sf_semiII.Name = "sf_semiII";
-            this.sf_semiII.Size = new System.Drawing.Size(110, 17);
-            this.sf_semiII.TabIndex = 6;
-            this.sf_semiII.Text = "Semipermanenz II";
-            this.sf_semiII.UseVisualStyleBackColor = true;
-            // 
-            // sf_semiI
-            // 
-            this.sf_semiI.AutoSize = true;
-            this.sf_semiI.Location = new System.Drawing.Point(500, 19);
-            this.sf_semiI.Name = "sf_semiI";
-            this.sf_semiI.Size = new System.Drawing.Size(107, 17);
-            this.sf_semiI.TabIndex = 5;
-            this.sf_semiI.Text = "Semipermanenz I";
-            this.toolTip1.SetToolTip(this.sf_semiI, "Wähle aus, ob der Held die Sonderfertigkeit \"Semipermanenz I\" besitzt.");
-            this.sf_semiI.UseVisualStyleBackColor = true;
-            // 
-            // sf_matrix
-            // 
-            this.sf_matrix.AutoSize = true;
-            this.sf_matrix.Location = new System.Drawing.Point(412, 19);
-            this.sf_matrix.Name = "sf_matrix";
-            this.sf_matrix.Size = new System.Drawing.Size(81, 17);
-            this.sf_matrix.TabIndex = 4;
-            this.sf_matrix.Text = "Matrixgeber";
-            this.sf_matrix.UseVisualStyleBackColor = true;
-            // 
-            // sf_hyper
-            // 
-            this.sf_hyper.AutoSize = true;
-            this.sf_hyper.Location = new System.Drawing.Point(304, 19);
-            this.sf_hyper.Name = "sf_hyper";
-            this.sf_hyper.Size = new System.Drawing.Size(103, 17);
-            this.sf_hyper.TabIndex = 3;
-            this.sf_hyper.Text = "Hypervehemenz";
-            this.sf_hyper.UseVisualStyleBackColor = true;
-            // 
-            // sf_stapel
-            // 
-            this.sf_stapel.AutoSize = true;
-            this.sf_stapel.Location = new System.Drawing.Point(216, 19);
-            this.sf_stapel.Name = "sf_stapel";
-            this.sf_stapel.Size = new System.Drawing.Size(83, 17);
-            this.sf_stapel.TabIndex = 2;
-            this.sf_stapel.Text = "Stapeleffekt";
-            this.sf_stapel.UseVisualStyleBackColor = true;
             // 
             // sf_kraft
             // 
@@ -895,6 +822,97 @@ namespace ArtefaktGenerator
             this.sf_kraft.TabIndex = 0;
             this.sf_kraft.Text = "Kraftkontrolle";
             this.sf_kraft.UseVisualStyleBackColor = true;
+            // 
+            // sf_hyper
+            // 
+            this.sf_hyper.AutoSize = true;
+            this.sf_hyper.Location = new System.Drawing.Point(286, 19);
+            this.sf_hyper.Name = "sf_hyper";
+            this.sf_hyper.Size = new System.Drawing.Size(103, 17);
+            this.sf_hyper.TabIndex = 3;
+            this.sf_hyper.Text = "Hypervehemenz";
+            this.sf_hyper.UseVisualStyleBackColor = true;
+            // 
+            // sf_vielLadung
+            // 
+            this.sf_vielLadung.AutoSize = true;
+            this.sf_vielLadung.Location = new System.Drawing.Point(100, 19);
+            this.sf_vielLadung.Name = "sf_vielLadung";
+            this.sf_vielLadung.Size = new System.Drawing.Size(109, 17);
+            this.sf_vielLadung.TabIndex = 8;
+            this.sf_vielLadung.Text = "Vielfache Ladung";
+            this.sf_vielLadung.UseVisualStyleBackColor = true;
+            // 
+            // sf_stapel
+            // 
+            this.sf_stapel.AutoSize = true;
+            this.sf_stapel.Location = new System.Drawing.Point(204, 19);
+            this.sf_stapel.Name = "sf_stapel";
+            this.sf_stapel.Size = new System.Drawing.Size(83, 17);
+            this.sf_stapel.TabIndex = 2;
+            this.sf_stapel.Text = "Stapeleffekt";
+            this.sf_stapel.UseVisualStyleBackColor = true;
+            // 
+            // sf_matrix
+            // 
+            this.sf_matrix.AutoSize = true;
+            this.sf_matrix.Location = new System.Drawing.Point(388, 19);
+            this.sf_matrix.Name = "sf_matrix";
+            this.sf_matrix.Size = new System.Drawing.Size(81, 17);
+            this.sf_matrix.TabIndex = 4;
+            this.sf_matrix.Text = "Matrixgeber";
+            this.sf_matrix.UseVisualStyleBackColor = true;
+            // 
+            // sf_semiI
+            // 
+            this.sf_semiI.AutoSize = true;
+            this.sf_semiI.Location = new System.Drawing.Point(470, 19);
+            this.sf_semiI.Name = "sf_semiI";
+            this.sf_semiI.Size = new System.Drawing.Size(107, 17);
+            this.sf_semiI.TabIndex = 5;
+            this.sf_semiI.Text = "Semipermanenz I";
+            this.toolTip1.SetToolTip(this.sf_semiI, "Wähle aus, ob der Held die Sonderfertigkeit \"Semipermanenz I\" besitzt.");
+            this.sf_semiI.UseVisualStyleBackColor = true;
+            // 
+            // sf_semiII
+            // 
+            this.sf_semiII.AutoSize = true;
+            this.sf_semiII.Location = new System.Drawing.Point(576, 19);
+            this.sf_semiII.Name = "sf_semiII";
+            this.sf_semiII.Size = new System.Drawing.Size(110, 17);
+            this.sf_semiII.TabIndex = 6;
+            this.sf_semiII.Text = "Semipermanenz II";
+            this.sf_semiII.UseVisualStyleBackColor = true;
+            // 
+            // sf_ringkunde
+            // 
+            this.sf_ringkunde.AutoSize = true;
+            this.sf_ringkunde.Location = new System.Drawing.Point(686, 19);
+            this.sf_ringkunde.Name = "sf_ringkunde";
+            this.sf_ringkunde.Size = new System.Drawing.Size(118, 17);
+            this.sf_ringkunde.TabIndex = 4;
+            this.sf_ringkunde.Text = "Ringkunde gelesen";
+            this.sf_ringkunde.UseVisualStyleBackColor = true;
+            // 
+            // sf_kraftspeicher
+            // 
+            this.sf_kraftspeicher.AutoSize = true;
+            this.sf_kraftspeicher.Location = new System.Drawing.Point(796, 19);
+            this.sf_kraftspeicher.Name = "sf_kraftspeicher";
+            this.sf_kraftspeicher.Size = new System.Drawing.Size(88, 17);
+            this.sf_kraftspeicher.TabIndex = 10;
+            this.sf_kraftspeicher.Text = "Kraftspeicher";
+            this.sf_kraftspeicher.UseVisualStyleBackColor = true;
+            // 
+            // sf_aux
+            // 
+            this.sf_aux.AutoSize = true;
+            this.sf_aux.Location = new System.Drawing.Point(885, 19);
+            this.sf_aux.Name = "sf_aux";
+            this.sf_aux.Size = new System.Drawing.Size(68, 17);
+            this.sf_aux.TabIndex = 9;
+            this.sf_aux.Text = "Auxiliator";
+            this.sf_aux.UseVisualStyleBackColor = true;
             // 
             // groupBox4
             // 
@@ -1105,32 +1123,32 @@ namespace ArtefaktGenerator
             this.label1.TabIndex = 1;
             this.label1.Text = "ARCANOVI";
             // 
-            // groupBox6
+            // wirkendeZauber
             // 
-            this.groupBox6.Controls.Add(this.zauber_listbox);
-            this.groupBox6.Controls.Add(this.komp_combo);
-            this.groupBox6.Controls.Add(this.zauber_rep);
-            this.groupBox6.Controls.Add(this.zauber_del);
-            this.groupBox6.Controls.Add(this.label11);
-            this.groupBox6.Controls.Add(this.label10);
-            this.groupBox6.Controls.Add(this.loads_lbl);
-            this.groupBox6.Controls.Add(this.zauber_add);
-            this.groupBox6.Controls.Add(this.zauber_list);
-            this.groupBox6.Controls.Add(this.asp);
-            this.groupBox6.Controls.Add(this.stapelung);
-            this.groupBox6.Controls.Add(this.loads);
-            this.groupBox6.Controls.Add(this.zauber);
-            this.groupBox6.Controls.Add(this.label18);
-            this.groupBox6.Controls.Add(this.label9);
-            this.groupBox6.Controls.Add(this.lbl_staple);
-            this.groupBox6.Controls.Add(this.label3);
-            this.groupBox6.Controls.Add(this.label2);
-            this.groupBox6.Location = new System.Drawing.Point(6, 322);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(433, 234);
-            this.groupBox6.TabIndex = 16;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Wirkende Zauber";
+            this.wirkendeZauber.Controls.Add(this.zauber_listbox);
+            this.wirkendeZauber.Controls.Add(this.komp_combo);
+            this.wirkendeZauber.Controls.Add(this.zauber_rep);
+            this.wirkendeZauber.Controls.Add(this.zauber_del);
+            this.wirkendeZauber.Controls.Add(this.label11);
+            this.wirkendeZauber.Controls.Add(this.label10);
+            this.wirkendeZauber.Controls.Add(this.loads_lbl);
+            this.wirkendeZauber.Controls.Add(this.zauber_add);
+            this.wirkendeZauber.Controls.Add(this.zauber_list);
+            this.wirkendeZauber.Controls.Add(this.asp);
+            this.wirkendeZauber.Controls.Add(this.stapelung);
+            this.wirkendeZauber.Controls.Add(this.loads);
+            this.wirkendeZauber.Controls.Add(this.zauber);
+            this.wirkendeZauber.Controls.Add(this.label18);
+            this.wirkendeZauber.Controls.Add(this.label9);
+            this.wirkendeZauber.Controls.Add(this.lbl_staple);
+            this.wirkendeZauber.Controls.Add(this.label3);
+            this.wirkendeZauber.Controls.Add(this.label2);
+            this.wirkendeZauber.Location = new System.Drawing.Point(6, 345);
+            this.wirkendeZauber.Name = "wirkendeZauber";
+            this.wirkendeZauber.Size = new System.Drawing.Size(433, 211);
+            this.wirkendeZauber.TabIndex = 16;
+            this.wirkendeZauber.TabStop = false;
+            this.wirkendeZauber.Text = "Wirkende Zauber";
             // 
             // zauber_listbox
             // 
@@ -1138,7 +1156,7 @@ namespace ArtefaktGenerator
             this.zauber_listbox.ItemHeight = 14;
             this.zauber_listbox.Location = new System.Drawing.Point(6, 88);
             this.zauber_listbox.Name = "zauber_listbox";
-            this.zauber_listbox.Size = new System.Drawing.Size(309, 144);
+            this.zauber_listbox.Size = new System.Drawing.Size(309, 116);
             this.zauber_listbox.TabIndex = 25;
             // 
             // komp_combo
@@ -1230,7 +1248,7 @@ namespace ArtefaktGenerator
             this.zauber_list.FullRowSelect = true;
             this.zauber_list.Location = new System.Drawing.Point(6, 66);
             this.zauber_list.Name = "zauber_list";
-            this.zauber_list.Size = new System.Drawing.Size(309, 162);
+            this.zauber_list.Size = new System.Drawing.Size(309, 138);
             this.zauber_list.TabIndex = 12;
             this.zauber_list.TileSize = new System.Drawing.Size(100, 100);
             this.zauber_list.UseCompatibleStateImageBehavior = false;
@@ -2065,48 +2083,149 @@ namespace ArtefaktGenerator
             // 
             // artefakttyp
             // 
-            this.artefakttyp.Controls.Add(this.artefakttyp_semi);
+            this.artefakttyp.Controls.Add(this.type_speicher_value);
+            this.artefakttyp.Controls.Add(this.lbl_type_speicher_val);
+            this.artefakttyp.Controls.Add(this.type_speicher);
             this.artefakttyp.Controls.Add(this.artefakttyp_temp);
-            this.artefakttyp.Controls.Add(this.artefakttyp_aux);
-            this.artefakttyp.Controls.Add(this.artefakttyp_matrix);
             this.artefakttyp.Controls.Add(this.type_temp);
             this.artefakttyp.Controls.Add(this.type_einaml);
             this.artefakttyp.Controls.Add(this.type_aux);
             this.artefakttyp.Controls.Add(this.type_charge);
             this.artefakttyp.Controls.Add(this.type_matrix);
             this.artefakttyp.Controls.Add(this.type_semi);
+            this.artefakttyp.Controls.Add(this.artefakttyp_semi);
+            this.artefakttyp.Controls.Add(this.artefakttyp_aux);
+            this.artefakttyp.Controls.Add(this.artefakttyp_matrix);
             this.artefakttyp.Location = new System.Drawing.Point(7, 157);
             this.artefakttyp.Name = "artefakttyp";
             this.artefakttyp.Selected = 4;
-            this.artefakttyp.Size = new System.Drawing.Size(505, 93);
+            this.artefakttyp.Size = new System.Drawing.Size(623, 93);
             this.artefakttyp.TabIndex = 26;
             this.artefakttyp.TabStop = false;
             this.artefakttyp.Text = "Artefakttyp";
             // 
+            // type_speicher_value
+            // 
+            this.type_speicher_value.Location = new System.Drawing.Point(454, 54);
+            this.type_speicher_value.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.type_speicher_value.Name = "type_speicher_value";
+            this.type_speicher_value.Size = new System.Drawing.Size(36, 20);
+            this.type_speicher_value.TabIndex = 30;
+            this.type_speicher_value.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // lbl_type_speicher_val
+            // 
+            this.lbl_type_speicher_val.AutoSize = true;
+            this.lbl_type_speicher_val.Location = new System.Drawing.Point(422, 58);
+            this.lbl_type_speicher_val.Name = "lbl_type_speicher_val";
+            this.lbl_type_speicher_val.Size = new System.Drawing.Size(26, 14);
+            this.lbl_type_speicher_val.TabIndex = 31;
+            this.lbl_type_speicher_val.Text = "AsP";
+            // 
+            // type_speicher
+            // 
+            this.type_speicher.AutoSize = true;
+            this.type_speicher.Location = new System.Drawing.Point(414, 19);
+            this.type_speicher.Name = "type_speicher";
+            this.type_speicher.Size = new System.Drawing.Size(86, 17);
+            this.type_speicher.TabIndex = 29;
+            this.type_speicher.TabStop = true;
+            this.type_speicher.Tag = "6";
+            this.type_speicher.Text = "kraftspeicher";
+            this.type_speicher.UseVisualStyleBackColor = true;
+            // 
+            // type_temp
+            // 
+            this.type_temp.AutoSize = true;
+            this.type_temp.Location = new System.Drawing.Point(6, 19);
+            this.type_temp.Name = "type_temp";
+            this.type_temp.Size = new System.Drawing.Size(66, 17);
+            this.type_temp.TabIndex = 0;
+            this.type_temp.Tag = "0";
+            this.type_temp.Text = "temporär";
+            this.type_temp.UseVisualStyleBackColor = true;
+            // 
+            // type_einaml
+            // 
+            this.type_einaml.AutoSize = true;
+            this.type_einaml.Location = new System.Drawing.Point(80, 19);
+            this.type_einaml.Name = "type_einaml";
+            this.type_einaml.Size = new System.Drawing.Size(63, 17);
+            this.type_einaml.TabIndex = 1;
+            this.type_einaml.Tag = "1";
+            this.type_einaml.Text = "einmalig";
+            this.type_einaml.UseVisualStyleBackColor = true;
+            // 
+            // type_aux
+            // 
+            this.type_aux.AutoSize = true;
+            this.type_aux.Enabled = false;
+            this.type_aux.Location = new System.Drawing.Point(508, 19);
+            this.type_aux.Name = "type_aux";
+            this.type_aux.Size = new System.Drawing.Size(66, 17);
+            this.type_aux.TabIndex = 24;
+            this.type_aux.Tag = "5";
+            this.type_aux.Text = "auxiliator";
+            this.type_aux.UseVisualStyleBackColor = true;
+            // 
+            // type_charge
+            // 
+            this.type_charge.AutoSize = true;
+            this.type_charge.Location = new System.Drawing.Point(150, 19);
+            this.type_charge.Name = "type_charge";
+            this.type_charge.Size = new System.Drawing.Size(69, 17);
+            this.type_charge.TabIndex = 2;
+            this.type_charge.Tag = "2";
+            this.type_charge.Text = "aufladbar";
+            this.type_charge.UseVisualStyleBackColor = true;
+            // 
+            // type_matrix
+            // 
+            this.type_matrix.AutoSize = true;
+            this.type_matrix.Enabled = false;
+            this.type_matrix.Location = new System.Drawing.Point(226, 19);
+            this.type_matrix.Name = "type_matrix";
+            this.type_matrix.Size = new System.Drawing.Size(79, 17);
+            this.type_matrix.TabIndex = 3;
+            this.type_matrix.Tag = "3";
+            this.type_matrix.Text = "matrixgeber";
+            this.type_matrix.UseVisualStyleBackColor = true;
+            // 
+            // type_semi
+            // 
+            this.type_semi.AutoSize = true;
+            this.type_semi.Checked = true;
+            this.type_semi.Enabled = false;
+            this.type_semi.Location = new System.Drawing.Point(312, 19);
+            this.type_semi.Name = "type_semi";
+            this.type_semi.Size = new System.Drawing.Size(96, 17);
+            this.type_semi.TabIndex = 4;
+            this.type_semi.TabStop = true;
+            this.type_semi.Tag = "4";
+            this.type_semi.Text = "semipermanent";
+            this.type_semi.UseVisualStyleBackColor = true;
+            // 
             // artefakttyp_semi
             // 
-            this.artefakttyp_semi.Controls.Add(this.semi_jahr);
             this.artefakttyp_semi.Controls.Add(this.semi_monat);
             this.artefakttyp_semi.Controls.Add(this.semi_woche);
             this.artefakttyp_semi.Controls.Add(this.semi_tag);
-            this.artefakttyp_semi.Location = new System.Drawing.Point(250, 45);
+            this.artefakttyp_semi.Controls.Add(this.semi_jahr);
+            this.artefakttyp_semi.Location = new System.Drawing.Point(307, 46);
             this.artefakttyp_semi.Name = "artefakttyp_semi";
             this.artefakttyp_semi.Selected = 0;
             this.artefakttyp_semi.Size = new System.Drawing.Size(249, 42);
             this.artefakttyp_semi.TabIndex = 28;
             this.artefakttyp_semi.TabStop = false;
             this.artefakttyp_semi.Text = "Intervall";
-            // 
-            // semi_jahr
-            // 
-            this.semi_jahr.AutoSize = true;
-            this.semi_jahr.Location = new System.Drawing.Point(190, 15);
-            this.semi_jahr.Name = "semi_jahr";
-            this.semi_jahr.Size = new System.Drawing.Size(45, 17);
-            this.semi_jahr.TabIndex = 7;
-            this.semi_jahr.Tag = "3";
-            this.semi_jahr.Text = "Jahr";
-            this.semi_jahr.UseVisualStyleBackColor = true;
             // 
             // semi_monat
             // 
@@ -2143,31 +2262,31 @@ namespace ArtefaktGenerator
             this.semi_tag.Text = "Tag";
             this.semi_tag.UseVisualStyleBackColor = true;
             // 
+            // semi_jahr
+            // 
+            this.semi_jahr.AutoSize = true;
+            this.semi_jahr.Location = new System.Drawing.Point(190, 15);
+            this.semi_jahr.Name = "semi_jahr";
+            this.semi_jahr.Size = new System.Drawing.Size(45, 17);
+            this.semi_jahr.TabIndex = 7;
+            this.semi_jahr.Tag = "3";
+            this.semi_jahr.Text = "Jahr";
+            this.semi_jahr.UseVisualStyleBackColor = true;
+            // 
             // artefakttyp_aux
             // 
-            this.artefakttyp_aux.Controls.Add(this.aux_unempfindlich);
             this.artefakttyp_aux.Controls.Add(this.aux_labil);
             this.artefakttyp_aux.Controls.Add(this.aux_merkmal);
             this.artefakttyp_aux.Controls.Add(this.aux_stable);
             this.artefakttyp_aux.Controls.Add(this.aux_verystable);
-            this.artefakttyp_aux.Location = new System.Drawing.Point(132, 45);
+            this.artefakttyp_aux.Controls.Add(this.aux_unempfindlich);
+            this.artefakttyp_aux.Location = new System.Drawing.Point(250, 46);
             this.artefakttyp_aux.Name = "artefakttyp_aux";
             this.artefakttyp_aux.Selected = 3;
             this.artefakttyp_aux.Size = new System.Drawing.Size(367, 42);
             this.artefakttyp_aux.TabIndex = 27;
             this.artefakttyp_aux.TabStop = false;
             this.artefakttyp_aux.Text = "Stabilität";
-            // 
-            // aux_unempfindlich
-            // 
-            this.aux_unempfindlich.AutoSize = true;
-            this.aux_unempfindlich.Location = new System.Drawing.Point(196, 15);
-            this.aux_unempfindlich.Name = "aux_unempfindlich";
-            this.aux_unempfindlich.Size = new System.Drawing.Size(90, 17);
-            this.aux_unempfindlich.TabIndex = 3;
-            this.aux_unempfindlich.Tag = "4";
-            this.aux_unempfindlich.Text = "unempfindlich";
-            this.aux_unempfindlich.UseVisualStyleBackColor = true;
             // 
             // aux_labil
             // 
@@ -2214,13 +2333,24 @@ namespace ArtefaktGenerator
             this.aux_verystable.Text = "sehr stabil";
             this.aux_verystable.UseVisualStyleBackColor = true;
             // 
+            // aux_unempfindlich
+            // 
+            this.aux_unempfindlich.AutoSize = true;
+            this.aux_unempfindlich.Location = new System.Drawing.Point(196, 15);
+            this.aux_unempfindlich.Name = "aux_unempfindlich";
+            this.aux_unempfindlich.Size = new System.Drawing.Size(90, 17);
+            this.aux_unempfindlich.TabIndex = 3;
+            this.aux_unempfindlich.Tag = "4";
+            this.aux_unempfindlich.Text = "unempfindlich";
+            this.aux_unempfindlich.UseVisualStyleBackColor = true;
+            // 
             // artefakttyp_matrix
             // 
             this.artefakttyp_matrix.Controls.Add(this.matrix_unempfindlich);
             this.artefakttyp_matrix.Controls.Add(this.matrix_verystable);
             this.artefakttyp_matrix.Controls.Add(this.matrix_stable);
             this.artefakttyp_matrix.Controls.Add(this.matrix_labil);
-            this.artefakttyp_matrix.Location = new System.Drawing.Point(202, 45);
+            this.artefakttyp_matrix.Location = new System.Drawing.Point(219, 46);
             this.artefakttyp_matrix.Name = "artefakttyp_matrix";
             this.artefakttyp_matrix.Selected = 0;
             this.artefakttyp_matrix.Size = new System.Drawing.Size(297, 42);
@@ -2273,77 +2403,6 @@ namespace ArtefaktGenerator
             this.matrix_labil.Tag = "0";
             this.matrix_labil.Text = "labil";
             this.matrix_labil.UseVisualStyleBackColor = true;
-            // 
-            // type_temp
-            // 
-            this.type_temp.AutoSize = true;
-            this.type_temp.Location = new System.Drawing.Point(6, 19);
-            this.type_temp.Name = "type_temp";
-            this.type_temp.Size = new System.Drawing.Size(66, 17);
-            this.type_temp.TabIndex = 0;
-            this.type_temp.Tag = "0";
-            this.type_temp.Text = "temporär";
-            this.type_temp.UseVisualStyleBackColor = true;
-            // 
-            // type_einaml
-            // 
-            this.type_einaml.AutoSize = true;
-            this.type_einaml.Location = new System.Drawing.Point(80, 19);
-            this.type_einaml.Name = "type_einaml";
-            this.type_einaml.Size = new System.Drawing.Size(63, 17);
-            this.type_einaml.TabIndex = 1;
-            this.type_einaml.Tag = "1";
-            this.type_einaml.Text = "einmalig";
-            this.type_einaml.UseVisualStyleBackColor = true;
-            // 
-            // type_aux
-            // 
-            this.type_aux.AutoSize = true;
-            this.type_aux.Enabled = false;
-            this.type_aux.Location = new System.Drawing.Point(414, 19);
-            this.type_aux.Name = "type_aux";
-            this.type_aux.Size = new System.Drawing.Size(66, 17);
-            this.type_aux.TabIndex = 24;
-            this.type_aux.Tag = "5";
-            this.type_aux.Text = "auxiliator";
-            this.type_aux.UseVisualStyleBackColor = true;
-            // 
-            // type_charge
-            // 
-            this.type_charge.AutoSize = true;
-            this.type_charge.Location = new System.Drawing.Point(150, 19);
-            this.type_charge.Name = "type_charge";
-            this.type_charge.Size = new System.Drawing.Size(69, 17);
-            this.type_charge.TabIndex = 2;
-            this.type_charge.Tag = "2";
-            this.type_charge.Text = "aufladbar";
-            this.type_charge.UseVisualStyleBackColor = true;
-            // 
-            // type_matrix
-            // 
-            this.type_matrix.AutoSize = true;
-            this.type_matrix.Enabled = false;
-            this.type_matrix.Location = new System.Drawing.Point(226, 19);
-            this.type_matrix.Name = "type_matrix";
-            this.type_matrix.Size = new System.Drawing.Size(79, 17);
-            this.type_matrix.TabIndex = 3;
-            this.type_matrix.Tag = "3";
-            this.type_matrix.Text = "matrixgeber";
-            this.type_matrix.UseVisualStyleBackColor = true;
-            // 
-            // type_semi
-            // 
-            this.type_semi.AutoSize = true;
-            this.type_semi.Checked = true;
-            this.type_semi.Enabled = false;
-            this.type_semi.Location = new System.Drawing.Point(312, 19);
-            this.type_semi.Name = "type_semi";
-            this.type_semi.Size = new System.Drawing.Size(96, 17);
-            this.type_semi.TabIndex = 4;
-            this.type_semi.TabStop = true;
-            this.type_semi.Tag = "4";
-            this.type_semi.Text = "semipermanent";
-            this.type_semi.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -2399,21 +2458,21 @@ namespace ArtefaktGenerator
             this.Controls.Add(this.hero_name);
             this.Controls.Add(this.lblInfo);
             this.Controls.Add(this.menu);
-            this.Controls.Add(this.groupBox8);
+            this.Controls.Add(this.materialGroup);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox11);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox6);
+            this.Controls.Add(this.wirkendeZauber);
             this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Times New Roman", 8.25F);
             this.Name = "ArtGenControl";
             this.Size = new System.Drawing.Size(996, 557);
             this.Load += new System.EventHandler(this.ArtGenControl_Load);
             this.SizeChanged += new System.EventHandler(this.ArtGenControl_SizeChanged);
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
+            this.materialGroup.ResumeLayout(false);
+            this.materialGroup.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.starkonst)).EndInit();
@@ -2423,9 +2482,9 @@ namespace ArtefaktGenerator
             ((System.ComponentModel.ISupportInitialize)(this.probe_ausloes)).EndInit();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.special_eatmat_var)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.special_ferngespuer_asp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.special_variable_var)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.special_eatmat_var)).EndInit();
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.agribaal)).EndInit();
@@ -2442,8 +2501,8 @@ namespace ArtefaktGenerator
             ((System.ComponentModel.ISupportInitialize)(this.arcanovi_semi_change)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.arcanovi_matrix_change)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.arcanovi_change)).EndInit();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
+            this.wirkendeZauber.ResumeLayout(false);
+            this.wirkendeZauber.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.asp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stapelung)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loads)).EndInit();
@@ -2470,6 +2529,7 @@ namespace ArtefaktGenerator
             this.artefakttyp_temp.PerformLayout();
             this.artefakttyp.ResumeLayout(false);
             this.artefakttyp.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.type_speicher_value)).EndInit();
             this.artefakttyp_semi.ResumeLayout(false);
             this.artefakttyp_semi.PerformLayout();
             this.artefakttyp_aux.ResumeLayout(false);
@@ -2485,7 +2545,7 @@ namespace ArtefaktGenerator
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.GroupBox materialGroup;
         private System.Windows.Forms.ComboBox material;
         private System.Windows.Forms.CheckBox cb_kristalle;
         private System.Windows.Forms.GroupBox groupBox5;
@@ -2573,7 +2633,7 @@ namespace ArtefaktGenerator
         private System.Windows.Forms.Label arcanovi_semi_lbl;
         private System.Windows.Forms.Label arcanovi_matrix_lbl;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.GroupBox wirkendeZauber;
         private System.Windows.Forms.ComboBox komp_combo;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.ComboBox zauber_rep;
@@ -2674,5 +2734,9 @@ namespace ArtefaktGenerator
         private ToolStripMenuItem nebenwirkungenMenuItem1;
         private ToolStripMenuItem nebenReRollToolStripMenuItem;
         private ToolStripMenuItem nebenIgnoreToolStripMenuItem;
+        private CheckBox sf_kraftspeicher;
+        private RadioButton type_speicher;
+        private Label lbl_type_speicher_val;
+        private NumericUpDown type_speicher_value;
     }
 }

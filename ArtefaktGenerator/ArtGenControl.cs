@@ -1361,6 +1361,7 @@ namespace ArtefaktGenerator
             this.sf_semiII.DataBindings.Add("Checked", controller, "sfSemipermanenz2", false, DataSourceUpdateMode.OnPropertyChanged);
             this.sf_semiII.DataBindings.Add("Enabled", controller, "sfSemipermanenz2Enabled", false, DataSourceUpdateMode.OnPropertyChanged);
             this.sf_ringkunde.DataBindings.Add("Checked", controller, "sfRingkunde", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_kraftspeicher.DataBindings.Add("Checked", controller, "sfKraftspeicher", false, DataSourceUpdateMode.OnPropertyChanged);
             this.sf_aux.DataBindings.Add("Checked", controller, "sfAuxiliator", false, DataSourceUpdateMode.OnPropertyChanged);
             this.sf_aux.DataBindings.Add("Enabled", controller, "sfAuxiliatorEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
             this.sf_aux.DataBindings.Add("Visible", controller, "sfAuxiliatorVisible", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -1382,12 +1383,18 @@ namespace ArtefaktGenerator
             this.type_aux.DataBindings.Add("Enabled", controller, "artefakttypAuxiliatorEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
             this.type_temp.DataBindings.Add("Enabled", controller, "artefakttypTempEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
             this.type_aux.DataBindings.Add("Visible", controller, "sfAuxiliatorVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.type_speicher.DataBindings.Add("Enabled", controller, "sfKraftspeicher", false, DataSourceUpdateMode.OnPropertyChanged);
             this.artefakttyp_temp.DataBindings.Add("Selected", controller, "artefakttypTemp", false, DataSourceUpdateMode.OnPropertyChanged);
             this.artefakttyp_temp.DataBindings.Add("Visible", controller, "artefakttypTempVisible", false, DataSourceUpdateMode.OnPropertyChanged);
             this.artefakttyp_matrix.DataBindings.Add("Selected", controller, "artefakttypMatrix", false, DataSourceUpdateMode.OnPropertyChanged);
             this.artefakttyp_matrix.DataBindings.Add("Visible", controller, "artefakttypMatrixVisible", false, DataSourceUpdateMode.OnPropertyChanged);
             this.artefakttyp_semi.DataBindings.Add("Selected", controller, "artefakttypSemipermanenz", false, DataSourceUpdateMode.OnPropertyChanged);
             this.artefakttyp_semi.DataBindings.Add("Visible", controller, "artefakttypSemipermanenzVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.type_speicher_value.DataBindings.Add("Visible", controller, "artefakttypKraftspeicherVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.lbl_type_speicher_val.DataBindings.Add("Visible", controller, "artefakttypKraftspeicherVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.wirkendeZauber.DataBindings.Add("Enabled", controller, "wirkendeZauberEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.materialGroup.DataBindings.Add("Enabled", controller, "wirkendeZauberEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.type_speicher_value.DataBindings.Add("Value", controller, "artefakttypKraftspeicher", false, DataSourceUpdateMode.OnPropertyChanged);
             this.artefakttyp_aux.DataBindings.Add("Selected", controller, "artefakttypAuxiliator", false, DataSourceUpdateMode.OnPropertyChanged);
             this.artefakttyp_aux.DataBindings.Add("Visible", controller, "artefakttypAuxiliatorVisible", false, DataSourceUpdateMode.OnPropertyChanged);
             this.aux_merkmal.DataBindings.Add("Checked", controller, "artefakttypAuxiliatorMerkmal", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -1567,6 +1574,16 @@ namespace ArtefaktGenerator
             controller.optionNebeneffekteNeuWuerfeln = false;
             nebenIgnoreToolStripMenuItem.Checked = true;
             nebenReRollToolStripMenuItem.Checked = false;
+        }
+
+        private void special_variablerelease_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void special_variable_var_ValueChanged(object sender, EventArgs e)
+        {
+
         }
 
     }

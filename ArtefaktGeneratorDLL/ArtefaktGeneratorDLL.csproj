@@ -111,6 +111,7 @@
     </Compile>
     <Compile Include="Destructibo.cs" />
     <Compile Include="Held.cs" />
+    <Compile Include="Kraftspeicher.cs" />
     <Compile Include="Material.cs" />
     <Compile Include="MaterialSammlung.cs" />
     <Compile Include="Nebeneffekte.cs" />
