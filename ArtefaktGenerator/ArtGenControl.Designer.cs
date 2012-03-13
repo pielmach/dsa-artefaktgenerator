@@ -63,6 +63,7 @@ namespace ArtefaktGenerator
             this.special_signet = new System.Windows.Forms.CheckBox();
             this.special_eatmaterial = new System.Windows.Forms.CheckBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.gemeinschaftlich = new System.Windows.Forms.CheckBox();
             this.agribaal = new System.Windows.Forms.NumericUpDown();
             this.label32 = new System.Windows.Forms.Label();
             this.special_ort_neben = new System.Windows.Forms.NumericUpDown();
@@ -223,7 +224,7 @@ namespace ArtefaktGenerator
             this.rep_ach = new System.Windows.Forms.RadioButton();
             this.rep_mag = new System.Windows.Forms.RadioButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.gemeinschaftlich = new System.Windows.Forms.CheckBox();
+            this.showPDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.materialGroup.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.starkonst)).BeginInit();
@@ -290,7 +291,7 @@ namespace ArtefaktGenerator
             this.cb_kristalle.AutoSize = true;
             this.cb_kristalle.Location = new System.Drawing.Point(7, 36);
             this.cb_kristalle.Name = "cb_kristalle";
-            this.cb_kristalle.Size = new System.Drawing.Size(114, 18);
+            this.cb_kristalle.Size = new System.Drawing.Size(108, 17);
             this.cb_kristalle.TabIndex = 1;
             this.cb_kristalle.Text = "Kristalle (-1 pAsP)";
             this.cb_kristalle.UseVisualStyleBackColor = true;
@@ -672,6 +673,16 @@ namespace ArtefaktGenerator
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Besonderes";
             // 
+            // gemeinschaftlich
+            // 
+            this.gemeinschaftlich.AutoSize = true;
+            this.gemeinschaftlich.Location = new System.Drawing.Point(6, 51);
+            this.gemeinschaftlich.Name = "gemeinschaftlich";
+            this.gemeinschaftlich.Size = new System.Drawing.Size(173, 17);
+            this.gemeinschaftlich.TabIndex = 25;
+            this.gemeinschaftlich.Text = "Gemeinschaftliche Erschaffung";
+            this.gemeinschaftlich.UseVisualStyleBackColor = true;
+            // 
             // agribaal
             // 
             this.agribaal.Increment = new decimal(new int[] {
@@ -781,7 +792,7 @@ namespace ArtefaktGenerator
             this.limbus.AutoSize = true;
             this.limbus.Location = new System.Drawing.Point(6, 15);
             this.limbus.Name = "limbus";
-            this.limbus.Size = new System.Drawing.Size(132, 18);
+            this.limbus.Size = new System.Drawing.Size(132, 17);
             this.limbus.TabIndex = 1;
             this.limbus.Text = "Erschaffung im Limbus";
             this.limbus.UseVisualStyleBackColor = true;
@@ -791,7 +802,7 @@ namespace ArtefaktGenerator
             this.namenlos.AutoSize = true;
             this.namenlos.Location = new System.Drawing.Point(6, 33);
             this.namenlos.Name = "namenlos";
-            this.namenlos.Size = new System.Drawing.Size(102, 18);
+            this.namenlos.Size = new System.Drawing.Size(107, 17);
             this.namenlos.TabIndex = 0;
             this.namenlos.Text = "Namenlose Tage";
             this.namenlos.UseVisualStyleBackColor = true;
@@ -1779,7 +1790,8 @@ namespace ArtefaktGenerator
             this.würfelergebnisseToolStripMenuItem,
             this.nebenwirkungenMenuItem1,
             this.toolStripSeparator1,
-            this.heldenimportToolStripMenuItem});
+            this.heldenimportToolStripMenuItem,
+            this.showPDFToolStripMenuItem});
             this.optionenToolStripMenuItem.Name = "optionenToolStripMenuItem";
             this.optionenToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.optionenToolStripMenuItem.Text = "Optionen";
@@ -2449,15 +2461,14 @@ namespace ArtefaktGenerator
             this.toolTip1.ReshowDelay = 100;
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
-            // gemeinschaftlich
+            // showPDFToolStripMenuItem
             // 
-            this.gemeinschaftlich.AutoSize = true;
-            this.gemeinschaftlich.Location = new System.Drawing.Point(6, 51);
-            this.gemeinschaftlich.Name = "gemeinschaftlich";
-            this.gemeinschaftlich.Size = new System.Drawing.Size(169, 18);
-            this.gemeinschaftlich.TabIndex = 25;
-            this.gemeinschaftlich.Text = "Gemeinschaftliche Erschaffung";
-            this.gemeinschaftlich.UseVisualStyleBackColor = true;
+            this.showPDFToolStripMenuItem.Checked = true;
+            this.showPDFToolStripMenuItem.CheckOnClick = true;
+            this.showPDFToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.showPDFToolStripMenuItem.Name = "showPDFToolStripMenuItem";
+            this.showPDFToolStripMenuItem.Size = new System.Drawing.Size(414, 22);
+            this.showPDFToolStripMenuItem.Text = "PDF nach dem exportieren anzeigen";
             // 
             // ArtGenControl
             // 
@@ -2751,5 +2762,6 @@ namespace ArtefaktGenerator
         private Label lbl_type_speicher_val;
         private NumericUpDown type_speicher_value;
         private CheckBox gemeinschaftlich;
+        private ToolStripMenuItem showPDFToolStripMenuItem;
     }
 }

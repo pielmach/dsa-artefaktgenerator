@@ -1497,6 +1497,7 @@ namespace ArtefaktGenerator
             controller.optionNebeneffekteNeuWuerfeln = ArtefaktGenerator.Properties.Settings.Default.reRollNeben;
             nebenReRollToolStripMenuItem.Checked = controller.optionNebeneffekteNeuWuerfeln;
             nebenIgnoreToolStripMenuItem.Checked = !controller.optionNebeneffekteNeuWuerfeln;
+            showPDFToolStripMenuItem.Checked = ArtefaktGenerator.Properties.Settings.Default.showSavedPDF;
             switch(ArtefaktGenerator.Properties.Settings.Default.diceW6)
             {
                 case 0: w6_1_Click(this, null); break;
@@ -1535,6 +1536,7 @@ namespace ArtefaktGenerator
             if (controller.W20 == 20) ArtefaktGenerator.Properties.Settings.Default.diceW20 = 4;
             ArtefaktGenerator.Properties.Settings.Default.diceRandom = controller.optionAllesBerechnen;
             ArtefaktGenerator.Properties.Settings.Default.showHeldenImport = heldenimportToolStripMenuItem.Checked;
+            ArtefaktGenerator.Properties.Settings.Default.showSavedPDF = showPDFToolStripMenuItem.Checked;
             ArtefaktGenerator.Properties.Settings.Default.reRollNeben = controller.optionNebeneffekteNeuWuerfeln;
             Properties.Settings.Default.Save();
         }
@@ -1557,6 +1559,7 @@ namespace ArtefaktGenerator
                 if (saveFileDialog2.ShowDialog() == DialogResult.OK)
                 {
                     controller.exportArtefaktAsPDF(saveFileDialog2.FileName);
+                    if (showPDFToolStripMenuItem.Checked) System.Diagnostics.Process.Start(saveFileDialog2.FileName);
                 }
             }
             else
