@@ -223,6 +223,7 @@ namespace ArtefaktGenerator
             this.rep_ach = new System.Windows.Forms.RadioButton();
             this.rep_mag = new System.Windows.Forms.RadioButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.gemeinschaftlich = new System.Windows.Forms.CheckBox();
             this.materialGroup.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.starkonst)).BeginInit();
@@ -277,9 +278,9 @@ namespace ArtefaktGenerator
             // 
             this.materialGroup.Controls.Add(this.cb_kristalle);
             this.materialGroup.Controls.Add(this.material);
-            this.materialGroup.Location = new System.Drawing.Point(793, 304);
+            this.materialGroup.Location = new System.Drawing.Point(635, 305);
             this.materialGroup.Name = "materialGroup";
-            this.materialGroup.Size = new System.Drawing.Size(198, 57);
+            this.materialGroup.Size = new System.Drawing.Size(153, 57);
             this.materialGroup.TabIndex = 21;
             this.materialGroup.TabStop = false;
             this.materialGroup.Text = "Material";
@@ -289,7 +290,7 @@ namespace ArtefaktGenerator
             this.cb_kristalle.AutoSize = true;
             this.cb_kristalle.Location = new System.Drawing.Point(7, 36);
             this.cb_kristalle.Name = "cb_kristalle";
-            this.cb_kristalle.Size = new System.Drawing.Size(108, 17);
+            this.cb_kristalle.Size = new System.Drawing.Size(114, 18);
             this.cb_kristalle.TabIndex = 1;
             this.cb_kristalle.Text = "Kristalle (-1 pAsP)";
             this.cb_kristalle.UseVisualStyleBackColor = true;
@@ -299,7 +300,7 @@ namespace ArtefaktGenerator
             this.material.FormattingEnabled = true;
             this.material.Location = new System.Drawing.Point(7, 16);
             this.material.Name = "material";
-            this.material.Size = new System.Drawing.Size(182, 22);
+            this.material.Size = new System.Drawing.Size(140, 22);
             this.material.TabIndex = 0;
             // 
             // groupBox5
@@ -316,14 +317,14 @@ namespace ArtefaktGenerator
             this.groupBox5.Controls.Add(this.label4);
             this.groupBox5.Location = new System.Drawing.Point(635, 157);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(153, 204);
+            this.groupBox5.Size = new System.Drawing.Size(153, 144);
             this.groupBox5.TabIndex = 15;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Probenzuschläge";
             // 
             // starkonst
             // 
-            this.starkonst.Location = new System.Drawing.Point(111, 108);
+            this.starkonst.Location = new System.Drawing.Point(111, 111);
             this.starkonst.Maximum = new decimal(new int[] {
             4,
             0,
@@ -341,7 +342,7 @@ namespace ArtefaktGenerator
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(6, 111);
+            this.label26.Location = new System.Drawing.Point(6, 114);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(103, 14);
             this.label26.TabIndex = 17;
@@ -349,7 +350,7 @@ namespace ArtefaktGenerator
             // 
             // arcanovi_force
             // 
-            this.arcanovi_force.Location = new System.Drawing.Point(111, 85);
+            this.arcanovi_force.Location = new System.Drawing.Point(111, 88);
             this.arcanovi_force.Maximum = new decimal(new int[] {
             20,
             0,
@@ -362,7 +363,7 @@ namespace ArtefaktGenerator
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(6, 87);
+            this.label17.Location = new System.Drawing.Point(6, 90);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(99, 14);
             this.label17.TabIndex = 15;
@@ -370,7 +371,7 @@ namespace ArtefaktGenerator
             // 
             // artefakt_groesse
             // 
-            this.artefakt_groesse.Location = new System.Drawing.Point(111, 62);
+            this.artefakt_groesse.Location = new System.Drawing.Point(111, 65);
             this.artefakt_groesse.Maximum = new decimal(new int[] {
             5,
             0,
@@ -383,7 +384,7 @@ namespace ArtefaktGenerator
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 64);
+            this.label15.Location = new System.Drawing.Point(6, 67);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(72, 14);
             this.label15.TabIndex = 11;
@@ -391,7 +392,7 @@ namespace ArtefaktGenerator
             // 
             // probe_affine
             // 
-            this.probe_affine.Location = new System.Drawing.Point(111, 39);
+            this.probe_affine.Location = new System.Drawing.Point(111, 42);
             this.probe_affine.Maximum = new decimal(new int[] {
             4,
             0,
@@ -408,7 +409,7 @@ namespace ArtefaktGenerator
             // 
             // probe_ausloes
             // 
-            this.probe_ausloes.Location = new System.Drawing.Point(111, 16);
+            this.probe_ausloes.Location = new System.Drawing.Point(111, 19);
             this.probe_ausloes.Name = "probe_ausloes";
             this.probe_ausloes.Size = new System.Drawing.Size(36, 20);
             this.probe_ausloes.TabIndex = 8;
@@ -416,7 +417,7 @@ namespace ArtefaktGenerator
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 41);
+            this.label6.Location = new System.Drawing.Point(6, 44);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(83, 14);
             this.label6.TabIndex = 7;
@@ -425,7 +426,7 @@ namespace ArtefaktGenerator
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 18);
+            this.label4.Location = new System.Drawing.Point(6, 21);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 14);
             this.label4.TabIndex = 3;
@@ -653,6 +654,7 @@ namespace ArtefaktGenerator
             // 
             // groupBox11
             // 
+            this.groupBox11.Controls.Add(this.gemeinschaftlich);
             this.groupBox11.Controls.Add(this.agribaal);
             this.groupBox11.Controls.Add(this.label32);
             this.groupBox11.Controls.Add(this.special_ort_neben);
@@ -665,7 +667,7 @@ namespace ArtefaktGenerator
             this.groupBox11.Controls.Add(this.namenlos);
             this.groupBox11.Location = new System.Drawing.Point(793, 157);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(198, 144);
+            this.groupBox11.Size = new System.Drawing.Size(198, 166);
             this.groupBox11.TabIndex = 22;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Besonderes";
@@ -677,7 +679,7 @@ namespace ArtefaktGenerator
             0,
             0,
             0});
-            this.agribaal.Location = new System.Drawing.Point(6, 52);
+            this.agribaal.Location = new System.Drawing.Point(6, 72);
             this.agribaal.Maximum = new decimal(new int[] {
             70,
             0,
@@ -690,7 +692,7 @@ namespace ArtefaktGenerator
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(46, 55);
+            this.label32.Location = new System.Drawing.Point(46, 75);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(99, 14);
             this.label32.TabIndex = 23;
@@ -698,7 +700,7 @@ namespace ArtefaktGenerator
             // 
             // special_ort_neben
             // 
-            this.special_ort_neben.Location = new System.Drawing.Point(6, 99);
+            this.special_ort_neben.Location = new System.Drawing.Point(6, 119);
             this.special_ort_neben.Maximum = new decimal(new int[] {
             3,
             0,
@@ -715,7 +717,7 @@ namespace ArtefaktGenerator
             // 
             // special_ort_occ
             // 
-            this.special_ort_occ.Location = new System.Drawing.Point(6, 76);
+            this.special_ort_occ.Location = new System.Drawing.Point(6, 96);
             this.special_ort_occ.Maximum = new decimal(new int[] {
             3,
             0,
@@ -733,7 +735,7 @@ namespace ArtefaktGenerator
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(46, 103);
+            this.label31.Location = new System.Drawing.Point(46, 123);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(150, 14);
             this.label31.TabIndex = 21;
@@ -750,7 +752,7 @@ namespace ArtefaktGenerator
             "kl. Haus/Schiff",
             "Palast/Burg",
             "Berg"});
-            this.artefakt_super_big.Location = new System.Drawing.Point(110, 119);
+            this.artefakt_super_big.Location = new System.Drawing.Point(110, 139);
             this.artefakt_super_big.Name = "artefakt_super_big";
             this.artefakt_super_big.Size = new System.Drawing.Size(83, 22);
             this.artefakt_super_big.TabIndex = 14;
@@ -759,7 +761,7 @@ namespace ArtefaktGenerator
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(46, 79);
+            this.label30.Location = new System.Drawing.Point(46, 99);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(143, 14);
             this.label30.TabIndex = 19;
@@ -768,7 +770,7 @@ namespace ArtefaktGenerator
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(3, 122);
+            this.label16.Location = new System.Drawing.Point(3, 142);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(100, 14);
             this.label16.TabIndex = 13;
@@ -779,7 +781,7 @@ namespace ArtefaktGenerator
             this.limbus.AutoSize = true;
             this.limbus.Location = new System.Drawing.Point(6, 15);
             this.limbus.Name = "limbus";
-            this.limbus.Size = new System.Drawing.Size(132, 17);
+            this.limbus.Size = new System.Drawing.Size(132, 18);
             this.limbus.TabIndex = 1;
             this.limbus.Text = "Erschaffung im Limbus";
             this.limbus.UseVisualStyleBackColor = true;
@@ -789,7 +791,7 @@ namespace ArtefaktGenerator
             this.namenlos.AutoSize = true;
             this.namenlos.Location = new System.Drawing.Point(6, 33);
             this.namenlos.Name = "namenlos";
-            this.namenlos.Size = new System.Drawing.Size(107, 17);
+            this.namenlos.Size = new System.Drawing.Size(102, 18);
             this.namenlos.TabIndex = 0;
             this.namenlos.Text = "Namenlose Tage";
             this.namenlos.UseVisualStyleBackColor = true;
@@ -2447,6 +2449,16 @@ namespace ArtefaktGenerator
             this.toolTip1.ReshowDelay = 100;
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
+            // gemeinschaftlich
+            // 
+            this.gemeinschaftlich.AutoSize = true;
+            this.gemeinschaftlich.Location = new System.Drawing.Point(6, 51);
+            this.gemeinschaftlich.Name = "gemeinschaftlich";
+            this.gemeinschaftlich.Size = new System.Drawing.Size(169, 18);
+            this.gemeinschaftlich.TabIndex = 25;
+            this.gemeinschaftlich.Text = "Gemeinschaftliche Erschaffung";
+            this.gemeinschaftlich.UseVisualStyleBackColor = true;
+            // 
             // ArtGenControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -2738,5 +2750,6 @@ namespace ArtefaktGenerator
         private RadioButton type_speicher;
         private Label lbl_type_speicher_val;
         private NumericUpDown type_speicher_value;
+        private CheckBox gemeinschaftlich;
     }
 }

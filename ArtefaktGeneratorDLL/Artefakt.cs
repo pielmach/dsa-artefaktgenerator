@@ -101,6 +101,8 @@ namespace ArtefaktGenerator
 
         public bool namenlos = false;
 
+        public bool gemeinschaftlich = false;
+
         public decimal agribaal = 0;
 
         public decimal special_ort_occ = 0;

@@ -799,6 +799,12 @@ namespace ArtefaktGenerator
             set { artefakt.namenlos = value; RaisePropertyChanged("extraNamenloseTage"); }
         }
 
+        public bool extraGemeinschaftlicheErschaffung
+        {
+            get { return artefakt.gemeinschaftlich; }
+            set { artefakt.gemeinschaftlich = value; RaisePropertyChanged("extraGemeinschaftlicheErschaffung"); }
+        }
+
         public int extraAgribaal
         {
             get { return (int)artefakt.agribaal; }
@@ -1386,6 +1392,8 @@ namespace ArtefaktGenerator
                     }
                     if (magic_asp <= 0) magic_asp = 1;
 
+                    if (artefakt.gemeinschaftlich) arcanovi_erschwernis += 5;
+
                     //arcanovi_zfp += artefakt.loads * magic.Count;
                     if (artefakt.typ != Artefakt.ArtefaktType.MATRIX)//&& artefakt.typ != Artefakt.ArtefaktType.SEMI)
                         arcanovi_zfp += (artefakt.loads - 1) * 3;
@@ -1511,6 +1519,7 @@ namespace ArtefaktGenerator
 
                     // Erschwerniss Wirkende Zauber
                     decimal magic_erschwerniss = 2 + artefakt.material.wirkende_mod;
+                    if (artefakt.gemeinschaftlich) magic_erschwerniss += 5;
 
                     // Nebeneffekte
                     decimal neben_probe_count = Math.Floor(pasp / 2);
@@ -1594,10 +1603,10 @@ namespace ArtefaktGenerator
                         else resArcanovi += ("pAsP gesamt: " + pasp + " (inkl. W3)\r\n");
 
                         //Kraftspeicher Einschränkung
-                        if (optionAllesBerechnen)
+                        if (optionAllesBerechnen && artefakt.typ == Artefakt.ArtefaktType.SPEICHER)
                         {
                             int number = (int)(dice.W6 + dice.W6 + arcanovi_taw - arcanovi_erschwernis);
-                            resArcanovi += ("Einschränkung: " + number + ": " + (kraftspeicher.getEinschraenkungDescr(WDA, number)) + " (angenommen maximale ZfP*)\r\n");
+                            resArcanovi += ("Einschränkung: " + number + ": " + (kraftspeicher.getEinschraenkungDescr(WDA, number)) + " (maximale ZfP* angenommen)\r\n");
                         }
 
                         //Nebens
