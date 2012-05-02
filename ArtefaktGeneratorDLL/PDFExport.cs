@@ -17,9 +17,14 @@ namespace ArtefaktGenerator
             int fontsize = 14;
             int zeile = 0;
             int spalte = 50;
+            sharpPDF.Enumerators.predefinedFont font = predefinedFont.csTimes;
+            sharpPDF.Enumerators.predefinedFont fontEmph = predefinedFont.csTimesBoldOblique;
+
+            // Header
+            myFirstPage.addText("Artefaktbrief", 220, 700,predefinedFont.csTimesBold,30);
 
             //Artefakttyp
-            myFirstPage.addText("Artefakttyp: ", spalte, start - fontsize * zeile, predefinedFont.csHelvetica, fontsize);
+            myFirstPage.addText("Artefakttyp: ", spalte, start - fontsize * zeile, font, fontsize);
             string artefakttyp ="";
             switch (artefakt.artefakt.typ)
             {
@@ -69,28 +74,28 @@ namespace ArtefaktGenerator
                         artefakttyp += "aufladbar";
                         break;
             }
-            myFirstPage.addText(artefakttyp, spalte+100, start - fontsize * zeile++, predefinedFont.csHelvetivaBoldOblique, fontsize);
+            myFirstPage.addText(artefakttyp, spalte + 100, start - fontsize * zeile++, fontEmph, fontsize);
 
             //Material
-            myFirstPage.addText("Material: ", spalte, start - fontsize * zeile, predefinedFont.csHelvetica, fontsize);
+            myFirstPage.addText("Material: ", spalte, start - fontsize * zeile, font, fontsize);
             string matString = artefakt.artefakt.material.name;
             if (artefakt.artefakt.regelbasis == Artefakt.Regelbasis.SRD && artefakt.artefakt.kristalle)
                 matString += " (tragender Kristall)";
-            myFirstPage.addText(matString, spalte + 100, start - fontsize * zeile++, predefinedFont.csHelvetivaBoldOblique, fontsize);
+            myFirstPage.addText(matString, spalte + 100, start - fontsize * zeile++, fontEmph, fontsize);
 
             //Proben-Modifkatoren
             zeile++;
-            myFirstPage.addText("Probenmodifikationen:", spalte, start - fontsize * zeile++, predefinedFont.csHelvetica, fontsize);
+            myFirstPage.addText("Probenmodifikationen:", spalte, start - fontsize * zeile++, font, fontsize);
             string temp = "Ausloeser: " + artefakt.artefakt.probe.ausloeser;
-            myFirstPage.addText(temp, spalte, start - fontsize * zeile++, predefinedFont.csHelvetica, fontsize);
+            myFirstPage.addText(temp, spalte, start - fontsize * zeile++, font, fontsize);
             temp = "Artefaktgröße: " + artefakt.artefakt.probe.groesse;
-            myFirstPage.addText(temp, spalte, start - fontsize * zeile++, predefinedFont.csHelvetica, fontsize);
+            myFirstPage.addText(temp, spalte, start - fontsize * zeile++, font, fontsize);
             temp = "Objektaffinität: " + artefakt.artefakt.probe.affine;
-            myFirstPage.addText(temp, spalte, start - fontsize * zeile++, predefinedFont.csHelvetica, fontsize);
+            myFirstPage.addText(temp, spalte, start - fontsize * zeile++, font, fontsize);
             temp = "Sternenkonstellation: " + artefakt.artefakt.probe.stars;
-            myFirstPage.addText(temp, spalte, start - fontsize * zeile++, predefinedFont.csHelvetica, fontsize);
+            myFirstPage.addText(temp, spalte, start - fontsize * zeile++, font, fontsize);
             temp = "Arcanovi erzwingen: " + artefakt.artefakt.probe.erzwingen;
-            myFirstPage.addText(temp, spalte, start - fontsize * zeile++, predefinedFont.csHelvetica, fontsize);
+            myFirstPage.addText(temp, spalte, start - fontsize * zeile++, font, fontsize);
 
 
 
@@ -100,7 +105,7 @@ namespace ArtefaktGenerator
 
             // Spezielle Eigenschaften
             zeile++;
-            myFirstPage.addText("Spezielle Artefakteigenschaften:", spalte, start - fontsize * zeile, predefinedFont.csHelvetica, 14);
+            myFirstPage.addText("Spezielle Artefakteigenschaften:", spalte, start - fontsize * zeile, font, 14);
             if (artefakt.artefakt.spezial_apport || artefakt.artefakt.spezial_ferngespuer || artefakt.artefakt.spezial_gespuer || 
                 artefakt.artefakt.spezial_reperatur || artefakt.artefakt.spezial_resistent || artefakt.artefakt.spezial_reversalis || 
                 artefakt.artefakt.spezial_siegel || artefakt.artefakt.spezial_unzerbrechlich || artefakt.artefakt.spezial_variablerausloeser || 
@@ -199,13 +204,13 @@ namespace ArtefaktGenerator
             }
             else
             {
-                myFirstPage.addText("keine", spalte + 200, start - fontsize * zeile++, predefinedFont.csHelvetivaBoldOblique, fontsize);
+                myFirstPage.addText("keine", spalte + 200, start - fontsize * zeile++, fontEmph, fontsize);
             }
 
 
 
             // Wirkende Zauber 
-            myFirstPage.addText("Wirkende Zauber", spalte, start - fontsize * zeile++, predefinedFont.csHelvetica, 14);
+            myFirstPage.addText("Wirkende Zauber", spalte, start - fontsize * zeile++, font, 14);
             zstart = zeile;
             myTable = new pdfTable();
             myTable.borderSize = 1;

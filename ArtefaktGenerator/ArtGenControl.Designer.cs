@@ -184,6 +184,7 @@ namespace ArtefaktGenerator
             this.nebenIgnoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.heldenimportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showPDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hilfeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -224,7 +225,6 @@ namespace ArtefaktGenerator
             this.rep_ach = new System.Windows.Forms.RadioButton();
             this.rep_mag = new System.Windows.Forms.RadioButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.showPDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.materialGroup.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.starkonst)).BeginInit();
@@ -1994,6 +1994,15 @@ namespace ArtefaktGenerator
             this.heldenimportToolStripMenuItem.Size = new System.Drawing.Size(414, 22);
             this.heldenimportToolStripMenuItem.Text = "Helden Software Import beim Start anzeigen";
             // 
+            // showPDFToolStripMenuItem
+            // 
+            this.showPDFToolStripMenuItem.Checked = true;
+            this.showPDFToolStripMenuItem.CheckOnClick = true;
+            this.showPDFToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.showPDFToolStripMenuItem.Name = "showPDFToolStripMenuItem";
+            this.showPDFToolStripMenuItem.Size = new System.Drawing.Size(414, 22);
+            this.showPDFToolStripMenuItem.Text = "PDF nach dem exportieren anzeigen";
+            // 
             // infoToolStripMenuItem
             // 
             this.infoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -2461,15 +2470,6 @@ namespace ArtefaktGenerator
             this.toolTip1.ReshowDelay = 100;
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
-            // showPDFToolStripMenuItem
-            // 
-            this.showPDFToolStripMenuItem.Checked = true;
-            this.showPDFToolStripMenuItem.CheckOnClick = true;
-            this.showPDFToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.showPDFToolStripMenuItem.Name = "showPDFToolStripMenuItem";
-            this.showPDFToolStripMenuItem.Size = new System.Drawing.Size(414, 22);
-            this.showPDFToolStripMenuItem.Text = "PDF nach dem exportieren anzeigen";
-            // 
             // ArtGenControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -2494,6 +2494,7 @@ namespace ArtefaktGenerator
             this.Size = new System.Drawing.Size(996, 557);
             this.Load += new System.EventHandler(this.ArtGenControl_Load);
             this.SizeChanged += new System.EventHandler(this.ArtGenControl_SizeChanged);
+            this.Click += new System.EventHandler(this.ArtGenControl_Click);
             this.materialGroup.ResumeLayout(false);
             this.materialGroup.PerformLayout();
             this.groupBox5.ResumeLayout(false);

@@ -30,8 +30,6 @@ namespace ArtefaktGenerator
             set { 
                 if (value) 
                 {
-                    extraKristalleVisible = false;
-                    extraKristalle = false;
                     artefakt.regelbasis = Artefakt.Regelbasis.WDA;
                     sfAuxiliatorVisible = true;
 
@@ -55,8 +53,6 @@ namespace ArtefaktGenerator
                 }
                 else
                 {
-                    if (sfRepresentation == (int)SF.SFType.ACH)
-                        extraKristalleVisible = true;
                     artefakt.regelbasis = Artefakt.Regelbasis.SRD;
                     sfAuxiliatorVisible = false;
 
@@ -123,7 +119,7 @@ namespace ArtefaktGenerator
             set
             {
                 artefakt.sf.rep = (SF.SFType)value;
-                if (artefakt.sf.rep == SF.SFType.ACH && !WDA)
+                if (artefakt.sf.rep == SF.SFType.ACH)
                     extraKristalleVisible = true;
                 else
                 {
@@ -1515,7 +1511,7 @@ namespace ArtefaktGenerator
                     }
                     if (pasp <= 0 && !(artefakt.typ == Artefakt.ArtefaktType.TEMP) && !(artefakt.kristalle))
                         pasp = 1;
-                    if (!WDA && artefakt.kristalle && pasp > 0) pasp -= 1;
+                    if (artefakt.kristalle && pasp > 0) pasp -= 1;
 
                     // Erschwerniss Wirkende Zauber
                     decimal magic_erschwerniss = 2 + artefakt.material.wirkende_mod;

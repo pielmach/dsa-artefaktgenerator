@@ -1349,6 +1349,7 @@ namespace ArtefaktGenerator
 
         private void ArtGenControl_Load(object sender, EventArgs e)
         {
+
             this.hero_name.DataBindings.Add("Text", controller, "heldName",false, DataSourceUpdateMode.OnPropertyChanged);
             this.groupBox2.DataBindings.Add("Selected", controller, "sfRepresentation", false, DataSourceUpdateMode.OnPropertyChanged);
             this.sf_kraft.DataBindings.Add("Checked", controller, "sfKraftkontrolle", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -1588,6 +1589,10 @@ namespace ArtefaktGenerator
         private void special_variable_var_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void ArtGenControl_Click(object sender, EventArgs e)
+        {
         }
 
     }

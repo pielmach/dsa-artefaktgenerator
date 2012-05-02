@@ -126,6 +126,7 @@
     <Compile Include="ArtGenControl.Designer.cs">
       <DependentUpon>ArtGenControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Held.cs" />
     <Compile Include="HeldAuswahl.cs">
       <SubType>Form</SubType>
     </Compile>
