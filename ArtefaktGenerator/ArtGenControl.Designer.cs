@@ -291,10 +291,11 @@ namespace ArtefaktGenerator
             this.cb_kristalle.AutoSize = true;
             this.cb_kristalle.Location = new System.Drawing.Point(7, 36);
             this.cb_kristalle.Name = "cb_kristalle";
-            this.cb_kristalle.Size = new System.Drawing.Size(108, 17);
+            this.cb_kristalle.Size = new System.Drawing.Size(114, 18);
             this.cb_kristalle.TabIndex = 1;
             this.cb_kristalle.Text = "Kristalle (-1 pAsP)";
             this.cb_kristalle.UseVisualStyleBackColor = true;
+            this.cb_kristalle.CheckedChanged += new System.EventHandler(this.cb_kristalle_CheckedChanged);
             // 
             // material
             // 
@@ -303,6 +304,7 @@ namespace ArtefaktGenerator
             this.material.Name = "material";
             this.material.Size = new System.Drawing.Size(140, 22);
             this.material.TabIndex = 0;
+            this.material.SelectedIndexChanged += new System.EventHandler(this.material_SelectedIndexChanged);
             // 
             // groupBox5
             // 
@@ -339,6 +341,7 @@ namespace ArtefaktGenerator
             this.starkonst.Name = "starkonst";
             this.starkonst.Size = new System.Drawing.Size(36, 20);
             this.starkonst.TabIndex = 18;
+            this.starkonst.ValueChanged += new System.EventHandler(this.starkonst_ValueChanged);
             // 
             // label26
             // 
@@ -360,6 +363,7 @@ namespace ArtefaktGenerator
             this.arcanovi_force.Name = "arcanovi_force";
             this.arcanovi_force.Size = new System.Drawing.Size(36, 20);
             this.arcanovi_force.TabIndex = 16;
+            this.arcanovi_force.ValueChanged += new System.EventHandler(this.arcanovi_force_ValueChanged);
             // 
             // label17
             // 
@@ -381,6 +385,7 @@ namespace ArtefaktGenerator
             this.artefakt_groesse.Name = "artefakt_groesse";
             this.artefakt_groesse.Size = new System.Drawing.Size(36, 20);
             this.artefakt_groesse.TabIndex = 12;
+            this.artefakt_groesse.ValueChanged += new System.EventHandler(this.artefakt_groesse_ValueChanged);
             // 
             // label15
             // 
@@ -407,6 +412,7 @@ namespace ArtefaktGenerator
             this.probe_affine.Name = "probe_affine";
             this.probe_affine.Size = new System.Drawing.Size(36, 20);
             this.probe_affine.TabIndex = 10;
+            this.probe_affine.ValueChanged += new System.EventHandler(this.probe_affine_ValueChanged);
             // 
             // probe_ausloes
             // 
@@ -414,6 +420,7 @@ namespace ArtefaktGenerator
             this.probe_ausloes.Name = "probe_ausloes";
             this.probe_ausloes.Size = new System.Drawing.Size(36, 20);
             this.probe_ausloes.TabIndex = 8;
+            this.probe_ausloes.ValueChanged += new System.EventHandler(this.probe_ausloes_ValueChanged);
             // 
             // label6
             // 
@@ -475,6 +482,7 @@ namespace ArtefaktGenerator
             0,
             0,
             0});
+            this.special_eatmat_var.ValueChanged += new System.EventHandler(this.special_eatmat_var_ValueChanged);
             // 
             // lbl_special_asp
             // 
@@ -501,6 +509,7 @@ namespace ArtefaktGenerator
             0,
             0,
             0});
+            this.special_ferngespuer_asp.ValueChanged += new System.EventHandler(this.special_ferngespuer_asp_ValueChanged);
             // 
             // special_ferngespuer_komp
             // 
@@ -519,16 +528,18 @@ namespace ArtefaktGenerator
             this.special_ferngespuer_komp.Size = new System.Drawing.Size(34, 22);
             this.special_ferngespuer_komp.TabIndex = 26;
             this.special_ferngespuer_komp.Text = "A";
+            this.special_ferngespuer_komp.SelectedIndexChanged += new System.EventHandler(this.special_ferngespuer_komp_SelectedIndexChanged);
             // 
             // special_ferngespuer
             // 
             this.special_ferngespuer.AutoSize = true;
             this.special_ferngespuer.Location = new System.Drawing.Point(394, 63);
             this.special_ferngespuer.Name = "special_ferngespuer";
-            this.special_ferngespuer.Size = new System.Drawing.Size(79, 17);
+            this.special_ferngespuer.Size = new System.Drawing.Size(76, 18);
             this.special_ferngespuer.TabIndex = 4;
             this.special_ferngespuer.Text = "Ferngespür";
             this.special_ferngespuer.UseVisualStyleBackColor = true;
+            this.special_ferngespuer.CheckedChanged += new System.EventHandler(this.special_ferngespuer_CheckedChanged);
             // 
             // lbl_special_komp
             // 
@@ -557,17 +568,18 @@ namespace ArtefaktGenerator
             this.special_schleier.AutoSize = true;
             this.special_schleier.Location = new System.Drawing.Point(132, 63);
             this.special_schleier.Name = "special_schleier";
-            this.special_schleier.Size = new System.Drawing.Size(96, 17);
+            this.special_schleier.Size = new System.Drawing.Size(92, 18);
             this.special_schleier.TabIndex = 9;
             this.special_schleier.Text = "Verschleierung";
             this.special_schleier.UseVisualStyleBackColor = true;
+            this.special_schleier.CheckedChanged += new System.EventHandler(this.special_schleier_CheckedChanged);
             // 
             // special_variablerelease
             // 
             this.special_variablerelease.AutoSize = true;
             this.special_variablerelease.Location = new System.Drawing.Point(394, 15);
             this.special_variablerelease.Name = "special_variablerelease";
-            this.special_variablerelease.Size = new System.Drawing.Size(110, 17);
+            this.special_variablerelease.Size = new System.Drawing.Size(107, 18);
             this.special_variablerelease.TabIndex = 8;
             this.special_variablerelease.Text = "Variabler Auslöser";
             this.special_variablerelease.UseVisualStyleBackColor = true;
@@ -578,80 +590,88 @@ namespace ArtefaktGenerator
             this.special_reversalis.AutoSize = true;
             this.special_reversalis.Location = new System.Drawing.Point(6, 63);
             this.special_reversalis.Name = "special_reversalis";
-            this.special_reversalis.Size = new System.Drawing.Size(101, 17);
+            this.special_reversalis.Size = new System.Drawing.Size(103, 18);
             this.special_reversalis.TabIndex = 7;
             this.special_reversalis.Text = "Umkehrtalisman";
             this.special_reversalis.UseVisualStyleBackColor = true;
+            this.special_reversalis.CheckedChanged += new System.EventHandler(this.special_reversalis_CheckedChanged);
             // 
             // special_selfrepair
             // 
             this.special_selfrepair.AutoSize = true;
             this.special_selfrepair.Location = new System.Drawing.Point(266, 39);
             this.special_selfrepair.Name = "special_selfrepair";
-            this.special_selfrepair.Size = new System.Drawing.Size(97, 17);
+            this.special_selfrepair.Size = new System.Drawing.Size(94, 18);
             this.special_selfrepair.TabIndex = 6;
             this.special_selfrepair.Text = "Selbstreparatur";
             this.special_selfrepair.UseVisualStyleBackColor = true;
+            this.special_selfrepair.CheckedChanged += new System.EventHandler(this.special_selfrepair_CheckedChanged);
             // 
             // special_resistant
             // 
             this.special_resistant.AutoSize = true;
             this.special_resistant.Location = new System.Drawing.Point(132, 39);
             this.special_resistant.Name = "special_resistant";
-            this.special_resistant.Size = new System.Drawing.Size(136, 17);
+            this.special_resistant.Size = new System.Drawing.Size(128, 18);
             this.special_resistant.TabIndex = 5;
             this.special_resistant.Text = "Res. profaner Schaden";
             this.special_resistant.UseVisualStyleBackColor = true;
+            this.special_resistant.CheckedChanged += new System.EventHandler(this.special_resistant_CheckedChanged);
             // 
             // special_apport
             // 
             this.special_apport.AutoSize = true;
             this.special_apport.Location = new System.Drawing.Point(6, 39);
             this.special_apport.Name = "special_apport";
-            this.special_apport.Size = new System.Drawing.Size(109, 17);
+            this.special_apport.Size = new System.Drawing.Size(109, 18);
             this.special_apport.TabIndex = 3;
             this.special_apport.Text = "Magischer Apport";
             this.special_apport.UseVisualStyleBackColor = true;
+            this.special_apport.CheckedChanged += new System.EventHandler(this.special_apport_CheckedChanged);
             // 
             // special_scent
             // 
             this.special_scent.AutoSize = true;
             this.special_scent.Location = new System.Drawing.Point(266, 15);
             this.special_scent.Name = "special_scent";
-            this.special_scent.Size = new System.Drawing.Size(131, 17);
+            this.special_scent.Size = new System.Drawing.Size(122, 18);
             this.special_scent.TabIndex = 2;
             this.special_scent.Text = "Gespür des Schöpfers";
             this.special_scent.UseVisualStyleBackColor = true;
+            this.special_scent.CheckedChanged += new System.EventHandler(this.special_scent_CheckedChanged);
             // 
             // special_durable
             // 
             this.special_durable.AutoSize = true;
             this.special_durable.Location = new System.Drawing.Point(132, 15);
             this.special_durable.Name = "special_durable";
-            this.special_durable.Size = new System.Drawing.Size(114, 17);
+            this.special_durable.Size = new System.Drawing.Size(114, 18);
             this.special_durable.TabIndex = 1;
             this.special_durable.Text = "Unzerbrechlichkeit";
             this.special_durable.UseVisualStyleBackColor = true;
+            this.special_durable.CheckedChanged += new System.EventHandler(this.special_durable_CheckedChanged);
             // 
             // special_signet
             // 
             this.special_signet.AutoSize = true;
             this.special_signet.Location = new System.Drawing.Point(6, 15);
             this.special_signet.Name = "special_signet";
-            this.special_signet.Size = new System.Drawing.Size(120, 17);
+            this.special_signet.Size = new System.Drawing.Size(119, 18);
             this.special_signet.TabIndex = 0;
             this.special_signet.Text = "Siegel und Zertifikat";
             this.special_signet.UseVisualStyleBackColor = true;
+            this.special_signet.CheckedChanged += new System.EventHandler(this.special_signet_CheckedChanged);
             // 
             // special_eatmaterial
             // 
             this.special_eatmaterial.AutoSize = true;
             this.special_eatmaterial.Location = new System.Drawing.Point(394, 39);
             this.special_eatmaterial.Name = "special_eatmaterial";
-            this.special_eatmaterial.Size = new System.Drawing.Size(126, 17);
+            this.special_eatmaterial.Size = new System.Drawing.Size(120, 18);
             this.special_eatmaterial.TabIndex = 10;
             this.special_eatmaterial.Text = "Verzehrender Zauber";
             this.special_eatmaterial.UseVisualStyleBackColor = true;
+            this.special_eatmaterial.CheckedChanged += new System.EventHandler(this.special_eatmaterial_CheckedChanged);
             // 
             // groupBox11
             // 
@@ -678,10 +698,11 @@ namespace ArtefaktGenerator
             this.gemeinschaftlich.AutoSize = true;
             this.gemeinschaftlich.Location = new System.Drawing.Point(6, 51);
             this.gemeinschaftlich.Name = "gemeinschaftlich";
-            this.gemeinschaftlich.Size = new System.Drawing.Size(173, 17);
+            this.gemeinschaftlich.Size = new System.Drawing.Size(169, 18);
             this.gemeinschaftlich.TabIndex = 25;
             this.gemeinschaftlich.Text = "Gemeinschaftliche Erschaffung";
             this.gemeinschaftlich.UseVisualStyleBackColor = true;
+            this.gemeinschaftlich.CheckedChanged += new System.EventHandler(this.gemeinschaftlich_CheckedChanged);
             // 
             // agribaal
             // 
@@ -699,6 +720,7 @@ namespace ArtefaktGenerator
             this.agribaal.Name = "agribaal";
             this.agribaal.Size = new System.Drawing.Size(36, 20);
             this.agribaal.TabIndex = 24;
+            this.agribaal.ValueChanged += new System.EventHandler(this.agribaal_ValueChanged);
             // 
             // label32
             // 
@@ -725,6 +747,7 @@ namespace ArtefaktGenerator
             this.special_ort_neben.Name = "special_ort_neben";
             this.special_ort_neben.Size = new System.Drawing.Size(36, 20);
             this.special_ort_neben.TabIndex = 22;
+            this.special_ort_neben.ValueChanged += new System.EventHandler(this.special_ort_neben_ValueChanged);
             // 
             // special_ort_occ
             // 
@@ -742,6 +765,7 @@ namespace ArtefaktGenerator
             this.special_ort_occ.Name = "special_ort_occ";
             this.special_ort_occ.Size = new System.Drawing.Size(36, 20);
             this.special_ort_occ.TabIndex = 20;
+            this.special_ort_occ.ValueChanged += new System.EventHandler(this.special_ort_occ_ValueChanged);
             // 
             // label31
             // 
@@ -768,6 +792,7 @@ namespace ArtefaktGenerator
             this.artefakt_super_big.Size = new System.Drawing.Size(83, 22);
             this.artefakt_super_big.TabIndex = 14;
             this.artefakt_super_big.Text = "nein";
+            this.artefakt_super_big.SelectedIndexChanged += new System.EventHandler(this.artefakt_super_big_SelectedIndexChanged);
             // 
             // label30
             // 
@@ -792,20 +817,22 @@ namespace ArtefaktGenerator
             this.limbus.AutoSize = true;
             this.limbus.Location = new System.Drawing.Point(6, 15);
             this.limbus.Name = "limbus";
-            this.limbus.Size = new System.Drawing.Size(132, 17);
+            this.limbus.Size = new System.Drawing.Size(132, 18);
             this.limbus.TabIndex = 1;
             this.limbus.Text = "Erschaffung im Limbus";
             this.limbus.UseVisualStyleBackColor = true;
+            this.limbus.CheckedChanged += new System.EventHandler(this.limbus_CheckedChanged);
             // 
             // namenlos
             // 
             this.namenlos.AutoSize = true;
             this.namenlos.Location = new System.Drawing.Point(6, 33);
             this.namenlos.Name = "namenlos";
-            this.namenlos.Size = new System.Drawing.Size(107, 17);
+            this.namenlos.Size = new System.Drawing.Size(102, 18);
             this.namenlos.TabIndex = 0;
             this.namenlos.Text = "Namenlose Tage";
             this.namenlos.UseVisualStyleBackColor = true;
+            this.namenlos.CheckedChanged += new System.EventHandler(this.namenlos_CheckedChanged);
             // 
             // groupBox1
             // 
@@ -831,101 +858,111 @@ namespace ArtefaktGenerator
             this.sf_kraft.AutoSize = true;
             this.sf_kraft.Location = new System.Drawing.Point(6, 19);
             this.sf_kraft.Name = "sf_kraft";
-            this.sf_kraft.Size = new System.Drawing.Size(88, 17);
+            this.sf_kraft.Size = new System.Drawing.Size(94, 18);
             this.sf_kraft.TabIndex = 0;
             this.sf_kraft.Text = "Kraftkontrolle";
             this.sf_kraft.UseVisualStyleBackColor = true;
+            this.sf_kraft.CheckedChanged += new System.EventHandler(this.sf_kraft_CheckedChanged);
             // 
             // sf_hyper
             // 
             this.sf_hyper.AutoSize = true;
             this.sf_hyper.Location = new System.Drawing.Point(286, 19);
             this.sf_hyper.Name = "sf_hyper";
-            this.sf_hyper.Size = new System.Drawing.Size(103, 17);
+            this.sf_hyper.Size = new System.Drawing.Size(102, 18);
             this.sf_hyper.TabIndex = 3;
             this.sf_hyper.Text = "Hypervehemenz";
             this.sf_hyper.UseVisualStyleBackColor = true;
+            this.sf_hyper.CheckedChanged += new System.EventHandler(this.sf_hyper_CheckedChanged);
             // 
             // sf_vielLadung
             // 
             this.sf_vielLadung.AutoSize = true;
             this.sf_vielLadung.Location = new System.Drawing.Point(100, 19);
             this.sf_vielLadung.Name = "sf_vielLadung";
-            this.sf_vielLadung.Size = new System.Drawing.Size(109, 17);
+            this.sf_vielLadung.Size = new System.Drawing.Size(104, 18);
             this.sf_vielLadung.TabIndex = 8;
             this.sf_vielLadung.Text = "Vielfache Ladung";
             this.sf_vielLadung.UseVisualStyleBackColor = true;
+            this.sf_vielLadung.CheckedChanged += new System.EventHandler(this.sf_vielLadung_CheckedChanged);
             // 
             // sf_stapel
             // 
             this.sf_stapel.AutoSize = true;
             this.sf_stapel.Location = new System.Drawing.Point(204, 19);
             this.sf_stapel.Name = "sf_stapel";
-            this.sf_stapel.Size = new System.Drawing.Size(83, 17);
+            this.sf_stapel.Size = new System.Drawing.Size(82, 18);
             this.sf_stapel.TabIndex = 2;
             this.sf_stapel.Text = "Stapeleffekt";
             this.sf_stapel.UseVisualStyleBackColor = true;
+            this.sf_stapel.CheckedChanged += new System.EventHandler(this.sf_stapel_CheckedChanged);
             // 
             // sf_matrix
             // 
             this.sf_matrix.AutoSize = true;
             this.sf_matrix.Location = new System.Drawing.Point(388, 19);
             this.sf_matrix.Name = "sf_matrix";
-            this.sf_matrix.Size = new System.Drawing.Size(81, 17);
+            this.sf_matrix.Size = new System.Drawing.Size(82, 18);
             this.sf_matrix.TabIndex = 4;
             this.sf_matrix.Text = "Matrixgeber";
             this.sf_matrix.UseVisualStyleBackColor = true;
+            this.sf_matrix.CheckedChanged += new System.EventHandler(this.sf_matrix_CheckedChanged);
             // 
             // sf_semiI
             // 
             this.sf_semiI.AutoSize = true;
             this.sf_semiI.Location = new System.Drawing.Point(470, 19);
             this.sf_semiI.Name = "sf_semiI";
-            this.sf_semiI.Size = new System.Drawing.Size(107, 17);
+            this.sf_semiI.Size = new System.Drawing.Size(106, 18);
             this.sf_semiI.TabIndex = 5;
             this.sf_semiI.Text = "Semipermanenz I";
             this.toolTip1.SetToolTip(this.sf_semiI, "Wähle aus, ob der Held die Sonderfertigkeit \"Semipermanenz I\" besitzt.");
             this.sf_semiI.UseVisualStyleBackColor = true;
+            this.sf_semiI.CheckedChanged += new System.EventHandler(this.sf_semiI_CheckedChanged);
             // 
             // sf_semiII
             // 
             this.sf_semiII.AutoSize = true;
             this.sf_semiII.Location = new System.Drawing.Point(576, 19);
             this.sf_semiII.Name = "sf_semiII";
-            this.sf_semiII.Size = new System.Drawing.Size(110, 17);
+            this.sf_semiII.Size = new System.Drawing.Size(110, 18);
             this.sf_semiII.TabIndex = 6;
             this.sf_semiII.Text = "Semipermanenz II";
             this.sf_semiII.UseVisualStyleBackColor = true;
+            this.sf_semiII.CheckedChanged += new System.EventHandler(this.sf_semiII_CheckedChanged);
             // 
             // sf_ringkunde
             // 
             this.sf_ringkunde.AutoSize = true;
             this.sf_ringkunde.Location = new System.Drawing.Point(686, 19);
             this.sf_ringkunde.Name = "sf_ringkunde";
-            this.sf_ringkunde.Size = new System.Drawing.Size(118, 17);
+            this.sf_ringkunde.Size = new System.Drawing.Size(110, 18);
             this.sf_ringkunde.TabIndex = 4;
             this.sf_ringkunde.Text = "Ringkunde gelesen";
             this.sf_ringkunde.UseVisualStyleBackColor = true;
+            this.sf_ringkunde.CheckedChanged += new System.EventHandler(this.sf_ringkunde_CheckedChanged);
             // 
             // sf_kraftspeicher
             // 
             this.sf_kraftspeicher.AutoSize = true;
             this.sf_kraftspeicher.Location = new System.Drawing.Point(796, 19);
             this.sf_kraftspeicher.Name = "sf_kraftspeicher";
-            this.sf_kraftspeicher.Size = new System.Drawing.Size(88, 17);
+            this.sf_kraftspeicher.Size = new System.Drawing.Size(89, 18);
             this.sf_kraftspeicher.TabIndex = 10;
             this.sf_kraftspeicher.Text = "Kraftspeicher";
             this.sf_kraftspeicher.UseVisualStyleBackColor = true;
+            this.sf_kraftspeicher.CheckedChanged += new System.EventHandler(this.sf_kraftspeicher_CheckedChanged);
             // 
             // sf_aux
             // 
             this.sf_aux.AutoSize = true;
             this.sf_aux.Location = new System.Drawing.Point(885, 19);
             this.sf_aux.Name = "sf_aux";
-            this.sf_aux.Size = new System.Drawing.Size(68, 17);
+            this.sf_aux.Size = new System.Drawing.Size(73, 18);
             this.sf_aux.TabIndex = 9;
             this.sf_aux.Text = "Auxiliator";
             this.sf_aux.UseVisualStyleBackColor = true;
+            this.sf_aux.CheckedChanged += new System.EventHandler(this.sf_aux_CheckedChanged);
             // 
             // groupBox4
             // 
@@ -966,6 +1003,7 @@ namespace ArtefaktGenerator
             0,
             0,
             0});
+            this.destruct_change.ValueChanged += new System.EventHandler(this.destruct_change_ValueChanged);
             // 
             // label14
             // 
@@ -992,6 +1030,7 @@ namespace ArtefaktGenerator
             0,
             0,
             0});
+            this.magiekunde_change.ValueChanged += new System.EventHandler(this.magiekunde_change_ValueChanged);
             // 
             // label13
             // 
@@ -1018,6 +1057,7 @@ namespace ArtefaktGenerator
             0,
             0,
             0});
+            this.analys_change.ValueChanged += new System.EventHandler(this.analys_change_ValueChanged);
             // 
             // label12
             // 
@@ -1044,6 +1084,7 @@ namespace ArtefaktGenerator
             0,
             0,
             0});
+            this.odem_change.ValueChanged += new System.EventHandler(this.odem_change_ValueChanged);
             // 
             // label8
             // 
@@ -1071,6 +1112,7 @@ namespace ArtefaktGenerator
             0,
             0,
             0});
+            this.arcanovi_semi_change.ValueChanged += new System.EventHandler(this.arcanovi_semi_change_ValueChanged);
             // 
             // arcanovi_matrix_change
             // 
@@ -1089,6 +1131,7 @@ namespace ArtefaktGenerator
             0,
             0,
             0});
+            this.arcanovi_matrix_change.ValueChanged += new System.EventHandler(this.arcanovi_matrix_change_ValueChanged);
             // 
             // arcanovi_change
             // 
@@ -1106,6 +1149,7 @@ namespace ArtefaktGenerator
             0,
             0,
             0});
+            this.arcanovi_change.ValueChanged += new System.EventHandler(this.arcanovi_change_ValueChanged);
             // 
             // arcanovi_semi_lbl
             // 
@@ -1357,6 +1401,7 @@ namespace ArtefaktGenerator
             0,
             0,
             0});
+            this.loads.ValueChanged += new System.EventHandler(this.loads_ValueChanged);
             // 
             // zauber
             // 
@@ -1417,7 +1462,7 @@ namespace ArtefaktGenerator
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(456, 345);
+            this.tabControl1.Location = new System.Drawing.Point(449, 345);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(508, 211);
@@ -1452,10 +1497,10 @@ namespace ArtefaktGenerator
             this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage2.Controls.Add(this.groupBox9);
             this.tabPage2.Controls.Add(this.txt_analys);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 23);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(500, 185);
+            this.tabPage2.Size = new System.Drawing.Size(500, 184);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Analyse";
             // 
@@ -1573,9 +1618,9 @@ namespace ArtefaktGenerator
             this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage3.Controls.Add(this.groupBox10);
             this.tabPage3.Controls.Add(this.txt_destruct);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Location = new System.Drawing.Point(4, 23);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(500, 185);
+            this.tabPage3.Size = new System.Drawing.Size(500, 184);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Zerstörung";
             // 
@@ -2074,22 +2119,24 @@ namespace ArtefaktGenerator
             this.temp_monat.AutoSize = true;
             this.temp_monat.Location = new System.Drawing.Point(113, 16);
             this.temp_monat.Name = "temp_monat";
-            this.temp_monat.Size = new System.Drawing.Size(55, 17);
+            this.temp_monat.Size = new System.Drawing.Size(56, 18);
             this.temp_monat.TabIndex = 2;
             this.temp_monat.Tag = "2";
             this.temp_monat.Text = "Monat";
             this.temp_monat.UseVisualStyleBackColor = true;
+            this.temp_monat.CheckedChanged += new System.EventHandler(this.temp_monat_CheckedChanged);
             // 
             // temp_woche
             // 
             this.temp_woche.AutoSize = true;
             this.temp_woche.Location = new System.Drawing.Point(56, 16);
             this.temp_woche.Name = "temp_woche";
-            this.temp_woche.Size = new System.Drawing.Size(60, 17);
+            this.temp_woche.Size = new System.Drawing.Size(57, 18);
             this.temp_woche.TabIndex = 1;
             this.temp_woche.Tag = "1";
             this.temp_woche.Text = "Woche";
             this.temp_woche.UseVisualStyleBackColor = true;
+            this.temp_woche.CheckedChanged += new System.EventHandler(this.temp_woche_CheckedChanged);
             // 
             // temp_tag
             // 
@@ -2097,12 +2144,13 @@ namespace ArtefaktGenerator
             this.temp_tag.Checked = true;
             this.temp_tag.Location = new System.Drawing.Point(10, 16);
             this.temp_tag.Name = "temp_tag";
-            this.temp_tag.Size = new System.Drawing.Size(44, 17);
+            this.temp_tag.Size = new System.Drawing.Size(42, 18);
             this.temp_tag.TabIndex = 0;
             this.temp_tag.TabStop = true;
             this.temp_tag.Tag = "0";
             this.temp_tag.Text = "Tag";
             this.temp_tag.UseVisualStyleBackColor = true;
+            this.temp_tag.CheckedChanged += new System.EventHandler(this.temp_tag_CheckedChanged);
             // 
             // artefakttyp
             // 
@@ -2116,9 +2164,9 @@ namespace ArtefaktGenerator
             this.artefakttyp.Controls.Add(this.type_charge);
             this.artefakttyp.Controls.Add(this.type_matrix);
             this.artefakttyp.Controls.Add(this.type_semi);
-            this.artefakttyp.Controls.Add(this.artefakttyp_semi);
-            this.artefakttyp.Controls.Add(this.artefakttyp_aux);
             this.artefakttyp.Controls.Add(this.artefakttyp_matrix);
+            this.artefakttyp.Controls.Add(this.artefakttyp_aux);
+            this.artefakttyp.Controls.Add(this.artefakttyp_semi);
             this.artefakttyp.Location = new System.Drawing.Point(7, 157);
             this.artefakttyp.Name = "artefakttyp";
             this.artefakttyp.Selected = 4;
@@ -2143,6 +2191,7 @@ namespace ArtefaktGenerator
             0,
             0,
             0});
+            this.type_speicher_value.ValueChanged += new System.EventHandler(this.type_speicher_value_ValueChanged);
             // 
             // lbl_type_speicher_val
             // 
@@ -2158,34 +2207,37 @@ namespace ArtefaktGenerator
             this.type_speicher.AutoSize = true;
             this.type_speicher.Location = new System.Drawing.Point(414, 19);
             this.type_speicher.Name = "type_speicher";
-            this.type_speicher.Size = new System.Drawing.Size(86, 17);
+            this.type_speicher.Size = new System.Drawing.Size(86, 18);
             this.type_speicher.TabIndex = 29;
             this.type_speicher.TabStop = true;
             this.type_speicher.Tag = "6";
             this.type_speicher.Text = "kraftspeicher";
             this.type_speicher.UseVisualStyleBackColor = true;
+            this.type_speicher.CheckedChanged += new System.EventHandler(this.type_speicher_CheckedChanged);
             // 
             // type_temp
             // 
             this.type_temp.AutoSize = true;
             this.type_temp.Location = new System.Drawing.Point(6, 19);
             this.type_temp.Name = "type_temp";
-            this.type_temp.Size = new System.Drawing.Size(66, 17);
+            this.type_temp.Size = new System.Drawing.Size(68, 18);
             this.type_temp.TabIndex = 0;
             this.type_temp.Tag = "0";
             this.type_temp.Text = "temporär";
             this.type_temp.UseVisualStyleBackColor = true;
+            this.type_temp.CheckedChanged += new System.EventHandler(this.type_temp_CheckedChanged);
             // 
             // type_einaml
             // 
             this.type_einaml.AutoSize = true;
             this.type_einaml.Location = new System.Drawing.Point(80, 19);
             this.type_einaml.Name = "type_einaml";
-            this.type_einaml.Size = new System.Drawing.Size(63, 17);
+            this.type_einaml.Size = new System.Drawing.Size(64, 18);
             this.type_einaml.TabIndex = 1;
             this.type_einaml.Tag = "1";
             this.type_einaml.Text = "einmalig";
             this.type_einaml.UseVisualStyleBackColor = true;
+            this.type_einaml.CheckedChanged += new System.EventHandler(this.type_einaml_CheckedChanged);
             // 
             // type_aux
             // 
@@ -2193,22 +2245,24 @@ namespace ArtefaktGenerator
             this.type_aux.Enabled = false;
             this.type_aux.Location = new System.Drawing.Point(508, 19);
             this.type_aux.Name = "type_aux";
-            this.type_aux.Size = new System.Drawing.Size(66, 17);
+            this.type_aux.Size = new System.Drawing.Size(69, 18);
             this.type_aux.TabIndex = 24;
             this.type_aux.Tag = "5";
             this.type_aux.Text = "auxiliator";
             this.type_aux.UseVisualStyleBackColor = true;
+            this.type_aux.CheckedChanged += new System.EventHandler(this.type_aux_CheckedChanged);
             // 
             // type_charge
             // 
             this.type_charge.AutoSize = true;
             this.type_charge.Location = new System.Drawing.Point(150, 19);
             this.type_charge.Name = "type_charge";
-            this.type_charge.Size = new System.Drawing.Size(69, 17);
+            this.type_charge.Size = new System.Drawing.Size(66, 18);
             this.type_charge.TabIndex = 2;
             this.type_charge.Tag = "2";
             this.type_charge.Text = "aufladbar";
             this.type_charge.UseVisualStyleBackColor = true;
+            this.type_charge.CheckedChanged += new System.EventHandler(this.type_charge_CheckedChanged);
             // 
             // type_matrix
             // 
@@ -2216,11 +2270,12 @@ namespace ArtefaktGenerator
             this.type_matrix.Enabled = false;
             this.type_matrix.Location = new System.Drawing.Point(226, 19);
             this.type_matrix.Name = "type_matrix";
-            this.type_matrix.Size = new System.Drawing.Size(79, 17);
+            this.type_matrix.Size = new System.Drawing.Size(80, 18);
             this.type_matrix.TabIndex = 3;
             this.type_matrix.Tag = "3";
             this.type_matrix.Text = "matrixgeber";
             this.type_matrix.UseVisualStyleBackColor = true;
+            this.type_matrix.CheckedChanged += new System.EventHandler(this.type_matrix_CheckedChanged);
             // 
             // type_semi
             // 
@@ -2229,12 +2284,13 @@ namespace ArtefaktGenerator
             this.type_semi.Enabled = false;
             this.type_semi.Location = new System.Drawing.Point(312, 19);
             this.type_semi.Name = "type_semi";
-            this.type_semi.Size = new System.Drawing.Size(96, 17);
+            this.type_semi.Size = new System.Drawing.Size(96, 18);
             this.type_semi.TabIndex = 4;
             this.type_semi.TabStop = true;
             this.type_semi.Tag = "4";
             this.type_semi.Text = "semipermanent";
             this.type_semi.UseVisualStyleBackColor = true;
+            this.type_semi.CheckedChanged += new System.EventHandler(this.type_semi_CheckedChanged);
             // 
             // artefakttyp_semi
             // 
@@ -2255,22 +2311,24 @@ namespace ArtefaktGenerator
             this.semi_monat.AutoSize = true;
             this.semi_monat.Location = new System.Drawing.Point(129, 15);
             this.semi_monat.Name = "semi_monat";
-            this.semi_monat.Size = new System.Drawing.Size(55, 17);
+            this.semi_monat.Size = new System.Drawing.Size(56, 18);
             this.semi_monat.TabIndex = 6;
             this.semi_monat.Tag = "2";
             this.semi_monat.Text = "Monat";
             this.semi_monat.UseVisualStyleBackColor = true;
+            this.semi_monat.CheckedChanged += new System.EventHandler(this.semi_monat_CheckedChanged);
             // 
             // semi_woche
             // 
             this.semi_woche.AutoSize = true;
             this.semi_woche.Location = new System.Drawing.Point(63, 15);
             this.semi_woche.Name = "semi_woche";
-            this.semi_woche.Size = new System.Drawing.Size(60, 17);
+            this.semi_woche.Size = new System.Drawing.Size(57, 18);
             this.semi_woche.TabIndex = 5;
             this.semi_woche.Tag = "1";
             this.semi_woche.Text = "Woche";
             this.semi_woche.UseVisualStyleBackColor = true;
+            this.semi_woche.CheckedChanged += new System.EventHandler(this.semi_woche_CheckedChanged);
             // 
             // semi_tag
             // 
@@ -2278,23 +2336,25 @@ namespace ArtefaktGenerator
             this.semi_tag.Checked = true;
             this.semi_tag.Location = new System.Drawing.Point(15, 15);
             this.semi_tag.Name = "semi_tag";
-            this.semi_tag.Size = new System.Drawing.Size(44, 17);
+            this.semi_tag.Size = new System.Drawing.Size(42, 18);
             this.semi_tag.TabIndex = 4;
             this.semi_tag.TabStop = true;
             this.semi_tag.Tag = "0";
             this.semi_tag.Text = "Tag";
             this.semi_tag.UseVisualStyleBackColor = true;
+            this.semi_tag.CheckedChanged += new System.EventHandler(this.semi_tag_CheckedChanged);
             // 
             // semi_jahr
             // 
             this.semi_jahr.AutoSize = true;
             this.semi_jahr.Location = new System.Drawing.Point(190, 15);
             this.semi_jahr.Name = "semi_jahr";
-            this.semi_jahr.Size = new System.Drawing.Size(45, 17);
+            this.semi_jahr.Size = new System.Drawing.Size(44, 18);
             this.semi_jahr.TabIndex = 7;
             this.semi_jahr.Tag = "3";
             this.semi_jahr.Text = "Jahr";
             this.semi_jahr.UseVisualStyleBackColor = true;
+            this.semi_jahr.CheckedChanged += new System.EventHandler(this.semi_jahr_CheckedChanged);
             // 
             // artefakttyp_aux
             // 
@@ -2316,32 +2376,35 @@ namespace ArtefaktGenerator
             this.aux_labil.AutoSize = true;
             this.aux_labil.Location = new System.Drawing.Point(11, 15);
             this.aux_labil.Name = "aux_labil";
-            this.aux_labil.Size = new System.Drawing.Size(43, 17);
+            this.aux_labil.Size = new System.Drawing.Size(44, 18);
             this.aux_labil.TabIndex = 0;
             this.aux_labil.Tag = "0";
             this.aux_labil.Text = "labil";
             this.aux_labil.UseVisualStyleBackColor = true;
+            this.aux_labil.CheckedChanged += new System.EventHandler(this.aux_labil_CheckedChanged);
             // 
             // aux_merkmal
             // 
             this.aux_merkmal.AutoSize = true;
             this.aux_merkmal.Location = new System.Drawing.Point(293, 16);
             this.aux_merkmal.Name = "aux_merkmal";
-            this.aux_merkmal.Size = new System.Drawing.Size(66, 17);
+            this.aux_merkmal.Size = new System.Drawing.Size(68, 18);
             this.aux_merkmal.TabIndex = 5;
             this.aux_merkmal.Text = "Merkmal";
             this.aux_merkmal.UseVisualStyleBackColor = true;
+            this.aux_merkmal.CheckedChanged += new System.EventHandler(this.aux_merkmal_CheckedChanged);
             // 
             // aux_stable
             // 
             this.aux_stable.AutoSize = true;
             this.aux_stable.Location = new System.Drawing.Point(61, 15);
             this.aux_stable.Name = "aux_stable";
-            this.aux_stable.Size = new System.Drawing.Size(49, 17);
+            this.aux_stable.Size = new System.Drawing.Size(49, 18);
             this.aux_stable.TabIndex = 1;
             this.aux_stable.Tag = "1";
             this.aux_stable.Text = "stabil";
             this.aux_stable.UseVisualStyleBackColor = true;
+            this.aux_stable.CheckedChanged += new System.EventHandler(this.aux_stable_CheckedChanged);
             // 
             // aux_verystable
             // 
@@ -2349,23 +2412,25 @@ namespace ArtefaktGenerator
             this.aux_verystable.Checked = true;
             this.aux_verystable.Location = new System.Drawing.Point(117, 15);
             this.aux_verystable.Name = "aux_verystable";
-            this.aux_verystable.Size = new System.Drawing.Size(72, 17);
+            this.aux_verystable.Size = new System.Drawing.Size(71, 18);
             this.aux_verystable.TabIndex = 2;
             this.aux_verystable.TabStop = true;
             this.aux_verystable.Tag = "3";
             this.aux_verystable.Text = "sehr stabil";
             this.aux_verystable.UseVisualStyleBackColor = true;
+            this.aux_verystable.CheckedChanged += new System.EventHandler(this.aux_verystable_CheckedChanged);
             // 
             // aux_unempfindlich
             // 
             this.aux_unempfindlich.AutoSize = true;
             this.aux_unempfindlich.Location = new System.Drawing.Point(196, 15);
             this.aux_unempfindlich.Name = "aux_unempfindlich";
-            this.aux_unempfindlich.Size = new System.Drawing.Size(90, 17);
+            this.aux_unempfindlich.Size = new System.Drawing.Size(91, 18);
             this.aux_unempfindlich.TabIndex = 3;
             this.aux_unempfindlich.Tag = "4";
             this.aux_unempfindlich.Text = "unempfindlich";
             this.aux_unempfindlich.UseVisualStyleBackColor = true;
+            this.aux_unempfindlich.CheckedChanged += new System.EventHandler(this.aux_unempfindlich_CheckedChanged);
             // 
             // artefakttyp_matrix
             // 
@@ -2386,33 +2451,36 @@ namespace ArtefaktGenerator
             this.matrix_unempfindlich.AutoSize = true;
             this.matrix_unempfindlich.Location = new System.Drawing.Point(200, 15);
             this.matrix_unempfindlich.Name = "matrix_unempfindlich";
-            this.matrix_unempfindlich.Size = new System.Drawing.Size(90, 17);
+            this.matrix_unempfindlich.Size = new System.Drawing.Size(91, 18);
             this.matrix_unempfindlich.TabIndex = 3;
             this.matrix_unempfindlich.Tag = "3";
             this.matrix_unempfindlich.Text = "unempfindlich";
             this.matrix_unempfindlich.UseVisualStyleBackColor = true;
+            this.matrix_unempfindlich.CheckedChanged += new System.EventHandler(this.matrix_unempfindlich_CheckedChanged);
             // 
             // matrix_verystable
             // 
             this.matrix_verystable.AutoSize = true;
             this.matrix_verystable.Location = new System.Drawing.Point(121, 15);
             this.matrix_verystable.Name = "matrix_verystable";
-            this.matrix_verystable.Size = new System.Drawing.Size(72, 17);
+            this.matrix_verystable.Size = new System.Drawing.Size(71, 18);
             this.matrix_verystable.TabIndex = 2;
             this.matrix_verystable.Tag = "2";
             this.matrix_verystable.Text = "sehr stabil";
             this.matrix_verystable.UseVisualStyleBackColor = true;
+            this.matrix_verystable.CheckedChanged += new System.EventHandler(this.matrix_verystable_CheckedChanged);
             // 
             // matrix_stable
             // 
             this.matrix_stable.AutoSize = true;
             this.matrix_stable.Location = new System.Drawing.Point(65, 15);
             this.matrix_stable.Name = "matrix_stable";
-            this.matrix_stable.Size = new System.Drawing.Size(49, 17);
+            this.matrix_stable.Size = new System.Drawing.Size(49, 18);
             this.matrix_stable.TabIndex = 1;
             this.matrix_stable.Tag = "1";
             this.matrix_stable.Text = "stabil";
             this.matrix_stable.UseVisualStyleBackColor = true;
+            this.matrix_stable.CheckedChanged += new System.EventHandler(this.matrix_stable_CheckedChanged);
             // 
             // matrix_labil
             // 
@@ -2420,12 +2488,13 @@ namespace ArtefaktGenerator
             this.matrix_labil.Checked = true;
             this.matrix_labil.Location = new System.Drawing.Point(15, 15);
             this.matrix_labil.Name = "matrix_labil";
-            this.matrix_labil.Size = new System.Drawing.Size(43, 17);
+            this.matrix_labil.Size = new System.Drawing.Size(44, 18);
             this.matrix_labil.TabIndex = 0;
             this.matrix_labil.TabStop = true;
             this.matrix_labil.Tag = "0";
             this.matrix_labil.Text = "labil";
             this.matrix_labil.UseVisualStyleBackColor = true;
+            this.matrix_labil.CheckedChanged += new System.EventHandler(this.matrix_labil_CheckedChanged);
             // 
             // groupBox2
             // 
@@ -2444,11 +2513,12 @@ namespace ArtefaktGenerator
             this.rep_ach.AutoSize = true;
             this.rep_ach.Location = new System.Drawing.Point(94, 16);
             this.rep_ach.Name = "rep_ach";
-            this.rep_ach.Size = new System.Drawing.Size(44, 17);
+            this.rep_ach.Size = new System.Drawing.Size(44, 18);
             this.rep_ach.TabIndex = 2;
             this.rep_ach.Tag = "0";
             this.rep_ach.Text = "Ach";
             this.rep_ach.UseVisualStyleBackColor = true;
+            this.rep_ach.CheckedChanged += new System.EventHandler(this.rep_ach_CheckedChanged);
             // 
             // rep_mag
             // 
@@ -2456,12 +2526,13 @@ namespace ArtefaktGenerator
             this.rep_mag.Checked = true;
             this.rep_mag.Location = new System.Drawing.Point(8, 16);
             this.rep_mag.Name = "rep_mag";
-            this.rep_mag.Size = new System.Drawing.Size(79, 17);
+            this.rep_mag.Size = new System.Drawing.Size(76, 18);
             this.rep_mag.TabIndex = 1;
             this.rep_mag.TabStop = true;
             this.rep_mag.Tag = "1";
             this.rep_mag.Text = "Mag/Hex...";
             this.rep_mag.UseVisualStyleBackColor = true;
+            this.rep_mag.CheckedChanged += new System.EventHandler(this.rep_mag_CheckedChanged);
             // 
             // toolTip1
             // 

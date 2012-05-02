@@ -28,7 +28,7 @@ namespace ArtefaktGenerator
     {
         public List<Material> sammlung = new List<Material>();
 
-        public MaterialSammlung() { }
+        public MaterialSammlung() {}
 
         public List<Material> getList()
         {

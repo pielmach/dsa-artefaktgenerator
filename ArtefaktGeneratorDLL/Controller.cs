@@ -16,7 +16,7 @@ namespace ArtefaktGenerator
         private Artefakt artefakt = new Artefakt();
         private BindingList<Zauber> magic = new BindingList<Zauber>();
         private Wuerfel dice = new Wuerfel();
-        private MaterialSammlung mat;
+        private MaterialSammlung mat = new MaterialSammlung();
         private Occupation occ = new Occupation();
         private Nebeneffekte nebeneffekte = new Nebeneffekte();
         private Kraftspeicher kraftspeicher = new Kraftspeicher();
@@ -1179,6 +1179,7 @@ namespace ArtefaktGenerator
             tawArcanovi = tawArcanovi;
             tawArcanoviMatrix = tawArcanoviMatrix;
             sfStapeleffekt = sfStapeleffekt;
+            selectedMaterial = 0;
             W6 = 4;
             W20 = 11;
 
