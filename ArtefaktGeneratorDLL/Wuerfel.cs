@@ -27,10 +27,10 @@ namespace ArtefaktGenerator
     {
         private Random rand = new Random();
 
-        private decimal _w6 = 3.5m;
+        private decimal _w6 = 4m;
         private bool generatew6 = false;
 
-        private decimal _w20 = 10.5m;
+        private decimal _w20 = 11m;
         private bool generatew20 = false;
 
         public enum Optimum : short { LOW = 0, HIGH = 1 };

@@ -18,7 +18,6 @@
 
 using System;
 using System.Collections.Generic;
-//using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 using System.IO;
@@ -42,7 +41,7 @@ namespace ArtefaktGenerator
 
         public Destructibo destructibo = new Destructibo();
 
-        public enum ArtefaktType : short { TEMP = 0, NORMAL = 1, RECHARGE = 2, MATRIX = 3, SEMI = 4, AUX = 5 };
+        public enum ArtefaktType : short { TEMP = 0, NORMAL = 1, RECHARGE = 2, MATRIX = 3, SEMI = 4, AUX = 5, SPEICHER = 6 };
 
         public ArtefaktType typ = ArtefaktType.NORMAL;
 
@@ -59,6 +58,8 @@ namespace ArtefaktGenerator
         public MatrixType matrix_typ = MatrixType.SEHRSTABIL;
 
         public MatrixType aux_typ = MatrixType.SEHRSTABIL;
+
+        public decimal kraftspeicher_asp = 10;
 
         public bool aux_merkmal = false;
 
@@ -99,6 +100,8 @@ namespace ArtefaktGenerator
         public bool limbus = false;
 
         public bool namenlos = false;
+
+        public bool gemeinschaftlich = false;
 
         public decimal agribaal = 0;
 

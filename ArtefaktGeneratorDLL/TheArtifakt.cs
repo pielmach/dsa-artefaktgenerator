@@ -19,6 +19,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace ArtefaktGenerator
 {
@@ -26,13 +27,13 @@ namespace ArtefaktGenerator
     {
         public int compatibility = 2;
         public Artefakt artefakt;
-        public List<Zauber> zauber;
+        public BindingList<Zauber> zauber;
 
         public DasArtefakt()
         {
         }
 
-        public DasArtefakt(Artefakt artefakt, List<Zauber> magic)
+        public DasArtefakt(Artefakt artefakt, BindingList<Zauber> magic)
         {
             this.artefakt = artefakt;
             this.zauber = magic;

@@ -31,5 +31,10 @@ namespace ArtefaktGenerator
         public decimal staple;
         public decimal asp;
         public bool eigene_rep;
+
+        public override string ToString()
+        {
+            return name + "\t" + komp + "\t" + staple + "\t" + asp + "\t" + (eigene_rep?"eigene":"fremde");
+        }
     }
 }

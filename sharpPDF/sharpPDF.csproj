@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.30319</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{00B4A076-B134-4E93-BF98-E716FD302EC7}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon />
+    <AssemblyKeyContainerName />
+    <AssemblyName>sharpPDF</AssemblyName>
+    <AssemblyOriginatorKeyFile>sharpPDF.snk</AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>sharpPDF</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject />
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <OldToolsVersion>0.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile />
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile />
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn />
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile />
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>sharpPDF.xml</DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn />
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="circleElement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="imageElement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IPdfDestination.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IWritable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="lineElement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="paragraphElement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="paragraphLine.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pdfBadColumnIndexException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pdfBookmarkNode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pdfBufferErrorException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pdfColor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pdfDestinationFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pdfDestinationFit.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pdfDestinationFitH.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pdfDestinationFitR.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pdfDestinationFitV.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pdfDestinationType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pdfDestinationXYZ.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pdfDocument.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pdfElement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pdfException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pdfFont.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pdfHeader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pdfImageIOException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pdfImageNotFoundException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pdfIncorrectColumnException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pdfIncorrectParagraghException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pdfIncorrectRowException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pdfInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pdfLineStyle.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pdfOutlines.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pdfPage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pdfPageMarker.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pdfPageTree.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pdfPersistentPage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pdfTable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pdfTableColumn.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pdfTableHeader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pdfTableRow.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pdfTableRowStyle.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pdfTrailer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pdfWritingErrorException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="predefindeLineStyle.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="predefinedAlignment.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="predefinedColor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="predefinedFont.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="predefinedMarkerStyle.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="rectangleElement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="textAdapter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="textElement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sharpPDF.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent />
+    <PostBuildEvent />
+  </PropertyGroup>
+</Project>

@@ -30,9 +30,10 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>1</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -88,11 +89,24 @@
     <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
     <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
   </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>019F83FC7DC9796AE236215E0DAC91D46516D6AF</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>ArtefaktGenerator_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Ionic.Zip.Reduced">
       <HintPath>..\Ionic.Zip.Reduced.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
@@ -106,10 +120,30 @@
     <Compile Include="ArtGenApp.Designer.cs">
       <DependentUpon>ArtGenApp.cs</DependentUpon>
     </Compile>
+    <Compile Include="ArtGenControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ArtGenControl.Designer.cs">
+      <DependentUpon>ArtGenControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Held.cs" />
+    <Compile Include="HeldAuswahl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HeldAuswahl.Designer.cs">
+      <DependentUpon>HeldAuswahl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LadeHelden.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ArtGenApp.resx">
       <DependentUpon>ArtGenApp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArtGenControl.resx">
+      <DependentUpon>ArtGenControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HeldAuswahl.resx">
+      <DependentUpon>HeldAuswahl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -122,6 +156,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
+    <None Include="ArtefaktGenerator_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -154,9 +189,17 @@
       <Project>{F156CD3C-E2B2-4353-815A-2D425B452860}</Project>
       <Name>ArtefaktGeneratorDLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CustomControls\CustomControls.csproj">
+      <Project>{76484579-F5AE-449F-A4DF-B1748F0B998B}</Project>
+      <Name>CustomControls</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NAppUpdate.Framework\NAppUpdate.Framework.csproj">
       <Project>{5C07EBDF-D43F-4BE9-B560-D7A443C0EDCE}</Project>
       <Name>NAppUpdate.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\sharpPDF\sharpPDF.csproj">
+      <Project>{00B4A076-B134-4E93-BF98-E716FD302EC7}</Project>
+      <Name>sharpPDF</Name>
     </ProjectReference>
   </ItemGroup>
   <!--<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />-->

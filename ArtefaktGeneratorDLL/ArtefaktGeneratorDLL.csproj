@@ -30,7 +30,8 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
-    <TargetFrameworkProfile />
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <PublishUrl>publish\</PublishUrl>
     <Install>false</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -96,9 +97,6 @@
   <PropertyGroup />
   <PropertyGroup />
   <ItemGroup>
-    <Reference Include="Ionic.Zip.Reduced">
-      <HintPath>..\Ionic.Zip.Reduced.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -109,23 +107,18 @@
   <ItemGroup>
     <Compile Include="Analys.cs" />
     <Compile Include="Artefakt.cs" />
+    <Compile Include="Controller.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Destructibo.cs" />
-    <Compile Include="Held.cs" />
-    <Compile Include="HeldAuswahl.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="HeldAuswahl.Designer.cs">
-      <DependentUpon>HeldAuswahl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="LadeHelden.cs" />
+    <Compile Include="Kraftspeicher.cs" />
     <Compile Include="Material.cs" />
     <Compile Include="MaterialSammlung.cs" />
+    <Compile Include="Nebeneffekte.cs" />
     <Compile Include="Occupation.cs" />
+    <Compile Include="PDFExport.cs" />
     <Compile Include="Probe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="HeldAuswahl.resx">
-      <DependentUpon>HeldAuswahl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -136,12 +129,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ArtGenControl.resx">
-      <DependentUpon>ArtGenControl.cs</DependentUpon>
-    </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="ArtGen.snk" />
     <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Compile Include="Properties\Settings.Designer.cs">
@@ -149,15 +140,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Settings.cs" />
     <Compile Include="SF.cs" />
     <Compile Include="TaW.cs" />
     <Compile Include="TheArtifakt.cs" />
-    <Compile Include="ArtGenControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ArtGenControl.Designer.cs">
-      <DependentUpon>ArtGenControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="Wuerfel.cs" />
     <Compile Include="Zauber.cs" />
   </ItemGroup>
@@ -194,9 +180,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NAppUpdate.Framework\NAppUpdate.Framework.csproj">
-      <Project>{5C07EBDF-D43F-4BE9-B560-D7A443C0EDCE}</Project>
-      <Name>NAppUpdate.Framework</Name>
+    <ProjectReference Include="..\sharpPDF\sharpPDF.csproj">
+      <Project>{00B4A076-B134-4E93-BF98-E716FD302EC7}</Project>
+      <Name>sharpPDF</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -210,4 +196,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Target Name="AfterCompile" />
 </Project>
