@@ -509,7 +509,7 @@ namespace ArtefaktGenerator
                 this.special_ferngespuer_komp.DataBindings.Add("Enabled", controller, "spezialFerngespuerEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.special_ferngespuer_asp.DataBindings.Add("Enabled", controller, "spezialFerngespuerEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.special_ferngespuer_asp.DataBindings.Add("Value", controller, "spezialFerngespuerAsp", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_ferngespuer_komp.DataBindings.Add("SelectedValue", controller, "spezialFerngespuerKomp", false, DataSourceUpdateMode.OnPropertyChanged);
+                this.special_ferngespuer_komp.DataBindings.Add("SelectedIndex", controller, "spezialFerngespuerKomp", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.special_reversalis.DataBindings.Add("Checked", controller, "spezialUmkehrtalisman", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.special_reversalis.DataBindings.Add("Visible", controller, "spezialUmkehrtalismanVisible", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.special_reversalis.DataBindings.Add("Enabled", controller, "spezialUmkehrtalismanEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
