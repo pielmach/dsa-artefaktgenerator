@@ -255,12 +255,16 @@ namespace ArtefaktGenerator
                 {
                     sfSemipermanenz2Enabled = true;
                     artefakttypSemipermanenzEnabled = true;
+                    tawArcanoviSemipermanenzEnabled = true;
                 }
                 else
                 {
                     sfSemipermanenz2Enabled = false;
                     sfSemipermanenz2 = false;
                     artefakttypSemipermanenzEnabled = false;
+                    tawArcanoviSemipermanenzEnabled = false;
+                    if (artefakt.typ == Artefakt.ArtefaktType.SEMI)
+                        artefakttyp = (int)Artefakt.ArtefaktType.RECHARGE;
                 }
                 artefakt.sf.semi1 = value;
                 RaisePropertyChanged("sfSemipermanenz1");

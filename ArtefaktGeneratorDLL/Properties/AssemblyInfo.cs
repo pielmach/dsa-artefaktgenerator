@@ -29,7 +29,7 @@ using System.Resources;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("DSA-Hamburg.de")]
 [assembly: AssemblyProduct("ArtefaktGenerator")]
-[assembly: AssemblyCopyright("Copyright © 2009,2010,2011 Mario Rauschenberg")]
+[assembly: AssemblyCopyright("Copyright © 2009,2010,2011,2012 Mario Rauschenberg")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -51,6 +51,6 @@ using System.Resources;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.2.0.0")]
-[assembly: AssemblyFileVersion("2.2.0.0")]
+[assembly: AssemblyVersion("2.3.0.0")]
+[assembly: AssemblyFileVersion("2.3.0.0")]
 [assembly: NeutralResourcesLanguageAttribute("de")]

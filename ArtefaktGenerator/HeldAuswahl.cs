@@ -16,7 +16,8 @@ namespace ArtefaktGenerator
         {
             this.mainControl = mainControl;
             InitializeComponent();
-            setHelden(helden);
+            if (helden != null)
+                setHelden(helden);
         }
 
         private void setHelden(List<Held> helden)

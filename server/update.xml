@@ -4,7 +4,7 @@
     <FileUpdateTask apply="app-restart" updateTo="http://www.dsa-hamburg.de/artgen/update/ArtefaktGenerator.exe" localPath="ArtefaktGenerator.exe">
       <Description>- Auto-Update System</Description>
       <Conditions>
-        <FileVersionCondition what="below" version="2.2.1.0" />
+        <FileVersionCondition what="below" version="2.3.0.0" />
       </Conditions>
     </FileUpdateTask>
   </Tasks>
