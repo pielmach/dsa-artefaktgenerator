@@ -44,6 +44,7 @@ namespace ArtefaktGenerator
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.special_ferngespuer_komp = new System.Windows.Forms.ComboBox();
             this.special_eatmat_var = new System.Windows.Forms.NumericUpDown();
             this.lbl_special_asp = new System.Windows.Forms.Label();
             this.special_ferngespuer_asp = new System.Windows.Forms.NumericUpDown();
@@ -189,14 +190,20 @@ namespace ArtefaktGenerator
             this.updatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblInfo = new System.Windows.Forms.Label();
             this.hero_name = new System.Windows.Forms.Label();
+            this.artefakttyp = new CustomControls.RadioGroupBox();
+            this.artefakttyp_aux = new CustomControls.RadioGroupBox();
+            this.aux_labil = new System.Windows.Forms.RadioButton();
+            this.aux_merkmal = new System.Windows.Forms.CheckBox();
+            this.aux_stable = new System.Windows.Forms.RadioButton();
+            this.aux_verystable = new System.Windows.Forms.RadioButton();
+            this.aux_unempfindlich = new System.Windows.Forms.RadioButton();
+            this.type_speicher_value = new System.Windows.Forms.NumericUpDown();
+            this.lbl_type_speicher_val = new System.Windows.Forms.Label();
+            this.type_speicher = new System.Windows.Forms.RadioButton();
             this.artefakttyp_temp = new CustomControls.RadioGroupBox();
             this.temp_monat = new System.Windows.Forms.RadioButton();
             this.temp_woche = new System.Windows.Forms.RadioButton();
             this.temp_tag = new System.Windows.Forms.RadioButton();
-            this.artefakttyp = new CustomControls.RadioGroupBox();
-            this.type_speicher_value = new System.Windows.Forms.NumericUpDown();
-            this.lbl_type_speicher_val = new System.Windows.Forms.Label();
-            this.type_speicher = new System.Windows.Forms.RadioButton();
             this.type_temp = new System.Windows.Forms.RadioButton();
             this.type_einaml = new System.Windows.Forms.RadioButton();
             this.type_aux = new System.Windows.Forms.RadioButton();
@@ -208,12 +215,6 @@ namespace ArtefaktGenerator
             this.matrix_verystable = new System.Windows.Forms.RadioButton();
             this.matrix_stable = new System.Windows.Forms.RadioButton();
             this.matrix_labil = new System.Windows.Forms.RadioButton();
-            this.artefakttyp_aux = new CustomControls.RadioGroupBox();
-            this.aux_labil = new System.Windows.Forms.RadioButton();
-            this.aux_merkmal = new System.Windows.Forms.CheckBox();
-            this.aux_stable = new System.Windows.Forms.RadioButton();
-            this.aux_verystable = new System.Windows.Forms.RadioButton();
-            this.aux_unempfindlich = new System.Windows.Forms.RadioButton();
             this.artefakttyp_semi = new CustomControls.RadioGroupBox();
             this.semi_monat = new System.Windows.Forms.RadioButton();
             this.semi_woche = new System.Windows.Forms.RadioButton();
@@ -222,7 +223,6 @@ namespace ArtefaktGenerator
             this.repGroup = new CustomControls.RadioGroupBox();
             this.rep_ach = new System.Windows.Forms.RadioButton();
             this.rep_mag = new System.Windows.Forms.RadioButton();
-            this.special_ferngespuer_komp = new System.Windows.Forms.ComboBox();
             this.materialGroup.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.starkonst)).BeginInit();
@@ -264,11 +264,11 @@ namespace ArtefaktGenerator
             ((System.ComponentModel.ISupportInitialize)(this.destruct_komplex)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.destruct_mr)).BeginInit();
             this.menu.SuspendLayout();
-            this.artefakttyp_temp.SuspendLayout();
             this.artefakttyp.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.type_speicher_value)).BeginInit();
-            this.artefakttyp_matrix.SuspendLayout();
             this.artefakttyp_aux.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.type_speicher_value)).BeginInit();
+            this.artefakttyp_temp.SuspendLayout();
+            this.artefakttyp_matrix.SuspendLayout();
             this.artefakttyp_semi.SuspendLayout();
             this.repGroup.SuspendLayout();
             this.SuspendLayout();
@@ -289,7 +289,7 @@ namespace ArtefaktGenerator
             this.cb_kristalle.AutoSize = true;
             this.cb_kristalle.Location = new System.Drawing.Point(7, 36);
             this.cb_kristalle.Name = "cb_kristalle";
-            this.cb_kristalle.Size = new System.Drawing.Size(108, 17);
+            this.cb_kristalle.Size = new System.Drawing.Size(114, 18);
             this.cb_kristalle.TabIndex = 1;
             this.cb_kristalle.Text = "Kristalle (-1 pAsP)";
             this.cb_kristalle.UseVisualStyleBackColor = true;
@@ -464,6 +464,25 @@ namespace ArtefaktGenerator
             this.groupBox7.TabIndex = 20;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Spezielle Eigenschaften";
+            // 
+            // special_ferngespuer_komp
+            // 
+            this.special_ferngespuer_komp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.special_ferngespuer_komp.FormattingEnabled = true;
+            this.special_ferngespuer_komp.Items.AddRange(new object[] {
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H"});
+            this.special_ferngespuer_komp.Location = new System.Drawing.Point(520, 61);
+            this.special_ferngespuer_komp.Name = "special_ferngespuer_komp";
+            this.special_ferngespuer_komp.Size = new System.Drawing.Size(34, 22);
+            this.special_ferngespuer_komp.TabIndex = 26;
+            this.special_ferngespuer_komp.SelectedIndexChanged += new System.EventHandler(this.special_ferngespuer_komp_SelectedIndexChanged);
             // 
             // special_eatmat_var
             // 
@@ -678,7 +697,7 @@ namespace ArtefaktGenerator
             this.gemeinschaftlich.AutoSize = true;
             this.gemeinschaftlich.Location = new System.Drawing.Point(6, 51);
             this.gemeinschaftlich.Name = "gemeinschaftlich";
-            this.gemeinschaftlich.Size = new System.Drawing.Size(173, 17);
+            this.gemeinschaftlich.Size = new System.Drawing.Size(169, 18);
             this.gemeinschaftlich.TabIndex = 25;
             this.gemeinschaftlich.Text = "Gemeinschaftliche Erschaffung";
             this.gemeinschaftlich.UseVisualStyleBackColor = true;
@@ -797,7 +816,7 @@ namespace ArtefaktGenerator
             this.limbus.AutoSize = true;
             this.limbus.Location = new System.Drawing.Point(6, 15);
             this.limbus.Name = "limbus";
-            this.limbus.Size = new System.Drawing.Size(132, 17);
+            this.limbus.Size = new System.Drawing.Size(132, 18);
             this.limbus.TabIndex = 1;
             this.limbus.Text = "Erschaffung im Limbus";
             this.limbus.UseVisualStyleBackColor = true;
@@ -808,7 +827,7 @@ namespace ArtefaktGenerator
             this.namenlos.AutoSize = true;
             this.namenlos.Location = new System.Drawing.Point(6, 33);
             this.namenlos.Name = "namenlos";
-            this.namenlos.Size = new System.Drawing.Size(107, 17);
+            this.namenlos.Size = new System.Drawing.Size(102, 18);
             this.namenlos.TabIndex = 0;
             this.namenlos.Text = "Namenlose Tage";
             this.namenlos.UseVisualStyleBackColor = true;
@@ -838,7 +857,7 @@ namespace ArtefaktGenerator
             this.sf_aux.AutoSize = true;
             this.sf_aux.Location = new System.Drawing.Point(885, 19);
             this.sf_aux.Name = "sf_aux";
-            this.sf_aux.Size = new System.Drawing.Size(68, 17);
+            this.sf_aux.Size = new System.Drawing.Size(73, 18);
             this.sf_aux.TabIndex = 9;
             this.sf_aux.Text = "Auxiliator";
             this.sf_aux.UseVisualStyleBackColor = true;
@@ -849,7 +868,7 @@ namespace ArtefaktGenerator
             this.sf_kraftspeicher.AutoSize = true;
             this.sf_kraftspeicher.Location = new System.Drawing.Point(796, 19);
             this.sf_kraftspeicher.Name = "sf_kraftspeicher";
-            this.sf_kraftspeicher.Size = new System.Drawing.Size(88, 17);
+            this.sf_kraftspeicher.Size = new System.Drawing.Size(89, 18);
             this.sf_kraftspeicher.TabIndex = 10;
             this.sf_kraftspeicher.Text = "Kraftspeicher";
             this.sf_kraftspeicher.UseVisualStyleBackColor = true;
@@ -860,7 +879,7 @@ namespace ArtefaktGenerator
             this.sf_ringkunde.AutoSize = true;
             this.sf_ringkunde.Location = new System.Drawing.Point(686, 19);
             this.sf_ringkunde.Name = "sf_ringkunde";
-            this.sf_ringkunde.Size = new System.Drawing.Size(118, 17);
+            this.sf_ringkunde.Size = new System.Drawing.Size(110, 18);
             this.sf_ringkunde.TabIndex = 4;
             this.sf_ringkunde.Text = "Ringkunde gelesen";
             this.sf_ringkunde.UseVisualStyleBackColor = true;
@@ -871,7 +890,7 @@ namespace ArtefaktGenerator
             this.sf_semiII.AutoSize = true;
             this.sf_semiII.Location = new System.Drawing.Point(576, 19);
             this.sf_semiII.Name = "sf_semiII";
-            this.sf_semiII.Size = new System.Drawing.Size(110, 17);
+            this.sf_semiII.Size = new System.Drawing.Size(110, 18);
             this.sf_semiII.TabIndex = 6;
             this.sf_semiII.Text = "Semipermanenz II";
             this.sf_semiII.UseVisualStyleBackColor = true;
@@ -882,7 +901,7 @@ namespace ArtefaktGenerator
             this.sf_semiI.AutoSize = true;
             this.sf_semiI.Location = new System.Drawing.Point(470, 19);
             this.sf_semiI.Name = "sf_semiI";
-            this.sf_semiI.Size = new System.Drawing.Size(107, 17);
+            this.sf_semiI.Size = new System.Drawing.Size(106, 18);
             this.sf_semiI.TabIndex = 5;
             this.sf_semiI.Text = "Semipermanenz I";
             this.sf_semiI.UseVisualStyleBackColor = true;
@@ -893,7 +912,7 @@ namespace ArtefaktGenerator
             this.sf_matrix.AutoSize = true;
             this.sf_matrix.Location = new System.Drawing.Point(388, 19);
             this.sf_matrix.Name = "sf_matrix";
-            this.sf_matrix.Size = new System.Drawing.Size(81, 17);
+            this.sf_matrix.Size = new System.Drawing.Size(82, 18);
             this.sf_matrix.TabIndex = 4;
             this.sf_matrix.Text = "Matrixgeber";
             this.sf_matrix.UseVisualStyleBackColor = true;
@@ -904,7 +923,7 @@ namespace ArtefaktGenerator
             this.sf_hyper.AutoSize = true;
             this.sf_hyper.Location = new System.Drawing.Point(286, 19);
             this.sf_hyper.Name = "sf_hyper";
-            this.sf_hyper.Size = new System.Drawing.Size(103, 17);
+            this.sf_hyper.Size = new System.Drawing.Size(102, 18);
             this.sf_hyper.TabIndex = 3;
             this.sf_hyper.Text = "Hypervehemenz";
             this.sf_hyper.UseVisualStyleBackColor = true;
@@ -915,7 +934,7 @@ namespace ArtefaktGenerator
             this.sf_stapel.AutoSize = true;
             this.sf_stapel.Location = new System.Drawing.Point(204, 19);
             this.sf_stapel.Name = "sf_stapel";
-            this.sf_stapel.Size = new System.Drawing.Size(83, 17);
+            this.sf_stapel.Size = new System.Drawing.Size(82, 18);
             this.sf_stapel.TabIndex = 2;
             this.sf_stapel.Text = "Stapeleffekt";
             this.sf_stapel.UseVisualStyleBackColor = true;
@@ -926,7 +945,7 @@ namespace ArtefaktGenerator
             this.sf_vielLadung.AutoSize = true;
             this.sf_vielLadung.Location = new System.Drawing.Point(100, 19);
             this.sf_vielLadung.Name = "sf_vielLadung";
-            this.sf_vielLadung.Size = new System.Drawing.Size(109, 17);
+            this.sf_vielLadung.Size = new System.Drawing.Size(104, 18);
             this.sf_vielLadung.TabIndex = 8;
             this.sf_vielLadung.Text = "Vielfache Ladung";
             this.sf_vielLadung.UseVisualStyleBackColor = true;
@@ -937,7 +956,7 @@ namespace ArtefaktGenerator
             this.sf_kraft.AutoSize = true;
             this.sf_kraft.Location = new System.Drawing.Point(6, 19);
             this.sf_kraft.Name = "sf_kraft";
-            this.sf_kraft.Size = new System.Drawing.Size(88, 17);
+            this.sf_kraft.Size = new System.Drawing.Size(94, 18);
             this.sf_kraft.TabIndex = 0;
             this.sf_kraft.Text = "Kraftkontrolle";
             this.sf_kraft.UseVisualStyleBackColor = true;
@@ -2080,59 +2099,9 @@ namespace ArtefaktGenerator
             this.hero_name.TabIndex = 25;
             this.hero_name.Text = "Held: ";
             // 
-            // artefakttyp_temp
-            // 
-            this.artefakttyp_temp.Controls.Add(this.temp_monat);
-            this.artefakttyp_temp.Controls.Add(this.temp_woche);
-            this.artefakttyp_temp.Controls.Add(this.temp_tag);
-            this.artefakttyp_temp.Location = new System.Drawing.Point(6, 45);
-            this.artefakttyp_temp.Name = "artefakttyp_temp";
-            this.artefakttyp_temp.Selected = 0;
-            this.artefakttyp_temp.Size = new System.Drawing.Size(176, 43);
-            this.artefakttyp_temp.TabIndex = 25;
-            this.artefakttyp_temp.TabStop = false;
-            this.artefakttyp_temp.Text = "Zeitraum";
-            // 
-            // temp_monat
-            // 
-            this.temp_monat.AutoSize = true;
-            this.temp_monat.Location = new System.Drawing.Point(113, 16);
-            this.temp_monat.Name = "temp_monat";
-            this.temp_monat.Size = new System.Drawing.Size(55, 17);
-            this.temp_monat.TabIndex = 2;
-            this.temp_monat.Tag = "2";
-            this.temp_monat.Text = "Monat";
-            this.temp_monat.UseVisualStyleBackColor = true;
-            this.temp_monat.Click += new System.EventHandler(this.temp_monat_Click);
-            // 
-            // temp_woche
-            // 
-            this.temp_woche.AutoSize = true;
-            this.temp_woche.Location = new System.Drawing.Point(56, 16);
-            this.temp_woche.Name = "temp_woche";
-            this.temp_woche.Size = new System.Drawing.Size(60, 17);
-            this.temp_woche.TabIndex = 1;
-            this.temp_woche.Tag = "1";
-            this.temp_woche.Text = "Woche";
-            this.temp_woche.UseVisualStyleBackColor = true;
-            this.temp_woche.Click += new System.EventHandler(this.temp_woche_Click);
-            // 
-            // temp_tag
-            // 
-            this.temp_tag.AutoSize = true;
-            this.temp_tag.Checked = true;
-            this.temp_tag.Location = new System.Drawing.Point(10, 16);
-            this.temp_tag.Name = "temp_tag";
-            this.temp_tag.Size = new System.Drawing.Size(44, 17);
-            this.temp_tag.TabIndex = 0;
-            this.temp_tag.TabStop = true;
-            this.temp_tag.Tag = "0";
-            this.temp_tag.Text = "Tag";
-            this.temp_tag.UseVisualStyleBackColor = true;
-            this.temp_tag.Click += new System.EventHandler(this.temp_tag_Click);
-            // 
             // artefakttyp
             // 
+            this.artefakttyp.Controls.Add(this.artefakttyp_aux);
             this.artefakttyp.Controls.Add(this.type_speicher_value);
             this.artefakttyp.Controls.Add(this.lbl_type_speicher_val);
             this.artefakttyp.Controls.Add(this.type_speicher);
@@ -2144,7 +2113,6 @@ namespace ArtefaktGenerator
             this.artefakttyp.Controls.Add(this.type_matrix);
             this.artefakttyp.Controls.Add(this.type_semi);
             this.artefakttyp.Controls.Add(this.artefakttyp_matrix);
-            this.artefakttyp.Controls.Add(this.artefakttyp_aux);
             this.artefakttyp.Controls.Add(this.artefakttyp_semi);
             this.artefakttyp.Location = new System.Drawing.Point(7, 157);
             this.artefakttyp.Name = "artefakttyp";
@@ -2153,6 +2121,81 @@ namespace ArtefaktGenerator
             this.artefakttyp.TabIndex = 26;
             this.artefakttyp.TabStop = false;
             this.artefakttyp.Text = "Artefakttyp";
+            // 
+            // artefakttyp_aux
+            // 
+            this.artefakttyp_aux.Controls.Add(this.aux_labil);
+            this.artefakttyp_aux.Controls.Add(this.aux_merkmal);
+            this.artefakttyp_aux.Controls.Add(this.aux_stable);
+            this.artefakttyp_aux.Controls.Add(this.aux_verystable);
+            this.artefakttyp_aux.Controls.Add(this.aux_unempfindlich);
+            this.artefakttyp_aux.Location = new System.Drawing.Point(250, 46);
+            this.artefakttyp_aux.Name = "artefakttyp_aux";
+            this.artefakttyp_aux.Selected = 3;
+            this.artefakttyp_aux.Size = new System.Drawing.Size(367, 42);
+            this.artefakttyp_aux.TabIndex = 27;
+            this.artefakttyp_aux.TabStop = false;
+            this.artefakttyp_aux.Text = "Stabilität";
+            // 
+            // aux_labil
+            // 
+            this.aux_labil.AutoSize = true;
+            this.aux_labil.Location = new System.Drawing.Point(11, 15);
+            this.aux_labil.Name = "aux_labil";
+            this.aux_labil.Size = new System.Drawing.Size(44, 18);
+            this.aux_labil.TabIndex = 0;
+            this.aux_labil.Tag = "0";
+            this.aux_labil.Text = "labil";
+            this.aux_labil.UseVisualStyleBackColor = true;
+            this.aux_labil.Click += new System.EventHandler(this.aux_labil_Click);
+            // 
+            // aux_merkmal
+            // 
+            this.aux_merkmal.AutoSize = true;
+            this.aux_merkmal.Location = new System.Drawing.Point(293, 16);
+            this.aux_merkmal.Name = "aux_merkmal";
+            this.aux_merkmal.Size = new System.Drawing.Size(68, 18);
+            this.aux_merkmal.TabIndex = 5;
+            this.aux_merkmal.Text = "Merkmal";
+            this.aux_merkmal.UseVisualStyleBackColor = true;
+            // 
+            // aux_stable
+            // 
+            this.aux_stable.AutoSize = true;
+            this.aux_stable.Location = new System.Drawing.Point(61, 15);
+            this.aux_stable.Name = "aux_stable";
+            this.aux_stable.Size = new System.Drawing.Size(49, 18);
+            this.aux_stable.TabIndex = 1;
+            this.aux_stable.Tag = "1";
+            this.aux_stable.Text = "stabil";
+            this.aux_stable.UseVisualStyleBackColor = true;
+            this.aux_stable.Click += new System.EventHandler(this.aux_stable_Click);
+            // 
+            // aux_verystable
+            // 
+            this.aux_verystable.AutoSize = true;
+            this.aux_verystable.Checked = true;
+            this.aux_verystable.Location = new System.Drawing.Point(117, 15);
+            this.aux_verystable.Name = "aux_verystable";
+            this.aux_verystable.Size = new System.Drawing.Size(71, 18);
+            this.aux_verystable.TabIndex = 2;
+            this.aux_verystable.TabStop = true;
+            this.aux_verystable.Tag = "2";
+            this.aux_verystable.Text = "sehr stabil";
+            this.aux_verystable.UseVisualStyleBackColor = true;
+            this.aux_verystable.Click += new System.EventHandler(this.aux_verystable_Click);
+            // 
+            // aux_unempfindlich
+            // 
+            this.aux_unempfindlich.AutoSize = true;
+            this.aux_unempfindlich.Location = new System.Drawing.Point(196, 15);
+            this.aux_unempfindlich.Name = "aux_unempfindlich";
+            this.aux_unempfindlich.Size = new System.Drawing.Size(91, 18);
+            this.aux_unempfindlich.TabIndex = 3;
+            this.aux_unempfindlich.Tag = "3";
+            this.aux_unempfindlich.Text = "unempfindlich";
+            this.aux_unempfindlich.UseVisualStyleBackColor = true;
+            this.aux_unempfindlich.Click += new System.EventHandler(this.aux_unempfindlich_Click);
             // 
             // type_speicher_value
             // 
@@ -2186,7 +2229,7 @@ namespace ArtefaktGenerator
             this.type_speicher.AutoSize = true;
             this.type_speicher.Location = new System.Drawing.Point(414, 19);
             this.type_speicher.Name = "type_speicher";
-            this.type_speicher.Size = new System.Drawing.Size(86, 17);
+            this.type_speicher.Size = new System.Drawing.Size(86, 18);
             this.type_speicher.TabIndex = 29;
             this.type_speicher.TabStop = true;
             this.type_speicher.Tag = "6";
@@ -2194,12 +2237,63 @@ namespace ArtefaktGenerator
             this.type_speicher.UseVisualStyleBackColor = true;
             this.type_speicher.Click += new System.EventHandler(this.type_speicher_Click);
             // 
+            // artefakttyp_temp
+            // 
+            this.artefakttyp_temp.Controls.Add(this.temp_monat);
+            this.artefakttyp_temp.Controls.Add(this.temp_woche);
+            this.artefakttyp_temp.Controls.Add(this.temp_tag);
+            this.artefakttyp_temp.Location = new System.Drawing.Point(6, 45);
+            this.artefakttyp_temp.Name = "artefakttyp_temp";
+            this.artefakttyp_temp.Selected = 0;
+            this.artefakttyp_temp.Size = new System.Drawing.Size(176, 43);
+            this.artefakttyp_temp.TabIndex = 25;
+            this.artefakttyp_temp.TabStop = false;
+            this.artefakttyp_temp.Text = "Zeitraum";
+            // 
+            // temp_monat
+            // 
+            this.temp_monat.AutoSize = true;
+            this.temp_monat.Location = new System.Drawing.Point(113, 16);
+            this.temp_monat.Name = "temp_monat";
+            this.temp_monat.Size = new System.Drawing.Size(56, 18);
+            this.temp_monat.TabIndex = 2;
+            this.temp_monat.Tag = "2";
+            this.temp_monat.Text = "Monat";
+            this.temp_monat.UseVisualStyleBackColor = true;
+            this.temp_monat.Click += new System.EventHandler(this.temp_monat_Click);
+            // 
+            // temp_woche
+            // 
+            this.temp_woche.AutoSize = true;
+            this.temp_woche.Location = new System.Drawing.Point(56, 16);
+            this.temp_woche.Name = "temp_woche";
+            this.temp_woche.Size = new System.Drawing.Size(57, 18);
+            this.temp_woche.TabIndex = 1;
+            this.temp_woche.Tag = "1";
+            this.temp_woche.Text = "Woche";
+            this.temp_woche.UseVisualStyleBackColor = true;
+            this.temp_woche.Click += new System.EventHandler(this.temp_woche_Click);
+            // 
+            // temp_tag
+            // 
+            this.temp_tag.AutoSize = true;
+            this.temp_tag.Checked = true;
+            this.temp_tag.Location = new System.Drawing.Point(10, 16);
+            this.temp_tag.Name = "temp_tag";
+            this.temp_tag.Size = new System.Drawing.Size(42, 18);
+            this.temp_tag.TabIndex = 0;
+            this.temp_tag.TabStop = true;
+            this.temp_tag.Tag = "0";
+            this.temp_tag.Text = "Tag";
+            this.temp_tag.UseVisualStyleBackColor = true;
+            this.temp_tag.Click += new System.EventHandler(this.temp_tag_Click);
+            // 
             // type_temp
             // 
             this.type_temp.AutoSize = true;
             this.type_temp.Location = new System.Drawing.Point(6, 19);
             this.type_temp.Name = "type_temp";
-            this.type_temp.Size = new System.Drawing.Size(66, 17);
+            this.type_temp.Size = new System.Drawing.Size(68, 18);
             this.type_temp.TabIndex = 0;
             this.type_temp.Tag = "0";
             this.type_temp.Text = "temporär";
@@ -2211,7 +2305,7 @@ namespace ArtefaktGenerator
             this.type_einaml.AutoSize = true;
             this.type_einaml.Location = new System.Drawing.Point(80, 19);
             this.type_einaml.Name = "type_einaml";
-            this.type_einaml.Size = new System.Drawing.Size(63, 17);
+            this.type_einaml.Size = new System.Drawing.Size(64, 18);
             this.type_einaml.TabIndex = 1;
             this.type_einaml.Tag = "1";
             this.type_einaml.Text = "einmalig";
@@ -2224,7 +2318,7 @@ namespace ArtefaktGenerator
             this.type_aux.Enabled = false;
             this.type_aux.Location = new System.Drawing.Point(508, 19);
             this.type_aux.Name = "type_aux";
-            this.type_aux.Size = new System.Drawing.Size(66, 17);
+            this.type_aux.Size = new System.Drawing.Size(69, 18);
             this.type_aux.TabIndex = 24;
             this.type_aux.Tag = "5";
             this.type_aux.Text = "auxiliator";
@@ -2236,7 +2330,7 @@ namespace ArtefaktGenerator
             this.type_charge.AutoSize = true;
             this.type_charge.Location = new System.Drawing.Point(150, 19);
             this.type_charge.Name = "type_charge";
-            this.type_charge.Size = new System.Drawing.Size(69, 17);
+            this.type_charge.Size = new System.Drawing.Size(66, 18);
             this.type_charge.TabIndex = 2;
             this.type_charge.Tag = "2";
             this.type_charge.Text = "aufladbar";
@@ -2249,7 +2343,7 @@ namespace ArtefaktGenerator
             this.type_matrix.Enabled = false;
             this.type_matrix.Location = new System.Drawing.Point(226, 19);
             this.type_matrix.Name = "type_matrix";
-            this.type_matrix.Size = new System.Drawing.Size(79, 17);
+            this.type_matrix.Size = new System.Drawing.Size(80, 18);
             this.type_matrix.TabIndex = 3;
             this.type_matrix.Tag = "3";
             this.type_matrix.Text = "matrixgeber";
@@ -2263,7 +2357,7 @@ namespace ArtefaktGenerator
             this.type_semi.Enabled = false;
             this.type_semi.Location = new System.Drawing.Point(312, 19);
             this.type_semi.Name = "type_semi";
-            this.type_semi.Size = new System.Drawing.Size(96, 17);
+            this.type_semi.Size = new System.Drawing.Size(96, 18);
             this.type_semi.TabIndex = 4;
             this.type_semi.TabStop = true;
             this.type_semi.Tag = "4";
@@ -2290,7 +2384,7 @@ namespace ArtefaktGenerator
             this.matrix_unempfindlich.AutoSize = true;
             this.matrix_unempfindlich.Location = new System.Drawing.Point(200, 15);
             this.matrix_unempfindlich.Name = "matrix_unempfindlich";
-            this.matrix_unempfindlich.Size = new System.Drawing.Size(90, 17);
+            this.matrix_unempfindlich.Size = new System.Drawing.Size(91, 18);
             this.matrix_unempfindlich.TabIndex = 3;
             this.matrix_unempfindlich.Tag = "3";
             this.matrix_unempfindlich.Text = "unempfindlich";
@@ -2302,7 +2396,7 @@ namespace ArtefaktGenerator
             this.matrix_verystable.AutoSize = true;
             this.matrix_verystable.Location = new System.Drawing.Point(121, 15);
             this.matrix_verystable.Name = "matrix_verystable";
-            this.matrix_verystable.Size = new System.Drawing.Size(72, 17);
+            this.matrix_verystable.Size = new System.Drawing.Size(71, 18);
             this.matrix_verystable.TabIndex = 2;
             this.matrix_verystable.Tag = "2";
             this.matrix_verystable.Text = "sehr stabil";
@@ -2314,7 +2408,7 @@ namespace ArtefaktGenerator
             this.matrix_stable.AutoSize = true;
             this.matrix_stable.Location = new System.Drawing.Point(65, 15);
             this.matrix_stable.Name = "matrix_stable";
-            this.matrix_stable.Size = new System.Drawing.Size(49, 17);
+            this.matrix_stable.Size = new System.Drawing.Size(49, 18);
             this.matrix_stable.TabIndex = 1;
             this.matrix_stable.Tag = "1";
             this.matrix_stable.Text = "stabil";
@@ -2327,88 +2421,13 @@ namespace ArtefaktGenerator
             this.matrix_labil.Checked = true;
             this.matrix_labil.Location = new System.Drawing.Point(15, 15);
             this.matrix_labil.Name = "matrix_labil";
-            this.matrix_labil.Size = new System.Drawing.Size(43, 17);
+            this.matrix_labil.Size = new System.Drawing.Size(44, 18);
             this.matrix_labil.TabIndex = 0;
             this.matrix_labil.TabStop = true;
             this.matrix_labil.Tag = "0";
             this.matrix_labil.Text = "labil";
             this.matrix_labil.UseVisualStyleBackColor = true;
             this.matrix_labil.Click += new System.EventHandler(this.matrix_labil_Click);
-            // 
-            // artefakttyp_aux
-            // 
-            this.artefakttyp_aux.Controls.Add(this.aux_labil);
-            this.artefakttyp_aux.Controls.Add(this.aux_merkmal);
-            this.artefakttyp_aux.Controls.Add(this.aux_stable);
-            this.artefakttyp_aux.Controls.Add(this.aux_verystable);
-            this.artefakttyp_aux.Controls.Add(this.aux_unempfindlich);
-            this.artefakttyp_aux.Location = new System.Drawing.Point(250, 46);
-            this.artefakttyp_aux.Name = "artefakttyp_aux";
-            this.artefakttyp_aux.Selected = 3;
-            this.artefakttyp_aux.Size = new System.Drawing.Size(367, 42);
-            this.artefakttyp_aux.TabIndex = 27;
-            this.artefakttyp_aux.TabStop = false;
-            this.artefakttyp_aux.Text = "Stabilität";
-            // 
-            // aux_labil
-            // 
-            this.aux_labil.AutoSize = true;
-            this.aux_labil.Location = new System.Drawing.Point(11, 15);
-            this.aux_labil.Name = "aux_labil";
-            this.aux_labil.Size = new System.Drawing.Size(43, 17);
-            this.aux_labil.TabIndex = 0;
-            this.aux_labil.Tag = "0";
-            this.aux_labil.Text = "labil";
-            this.aux_labil.UseVisualStyleBackColor = true;
-            this.aux_labil.Click += new System.EventHandler(this.aux_labil_Click);
-            // 
-            // aux_merkmal
-            // 
-            this.aux_merkmal.AutoSize = true;
-            this.aux_merkmal.Location = new System.Drawing.Point(293, 16);
-            this.aux_merkmal.Name = "aux_merkmal";
-            this.aux_merkmal.Size = new System.Drawing.Size(66, 17);
-            this.aux_merkmal.TabIndex = 5;
-            this.aux_merkmal.Text = "Merkmal";
-            this.aux_merkmal.UseVisualStyleBackColor = true;
-            // 
-            // aux_stable
-            // 
-            this.aux_stable.AutoSize = true;
-            this.aux_stable.Location = new System.Drawing.Point(61, 15);
-            this.aux_stable.Name = "aux_stable";
-            this.aux_stable.Size = new System.Drawing.Size(49, 17);
-            this.aux_stable.TabIndex = 1;
-            this.aux_stable.Tag = "1";
-            this.aux_stable.Text = "stabil";
-            this.aux_stable.UseVisualStyleBackColor = true;
-            this.aux_stable.Click += new System.EventHandler(this.aux_stable_Click);
-            // 
-            // aux_verystable
-            // 
-            this.aux_verystable.AutoSize = true;
-            this.aux_verystable.Checked = true;
-            this.aux_verystable.Location = new System.Drawing.Point(117, 15);
-            this.aux_verystable.Name = "aux_verystable";
-            this.aux_verystable.Size = new System.Drawing.Size(72, 17);
-            this.aux_verystable.TabIndex = 2;
-            this.aux_verystable.TabStop = true;
-            this.aux_verystable.Tag = "3";
-            this.aux_verystable.Text = "sehr stabil";
-            this.aux_verystable.UseVisualStyleBackColor = true;
-            this.aux_verystable.Click += new System.EventHandler(this.aux_verystable_Click);
-            // 
-            // aux_unempfindlich
-            // 
-            this.aux_unempfindlich.AutoSize = true;
-            this.aux_unempfindlich.Location = new System.Drawing.Point(196, 15);
-            this.aux_unempfindlich.Name = "aux_unempfindlich";
-            this.aux_unempfindlich.Size = new System.Drawing.Size(90, 17);
-            this.aux_unempfindlich.TabIndex = 3;
-            this.aux_unempfindlich.Tag = "4";
-            this.aux_unempfindlich.Text = "unempfindlich";
-            this.aux_unempfindlich.UseVisualStyleBackColor = true;
-            this.aux_unempfindlich.Click += new System.EventHandler(this.aux_unempfindlich_Click);
             // 
             // artefakttyp_semi
             // 
@@ -2429,7 +2448,7 @@ namespace ArtefaktGenerator
             this.semi_monat.AutoSize = true;
             this.semi_monat.Location = new System.Drawing.Point(129, 15);
             this.semi_monat.Name = "semi_monat";
-            this.semi_monat.Size = new System.Drawing.Size(55, 17);
+            this.semi_monat.Size = new System.Drawing.Size(56, 18);
             this.semi_monat.TabIndex = 6;
             this.semi_monat.Tag = "2";
             this.semi_monat.Text = "Monat";
@@ -2441,7 +2460,7 @@ namespace ArtefaktGenerator
             this.semi_woche.AutoSize = true;
             this.semi_woche.Location = new System.Drawing.Point(63, 15);
             this.semi_woche.Name = "semi_woche";
-            this.semi_woche.Size = new System.Drawing.Size(60, 17);
+            this.semi_woche.Size = new System.Drawing.Size(57, 18);
             this.semi_woche.TabIndex = 5;
             this.semi_woche.Tag = "1";
             this.semi_woche.Text = "Woche";
@@ -2454,7 +2473,7 @@ namespace ArtefaktGenerator
             this.semi_tag.Checked = true;
             this.semi_tag.Location = new System.Drawing.Point(15, 15);
             this.semi_tag.Name = "semi_tag";
-            this.semi_tag.Size = new System.Drawing.Size(44, 17);
+            this.semi_tag.Size = new System.Drawing.Size(42, 18);
             this.semi_tag.TabIndex = 4;
             this.semi_tag.TabStop = true;
             this.semi_tag.Tag = "0";
@@ -2467,7 +2486,7 @@ namespace ArtefaktGenerator
             this.semi_jahr.AutoSize = true;
             this.semi_jahr.Location = new System.Drawing.Point(190, 15);
             this.semi_jahr.Name = "semi_jahr";
-            this.semi_jahr.Size = new System.Drawing.Size(45, 17);
+            this.semi_jahr.Size = new System.Drawing.Size(44, 18);
             this.semi_jahr.TabIndex = 7;
             this.semi_jahr.Tag = "3";
             this.semi_jahr.Text = "Jahr";
@@ -2491,7 +2510,7 @@ namespace ArtefaktGenerator
             this.rep_ach.AutoSize = true;
             this.rep_ach.Location = new System.Drawing.Point(94, 16);
             this.rep_ach.Name = "rep_ach";
-            this.rep_ach.Size = new System.Drawing.Size(44, 17);
+            this.rep_ach.Size = new System.Drawing.Size(44, 18);
             this.rep_ach.TabIndex = 2;
             this.rep_ach.Tag = "0";
             this.rep_ach.Text = "Ach";
@@ -2504,32 +2523,13 @@ namespace ArtefaktGenerator
             this.rep_mag.Checked = true;
             this.rep_mag.Location = new System.Drawing.Point(8, 16);
             this.rep_mag.Name = "rep_mag";
-            this.rep_mag.Size = new System.Drawing.Size(79, 17);
+            this.rep_mag.Size = new System.Drawing.Size(76, 18);
             this.rep_mag.TabIndex = 1;
             this.rep_mag.TabStop = true;
             this.rep_mag.Tag = "1";
             this.rep_mag.Text = "Mag/Hex...";
             this.rep_mag.UseVisualStyleBackColor = true;
             this.rep_mag.Click += new System.EventHandler(this.rep_mag_Click);
-            // 
-            // special_ferngespuer_komp
-            // 
-            this.special_ferngespuer_komp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.special_ferngespuer_komp.FormattingEnabled = true;
-            this.special_ferngespuer_komp.Items.AddRange(new object[] {
-            "A",
-            "B",
-            "C",
-            "D",
-            "E",
-            "F",
-            "G",
-            "H"});
-            this.special_ferngespuer_komp.Location = new System.Drawing.Point(520, 61);
-            this.special_ferngespuer_komp.Name = "special_ferngespuer_komp";
-            this.special_ferngespuer_komp.Size = new System.Drawing.Size(34, 22);
-            this.special_ferngespuer_komp.TabIndex = 26;
-            this.special_ferngespuer_komp.SelectedIndexChanged += new System.EventHandler(this.special_ferngespuer_komp_SelectedIndexChanged);
             // 
             // ArtGenControl
             // 
@@ -2610,15 +2610,15 @@ namespace ArtefaktGenerator
             ((System.ComponentModel.ISupportInitialize)(this.destruct_mr)).EndInit();
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
-            this.artefakttyp_temp.ResumeLayout(false);
-            this.artefakttyp_temp.PerformLayout();
             this.artefakttyp.ResumeLayout(false);
             this.artefakttyp.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.type_speicher_value)).EndInit();
-            this.artefakttyp_matrix.ResumeLayout(false);
-            this.artefakttyp_matrix.PerformLayout();
             this.artefakttyp_aux.ResumeLayout(false);
             this.artefakttyp_aux.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.type_speicher_value)).EndInit();
+            this.artefakttyp_temp.ResumeLayout(false);
+            this.artefakttyp_temp.PerformLayout();
+            this.artefakttyp_matrix.ResumeLayout(false);
+            this.artefakttyp_matrix.PerformLayout();
             this.artefakttyp_semi.ResumeLayout(false);
             this.artefakttyp_semi.PerformLayout();
             this.repGroup.ResumeLayout(false);

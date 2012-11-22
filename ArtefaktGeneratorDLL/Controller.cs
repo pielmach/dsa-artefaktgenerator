@@ -1508,10 +1508,7 @@ namespace ArtefaktGenerator
                         case Artefakt.ArtefaktType.MATRIX: pasp = Round(Round((magic_asp + arcanovi_asp + arcanovi_special_asp) / 20) * artefakt.material.pasp_mod); break;
                         case Artefakt.ArtefaktType.SEMI: pasp = Round(Round((magic_asp + arcanovi_asp + arcanovi_special_asp) / 10) * artefakt.material.pasp_mod); break;
                         case Artefakt.ArtefaktType.AUX: if (WDA) pasp = Round(Round((magic_asp + arcanovi_asp + arcanovi_special_asp) / 15) * artefakt.material.pasp_mod); break;
-                        case Artefakt.ArtefaktType.SPEICHER: 
-                            pasp = Round(Math.Floor((magic_asp + arcanovi_asp + arcanovi_special_asp) / 20) * artefakt.material.pasp_mod);
-                            if (!WDA) pasp += Round(dice.W6 / 2);
-                            break;
+                        case Artefakt.ArtefaktType.SPEICHER: pasp = Round(Math.Floor((magic_asp + arcanovi_asp + arcanovi_special_asp) / 10) * artefakt.material.pasp_mod) + Round(dice.W6 / 2); break;
                         default: break;
                     }
                     if (pasp <= 0 && !(artefakt.typ == Artefakt.ArtefaktType.TEMP) && !(artefakt.kristalle))
@@ -1532,28 +1529,32 @@ namespace ArtefaktGenerator
                     int nRun = 0;
                     int ignoredNebens = 0;
                     // This is to check for doubles
-                    while (neben_count > 0)
+                    if (optionAllesBerechnen)
                     {
-                        int number = (int)(dice.W20 + dice.W20 + artefakt.material.nebenwirkung_art_mod);
-                        // check for double descr
-                        bool addNumber = true;
-                        foreach (int elem in nebensNumbers)
+                        while (neben_count > 0)
                         {
-                            if (nebeneffekte.getNebeneffektDescr(WDA, elem) == nebeneffekte.getNebeneffektDescr(WDA, number))
+                            int number = (int)(dice.W20 + dice.W20 + artefakt.material.nebenwirkung_art_mod);
+                            // check for double descr
+                            bool addNumber = true;
+                            foreach (int elem in nebensNumbers)
                             {
-                                addNumber = false;
-                                break;
+                                if (nebeneffekte.getNebeneffektDescr(WDA, elem) == nebeneffekte.getNebeneffektDescr(WDA, number))
+                                {
+                                    addNumber = false;
+                                    break;
+                                }
                             }
+                            if (addNumber) nebensNumbers.Insert(nebensNumbers.Count, number);
+                            else if (optionNebeneffekteNeuWuerfeln)
+                                continue;
+                            else
+                                ignoredNebens++;
+                            nRun++;
+                            if (nRun >= neben_count) break;
                         }
-                        if (addNumber) nebensNumbers.Insert(nebensNumbers.Count, number);
-                        else if (optionNebeneffekteNeuWuerfeln)
-                            continue;
-                        else
-                            ignoredNebens++;
-                        nRun++;
-                        if (nRun >= neben_count) break;
+                        nebensNumbers.Sort();
                     }
-                    nebensNumbers.Sort();
+
                     List<string> nebens = new List<string>();
                     foreach(int elem in nebensNumbers)
                         nebens.Add("\t" + elem + ": " + nebeneffekte.getNebeneffektDescr(WDA, elem) + "\r\n");
