@@ -2087,7 +2087,7 @@ namespace ArtefaktGenerator
             this.lblInfo.Name = "lblInfo";
             this.lblInfo.Size = new System.Drawing.Size(209, 14);
             this.lblInfo.TabIndex = 24;
-            this.lblInfo.Text = "ArtefaktGenerator 2.3 by DSA-Hamburg.de";
+            this.lblInfo.Text = "ArtefaktGenerator 2.4 by DSA-Hamburg.de";
             // 
             // hero_name
             // 
@@ -2174,12 +2174,10 @@ namespace ArtefaktGenerator
             // aux_verystable
             // 
             this.aux_verystable.AutoSize = true;
-            this.aux_verystable.Checked = true;
             this.aux_verystable.Location = new System.Drawing.Point(117, 15);
             this.aux_verystable.Name = "aux_verystable";
             this.aux_verystable.Size = new System.Drawing.Size(71, 18);
             this.aux_verystable.TabIndex = 2;
-            this.aux_verystable.TabStop = true;
             this.aux_verystable.Tag = "2";
             this.aux_verystable.Text = "sehr stabil";
             this.aux_verystable.UseVisualStyleBackColor = true;
@@ -2188,10 +2186,12 @@ namespace ArtefaktGenerator
             // aux_unempfindlich
             // 
             this.aux_unempfindlich.AutoSize = true;
+            this.aux_unempfindlich.Checked = true;
             this.aux_unempfindlich.Location = new System.Drawing.Point(196, 15);
             this.aux_unempfindlich.Name = "aux_unempfindlich";
             this.aux_unempfindlich.Size = new System.Drawing.Size(91, 18);
             this.aux_unempfindlich.TabIndex = 3;
+            this.aux_unempfindlich.TabStop = true;
             this.aux_unempfindlich.Tag = "3";
             this.aux_unempfindlich.Text = "unempfindlich";
             this.aux_unempfindlich.UseVisualStyleBackColor = true;

@@ -3,8 +3,6 @@ using System.IO;
 using System;
 using System.Threading;
 
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 //using System.Drawing;
 //using System.Data;
