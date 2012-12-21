@@ -30,6 +30,7 @@ namespace ArtefaktGenerator
             {
                 updatesToolStripMenuItem.Visible = false;
                 programmToolStripMenuItem1.Visible = false;
+                heldenimportToolStripMenuItem.Visible = false;
             }
 			
             UpdateManager updManager = UpdateManager.Instance;
