@@ -355,10 +355,15 @@ namespace ArtefaktGenerator
             // 
             this.arcanovi_force.Location = new System.Drawing.Point(111, 88);
             this.arcanovi_force.Maximum = new decimal(new int[] {
-            20,
+            0,
             0,
             0,
             0});
+            this.arcanovi_force.Minimum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            -2147483648});
             this.arcanovi_force.Name = "arcanovi_force";
             this.arcanovi_force.Size = new System.Drawing.Size(36, 20);
             this.arcanovi_force.TabIndex = 16;
