@@ -503,12 +503,12 @@ namespace ArtefaktGenerator
                 this.special_ferngespuer.DataBindings.Add("Enabled", controller, "spezialFerngespuerEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.lbl_special_asp.DataBindings.Add("Visible", controller, "spezialFerngespuerVisible", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.lbl_special_komp.DataBindings.Add("Visible", controller, "spezialFerngespuerVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.lbl_special_asp.DataBindings.Add("Enabled", controller, "spezialFerngespuerEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.lbl_special_komp.DataBindings.Add("Enabled", controller, "spezialFerngespuerEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+                this.lbl_special_asp.DataBindings.Add("Enabled", controller, "spezialFerngespuer", false, DataSourceUpdateMode.OnPropertyChanged);
+                this.lbl_special_komp.DataBindings.Add("Enabled", controller, "spezialFerngespuer", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.special_ferngespuer_komp.DataBindings.Add("Visible", controller, "spezialFerngespuerVisible", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.special_ferngespuer_asp.DataBindings.Add("Visible", controller, "spezialFerngespuerVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_ferngespuer_komp.DataBindings.Add("Enabled", controller, "spezialFerngespuerEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_ferngespuer_asp.DataBindings.Add("Enabled", controller, "spezialFerngespuerEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+                this.special_ferngespuer_komp.DataBindings.Add("Enabled", controller, "spezialFerngespuer", false, DataSourceUpdateMode.OnPropertyChanged);
+                this.special_ferngespuer_asp.DataBindings.Add("Enabled", controller, "spezialFerngespuer", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.special_ferngespuer_asp.DataBindings.Add("Value", controller, "spezialFerngespuerAsp", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.special_ferngespuer_komp.DataBindings.Add("SelectedIndex", controller, "spezialFerngespuerKomp", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.special_reversalis.DataBindings.Add("Checked", controller, "spezialUmkehrtalisman", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -519,7 +519,7 @@ namespace ArtefaktGenerator
                 this.special_variablerelease.DataBindings.Add("Enabled", controller, "spezialVariablerAusloeserEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.special_variable_var.DataBindings.Add("Value", controller, "spezialVariablerAusloeserVar", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.special_variable_var.DataBindings.Add("Visible", controller, "spezialVariablerAusloeserVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_variable_var.DataBindings.Add("Enabled", controller, "spezialVariablerAusloeserEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+                this.special_variable_var.DataBindings.Add("Enabled", controller, "spezialVariablerAusloeser", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.special_schleier.DataBindings.Add("Checked", controller, "spezialVerschleierung", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.special_schleier.DataBindings.Add("Visible", controller, "spezialVerschleierungVisible", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.special_schleier.DataBindings.Add("Enabled", controller, "spezialVerschleierungEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -528,7 +528,7 @@ namespace ArtefaktGenerator
                 this.special_eatmaterial.DataBindings.Add("Enabled", controller, "spezialVerzehrendEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.special_eatmat_var.DataBindings.Add("Value", controller, "spezialVerzehrendVar", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.special_eatmat_var.DataBindings.Add("Visible", controller, "spezialVerzehrendVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_eatmat_var.DataBindings.Add("Enabled", controller, "spezialVerzehrendEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+                this.special_eatmat_var.DataBindings.Add("Enabled", controller, "spezialVerzehrend", false, DataSourceUpdateMode.OnPropertyChanged);
 
                 this.limbus.DataBindings.Add("Checked", controller, "extraMadeInLimbus", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.namenlos.DataBindings.Add("Checked", controller, "extraNamenloseTage", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -584,6 +584,7 @@ namespace ArtefaktGenerator
             special_ferngespuer_komp.SelectedIndex = 0;
 
             controller.optionAchSave = ArtefaktGenerator.Properties.Settings.Default.saveAch;
+            controller.artefakttyp = 1;
             ach_save.Checked = controller.optionAchSave;
             controller.WDA = ArtefaktGenerator.Properties.Settings.Default.WDA;
             wegeDerAlchimieToolStripMenuItem.Checked = controller.WDA;
