@@ -1343,71 +1343,74 @@ namespace ArtefaktGenerator
                     decimal arcanovi_zfp = 0;
                     decimal magic_asp = 0;
                     decimal eigene_rep_count = 0;
+
+                    // Anzahl wirkende Sprueche
+                    decimal nrOfCountRelevants = (magic.Count * magic_asp_mult * artefakt.loads);
+                    decimal currentZfpAdd = 0;
+                    if (artefakt.sf.vielfacheLadung && (artefakt.typ == Artefakt.ArtefaktType.NORMAL || artefakt.typ == Artefakt.ArtefaktType.RECHARGE || artefakt.typ == Artefakt.ArtefaktType.TEMP))
+                        arcanovi_zfp += nrOfCountRelevants;
+                    else
+                        for (int i = 0; i < nrOfCountRelevants; i++ )
+                        {
+                            arcanovi_zfp += currentZfpAdd;
+                            currentZfpAdd++;
+                        }
+
+                    // Komplexität
                     for (int i = 0; i < magic.Count; i++)
                     {
                         // Rep
                         if (magic[i].eigene_rep) eigene_rep_count++;
                         // komplexität
-                        if (WDA && artefakt.typ == Artefakt.ArtefaktType.SEMI)
+                        switch (magic[i].komp)
                         {
-                            switch (magic[i].komp)
-                            {
-                                case "A": break;
-                                case "B": arcanovi_zfp += 1 * magic_asp_mult + artefakt.loads - 1; break;
-                                case "C": arcanovi_zfp += 1 * magic_asp_mult + artefakt.loads - 1; break;
-                                case "D": arcanovi_zfp += 2 * magic_asp_mult + artefakt.loads - 1; break;
-                                case "E": arcanovi_zfp += 2 * magic_asp_mult + artefakt.loads - 1; break;
-                                default: arcanovi_zfp += 3 * magic_asp_mult + artefakt.loads - 1; break;
-                            }
+                            case "A": break;
+                            case "B": arcanovi_zfp += 1 * artefakt.loads * magic_asp_mult; break;
+                            case "C": arcanovi_zfp += 1 * artefakt.loads * magic_asp_mult; break;
+                            case "D": arcanovi_zfp += 2 * artefakt.loads * magic_asp_mult; break;
+                            case "E": arcanovi_zfp += 2 * artefakt.loads * magic_asp_mult; break;
+                            default: arcanovi_zfp += 3 * artefakt.loads * magic_asp_mult; break;
                         }
-                        else
-                        {
-                            switch (magic[i].komp)
-                            {
-                                case "A": break;
-                                case "B": arcanovi_zfp += 1 * artefakt.loads * magic_asp_mult; break;
-                                case "C": arcanovi_zfp += 1 * artefakt.loads * magic_asp_mult; break;
-                                case "D": arcanovi_zfp += 2 * artefakt.loads * magic_asp_mult; break;
-                                case "E": arcanovi_zfp += 2 * artefakt.loads * magic_asp_mult; break;
-                                default: arcanovi_zfp += 3 * artefakt.loads * magic_asp_mult; break;
-                            }
-                        }
-                        // Ladungen
-                        //arcanovi_zfp += (magic[i].load - 1) * 3;
+
                         // Stapel
-                        if (magic[i].staple > 1) arcanovi_zfp += magic[i].staple * 2;
+                        if (magic[i].staple > 1) 
+                            arcanovi_zfp += magic[i].staple * 2;
+
                         // AsP wirkende Sprüche
                         decimal thismagic_asp = magic[i].asp;
-                        if (artefakt.sf.rep == SF.SFType.ACH && optionAchSave) thismagic_asp = Round(thismagic_asp * 3 / 4);
-                        if (artefakt.sf.kraftkontrolle) thismagic_asp -= 1;
-                        if (thismagic_asp == 0) thismagic_asp = 1;
+
+                        if (artefakt.sf.rep == SF.SFType.ACH && optionAchSave) 
+                            thismagic_asp = Round(thismagic_asp * 3 / 4);
+
+                        if (artefakt.sf.kraftkontrolle) 
+                            thismagic_asp -= 1;
+
+                        if (thismagic_asp == 0) 
+                            thismagic_asp = 1;
 
                         magic_asp += thismagic_asp * artefakt.loads * magic[i].staple * magic_asp_mult * magic_asp_mult_extra;
                     }
+
+                    // Anzahl Ladungen
+                    if (artefakt.typ != Artefakt.ArtefaktType.SEMI) // WDA S.83 "Anzahl der Ladungen"
+                        arcanovi_zfp += (artefakt.loads - 1) * 3;
+
                     if (artefakt.typ == Artefakt.ArtefaktType.SPEICHER)
                         magic_asp = artefakt.kraftspeicher_asp;
+
                     if (artefakt.limbus)
                     {
                         magic_asp = Round(magic_asp / 10);
                         arcanovi_erschwernis += 15;
                     }
-                    if (magic_asp <= 0) magic_asp = 1;
 
-                    if (artefakt.gemeinschaftlich) arcanovi_erschwernis += 5;
+                    if (magic_asp <= 0) 
+                        magic_asp = 1;
 
-                    //arcanovi_zfp += artefakt.loads * magic.Count;
-                    if (artefakt.typ != Artefakt.ArtefaktType.MATRIX)//&& artefakt.typ != Artefakt.ArtefaktType.SEMI)
-                        arcanovi_zfp += (artefakt.loads - 1) * 3;
+                    if (artefakt.gemeinschaftlich) 
+                        arcanovi_erschwernis += 5;
 
-                    // TODO: Vielfache Ladung nur bei Ladnugsbasiert?
-                    if (artefakt.loads > 1 || magic.Count > 1)
-                    {
-                        if (artefakt.sf.vielfacheLadung)
-                            arcanovi_zfp += magic.Count * artefakt.loads * magic_asp_mult;
-                        else
-                            arcanovi_zfp += Round((((magic.Count * artefakt.loads * magic_asp_mult) - 1) * magic.Count * artefakt.loads) / 2);
-                    }
-
+                    // Arcanovi TAW
                     decimal arcanovi_taw = 0;
                     switch (artefakt.typ)
                     {

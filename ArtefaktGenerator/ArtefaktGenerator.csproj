@@ -190,7 +190,7 @@
       <Name>ArtefaktGeneratorDLL</Name>
     </ProjectReference>
     <ProjectReference Include="..\CustomControls\CustomControls.csproj">
-      <Project>{76484579-F5AE-449F-A4DF-B1748F0B998B}</Project>
+      <Project>{76484579-f5ae-449f-a4df-b1748f0b998b}</Project>
       <Name>CustomControls</Name>
     </ProjectReference>
     <ProjectReference Include="..\NAppUpdate.Framework\NAppUpdate.Framework.csproj">

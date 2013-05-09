@@ -2087,7 +2087,7 @@ namespace ArtefaktGenerator
             this.lblInfo.Name = "lblInfo";
             this.lblInfo.Size = new System.Drawing.Size(209, 14);
             this.lblInfo.TabIndex = 24;
-            this.lblInfo.Text = "ArtefaktGenerator 2.4 by DSA-Hamburg.de";
+            this.lblInfo.Text = "ArtefaktGenerator 2.5 by DSA-Hamburg.de";
             // 
             // hero_name
             // 
