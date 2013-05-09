@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Text.RegularExpressions;
 using System.Reflection;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace ArtefaktGenerator
 {
@@ -1765,6 +1766,27 @@ namespace ArtefaktGenerator
         #endregion
 
         #region PlugIn Functions
+
+        private uint getValueInAttribute(XmlAttributeCollection attributes)
+        {
+            foreach (XmlAttribute attrib in attributes)
+            {
+                if (attrib.Name == "value")
+                    return Convert.ToUInt32(attrib.Value);
+            }
+            return 0;
+        }
+
+        private string getVariantInAttribute(XmlAttributeCollection attributes)
+        {
+            foreach (XmlAttribute attrib in attributes)
+            {
+                if (attrib.Name == "variante")
+                    return (attrib.Value);
+            }
+            return "";
+        }
+
         /*
          * plugInHeroFromXml
          * 
@@ -1779,20 +1801,57 @@ namespace ArtefaktGenerator
          */
         public bool plugInHeroFromXml(string xml)
         {
-            bool kraftkontrolle = Regex.IsMatch(xml, "sonderfertigkeit name=\"Kraftkontrolle\"");
-            bool vielLadung = Regex.IsMatch(xml, "sonderfertigkeit name=\"Vielfache Ladungen\"");
-            bool stapeleffekt = Regex.IsMatch(xml, "sonderfertigkeit name=\"Stapeleffekt\"");
-            bool hyper = Regex.IsMatch(xml, "sonderfertigkeit name=\"Hypervehemenz\"");
-            bool matrixgeber = Regex.IsMatch(xml, "sonderfertigkeit name=\"Matrixgeber\"");
-            bool semiI = Regex.IsMatch(xml, "sonderfertigkeit name=\"Semipermanenz I\"");
-            bool semiII = Regex.IsMatch(xml, "sonderfertigkeit name=\"Semipermanenz II\"");
-            bool aux = Regex.IsMatch(xml, "sonderfertigkeit name=\"Auxiliator\"");
+            bool kraftkontrolle = false;
+            bool vielLadung = false;
+            bool stapeleffekt = false;
+            bool hyper = false;
+            bool matrixgeber = false;
+            bool semiI = false;
+            bool semiII = false;
+            bool aux = false;
+            bool kraftspeicher = false;
 
-            bool isMag = Regex.IsMatch(xml, "sonderfertigkeit (kommentar=\"[^\"]*\" )?name=\"Repräsentation: Magier\"");
-            bool isAchaz = Regex.IsMatch(xml, "sonderfertigkeit (kommentar=\"[^\"]*\" )?name=\"Repräsentation: Kristallomant\"");
+            bool isMag = false;
+            bool isAch = false;
+            
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(xml);
+
+            XmlNodeList sonderNodes = xmlDoc.GetElementsByTagName("sonderfertigkeit");
+            foreach (XmlNode sonderNode in sonderNodes)
+            {
+                foreach (XmlAttribute val in sonderNode.Attributes)
+                {
+                    if (val.Name == "name")
+                    {
+                        if (val.Value == "Kraftkontrolle")
+                            kraftkontrolle = true;
+                        if (val.Value == "Vielfache Ladungen")
+                            vielLadung = true;
+                        if (val.Value == "Stapeleffekt")
+                            stapeleffekt = true;
+                        if (val.Value == "Hypervehemenz")
+                            hyper = true;
+                        if (val.Value == "Matrixgeber")
+                            matrixgeber = true;
+                        if (val.Value == "Semipermanenz I")
+                            semiI = true;
+                        if (val.Value == "Semipermanenz II")
+                            semiII = true;
+                        if (val.Value == "Kraftspeicher")
+                            kraftspeicher = true;
+                        if (val.Value == "Auxiliator")
+                            aux = true;
+                        if (val.Value == "Repräsentation: Magier")
+                            isMag = true;
+                        if (val.Value == "Repräsentation: Kristallomant")
+                            isAch = true;
+                    }
+                }
+            }
 
             // Default: Magier
-            if (!isMag && !isAchaz)
+            if (!isMag && !isAch)
             {
                 isMag = true;
             }
@@ -1807,63 +1866,45 @@ namespace ArtefaktGenerator
 
             string name = "";
 
-            string[] te = Regex.Split(xml, "talent.*name=\"Magiekunde\" probe=\".*\" value=\"(.*)\".*");
-            try
+            XmlNodeList heldNode = xmlDoc.GetElementsByTagName("held");
+            if (heldNode.Count > 0)
             {
-                magiekunde = Convert.ToUInt32(te[1]);
+                foreach (XmlAttribute attrb in heldNode[0].Attributes)
+                {
+                    if (attrb.Name == "name")
+                        name = attrb.Value;
+                }
             }
-            catch (System.Exception ex) { }
 
-            te = Regex.Split(xml, "zauber.*name=\"Analys Arkanstruktur\" probe=\".*\" value=\"(.*)\".*variante");
-            try
+            XmlNodeList talentNodes = xmlDoc.GetElementsByTagName("talent");
+            foreach (XmlNode talentNode in talentNodes)
             {
-                analys = Convert.ToUInt32(te[1]);
+                foreach (XmlAttribute val in talentNode.Attributes)
+                {
+                    if (val.Name == "Magiekunde")
+                        magiekunde = getValueInAttribute(talentNode.Attributes);
+                }
             }
-            catch (System.Exception ex) { }
 
-            te = Regex.Split(xml, "zauber.*name=\"Arcanovi Artefakt\" probe=\".*\" value=\"(.*)\".*variante=\"\"");
-            try
+            XmlNodeList zauberNodes = xmlDoc.GetElementsByTagName("zauber");
+            foreach (XmlNode zauberNode in zauberNodes)
             {
-                arcanovi = Convert.ToUInt32(te[1]);
+                foreach (XmlAttribute val in zauberNode.Attributes)
+                {
+                    if (val.Name == "Analys Arkanstruktur")
+                        magiekunde = getValueInAttribute(zauberNode.Attributes);
+                    if (val.Name == "Arcanovi Artefakt" && getVariantInAttribute(zauberNode.Attributes) == "")
+                        arcanovi = getValueInAttribute(zauberNode.Attributes);
+                    if (val.Name == "Arcanovi Artefakt" && getVariantInAttribute(zauberNode.Attributes) == "Matrixgeber")
+                        arcanovi_matrix = getValueInAttribute(zauberNode.Attributes);
+                    if (val.Name == "Arcanovi Artefakt" && getVariantInAttribute(zauberNode.Attributes) == "Semipermanenz")
+                        arcanovi_semi = getValueInAttribute(zauberNode.Attributes);
+                    if (val.Name == "Odem Arcanum")
+                        odem = getValueInAttribute(zauberNode.Attributes);
+                    if (val.Name == "Destructibo Arcanitas")
+                        destructibo = getValueInAttribute(zauberNode.Attributes);
+                }
             }
-            catch (System.Exception ex) { }
-
-            te = Regex.Split(xml, "zauber.*name=\"Arcanovi Artefakt\" probe=\".*\" value=\"(.*)\".*variante=\"Matrixgeber\"");
-            try
-            {
-                arcanovi_matrix = Convert.ToUInt32(te[1]);
-            }
-            catch (System.Exception ex) { }
-
-            te = Regex.Split(xml, "zauber.*name=\"Arcanovi Artefakt\" probe=\".*\" value=\"(.*)\".*variante=\"Semipermanenz\"");
-            try
-            {
-                arcanovi_semi = Convert.ToUInt32(te[1]);
-            }
-            catch (System.Exception ex) { }
-
-            te = Regex.Split(xml, "zauber.*name=\"Odem Arcanum\" probe=\".*\" value=\"(.*)\".*variante");
-            try
-            {
-                odem = Convert.ToUInt32(te[1]);
-            }
-            catch (System.Exception ex) { }
-
-            te = Regex.Split(xml, "zauber.*name=\"Destructibo Arcanitas\" probe=\".*\" value=\"(.*)\".*variante");
-            try
-            {
-                destructibo = Convert.ToUInt32(te[1]);
-            }
-            catch (System.Exception ex) { }
-
-            //<held key="1316061294421" name="Kein Name">
-            te = Regex.Split(xml, "held key=\".*\" name=\"(.*)\".*");
-            try
-            {
-                name = te[1];
-            }
-            catch (System.Exception ex) { }
-
 
             return plugInHero(name, (isMag ? SF.SFType.OTHER : SF.SFType.ACH), kraftkontrolle, vielLadung, stapeleffekt, hyper, matrixgeber, semiI, semiII, false, aux, arcanovi, arcanovi_matrix, arcanovi_semi, odem, analys, destructibo, magiekunde);
         }

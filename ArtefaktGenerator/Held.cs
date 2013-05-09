@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Xml;
 
 namespace ArtefaktGenerator
 {
@@ -12,16 +13,22 @@ namespace ArtefaktGenerator
 
         public Held(string xml)
         {
-            Match m = Regex.Match(xml, "<held key=\".*\" name=\"(.+)\">");
-            if (m.Success)
+
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(xml);
+
+            XmlNodeList heldNode = xmlDoc.GetElementsByTagName("held");
+            if (heldNode.Count > 0)
             {
-                this.name = m.Groups[1].Value;
+                foreach (XmlAttribute attrb in heldNode[0].Attributes)
+                {
+                    if (attrb.Name == "name")
+                        this.name = attrb.Value;
+                }
             }
             else
-            {
-                this.name = "(unbekannt)";
-            }
-
+                this.name = "Der Namenlose";
+            
             this.xml = xml;
         }
 
