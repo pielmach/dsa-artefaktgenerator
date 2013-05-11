@@ -1871,7 +1871,7 @@ namespace ArtefaktGenerator
             {
                 foreach (XmlAttribute attrb in heldNode[0].Attributes)
                 {
-                    if (attrb.Name == "name")
+                    if (attrb.Value == "name")
                         name = attrb.Value;
                 }
             }
@@ -1881,7 +1881,7 @@ namespace ArtefaktGenerator
             {
                 foreach (XmlAttribute val in talentNode.Attributes)
                 {
-                    if (val.Name == "Magiekunde")
+                    if (val.Value == "Magiekunde")
                         magiekunde = getValueInAttribute(talentNode.Attributes);
                 }
             }
@@ -1891,22 +1891,22 @@ namespace ArtefaktGenerator
             {
                 foreach (XmlAttribute val in zauberNode.Attributes)
                 {
-                    if (val.Name == "Analys Arkanstruktur")
-                        magiekunde = getValueInAttribute(zauberNode.Attributes);
-                    if (val.Name == "Arcanovi Artefakt" && getVariantInAttribute(zauberNode.Attributes) == "")
+                    if (val.Value == "Analys Arkanstruktur")
+                        analys = getValueInAttribute(zauberNode.Attributes);
+                    if (val.Value == "Arcanovi Artefakt" && getVariantInAttribute(zauberNode.Attributes) == "")
                         arcanovi = getValueInAttribute(zauberNode.Attributes);
-                    if (val.Name == "Arcanovi Artefakt" && getVariantInAttribute(zauberNode.Attributes) == "Matrixgeber")
+                    if (val.Value == "Arcanovi Artefakt" && getVariantInAttribute(zauberNode.Attributes) == "Matrixgeber")
                         arcanovi_matrix = getValueInAttribute(zauberNode.Attributes);
-                    if (val.Name == "Arcanovi Artefakt" && getVariantInAttribute(zauberNode.Attributes) == "Semipermanenz")
+                    if (val.Value == "Arcanovi Artefakt" && getVariantInAttribute(zauberNode.Attributes) == "Semipermanenz")
                         arcanovi_semi = getValueInAttribute(zauberNode.Attributes);
-                    if (val.Name == "Odem Arcanum")
+                    if (val.Value == "Odem Arcanum")
                         odem = getValueInAttribute(zauberNode.Attributes);
-                    if (val.Name == "Destructibo Arcanitas")
+                    if (val.Value == "Destructibo Arcanitas")
                         destructibo = getValueInAttribute(zauberNode.Attributes);
                 }
             }
 
-            return plugInHero(name, (isMag ? SF.SFType.OTHER : SF.SFType.ACH), kraftkontrolle, vielLadung, stapeleffekt, hyper, matrixgeber, semiI, semiII, false, aux, arcanovi, arcanovi_matrix, arcanovi_semi, odem, analys, destructibo, magiekunde);
+            return plugInHero(name, (isMag ? SF.SFType.OTHER : SF.SFType.ACH), kraftkontrolle, vielLadung, stapeleffekt, hyper, matrixgeber, semiI, semiII, false, kraftspeicher, aux, arcanovi, arcanovi_matrix, arcanovi_semi, odem, analys, destructibo, magiekunde);
         }
 
         /*
@@ -1932,6 +1932,7 @@ namespace ArtefaktGenerator
             bool sfSemipermI,
             bool sfSemipermII,
             bool sfRingkunde,
+            bool sfKraftspeicher,
             bool sfAuxiliator,
             uint tawArcanovi,
             uint tawArcanoviMatrix,
@@ -1959,6 +1960,7 @@ namespace ArtefaktGenerator
             this.sfSemipermanenz1 = sfSemipermI;
             this.sfSemipermanenz2 = sfSemipermII;
             this.sfRingkunde = sfRingkunde;
+            this.sfKraftspeicher = sfKraftspeicher;
             this.sfAuxiliator = sfAuxiliator;
 
             this.tawArcanovi = (int)tawArcanovi;
@@ -1983,6 +1985,7 @@ namespace ArtefaktGenerator
             bool sfSemipermI,
             bool sfSemipermII,
             bool sfRingkunde,
+            bool sfKraftspeicher,
             bool sfAuxiliator,
             uint tawArcanovi,
             uint tawArcanoviMatrix,
@@ -1993,7 +1996,7 @@ namespace ArtefaktGenerator
             uint tawMagiekunde
             )
         {
-            return plugInHero("", representation, sfKraftkontrolle, sfVielfacheLadung, sfStapeleffekt, sfHypervehemenz, sfMatrixgeber, sfSemipermI, sfSemipermII, sfRingkunde, sfAuxiliator, tawArcanovi, tawArcanoviMatrix, tawArcanoviSemi, tawOdem, tawAnalys, tawDestructibo, tawMagiekunde);
+            return plugInHero("", representation, sfKraftkontrolle, sfVielfacheLadung, sfStapeleffekt, sfHypervehemenz, sfMatrixgeber, sfSemipermI, sfSemipermII, sfRingkunde, sfKraftspeicher, sfAuxiliator, tawArcanovi, tawArcanoviMatrix, tawArcanoviSemi, tawOdem, tawAnalys, tawDestructibo, tawMagiekunde);
         }
 
         #endregion
