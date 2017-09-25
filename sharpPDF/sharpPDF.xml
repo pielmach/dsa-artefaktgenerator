@@ -9,78 +9,6 @@
             A Class that implements a PDF circle.
             </summary>
         </member>
-        <member name="T:sharpPDF.pdfElement">
-            <summary>
-            A Class that implements a generic PDF element.
-            </summary>
-        </member>
-        <member name="T:sharpPDF.IWritable">
-            <summary>
-            Generic interface for pdf's objects
-            </summary>	
-        </member>
-        <member name="M:sharpPDF.IWritable.getText">
-            <summary>
-            Method that returns the PDF codes to write the object in the document
-            </summary>
-            <returns>String that contains PDF codes</returns>
-        </member>
-        <member name="F:sharpPDF.pdfElement._strokeColor">
-            <summary>
-            Element's color
-            </summary>
-        </member>
-        <member name="F:sharpPDF.pdfElement._fillColor">
-            <summary>
-            Border's color
-            </summary>
-        </member>
-        <member name="F:sharpPDF.pdfElement._coordX">
-            <summary>
-            X position of the element
-            </summary>
-        </member>
-        <member name="F:sharpPDF.pdfElement._coordY">
-            <summary>
-            Y position of the element
-            </summary>
-        </member>
-        <member name="F:sharpPDF.pdfElement._objectID">
-            <summary>
-            Element's ID
-            </summary>
-        </member>
-        <member name="M:sharpPDF.pdfElement.getText">
-            <summary>
-            Method that returns the PDF codes to write the generic element in the document. It must be implemented by the derived class
-            </summary>
-            <returns>String that contains PDF codes</returns>
-        </member>
-        <member name="P:sharpPDF.pdfElement.strokeColor">
-            <summary>
-            Border's color
-            </summary>
-        </member>
-        <member name="P:sharpPDF.pdfElement.fillColor">
-            <summary>
-            Element's Color
-            </summary>
-        </member>
-        <member name="P:sharpPDF.pdfElement.coordX">
-            <summary>
-            X position in the PDF document
-            </summary>
-        </member>
-        <member name="P:sharpPDF.pdfElement.coordY">
-            <summary>
-            Y position in the PDF document
-            </summary>
-        </member>
-        <member name="P:sharpPDF.pdfElement.objectID">
-            <summary>
-            Element's ID
-            </summary>
-        </member>
         <member name="M:sharpPDF.circleElement.#ctor(System.Int32,System.Int32,System.Int32,sharpPDF.Enumerators.predefinedColor,sharpPDF.Enumerators.predefinedColor)">
             <summary>
             Class's constructor [DEPRECATED]
@@ -189,6 +117,36 @@
             A Class that implements a PDF image.
             </summary>
         </member>
+        <member name="P:sharpPDF.imageElement.height">
+            <summary>
+            Original height of the image
+            </summary>
+        </member>
+        <member name="P:sharpPDF.imageElement.width">
+            <summary>
+            Original width of the image
+            </summary>
+        </member>
+        <member name="P:sharpPDF.imageElement.newHeight">
+            <summary>
+            New height of the image
+            </summary>
+        </member>
+        <member name="P:sharpPDF.imageElement.newWidth">
+            <summary>
+            New width of the image
+            </summary>
+        </member>
+        <member name="P:sharpPDF.imageElement.content">
+            <summary>
+            Byte array that contains the stream of the image
+            </summary>
+        </member>
+        <member name="P:sharpPDF.imageElement.xObjectID">
+            <summary>
+            XObject ID
+            </summary>
+        </member>
         <member name="M:sharpPDF.imageElement.#ctor(System.String,System.Int32,System.Int32)">
             <summary>
             Class's constructor
@@ -237,36 +195,6 @@
             </summary>
             <returns>String that contains PDF codes</returns>
         </member>
-        <member name="P:sharpPDF.imageElement.height">
-            <summary>
-            Original height of the image
-            </summary>
-        </member>
-        <member name="P:sharpPDF.imageElement.width">
-            <summary>
-            Original width of the image
-            </summary>
-        </member>
-        <member name="P:sharpPDF.imageElement.newHeight">
-            <summary>
-            New height of the image
-            </summary>
-        </member>
-        <member name="P:sharpPDF.imageElement.newWidth">
-            <summary>
-            New width of the image
-            </summary>
-        </member>
-        <member name="P:sharpPDF.imageElement.content">
-            <summary>
-            Byte array that contains the stream of the image
-            </summary>
-        </member>
-        <member name="P:sharpPDF.imageElement.xObjectID">
-            <summary>
-            XObject ID
-            </summary>
-        </member>
         <member name="T:sharpPDF.IPdfDestination">
             <summary>
             Interface for a pdfDestination
@@ -275,6 +203,17 @@
         <member name="M:sharpPDF.IPdfDestination.getDestinationValue">
             <summary>
             Method that returns the PDF codes to write the destination
+            </summary>
+            <returns>String that contains PDF codes</returns>
+        </member>
+        <member name="T:sharpPDF.IWritable">
+            <summary>
+            Generic interface for pdf's objects
+            </summary>	
+        </member>
+        <member name="M:sharpPDF.IWritable.getText">
+            <summary>
+            Method that returns the PDF codes to write the object in the document
             </summary>
             <returns>String that contains PDF codes</returns>
         </member>
@@ -454,12 +393,6 @@
             <param name="newCoordY">Y position in the PDF document</param>
             <param name="newStrokeColor">Font's color</param>
         </member>
-        <member name="M:sharpPDF.paragraphElement.getText">
-            <summary>
-            Method that returns the PDF codes to write the paragraph in the document
-            </summary>
-            <returns>String that contains PDF codes</returns>
-        </member>
         <member name="P:sharpPDF.paragraphElement.content">
             <summary>
             IEnumerable interface that contains paragraph's lines
@@ -474,6 +407,12 @@
             <summary>
             Font's type
             </summary>
+        </member>
+        <member name="M:sharpPDF.paragraphElement.getText">
+            <summary>
+            Method that returns the PDF codes to write the paragraph in the document
+            </summary>
+            <returns>String that contains PDF codes</returns>
         </member>
         <member name="T:sharpPDF.paragraphLine">
             <summary>
@@ -499,6 +438,23 @@
             Exception that represents an error during an access on the pdfTableRow's columns with a bad index
             </summary>
         </member>
+        <member name="M:sharpPDF.Exceptions.pdfBadColumnIndexException.#ctor">
+            <summary>
+            Class's constructor
+            </summary>
+        </member>
+        <member name="T:sharpPDF.Exceptions.pdfBufferErrorException">
+            <summary>
+            Exception that represents an error during the I/O on the buffer.
+            </summary>
+        </member>
+        <member name="M:sharpPDF.Exceptions.pdfBufferErrorException.#ctor(System.String,System.Exception)">
+            <summary>
+            Class's constructor
+            </summary>
+            <param name="message">Message for the exception</param>
+            <param name="ex">Inner exception</param>
+        </member>
         <member name="T:sharpPDF.Exceptions.pdfException">
             <summary>
             Generic PDF Exception.
@@ -511,10 +467,71 @@
             <param name="message">Message for the exception</param>
             <param name="ex">Inner exception</param>
         </member>
-        <member name="M:sharpPDF.Exceptions.pdfBadColumnIndexException.#ctor">
+        <member name="T:sharpPDF.Exceptions.pdfImageIOException">
+            <summary>
+            Exception that represents an error during the I/O of an image file.
+            </summary>
+        </member>
+        <member name="M:sharpPDF.Exceptions.pdfImageIOException.#ctor(System.String,System.Exception)">
             <summary>
             Class's constructor
             </summary>
+            <param name="message">Message for the exception</param>
+            <param name="ex">Inner exception</param>
+        </member>
+        <member name="T:sharpPDF.Exceptions.pdfImageNotFoundException">
+            <summary>
+            Exception that represents an nonexistent image 
+            </summary>
+        </member>
+        <member name="M:sharpPDF.Exceptions.pdfImageNotFoundException.#ctor(System.String,System.Exception)">
+            <summary>
+            Class's constructor
+            </summary>
+            <param name="message">Message for the exception</param>
+            <param name="ex">Inner exception</param>
+        </member>
+        <member name="T:sharpPDF.Exceptions.pdfIncorrectColumnException">
+            <summary>
+            Exception that represents the insert of a non-pdfTableColumn into a columns collection
+            </summary>
+        </member>
+        <member name="M:sharpPDF.Exceptions.pdfIncorrectColumnException.#ctor">
+            <summary>
+            Class's constructor
+            </summary>
+        </member>
+        <member name="T:sharpPDF.Exceptions.pdfIncorrectParagraghException">
+            <summary>
+            Exception that represents an error during the creation of a paragraph, when the paragraph's element is of the wrong type(different form paragraphLine object)
+            </summary>
+        </member>
+        <member name="M:sharpPDF.Exceptions.pdfIncorrectParagraghException.#ctor">
+            <summary>
+            Class's constructor
+            </summary>		
+        </member>
+        <member name="T:sharpPDF.Exceptions.pdfIncorrectRowException">
+            <summary>
+            Exception that represents the insert of a non-pdfTableRow into a rows collection
+            </summary>
+        </member>
+        <member name="M:sharpPDF.Exceptions.pdfIncorrectRowException.#ctor">
+            <summary>
+            Class's constructor
+            </summary>
+        </member>
+        <member name="T:sharpPDF.Exceptions.pdfWritingErrorException">
+            <summary>
+            Exception that represents an error during the writing of the PDF document.
+            </summary>
+        </member>
+        <member name="M:sharpPDF.Exceptions.pdfWritingErrorException.#ctor(System.String,System.Exception)">
+            <summary>
+            Class's constructor
+            </summary>
+            <param name="message">Message for the exception</param>
+            <param name="ex">Inner exception</param>
         </member>
         <member name="T:sharpPDF.pdfBookmarkNode">
             <summary>
@@ -527,47 +544,6 @@
             </summary>
             <param name="obj">Object to compare</param>
             <returns>Compare result</returns>
-        </member>
-        <member name="M:sharpPDF.pdfBookmarkNode.getFirstChild">
-            <summary>
-            Method that returns the first child
-            </summary>
-            <returns>Object that represent the first child</returns>
-        </member>
-        <member name="M:sharpPDF.pdfBookmarkNode.getLastChild">
-            <summary>
-            Method that returns the last child
-            </summary>
-            <returns>Object that represent the last child</returns>
-        </member>
-        <member name="M:sharpPDF.pdfBookmarkNode.#ctor(System.String,sharpPDF.pdfPage,System.Boolean)">
-            <summary>
-            Class's constructor
-            </summary>
-            <param name="Title">Bookmark's title</param>
-            <param name="Page">Destination Page</param>
-            <param name="openBookmark">The visibility of bookmark's childs</param>
-        </member>
-        <member name="M:sharpPDF.pdfBookmarkNode.#ctor(System.String,sharpPDF.pdfPage,System.Boolean,sharpPDF.IPdfDestination)">
-            <summary>
-            Class's constructor
-            </summary>
-            <param name="Title">Bookmark's title</param>
-            <param name="Page">Destination Page</param>
-            <param name="openBookmark">The visibility of bookmark's childs</param>
-            <param name="Destination">Destination object</param>
-        </member>
-        <member name="M:sharpPDF.pdfBookmarkNode.addChildNode(sharpPDF.pdfBookmarkNode)">
-            <summary>
-            Method that add a child to the bookmark
-            </summary>
-            <param name="Child">Child object</param>
-        </member>
-        <member name="M:sharpPDF.pdfBookmarkNode.getText">
-            <summary>
-            Method that returns the PDF codes to write the object in the document
-            </summary>
-            <returns>String that contains PDF codes</returns>
         </member>
         <member name="P:sharpPDF.pdfBookmarkNode.Title">
             <summary>
@@ -629,21 +605,70 @@
             Bookmark's childs
             </summary>
         </member>
-        <member name="T:sharpPDF.Exceptions.pdfBufferErrorException">
+        <member name="M:sharpPDF.pdfBookmarkNode.getFirstChild">
             <summary>
-            Exception that represents an error during the I/O on the buffer.
+            Method that returns the first child
             </summary>
+            <returns>Object that represent the first child</returns>
         </member>
-        <member name="M:sharpPDF.Exceptions.pdfBufferErrorException.#ctor(System.String,System.Exception)">
+        <member name="M:sharpPDF.pdfBookmarkNode.getLastChild">
+            <summary>
+            Method that returns the last child
+            </summary>
+            <returns>Object that represent the last child</returns>
+        </member>
+        <member name="M:sharpPDF.pdfBookmarkNode.#ctor(System.String,sharpPDF.pdfPage,System.Boolean)">
             <summary>
             Class's constructor
             </summary>
-            <param name="message">Message for the exception</param>
-            <param name="ex">Inner exception</param>
+            <param name="Title">Bookmark's title</param>
+            <param name="Page">Destination Page</param>
+            <param name="openBookmark">The visibility of bookmark's childs</param>
+        </member>
+        <member name="M:sharpPDF.pdfBookmarkNode.#ctor(System.String,sharpPDF.pdfPage,System.Boolean,sharpPDF.IPdfDestination)">
+            <summary>
+            Class's constructor
+            </summary>
+            <param name="Title">Bookmark's title</param>
+            <param name="Page">Destination Page</param>
+            <param name="openBookmark">The visibility of bookmark's childs</param>
+            <param name="Destination">Destination object</param>
+        </member>
+        <member name="M:sharpPDF.pdfBookmarkNode.addChildNode(sharpPDF.pdfBookmarkNode)">
+            <summary>
+            Method that add a child to the bookmark
+            </summary>
+            <param name="Child">Child object</param>
+        </member>
+        <member name="M:sharpPDF.pdfBookmarkNode.getText">
+            <summary>
+            Method that returns the PDF codes to write the object in the document
+            </summary>
+            <returns>String that contains PDF codes</returns>
         </member>
         <member name="T:sharpPDF.pdfColor">
             <summary>
             A Class that implements a PDF color.
+            </summary>
+        </member>
+        <member name="P:sharpPDF.pdfColor.rColor">
+            <summary>
+            R property of RGB color
+            </summary>
+        </member>
+        <member name="P:sharpPDF.pdfColor.gColor">
+            <summary>
+            G property of RGB color
+            </summary>
+        </member>
+        <member name="P:sharpPDF.pdfColor.bColor">
+            <summary>
+            B property of RGB color
+            </summary>
+        </member>
+        <member name="P:sharpPDF.pdfColor.baseColor">
+            <summary>
+            The predefinedColor of the pdfColor
             </summary>
         </member>
         <member name="M:sharpPDF.pdfColor.#ctor(sharpPDF.Enumerators.predefinedColor)">
@@ -678,26 +703,6 @@
             Method that validates the color
             </summary>
             <returns>Boolean value that represents the validity of the color</returns>
-        </member>
-        <member name="P:sharpPDF.pdfColor.rColor">
-            <summary>
-            R property of RGB color
-            </summary>
-        </member>
-        <member name="P:sharpPDF.pdfColor.gColor">
-            <summary>
-            G property of RGB color
-            </summary>
-        </member>
-        <member name="P:sharpPDF.pdfColor.bColor">
-            <summary>
-            B property of RGB color
-            </summary>
-        </member>
-        <member name="P:sharpPDF.pdfColor.baseColor">
-            <summary>
-            The predefinedColor of the pdfColor
-            </summary>
         </member>
         <member name="T:sharpPDF.pdfDestinationFactory">
             <summary>
@@ -853,6 +858,276 @@
             entirely within the window both horizontally and vertically.
             </summary>
         </member>
+        <member name="T:sharpPDF.Enumerators.predefinedLineStyle">
+            <summary>
+            Enumerator that implements the style of a line.
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedLineStyle.csNormal">
+            <summary>
+            Normal line
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedLineStyle.csOutlinedSmall">
+            <summary>
+            Thin Outlined line
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedLineStyle.csOutlined">
+            <summary>
+            Outlined line
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedLineStyle.csOutlinedBig">
+            <summary>
+            Big Outlined line
+            </summary>
+        </member>
+        <member name="T:sharpPDF.Enumerators.predefinedAlignment">
+            <summary>
+            Enumerator that implements the alignment of a paragraph.
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedAlignment.csLeft">
+            <summary>
+            Left Alignment
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedAlignment.csRight">
+            <summary>
+            Right Alignment
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedAlignment.csCenter">
+            <summary>
+            Center Alignment
+            </summary>
+        </member>
+        <member name="T:sharpPDF.Enumerators.predefinedColor">
+            <summary>
+            Enumerator that implements standard PDF colors.
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedColor.csNoColor">
+            <summary>
+            No color
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedColor.csBlack">
+            <summary>
+            Black
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedColor.csWhite">
+            <summary>
+            White
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedColor.csRed">
+            <summary>
+            Red
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedColor.csLightRed">
+            <summary>
+            Light Red
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedColor.csDarkRed">
+            <summary>
+            Dark Red
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedColor.csOrange">
+            <summary>
+            Orange
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedColor.csLightOrange">
+            <summary>
+            Light Orange
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedColor.csDarkOrange">
+            <summary>
+            Dark orange
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedColor.csYellow">
+            <summary>
+            Yellow
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedColor.csLightYellow">
+            <summary>
+            Light Yellow
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedColor.csDarkYellow">
+            <summary>
+            Dark Yellow
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedColor.csBlue">
+            <summary>
+            Blue
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedColor.csLightBlue">
+            <summary>
+            Light Blue
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedColor.csDarkBlue">
+            <summary>
+            Dark Blue
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedColor.csGreen">
+            <summary>
+            Green
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedColor.csLightGreen">
+            <summary>
+            Light Green
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedColor.csDarkGreen">
+            <summary>
+            Dark Green
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedColor.csCyan">
+            <summary>
+            Cyan
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedColor.csLightCyan">
+            <summary>
+            Light Cyan
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedColor.csDarkCyan">
+            <summary>
+            Dark Cyan
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedColor.csPurple">
+            <summary>
+            Purple
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedColor.csLightPurple">
+            <summary>
+            Light Purple
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedColor.csDarkPurple">
+            <summary>
+            Dark Purple
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedColor.csGray">
+            <summary>
+            Gray
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedColor.csLightGray">
+            <summary>
+            Light Gray
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedColor.csDarkGray">
+            <summary>
+            Dark Gray
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedColor.csUserColor">
+            <summary>
+            User color with RGB
+            </summary>
+        </member>
+        <member name="T:sharpPDF.Enumerators.predefinedFont">
+            <summary>
+            Enumerator that implements standard PDF fonts.
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedFont.csHelvetica">
+            <summary>
+            Font Helvetica
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedFont.csHelveticaBold">
+            <summary>
+            Font Helvetica Bold
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedFont.csHelveticaOblique">
+            <summary>
+            Font Helvetica Oblique
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedFont.csHelvetivaBoldOblique">
+            <summary>
+            Font Helvetica Bold Oblique
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedFont.csCourier">
+            <summary>
+            Font Courier
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedFont.csCourierBold">
+            <summary>
+            Font Courier Bold
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedFont.csCourierOblique">
+            <summary>
+            Font Courier Oblique
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedFont.csCourierBoldOblique">
+            <summary>
+            Font Courier Bold Oblique
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedFont.csTimes">
+            <summary>
+            Font Times
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedFont.csTimesBold">
+            <summary>
+            Font Times Bold
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedFont.csTimesOblique">
+            <summary>
+            Font Times Oblique
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedFont.csTimesBoldOblique">
+            <summary>
+            Font Times Bold Oblique
+            </summary>
+        </member>
+        <member name="T:sharpPDF.Enumerators.predefinedMarkerStyle">
+            <summary>
+            Enumerator that implements standard PDF page's markers.
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedMarkerStyle.csArabic">
+            <summary>
+            Numeric page's marker
+            </summary>
+        </member>
+        <member name="F:sharpPDF.Enumerators.predefinedMarkerStyle.csRoman">
+            <summary>
+            Literal page's marker
+            </summary>
+        </member>
         <member name="T:sharpPDF.pdfDestinationXYZ">
             <summary>
             Class that represents a pdfDestination of XYZ type.
@@ -881,6 +1156,21 @@
         <member name="T:sharpPDF.pdfDocument">
             <summary>
             A Class that implements a PDF document.
+            </summary>
+        </member>
+        <member name="P:sharpPDF.pdfDocument.pageMarker">
+            <summary>
+            Document's page marker
+            </summary>
+        </member>
+        <member name="P:sharpPDF.pdfDocument.persistentPage">
+            <summary>
+            Document's persistent page
+            </summary>
+        </member>
+        <member name="P:sharpPDF.pdfDocument.Item(System.Int32)">
+            <summary>
+            Collection of pdf's page
             </summary>
         </member>
         <member name="M:sharpPDF.pdfDocument.#ctor(System.String,System.String)">
@@ -950,24 +1240,80 @@
             <param name="byteContent">A Byte array that contains the informations</param>
             <returns>The number of the bytes written in the Buffer</returns>
         </member>
-        <member name="P:sharpPDF.pdfDocument.pageMarker">
+        <member name="T:sharpPDF.pdfElement">
             <summary>
-            Document's page marker
+            A Class that implements a generic PDF element.
             </summary>
         </member>
-        <member name="P:sharpPDF.pdfDocument.persistentPage">
+        <member name="F:sharpPDF.pdfElement._strokeColor">
             <summary>
-            Document's persistent page
+            Element's color
             </summary>
         </member>
-        <member name="P:sharpPDF.pdfDocument.Item(System.Int32)">
+        <member name="F:sharpPDF.pdfElement._fillColor">
             <summary>
-            Collection of pdf's page
+            Border's color
             </summary>
+        </member>
+        <member name="F:sharpPDF.pdfElement._coordX">
+            <summary>
+            X position of the element
+            </summary>
+        </member>
+        <member name="F:sharpPDF.pdfElement._coordY">
+            <summary>
+            Y position of the element
+            </summary>
+        </member>
+        <member name="F:sharpPDF.pdfElement._objectID">
+            <summary>
+            Element's ID
+            </summary>
+        </member>
+        <member name="P:sharpPDF.pdfElement.strokeColor">
+            <summary>
+            Border's color
+            </summary>
+        </member>
+        <member name="P:sharpPDF.pdfElement.fillColor">
+            <summary>
+            Element's Color
+            </summary>
+        </member>
+        <member name="P:sharpPDF.pdfElement.coordX">
+            <summary>
+            X position in the PDF document
+            </summary>
+        </member>
+        <member name="P:sharpPDF.pdfElement.coordY">
+            <summary>
+            Y position in the PDF document
+            </summary>
+        </member>
+        <member name="P:sharpPDF.pdfElement.objectID">
+            <summary>
+            Element's ID
+            </summary>
+        </member>
+        <member name="M:sharpPDF.pdfElement.getText">
+            <summary>
+            Method that returns the PDF codes to write the generic element in the document. It must be implemented by the derived class
+            </summary>
+            <returns>String that contains PDF codes</returns>
         </member>
         <member name="T:sharpPDF.pdfFont">
             <summary>
             A Class that implements a PDF font.
+            </summary>
+        </member>
+        <member name="P:sharpPDF.pdfFont.fontStyle">
+            <summary>
+            Font's style
+            </summary>
+        </member>
+        <member name="P:sharpPDF.pdfFont.objectID">
+            <summary>
+            Font's ID
             </summary>
         </member>
         <member name="M:sharpPDF.pdfFont.#ctor(sharpPDF.Enumerators.predefinedFont,System.Int32)">
@@ -990,32 +1336,10 @@
             <param name="fontType">Font's Type</param>
             <returns>String that contains the name of the font</returns>
         </member>
-        <member name="P:sharpPDF.pdfFont.fontStyle">
-            <summary>
-            Font's style
-            </summary>
-        </member>
-        <member name="P:sharpPDF.pdfFont.objectID">
-            <summary>
-            Font's ID
-            </summary>
-        </member>
         <member name="T:sharpPDF.pdfHeader">
             <summary>
             A Class that implements a PDF header.
             </summary>
-        </member>
-        <member name="M:sharpPDF.pdfHeader.#ctor(System.Boolean)">
-            <summary>
-            Class's constructor
-            </summary>
-            <param name="openBookmark">Allows to show directly bookmarks near the document</param>
-        </member>
-        <member name="M:sharpPDF.pdfHeader.getText">
-            <summary>
-            Method that returns the PDF codes to write the Header in the document
-            </summary>
-            <returns>String that contains PDF codes</returns>
         </member>
         <member name="P:sharpPDF.pdfHeader.objectIDHeader">
             <summary>
@@ -1037,63 +1361,26 @@
             PageTree's ID
             </summary>
         </member>
-        <member name="T:sharpPDF.Exceptions.pdfImageIOException">
-            <summary>
-            Exception that represents an error during the I/O of an image file.
-            </summary>
-        </member>
-        <member name="M:sharpPDF.Exceptions.pdfImageIOException.#ctor(System.String,System.Exception)">
+        <member name="M:sharpPDF.pdfHeader.#ctor(System.Boolean)">
             <summary>
             Class's constructor
             </summary>
-            <param name="message">Message for the exception</param>
-            <param name="ex">Inner exception</param>
+            <param name="openBookmark">Allows to show directly bookmarks near the document</param>
         </member>
-        <member name="T:sharpPDF.Exceptions.pdfImageNotFoundException">
+        <member name="M:sharpPDF.pdfHeader.getText">
             <summary>
-            Exception that represents an nonexistent image 
+            Method that returns the PDF codes to write the Header in the document
             </summary>
-        </member>
-        <member name="M:sharpPDF.Exceptions.pdfImageNotFoundException.#ctor(System.String,System.Exception)">
-            <summary>
-            Class's constructor
-            </summary>
-            <param name="message">Message for the exception</param>
-            <param name="ex">Inner exception</param>
-        </member>
-        <member name="T:sharpPDF.Exceptions.pdfIncorrectColumnException">
-            <summary>
-            Exception that represents the insert of a non-pdfTableColumn into a columns collection
-            </summary>
-        </member>
-        <member name="M:sharpPDF.Exceptions.pdfIncorrectColumnException.#ctor">
-            <summary>
-            Class's constructor
-            </summary>
-        </member>
-        <member name="T:sharpPDF.Exceptions.pdfIncorrectParagraghException">
-            <summary>
-            Exception that represents an error during the creation of a paragraph, when the paragraph's element is of the wrong type(different form paragraphLine object)
-            </summary>
-        </member>
-        <member name="M:sharpPDF.Exceptions.pdfIncorrectParagraghException.#ctor">
-            <summary>
-            Class's constructor
-            </summary>		
-        </member>
-        <member name="T:sharpPDF.Exceptions.pdfIncorrectRowException">
-            <summary>
-            Exception that represents the insert of a non-pdfTableRow into a rows collection
-            </summary>
-        </member>
-        <member name="M:sharpPDF.Exceptions.pdfIncorrectRowException.#ctor">
-            <summary>
-            Class's constructor
-            </summary>
+            <returns>String that contains PDF codes</returns>
         </member>
         <member name="T:sharpPDF.pdfInfo">
             <summary>
             A Class that implements a PDF info.
+            </summary>
+        </member>
+        <member name="P:sharpPDF.pdfInfo.objectIDInfo">
+            <summary>
+            Info'sID
             </summary>
         </member>
         <member name="M:sharpPDF.pdfInfo.#ctor(System.String,System.String)">
@@ -1108,11 +1395,6 @@
             Method that returns the PDF codes to write the Info in the document
             </summary>
             <returns>String that contains PDF codes</returns>
-        </member>
-        <member name="P:sharpPDF.pdfInfo.objectIDInfo">
-            <summary>
-            Info'sID
-            </summary>
         </member>
         <member name="T:sharpPDF.pdfLineStyle">
             <summary>
@@ -1143,12 +1425,6 @@
             <param name="newWidth">Line's size</param>
             <param name="newStyle">Line's style</param>
         </member>
-        <member name="M:sharpPDF.pdfLineStyle.getText">
-            <summary>
-            Method that returns the PDF codes to write the line style in the document
-            </summary>
-            <returns>String that contains PDF codes</returns>
-        </member>
         <member name="P:sharpPDF.pdfLineStyle.width">
             <summary>
             Line's size
@@ -1159,9 +1435,20 @@
             Line's style
             </summary>
         </member>
+        <member name="M:sharpPDF.pdfLineStyle.getText">
+            <summary>
+            Method that returns the PDF codes to write the line style in the document
+            </summary>
+            <returns>String that contains PDF codes</returns>
+        </member>
         <member name="T:sharpPDF.pdfOutlines">
             <summary>
             A Class that implements a PDF Outlines.
+            </summary>
+        </member>
+        <member name="P:sharpPDF.pdfOutlines.objectIDOutlines">
+            <summary>
+            Outlines's ID
             </summary>
         </member>
         <member name="M:sharpPDF.pdfOutlines.#ctor">
@@ -1210,14 +1497,34 @@
             </summary>
             <returns>Sorted bookmark collection</returns>
         </member>
-        <member name="P:sharpPDF.pdfOutlines.objectIDOutlines">
-            <summary>
-            Outlines's ID
-            </summary>
-        </member>
         <member name="T:sharpPDF.pdfPage">
             <summary>
             A Class that implements a PDF page.
+            </summary>
+        </member>
+        <member name="P:sharpPDF.pdfPage.objectID">
+            <summary>
+            Page's ID
+            </summary>
+        </member>
+        <member name="P:sharpPDF.pdfPage.pageTreeID">
+            <summary>
+            PageTree's ID
+            </summary>
+        </member>
+        <member name="P:sharpPDF.pdfPage.height">
+            <summary>
+            Page's height
+            </summary>
+        </member>
+        <member name="P:sharpPDF.pdfPage.width">
+            <summary>
+            Page's width
+            </summary>
+        </member>
+        <member name="P:sharpPDF.pdfPage.elements">
+            <summary>
+            Page's elements
             </summary>
         </member>
         <member name="M:sharpPDF.pdfPage.#ctor">
@@ -1773,58 +2080,10 @@
             </summary>
             <returns>String that contains PDF codes</returns>
         </member>
-        <member name="P:sharpPDF.pdfPage.objectID">
-            <summary>
-            Page's ID
-            </summary>
-        </member>
-        <member name="P:sharpPDF.pdfPage.pageTreeID">
-            <summary>
-            PageTree's ID
-            </summary>
-        </member>
-        <member name="P:sharpPDF.pdfPage.height">
-            <summary>
-            Page's height
-            </summary>
-        </member>
-        <member name="P:sharpPDF.pdfPage.width">
-            <summary>
-            Page's width
-            </summary>
-        </member>
-        <member name="P:sharpPDF.pdfPage.elements">
-            <summary>
-            Page's elements
-            </summary>
-        </member>
         <member name="T:sharpPDF.pdfPageMarker">
             <summary>
             Class that implements a pdf page marker
             </summary>
-        </member>
-        <member name="M:sharpPDF.pdfPageMarker.#ctor(System.Int32,System.Int32,sharpPDF.Enumerators.predefinedMarkerStyle)">
-            <summary>
-            Class's constructor
-            </summary>
-            <param name="coordX">X position in the PDF document</param>
-            <param name="coordY">Y position in the PDF document</param>
-            <param name="style">Marker's style</param>
-        </member>
-        <member name="M:sharpPDF.pdfPageMarker.getMarker(System.Int32,System.Int32)">
-            <summary>
-            Method that creates a string for the page's marker
-            </summary>
-            <param name="pgIndex">Actual page</param>
-            <param name="pgNum">Number of pages</param>
-            <returns>Text that represents page's marker</returns>
-        </member>
-        <member name="M:sharpPDF.pdfPageMarker.arabicToRoman(System.Int32)">
-            <summary>
-            Private method that converts arabic numbers into roman numbers
-            </summary>
-            <param name="arabic">Arabic number</param>
-            <returns>Equivalent roman number</returns>
         </member>
         <member name="P:sharpPDF.pdfPageMarker.coordX">
             <summary>
@@ -1869,9 +2128,37 @@
             The result on the document is : "Page 1/2"
             </example>
         </member>
+        <member name="M:sharpPDF.pdfPageMarker.#ctor(System.Int32,System.Int32,sharpPDF.Enumerators.predefinedMarkerStyle)">
+            <summary>
+            Class's constructor
+            </summary>
+            <param name="coordX">X position in the PDF document</param>
+            <param name="coordY">Y position in the PDF document</param>
+            <param name="style">Marker's style</param>
+        </member>
+        <member name="M:sharpPDF.pdfPageMarker.getMarker(System.Int32,System.Int32)">
+            <summary>
+            Method that creates a string for the page's marker
+            </summary>
+            <param name="pgIndex">Actual page</param>
+            <param name="pgNum">Number of pages</param>
+            <returns>Text that represents page's marker</returns>
+        </member>
+        <member name="M:sharpPDF.pdfPageMarker.arabicToRoman(System.Int32)">
+            <summary>
+            Private method that converts arabic numbers into roman numbers
+            </summary>
+            <param name="arabic">Arabic number</param>
+            <returns>Equivalent roman number</returns>
+        </member>
         <member name="T:sharpPDF.pdfPageTree">
             <summary>
             A Class that implements a PDF pageTree.
+            </summary>
+        </member>
+        <member name="P:sharpPDF.pdfPageTree.objectID">
+            <summary>
+            Pagetree's ID
             </summary>
         </member>
         <member name="M:sharpPDF.pdfPageTree.#ctor">
@@ -1891,15 +2178,15 @@
             </summary>
             <returns>String that contains PDF codes</returns>
         </member>
-        <member name="P:sharpPDF.pdfPageTree.objectID">
-            <summary>
-            Pagetree's ID
-            </summary>
-        </member>
         <member name="T:sharpPDF.pdfPersistentPage">
             <summary>
             Class that represents a persistent page.
             All its objects are inherited by all document's pages.
+            </summary>
+        </member>
+        <member name="P:sharpPDF.pdfPersistentPage.persistentElements">
+            <summary>
+            Page's persistent elements
             </summary>
         </member>
         <member name="M:sharpPDF.pdfPersistentPage.#ctor">
@@ -2436,38 +2723,10 @@
             <param name="borderStyle">Border's style</param>
             <param name="borderWidth">Border's size</param>
         </member>
-        <member name="P:sharpPDF.pdfPersistentPage.persistentElements">
-            <summary>
-            Page's persistent elements
-            </summary>
-        </member>
         <member name="T:sharpPDF.pdfTable">
             <summary>
             A Class that implements an abstract table object
             </summary>
-        </member>
-        <member name="M:sharpPDF.pdfTable.#ctor">
-            <summary>
-            Class's Constructor
-            </summary>
-        </member>
-        <member name="M:sharpPDF.pdfTable.createRow">
-            <summary>
-            Method that creates a new row
-            </summary>
-            <returns>A new pdfTableRowObject</returns>
-        </member>
-        <member name="M:sharpPDF.pdfTable.addRow(sharpPDF.pdfTableRow)">
-            <summary>
-            Method to add a new row into the table
-            </summary>
-            <param name="newRow">New row</param>
-        </member>
-        <member name="M:sharpPDF.pdfTable.GetEnumerator">
-            <summary>
-            Enumerator for table's rows
-            </summary>
-            <returns></returns>
         </member>
         <member name="P:sharpPDF.pdfTable.borderSize">
             <summary>
@@ -2504,6 +2763,11 @@
             The cellpadding of the table
             </summary>
         </member>
+        <member name="M:sharpPDF.pdfTable.#ctor">
+            <summary>
+            Class's Constructor
+            </summary>
+        </member>
         <member name="P:sharpPDF.pdfTable.Item(System.Int32)">
             <summary>
             Table's rows
@@ -2514,9 +2778,42 @@
             The number of rows
             </summary>
         </member>
+        <member name="M:sharpPDF.pdfTable.createRow">
+            <summary>
+            Method that creates a new row
+            </summary>
+            <returns>A new pdfTableRowObject</returns>
+        </member>
+        <member name="M:sharpPDF.pdfTable.addRow(sharpPDF.pdfTableRow)">
+            <summary>
+            Method to add a new row into the table
+            </summary>
+            <param name="newRow">New row</param>
+        </member>
+        <member name="M:sharpPDF.pdfTable.GetEnumerator">
+            <summary>
+            Enumerator for table's rows
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:sharpPDF.pdfTableColumn">
             <summary>
             A Class that implements an abstract table's column object
+            </summary>
+        </member>
+        <member name="P:sharpPDF.pdfTableColumn.columnValue">
+            <summary>
+            Column's content
+            </summary>
+        </member>
+        <member name="P:sharpPDF.pdfTableColumn.columnAlign">
+            <summary>
+            Column's text align
+            </summary>
+        </member>
+        <member name="P:sharpPDF.pdfTableColumn.columnSize">
+            <summary>
+            Column's size
             </summary>
         </member>
         <member name="M:sharpPDF.pdfTableColumn.#ctor">
@@ -2538,25 +2835,21 @@
             </summary>
             <returns>String that contains PDF codes</returns>
         </member>
-        <member name="P:sharpPDF.pdfTableColumn.columnValue">
-            <summary>
-            Column's content
-            </summary>
-        </member>
-        <member name="P:sharpPDF.pdfTableColumn.columnAlign">
-            <summary>
-            Column's text align
-            </summary>
-        </member>
-        <member name="P:sharpPDF.pdfTableColumn.columnSize">
-            <summary>
-            Column's size
-            </summary>
-        </member>
         <member name="T:sharpPDF.pdfTableHeader">
             <summary>
             A Class that implements an abstract table's header object
             </summary>
+        </member>
+        <member name="M:sharpPDF.pdfTableHeader.#ctor">
+            <summary>
+            Class's constructor
+            </summary>
+        </member>
+        <member name="M:sharpPDF.pdfTableHeader.addColumn(sharpPDF.pdfTableColumn)">
+            <summary>
+            Method to add a template column to the table's header
+            </summary>
+            <param name="newColumn"></param>
         </member>
         <member name="T:sharpPDF.pdfTableRow">
             <summary>
@@ -2579,6 +2872,16 @@
             </summary>
             <param name="tableHeader">Row Template based on Table's Header</param>
         </member>
+        <member name="P:sharpPDF.pdfTableRow.Item(System.Int32)">
+            <summary>
+            Indexer of the pdfTableRow that represents its columns
+            </summary>
+        </member>
+        <member name="P:sharpPDF.pdfTableRow.columnsCount">
+            <summary>
+            The number of columns
+            </summary>
+        </member>
         <member name="M:sharpPDF.pdfTableRow.GetEnumerator">
             <summary>
             Enumerator of the column's collection
@@ -2591,35 +2894,9 @@
             </summary>
             <returns>String that contains PDF codes</returns>
         </member>
-        <member name="P:sharpPDF.pdfTableRow.Item(System.Int32)">
-            <summary>
-            Indexer of the pdfTableRow that represents its columns
-            </summary>
-        </member>
-        <member name="P:sharpPDF.pdfTableRow.columnsCount">
-            <summary>
-            The number of columns
-            </summary>
-        </member>
-        <member name="M:sharpPDF.pdfTableHeader.#ctor">
-            <summary>
-            Class's constructor
-            </summary>
-        </member>
-        <member name="M:sharpPDF.pdfTableHeader.addColumn(sharpPDF.pdfTableColumn)">
-            <summary>
-            Method to add a template column to the table's header
-            </summary>
-            <param name="newColumn"></param>
-        </member>
         <member name="T:sharpPDF.pdfTableRowStyle">
             <summary>
             Class that represents the style of a table's row
-            </summary>
-        </member>
-        <member name="M:sharpPDF.pdfTableRowStyle.#ctor(sharpPDF.Enumerators.predefinedFont,System.Int32,sharpPDF.pdfColor,sharpPDF.pdfColor)">
-            <summary>
-            Class's constructor
             </summary>
         </member>
         <member name="P:sharpPDF.pdfTableRowStyle.fontType">
@@ -2642,9 +2919,19 @@
             Color of the BackGround
             </summary>
         </member>
+        <member name="M:sharpPDF.pdfTableRowStyle.#ctor(sharpPDF.Enumerators.predefinedFont,System.Int32,sharpPDF.pdfColor,sharpPDF.pdfColor)">
+            <summary>
+            Class's constructor
+            </summary>
+        </member>
         <member name="T:sharpPDF.pdfTrailer">
             <summary>
             A Class that implements a PDF trailer.
+            </summary>
+        </member>
+        <member name="P:sharpPDF.pdfTrailer.xrefOffset">
+            <summary>
+            The offset of the XREF table
             </summary>
         </member>
         <member name="M:sharpPDF.pdfTrailer.#ctor(System.Int32)">
@@ -2669,293 +2956,6 @@
             Method that returns the PDF codes to write the trailer in the document
             </summary>
             <returns>String that contains PDF codes</returns>
-        </member>
-        <member name="P:sharpPDF.pdfTrailer.xrefOffset">
-            <summary>
-            The offset of the XREF table
-            </summary>
-        </member>
-        <member name="T:sharpPDF.Exceptions.pdfWritingErrorException">
-            <summary>
-            Exception that represents an error during the writing of the PDF document.
-            </summary>
-        </member>
-        <member name="M:sharpPDF.Exceptions.pdfWritingErrorException.#ctor(System.String,System.Exception)">
-            <summary>
-            Class's constructor
-            </summary>
-            <param name="message">Message for the exception</param>
-            <param name="ex">Inner exception</param>
-        </member>
-        <member name="T:sharpPDF.Enumerators.predefinedLineStyle">
-            <summary>
-            Enumerator that implements the style of a line.
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedLineStyle.csNormal">
-            <summary>
-            Normal line
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedLineStyle.csOutlinedSmall">
-            <summary>
-            Thin Outlined line
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedLineStyle.csOutlined">
-            <summary>
-            Outlined line
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedLineStyle.csOutlinedBig">
-            <summary>
-            Big Outlined line
-            </summary>
-        </member>
-        <member name="T:sharpPDF.Enumerators.predefinedAlignment">
-            <summary>
-            Enumerator that implements the alignment of a paragraph.
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedAlignment.csLeft">
-            <summary>
-            Left Alignment
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedAlignment.csRight">
-            <summary>
-            Right Alignment
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedAlignment.csCenter">
-            <summary>
-            Center Alignment
-            </summary>
-        </member>
-        <member name="T:sharpPDF.Enumerators.predefinedColor">
-            <summary>
-            Enumerator that implements standard PDF colors.
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedColor.csNoColor">
-            <summary>
-            No color
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedColor.csBlack">
-            <summary>
-            Black
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedColor.csWhite">
-            <summary>
-            White
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedColor.csRed">
-            <summary>
-            Red
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedColor.csLightRed">
-            <summary>
-            Light Red
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedColor.csDarkRed">
-            <summary>
-            Dark Red
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedColor.csOrange">
-            <summary>
-            Orange
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedColor.csLightOrange">
-            <summary>
-            Light Orange
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedColor.csDarkOrange">
-            <summary>
-            Dark orange
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedColor.csYellow">
-            <summary>
-            Yellow
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedColor.csLightYellow">
-            <summary>
-            Light Yellow
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedColor.csDarkYellow">
-            <summary>
-            Dark Yellow
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedColor.csBlue">
-            <summary>
-            Blue
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedColor.csLightBlue">
-            <summary>
-            Light Blue
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedColor.csDarkBlue">
-            <summary>
-            Dark Blue
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedColor.csGreen">
-            <summary>
-            Green
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedColor.csLightGreen">
-            <summary>
-            Light Green
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedColor.csDarkGreen">
-            <summary>
-            Dark Green
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedColor.csCyan">
-            <summary>
-            Cyan
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedColor.csLightCyan">
-            <summary>
-            Light Cyan
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedColor.csDarkCyan">
-            <summary>
-            Dark Cyan
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedColor.csPurple">
-            <summary>
-            Purple
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedColor.csLightPurple">
-            <summary>
-            Light Purple
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedColor.csDarkPurple">
-            <summary>
-            Dark Purple
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedColor.csGray">
-            <summary>
-            Gray
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedColor.csLightGray">
-            <summary>
-            Light Gray
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedColor.csDarkGray">
-            <summary>
-            Dark Gray
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedColor.csUserColor">
-            <summary>
-            User color with RGB
-            </summary>
-        </member>
-        <member name="T:sharpPDF.Enumerators.predefinedFont">
-            <summary>
-            Enumerator that implements standard PDF fonts.
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedFont.csHelvetica">
-            <summary>
-            Font Helvetica
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedFont.csHelveticaBold">
-            <summary>
-            Font Helvetica Bold
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedFont.csHelveticaOblique">
-            <summary>
-            Font Helvetica Oblique
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedFont.csHelvetivaBoldOblique">
-            <summary>
-            Font Helvetica Bold Oblique
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedFont.csCourier">
-            <summary>
-            Font Courier
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedFont.csCourierBold">
-            <summary>
-            Font Courier Bold
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedFont.csCourierOblique">
-            <summary>
-            Font Courier Oblique
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedFont.csCourierBoldOblique">
-            <summary>
-            Font Courier Bold Oblique
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedFont.csTimes">
-            <summary>
-            Font Times
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedFont.csTimesBold">
-            <summary>
-            Font Times Bold
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedFont.csTimesOblique">
-            <summary>
-            Font Times Oblique
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedFont.csTimesBoldOblique">
-            <summary>
-            Font Times Bold Oblique
-            </summary>
-        </member>
-        <member name="T:sharpPDF.Enumerators.predefinedMarkerStyle">
-            <summary>
-            Enumerator that implements standard PDF page's markers.
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedMarkerStyle.csArabic">
-            <summary>
-            Numeric page's marker
-            </summary>
-        </member>
-        <member name="F:sharpPDF.Enumerators.predefinedMarkerStyle.csRoman">
-            <summary>
-            Literal page's marker
-            </summary>
         </member>
         <member name="T:sharpPDF.rectangleElement">
             <summary>
@@ -3177,12 +3177,6 @@
             <param name="newCoordY">Y position of the text in the page</param>
             <param name="newStrokeColor">Font's color</param>
         </member>
-        <member name="M:sharpPDF.textElement.getText">
-            <summary>
-            Method that returns the PDF codes to write the text in the document
-            </summary>
-            <returns>String that contains PDF codes</returns>
-        </member>
         <member name="P:sharpPDF.textElement.content">
             <summary>
             Text's content
@@ -3197,6 +3191,12 @@
             <summary>
             Font's type
             </summary>
+        </member>
+        <member name="M:sharpPDF.textElement.getText">
+            <summary>
+            Method that returns the PDF codes to write the text in the document
+            </summary>
+            <returns>String that contains PDF codes</returns>
         </member>
     </members>
 </doc>

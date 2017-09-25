@@ -190,6 +190,8 @@ namespace ArtefaktGenerator
             this.updatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblInfo = new System.Windows.Forms.Label();
             this.hero_name = new System.Windows.Forms.Label();
+            this.special_additional_arcanovi = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
             this.artefakttyp = new CustomControls.RadioGroupBox();
             this.artefakttyp_aux = new CustomControls.RadioGroupBox();
             this.aux_labil = new System.Windows.Forms.RadioButton();
@@ -223,6 +225,8 @@ namespace ArtefaktGenerator
             this.repGroup = new CustomControls.RadioGroupBox();
             this.rep_ach = new System.Windows.Forms.RadioButton();
             this.rep_mag = new System.Windows.Forms.RadioButton();
+            this.label7 = new System.Windows.Forms.Label();
+            this.arcanoviOtherMod = new System.Windows.Forms.NumericUpDown();
             this.materialGroup.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.starkonst)).BeginInit();
@@ -264,6 +268,7 @@ namespace ArtefaktGenerator
             ((System.ComponentModel.ISupportInitialize)(this.destruct_komplex)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.destruct_mr)).BeginInit();
             this.menu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.special_additional_arcanovi)).BeginInit();
             this.artefakttyp.SuspendLayout();
             this.artefakttyp_aux.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.type_speicher_value)).BeginInit();
@@ -271,13 +276,14 @@ namespace ArtefaktGenerator
             this.artefakttyp_matrix.SuspendLayout();
             this.artefakttyp_semi.SuspendLayout();
             this.repGroup.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.arcanoviOtherMod)).BeginInit();
             this.SuspendLayout();
             // 
             // materialGroup
             // 
             this.materialGroup.Controls.Add(this.cb_kristalle);
             this.materialGroup.Controls.Add(this.material);
-            this.materialGroup.Location = new System.Drawing.Point(635, 305);
+            this.materialGroup.Location = new System.Drawing.Point(635, 317);
             this.materialGroup.Name = "materialGroup";
             this.materialGroup.Size = new System.Drawing.Size(153, 57);
             this.materialGroup.TabIndex = 21;
@@ -307,6 +313,8 @@ namespace ArtefaktGenerator
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.arcanoviOtherMod);
+            this.groupBox5.Controls.Add(this.label7);
             this.groupBox5.Controls.Add(this.starkonst);
             this.groupBox5.Controls.Add(this.label26);
             this.groupBox5.Controls.Add(this.arcanovi_force);
@@ -319,10 +327,10 @@ namespace ArtefaktGenerator
             this.groupBox5.Controls.Add(this.label4);
             this.groupBox5.Location = new System.Drawing.Point(635, 157);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(153, 144);
+            this.groupBox5.Size = new System.Drawing.Size(153, 161);
             this.groupBox5.TabIndex = 15;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Probenzuschläge";
+            this.groupBox5.Text = "Probenmodifikationen";
             // 
             // starkonst
             // 
@@ -679,6 +687,8 @@ namespace ArtefaktGenerator
             // 
             // groupBox11
             // 
+            this.groupBox11.Controls.Add(this.label5);
+            this.groupBox11.Controls.Add(this.special_additional_arcanovi);
             this.groupBox11.Controls.Add(this.gemeinschaftlich);
             this.groupBox11.Controls.Add(this.agribaal);
             this.groupBox11.Controls.Add(this.label32);
@@ -692,7 +702,7 @@ namespace ArtefaktGenerator
             this.groupBox11.Controls.Add(this.namenlos);
             this.groupBox11.Location = new System.Drawing.Point(793, 157);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(198, 166);
+            this.groupBox11.Size = new System.Drawing.Size(198, 217);
             this.groupBox11.TabIndex = 22;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Besonderes";
@@ -1203,9 +1213,9 @@ namespace ArtefaktGenerator
             this.wirkendeZauber.Controls.Add(this.lbl_staple);
             this.wirkendeZauber.Controls.Add(this.label3);
             this.wirkendeZauber.Controls.Add(this.label2);
-            this.wirkendeZauber.Location = new System.Drawing.Point(6, 345);
+            this.wirkendeZauber.Location = new System.Drawing.Point(7, 368);
             this.wirkendeZauber.Name = "wirkendeZauber";
-            this.wirkendeZauber.Size = new System.Drawing.Size(433, 211);
+            this.wirkendeZauber.Size = new System.Drawing.Size(438, 227);
             this.wirkendeZauber.TabIndex = 16;
             this.wirkendeZauber.TabStop = false;
             this.wirkendeZauber.Text = "Wirkende Zauber";
@@ -1216,7 +1226,7 @@ namespace ArtefaktGenerator
             this.zauber_listbox.ItemHeight = 14;
             this.zauber_listbox.Location = new System.Drawing.Point(6, 88);
             this.zauber_listbox.Name = "zauber_listbox";
-            this.zauber_listbox.Size = new System.Drawing.Size(309, 116);
+            this.zauber_listbox.Size = new System.Drawing.Size(327, 130);
             this.zauber_listbox.TabIndex = 25;
             // 
             // komp_combo
@@ -1252,7 +1262,7 @@ namespace ArtefaktGenerator
             // 
             // zauber_del
             // 
-            this.zauber_del.Location = new System.Drawing.Point(341, 67);
+            this.zauber_del.Location = new System.Drawing.Point(352, 66);
             this.zauber_del.Name = "zauber_del";
             this.zauber_del.Size = new System.Drawing.Size(75, 25);
             this.zauber_del.TabIndex = 21;
@@ -1263,7 +1273,7 @@ namespace ArtefaktGenerator
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(319, 72);
+            this.label11.Location = new System.Drawing.Point(337, 71);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(18, 14);
             this.label11.TabIndex = 20;
@@ -1272,7 +1282,7 @@ namespace ArtefaktGenerator
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(319, 41);
+            this.label10.Location = new System.Drawing.Point(337, 40);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(18, 14);
             this.label10.TabIndex = 19;
@@ -1289,7 +1299,7 @@ namespace ArtefaktGenerator
             // 
             // zauber_add
             // 
-            this.zauber_add.Location = new System.Drawing.Point(341, 36);
+            this.zauber_add.Location = new System.Drawing.Point(352, 35);
             this.zauber_add.Name = "zauber_add";
             this.zauber_add.Size = new System.Drawing.Size(75, 25);
             this.zauber_add.TabIndex = 13;
@@ -1308,7 +1318,7 @@ namespace ArtefaktGenerator
             this.zauber_list.FullRowSelect = true;
             this.zauber_list.Location = new System.Drawing.Point(6, 66);
             this.zauber_list.Name = "zauber_list";
-            this.zauber_list.Size = new System.Drawing.Size(309, 138);
+            this.zauber_list.Size = new System.Drawing.Size(327, 152);
             this.zauber_list.TabIndex = 12;
             this.zauber_list.TileSize = new System.Drawing.Size(100, 100);
             this.zauber_list.UseCompatibleStateImageBehavior = false;
@@ -1317,12 +1327,12 @@ namespace ArtefaktGenerator
             // name
             // 
             this.name.Text = "Zauber";
-            this.name.Width = 81;
+            this.name.Width = 89;
             // 
             // complexity
             // 
             this.complexity.Text = "Komp.";
-            this.complexity.Width = 48;
+            this.complexity.Width = 54;
             // 
             // count_staples
             // 
@@ -1332,12 +1342,12 @@ namespace ArtefaktGenerator
             // count_asp
             // 
             this.count_asp.Text = "AsP";
-            this.count_asp.Width = 47;
+            this.count_asp.Width = 53;
             // 
             // rep
             // 
             this.rep.Text = "Rep.";
-            this.rep.Width = 69;
+            this.rep.Width = 51;
             // 
             // asp
             // 
@@ -1465,10 +1475,10 @@ namespace ArtefaktGenerator
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(449, 345);
+            this.tabControl1.Location = new System.Drawing.Point(451, 368);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(508, 211);
+            this.tabControl1.Size = new System.Drawing.Size(540, 227);
             this.tabControl1.TabIndex = 17;
             // 
             // tabPage1
@@ -1478,7 +1488,7 @@ namespace ArtefaktGenerator
             this.tabPage1.Location = new System.Drawing.Point(4, 23);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(500, 184);
+            this.tabPage1.Size = new System.Drawing.Size(532, 200);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Erschaffung";
             // 
@@ -1492,7 +1502,7 @@ namespace ArtefaktGenerator
             this.txt_create.Name = "txt_create";
             this.txt_create.ReadOnly = true;
             this.txt_create.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txt_create.Size = new System.Drawing.Size(490, 177);
+            this.txt_create.Size = new System.Drawing.Size(525, 193);
             this.txt_create.TabIndex = 0;
             // 
             // tabPage2
@@ -1746,7 +1756,7 @@ namespace ArtefaktGenerator
             this.updatesToolStripMenuItem});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(996, 24);
+            this.menu.Size = new System.Drawing.Size(1000, 24);
             this.menu.TabIndex = 23;
             this.menu.Text = "menuStrip1";
             // 
@@ -2090,9 +2100,9 @@ namespace ArtefaktGenerator
             this.lblInfo.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblInfo.Location = new System.Drawing.Point(396, 28);
             this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(209, 14);
+            this.lblInfo.Size = new System.Drawing.Size(250, 14);
             this.lblInfo.TabIndex = 24;
-            this.lblInfo.Text = "ArtefaktGenerator 2.5 by DSA-Hamburg.de";
+            this.lblInfo.Text = "ArtefaktGenerator 2.6 BETA_2 by DSA-Hamburg.de";
             // 
             // hero_name
             // 
@@ -2103,6 +2113,27 @@ namespace ArtefaktGenerator
             this.hero_name.Size = new System.Drawing.Size(36, 14);
             this.hero_name.TabIndex = 25;
             this.hero_name.Text = "Held: ";
+            // 
+            // special_additional_arcanovi
+            // 
+            this.special_additional_arcanovi.Location = new System.Drawing.Point(6, 162);
+            this.special_additional_arcanovi.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.special_additional_arcanovi.Name = "special_additional_arcanovi";
+            this.special_additional_arcanovi.Size = new System.Drawing.Size(52, 20);
+            this.special_additional_arcanovi.TabIndex = 26;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(64, 164);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(88, 14);
+            this.label5.TabIndex = 27;
+            this.label5.Text = "Weitere Arcanovi";
             // 
             // artefakttyp
             // 
@@ -2536,6 +2567,32 @@ namespace ArtefaktGenerator
             this.rep_mag.UseVisualStyleBackColor = true;
             this.rep_mag.Click += new System.EventHandler(this.rep_mag_Click);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 136);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(70, 14);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "Weitere Mod.";
+            // 
+            // arcanoviOtherMod
+            // 
+            this.arcanoviOtherMod.Location = new System.Drawing.Point(111, 134);
+            this.arcanoviOtherMod.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.arcanoviOtherMod.Minimum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            -2147483648});
+            this.arcanoviOtherMod.Name = "arcanoviOtherMod";
+            this.arcanoviOtherMod.Size = new System.Drawing.Size(36, 20);
+            this.arcanoviOtherMod.TabIndex = 20;
+            // 
             // ArtGenControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -2557,7 +2614,7 @@ namespace ArtefaktGenerator
             this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Times New Roman", 8.25F);
             this.Name = "ArtGenControl";
-            this.Size = new System.Drawing.Size(996, 557);
+            this.Size = new System.Drawing.Size(1000, 608);
             this.Load += new System.EventHandler(this.ArtGenControl_Load);
             this.SizeChanged += new System.EventHandler(this.ArtGenControl_SizeChanged);
             this.Click += new System.EventHandler(this.ArtGenControl_Click);
@@ -2615,6 +2672,7 @@ namespace ArtefaktGenerator
             ((System.ComponentModel.ISupportInitialize)(this.destruct_mr)).EndInit();
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.special_additional_arcanovi)).EndInit();
             this.artefakttyp.ResumeLayout(false);
             this.artefakttyp.PerformLayout();
             this.artefakttyp_aux.ResumeLayout(false);
@@ -2628,6 +2686,7 @@ namespace ArtefaktGenerator
             this.artefakttyp_semi.PerformLayout();
             this.repGroup.ResumeLayout(false);
             this.repGroup.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.arcanoviOtherMod)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2829,5 +2888,9 @@ namespace ArtefaktGenerator
         private CheckBox gemeinschaftlich;
         private ToolStripMenuItem showPDFToolStripMenuItem;
         private ComboBox special_ferngespuer_komp;
+        private Label label5;
+        private NumericUpDown special_additional_arcanovi;
+        private NumericUpDown arcanoviOtherMod;
+        private Label label7;
     }
 }

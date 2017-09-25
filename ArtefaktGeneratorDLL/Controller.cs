@@ -865,6 +865,12 @@ namespace ArtefaktGenerator
             }
         }
 
+        public int extraZusaetzlicheArcanovi
+        {
+            get { return (int)artefakt.special_additional_arcanovi; }
+            set { artefakt.special_additional_arcanovi = (decimal)value; RaisePropertyChanged("extraZusaetzlicheArcanovi"); }
+        }
+
         //Material
         public List<Material> material
         {
@@ -940,6 +946,11 @@ namespace ArtefaktGenerator
         {
             get { return (int)artefakt.probe.stars; }
             set { artefakt.probe.stars = (decimal)value; RaisePropertyChanged("probeSterne"); }
+        }
+        public int probeAndereMod
+        {
+            get { return (int)artefakt.probe.otherMods; }
+            set { artefakt.probe.otherMods = (decimal)value; RaisePropertyChanged("probeAndereMod"); }
         }
         #endregion
 
@@ -1264,7 +1275,7 @@ namespace ArtefaktGenerator
                 {
                     // DEBUG
                     decimal agribaal_zfp = artefakt.agribaal;
-                    decimal arcanovi_erschwernis = artefakt.probe.affine + artefakt.probe.ausloeser + artefakt.probe.material + artefakt.material.arcanovi_mod + artefakt.probe.superBig_zuschlag + artefakt.probe.erzwingen + artefakt.probe.stars;
+                    decimal arcanovi_erschwernis = artefakt.probe.affine + artefakt.probe.ausloeser + artefakt.probe.material + artefakt.material.arcanovi_mod + artefakt.probe.superBig_zuschlag + artefakt.probe.erzwingen + artefakt.probe.stars + artefakt.probe.otherMods;
                     if (artefakt.probe.superBig_zuschlag == 0) arcanovi_erschwernis += artefakt.probe.groesse;
                     //spezielle Eigenschaften
                     if (artefakt.spezial_apport) arcanovi_erschwernis += 4;
@@ -1341,7 +1352,7 @@ namespace ArtefaktGenerator
                         }
                     }
 
-                    decimal arcanovi_zfp = 0;
+                    decimal arcanovi_zfp = 0; // Arcanovi Erschwernis
                     decimal magic_asp = 0;
                     decimal eigene_rep_count = 0;
 
@@ -1378,7 +1389,7 @@ namespace ArtefaktGenerator
                             arcanovi_zfp += magic[i].staple * 2;
 
                         // AsP wirkende Sprüche
-                        decimal thismagic_asp = magic[i].asp;
+                        decimal thismagic_asp = magic[i].asp + artefakt.material.asp_mod;
 
                         if (artefakt.sf.rep == SF.SFType.ACH && optionAchSave) 
                             thismagic_asp = Round(thismagic_asp * 3 / 4);
@@ -1386,10 +1397,14 @@ namespace ArtefaktGenerator
                         if (artefakt.sf.kraftkontrolle) 
                             thismagic_asp -= 1;
 
+                        if (artefakt.limbus)
+                            thismagic_asp = Round(thismagic_asp / 10);
+
                         if (thismagic_asp == 0) 
                             thismagic_asp = 1;
 
-                        magic_asp += thismagic_asp * artefakt.loads * magic[i].staple * magic_asp_mult * magic_asp_mult_extra;
+                        magic[i].numOfCasts = artefakt.loads * magic[i].staple * magic_asp_mult * magic_asp_mult_extra;
+                        magic_asp += thismagic_asp * magic[i].numOfCasts;
                     }
 
                     // Anzahl Ladungen
@@ -1401,7 +1416,9 @@ namespace ArtefaktGenerator
 
                     if (artefakt.limbus)
                     {
-                        magic_asp = Round(magic_asp / 10);
+                        // Diese Rechnung magic_asp = Round(magic_asp / 10); passiert nun nicht mehr hier für die Summe der Kosten sondern oben JE zauber, 
+                        // da jeder Zauber auch im Limbus für sich alleine schon 1AsP kostet und nicht etwa 9 Zauber a 6 AsP = 9*6=54, 54/10=5 denn korrekt ist leider 9*1=9
+
                         arcanovi_erschwernis += 15;
                     }
 
@@ -1422,15 +1439,20 @@ namespace ArtefaktGenerator
                     }
 
                     // Arcanovi mit Agribaal
-                    decimal arcanovi_count = 0;
+                    decimal arcanovi_count = 1;
                     decimal agribaal_for_arcanovi = agribaal_zfp;
+                    decimal arcanovi_taw_new = 0; // Uebrige ZfP* pro Arcanovi Durchfuehrung
                     while (true)
                     {
-                        decimal arcanovi_taw_new = arcanovi_taw - arcanovi_erschwernis;
+                        arcanovi_taw_new = arcanovi_taw - arcanovi_erschwernis;
                         if (arcanovi_taw_new == 0) arcanovi_taw_new = 1;
                         if (arcanovi_taw_new > arcanovi_taw) arcanovi_taw_new = arcanovi_taw;
                         if (arcanovi_taw_new > 0)
+                        {
                             arcanovi_count = Math.Ceiling(arcanovi_zfp / arcanovi_taw_new);
+                            if (arcanovi_count == 0)
+                                arcanovi_count = 1;
+                        }
                         if ((arcanovi_taw_new < 0 || arcanovi_count > 1) && agribaal_zfp > 0)
                         {
                             --agribaal_zfp;
@@ -1438,7 +1460,10 @@ namespace ArtefaktGenerator
                         }
                         else break;
                     }
-                    if (arcanovi_count == 0) arcanovi_count = 1;
+
+                    arcanovi_count += artefakt.special_additional_arcanovi;
+                    decimal arcanovi_zfpLeft = arcanovi_count * arcanovi_taw_new - arcanovi_zfp;
+
                     agribaal_for_arcanovi = agribaal_for_arcanovi - agribaal_zfp;
 
                     decimal arcanovi_asp = 0;
@@ -1581,11 +1606,13 @@ namespace ArtefaktGenerator
                         resArcanovi += ("Erforderliche Arcanovi ZfP*: " + arcanovi_zfp + "\r\n");
                         if (!(artefakt.typ == Artefakt.ArtefaktType.SPEICHER))
                         {
-                            resArcanovi += ("Bester Fall: " + arcanovi_count + " Arcanovi für " + arcanovi_asp + " AsP\r\n");
+                            resArcanovi += ("Bester Fall: " + arcanovi_count + " Arcanovi für " + arcanovi_asp + " AsP  (" + arcanovi_taw_new + " ZfP* je Arcanovi)\r\n");
                             if (artefakt.agribaal == 0)
                                 resArcanovi += ("Erschwernis wirkende Sprüche: " + magic_erschwerniss + "\r\n");
                             else
                                 resArcanovi += ("Erschwernis wirkende Sprüche: " + (magic_erschwerniss - agribaal_zfp) + "(erleichterung von " + agribaal_zfp + " durch Agribaal)\r\n");
+
+                            resArcanovi += ("Arcanovi ZfP* zur weiteren Verwendung: " + arcanovi_zfpLeft + " wobei " + 2*arcanovi_taw + " = 2*ZfW maximal erlaubt sind\r\n");
                             resArcanovi += ("AsP für wirkende Sprüche: " + magic_asp + "\r\n");
                         }
                         else
@@ -1638,9 +1665,21 @@ namespace ArtefaktGenerator
                             else resArcanovi += ("Occupation: keine\r\n");
                         }
 
+                        // Zauberdurchgaenge pro Zauber:
+                        resArcanovi += "Anzahl Zauberdurchgaenge je wirkendem Spruch: ";
+                        for (int i = 0; i < magic.Count; i++)
+                        {
+                            resArcanovi += "Spruch" + (i+1) + ":" + magic[i].numOfCasts + "x";
+                            if (i < magic.Count - 1) // current i ist not last i
+                                resArcanovi += "  ";
+                            else
+                                resArcanovi += "\r\n";
+                        }
                     }
                     else
+                    {
                         resArcanovi += ("Artefakt nicht möglich. ZfW Arcanovi zu gering.");
+                    }
 
                     // Analys
 

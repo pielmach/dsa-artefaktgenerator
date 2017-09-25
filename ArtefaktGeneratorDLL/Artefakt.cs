@@ -109,6 +109,8 @@ namespace ArtefaktGenerator
 
         public decimal special_ort_neben = 0;
 
+        public decimal special_additional_arcanovi = 0;
+
         public decimal loads = 1;
 
         public Material material = new Material("kein");

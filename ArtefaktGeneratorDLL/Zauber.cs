@@ -31,10 +31,11 @@ namespace ArtefaktGenerator
         public decimal staple;
         public decimal asp;
         public bool eigene_rep;
+        public decimal numOfCasts; // Semipermanent bei zB 3 mal pro Monat muss 3*2=6 mal der Zauber gesprochen werden (2 für Monat. Kann durch SF SemiP2 verbessert werden)
 
         public override string ToString()
         {
-            return name + "\t" + komp + "\t" + staple + "\t" + asp + "\t" + (eigene_rep?"eigene":"fremde");
+            return name + "\t" + komp + "\t" + staple + "\t" + asp + "\t" + (eigene_rep ? "eigene" : "fremde");// + "\t" + numOfCasts;
         }
     }
 }

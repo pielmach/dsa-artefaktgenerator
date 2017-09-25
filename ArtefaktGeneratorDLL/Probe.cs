@@ -36,5 +36,6 @@ namespace ArtefaktGenerator
         public decimal erzwingen = 0;
 
         public decimal stars = 0;
+        public decimal otherMods = 0;
     }
 }

@@ -151,6 +151,7 @@ namespace ArtefaktGenerator
             BindingList<Zauber> z = controller.zauberListe;
             z.Add(zauber);
             controller.zauberListe = z;
+
             reloadData();
         }
 
@@ -536,6 +537,7 @@ namespace ArtefaktGenerator
                 this.agribaal.DataBindings.Add("Value", controller, "extraAgribaal", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.special_ort_occ.DataBindings.Add("Value", controller, "extraOkkupation", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.special_ort_neben.DataBindings.Add("Value", controller, "extraNebeneffekt", false, DataSourceUpdateMode.OnPropertyChanged);
+                this.special_additional_arcanovi.DataBindings.Add("Value", controller, "extraZusaetzlicheArcanovi", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.artefakt_super_big.DataBindings.Add("SelectedIndex", controller, "extraExtraGross", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.cb_kristalle.DataBindings.Add("Checked", controller, "extraKristalle", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.cb_kristalle.DataBindings.Add("Visible", controller, "extraKristalleVisible", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -550,6 +552,7 @@ namespace ArtefaktGenerator
                 this.artefakt_groesse.DataBindings.Add("Enabled", controller, "probeGroesseEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.arcanovi_force.DataBindings.Add("Value", controller, "probeErzwingen", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.starkonst.DataBindings.Add("Value", controller, "probeSterne", false, DataSourceUpdateMode.OnPropertyChanged);
+                this.arcanoviOtherMod.DataBindings.Add("Value", controller, "probeAndereMod", false, DataSourceUpdateMode.OnPropertyChanged);
 
                 this.zauber_listbox.DataSource = controller.zauberListe;
                 this.stapelung.DataBindings.Add("Maximum", controller, "zauberStapelMax", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -788,6 +791,7 @@ namespace ArtefaktGenerator
                 artefakt_groesse.Value = controller.probeGroesse;
                 artefakt_groesse.Enabled = controller.probeGroesseEnabled;
                 starkonst.Value = controller.probeSterne;
+                arcanoviOtherMod.Value = controller.probeAndereMod;
                 arcanovi_force.Value = controller.probeErzwingen;
 
                 limbus.Checked = controller.extraMadeInLimbus;
@@ -795,6 +799,7 @@ namespace ArtefaktGenerator
                 gemeinschaftlich.Checked = controller.extraGemeinschaftlicheErschaffung;
                 agribaal.Value = controller.extraAgribaal;
                 special_ort_neben.Value = controller.extraNebeneffekt;
+                special_additional_arcanovi.Value = controller.extraZusaetzlicheArcanovi;
                 special_ort_occ.Value = controller.extraOkkupation;
                 artefakt_super_big.SelectedIndex = controller.extraExtraGross;
                 if (material.Items.Count > 0) material.SelectedIndex = controller.selectedMaterial;
@@ -1126,6 +1131,12 @@ namespace ArtefaktGenerator
             reloadData();
         }
 
+        private void arcanoviOtherMod_ValueChanged(object sender, EventArgs e)
+        {
+            controller.probeAndereMod = (int)arcanoviOtherMod.Value;
+            reloadData();
+        }
+
         private void limbus_CheckedChanged(object sender, EventArgs e)
         {
             controller.extraMadeInLimbus = limbus.Checked;
@@ -1159,6 +1170,12 @@ namespace ArtefaktGenerator
         private void special_ort_neben_ValueChanged(object sender, EventArgs e)
         {
             controller.extraNebeneffekt = (int)special_ort_neben.Value;
+            reloadData();
+        }
+
+        private void special_additional_arcanovi_ValueChanged(object sender, EventArgs e)
+        {
+            controller.extraZusaetzlicheArcanovi = (int)special_additional_arcanovi.Value;
             reloadData();
         }
 
