@@ -1385,9 +1385,13 @@ namespace ArtefaktGenerator
                         }
 
                         // Stapel
-                        if (magic[i].staple > 1) 
-                            arcanovi_zfp += magic[i].staple * 2;
-
+                        if (magic[i].staple > 1)
+                        {
+                            if (artefakt.sf.hyper) //SF:Hypervehemenz: WdA S.109 ergänzt WdZ S.55 wo wiederum auf SRD S.123 verwiesen wird. Dort steht, dass mit dieser SF die notwendigen ZfP* nur 1 pro Stapel steigen und nicht 2
+                                arcanovi_zfp += magic[i].staple * 1;
+                            else
+                                arcanovi_zfp += magic[i].staple * 2;
+                        }
                         // AsP wirkende Sprüche
                         decimal thismagic_asp = magic[i].asp + artefakt.material.asp_mod;
 
@@ -1410,6 +1414,8 @@ namespace ArtefaktGenerator
                     // Anzahl Ladungen
                     if (artefakt.typ != Artefakt.ArtefaktType.SEMI) // WDA S.83 "Anzahl der Ladungen"
                         arcanovi_zfp += (artefakt.loads - 1) * 3;
+                    else
+                        arcanovi_erschwernis += artefakt.loads - 1; // WdA S.82 "Kategorie und Präservanz" "jede zusätzliche Anwendung pro Intervall erhöht den Probenzuschlag um +1"
 
                     if (artefakt.typ == Artefakt.ArtefaktType.SPEICHER)
                         magic_asp = artefakt.kraftspeicher_asp;
