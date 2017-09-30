@@ -82,22 +82,33 @@ namespace ArtefaktGenerator
             }
         }
 
+        delegate void Del(int e);
+
         private void OnCheckUpdatesComplete(int e)
         {
-            if (e >= 1)
+            // Fixed threaded unsynced access
+            Del del = delegate(int x)
             {
-                updatesToolStripMenuItem.Text = "Update verfügbar - hier klicken zum installieren";
-                updatesToolStripMenuItem.ForeColor = Color.Green;
-                updatesToolStripMenuItem.Enabled = true;
-                updateInstallierenToolStripMenuItem.Enabled = true;
-                updateInstallierenToolStripMenuItem.ForeColor = Color.Green;
-            } 
+                if (x >= 1)
+                {
+                    updatesToolStripMenuItem.Text = "Update verfügbar - hier klicken zum installieren";
+                    updatesToolStripMenuItem.ForeColor = Color.Green;
+                    updatesToolStripMenuItem.Enabled = true;
+                    updateInstallierenToolStripMenuItem.Enabled = true;
+                    updateInstallierenToolStripMenuItem.ForeColor = Color.Green;
+                }
+                else
+                {
+                    updatesToolStripMenuItem.Text = "kein Update verfügbar";
+                    updatesToolStripMenuItem.Enabled = false;
+                    updateInstallierenToolStripMenuItem.Enabled = false;
+                }
+            };
+
+            if (InvokeRequired)
+                this.Invoke(del, new Object[] { e });
             else
-            {
-                updatesToolStripMenuItem.Text = "kein Update verfügbar";
-                updatesToolStripMenuItem.Enabled = false;
-                updateInstallierenToolStripMenuItem.Enabled = false;
-            }
+                del(e);
         }
 
         private void CheckForUpdates()
@@ -162,7 +173,7 @@ namespace ArtefaktGenerator
                 controller.zauberListe.RemoveAt(zauber_listbox.SelectedIndex);
                 controller.zauberListe = controller.zauberListe;
             }
-            catch (System.Exception ex)
+            catch (System.Exception )
             {
                 	
             }

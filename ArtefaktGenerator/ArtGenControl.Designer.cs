@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using CustomControls;
 namespace ArtefaktGenerator
 {
     partial class ArtGenControl
@@ -33,6 +34,8 @@ namespace ArtefaktGenerator
             this.cb_kristalle = new System.Windows.Forms.CheckBox();
             this.material = new System.Windows.Forms.ComboBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.arcanoviOtherMod = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
             this.starkonst = new System.Windows.Forms.NumericUpDown();
             this.label26 = new System.Windows.Forms.Label();
             this.arcanovi_force = new System.Windows.Forms.NumericUpDown();
@@ -62,6 +65,8 @@ namespace ArtefaktGenerator
             this.special_signet = new System.Windows.Forms.CheckBox();
             this.special_eatmaterial = new System.Windows.Forms.CheckBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.special_additional_arcanovi = new System.Windows.Forms.NumericUpDown();
             this.gemeinschaftlich = new System.Windows.Forms.CheckBox();
             this.agribaal = new System.Windows.Forms.NumericUpDown();
             this.label32 = new System.Windows.Forms.Label();
@@ -190,8 +195,6 @@ namespace ArtefaktGenerator
             this.updatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblInfo = new System.Windows.Forms.Label();
             this.hero_name = new System.Windows.Forms.Label();
-            this.special_additional_arcanovi = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
             this.artefakttyp = new CustomControls.RadioGroupBox();
             this.artefakttyp_aux = new CustomControls.RadioGroupBox();
             this.aux_labil = new System.Windows.Forms.RadioButton();
@@ -225,10 +228,9 @@ namespace ArtefaktGenerator
             this.repGroup = new CustomControls.RadioGroupBox();
             this.rep_ach = new System.Windows.Forms.RadioButton();
             this.rep_mag = new System.Windows.Forms.RadioButton();
-            this.label7 = new System.Windows.Forms.Label();
-            this.arcanoviOtherMod = new System.Windows.Forms.NumericUpDown();
             this.materialGroup.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.arcanoviOtherMod)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.starkonst)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.arcanovi_force)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.artefakt_groesse)).BeginInit();
@@ -239,6 +241,7 @@ namespace ArtefaktGenerator
             ((System.ComponentModel.ISupportInitialize)(this.special_ferngespuer_asp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.special_variable_var)).BeginInit();
             this.groupBox11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.special_additional_arcanovi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.agribaal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.special_ort_neben)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.special_ort_occ)).BeginInit();
@@ -268,7 +271,6 @@ namespace ArtefaktGenerator
             ((System.ComponentModel.ISupportInitialize)(this.destruct_komplex)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.destruct_mr)).BeginInit();
             this.menu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.special_additional_arcanovi)).BeginInit();
             this.artefakttyp.SuspendLayout();
             this.artefakttyp_aux.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.type_speicher_value)).BeginInit();
@@ -276,13 +278,12 @@ namespace ArtefaktGenerator
             this.artefakttyp_matrix.SuspendLayout();
             this.artefakttyp_semi.SuspendLayout();
             this.repGroup.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.arcanoviOtherMod)).BeginInit();
             this.SuspendLayout();
             // 
             // materialGroup
             // 
-            this.materialGroup.Controls.Add(this.cb_kristalle);
             this.materialGroup.Controls.Add(this.material);
+            this.materialGroup.Controls.Add(this.cb_kristalle);
             this.materialGroup.Location = new System.Drawing.Point(635, 317);
             this.materialGroup.Name = "materialGroup";
             this.materialGroup.Size = new System.Drawing.Size(153, 57);
@@ -293,7 +294,7 @@ namespace ArtefaktGenerator
             // cb_kristalle
             // 
             this.cb_kristalle.AutoSize = true;
-            this.cb_kristalle.Location = new System.Drawing.Point(7, 36);
+            this.cb_kristalle.Location = new System.Drawing.Point(7, 38);
             this.cb_kristalle.Name = "cb_kristalle";
             this.cb_kristalle.Size = new System.Drawing.Size(114, 18);
             this.cb_kristalle.TabIndex = 1;
@@ -331,6 +332,32 @@ namespace ArtefaktGenerator
             this.groupBox5.TabIndex = 15;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Probenmodifikationen";
+            // 
+            // arcanoviOtherMod
+            // 
+            this.arcanoviOtherMod.Location = new System.Drawing.Point(111, 134);
+            this.arcanoviOtherMod.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.arcanoviOtherMod.Minimum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            -2147483648});
+            this.arcanoviOtherMod.Name = "arcanoviOtherMod";
+            this.arcanoviOtherMod.Size = new System.Drawing.Size(36, 20);
+            this.arcanoviOtherMod.TabIndex = 20;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 136);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(70, 14);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "Weitere Mod.";
             // 
             // starkonst
             // 
@@ -706,6 +733,27 @@ namespace ArtefaktGenerator
             this.groupBox11.TabIndex = 22;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Besonderes";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(46, 164);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(88, 14);
+            this.label5.TabIndex = 27;
+            this.label5.Text = "Weitere Arcanovi";
+            // 
+            // special_additional_arcanovi
+            // 
+            this.special_additional_arcanovi.Location = new System.Drawing.Point(6, 162);
+            this.special_additional_arcanovi.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.special_additional_arcanovi.Name = "special_additional_arcanovi";
+            this.special_additional_arcanovi.Size = new System.Drawing.Size(36, 20);
+            this.special_additional_arcanovi.TabIndex = 26;
             // 
             // gemeinschaftlich
             // 
@@ -1195,6 +1243,7 @@ namespace ArtefaktGenerator
             // 
             // wirkendeZauber
             // 
+            this.wirkendeZauber.Controls.Add(this.zauber_add);
             this.wirkendeZauber.Controls.Add(this.zauber_listbox);
             this.wirkendeZauber.Controls.Add(this.komp_combo);
             this.wirkendeZauber.Controls.Add(this.zauber_rep);
@@ -1202,7 +1251,6 @@ namespace ArtefaktGenerator
             this.wirkendeZauber.Controls.Add(this.label11);
             this.wirkendeZauber.Controls.Add(this.label10);
             this.wirkendeZauber.Controls.Add(this.loads_lbl);
-            this.wirkendeZauber.Controls.Add(this.zauber_add);
             this.wirkendeZauber.Controls.Add(this.zauber_list);
             this.wirkendeZauber.Controls.Add(this.asp);
             this.wirkendeZauber.Controls.Add(this.stapelung);
@@ -1513,7 +1561,7 @@ namespace ArtefaktGenerator
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(500, 185);
+            this.tabPage2.Size = new System.Drawing.Size(532, 201);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Analyse";
             // 
@@ -1633,7 +1681,7 @@ namespace ArtefaktGenerator
             this.tabPage3.Controls.Add(this.txt_destruct);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(500, 185);
+            this.tabPage3.Size = new System.Drawing.Size(532, 201);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Zerstörung";
             // 
@@ -2114,27 +2162,6 @@ namespace ArtefaktGenerator
             this.hero_name.TabIndex = 25;
             this.hero_name.Text = "Held: ";
             // 
-            // special_additional_arcanovi
-            // 
-            this.special_additional_arcanovi.Location = new System.Drawing.Point(6, 162);
-            this.special_additional_arcanovi.Maximum = new decimal(new int[] {
-            999,
-            0,
-            0,
-            0});
-            this.special_additional_arcanovi.Name = "special_additional_arcanovi";
-            this.special_additional_arcanovi.Size = new System.Drawing.Size(52, 20);
-            this.special_additional_arcanovi.TabIndex = 26;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(64, 164);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(88, 14);
-            this.label5.TabIndex = 27;
-            this.label5.Text = "Weitere Arcanovi";
-            // 
             // artefakttyp
             // 
             this.artefakttyp.Controls.Add(this.artefakttyp_aux);
@@ -2567,32 +2594,6 @@ namespace ArtefaktGenerator
             this.rep_mag.UseVisualStyleBackColor = true;
             this.rep_mag.Click += new System.EventHandler(this.rep_mag_Click);
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 136);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(70, 14);
-            this.label7.TabIndex = 19;
-            this.label7.Text = "Weitere Mod.";
-            // 
-            // arcanoviOtherMod
-            // 
-            this.arcanoviOtherMod.Location = new System.Drawing.Point(111, 134);
-            this.arcanoviOtherMod.Maximum = new decimal(new int[] {
-            99,
-            0,
-            0,
-            0});
-            this.arcanoviOtherMod.Minimum = new decimal(new int[] {
-            99,
-            0,
-            0,
-            -2147483648});
-            this.arcanoviOtherMod.Name = "arcanoviOtherMod";
-            this.arcanoviOtherMod.Size = new System.Drawing.Size(36, 20);
-            this.arcanoviOtherMod.TabIndex = 20;
-            // 
             // ArtGenControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -2622,6 +2623,7 @@ namespace ArtefaktGenerator
             this.materialGroup.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.arcanoviOtherMod)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.starkonst)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.arcanovi_force)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.artefakt_groesse)).EndInit();
@@ -2634,6 +2636,7 @@ namespace ArtefaktGenerator
             ((System.ComponentModel.ISupportInitialize)(this.special_variable_var)).EndInit();
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.special_additional_arcanovi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.agribaal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.special_ort_neben)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.special_ort_occ)).EndInit();
@@ -2672,7 +2675,6 @@ namespace ArtefaktGenerator
             ((System.ComponentModel.ISupportInitialize)(this.destruct_mr)).EndInit();
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.special_additional_arcanovi)).EndInit();
             this.artefakttyp.ResumeLayout(false);
             this.artefakttyp.PerformLayout();
             this.artefakttyp_aux.ResumeLayout(false);
@@ -2686,7 +2688,6 @@ namespace ArtefaktGenerator
             this.artefakttyp_semi.PerformLayout();
             this.repGroup.ResumeLayout(false);
             this.repGroup.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.arcanoviOtherMod)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

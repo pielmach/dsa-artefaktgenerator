@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtefaktGeneratorDLL", "ArtefaktGeneratorDLL\ArtefaktGeneratorDLL.csproj", "{F156CD3C-E2B2-4353-815A-2D425B452860}"
 	ProjectSection(ProjectDependencies) = postProject
 		{7D4D18D4-DBD2-4ADC-9D82-397D6C5E9F40} = {7D4D18D4-DBD2-4ADC-9D82-397D6C5E9F40}
@@ -10,7 +12,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtefaktGenerator", "ArtefaktGenerator\ArtefaktGenerator.csproj", "{625D2A2F-7362-4E49-8CB1-163D54F483A5}"
 	ProjectSection(ProjectDependencies) = postProject
 		{F156CD3C-E2B2-4353-815A-2D425B452860} = {F156CD3C-E2B2-4353-815A-2D425B452860}
-		{76484579-F5AE-449F-A4DF-B1748F0B998B} = {76484579-F5AE-449F-A4DF-B1748F0B998B}
 		{7D4D18D4-DBD2-4ADC-9D82-397D6C5E9F40} = {7D4D18D4-DBD2-4ADC-9D82-397D6C5E9F40}
 		{5C07EBDF-D43F-4BE9-B560-D7A443C0EDCE} = {5C07EBDF-D43F-4BE9-B560-D7A443C0EDCE}
 	EndProjectSection
@@ -21,8 +22,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NAppUpdate.Framework", "NAp
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NAppUpdate.Updater", "NAppUpdate.Updater\NAppUpdate.Updater.csproj", "{7D4D18D4-DBD2-4ADC-9D82-397D6C5E9F40}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControls", "CustomControls\CustomControls.csproj", "{76484579-F5AE-449F-A4DF-B1748F0B998B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sharpPDF", "sharpPDF\sharpPDF.csproj", "{00B4A076-B134-4E93-BF98-E716FD302EC7}"
 EndProject
@@ -46,7 +45,8 @@ Global
 		{F156CD3C-E2B2-4353-815A-2D425B452860}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{F156CD3C-E2B2-4353-815A-2D425B452860}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{F156CD3C-E2B2-4353-815A-2D425B452860}.Release|x86.ActiveCfg = Release|Any CPU
-		{625D2A2F-7362-4E49-8CB1-163D54F483A5}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{625D2A2F-7362-4E49-8CB1-163D54F483A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{625D2A2F-7362-4E49-8CB1-163D54F483A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{625D2A2F-7362-4E49-8CB1-163D54F483A5}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{625D2A2F-7362-4E49-8CB1-163D54F483A5}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{625D2A2F-7362-4E49-8CB1-163D54F483A5}.Debug|x86.ActiveCfg = Debug|x86
@@ -77,16 +77,6 @@ Global
 		{7D4D18D4-DBD2-4ADC-9D82-397D6C5E9F40}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{7D4D18D4-DBD2-4ADC-9D82-397D6C5E9F40}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{7D4D18D4-DBD2-4ADC-9D82-397D6C5E9F40}.Release|x86.ActiveCfg = Release|Any CPU
-		{76484579-F5AE-449F-A4DF-B1748F0B998B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{76484579-F5AE-449F-A4DF-B1748F0B998B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{76484579-F5AE-449F-A4DF-B1748F0B998B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{76484579-F5AE-449F-A4DF-B1748F0B998B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{76484579-F5AE-449F-A4DF-B1748F0B998B}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{76484579-F5AE-449F-A4DF-B1748F0B998B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{76484579-F5AE-449F-A4DF-B1748F0B998B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{76484579-F5AE-449F-A4DF-B1748F0B998B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{76484579-F5AE-449F-A4DF-B1748F0B998B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{76484579-F5AE-449F-A4DF-B1748F0B998B}.Release|x86.ActiveCfg = Release|Any CPU
 		{00B4A076-B134-4E93-BF98-E716FD302EC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{00B4A076-B134-4E93-BF98-E716FD302EC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00B4A076-B134-4E93-BF98-E716FD302EC7}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
