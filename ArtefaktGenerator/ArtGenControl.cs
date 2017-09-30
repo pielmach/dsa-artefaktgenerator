@@ -151,7 +151,8 @@ namespace ArtefaktGenerator
             zauber.asp = this.asp.Value;
             //zauber.load = this.loads.Value;
             zauber.staple = this.stapelung.Value;
-            zauber.komp = this.komp_combo.Text;
+            Array vals = Enum.GetValues(typeof(Zauber.Komplexitaet));
+            zauber.komp = (Zauber.Komplexitaet)(vals.GetValue(this.komp_combo.SelectedIndex));
             zauber.name = this.zauber.Text;
             if (this.zauber_rep.SelectedIndex == 0)
                 zauber.eigene_rep = true;
@@ -566,6 +567,49 @@ namespace ArtefaktGenerator
                 this.arcanoviOtherMod.DataBindings.Add("Value", controller, "probeAndereMod", false, DataSourceUpdateMode.OnPropertyChanged);
 
                 this.zauber_listbox.DataSource = controller.zauberListe;
+                this.zauberGrid.AutoGenerateColumns = false;
+
+                DataGridViewColumn column = new DataGridViewTextBoxColumn();
+                column.DataPropertyName = "name";
+                column.Name = "Zauber";
+                this.zauberGrid.Columns.Add(column);
+
+                DataGridViewComboBoxColumn column2 = new DataGridViewComboBoxColumn();
+                column2.DataSource = Enum.GetValues(typeof(Zauber.Komplexitaet));
+                column2.DataPropertyName = "komp";
+                column2.Name = "Komp.";
+                this.zauberGrid.Columns.Add(column2);
+
+                DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn column3 = new DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn();
+                column3.DataPropertyName = "staple";
+                column3.Name = "Stapel";
+                column3.DecimalPlaces = 0;
+                column3.Minimum = 1;
+                column3.Maximum = 99;
+                this.zauberGrid.Columns.Add(column3);
+
+                DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn column4 = new DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn();
+                column4.DataPropertyName = "asp";
+                column4.Name = "AsP";
+                column4.DecimalPlaces = 0;
+                column4.Minimum = 1;
+                column4.Maximum = 99;
+                this.zauberGrid.Columns.Add(column4);
+
+                DataGridViewCheckBoxColumn column5 = new DataGridViewCheckBoxColumn();
+                column5.DataPropertyName = "eigene_rep";
+                column5.Name = "Eigene Rep.";
+                this.zauberGrid.Columns.Add(column5);
+
+                this.zauberGrid.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                this.zauberGrid.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+                this.zauberGrid.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+                this.zauberGrid.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+                this.zauberGrid.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+
+                this.zauberGrid.DataSource = controller.zauberListe;
+                this.zauberGrid.MouseUp += zauberGrid_MouseUp;
+
                 this.stapelung.DataBindings.Add("Maximum", controller, "zauberStapelMax", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.stapelung.DataBindings.Add("Enabled", controller, "zauberStapelEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.lbl_staple.DataBindings.Add("Enabled", controller, "zauberStapelEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -636,6 +680,18 @@ namespace ArtefaktGenerator
             }
             material.SelectedIndex = 0;
             reloadData();
+        }
+
+        void zauberGrid_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                DataGridView.HitTestInfo hitTestInfo = zauberGrid.HitTest(e.X, e.Y);
+                if (hitTestInfo.Type == DataGridViewHitTestType.Cell)
+                    zauberGrid.BeginEdit(true);
+                else
+                    zauberGrid.EndEdit();
+            }
         }
 
         public void saveOptions()

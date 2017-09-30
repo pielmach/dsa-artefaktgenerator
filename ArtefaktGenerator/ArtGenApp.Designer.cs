@@ -41,7 +41,7 @@
             this.artGenControl1.Location = new System.Drawing.Point(0, 0);
             this.artGenControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.artGenControl1.Name = "artGenControl1";
-            this.artGenControl1.Size = new System.Drawing.Size(996, 559);
+            this.artGenControl1.Size = new System.Drawing.Size(1001, 604);
             this.artGenControl1.TabIndex = 0;
             // 
             // ArtGenApp
@@ -50,7 +50,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(996, 559);
+            this.ClientSize = new System.Drawing.Size(1001, 604);
             this.Controls.Add(this.artGenControl1);
             this.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "ArtGenApp";

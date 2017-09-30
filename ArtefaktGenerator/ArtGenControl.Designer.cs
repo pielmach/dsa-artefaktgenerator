@@ -30,9 +30,10 @@ namespace ArtefaktGenerator
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.materialGroup = new System.Windows.Forms.GroupBox();
-            this.cb_kristalle = new System.Windows.Forms.CheckBox();
             this.material = new System.Windows.Forms.ComboBox();
+            this.cb_kristalle = new System.Windows.Forms.CheckBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.arcanoviOtherMod = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
@@ -105,6 +106,7 @@ namespace ArtefaktGenerator
             this.arcanovi_matrix_lbl = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.wirkendeZauber = new System.Windows.Forms.GroupBox();
+            this.zauber_add = new System.Windows.Forms.Button();
             this.zauber_listbox = new System.Windows.Forms.ListBox();
             this.komp_combo = new System.Windows.Forms.ComboBox();
             this.zauber_rep = new System.Windows.Forms.ComboBox();
@@ -112,7 +114,6 @@ namespace ArtefaktGenerator
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.loads_lbl = new System.Windows.Forms.Label();
-            this.zauber_add = new System.Windows.Forms.Button();
             this.zauber_list = new System.Windows.Forms.ListView();
             this.name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.complexity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -195,6 +196,9 @@ namespace ArtefaktGenerator
             this.updatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblInfo = new System.Windows.Forms.Label();
             this.hero_name = new System.Windows.Forms.Label();
+            this.zauberGrid = new System.Windows.Forms.DataGridView();
+            this.dasArtefaktBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dasArtefaktBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.artefakttyp = new CustomControls.RadioGroupBox();
             this.artefakttyp_aux = new CustomControls.RadioGroupBox();
             this.aux_labil = new System.Windows.Forms.RadioButton();
@@ -271,6 +275,9 @@ namespace ArtefaktGenerator
             ((System.ComponentModel.ISupportInitialize)(this.destruct_komplex)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.destruct_mr)).BeginInit();
             this.menu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.zauberGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource1)).BeginInit();
             this.artefakttyp.SuspendLayout();
             this.artefakttyp_aux.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.type_speicher_value)).BeginInit();
@@ -291,6 +298,16 @@ namespace ArtefaktGenerator
             this.materialGroup.TabStop = false;
             this.materialGroup.Text = "Material";
             // 
+            // material
+            // 
+            this.material.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.material.FormattingEnabled = true;
+            this.material.Location = new System.Drawing.Point(7, 16);
+            this.material.Name = "material";
+            this.material.Size = new System.Drawing.Size(140, 22);
+            this.material.TabIndex = 0;
+            this.material.SelectedIndexChanged += new System.EventHandler(this.material_SelectedIndexChanged);
+            // 
             // cb_kristalle
             // 
             this.cb_kristalle.AutoSize = true;
@@ -301,16 +318,6 @@ namespace ArtefaktGenerator
             this.cb_kristalle.Text = "Kristalle (-1 pAsP)";
             this.cb_kristalle.UseVisualStyleBackColor = true;
             this.cb_kristalle.CheckedChanged += new System.EventHandler(this.cb_kristalle_CheckedChanged);
-            // 
-            // material
-            // 
-            this.material.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.material.FormattingEnabled = true;
-            this.material.Location = new System.Drawing.Point(7, 16);
-            this.material.Name = "material";
-            this.material.Size = new System.Drawing.Size(140, 22);
-            this.material.TabIndex = 0;
-            this.material.SelectedIndexChanged += new System.EventHandler(this.material_SelectedIndexChanged);
             // 
             // groupBox5
             // 
@@ -1243,6 +1250,7 @@ namespace ArtefaktGenerator
             // 
             // wirkendeZauber
             // 
+            this.wirkendeZauber.Controls.Add(this.zauberGrid);
             this.wirkendeZauber.Controls.Add(this.zauber_add);
             this.wirkendeZauber.Controls.Add(this.zauber_listbox);
             this.wirkendeZauber.Controls.Add(this.komp_combo);
@@ -1267,6 +1275,16 @@ namespace ArtefaktGenerator
             this.wirkendeZauber.TabIndex = 16;
             this.wirkendeZauber.TabStop = false;
             this.wirkendeZauber.Text = "Wirkende Zauber";
+            // 
+            // zauber_add
+            // 
+            this.zauber_add.Location = new System.Drawing.Point(352, 35);
+            this.zauber_add.Name = "zauber_add";
+            this.zauber_add.Size = new System.Drawing.Size(75, 25);
+            this.zauber_add.TabIndex = 13;
+            this.zauber_add.Text = "Hinzuf.";
+            this.zauber_add.UseVisualStyleBackColor = true;
+            this.zauber_add.Click += new System.EventHandler(this.zauber_add_Click);
             // 
             // zauber_listbox
             // 
@@ -1344,16 +1362,6 @@ namespace ArtefaktGenerator
             this.loads_lbl.Size = new System.Drawing.Size(51, 14);
             this.loads_lbl.TabIndex = 16;
             this.loads_lbl.Text = "Ladungen";
-            // 
-            // zauber_add
-            // 
-            this.zauber_add.Location = new System.Drawing.Point(352, 35);
-            this.zauber_add.Name = "zauber_add";
-            this.zauber_add.Size = new System.Drawing.Size(75, 25);
-            this.zauber_add.TabIndex = 13;
-            this.zauber_add.Text = "Hinzuf.";
-            this.zauber_add.UseVisualStyleBackColor = true;
-            this.zauber_add.Click += new System.EventHandler(this.zauber_add_Click);
             // 
             // zauber_list
             // 
@@ -1804,7 +1812,7 @@ namespace ArtefaktGenerator
             this.updatesToolStripMenuItem});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(1000, 24);
+            this.menu.Size = new System.Drawing.Size(1004, 24);
             this.menu.TabIndex = 23;
             this.menu.Text = "menuStrip1";
             // 
@@ -2161,6 +2169,25 @@ namespace ArtefaktGenerator
             this.hero_name.Size = new System.Drawing.Size(36, 14);
             this.hero_name.TabIndex = 25;
             this.hero_name.Text = "Held: ";
+            // 
+            // zauberGrid
+            // 
+            this.zauberGrid.AllowUserToAddRows = false;
+            this.zauberGrid.AllowUserToOrderColumns = true;
+            this.zauberGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.zauberGrid.Location = new System.Drawing.Point(5, 66);
+            this.zauberGrid.MultiSelect = false;
+            this.zauberGrid.Name = "zauberGrid";
+            this.zauberGrid.Size = new System.Drawing.Size(328, 152);
+            this.zauberGrid.TabIndex = 27;
+            // 
+            // dasArtefaktBindingSource
+            // 
+            this.dasArtefaktBindingSource.DataSource = typeof(ArtefaktGenerator.DasArtefakt);
+            // 
+            // dasArtefaktBindingSource1
+            // 
+            this.dasArtefaktBindingSource1.DataSource = typeof(ArtefaktGenerator.DasArtefakt);
             // 
             // artefakttyp
             // 
@@ -2615,7 +2642,7 @@ namespace ArtefaktGenerator
             this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Times New Roman", 8.25F);
             this.Name = "ArtGenControl";
-            this.Size = new System.Drawing.Size(1000, 608);
+            this.Size = new System.Drawing.Size(1004, 610);
             this.Load += new System.EventHandler(this.ArtGenControl_Load);
             this.SizeChanged += new System.EventHandler(this.ArtGenControl_SizeChanged);
             this.Click += new System.EventHandler(this.ArtGenControl_Click);
@@ -2675,6 +2702,9 @@ namespace ArtefaktGenerator
             ((System.ComponentModel.ISupportInitialize)(this.destruct_mr)).EndInit();
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.zauberGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource1)).EndInit();
             this.artefakttyp.ResumeLayout(false);
             this.artefakttyp.PerformLayout();
             this.artefakttyp_aux.ResumeLayout(false);
@@ -2893,5 +2923,8 @@ namespace ArtefaktGenerator
         private NumericUpDown special_additional_arcanovi;
         private NumericUpDown arcanoviOtherMod;
         private Label label7;
+        private DataGridView zauberGrid;
+        private BindingSource dasArtefaktBindingSource;
+        private BindingSource dasArtefaktBindingSource1;
     }
 }

@@ -974,6 +974,10 @@ namespace ArtefaktGenerator
             get { magic.AllowEdit = true; return magic; }
             set {
                 magic = value; RaisePropertyChanged("zauberListe");
+                magic.ListChanged += delegate(object sender, ListChangedEventArgs args)
+                {
+                    generateArtefakt();
+                };
             }
         }
 
@@ -1169,7 +1173,7 @@ namespace ArtefaktGenerator
                 return XmlizedString;
             }
 
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }
@@ -1376,11 +1380,11 @@ namespace ArtefaktGenerator
                         // komplexität
                         switch (magic[i].komp)
                         {
-                            case "A": break;
-                            case "B": arcanovi_zfp += 1 * artefakt.loads * magic_asp_mult; break;
-                            case "C": arcanovi_zfp += 1 * artefakt.loads * magic_asp_mult; break;
-                            case "D": arcanovi_zfp += 2 * artefakt.loads * magic_asp_mult; break;
-                            case "E": arcanovi_zfp += 2 * artefakt.loads * magic_asp_mult; break;
+                            case Zauber.Komplexitaet.A: break;
+                            case Zauber.Komplexitaet.B: arcanovi_zfp += 1 * artefakt.loads * magic_asp_mult; break;
+                            case Zauber.Komplexitaet.C: arcanovi_zfp += 1 * artefakt.loads * magic_asp_mult; break;
+                            case Zauber.Komplexitaet.D: arcanovi_zfp += 2 * artefakt.loads * magic_asp_mult; break;
+                            case Zauber.Komplexitaet.E: arcanovi_zfp += 2 * artefakt.loads * magic_asp_mult; break;
                             default: arcanovi_zfp += 3 * artefakt.loads * magic_asp_mult; break;
                         }
 

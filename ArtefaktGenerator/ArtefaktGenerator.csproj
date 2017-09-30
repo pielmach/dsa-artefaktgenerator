@@ -132,6 +132,11 @@
     <Compile Include="ArtGenControl.Designer.cs">
       <DependentUpon>ArtGenControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataGridViewNumericUpDownCell.cs" />
+    <Compile Include="DataGridViewNumericUpDownColumn.cs" />
+    <Compile Include="DataGridViewNumericUpDownEditingControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Held.cs" />
     <Compile Include="HeldAuswahl.cs">
       <SubType>Form</SubType>
@@ -169,6 +174,7 @@
     </Compile>
     <None Include="app.config" />
     <None Include="ArtefaktGenerator_TemporaryKey.pfx" />
+    <None Include="Properties\DataSources\ArtefaktGenerator.DasArtefakt.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

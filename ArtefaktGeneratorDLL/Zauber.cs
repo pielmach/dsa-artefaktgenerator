@@ -18,20 +18,99 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 using System.Text;
 
 namespace ArtefaktGenerator
 {
-    public class Zauber
+    public class Zauber : INotifyPropertyChanged
     {
-        public string name;
-        public string komp;
-        //public decimal load;
-        public decimal staple;
-        public decimal asp;
-        public bool eigene_rep;
-        public decimal numOfCasts; // Semipermanent bei zB 3 mal pro Monat muss 3*2=6 mal der Zauber gesprochen werden (2 für Monat. Kann durch SF SemiP2 verbessert werden)
+        public enum Komplexitaet : short { A = 0, B = 1, C = 2, D = 3, E = 4, F = 5, G = 6, H = 7 };
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyPropertyChanged(String info)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(info));
+            }
+        }
+
+        public Zauber()
+        {
+            komp = Komplexitaet.A;
+            staple = 1;
+            asp = 1;
+            eigene_rep = true;
+        }
+
+        private String _name;
+        public string name
+        {
+            get { return _name; }
+            set 
+            { 
+                _name = value; 
+                NotifyPropertyChanged("name"); 
+            }
+        }
+
+        private Komplexitaet _komp;
+        public Komplexitaet komp 
+        {
+            get { return _komp; }
+            set
+            {
+                _komp = value;
+                NotifyPropertyChanged("komp"); 
+            }
+        }
+        
+        private Decimal _staple;
+        public Decimal staple
+        {
+            get { return _staple; }
+            set
+            {
+                _staple = value;
+                NotifyPropertyChanged("staple");
+            }
+        }
+
+        private Decimal _asp;
+        public Decimal asp
+        {
+            get { return _asp; }
+            set
+            {
+                _asp = value;
+                NotifyPropertyChanged("asp");
+            }
+        }
+
+        private bool _eigene_rep;
+        public bool eigene_rep
+        {
+            get { return _eigene_rep; }
+            set
+            {
+                _eigene_rep = value;
+                NotifyPropertyChanged("eigene_rep");
+            }
+        }
+
+        // Semipermanent bei zB 3 mal pro Monat muss 3*2=6 mal der Zauber gesprochen werden (2 für Monat. Kann durch SF SemiP2 verbessert werden)
+        private Decimal _numOfCasts;
+        public Decimal numOfCasts
+        {
+            get { return _numOfCasts; }
+            set
+            {
+                _numOfCasts = value;
+            }
+        }
 
         public override string ToString()
         {
