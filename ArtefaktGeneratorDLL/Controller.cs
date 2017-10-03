@@ -1515,6 +1515,9 @@ namespace ArtefaktGenerator
                     if (artefakt.limbus)
                         arcanovi_base_asp = Round(arcanovi_base_asp / 10);
 
+                    if (arcanovi_base_asp < 1)
+                        arcanovi_base_asp = 1;
+
                     arcanovi_asp += arcanovi_count * arcanovi_base_asp;
 
 
@@ -1682,14 +1685,17 @@ namespace ArtefaktGenerator
                         }
 
                         // Zauberdurchgaenge pro Zauber:
-                        resArcanovi += "Anzahl Zauberdurchgaenge je wirkendem Spruch: ";
-                        for (int i = 0; i < magic.Count; i++)
+                        if (artefakt.typ != Artefakt.ArtefaktType.SPEICHER)
                         {
-                            resArcanovi += "Spruch" + (i+1) + ":" + magicNumOfCasts[i] + "x";
-                            if (i < magic.Count - 1) // current i ist not last i
-                                resArcanovi += "  ";
-                            else
-                                resArcanovi += "\r\n";
+                            resArcanovi += "Anzahl Zauberdurchgaenge je wirkendem Spruch: ";
+                            for (int i = 0; i < magic.Count; i++)
+                            {
+                                resArcanovi += "Spruch" + (i + 1) + ":" + magicNumOfCasts[i] + "x";
+                                if (i < magic.Count - 1) // current i ist not last i
+                                    resArcanovi += "  ";
+                                else
+                                    resArcanovi += "\r\n";
+                            }
                         }
                     }
                     else
