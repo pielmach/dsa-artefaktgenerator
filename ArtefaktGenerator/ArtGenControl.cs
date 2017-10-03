@@ -759,27 +759,14 @@ namespace ArtefaktGenerator
         #region Linux gedoens
         private void reloadData()
         {
-            if (!controller.zauberStapelEnabled)
+            // TODO
+            // Should be done via DataBinding. Investigate how to databind to column properties
+            if (this.zauberGrid.ColumnCount > 0)
             {
-                // Stellfeld "Stapelung" ueber der Tabelle:
-                stapelung.Value = 1;
-                stapelung.Minimum = 1;
-                stapelung.Maximum = 1;
+                this.zauberGrid.Columns[2].ReadOnly = !controller.zauberStapelEnabled;
+                ((DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn)(this.zauberGrid.Columns[2])).Minimum = 1;
+                ((DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn)(this.zauberGrid.Columns[2])).Maximum = controller.zauberStapelMax;
             }
-            else
-                stapelung.Maximum = controller.zauberStapelMax;
-
-            // Weitere Stellfelder "Stapelung" innerhalb der Tabelle je Zauber aktivieren oder deaktivieren:
-            for (int i = 0; i < this.zauberGrid.Rows.Count; i++)
-            {
-                // TODO: Stellfelder auf enabled/disabled setzen hier würde reichen:
-                // Dh irgendwie controller.zauberStapelEnabled benutzen
-                // Erreichen kann man die Stellfelder hiermit: this.zauberGrid[2, i];
-                // Dh es klappt zB this.zauberGrid[2, i].Value = 123; zu machen
-                // Kann man die Zelle wieder zu DataGridViewNumericUpDownCell casten und dann dem UI-Objekt enable/disbale sagen?
-                // (das parent DataGridViewTextBoxCell hat bestimmt so eine Funktion)
-            }
-
 
             if (isLinux())
             {
@@ -902,6 +889,7 @@ namespace ArtefaktGenerator
                 loads.Enabled = controller.zauberLadungenEnabled;
                 loads_lbl.Enabled = controller.zauberLadungenEnabled;
                 stapelung.Enabled = controller.zauberStapelEnabled;
+                stapelung.Maximum = controller.zauberStapelMax;
                 lbl_staple.Enabled = controller.zauberStapelEnabled;
 
                 txt_create.Text = controller.resultArcanovi;

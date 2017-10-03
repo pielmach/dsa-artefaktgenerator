@@ -530,6 +530,7 @@ namespace DataGridViewNumericUpDownElements
             Point ptCurrentCell = this.DataGridView.CurrentCellAddress;
             bool cellCurrent = ptCurrentCell.X == this.ColumnIndex && ptCurrentCell.Y == rowIndex;
             bool cellEdited = cellCurrent && this.DataGridView.EditingControl != null;
+            bool readOnly = this.OwningColumn.ReadOnly;
 
             // If the cell is in editing mode, there is nothing else to paint
             if (!cellEdited)
@@ -584,6 +585,7 @@ namespace DataGridViewNumericUpDownElements
                     paintingNumericUpDown.RightToLeft = this.DataGridView.RightToLeft;
                     paintingNumericUpDown.Location = new Point(0, -paintingNumericUpDown.Height - 100);
                     paintingNumericUpDown.Text = formattedValue as string;
+                    paintingNumericUpDown.Enabled = !readOnly;
 
                     Color backColor;
                     if (PartPainted(paintParts, DataGridViewPaintParts.SelectionBackground) && cellSelected)

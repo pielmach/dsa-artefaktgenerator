@@ -168,6 +168,7 @@ namespace ArtefaktGenerator
                 {
                     sfHypervehemenzEnabled = true;
                     zauberStapelEnabled = true;
+                    zauberStapelMax = 3;
                 }
                 else
                 {
@@ -187,7 +188,7 @@ namespace ArtefaktGenerator
                         }
                     }
                     zauberListe = z;
-
+                    zauberStapelMax = 1;
                 }
                 RaisePropertyChanged("sfStapeleffekt");
             }
