@@ -1372,6 +1372,11 @@ namespace ArtefaktGenerator
                             currentZfpAdd++;
                         }
 
+                    // Anzahl Zauberdurchgaenge je wirkendem Spruch
+                    // Semipermanent bei zB 3 mal pro Monat muss 3*2=6 mal der Zauber gesprochen werden (2 für Monat, 3 wegen 3 Ladungen)
+                    // Kann durch SF SemiP2 verbessert werden, was aber schon in "magic_asp_mult" steckt (siehe oben)
+                    decimal[] magicNumOfCasts = new decimal[magic.Count];
+
                     // Komplexität
                     for (int i = 0; i < magic.Count; i++)
                     {
@@ -1390,12 +1395,13 @@ namespace ArtefaktGenerator
 
                         // Stapel
                         if (magic[i].staple > 1)
-                        {
-                            if (artefakt.sf.hyper) //SF:Hypervehemenz: WdA S.109 ergänzt WdZ S.55 wo wiederum auf SRD S.123 verwiesen wird. Dort steht, dass mit dieser SF die notwendigen ZfP* nur 1 pro Stapel steigen und nicht 2
-                                arcanovi_zfp += magic[i].staple * 1;
-                            else
-                                arcanovi_zfp += magic[i].staple * 2;
-                        }
+                            arcanovi_zfp += magic[i].staple * 2;
+                        //{ // TODO: Diskutieren oder konfigurierbar machen:
+                        //    if (artefakt.sf.hyper) //SF:Hypervehemenz: WdA S.109 ergänzt WdZ S.55 wo wiederum auf SRD S.123 verwiesen wird. Dort steht, dass mit dieser SF die notwendigen ZfP* nur 1 pro Stapel steigen und nicht 2
+                        //        arcanovi_zfp += magic[i].staple * 1;
+                        //    else
+                        //        arcanovi_zfp += magic[i].staple * 2;
+                        //}
                         // AsP wirkende Sprüche
                         decimal thismagic_asp = magic[i].asp + artefakt.material.asp_mod;
 
@@ -1411,8 +1417,8 @@ namespace ArtefaktGenerator
                         if (thismagic_asp == 0) 
                             thismagic_asp = 1;
 
-                        magic[i].numOfCasts = artefakt.loads * magic[i].staple * magic_asp_mult * magic_asp_mult_extra;
-                        magic_asp += thismagic_asp * magic[i].numOfCasts;
+                        magicNumOfCasts[i] = artefakt.loads * magic[i].staple * magic_asp_mult * magic_asp_mult_extra;
+                        magic_asp += thismagic_asp * magicNumOfCasts[i];
                     }
 
                     // Anzahl Ladungen
@@ -1679,7 +1685,7 @@ namespace ArtefaktGenerator
                         resArcanovi += "Anzahl Zauberdurchgaenge je wirkendem Spruch: ";
                         for (int i = 0; i < magic.Count; i++)
                         {
-                            resArcanovi += "Spruch" + (i+1) + ":" + magic[i].numOfCasts + "x";
+                            resArcanovi += "Spruch" + (i+1) + ":" + magicNumOfCasts[i] + "x";
                             if (i < magic.Count - 1) // current i ist not last i
                                 resArcanovi += "  ";
                             else
