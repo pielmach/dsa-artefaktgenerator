@@ -589,23 +589,32 @@ namespace ArtefaktGenerator
                 this.zauberGrid.Columns.Add(column3);
 
                 DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn column4 = new DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn();
-                column4.DataPropertyName = "asp";
-                column4.Name = "AsP";
+                column4.DataPropertyName = "summierung";
+                column4.Name = "Summe";
                 column4.DecimalPlaces = 0;
                 column4.Minimum = 1;
                 column4.Maximum = 99;
                 this.zauberGrid.Columns.Add(column4);
 
-                DataGridViewCheckBoxColumn column5 = new DataGridViewCheckBoxColumn();
-                column5.DataPropertyName = "eigene_rep";
-                column5.Name = "Eigene Rep.";
+                DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn column5 = new DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn();
+                column5.DataPropertyName = "asp";
+                column5.Name = "AsP";
+                column5.DecimalPlaces = 0;
+                column5.Minimum = 1;
+                column5.Maximum = 99;
                 this.zauberGrid.Columns.Add(column5);
+
+                DataGridViewCheckBoxColumn column6 = new DataGridViewCheckBoxColumn();
+                column6.DataPropertyName = "eigene_rep";
+                column6.Name = "Eigene Rep.";
+                this.zauberGrid.Columns.Add(column6);
 
                 this.zauberGrid.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 this.zauberGrid.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
                 this.zauberGrid.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
                 this.zauberGrid.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
                 this.zauberGrid.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+                this.zauberGrid.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
 
                 this.zauberGrid.DataSource = controller.zauberListe;
                 this.zauberGrid.MouseUp += zauberGrid_MouseUp;

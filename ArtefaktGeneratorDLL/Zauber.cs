@@ -43,6 +43,7 @@ namespace ArtefaktGenerator
             komp = Komplexitaet.A;
             staple = 1;
             asp = 1;
+            summierung = 1;
             eigene_rep = true;
         }
 
@@ -76,6 +77,17 @@ namespace ArtefaktGenerator
             {
                 _staple = value;
                 NotifyPropertyChanged("staple");
+            }
+        }
+
+        private Decimal _summierung;
+        public Decimal summierung
+        {
+            get { return _summierung; }
+            set
+            {
+                _summierung = value;
+                NotifyPropertyChanged("summierung");
             }
         }
 
