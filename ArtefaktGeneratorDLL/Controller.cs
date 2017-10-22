@@ -1482,12 +1482,13 @@ namespace ArtefaktGenerator
                             if (arcanovi_count == 0)
                                 arcanovi_count = 1;
                         }
-                        if ((arcanovi_taw_new < 0 || arcanovi_count > 1) && agribaal_zfp > 0)
-                        {
-                            --agribaal_zfp;
-                            --arcanovi_erschwernis;
-                        }
-                        else break;
+                        //if ((arcanovi_taw_new < 0 || arcanovi_count > 1) && agribaal_zfp > 0)
+                        //{
+                        //    --agribaal_zfp;
+                        //    --arcanovi_erschwernis;
+                        //}
+                        //else break;
+                        break;
                     }
 
                     arcanovi_count += artefakt.special_additional_arcanovi;
@@ -1630,19 +1631,13 @@ namespace ArtefaktGenerator
                         else
                             resArcanovi += ("Artefaktthesis kann nicht selber erstellt werden. TaW ARCANOVI bzw. Magiekunde zu gering.\r\n\r\n");
 
-                        if (artefakt.agribaal == 0)
-                            resArcanovi += ("Erschwernis für Arcanovi: " + arcanovi_erschwernis + "\r\n");
-                        else
-                            resArcanovi += ("Erschwernis für Arcanovi: " + arcanovi_erschwernis + " (erleichterung von " + agribaal_for_arcanovi + " durch Agribaal)\r\n");
+                        resArcanovi += ("Erschwernis für Arcanovi: " + arcanovi_erschwernis + "\r\n");
 
                         resArcanovi += ("Erforderliche Arcanovi ZfP*: " + arcanovi_zfp + "\r\n");
                         if (!(artefakt.typ == Artefakt.ArtefaktType.SPEICHER))
                         {
                             resArcanovi += ("Bester Fall: " + arcanovi_count + " Arcanovi für " + arcanovi_asp + " AsP  (" + arcanovi_taw_new + " ZfP* je Arcanovi)\r\n");
-                            if (artefakt.agribaal == 0)
-                                resArcanovi += ("Erschwernis wirkende Sprüche: " + magic_erschwerniss + "\r\n");
-                            else
-                                resArcanovi += ("Erschwernis wirkende Sprüche: " + (magic_erschwerniss - agribaal_zfp) + "(erleichterung von " + agribaal_zfp + " durch Agribaal)\r\n");
+                            resArcanovi += ("Erschwernis wirkende Sprüche: " + magic_erschwerniss + "\r\n");
 
                             resArcanovi += ("Arcanovi ZfP* zur weiteren Verwendung: " + arcanovi_zfpLeft + " wobei " + 2*arcanovi_taw + " = 2*ZfW maximal erlaubt sind\r\n");
                             resArcanovi += ("AsP für wirkende Sprüche: " + magic_asp + "\r\n");
@@ -1710,6 +1705,12 @@ namespace ArtefaktGenerator
                                     resArcanovi += "\r\n";
                             }
                         }
+
+                        // Freie Punkte durch Agribaal
+                        if (artefakt.agribaal == 1)
+                            resArcanovi += "Insgesamt 7 (max. 4 jeweils) dürfen von den 3 Feldern, welche mit A) markiert sind, abgezogen werden.\r\n";
+                        else if (artefakt.agribaal == 2)
+                            resArcanovi += "Insgesamt 12 (max. 4 jeweils) dürfen von den 3 Feldern, welche mit A) markiert sind, abgezogen werden.\r\n";
                     }
                     else
                     {
