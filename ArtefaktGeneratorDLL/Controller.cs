@@ -953,6 +953,11 @@ namespace ArtefaktGenerator
             get { return (int)artefakt.probe.otherMods; }
             set { artefakt.probe.otherMods = (decimal)value; RaisePropertyChanged("probeAndereMod"); }
         }
+        public int probeZfPSternMod
+        {
+            get { return (int)artefakt.probe.zfpSternMod; }
+            set { artefakt.probe.zfpSternMod = (decimal)value; RaisePropertyChanged("probeZfPSternMod"); }
+        }
         #endregion
 
         #region Zauber Liste
@@ -1357,7 +1362,7 @@ namespace ArtefaktGenerator
                         }
                     }
 
-                    decimal arcanovi_zfp = 0; // Arcanovi Erschwernis
+                    decimal arcanovi_zfp = artefakt.probe.zfpSternMod; // Arcanovi Erschwernis // TODO: Ist das hier wirklich "Arcanovi Erschwernis"? und nicht eher die notwendigen ZfP* für die Arcanovi Probe? wird zumindest so verwendet
                     decimal magic_asp = 0;
                     decimal eigene_rep_count = 0;
 

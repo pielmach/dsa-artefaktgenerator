@@ -565,6 +565,7 @@ namespace ArtefaktGenerator
                 this.arcanovi_force.DataBindings.Add("Value", controller, "probeErzwingen", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.starkonst.DataBindings.Add("Value", controller, "probeSterne", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.arcanoviOtherMod.DataBindings.Add("Value", controller, "probeAndereMod", false, DataSourceUpdateMode.OnPropertyChanged);
+                this.arcanoviZfPSternMod.DataBindings.Add("Value", controller, "probeZfPSternMod", false, DataSourceUpdateMode.OnPropertyChanged);
 
                 this.zauber_listbox.DataSource = controller.zauberListe;
                 this.zauberGrid.AutoGenerateColumns = false;
@@ -877,6 +878,7 @@ namespace ArtefaktGenerator
                 artefakt_groesse.Enabled = controller.probeGroesseEnabled;
                 starkonst.Value = controller.probeSterne;
                 arcanoviOtherMod.Value = controller.probeAndereMod;
+                arcanoviZfPSternMod.Value = controller.probeZfPSternMod;
                 arcanovi_force.Value = controller.probeErzwingen;
 
                 limbus.Checked = controller.extraMadeInLimbus;
@@ -1219,6 +1221,12 @@ namespace ArtefaktGenerator
         private void arcanoviOtherMod_ValueChanged(object sender, EventArgs e)
         {
             controller.probeAndereMod = (int)arcanoviOtherMod.Value;
+            reloadData();
+        }
+
+        private void arcanoviZfPSternMod_ValueChanged(object sender, EventArgs e)
+        {
+            controller.probeZfPSternMod = (int)arcanoviZfPSternMod.Value;
             reloadData();
         }
 

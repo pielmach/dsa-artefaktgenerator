@@ -37,5 +37,6 @@ namespace ArtefaktGenerator
 
         public decimal stars = 0;
         public decimal otherMods = 0;
+        public decimal zfpSternMod = 0;
     }
 }
