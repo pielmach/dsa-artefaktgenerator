@@ -958,6 +958,13 @@ namespace ArtefaktGenerator
             get { return (int)artefakt.probe.zfpSternMod; }
             set { artefakt.probe.zfpSternMod = (decimal)value; RaisePropertyChanged("probeZfPSternMod"); }
         }
+
+        public int probeWirkenderSpruchMod
+        {
+            get { return (int)artefakt.probe.wirkenderSpruchMod; }
+            set { artefakt.probe.wirkenderSpruchMod = (decimal)value; RaisePropertyChanged("probeWirkenderSpruch"); }
+        }
+
         #endregion
 
         #region Zauber Liste
@@ -1570,7 +1577,7 @@ namespace ArtefaktGenerator
                     if (artefakt.kristalle && pasp > 0) pasp -= 1;
 
                     // Erschwerniss Wirkende Zauber
-                    decimal magic_erschwerniss = 2 + artefakt.material.wirkende_mod;
+                    decimal magic_erschwerniss = 2 + artefakt.material.wirkende_mod + artefakt.probe.wirkenderSpruchMod;
                     if (artefakt.gemeinschaftlich) magic_erschwerniss += 5;
 
                     // Nebeneffekte
