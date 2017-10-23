@@ -201,8 +201,6 @@ namespace ArtefaktGenerator
             this.arcanoviZfPSternMod = new System.Windows.Forms.NumericUpDown();
             this.label20 = new System.Windows.Forms.Label();
             this.wirkSpruchMod = new System.Windows.Forms.NumericUpDown();
-            this.dasArtefaktBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dasArtefaktBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.artefakttyp = new CustomControls.RadioGroupBox();
             this.artefakttyp_aux = new CustomControls.RadioGroupBox();
             this.aux_labil = new System.Windows.Forms.RadioButton();
@@ -236,6 +234,8 @@ namespace ArtefaktGenerator
             this.repGroup = new CustomControls.RadioGroupBox();
             this.rep_ach = new System.Windows.Forms.RadioButton();
             this.rep_mag = new System.Windows.Forms.RadioButton();
+            this.dasArtefaktBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dasArtefaktBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.materialGroup.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.arcanoviOtherMod)).BeginInit();
@@ -282,8 +282,6 @@ namespace ArtefaktGenerator
             this.menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.arcanoviZfPSternMod)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wirkSpruchMod)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource1)).BeginInit();
             this.artefakttyp.SuspendLayout();
             this.artefakttyp_aux.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.type_speicher_value)).BeginInit();
@@ -291,6 +289,8 @@ namespace ArtefaktGenerator
             this.artefakttyp_matrix.SuspendLayout();
             this.artefakttyp_semi.SuspendLayout();
             this.repGroup.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // materialGroup
@@ -2174,7 +2174,7 @@ namespace ArtefaktGenerator
             this.lblInfo.Name = "lblInfo";
             this.lblInfo.Size = new System.Drawing.Size(250, 14);
             this.lblInfo.TabIndex = 24;
-            this.lblInfo.Text = "ArtefaktGenerator 2.6 BETA_3 by DSA-Hamburg.de";
+            this.lblInfo.Text = "ArtefaktGenerator 2.6 BETA_4 by DSA-Hamburg.de";
             // 
             // hero_name
             // 
@@ -2237,14 +2237,6 @@ namespace ArtefaktGenerator
             this.wirkSpruchMod.Name = "wirkSpruchMod";
             this.wirkSpruchMod.Size = new System.Drawing.Size(36, 20);
             this.wirkSpruchMod.TabIndex = 24;
-            // 
-            // dasArtefaktBindingSource
-            // 
-            this.dasArtefaktBindingSource.DataSource = typeof(ArtefaktGenerator.DasArtefakt);
-            // 
-            // dasArtefaktBindingSource1
-            // 
-            this.dasArtefaktBindingSource1.DataSource = typeof(ArtefaktGenerator.DasArtefakt);
             // 
             // artefakttyp
             // 
@@ -2678,6 +2670,14 @@ namespace ArtefaktGenerator
             this.rep_mag.UseVisualStyleBackColor = true;
             this.rep_mag.Click += new System.EventHandler(this.rep_mag_Click);
             // 
+            // dasArtefaktBindingSource
+            // 
+            this.dasArtefaktBindingSource.DataSource = typeof(ArtefaktGenerator.DasArtefakt);
+            // 
+            // dasArtefaktBindingSource1
+            // 
+            this.dasArtefaktBindingSource1.DataSource = typeof(ArtefaktGenerator.DasArtefakt);
+            // 
             // ArtGenControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -2762,8 +2762,6 @@ namespace ArtefaktGenerator
             this.menu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.arcanoviZfPSternMod)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wirkSpruchMod)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource1)).EndInit();
             this.artefakttyp.ResumeLayout(false);
             this.artefakttyp.PerformLayout();
             this.artefakttyp_aux.ResumeLayout(false);
@@ -2777,6 +2775,8 @@ namespace ArtefaktGenerator
             this.artefakttyp_semi.PerformLayout();
             this.repGroup.ResumeLayout(false);
             this.repGroup.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

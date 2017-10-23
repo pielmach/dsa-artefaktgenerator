@@ -1440,6 +1440,9 @@ namespace ArtefaktGenerator
                     else
                         arcanovi_erschwernis += artefakt.loads - 1; // WdA S.82 "Kategorie und Präservanz" "jede zusätzliche Anwendung pro Intervall erhöht den Probenzuschlag um +1"
 
+                    if (arcanovi_zfp < 0)
+                        arcanovi_zfp = 0;
+
                     if (artefakt.typ == Artefakt.ArtefaktType.SPEICHER)
                         magic_asp = artefakt.kraftspeicher_asp;
 
