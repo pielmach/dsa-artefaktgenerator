@@ -1624,7 +1624,14 @@ namespace ArtefaktGenerator
                     foreach(int elem in nebensNumbers)
                         nebens.Add("\t" + elem + ": " + nebeneffekte.getNebeneffektDescr(WDA, elem) + "\r\n");
 
-                    if ((arcanovi_taw - arcanovi_erschwernis >= 0))
+                    // WdA 83: Notwendige ZfP* darf maximal doppelter ZfW sein
+                    if (arcanovi_zfp > 2*arcanovi_taw)
+                    {
+                        resArcanovi += "Artefakt leider nicht möglich:\r\n";
+                        resArcanovi += "Notwendige ZfP* (" + arcanovi_zfp;
+                        resArcanovi += ") darf die doppelten ZfW des Arcanovi (" + 2*arcanovi_taw + ") nicht übersteigen\r\n";
+                    }
+                    else if ((arcanovi_taw - arcanovi_erschwernis >= 0))
                     {
                         if (arcanovi_taw >= 7 && artefakt.taw.magiekunde >= 7)
                         {
@@ -1707,6 +1714,10 @@ namespace ArtefaktGenerator
                                 else
                                     resArcanovi += "\r\n";
                             }
+
+                            // resArcanovi += "Anzahl Summierung je wirkendem Spruch:\r\n";
+                            // for (int i = 0; i < magic.Count; i++)
+                            // resArcanovi += "Summierung" + i + ":" + magic[i].summierung + "\r\n";
                         }
 
                         // Freie Punkte durch Agribaal
@@ -1717,11 +1728,11 @@ namespace ArtefaktGenerator
                     }
                     else
                     {
-                        resArcanovi += ("Artefakt nicht möglich. ZfW Arcanovi zu gering.");
+                        resArcanovi += "Artefakt leider nicht möglich:\r\n";
+                        resArcanovi += "ZfW Arcanovi (" + arcanovi_taw + ") zu gering für Erschwernis (" + arcanovi_erschwernis + ").\r\n";
                     }
 
                     // Analys
-
                     decimal odem_erschwernis = 0;
                     if (WDA)
                     {
