@@ -1430,7 +1430,7 @@ namespace ArtefaktGenerator
                         if (thismagic_asp == 0) 
                             thismagic_asp = 1;
 
-                        magicNumOfCasts[i] = artefakt.loads * magic[i].staple * magic_asp_mult * magic_asp_mult_extra;
+                        magicNumOfCasts[i] = artefakt.loads * magic[i].staple * magic[i].summierung * magic_asp_mult * magic_asp_mult_extra;
                         magic_asp += thismagic_asp * magicNumOfCasts[i];
                     }
 
