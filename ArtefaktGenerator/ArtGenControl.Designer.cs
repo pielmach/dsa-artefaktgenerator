@@ -35,6 +35,10 @@ namespace ArtefaktGenerator
             this.material = new System.Windows.Forms.ComboBox();
             this.cb_kristalle = new System.Windows.Forms.CheckBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.wirkSpruchMod = new System.Windows.Forms.NumericUpDown();
+            this.label20 = new System.Windows.Forms.Label();
+            this.arcanoviZfPSternMod = new System.Windows.Forms.NumericUpDown();
+            this.label19 = new System.Windows.Forms.Label();
             this.arcanoviOtherMod = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.starkonst = new System.Windows.Forms.NumericUpDown();
@@ -168,6 +172,7 @@ namespace ArtefaktGenerator
             this.exportierenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.automatischNeuberechenenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.alwaysHypervSRD = new System.Windows.Forms.ToolStripMenuItem();
             this.ach_save = new System.Windows.Forms.ToolStripMenuItem();
             this.regelbasis = new System.Windows.Forms.ToolStripMenuItem();
             this.wegeDerAlchimieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -197,10 +202,8 @@ namespace ArtefaktGenerator
             this.updatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblInfo = new System.Windows.Forms.Label();
             this.hero_name = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.arcanoviZfPSternMod = new System.Windows.Forms.NumericUpDown();
-            this.label20 = new System.Windows.Forms.Label();
-            this.wirkSpruchMod = new System.Windows.Forms.NumericUpDown();
+            this.dasArtefaktBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dasArtefaktBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.artefakttyp = new CustomControls.RadioGroupBox();
             this.artefakttyp_aux = new CustomControls.RadioGroupBox();
             this.aux_labil = new System.Windows.Forms.RadioButton();
@@ -234,10 +237,10 @@ namespace ArtefaktGenerator
             this.repGroup = new CustomControls.RadioGroupBox();
             this.rep_ach = new System.Windows.Forms.RadioButton();
             this.rep_mag = new System.Windows.Forms.RadioButton();
-            this.dasArtefaktBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dasArtefaktBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.materialGroup.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.wirkSpruchMod)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.arcanoviZfPSternMod)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.arcanoviOtherMod)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.starkonst)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.arcanovi_force)).BeginInit();
@@ -280,8 +283,8 @@ namespace ArtefaktGenerator
             ((System.ComponentModel.ISupportInitialize)(this.destruct_komplex)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.destruct_mr)).BeginInit();
             this.menu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.arcanoviZfPSternMod)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.wirkSpruchMod)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource1)).BeginInit();
             this.artefakttyp.SuspendLayout();
             this.artefakttyp_aux.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.type_speicher_value)).BeginInit();
@@ -289,8 +292,6 @@ namespace ArtefaktGenerator
             this.artefakttyp_matrix.SuspendLayout();
             this.artefakttyp_semi.SuspendLayout();
             this.repGroup.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // materialGroup
@@ -349,6 +350,58 @@ namespace ArtefaktGenerator
             this.groupBox5.TabIndex = 15;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Probenmodifikationen";
+            // 
+            // wirkSpruchMod
+            // 
+            this.wirkSpruchMod.Location = new System.Drawing.Point(111, 180);
+            this.wirkSpruchMod.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.wirkSpruchMod.Minimum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            -2147483648});
+            this.wirkSpruchMod.Name = "wirkSpruchMod";
+            this.wirkSpruchMod.Size = new System.Drawing.Size(36, 20);
+            this.wirkSpruchMod.TabIndex = 24;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(6, 182);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(101, 14);
+            this.label20.TabIndex = 23;
+            this.label20.Text = "A)Mod:Wirk.Spruch";
+            // 
+            // arcanoviZfPSternMod
+            // 
+            this.arcanoviZfPSternMod.Location = new System.Drawing.Point(111, 157);
+            this.arcanoviZfPSternMod.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.arcanoviZfPSternMod.Minimum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            -2147483648});
+            this.arcanoviZfPSternMod.Name = "arcanoviZfPSternMod";
+            this.arcanoviZfPSternMod.Size = new System.Drawing.Size(36, 20);
+            this.arcanoviZfPSternMod.TabIndex = 22;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(6, 160);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(109, 14);
+            this.label19.TabIndex = 21;
+            this.label19.Text = "A)Mod:NotwArcZfP*";
             // 
             // arcanoviOtherMod
             // 
@@ -1915,6 +1968,7 @@ namespace ArtefaktGenerator
             // 
             this.optionenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.automatischNeuberechenenToolStripMenuItem,
+            this.alwaysHypervSRD,
             this.ach_save,
             this.regelbasis,
             this.würfelergebnisseToolStripMenuItem,
@@ -1936,6 +1990,14 @@ namespace ArtefaktGenerator
             this.automatischNeuberechenenToolStripMenuItem.Size = new System.Drawing.Size(414, 22);
             this.automatischNeuberechenenToolStripMenuItem.Text = "Automatisch neu berechenen";
             this.automatischNeuberechenenToolStripMenuItem.Visible = false;
+            // 
+            // alwaysHypervSRD
+            // 
+            this.alwaysHypervSRD.CheckOnClick = true;
+            this.alwaysHypervSRD.Name = "alwaysHypervSRD";
+            this.alwaysHypervSRD.Size = new System.Drawing.Size(414, 22);
+            this.alwaysHypervSRD.Text = "SF:Hypervehemenz immer nach SRD";
+            this.alwaysHypervSRD.Click += new System.EventHandler(this.alwaysHypervSRD_Click_1);
             // 
             // ach_save
             // 
@@ -2174,7 +2236,7 @@ namespace ArtefaktGenerator
             this.lblInfo.Name = "lblInfo";
             this.lblInfo.Size = new System.Drawing.Size(250, 14);
             this.lblInfo.TabIndex = 24;
-            this.lblInfo.Text = "ArtefaktGenerator 2.6 BETA_4 by DSA-Hamburg.de";
+            this.lblInfo.Text = "ArtefaktGenerator 2.6 BETA_5 by DSA-Hamburg.de";
             // 
             // hero_name
             // 
@@ -2186,57 +2248,13 @@ namespace ArtefaktGenerator
             this.hero_name.TabIndex = 25;
             this.hero_name.Text = "Held: ";
             // 
-            // label19
+            // dasArtefaktBindingSource
             // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(6, 160);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(109, 14);
-            this.label19.TabIndex = 21;
-            this.label19.Text = "A)Mod:NotwArcZfP*";
+            this.dasArtefaktBindingSource.DataSource = typeof(ArtefaktGenerator.DasArtefakt);
             // 
-            // arcanoviZfPSternMod
+            // dasArtefaktBindingSource1
             // 
-            this.arcanoviZfPSternMod.Location = new System.Drawing.Point(111, 157);
-            this.arcanoviZfPSternMod.Maximum = new decimal(new int[] {
-            99,
-            0,
-            0,
-            0});
-            this.arcanoviZfPSternMod.Minimum = new decimal(new int[] {
-            99,
-            0,
-            0,
-            -2147483648});
-            this.arcanoviZfPSternMod.Name = "arcanoviZfPSternMod";
-            this.arcanoviZfPSternMod.Size = new System.Drawing.Size(36, 20);
-            this.arcanoviZfPSternMod.TabIndex = 22;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(6, 182);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(101, 14);
-            this.label20.TabIndex = 23;
-            this.label20.Text = "A)Mod:Wirk.Spruch";
-            // 
-            // wirkSpruchMod
-            // 
-            this.wirkSpruchMod.Location = new System.Drawing.Point(111, 180);
-            this.wirkSpruchMod.Maximum = new decimal(new int[] {
-            99,
-            0,
-            0,
-            0});
-            this.wirkSpruchMod.Minimum = new decimal(new int[] {
-            99,
-            0,
-            0,
-            -2147483648});
-            this.wirkSpruchMod.Name = "wirkSpruchMod";
-            this.wirkSpruchMod.Size = new System.Drawing.Size(36, 20);
-            this.wirkSpruchMod.TabIndex = 24;
+            this.dasArtefaktBindingSource1.DataSource = typeof(ArtefaktGenerator.DasArtefakt);
             // 
             // artefakttyp
             // 
@@ -2670,14 +2688,6 @@ namespace ArtefaktGenerator
             this.rep_mag.UseVisualStyleBackColor = true;
             this.rep_mag.Click += new System.EventHandler(this.rep_mag_Click);
             // 
-            // dasArtefaktBindingSource
-            // 
-            this.dasArtefaktBindingSource.DataSource = typeof(ArtefaktGenerator.DasArtefakt);
-            // 
-            // dasArtefaktBindingSource1
-            // 
-            this.dasArtefaktBindingSource1.DataSource = typeof(ArtefaktGenerator.DasArtefakt);
-            // 
             // ArtGenControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -2707,6 +2717,8 @@ namespace ArtefaktGenerator
             this.materialGroup.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.wirkSpruchMod)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.arcanoviZfPSternMod)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.arcanoviOtherMod)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.starkonst)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.arcanovi_force)).EndInit();
@@ -2760,8 +2772,8 @@ namespace ArtefaktGenerator
             ((System.ComponentModel.ISupportInitialize)(this.destruct_mr)).EndInit();
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.arcanoviZfPSternMod)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.wirkSpruchMod)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource1)).EndInit();
             this.artefakttyp.ResumeLayout(false);
             this.artefakttyp.PerformLayout();
             this.artefakttyp_aux.ResumeLayout(false);
@@ -2775,8 +2787,6 @@ namespace ArtefaktGenerator
             this.artefakttyp_semi.PerformLayout();
             this.repGroup.ResumeLayout(false);
             this.repGroup.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2989,5 +2999,6 @@ namespace ArtefaktGenerator
         private Label label20;
         private NumericUpDown arcanoviZfPSternMod;
         private Label label19;
+        private ToolStripMenuItem alwaysHypervSRD;
     }
 }

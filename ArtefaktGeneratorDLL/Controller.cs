@@ -88,6 +88,14 @@ namespace ArtefaktGenerator
             get { return _achSave; }
             set { _achSave = value; RaisePropertyChanged("optionAchSave"); }
         }
+
+        private bool _alwaysHypervehemenzSRD;
+        public bool optionAlwaysHypervehemenzSRD
+        {
+            get { return _alwaysHypervehemenzSRD;  }
+            set { _alwaysHypervehemenzSRD = value;  RaisePropertyChanged("optionAlwaysHypervehemenzSRD"); }
+        }
+
         private bool _allesBerechnen;
         public bool optionAllesBerechnen
         {
@@ -1143,6 +1151,7 @@ namespace ArtefaktGenerator
             heldName = heldName;
             WDA = WDA;
             optionAchSave = optionAchSave;
+            optionAlwaysHypervehemenzSRD = optionAlwaysHypervehemenzSRD;
             optionAllesBerechnen = optionAllesBerechnen;
             sfHypervehemenz = sfHypervehemenz;
             sfVielfacheLadung = sfVielfacheLadung;
@@ -1394,7 +1403,9 @@ namespace ArtefaktGenerator
                     for (int i = 0; i < magic.Count; i++)
                     {
                         // Rep
-                        if (magic[i].eigene_rep) eigene_rep_count++;
+                        if (magic[i].eigene_rep)
+                            eigene_rep_count++;
+
                         // komplexität
                         switch (magic[i].komp)
                         {
@@ -1408,13 +1419,16 @@ namespace ArtefaktGenerator
 
                         // Stapel
                         if (magic[i].staple > 1)
-                            arcanovi_zfp += magic[i].staple * 2;
-                        //{ // TODO: Diskutieren oder konfigurierbar machen:
-                        //    if (artefakt.sf.hyper) //SF:Hypervehemenz: WdA S.109 ergänzt WdZ S.55 wo wiederum auf SRD S.123 verwiesen wird. Dort steht, dass mit dieser SF die notwendigen ZfP* nur 1 pro Stapel steigen und nicht 2
-                        //        arcanovi_zfp += magic[i].staple * 1;
-                        //    else
-                        //        arcanovi_zfp += magic[i].staple * 2;
-                        //}
+                        {
+                            // SF:Hypervehemenz: WdA S.109 ergänzt WdZ S.55 wo wiederum auf SRD S.123 verwiesen wird.
+                            // Dort steht, dass mit dieser SF die notwendigen ZfP* nur 1 pro Stapel steigen und nicht 2
+                            if (artefakt.sf.hyper && (optionAlwaysHypervehemenzSRD || !WDA))
+                                arcanovi_zfp += magic[i].staple * 1;
+                            else
+                                arcanovi_zfp += magic[i].staple * 2;
+
+                        }
+
                         // AsP wirkende Sprüche
                         decimal thismagic_asp = magic[i].asp + artefakt.material.asp_mod;
 
@@ -1450,7 +1464,6 @@ namespace ArtefaktGenerator
                     {
                         // Diese Rechnung magic_asp = Round(magic_asp / 10); passiert nun nicht mehr hier für die Summe der Kosten sondern oben JE zauber, 
                         // da jeder Zauber auch im Limbus für sich alleine schon 1AsP kostet und nicht etwa 9 Zauber a 6 AsP = 9*6=54, 54/10=5 denn korrekt ist leider 9*1=9
-
                         arcanovi_erschwernis += 15;
                     }
 
@@ -1474,24 +1487,15 @@ namespace ArtefaktGenerator
                     decimal arcanovi_count = 1;
                     decimal agribaal_for_arcanovi = agribaal_zfp;
                     decimal arcanovi_taw_new = 0; // Uebrige ZfP* pro Arcanovi Durchfuehrung
-                    while (true)
+
+                    arcanovi_taw_new = arcanovi_taw - arcanovi_erschwernis;
+                    if (arcanovi_taw_new == 0) arcanovi_taw_new = 1;
+                    if (arcanovi_taw_new > arcanovi_taw) arcanovi_taw_new = arcanovi_taw;
+                    if (arcanovi_taw_new > 0)
                     {
-                        arcanovi_taw_new = arcanovi_taw - arcanovi_erschwernis;
-                        if (arcanovi_taw_new == 0) arcanovi_taw_new = 1;
-                        if (arcanovi_taw_new > arcanovi_taw) arcanovi_taw_new = arcanovi_taw;
-                        if (arcanovi_taw_new > 0)
-                        {
-                            arcanovi_count = Math.Ceiling(arcanovi_zfp / arcanovi_taw_new);
-                            if (arcanovi_count == 0)
-                                arcanovi_count = 1;
-                        }
-                        //if ((arcanovi_taw_new < 0 || arcanovi_count > 1) && agribaal_zfp > 0)
-                        //{
-                        //    --agribaal_zfp;
-                        //    --arcanovi_erschwernis;
-                        //}
-                        //else break;
-                        break;
+                        arcanovi_count = Math.Ceiling(arcanovi_zfp / arcanovi_taw_new);
+                        if (arcanovi_count == 0)
+                            arcanovi_count = 1;
                     }
 
                     arcanovi_count += artefakt.special_additional_arcanovi;

@@ -435,6 +435,15 @@ namespace ArtefaktGenerator
             reloadData();
         }
 
+        private void alwaysHypervSRD_Click_1(object sender, EventArgs e)
+        {
+            if (alwaysHypervSRD.Checked)
+                controller.optionAlwaysHypervehemenzSRD = true;
+            else
+                controller.optionAlwaysHypervehemenzSRD = false;
+            reloadData();
+        }
+
         private void importHeldensoftwareToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             showSelectHeroDialog(Form.ActiveForm);
@@ -655,6 +664,7 @@ namespace ArtefaktGenerator
             controller.optionAchSave = ArtefaktGenerator.Properties.Settings.Default.saveAch;
             controller.artefakttyp = 1;
             ach_save.Checked = controller.optionAchSave;
+            alwaysHypervSRD.Checked = controller.optionAlwaysHypervehemenzSRD;
             controller.WDA = ArtefaktGenerator.Properties.Settings.Default.WDA;
             wegeDerAlchimieToolStripMenuItem.Checked = controller.WDA;
             staebeRingeDschinnenlampenToolStripMenuItem.Checked = !controller.WDA;
@@ -1382,6 +1392,5 @@ namespace ArtefaktGenerator
             reloadData();
         }
         #endregion
-
     }
 }
