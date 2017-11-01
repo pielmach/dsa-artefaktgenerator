@@ -52,23 +52,35 @@ namespace ArtefaktGenerator
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.special_ferngespuer_komp = new System.Windows.Forms.ComboBox();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.special_scent = new System.Windows.Forms.CheckBox();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.special_signet = new System.Windows.Forms.CheckBox();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.special_durable = new System.Windows.Forms.CheckBox();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.special_apport = new System.Windows.Forms.CheckBox();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.special_resistant = new System.Windows.Forms.CheckBox();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.special_selfrepair = new System.Windows.Forms.CheckBox();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.special_schleier = new System.Windows.Forms.CheckBox();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.special_reversalis = new System.Windows.Forms.CheckBox();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.special_eatmaterial = new System.Windows.Forms.CheckBox();
             this.special_eatmat_var = new System.Windows.Forms.NumericUpDown();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.special_variable_var = new System.Windows.Forms.NumericUpDown();
+            this.special_variablerelease = new System.Windows.Forms.CheckBox();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.special_ferngespuer = new System.Windows.Forms.CheckBox();
+            this.special_ferngespuer_komp = new System.Windows.Forms.ComboBox();
+            this.lbl_special_komp = new System.Windows.Forms.Label();
             this.lbl_special_asp = new System.Windows.Forms.Label();
             this.special_ferngespuer_asp = new System.Windows.Forms.NumericUpDown();
-            this.special_ferngespuer = new System.Windows.Forms.CheckBox();
-            this.lbl_special_komp = new System.Windows.Forms.Label();
-            this.special_variable_var = new System.Windows.Forms.NumericUpDown();
-            this.special_schleier = new System.Windows.Forms.CheckBox();
-            this.special_variablerelease = new System.Windows.Forms.CheckBox();
-            this.special_reversalis = new System.Windows.Forms.CheckBox();
-            this.special_selfrepair = new System.Windows.Forms.CheckBox();
-            this.special_resistant = new System.Windows.Forms.CheckBox();
-            this.special_apport = new System.Windows.Forms.CheckBox();
-            this.special_scent = new System.Windows.Forms.CheckBox();
-            this.special_durable = new System.Windows.Forms.CheckBox();
-            this.special_signet = new System.Windows.Forms.CheckBox();
-            this.special_eatmaterial = new System.Windows.Forms.CheckBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.special_additional_arcanovi = new System.Windows.Forms.NumericUpDown();
@@ -83,48 +95,38 @@ namespace ArtefaktGenerator
             this.label16 = new System.Windows.Forms.Label();
             this.limbus = new System.Windows.Forms.CheckBox();
             this.namenlos = new System.Windows.Forms.CheckBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.sf_aux = new System.Windows.Forms.CheckBox();
-            this.sf_kraftspeicher = new System.Windows.Forms.CheckBox();
-            this.sf_ringkunde = new System.Windows.Forms.CheckBox();
-            this.sf_semiII = new System.Windows.Forms.CheckBox();
-            this.sf_semiI = new System.Windows.Forms.CheckBox();
-            this.sf_matrix = new System.Windows.Forms.CheckBox();
-            this.sf_hyper = new System.Windows.Forms.CheckBox();
-            this.sf_stapel = new System.Windows.Forms.CheckBox();
-            this.sf_vielLadung = new System.Windows.Forms.CheckBox();
-            this.sf_kraft = new System.Windows.Forms.CheckBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.destruct_change = new System.Windows.Forms.NumericUpDown();
-            this.label14 = new System.Windows.Forms.Label();
-            this.magiekunde_change = new System.Windows.Forms.NumericUpDown();
-            this.label13 = new System.Windows.Forms.Label();
-            this.analys_change = new System.Windows.Forms.NumericUpDown();
-            this.label12 = new System.Windows.Forms.Label();
-            this.odem_change = new System.Windows.Forms.NumericUpDown();
-            this.label8 = new System.Windows.Forms.Label();
-            this.arcanovi_semi_change = new System.Windows.Forms.NumericUpDown();
-            this.arcanovi_matrix_change = new System.Windows.Forms.NumericUpDown();
-            this.arcanovi_change = new System.Windows.Forms.NumericUpDown();
-            this.arcanovi_semi_change_lbl = new System.Windows.Forms.Label();
-            this.arcanovi_matrix_lbl = new System.Windows.Forms.Label();
+            this.TalentGroupBox = new System.Windows.Forms.GroupBox();
+            this.TalentPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.arcanovi_change = new System.Windows.Forms.NumericUpDown();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.arcanovi_matrix_lbl = new System.Windows.Forms.Label();
+            this.arcanovi_matrix_change = new System.Windows.Forms.NumericUpDown();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.arcanovi_semi_change_lbl = new System.Windows.Forms.Label();
+            this.arcanovi_semi_change = new System.Windows.Forms.NumericUpDown();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.odem_change = new System.Windows.Forms.NumericUpDown();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.analys_change = new System.Windows.Forms.NumericUpDown();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.magiekunde_change = new System.Windows.Forms.NumericUpDown();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.destruct_change = new System.Windows.Forms.NumericUpDown();
             this.wirkendeZauber = new System.Windows.Forms.GroupBox();
             this.zauberGrid = new System.Windows.Forms.DataGridView();
             this.zauber_add = new System.Windows.Forms.Button();
-            this.zauber_listbox = new System.Windows.Forms.ListBox();
             this.komp_combo = new System.Windows.Forms.ComboBox();
             this.zauber_rep = new System.Windows.Forms.ComboBox();
             this.zauber_del = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.loads_lbl = new System.Windows.Forms.Label();
-            this.zauber_list = new System.Windows.Forms.ListView();
-            this.name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.complexity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.count_staples = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.count_asp = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.rep = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.asp = new System.Windows.Forms.NumericUpDown();
             this.stapelung = new System.Windows.Forms.NumericUpDown();
             this.loads = new System.Windows.Forms.NumericUpDown();
@@ -204,6 +206,24 @@ namespace ArtefaktGenerator
             this.hero_name = new System.Windows.Forms.Label();
             this.dasArtefaktBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dasArtefaktBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.SFGroupBox = new System.Windows.Forms.GroupBox();
+            this.SFPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.sf_kraft = new System.Windows.Forms.CheckBox();
+            this.sf_vielLadung = new System.Windows.Forms.CheckBox();
+            this.sf_stapel = new System.Windows.Forms.CheckBox();
+            this.sf_hyper = new System.Windows.Forms.CheckBox();
+            this.sf_matrix = new System.Windows.Forms.CheckBox();
+            this.sf_semiI = new System.Windows.Forms.CheckBox();
+            this.sf_semiII = new System.Windows.Forms.CheckBox();
+            this.sf_ringkunde = new System.Windows.Forms.CheckBox();
+            this.sf_kraftspeicher = new System.Windows.Forms.CheckBox();
+            this.sf_aux = new System.Windows.Forms.CheckBox();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.panel20 = new System.Windows.Forms.Panel();
+            this.panel21 = new System.Windows.Forms.Panel();
             this.artefakttyp = new CustomControls.RadioGroupBox();
             this.artefakttyp_aux = new CustomControls.RadioGroupBox();
             this.aux_labil = new System.Windows.Forms.RadioButton();
@@ -248,23 +268,42 @@ namespace ArtefaktGenerator
             ((System.ComponentModel.ISupportInitialize)(this.probe_affine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.probe_ausloes)).BeginInit();
             this.groupBox7.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
+            this.panel11.SuspendLayout();
+            this.panel12.SuspendLayout();
+            this.panel13.SuspendLayout();
+            this.panel14.SuspendLayout();
+            this.panel15.SuspendLayout();
+            this.panel16.SuspendLayout();
+            this.panel17.SuspendLayout();
+            this.panel18.SuspendLayout();
+            this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.special_eatmat_var)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.special_ferngespuer_asp)).BeginInit();
+            this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.special_variable_var)).BeginInit();
+            this.panel10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.special_ferngespuer_asp)).BeginInit();
             this.groupBox11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.special_additional_arcanovi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.agribaal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.special_ort_neben)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.special_ort_occ)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.destruct_change)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.magiekunde_change)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.analys_change)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.odem_change)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.arcanovi_semi_change)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.arcanovi_matrix_change)).BeginInit();
+            this.TalentGroupBox.SuspendLayout();
+            this.TalentPanel.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.arcanovi_change)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.arcanovi_matrix_change)).BeginInit();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.arcanovi_semi_change)).BeginInit();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.odem_change)).BeginInit();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.analys_change)).BeginInit();
+            this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.magiekunde_change)).BeginInit();
+            this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.destruct_change)).BeginInit();
             this.wirkendeZauber.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.zauberGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.asp)).BeginInit();
@@ -285,6 +324,14 @@ namespace ArtefaktGenerator
             this.menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource1)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.SFGroupBox.SuspendLayout();
+            this.SFPanel.SuspendLayout();
+            this.flowLayoutPanel4.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.panel19.SuspendLayout();
+            this.panel20.SuspendLayout();
+            this.panel21.SuspendLayout();
             this.artefakttyp.SuspendLayout();
             this.artefakttyp_aux.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.type_speicher_value)).BeginInit();
@@ -298,9 +345,9 @@ namespace ArtefaktGenerator
             // 
             this.materialGroup.Controls.Add(this.material);
             this.materialGroup.Controls.Add(this.cb_kristalle);
-            this.materialGroup.Location = new System.Drawing.Point(793, 345);
+            this.materialGroup.Location = new System.Drawing.Point(3, 201);
             this.materialGroup.Name = "materialGroup";
-            this.materialGroup.Size = new System.Drawing.Size(153, 57);
+            this.materialGroup.Size = new System.Drawing.Size(212, 54);
             this.materialGroup.TabIndex = 21;
             this.materialGroup.TabStop = false;
             this.materialGroup.Text = "Material";
@@ -309,7 +356,7 @@ namespace ArtefaktGenerator
             // 
             this.material.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.material.FormattingEnabled = true;
-            this.material.Location = new System.Drawing.Point(7, 16);
+            this.material.Location = new System.Drawing.Point(7, 14);
             this.material.Name = "material";
             this.material.Size = new System.Drawing.Size(140, 22);
             this.material.TabIndex = 0;
@@ -318,7 +365,7 @@ namespace ArtefaktGenerator
             // cb_kristalle
             // 
             this.cb_kristalle.AutoSize = true;
-            this.cb_kristalle.Location = new System.Drawing.Point(7, 38);
+            this.cb_kristalle.Location = new System.Drawing.Point(7, 37);
             this.cb_kristalle.Name = "cb_kristalle";
             this.cb_kristalle.Size = new System.Drawing.Size(114, 18);
             this.cb_kristalle.TabIndex = 1;
@@ -344,9 +391,11 @@ namespace ArtefaktGenerator
             this.groupBox5.Controls.Add(this.probe_ausloes);
             this.groupBox5.Controls.Add(this.label6);
             this.groupBox5.Controls.Add(this.label4);
-            this.groupBox5.Location = new System.Drawing.Point(635, 157);
+            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox5.Location = new System.Drawing.Point(587, 161);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(153, 207);
+            this.tableLayoutPanel1.SetRowSpan(this.groupBox5, 3);
+            this.groupBox5.Size = new System.Drawing.Size(199, 255);
             this.groupBox5.TabIndex = 15;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Probenmodifikationen";
@@ -551,52 +600,210 @@ namespace ArtefaktGenerator
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.special_ferngespuer_komp);
-            this.groupBox7.Controls.Add(this.special_eatmat_var);
-            this.groupBox7.Controls.Add(this.lbl_special_asp);
-            this.groupBox7.Controls.Add(this.special_ferngespuer_asp);
-            this.groupBox7.Controls.Add(this.special_ferngespuer);
-            this.groupBox7.Controls.Add(this.lbl_special_komp);
-            this.groupBox7.Controls.Add(this.special_variable_var);
-            this.groupBox7.Controls.Add(this.special_schleier);
-            this.groupBox7.Controls.Add(this.special_variablerelease);
-            this.groupBox7.Controls.Add(this.special_reversalis);
-            this.groupBox7.Controls.Add(this.special_selfrepair);
-            this.groupBox7.Controls.Add(this.special_resistant);
-            this.groupBox7.Controls.Add(this.special_apport);
-            this.groupBox7.Controls.Add(this.special_scent);
-            this.groupBox7.Controls.Add(this.special_durable);
-            this.groupBox7.Controls.Add(this.special_signet);
-            this.groupBox7.Controls.Add(this.special_eatmaterial);
-            this.groupBox7.Location = new System.Drawing.Point(7, 252);
+            this.tableLayoutPanel1.SetColumnSpan(this.groupBox7, 3);
+            this.groupBox7.Controls.Add(this.flowLayoutPanel3);
+            this.groupBox7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox7.Location = new System.Drawing.Point(3, 252);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(622, 90);
+            this.groupBox7.Size = new System.Drawing.Size(578, 164);
             this.groupBox7.TabIndex = 20;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Spezielle Eigenschaften";
             // 
-            // special_ferngespuer_komp
+            // flowLayoutPanel3
             // 
-            this.special_ferngespuer_komp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.special_ferngespuer_komp.FormattingEnabled = true;
-            this.special_ferngespuer_komp.Items.AddRange(new object[] {
-            "A",
-            "B",
-            "C",
-            "D",
-            "E",
-            "F",
-            "G",
-            "H"});
-            this.special_ferngespuer_komp.Location = new System.Drawing.Point(520, 61);
-            this.special_ferngespuer_komp.Name = "special_ferngespuer_komp";
-            this.special_ferngespuer_komp.Size = new System.Drawing.Size(34, 22);
-            this.special_ferngespuer_komp.TabIndex = 26;
-            this.special_ferngespuer_komp.SelectedIndexChanged += new System.EventHandler(this.special_ferngespuer_komp_SelectedIndexChanged);
+            this.flowLayoutPanel3.Controls.Add(this.panel11);
+            this.flowLayoutPanel3.Controls.Add(this.panel12);
+            this.flowLayoutPanel3.Controls.Add(this.panel13);
+            this.flowLayoutPanel3.Controls.Add(this.panel14);
+            this.flowLayoutPanel3.Controls.Add(this.panel15);
+            this.flowLayoutPanel3.Controls.Add(this.panel16);
+            this.flowLayoutPanel3.Controls.Add(this.panel17);
+            this.flowLayoutPanel3.Controls.Add(this.panel18);
+            this.flowLayoutPanel3.Controls.Add(this.panel9);
+            this.flowLayoutPanel3.Controls.Add(this.panel8);
+            this.flowLayoutPanel3.Controls.Add(this.panel10);
+            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 16);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(572, 145);
+            this.flowLayoutPanel3.TabIndex = 30;
+            // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.special_scent);
+            this.panel11.Location = new System.Drawing.Point(3, 3);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(121, 23);
+            this.panel11.TabIndex = 11;
+            // 
+            // special_scent
+            // 
+            this.special_scent.AutoSize = true;
+            this.special_scent.Location = new System.Drawing.Point(3, 3);
+            this.special_scent.Name = "special_scent";
+            this.special_scent.Size = new System.Drawing.Size(122, 18);
+            this.special_scent.TabIndex = 2;
+            this.special_scent.Text = "Gespür des Schöpfers";
+            this.special_scent.UseVisualStyleBackColor = true;
+            this.special_scent.CheckedChanged += new System.EventHandler(this.special_scent_CheckedChanged);
+            // 
+            // panel12
+            // 
+            this.panel12.Controls.Add(this.special_signet);
+            this.panel12.Location = new System.Drawing.Point(130, 3);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(128, 23);
+            this.panel12.TabIndex = 12;
+            // 
+            // special_signet
+            // 
+            this.special_signet.AutoSize = true;
+            this.special_signet.Location = new System.Drawing.Point(4, 3);
+            this.special_signet.Name = "special_signet";
+            this.special_signet.Size = new System.Drawing.Size(119, 18);
+            this.special_signet.TabIndex = 0;
+            this.special_signet.Text = "Siegel und Zertifikat";
+            this.special_signet.UseVisualStyleBackColor = true;
+            this.special_signet.CheckedChanged += new System.EventHandler(this.special_signet_CheckedChanged);
+            // 
+            // panel13
+            // 
+            this.panel13.Controls.Add(this.special_durable);
+            this.panel13.Location = new System.Drawing.Point(264, 3);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(115, 23);
+            this.panel13.TabIndex = 13;
+            // 
+            // special_durable
+            // 
+            this.special_durable.AutoSize = true;
+            this.special_durable.Location = new System.Drawing.Point(3, 3);
+            this.special_durable.Name = "special_durable";
+            this.special_durable.Size = new System.Drawing.Size(114, 18);
+            this.special_durable.TabIndex = 1;
+            this.special_durable.Text = "Unzerbrechlichkeit";
+            this.special_durable.UseVisualStyleBackColor = true;
+            this.special_durable.CheckedChanged += new System.EventHandler(this.special_durable_CheckedChanged);
+            // 
+            // panel14
+            // 
+            this.panel14.Controls.Add(this.special_apport);
+            this.panel14.Location = new System.Drawing.Point(385, 3);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(115, 23);
+            this.panel14.TabIndex = 14;
+            // 
+            // special_apport
+            // 
+            this.special_apport.AutoSize = true;
+            this.special_apport.Location = new System.Drawing.Point(5, 3);
+            this.special_apport.Name = "special_apport";
+            this.special_apport.Size = new System.Drawing.Size(109, 18);
+            this.special_apport.TabIndex = 3;
+            this.special_apport.Text = "Magischer Apport";
+            this.special_apport.UseVisualStyleBackColor = true;
+            this.special_apport.CheckedChanged += new System.EventHandler(this.special_apport_CheckedChanged);
+            // 
+            // panel15
+            // 
+            this.panel15.Controls.Add(this.special_resistant);
+            this.panel15.Location = new System.Drawing.Point(3, 32);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(136, 23);
+            this.panel15.TabIndex = 15;
+            // 
+            // special_resistant
+            // 
+            this.special_resistant.AutoSize = true;
+            this.special_resistant.Location = new System.Drawing.Point(3, 3);
+            this.special_resistant.Name = "special_resistant";
+            this.special_resistant.Size = new System.Drawing.Size(128, 18);
+            this.special_resistant.TabIndex = 5;
+            this.special_resistant.Text = "Res. profaner Schaden";
+            this.special_resistant.UseVisualStyleBackColor = true;
+            this.special_resistant.CheckedChanged += new System.EventHandler(this.special_resistant_CheckedChanged);
+            // 
+            // panel16
+            // 
+            this.panel16.Controls.Add(this.special_selfrepair);
+            this.panel16.Location = new System.Drawing.Point(145, 32);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(102, 23);
+            this.panel16.TabIndex = 16;
+            // 
+            // special_selfrepair
+            // 
+            this.special_selfrepair.AutoSize = true;
+            this.special_selfrepair.Location = new System.Drawing.Point(3, 3);
+            this.special_selfrepair.Name = "special_selfrepair";
+            this.special_selfrepair.Size = new System.Drawing.Size(94, 18);
+            this.special_selfrepair.TabIndex = 6;
+            this.special_selfrepair.Text = "Selbstreparatur";
+            this.special_selfrepair.UseVisualStyleBackColor = true;
+            this.special_selfrepair.CheckedChanged += new System.EventHandler(this.special_selfrepair_CheckedChanged);
+            // 
+            // panel17
+            // 
+            this.panel17.Controls.Add(this.special_schleier);
+            this.panel17.Location = new System.Drawing.Point(253, 32);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(101, 23);
+            this.panel17.TabIndex = 17;
+            // 
+            // special_schleier
+            // 
+            this.special_schleier.AutoSize = true;
+            this.special_schleier.Location = new System.Drawing.Point(3, 3);
+            this.special_schleier.Name = "special_schleier";
+            this.special_schleier.Size = new System.Drawing.Size(92, 18);
+            this.special_schleier.TabIndex = 9;
+            this.special_schleier.Text = "Verschleierung";
+            this.special_schleier.UseVisualStyleBackColor = true;
+            this.special_schleier.CheckedChanged += new System.EventHandler(this.special_schleier_CheckedChanged);
+            // 
+            // panel18
+            // 
+            this.panel18.Controls.Add(this.special_reversalis);
+            this.panel18.Location = new System.Drawing.Point(360, 32);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(107, 23);
+            this.panel18.TabIndex = 18;
+            // 
+            // special_reversalis
+            // 
+            this.special_reversalis.AutoSize = true;
+            this.special_reversalis.Location = new System.Drawing.Point(3, 3);
+            this.special_reversalis.Name = "special_reversalis";
+            this.special_reversalis.Size = new System.Drawing.Size(103, 18);
+            this.special_reversalis.TabIndex = 7;
+            this.special_reversalis.Text = "Umkehrtalisman";
+            this.special_reversalis.UseVisualStyleBackColor = true;
+            this.special_reversalis.CheckedChanged += new System.EventHandler(this.special_reversalis_CheckedChanged);
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.special_eatmaterial);
+            this.panel9.Controls.Add(this.special_eatmat_var);
+            this.panel9.Location = new System.Drawing.Point(3, 61);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(169, 23);
+            this.panel9.TabIndex = 7;
+            // 
+            // special_eatmaterial
+            // 
+            this.special_eatmaterial.AutoSize = true;
+            this.special_eatmaterial.Location = new System.Drawing.Point(6, 3);
+            this.special_eatmaterial.Name = "special_eatmaterial";
+            this.special_eatmaterial.Size = new System.Drawing.Size(120, 18);
+            this.special_eatmaterial.TabIndex = 10;
+            this.special_eatmaterial.Text = "Verzehrender Zauber";
+            this.special_eatmaterial.UseVisualStyleBackColor = true;
+            this.special_eatmaterial.CheckedChanged += new System.EventHandler(this.special_eatmaterial_CheckedChanged);
             // 
             // special_eatmat_var
             // 
-            this.special_eatmat_var.Location = new System.Drawing.Point(520, 38);
+            this.special_eatmat_var.Location = new System.Drawing.Point(132, 2);
             this.special_eatmat_var.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -612,10 +819,94 @@ namespace ArtefaktGenerator
             0});
             this.special_eatmat_var.ValueChanged += new System.EventHandler(this.special_eatmat_var_ValueChanged);
             // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.special_variable_var);
+            this.panel8.Controls.Add(this.special_variablerelease);
+            this.panel8.Location = new System.Drawing.Point(178, 61);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(163, 23);
+            this.panel8.TabIndex = 3;
+            // 
+            // special_variable_var
+            // 
+            this.special_variable_var.Location = new System.Drawing.Point(124, 2);
+            this.special_variable_var.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.special_variable_var.Name = "special_variable_var";
+            this.special_variable_var.Size = new System.Drawing.Size(36, 20);
+            this.special_variable_var.TabIndex = 19;
+            this.special_variable_var.ValueChanged += new System.EventHandler(this.special_variable_var_ValueChanged);
+            // 
+            // special_variablerelease
+            // 
+            this.special_variablerelease.AutoSize = true;
+            this.special_variablerelease.Location = new System.Drawing.Point(2, 3);
+            this.special_variablerelease.Name = "special_variablerelease";
+            this.special_variablerelease.Size = new System.Drawing.Size(107, 18);
+            this.special_variablerelease.TabIndex = 8;
+            this.special_variablerelease.Text = "Variabler Auslöser";
+            this.special_variablerelease.UseVisualStyleBackColor = true;
+            this.special_variablerelease.CheckedChanged += new System.EventHandler(this.special_variablerelease_CheckedChanged);
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.special_ferngespuer);
+            this.panel10.Controls.Add(this.special_ferngespuer_komp);
+            this.panel10.Controls.Add(this.lbl_special_komp);
+            this.panel10.Controls.Add(this.lbl_special_asp);
+            this.panel10.Controls.Add(this.special_ferngespuer_asp);
+            this.panel10.Location = new System.Drawing.Point(3, 90);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(236, 23);
+            this.panel10.TabIndex = 10;
+            // 
+            // special_ferngespuer
+            // 
+            this.special_ferngespuer.AutoSize = true;
+            this.special_ferngespuer.Location = new System.Drawing.Point(3, 3);
+            this.special_ferngespuer.Name = "special_ferngespuer";
+            this.special_ferngespuer.Size = new System.Drawing.Size(76, 18);
+            this.special_ferngespuer.TabIndex = 4;
+            this.special_ferngespuer.Text = "Ferngespür";
+            this.special_ferngespuer.UseVisualStyleBackColor = true;
+            this.special_ferngespuer.CheckedChanged += new System.EventHandler(this.special_ferngespuer_CheckedChanged);
+            // 
+            // special_ferngespuer_komp
+            // 
+            this.special_ferngespuer_komp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.special_ferngespuer_komp.FormattingEnabled = true;
+            this.special_ferngespuer_komp.Items.AddRange(new object[] {
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H"});
+            this.special_ferngespuer_komp.Location = new System.Drawing.Point(123, 1);
+            this.special_ferngespuer_komp.Name = "special_ferngespuer_komp";
+            this.special_ferngespuer_komp.Size = new System.Drawing.Size(34, 22);
+            this.special_ferngespuer_komp.TabIndex = 26;
+            this.special_ferngespuer_komp.SelectedIndexChanged += new System.EventHandler(this.special_ferngespuer_komp_SelectedIndexChanged);
+            // 
+            // lbl_special_komp
+            // 
+            this.lbl_special_komp.AutoSize = true;
+            this.lbl_special_komp.Location = new System.Drawing.Point(82, 5);
+            this.lbl_special_komp.Name = "lbl_special_komp";
+            this.lbl_special_komp.Size = new System.Drawing.Size(39, 14);
+            this.lbl_special_komp.TabIndex = 25;
+            this.lbl_special_komp.Text = "Komp.";
+            // 
             // lbl_special_asp
             // 
             this.lbl_special_asp.AutoSize = true;
-            this.lbl_special_asp.Location = new System.Drawing.Point(554, 65);
+            this.lbl_special_asp.Location = new System.Drawing.Point(157, 5);
             this.lbl_special_asp.Name = "lbl_special_asp";
             this.lbl_special_asp.Size = new System.Drawing.Size(26, 14);
             this.lbl_special_asp.TabIndex = 28;
@@ -623,7 +914,7 @@ namespace ArtefaktGenerator
             // 
             // special_ferngespuer_asp
             // 
-            this.special_ferngespuer_asp.Location = new System.Drawing.Point(582, 62);
+            this.special_ferngespuer_asp.Location = new System.Drawing.Point(185, 2);
             this.special_ferngespuer_asp.Minimum = new decimal(new int[] {
             1,
             0,
@@ -638,149 +929,6 @@ namespace ArtefaktGenerator
             0,
             0});
             this.special_ferngespuer_asp.ValueChanged += new System.EventHandler(this.special_ferngespuer_asp_ValueChanged);
-            // 
-            // special_ferngespuer
-            // 
-            this.special_ferngespuer.AutoSize = true;
-            this.special_ferngespuer.Location = new System.Drawing.Point(394, 63);
-            this.special_ferngespuer.Name = "special_ferngespuer";
-            this.special_ferngespuer.Size = new System.Drawing.Size(76, 18);
-            this.special_ferngespuer.TabIndex = 4;
-            this.special_ferngespuer.Text = "Ferngespür";
-            this.special_ferngespuer.UseVisualStyleBackColor = true;
-            this.special_ferngespuer.CheckedChanged += new System.EventHandler(this.special_ferngespuer_CheckedChanged);
-            // 
-            // lbl_special_komp
-            // 
-            this.lbl_special_komp.AutoSize = true;
-            this.lbl_special_komp.Location = new System.Drawing.Point(476, 64);
-            this.lbl_special_komp.Name = "lbl_special_komp";
-            this.lbl_special_komp.Size = new System.Drawing.Size(39, 14);
-            this.lbl_special_komp.TabIndex = 25;
-            this.lbl_special_komp.Text = "Komp.";
-            // 
-            // special_variable_var
-            // 
-            this.special_variable_var.Location = new System.Drawing.Point(520, 13);
-            this.special_variable_var.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.special_variable_var.Name = "special_variable_var";
-            this.special_variable_var.Size = new System.Drawing.Size(36, 20);
-            this.special_variable_var.TabIndex = 19;
-            this.special_variable_var.ValueChanged += new System.EventHandler(this.special_variable_var_ValueChanged);
-            // 
-            // special_schleier
-            // 
-            this.special_schleier.AutoSize = true;
-            this.special_schleier.Location = new System.Drawing.Point(132, 63);
-            this.special_schleier.Name = "special_schleier";
-            this.special_schleier.Size = new System.Drawing.Size(92, 18);
-            this.special_schleier.TabIndex = 9;
-            this.special_schleier.Text = "Verschleierung";
-            this.special_schleier.UseVisualStyleBackColor = true;
-            this.special_schleier.CheckedChanged += new System.EventHandler(this.special_schleier_CheckedChanged);
-            // 
-            // special_variablerelease
-            // 
-            this.special_variablerelease.AutoSize = true;
-            this.special_variablerelease.Location = new System.Drawing.Point(394, 15);
-            this.special_variablerelease.Name = "special_variablerelease";
-            this.special_variablerelease.Size = new System.Drawing.Size(107, 18);
-            this.special_variablerelease.TabIndex = 8;
-            this.special_variablerelease.Text = "Variabler Auslöser";
-            this.special_variablerelease.UseVisualStyleBackColor = true;
-            this.special_variablerelease.CheckedChanged += new System.EventHandler(this.special_variablerelease_CheckedChanged);
-            // 
-            // special_reversalis
-            // 
-            this.special_reversalis.AutoSize = true;
-            this.special_reversalis.Location = new System.Drawing.Point(6, 63);
-            this.special_reversalis.Name = "special_reversalis";
-            this.special_reversalis.Size = new System.Drawing.Size(103, 18);
-            this.special_reversalis.TabIndex = 7;
-            this.special_reversalis.Text = "Umkehrtalisman";
-            this.special_reversalis.UseVisualStyleBackColor = true;
-            this.special_reversalis.CheckedChanged += new System.EventHandler(this.special_reversalis_CheckedChanged);
-            // 
-            // special_selfrepair
-            // 
-            this.special_selfrepair.AutoSize = true;
-            this.special_selfrepair.Location = new System.Drawing.Point(266, 39);
-            this.special_selfrepair.Name = "special_selfrepair";
-            this.special_selfrepair.Size = new System.Drawing.Size(94, 18);
-            this.special_selfrepair.TabIndex = 6;
-            this.special_selfrepair.Text = "Selbstreparatur";
-            this.special_selfrepair.UseVisualStyleBackColor = true;
-            this.special_selfrepair.CheckedChanged += new System.EventHandler(this.special_selfrepair_CheckedChanged);
-            // 
-            // special_resistant
-            // 
-            this.special_resistant.AutoSize = true;
-            this.special_resistant.Location = new System.Drawing.Point(132, 39);
-            this.special_resistant.Name = "special_resistant";
-            this.special_resistant.Size = new System.Drawing.Size(128, 18);
-            this.special_resistant.TabIndex = 5;
-            this.special_resistant.Text = "Res. profaner Schaden";
-            this.special_resistant.UseVisualStyleBackColor = true;
-            this.special_resistant.CheckedChanged += new System.EventHandler(this.special_resistant_CheckedChanged);
-            // 
-            // special_apport
-            // 
-            this.special_apport.AutoSize = true;
-            this.special_apport.Location = new System.Drawing.Point(6, 39);
-            this.special_apport.Name = "special_apport";
-            this.special_apport.Size = new System.Drawing.Size(109, 18);
-            this.special_apport.TabIndex = 3;
-            this.special_apport.Text = "Magischer Apport";
-            this.special_apport.UseVisualStyleBackColor = true;
-            this.special_apport.CheckedChanged += new System.EventHandler(this.special_apport_CheckedChanged);
-            // 
-            // special_scent
-            // 
-            this.special_scent.AutoSize = true;
-            this.special_scent.Location = new System.Drawing.Point(266, 15);
-            this.special_scent.Name = "special_scent";
-            this.special_scent.Size = new System.Drawing.Size(122, 18);
-            this.special_scent.TabIndex = 2;
-            this.special_scent.Text = "Gespür des Schöpfers";
-            this.special_scent.UseVisualStyleBackColor = true;
-            this.special_scent.CheckedChanged += new System.EventHandler(this.special_scent_CheckedChanged);
-            // 
-            // special_durable
-            // 
-            this.special_durable.AutoSize = true;
-            this.special_durable.Location = new System.Drawing.Point(132, 15);
-            this.special_durable.Name = "special_durable";
-            this.special_durable.Size = new System.Drawing.Size(114, 18);
-            this.special_durable.TabIndex = 1;
-            this.special_durable.Text = "Unzerbrechlichkeit";
-            this.special_durable.UseVisualStyleBackColor = true;
-            this.special_durable.CheckedChanged += new System.EventHandler(this.special_durable_CheckedChanged);
-            // 
-            // special_signet
-            // 
-            this.special_signet.AutoSize = true;
-            this.special_signet.Location = new System.Drawing.Point(6, 15);
-            this.special_signet.Name = "special_signet";
-            this.special_signet.Size = new System.Drawing.Size(119, 18);
-            this.special_signet.TabIndex = 0;
-            this.special_signet.Text = "Siegel und Zertifikat";
-            this.special_signet.UseVisualStyleBackColor = true;
-            this.special_signet.CheckedChanged += new System.EventHandler(this.special_signet_CheckedChanged);
-            // 
-            // special_eatmaterial
-            // 
-            this.special_eatmaterial.AutoSize = true;
-            this.special_eatmaterial.Location = new System.Drawing.Point(394, 39);
-            this.special_eatmaterial.Name = "special_eatmaterial";
-            this.special_eatmaterial.Size = new System.Drawing.Size(120, 18);
-            this.special_eatmaterial.TabIndex = 10;
-            this.special_eatmaterial.Text = "Verzehrender Zauber";
-            this.special_eatmaterial.UseVisualStyleBackColor = true;
-            this.special_eatmaterial.CheckedChanged += new System.EventHandler(this.special_eatmaterial_CheckedChanged);
             // 
             // groupBox11
             // 
@@ -797,9 +945,9 @@ namespace ArtefaktGenerator
             this.groupBox11.Controls.Add(this.label16);
             this.groupBox11.Controls.Add(this.limbus);
             this.groupBox11.Controls.Add(this.namenlos);
-            this.groupBox11.Location = new System.Drawing.Point(793, 157);
+            this.groupBox11.Location = new System.Drawing.Point(3, 3);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(198, 185);
+            this.groupBox11.Size = new System.Drawing.Size(212, 192);
             this.groupBox11.TabIndex = 22;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Besonderes";
@@ -961,307 +1109,58 @@ namespace ArtefaktGenerator
             this.namenlos.UseVisualStyleBackColor = true;
             this.namenlos.CheckedChanged += new System.EventHandler(this.namenlos_CheckedChanged);
             // 
-            // groupBox1
+            // TalentGroupBox
             // 
-            this.groupBox1.Controls.Add(this.sf_aux);
-            this.groupBox1.Controls.Add(this.sf_kraftspeicher);
-            this.groupBox1.Controls.Add(this.sf_ringkunde);
-            this.groupBox1.Controls.Add(this.sf_semiII);
-            this.groupBox1.Controls.Add(this.sf_semiI);
-            this.groupBox1.Controls.Add(this.sf_matrix);
-            this.groupBox1.Controls.Add(this.sf_hyper);
-            this.groupBox1.Controls.Add(this.sf_stapel);
-            this.groupBox1.Controls.Add(this.sf_vielLadung);
-            this.groupBox1.Controls.Add(this.sf_kraft);
-            this.groupBox1.Location = new System.Drawing.Point(6, 67);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(985, 46);
-            this.groupBox1.TabIndex = 12;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Sonderfertigkeiten";
+            this.TalentGroupBox.AutoSize = true;
+            this.TalentGroupBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutPanel1.SetColumnSpan(this.TalentGroupBox, 5);
+            this.TalentGroupBox.Controls.Add(this.TalentPanel);
+            this.TalentGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TalentGroupBox.Location = new System.Drawing.Point(3, 102);
+            this.TalentGroupBox.Name = "TalentGroupBox";
+            this.TalentGroupBox.Size = new System.Drawing.Size(1018, 53);
+            this.TalentGroupBox.TabIndex = 14;
+            this.TalentGroupBox.TabStop = false;
+            this.TalentGroupBox.Text = "Talentwerte";
+            this.TalentGroupBox.Resize += new System.EventHandler(this.TalentGroupBox_Resize);
             // 
-            // sf_aux
+            // TalentPanel
             // 
-            this.sf_aux.AutoSize = true;
-            this.sf_aux.Location = new System.Drawing.Point(885, 19);
-            this.sf_aux.Name = "sf_aux";
-            this.sf_aux.Size = new System.Drawing.Size(73, 18);
-            this.sf_aux.TabIndex = 9;
-            this.sf_aux.Text = "Auxiliator";
-            this.sf_aux.UseVisualStyleBackColor = true;
-            this.sf_aux.CheckedChanged += new System.EventHandler(this.sf_aux_CheckedChanged);
+            this.TalentPanel.AutoSize = true;
+            this.TalentPanel.Controls.Add(this.panel1);
+            this.TalentPanel.Controls.Add(this.panel2);
+            this.TalentPanel.Controls.Add(this.panel3);
+            this.TalentPanel.Controls.Add(this.panel4);
+            this.TalentPanel.Controls.Add(this.panel5);
+            this.TalentPanel.Controls.Add(this.panel6);
+            this.TalentPanel.Controls.Add(this.panel7);
+            this.TalentPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TalentPanel.Location = new System.Drawing.Point(3, 16);
+            this.TalentPanel.Name = "TalentPanel";
+            this.TalentPanel.Size = new System.Drawing.Size(1012, 34);
+            this.TalentPanel.TabIndex = 17;
             // 
-            // sf_kraftspeicher
+            // panel1
             // 
-            this.sf_kraftspeicher.AutoSize = true;
-            this.sf_kraftspeicher.Location = new System.Drawing.Point(796, 19);
-            this.sf_kraftspeicher.Name = "sf_kraftspeicher";
-            this.sf_kraftspeicher.Size = new System.Drawing.Size(89, 18);
-            this.sf_kraftspeicher.TabIndex = 10;
-            this.sf_kraftspeicher.Text = "Kraftspeicher";
-            this.sf_kraftspeicher.UseVisualStyleBackColor = true;
-            this.sf_kraftspeicher.CheckedChanged += new System.EventHandler(this.sf_kraftspeicher_CheckedChanged);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.arcanovi_change);
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(114, 28);
+            this.panel1.TabIndex = 0;
             // 
-            // sf_ringkunde
+            // label1
             // 
-            this.sf_ringkunde.AutoSize = true;
-            this.sf_ringkunde.Location = new System.Drawing.Point(686, 19);
-            this.sf_ringkunde.Name = "sf_ringkunde";
-            this.sf_ringkunde.Size = new System.Drawing.Size(110, 18);
-            this.sf_ringkunde.TabIndex = 4;
-            this.sf_ringkunde.Text = "Ringkunde gelesen";
-            this.sf_ringkunde.UseVisualStyleBackColor = true;
-            this.sf_ringkunde.CheckedChanged += new System.EventHandler(this.sf_ringkunde_CheckedChanged);
-            // 
-            // sf_semiII
-            // 
-            this.sf_semiII.AutoSize = true;
-            this.sf_semiII.Location = new System.Drawing.Point(576, 19);
-            this.sf_semiII.Name = "sf_semiII";
-            this.sf_semiII.Size = new System.Drawing.Size(110, 18);
-            this.sf_semiII.TabIndex = 6;
-            this.sf_semiII.Text = "Semipermanenz II";
-            this.sf_semiII.UseVisualStyleBackColor = true;
-            this.sf_semiII.CheckedChanged += new System.EventHandler(this.sf_semiII_CheckedChanged);
-            // 
-            // sf_semiI
-            // 
-            this.sf_semiI.AutoSize = true;
-            this.sf_semiI.Location = new System.Drawing.Point(470, 19);
-            this.sf_semiI.Name = "sf_semiI";
-            this.sf_semiI.Size = new System.Drawing.Size(106, 18);
-            this.sf_semiI.TabIndex = 5;
-            this.sf_semiI.Text = "Semipermanenz I";
-            this.sf_semiI.UseVisualStyleBackColor = true;
-            this.sf_semiI.CheckedChanged += new System.EventHandler(this.sf_semiI_CheckedChanged);
-            // 
-            // sf_matrix
-            // 
-            this.sf_matrix.AutoSize = true;
-            this.sf_matrix.Location = new System.Drawing.Point(388, 19);
-            this.sf_matrix.Name = "sf_matrix";
-            this.sf_matrix.Size = new System.Drawing.Size(82, 18);
-            this.sf_matrix.TabIndex = 4;
-            this.sf_matrix.Text = "Matrixgeber";
-            this.sf_matrix.UseVisualStyleBackColor = true;
-            this.sf_matrix.CheckedChanged += new System.EventHandler(this.sf_matrix_CheckedChanged);
-            // 
-            // sf_hyper
-            // 
-            this.sf_hyper.AutoSize = true;
-            this.sf_hyper.Location = new System.Drawing.Point(286, 19);
-            this.sf_hyper.Name = "sf_hyper";
-            this.sf_hyper.Size = new System.Drawing.Size(102, 18);
-            this.sf_hyper.TabIndex = 3;
-            this.sf_hyper.Text = "Hypervehemenz";
-            this.sf_hyper.UseVisualStyleBackColor = true;
-            this.sf_hyper.CheckedChanged += new System.EventHandler(this.sf_hyper_CheckedChanged);
-            // 
-            // sf_stapel
-            // 
-            this.sf_stapel.AutoSize = true;
-            this.sf_stapel.Location = new System.Drawing.Point(204, 19);
-            this.sf_stapel.Name = "sf_stapel";
-            this.sf_stapel.Size = new System.Drawing.Size(82, 18);
-            this.sf_stapel.TabIndex = 2;
-            this.sf_stapel.Text = "Stapeleffekt";
-            this.sf_stapel.UseVisualStyleBackColor = true;
-            this.sf_stapel.CheckedChanged += new System.EventHandler(this.sf_stapel_CheckedChanged);
-            // 
-            // sf_vielLadung
-            // 
-            this.sf_vielLadung.AutoSize = true;
-            this.sf_vielLadung.Location = new System.Drawing.Point(100, 19);
-            this.sf_vielLadung.Name = "sf_vielLadung";
-            this.sf_vielLadung.Size = new System.Drawing.Size(104, 18);
-            this.sf_vielLadung.TabIndex = 8;
-            this.sf_vielLadung.Text = "Vielfache Ladung";
-            this.sf_vielLadung.UseVisualStyleBackColor = true;
-            this.sf_vielLadung.CheckedChanged += new System.EventHandler(this.sf_vielLadung_CheckedChanged);
-            // 
-            // sf_kraft
-            // 
-            this.sf_kraft.AutoSize = true;
-            this.sf_kraft.Location = new System.Drawing.Point(6, 19);
-            this.sf_kraft.Name = "sf_kraft";
-            this.sf_kraft.Size = new System.Drawing.Size(94, 18);
-            this.sf_kraft.TabIndex = 0;
-            this.sf_kraft.Text = "Kraftkontrolle";
-            this.sf_kraft.UseVisualStyleBackColor = true;
-            this.sf_kraft.CheckedChanged += new System.EventHandler(this.sf_kraft_CheckedChanged);
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.destruct_change);
-            this.groupBox4.Controls.Add(this.label14);
-            this.groupBox4.Controls.Add(this.magiekunde_change);
-            this.groupBox4.Controls.Add(this.label13);
-            this.groupBox4.Controls.Add(this.analys_change);
-            this.groupBox4.Controls.Add(this.label12);
-            this.groupBox4.Controls.Add(this.odem_change);
-            this.groupBox4.Controls.Add(this.label8);
-            this.groupBox4.Controls.Add(this.arcanovi_semi_change);
-            this.groupBox4.Controls.Add(this.arcanovi_matrix_change);
-            this.groupBox4.Controls.Add(this.arcanovi_change);
-            this.groupBox4.Controls.Add(this.arcanovi_semi_change_lbl);
-            this.groupBox4.Controls.Add(this.arcanovi_matrix_lbl);
-            this.groupBox4.Controls.Add(this.label1);
-            this.groupBox4.Location = new System.Drawing.Point(6, 114);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(985, 41);
-            this.groupBox4.TabIndex = 14;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Talentwerte";
-            // 
-            // destruct_change
-            // 
-            this.destruct_change.Location = new System.Drawing.Point(868, 15);
-            this.destruct_change.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.destruct_change.Name = "destruct_change";
-            this.destruct_change.Size = new System.Drawing.Size(36, 20);
-            this.destruct_change.TabIndex = 16;
-            this.destruct_change.Value = new decimal(new int[] {
-            15,
-            0,
-            0,
-            0});
-            this.destruct_change.ValueChanged += new System.EventHandler(this.destruct_change_ValueChanged);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(784, 19);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(84, 14);
-            this.label14.TabIndex = 15;
-            this.label14.Text = "DESTRUCTIBO";
-            // 
-            // magiekunde_change
-            // 
-            this.magiekunde_change.Location = new System.Drawing.Point(742, 15);
-            this.magiekunde_change.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.magiekunde_change.Name = "magiekunde_change";
-            this.magiekunde_change.Size = new System.Drawing.Size(36, 20);
-            this.magiekunde_change.TabIndex = 14;
-            this.magiekunde_change.Value = new decimal(new int[] {
-            15,
-            0,
-            0,
-            0});
-            this.magiekunde_change.ValueChanged += new System.EventHandler(this.magiekunde_change_ValueChanged);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(670, 19);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(62, 14);
-            this.label13.TabIndex = 13;
-            this.label13.Text = "Magiekunde";
-            // 
-            // analys_change
-            // 
-            this.analys_change.Location = new System.Drawing.Point(629, 15);
-            this.analys_change.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.analys_change.Name = "analys_change";
-            this.analys_change.Size = new System.Drawing.Size(36, 20);
-            this.analys_change.TabIndex = 12;
-            this.analys_change.Value = new decimal(new int[] {
-            15,
-            0,
-            0,
-            0});
-            this.analys_change.ValueChanged += new System.EventHandler(this.analys_change_ValueChanged);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(574, 19);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(50, 14);
-            this.label12.TabIndex = 11;
-            this.label12.Text = "ANALYS";
-            // 
-            // odem_change
-            // 
-            this.odem_change.Location = new System.Drawing.Point(532, 15);
-            this.odem_change.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.odem_change.Name = "odem_change";
-            this.odem_change.Size = new System.Drawing.Size(36, 20);
-            this.odem_change.TabIndex = 10;
-            this.odem_change.Value = new decimal(new int[] {
-            15,
-            0,
-            0,
-            0});
-            this.odem_change.ValueChanged += new System.EventHandler(this.odem_change_ValueChanged);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(487, 19);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(40, 14);
-            this.label8.TabIndex = 9;
-            this.label8.Text = "ODEM";
-            // 
-            // arcanovi_semi_change
-            // 
-            this.arcanovi_semi_change.Enabled = false;
-            this.arcanovi_semi_change.Location = new System.Drawing.Point(445, 15);
-            this.arcanovi_semi_change.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.arcanovi_semi_change.Name = "arcanovi_semi_change";
-            this.arcanovi_semi_change.Size = new System.Drawing.Size(36, 20);
-            this.arcanovi_semi_change.TabIndex = 8;
-            this.arcanovi_semi_change.Value = new decimal(new int[] {
-            15,
-            0,
-            0,
-            0});
-            this.arcanovi_semi_change.ValueChanged += new System.EventHandler(this.arcanovi_semi_change_ValueChanged);
-            // 
-            // arcanovi_matrix_change
-            // 
-            this.arcanovi_matrix_change.Enabled = false;
-            this.arcanovi_matrix_change.Location = new System.Drawing.Point(251, 15);
-            this.arcanovi_matrix_change.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.arcanovi_matrix_change.Name = "arcanovi_matrix_change";
-            this.arcanovi_matrix_change.Size = new System.Drawing.Size(36, 20);
-            this.arcanovi_matrix_change.TabIndex = 7;
-            this.arcanovi_matrix_change.Value = new decimal(new int[] {
-            15,
-            0,
-            0,
-            0});
-            this.arcanovi_matrix_change.ValueChanged += new System.EventHandler(this.arcanovi_matrix_change_ValueChanged);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(64, 14);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "ARCANOVI";
             // 
             // arcanovi_change
             // 
-            this.arcanovi_change.Location = new System.Drawing.Point(77, 15);
+            this.arcanovi_change.Location = new System.Drawing.Point(71, 4);
             this.arcanovi_change.Maximum = new decimal(new int[] {
             50,
             0,
@@ -1277,59 +1176,234 @@ namespace ArtefaktGenerator
             0});
             this.arcanovi_change.ValueChanged += new System.EventHandler(this.arcanovi_change_ValueChanged);
             // 
-            // arcanovi_semi_change_lbl
+            // panel2
             // 
-            this.arcanovi_semi_change_lbl.AutoSize = true;
-            this.arcanovi_semi_change_lbl.Enabled = false;
-            this.arcanovi_semi_change_lbl.Location = new System.Drawing.Point(293, 19);
-            this.arcanovi_semi_change_lbl.Name = "arcanovi_semi_change_lbl";
-            this.arcanovi_semi_change_lbl.Size = new System.Drawing.Size(148, 14);
-            this.arcanovi_semi_change_lbl.TabIndex = 5;
-            this.arcanovi_semi_change_lbl.Text = "ARCANOVI (Semipermanenz)";
+            this.panel2.Controls.Add(this.arcanovi_matrix_lbl);
+            this.panel2.Controls.Add(this.arcanovi_matrix_change);
+            this.panel2.Location = new System.Drawing.Point(123, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(178, 28);
+            this.panel2.TabIndex = 1;
             // 
             // arcanovi_matrix_lbl
             // 
             this.arcanovi_matrix_lbl.AutoSize = true;
             this.arcanovi_matrix_lbl.Enabled = false;
-            this.arcanovi_matrix_lbl.Location = new System.Drawing.Point(119, 17);
+            this.arcanovi_matrix_lbl.Location = new System.Drawing.Point(3, 7);
             this.arcanovi_matrix_lbl.Name = "arcanovi_matrix_lbl";
             this.arcanovi_matrix_lbl.Size = new System.Drawing.Size(131, 14);
             this.arcanovi_matrix_lbl.TabIndex = 3;
             this.arcanovi_matrix_lbl.Text = "ARCANOVI (Matrixgeber)";
             // 
-            // label1
+            // arcanovi_matrix_change
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 14);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "ARCANOVI";
+            this.arcanovi_matrix_change.Enabled = false;
+            this.arcanovi_matrix_change.Location = new System.Drawing.Point(134, 4);
+            this.arcanovi_matrix_change.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.arcanovi_matrix_change.Name = "arcanovi_matrix_change";
+            this.arcanovi_matrix_change.Size = new System.Drawing.Size(36, 20);
+            this.arcanovi_matrix_change.TabIndex = 7;
+            this.arcanovi_matrix_change.Value = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
+            this.arcanovi_matrix_change.ValueChanged += new System.EventHandler(this.arcanovi_matrix_change_ValueChanged);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.arcanovi_semi_change_lbl);
+            this.panel3.Controls.Add(this.arcanovi_semi_change);
+            this.panel3.Location = new System.Drawing.Point(307, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(197, 28);
+            this.panel3.TabIndex = 2;
+            // 
+            // arcanovi_semi_change_lbl
+            // 
+            this.arcanovi_semi_change_lbl.AutoSize = true;
+            this.arcanovi_semi_change_lbl.Enabled = false;
+            this.arcanovi_semi_change_lbl.Location = new System.Drawing.Point(3, 7);
+            this.arcanovi_semi_change_lbl.Name = "arcanovi_semi_change_lbl";
+            this.arcanovi_semi_change_lbl.Size = new System.Drawing.Size(148, 14);
+            this.arcanovi_semi_change_lbl.TabIndex = 5;
+            this.arcanovi_semi_change_lbl.Text = "ARCANOVI (Semipermanenz)";
+            // 
+            // arcanovi_semi_change
+            // 
+            this.arcanovi_semi_change.Enabled = false;
+            this.arcanovi_semi_change.Location = new System.Drawing.Point(154, 4);
+            this.arcanovi_semi_change.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.arcanovi_semi_change.Name = "arcanovi_semi_change";
+            this.arcanovi_semi_change.Size = new System.Drawing.Size(36, 20);
+            this.arcanovi_semi_change.TabIndex = 8;
+            this.arcanovi_semi_change.Value = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
+            this.arcanovi_semi_change.ValueChanged += new System.EventHandler(this.arcanovi_semi_change_ValueChanged);
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.label8);
+            this.panel4.Controls.Add(this.odem_change);
+            this.panel4.Location = new System.Drawing.Point(510, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(91, 28);
+            this.panel4.TabIndex = 3;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(7, 7);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(40, 14);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "ODEM";
+            // 
+            // odem_change
+            // 
+            this.odem_change.Location = new System.Drawing.Point(49, 5);
+            this.odem_change.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.odem_change.Name = "odem_change";
+            this.odem_change.Size = new System.Drawing.Size(36, 20);
+            this.odem_change.TabIndex = 10;
+            this.odem_change.Value = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
+            this.odem_change.ValueChanged += new System.EventHandler(this.odem_change_ValueChanged);
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.label12);
+            this.panel5.Controls.Add(this.analys_change);
+            this.panel5.Location = new System.Drawing.Point(607, 3);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(102, 28);
+            this.panel5.TabIndex = 4;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(3, 7);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(50, 14);
+            this.label12.TabIndex = 11;
+            this.label12.Text = "ANALYS";
+            // 
+            // analys_change
+            // 
+            this.analys_change.Location = new System.Drawing.Point(59, 5);
+            this.analys_change.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.analys_change.Name = "analys_change";
+            this.analys_change.Size = new System.Drawing.Size(36, 20);
+            this.analys_change.TabIndex = 12;
+            this.analys_change.Value = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
+            this.analys_change.ValueChanged += new System.EventHandler(this.analys_change_ValueChanged);
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.label13);
+            this.panel6.Controls.Add(this.magiekunde_change);
+            this.panel6.Location = new System.Drawing.Point(715, 3);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(118, 28);
+            this.panel6.TabIndex = 5;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(7, 6);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(62, 14);
+            this.label13.TabIndex = 13;
+            this.label13.Text = "Magiekunde";
+            // 
+            // magiekunde_change
+            // 
+            this.magiekunde_change.Location = new System.Drawing.Point(75, 4);
+            this.magiekunde_change.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.magiekunde_change.Name = "magiekunde_change";
+            this.magiekunde_change.Size = new System.Drawing.Size(36, 20);
+            this.magiekunde_change.TabIndex = 14;
+            this.magiekunde_change.Value = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
+            this.magiekunde_change.ValueChanged += new System.EventHandler(this.magiekunde_change_ValueChanged);
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.label14);
+            this.panel7.Controls.Add(this.destruct_change);
+            this.panel7.Location = new System.Drawing.Point(839, 3);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(132, 28);
+            this.panel7.TabIndex = 6;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(0, 6);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(84, 14);
+            this.label14.TabIndex = 15;
+            this.label14.Text = "DESTRUCTIBO";
+            // 
+            // destruct_change
+            // 
+            this.destruct_change.Location = new System.Drawing.Point(90, 4);
+            this.destruct_change.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.destruct_change.Name = "destruct_change";
+            this.destruct_change.Size = new System.Drawing.Size(36, 20);
+            this.destruct_change.TabIndex = 16;
+            this.destruct_change.Value = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
+            this.destruct_change.ValueChanged += new System.EventHandler(this.destruct_change_ValueChanged);
             // 
             // wirkendeZauber
             // 
-            this.wirkendeZauber.Controls.Add(this.zauberGrid);
-            this.wirkendeZauber.Controls.Add(this.zauber_add);
-            this.wirkendeZauber.Controls.Add(this.zauber_listbox);
-            this.wirkendeZauber.Controls.Add(this.komp_combo);
-            this.wirkendeZauber.Controls.Add(this.zauber_rep);
-            this.wirkendeZauber.Controls.Add(this.zauber_del);
-            this.wirkendeZauber.Controls.Add(this.label11);
-            this.wirkendeZauber.Controls.Add(this.label10);
-            this.wirkendeZauber.Controls.Add(this.loads_lbl);
-            this.wirkendeZauber.Controls.Add(this.zauber_list);
-            this.wirkendeZauber.Controls.Add(this.asp);
-            this.wirkendeZauber.Controls.Add(this.stapelung);
-            this.wirkendeZauber.Controls.Add(this.loads);
-            this.wirkendeZauber.Controls.Add(this.zauber);
-            this.wirkendeZauber.Controls.Add(this.label18);
-            this.wirkendeZauber.Controls.Add(this.label9);
-            this.wirkendeZauber.Controls.Add(this.lbl_staple);
-            this.wirkendeZauber.Controls.Add(this.label3);
-            this.wirkendeZauber.Controls.Add(this.label2);
-            this.wirkendeZauber.Location = new System.Drawing.Point(7, 368);
+            this.tableLayoutPanel1.SetColumnSpan(this.wirkendeZauber, 3);
+            this.wirkendeZauber.Controls.Add(this.tableLayoutPanel2);
+            this.wirkendeZauber.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wirkendeZauber.Location = new System.Drawing.Point(3, 422);
             this.wirkendeZauber.Name = "wirkendeZauber";
-            this.wirkendeZauber.Size = new System.Drawing.Size(438, 227);
+            this.wirkendeZauber.Size = new System.Drawing.Size(578, 284);
             this.wirkendeZauber.TabIndex = 16;
             this.wirkendeZauber.TabStop = false;
             this.wirkendeZauber.Text = "Wirkende Zauber";
@@ -1339,30 +1413,22 @@ namespace ArtefaktGenerator
             this.zauberGrid.AllowUserToAddRows = false;
             this.zauberGrid.AllowUserToOrderColumns = true;
             this.zauberGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.zauberGrid.Location = new System.Drawing.Point(5, 66);
+            this.zauberGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.zauberGrid.Location = new System.Drawing.Point(3, 65);
             this.zauberGrid.MultiSelect = false;
             this.zauberGrid.Name = "zauberGrid";
-            this.zauberGrid.Size = new System.Drawing.Size(328, 152);
+            this.zauberGrid.Size = new System.Drawing.Size(453, 197);
             this.zauberGrid.TabIndex = 27;
             // 
             // zauber_add
             // 
-            this.zauber_add.Location = new System.Drawing.Point(352, 35);
+            this.zauber_add.Location = new System.Drawing.Point(25, 17);
             this.zauber_add.Name = "zauber_add";
             this.zauber_add.Size = new System.Drawing.Size(75, 25);
             this.zauber_add.TabIndex = 13;
             this.zauber_add.Text = "Hinzuf.";
             this.zauber_add.UseVisualStyleBackColor = true;
             this.zauber_add.Click += new System.EventHandler(this.zauber_add_Click);
-            // 
-            // zauber_listbox
-            // 
-            this.zauber_listbox.FormattingEnabled = true;
-            this.zauber_listbox.ItemHeight = 14;
-            this.zauber_listbox.Location = new System.Drawing.Point(6, 88);
-            this.zauber_listbox.Name = "zauber_listbox";
-            this.zauber_listbox.Size = new System.Drawing.Size(327, 130);
-            this.zauber_listbox.TabIndex = 25;
             // 
             // komp_combo
             // 
@@ -1377,7 +1443,7 @@ namespace ArtefaktGenerator
             "F",
             "G",
             "H"});
-            this.komp_combo.Location = new System.Drawing.Point(116, 38);
+            this.komp_combo.Location = new System.Drawing.Point(118, 19);
             this.komp_combo.Name = "komp_combo";
             this.komp_combo.Size = new System.Drawing.Size(34, 22);
             this.komp_combo.TabIndex = 24;
@@ -1390,14 +1456,14 @@ namespace ArtefaktGenerator
             this.zauber_rep.Items.AddRange(new object[] {
             "eigene",
             "fremde"});
-            this.zauber_rep.Location = new System.Drawing.Point(241, 37);
+            this.zauber_rep.Location = new System.Drawing.Point(246, 19);
             this.zauber_rep.Name = "zauber_rep";
             this.zauber_rep.Size = new System.Drawing.Size(62, 22);
             this.zauber_rep.TabIndex = 22;
             // 
             // zauber_del
             // 
-            this.zauber_del.Location = new System.Drawing.Point(352, 66);
+            this.zauber_del.Location = new System.Drawing.Point(23, 3);
             this.zauber_del.Name = "zauber_del";
             this.zauber_del.Size = new System.Drawing.Size(75, 25);
             this.zauber_del.TabIndex = 21;
@@ -1408,7 +1474,7 @@ namespace ArtefaktGenerator
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(337, 71);
+            this.label11.Location = new System.Drawing.Point(8, 22);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(18, 14);
             this.label11.TabIndex = 20;
@@ -1417,7 +1483,7 @@ namespace ArtefaktGenerator
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(337, 40);
+            this.label10.Location = new System.Drawing.Point(10, 8);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(18, 14);
             this.label10.TabIndex = 19;
@@ -1426,57 +1492,15 @@ namespace ArtefaktGenerator
             // loads_lbl
             // 
             this.loads_lbl.AutoSize = true;
-            this.loads_lbl.Location = new System.Drawing.Point(352, 104);
+            this.loads_lbl.Location = new System.Drawing.Point(23, 41);
             this.loads_lbl.Name = "loads_lbl";
             this.loads_lbl.Size = new System.Drawing.Size(51, 14);
             this.loads_lbl.TabIndex = 16;
             this.loads_lbl.Text = "Ladungen";
             // 
-            // zauber_list
-            // 
-            this.zauber_list.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.name,
-            this.complexity,
-            this.count_staples,
-            this.count_asp,
-            this.rep});
-            this.zauber_list.FullRowSelect = true;
-            this.zauber_list.Location = new System.Drawing.Point(6, 66);
-            this.zauber_list.Name = "zauber_list";
-            this.zauber_list.Size = new System.Drawing.Size(327, 152);
-            this.zauber_list.TabIndex = 12;
-            this.zauber_list.TileSize = new System.Drawing.Size(100, 100);
-            this.zauber_list.UseCompatibleStateImageBehavior = false;
-            this.zauber_list.View = System.Windows.Forms.View.Details;
-            // 
-            // name
-            // 
-            this.name.Text = "Zauber";
-            this.name.Width = 89;
-            // 
-            // complexity
-            // 
-            this.complexity.Text = "Komp.";
-            this.complexity.Width = 54;
-            // 
-            // count_staples
-            // 
-            this.count_staples.Text = "Stapel";
-            this.count_staples.Width = 55;
-            // 
-            // count_asp
-            // 
-            this.count_asp.Text = "AsP";
-            this.count_asp.Width = 53;
-            // 
-            // rep
-            // 
-            this.rep.Text = "Rep.";
-            this.rep.Width = 51;
-            // 
             // asp
             // 
-            this.asp.Location = new System.Drawing.Point(198, 38);
+            this.asp.Location = new System.Drawing.Point(203, 20);
             this.asp.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -1498,7 +1522,7 @@ namespace ArtefaktGenerator
             // 
             // stapelung
             // 
-            this.stapelung.Location = new System.Drawing.Point(156, 38);
+            this.stapelung.Location = new System.Drawing.Point(161, 20);
             this.stapelung.Maximum = new decimal(new int[] {
             3,
             0,
@@ -1520,7 +1544,7 @@ namespace ArtefaktGenerator
             // 
             // loads
             // 
-            this.loads.Location = new System.Drawing.Point(362, 122);
+            this.loads.Location = new System.Drawing.Point(33, 59);
             this.loads.Maximum = new decimal(new int[] {
             50,
             0,
@@ -1543,7 +1567,7 @@ namespace ArtefaktGenerator
             // 
             // zauber
             // 
-            this.zauber.Location = new System.Drawing.Point(6, 38);
+            this.zauber.Location = new System.Drawing.Point(8, 21);
             this.zauber.Name = "zauber";
             this.zauber.Size = new System.Drawing.Size(104, 20);
             this.zauber.TabIndex = 1;
@@ -1552,7 +1576,7 @@ namespace ArtefaktGenerator
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(242, 22);
+            this.label18.Location = new System.Drawing.Point(247, 4);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(28, 14);
             this.label18.TabIndex = 23;
@@ -1561,7 +1585,7 @@ namespace ArtefaktGenerator
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(196, 23);
+            this.label9.Location = new System.Drawing.Point(201, 5);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(26, 14);
             this.label9.TabIndex = 18;
@@ -1571,7 +1595,7 @@ namespace ArtefaktGenerator
             // 
             this.lbl_staple.AutoSize = true;
             this.lbl_staple.Enabled = false;
-            this.lbl_staple.Location = new System.Drawing.Point(153, 23);
+            this.lbl_staple.Location = new System.Drawing.Point(158, 5);
             this.lbl_staple.Name = "lbl_staple";
             this.lbl_staple.Size = new System.Drawing.Size(35, 14);
             this.lbl_staple.TabIndex = 17;
@@ -1580,7 +1604,7 @@ namespace ArtefaktGenerator
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(113, 23);
+            this.label3.Location = new System.Drawing.Point(118, 5);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(39, 14);
             this.label3.TabIndex = 15;
@@ -1589,7 +1613,7 @@ namespace ArtefaktGenerator
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 23);
+            this.label2.Location = new System.Drawing.Point(11, 5);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 14);
             this.label2.TabIndex = 14;
@@ -1597,13 +1621,15 @@ namespace ArtefaktGenerator
             // 
             // tabControl1
             // 
+            this.tableLayoutPanel1.SetColumnSpan(this.tabControl1, 2);
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(464, 383);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(587, 422);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(540, 227);
+            this.tabControl1.Size = new System.Drawing.Size(434, 284);
             this.tabControl1.TabIndex = 17;
             // 
             // tabPage1
@@ -1613,7 +1639,7 @@ namespace ArtefaktGenerator
             this.tabPage1.Location = new System.Drawing.Point(4, 23);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(532, 200);
+            this.tabPage1.Size = new System.Drawing.Size(426, 257);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Erschaffung";
             // 
@@ -1621,13 +1647,14 @@ namespace ArtefaktGenerator
             // 
             this.txt_create.AcceptsReturn = true;
             this.txt_create.AcceptsTab = true;
+            this.txt_create.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txt_create.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txt_create.Location = new System.Drawing.Point(4, 4);
+            this.txt_create.Location = new System.Drawing.Point(3, 3);
             this.txt_create.Multiline = true;
             this.txt_create.Name = "txt_create";
             this.txt_create.ReadOnly = true;
             this.txt_create.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txt_create.Size = new System.Drawing.Size(525, 193);
+            this.txt_create.Size = new System.Drawing.Size(420, 251);
             this.txt_create.TabIndex = 0;
             // 
             // tabPage2
@@ -1635,10 +1662,10 @@ namespace ArtefaktGenerator
             this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage2.Controls.Add(this.groupBox9);
             this.tabPage2.Controls.Add(this.txt_analys);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 23);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(532, 201);
+            this.tabPage2.Size = new System.Drawing.Size(461, 463);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Analyse";
             // 
@@ -1756,9 +1783,9 @@ namespace ArtefaktGenerator
             this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage3.Controls.Add(this.groupBox10);
             this.tabPage3.Controls.Add(this.txt_destruct);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Location = new System.Drawing.Point(4, 23);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(532, 201);
+            this.tabPage3.Size = new System.Drawing.Size(461, 463);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Zerstörung";
             // 
@@ -1881,7 +1908,7 @@ namespace ArtefaktGenerator
             this.updatesToolStripMenuItem});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(1014, 24);
+            this.menu.Size = new System.Drawing.Size(1024, 24);
             this.menu.TabIndex = 23;
             this.menu.Text = "menuStrip1";
             // 
@@ -2241,10 +2268,11 @@ namespace ArtefaktGenerator
             // hero_name
             // 
             this.hero_name.AutoSize = true;
+            this.hero_name.Dock = System.Windows.Forms.DockStyle.Top;
             this.hero_name.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hero_name.Location = new System.Drawing.Point(154, 43);
+            this.hero_name.Location = new System.Drawing.Point(190, 0);
             this.hero_name.Name = "hero_name";
-            this.hero_name.Size = new System.Drawing.Size(36, 14);
+            this.hero_name.Size = new System.Drawing.Size(181, 14);
             this.hero_name.TabIndex = 25;
             this.hero_name.Text = "Held: ";
             // 
@@ -2256,8 +2284,257 @@ namespace ArtefaktGenerator
             // 
             this.dasArtefaktBindingSource1.DataSource = typeof(ArtefaktGenerator.DasArtefakt);
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.AutoSize = true;
+            this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutPanel1.ColumnCount = 5;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.26758F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.26758F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.52441F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.07233F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.81303F));
+            this.tableLayoutPanel1.Controls.Add(this.TalentGroupBox, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.artefakttyp, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.SFGroupBox, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.tabControl1, 3, 7);
+            this.tableLayoutPanel1.Controls.Add(this.wirkendeZauber, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox7, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.repGroup, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox5, 3, 3);
+            this.tableLayoutPanel1.Controls.Add(this.hero_name, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel4, 4, 3);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 8;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 0F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1024, 709);
+            this.tableLayoutPanel1.TabIndex = 27;
+            // 
+            // SFGroupBox
+            // 
+            this.SFGroupBox.AutoSize = true;
+            this.SFGroupBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutPanel1.SetColumnSpan(this.SFGroupBox, 5);
+            this.SFGroupBox.Controls.Add(this.SFPanel);
+            this.SFGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SFGroupBox.Location = new System.Drawing.Point(3, 53);
+            this.SFGroupBox.Name = "SFGroupBox";
+            this.SFGroupBox.Size = new System.Drawing.Size(1018, 43);
+            this.SFGroupBox.TabIndex = 12;
+            this.SFGroupBox.TabStop = false;
+            this.SFGroupBox.Text = "Sonderfertigkeiten";
+            this.SFGroupBox.Resize += new System.EventHandler(this.SFGroupBox_Resize);
+            // 
+            // SFPanel
+            // 
+            this.SFPanel.AutoSize = true;
+            this.SFPanel.Controls.Add(this.sf_kraft);
+            this.SFPanel.Controls.Add(this.sf_vielLadung);
+            this.SFPanel.Controls.Add(this.sf_stapel);
+            this.SFPanel.Controls.Add(this.sf_hyper);
+            this.SFPanel.Controls.Add(this.sf_matrix);
+            this.SFPanel.Controls.Add(this.sf_semiI);
+            this.SFPanel.Controls.Add(this.sf_semiII);
+            this.SFPanel.Controls.Add(this.sf_ringkunde);
+            this.SFPanel.Controls.Add(this.sf_kraftspeicher);
+            this.SFPanel.Controls.Add(this.sf_aux);
+            this.SFPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.SFPanel.Location = new System.Drawing.Point(3, 16);
+            this.SFPanel.Name = "SFPanel";
+            this.SFPanel.Size = new System.Drawing.Size(1012, 24);
+            this.SFPanel.TabIndex = 11;
+            // 
+            // sf_kraft
+            // 
+            this.sf_kraft.AutoSize = true;
+            this.sf_kraft.Location = new System.Drawing.Point(3, 3);
+            this.sf_kraft.Name = "sf_kraft";
+            this.sf_kraft.Size = new System.Drawing.Size(94, 18);
+            this.sf_kraft.TabIndex = 0;
+            this.sf_kraft.Text = "Kraftkontrolle";
+            this.sf_kraft.UseVisualStyleBackColor = true;
+            this.sf_kraft.CheckedChanged += new System.EventHandler(this.sf_kraft_CheckedChanged);
+            // 
+            // sf_vielLadung
+            // 
+            this.sf_vielLadung.AutoSize = true;
+            this.sf_vielLadung.Location = new System.Drawing.Point(103, 3);
+            this.sf_vielLadung.Name = "sf_vielLadung";
+            this.sf_vielLadung.Size = new System.Drawing.Size(104, 18);
+            this.sf_vielLadung.TabIndex = 8;
+            this.sf_vielLadung.Text = "Vielfache Ladung";
+            this.sf_vielLadung.UseVisualStyleBackColor = true;
+            this.sf_vielLadung.CheckedChanged += new System.EventHandler(this.sf_vielLadung_CheckedChanged);
+            // 
+            // sf_stapel
+            // 
+            this.sf_stapel.AutoSize = true;
+            this.sf_stapel.Location = new System.Drawing.Point(213, 3);
+            this.sf_stapel.Name = "sf_stapel";
+            this.sf_stapel.Size = new System.Drawing.Size(82, 18);
+            this.sf_stapel.TabIndex = 2;
+            this.sf_stapel.Text = "Stapeleffekt";
+            this.sf_stapel.UseVisualStyleBackColor = true;
+            this.sf_stapel.CheckedChanged += new System.EventHandler(this.sf_stapel_CheckedChanged);
+            // 
+            // sf_hyper
+            // 
+            this.sf_hyper.AutoSize = true;
+            this.sf_hyper.Location = new System.Drawing.Point(301, 3);
+            this.sf_hyper.Name = "sf_hyper";
+            this.sf_hyper.Size = new System.Drawing.Size(102, 18);
+            this.sf_hyper.TabIndex = 3;
+            this.sf_hyper.Text = "Hypervehemenz";
+            this.sf_hyper.UseVisualStyleBackColor = true;
+            this.sf_hyper.CheckedChanged += new System.EventHandler(this.sf_hyper_CheckedChanged);
+            // 
+            // sf_matrix
+            // 
+            this.sf_matrix.AutoSize = true;
+            this.sf_matrix.Location = new System.Drawing.Point(409, 3);
+            this.sf_matrix.Name = "sf_matrix";
+            this.sf_matrix.Size = new System.Drawing.Size(82, 18);
+            this.sf_matrix.TabIndex = 4;
+            this.sf_matrix.Text = "Matrixgeber";
+            this.sf_matrix.UseVisualStyleBackColor = true;
+            this.sf_matrix.CheckedChanged += new System.EventHandler(this.sf_matrix_CheckedChanged);
+            // 
+            // sf_semiI
+            // 
+            this.sf_semiI.AutoSize = true;
+            this.sf_semiI.Location = new System.Drawing.Point(497, 3);
+            this.sf_semiI.Name = "sf_semiI";
+            this.sf_semiI.Size = new System.Drawing.Size(106, 18);
+            this.sf_semiI.TabIndex = 5;
+            this.sf_semiI.Text = "Semipermanenz I";
+            this.sf_semiI.UseVisualStyleBackColor = true;
+            this.sf_semiI.CheckedChanged += new System.EventHandler(this.sf_semiI_CheckedChanged);
+            // 
+            // sf_semiII
+            // 
+            this.sf_semiII.AutoSize = true;
+            this.sf_semiII.Location = new System.Drawing.Point(609, 3);
+            this.sf_semiII.Name = "sf_semiII";
+            this.sf_semiII.Size = new System.Drawing.Size(110, 18);
+            this.sf_semiII.TabIndex = 6;
+            this.sf_semiII.Text = "Semipermanenz II";
+            this.sf_semiII.UseVisualStyleBackColor = true;
+            this.sf_semiII.CheckedChanged += new System.EventHandler(this.sf_semiII_CheckedChanged);
+            // 
+            // sf_ringkunde
+            // 
+            this.sf_ringkunde.AutoSize = true;
+            this.sf_ringkunde.Location = new System.Drawing.Point(725, 3);
+            this.sf_ringkunde.Name = "sf_ringkunde";
+            this.sf_ringkunde.Size = new System.Drawing.Size(110, 18);
+            this.sf_ringkunde.TabIndex = 4;
+            this.sf_ringkunde.Text = "Ringkunde gelesen";
+            this.sf_ringkunde.UseVisualStyleBackColor = true;
+            this.sf_ringkunde.CheckedChanged += new System.EventHandler(this.sf_ringkunde_CheckedChanged);
+            // 
+            // sf_kraftspeicher
+            // 
+            this.sf_kraftspeicher.AutoSize = true;
+            this.sf_kraftspeicher.Location = new System.Drawing.Point(841, 3);
+            this.sf_kraftspeicher.Name = "sf_kraftspeicher";
+            this.sf_kraftspeicher.Size = new System.Drawing.Size(89, 18);
+            this.sf_kraftspeicher.TabIndex = 10;
+            this.sf_kraftspeicher.Text = "Kraftspeicher";
+            this.sf_kraftspeicher.UseVisualStyleBackColor = true;
+            this.sf_kraftspeicher.CheckedChanged += new System.EventHandler(this.sf_kraftspeicher_CheckedChanged);
+            // 
+            // sf_aux
+            // 
+            this.sf_aux.AutoSize = true;
+            this.sf_aux.Location = new System.Drawing.Point(936, 3);
+            this.sf_aux.Name = "sf_aux";
+            this.sf_aux.Size = new System.Drawing.Size(73, 18);
+            this.sf_aux.TabIndex = 9;
+            this.sf_aux.Text = "Auxiliator";
+            this.sf_aux.UseVisualStyleBackColor = true;
+            this.sf_aux.CheckedChanged += new System.EventHandler(this.sf_aux_CheckedChanged);
+            // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.Controls.Add(this.groupBox11);
+            this.flowLayoutPanel4.Controls.Add(this.materialGroup);
+            this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(792, 161);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.tableLayoutPanel1.SetRowSpan(this.flowLayoutPanel4, 3);
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(229, 255);
+            this.flowLayoutPanel4.TabIndex = 27;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 113F));
+            this.tableLayoutPanel2.Controls.Add(this.zauberGrid, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.panel19, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.panel20, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.panel21, 1, 1);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 62F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(572, 265);
+            this.tableLayoutPanel2.TabIndex = 28;
+            // 
+            // panel19
+            // 
+            this.panel19.Controls.Add(this.zauber);
+            this.panel19.Controls.Add(this.label2);
+            this.panel19.Controls.Add(this.komp_combo);
+            this.panel19.Controls.Add(this.zauber_rep);
+            this.panel19.Controls.Add(this.label18);
+            this.panel19.Controls.Add(this.label3);
+            this.panel19.Controls.Add(this.lbl_staple);
+            this.panel19.Controls.Add(this.label9);
+            this.panel19.Controls.Add(this.stapelung);
+            this.panel19.Controls.Add(this.asp);
+            this.panel19.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel19.Location = new System.Drawing.Point(3, 3);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(453, 56);
+            this.panel19.TabIndex = 28;
+            // 
+            // panel20
+            // 
+            this.panel20.Controls.Add(this.zauber_add);
+            this.panel20.Controls.Add(this.label11);
+            this.panel20.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel20.Location = new System.Drawing.Point(462, 3);
+            this.panel20.Name = "panel20";
+            this.panel20.Size = new System.Drawing.Size(107, 56);
+            this.panel20.TabIndex = 29;
+            // 
+            // panel21
+            // 
+            this.panel21.Controls.Add(this.zauber_del);
+            this.panel21.Controls.Add(this.loads);
+            this.panel21.Controls.Add(this.loads_lbl);
+            this.panel21.Controls.Add(this.label10);
+            this.panel21.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel21.Location = new System.Drawing.Point(462, 65);
+            this.panel21.Name = "panel21";
+            this.panel21.Size = new System.Drawing.Size(107, 197);
+            this.panel21.TabIndex = 30;
+            // 
             // artefakttyp
             // 
+            this.tableLayoutPanel1.SetColumnSpan(this.artefakttyp, 3);
             this.artefakttyp.Controls.Add(this.artefakttyp_aux);
             this.artefakttyp.Controls.Add(this.type_speicher_value);
             this.artefakttyp.Controls.Add(this.lbl_type_speicher_val);
@@ -2271,10 +2548,11 @@ namespace ArtefaktGenerator
             this.artefakttyp.Controls.Add(this.type_semi);
             this.artefakttyp.Controls.Add(this.artefakttyp_matrix);
             this.artefakttyp.Controls.Add(this.artefakttyp_semi);
-            this.artefakttyp.Location = new System.Drawing.Point(7, 157);
+            this.artefakttyp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.artefakttyp.Location = new System.Drawing.Point(3, 161);
             this.artefakttyp.Name = "artefakttyp";
             this.artefakttyp.Selected = 4;
-            this.artefakttyp.Size = new System.Drawing.Size(623, 93);
+            this.artefakttyp.Size = new System.Drawing.Size(578, 85);
             this.artefakttyp.TabIndex = 26;
             this.artefakttyp.TabStop = false;
             this.artefakttyp.Text = "Artefakttyp";
@@ -2286,7 +2564,7 @@ namespace ArtefaktGenerator
             this.artefakttyp_aux.Controls.Add(this.aux_stable);
             this.artefakttyp_aux.Controls.Add(this.aux_verystable);
             this.artefakttyp_aux.Controls.Add(this.aux_unempfindlich);
-            this.artefakttyp_aux.Location = new System.Drawing.Point(250, 46);
+            this.artefakttyp_aux.Location = new System.Drawing.Point(250, 41);
             this.artefakttyp_aux.Name = "artefakttyp_aux";
             this.artefakttyp_aux.Selected = 3;
             this.artefakttyp_aux.Size = new System.Drawing.Size(367, 42);
@@ -2399,7 +2677,7 @@ namespace ArtefaktGenerator
             this.artefakttyp_temp.Controls.Add(this.temp_monat);
             this.artefakttyp_temp.Controls.Add(this.temp_woche);
             this.artefakttyp_temp.Controls.Add(this.temp_tag);
-            this.artefakttyp_temp.Location = new System.Drawing.Point(6, 45);
+            this.artefakttyp_temp.Location = new System.Drawing.Point(6, 41);
             this.artefakttyp_temp.Name = "artefakttyp_temp";
             this.artefakttyp_temp.Selected = 0;
             this.artefakttyp_temp.Size = new System.Drawing.Size(176, 43);
@@ -2528,7 +2806,7 @@ namespace ArtefaktGenerator
             this.artefakttyp_matrix.Controls.Add(this.matrix_verystable);
             this.artefakttyp_matrix.Controls.Add(this.matrix_stable);
             this.artefakttyp_matrix.Controls.Add(this.matrix_labil);
-            this.artefakttyp_matrix.Location = new System.Drawing.Point(219, 46);
+            this.artefakttyp_matrix.Location = new System.Drawing.Point(219, 41);
             this.artefakttyp_matrix.Name = "artefakttyp_matrix";
             this.artefakttyp_matrix.Selected = 0;
             this.artefakttyp_matrix.Size = new System.Drawing.Size(297, 42);
@@ -2654,11 +2932,11 @@ namespace ArtefaktGenerator
             // 
             this.repGroup.Controls.Add(this.rep_ach);
             this.repGroup.Controls.Add(this.rep_mag);
-            this.repGroup.Location = new System.Drawing.Point(6, 25);
+            this.repGroup.Location = new System.Drawing.Point(3, 3);
             this.repGroup.Name = "repGroup";
             this.repGroup.Selected = 1;
-            this.repGroup.Size = new System.Drawing.Size(141, 40);
-            this.repGroup.TabIndex = 10;
+            this.repGroup.Size = new System.Drawing.Size(144, 44);
+            this.repGroup.TabIndex = 11;
             this.repGroup.TabStop = false;
             this.repGroup.Text = "Repräsentation";
             // 
@@ -2672,7 +2950,6 @@ namespace ArtefaktGenerator
             this.rep_ach.Tag = "0";
             this.rep_ach.Text = "Ach";
             this.rep_ach.UseVisualStyleBackColor = true;
-            this.rep_ach.Click += new System.EventHandler(this.rep_ach_Click);
             // 
             // rep_mag
             // 
@@ -2686,30 +2963,20 @@ namespace ArtefaktGenerator
             this.rep_mag.Tag = "1";
             this.rep_mag.Text = "Mag/Hex...";
             this.rep_mag.UseVisualStyleBackColor = true;
-            this.rep_mag.Click += new System.EventHandler(this.rep_mag_Click);
             // 
             // ArtGenControl
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.AutoScroll = true;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.Controls.Add(this.artefakttyp);
-            this.Controls.Add(this.repGroup);
-            this.Controls.Add(this.hero_name);
             this.Controls.Add(this.lblInfo);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menu);
-            this.Controls.Add(this.materialGroup);
-            this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.groupBox7);
-            this.Controls.Add(this.groupBox11);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.wirkendeZauber);
-            this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.MinimumSize = new System.Drawing.Size(1024, 600);
             this.Name = "ArtGenControl";
-            this.Size = new System.Drawing.Size(1014, 641);
+            this.Size = new System.Drawing.Size(1024, 733);
             this.Load += new System.EventHandler(this.ArtGenControl_Load);
             this.SizeChanged += new System.EventHandler(this.ArtGenControl_SizeChanged);
             this.Click += new System.EventHandler(this.ArtGenControl_Click);
@@ -2726,29 +2993,63 @@ namespace ArtefaktGenerator
             ((System.ComponentModel.ISupportInitialize)(this.probe_affine)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.probe_ausloes)).EndInit();
             this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
+            this.flowLayoutPanel3.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
+            this.panel12.ResumeLayout(false);
+            this.panel12.PerformLayout();
+            this.panel13.ResumeLayout(false);
+            this.panel13.PerformLayout();
+            this.panel14.ResumeLayout(false);
+            this.panel14.PerformLayout();
+            this.panel15.ResumeLayout(false);
+            this.panel15.PerformLayout();
+            this.panel16.ResumeLayout(false);
+            this.panel16.PerformLayout();
+            this.panel17.ResumeLayout(false);
+            this.panel17.PerformLayout();
+            this.panel18.ResumeLayout(false);
+            this.panel18.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.special_eatmat_var)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.special_ferngespuer_asp)).EndInit();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.special_variable_var)).EndInit();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.special_ferngespuer_asp)).EndInit();
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.special_additional_arcanovi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.agribaal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.special_ort_neben)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.special_ort_occ)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.destruct_change)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.magiekunde_change)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.analys_change)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.odem_change)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.arcanovi_semi_change)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.arcanovi_matrix_change)).EndInit();
+            this.TalentGroupBox.ResumeLayout(false);
+            this.TalentGroupBox.PerformLayout();
+            this.TalentPanel.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.arcanovi_change)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.arcanovi_matrix_change)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.arcanovi_semi_change)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.odem_change)).EndInit();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.analys_change)).EndInit();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.magiekunde_change)).EndInit();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.destruct_change)).EndInit();
             this.wirkendeZauber.ResumeLayout(false);
-            this.wirkendeZauber.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.zauberGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.asp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stapelung)).EndInit();
@@ -2774,6 +3075,20 @@ namespace ArtefaktGenerator
             this.menu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource1)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            this.SFGroupBox.ResumeLayout(false);
+            this.SFGroupBox.PerformLayout();
+            this.SFPanel.ResumeLayout(false);
+            this.SFPanel.PerformLayout();
+            this.flowLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.panel19.ResumeLayout(false);
+            this.panel19.PerformLayout();
+            this.panel20.ResumeLayout(false);
+            this.panel20.PerformLayout();
+            this.panel21.ResumeLayout(false);
+            this.panel21.PerformLayout();
             this.artefakttyp.ResumeLayout(false);
             this.artefakttyp.PerformLayout();
             this.artefakttyp_aux.ResumeLayout(false);
@@ -2836,18 +3151,6 @@ namespace ArtefaktGenerator
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.CheckBox limbus;
         private System.Windows.Forms.CheckBox namenlos;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox sf_aux;
-        private System.Windows.Forms.CheckBox sf_ringkunde;
-        private System.Windows.Forms.CheckBox sf_vielLadung;
-        private System.Windows.Forms.CheckBox sf_semiII;
-        private System.Windows.Forms.CheckBox sf_semiI;
-        private System.Windows.Forms.CheckBox sf_matrix;
-        private System.Windows.Forms.CheckBox sf_hyper;
-        private System.Windows.Forms.CheckBox sf_stapel;
-        private System.Windows.Forms.CheckBox sf_kraft;
-        private System.Windows.Forms.RadioButton rep_ach;
-        private System.Windows.Forms.RadioButton rep_mag;
         private System.Windows.Forms.RadioButton aux_unempfindlich;
         private System.Windows.Forms.CheckBox aux_merkmal;
         private System.Windows.Forms.RadioButton aux_verystable;
@@ -2866,7 +3169,7 @@ namespace ArtefaktGenerator
         private System.Windows.Forms.RadioButton type_charge;
         private System.Windows.Forms.RadioButton type_einaml;
         private System.Windows.Forms.RadioButton type_temp;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox TalentGroupBox;
         private System.Windows.Forms.NumericUpDown destruct_change;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.NumericUpDown magiekunde_change;
@@ -2894,12 +3197,6 @@ namespace ArtefaktGenerator
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button zauber_add;
-        private System.Windows.Forms.ListView zauber_list;
-        private System.Windows.Forms.ColumnHeader name;
-        private System.Windows.Forms.ColumnHeader complexity;
-        private System.Windows.Forms.ColumnHeader count_staples;
-        private System.Windows.Forms.ColumnHeader count_asp;
-        private System.Windows.Forms.ColumnHeader rep;
         private System.Windows.Forms.NumericUpDown asp;
         private System.Windows.Forms.NumericUpDown stapelung;
         private System.Windows.Forms.NumericUpDown loads;
@@ -2964,7 +3261,6 @@ namespace ArtefaktGenerator
         private System.Windows.Forms.ToolStripMenuItem beendenToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem importHeldensoftwareToolStripMenuItem;
         private System.Windows.Forms.Label hero_name;
-        private CustomControls.RadioGroupBox repGroup;
         private CustomControls.RadioGroupBox artefakttyp;
         private CustomControls.RadioGroupBox artefakttyp_temp;
         private CustomControls.RadioGroupBox artefakttyp_aux;
@@ -2974,14 +3270,12 @@ namespace ArtefaktGenerator
         private RadioButton semi_monat;
         private RadioButton semi_woche;
         private RadioButton semi_tag;
-        private ListBox zauber_listbox;
         private ToolStripMenuItem exportierenToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripMenuItem heldenimportToolStripMenuItem;
         private ToolStripMenuItem nebenwirkungenMenuItem1;
         private ToolStripMenuItem nebenReRollToolStripMenuItem;
         private ToolStripMenuItem nebenIgnoreToolStripMenuItem;
-        private CheckBox sf_kraftspeicher;
         private RadioButton type_speicher;
         private Label lbl_type_speicher_val;
         private NumericUpDown type_speicher_value;
@@ -3000,5 +3294,46 @@ namespace ArtefaktGenerator
         private NumericUpDown arcanoviZfPSternMod;
         private Label label19;
         private ToolStripMenuItem alwaysHypervSRD;
+        private TableLayoutPanel tableLayoutPanel1;
+        private GroupBox SFGroupBox;
+        private FlowLayoutPanel SFPanel;
+        private CheckBox sf_kraft;
+        private CheckBox sf_vielLadung;
+        private CheckBox sf_stapel;
+        private CheckBox sf_hyper;
+        private CheckBox sf_matrix;
+        private CheckBox sf_semiI;
+        private CheckBox sf_semiII;
+        private CheckBox sf_ringkunde;
+        private CheckBox sf_kraftspeicher;
+        private CheckBox sf_aux;
+        private RadioGroupBox repGroup;
+        private RadioButton rep_ach;
+        private RadioButton rep_mag;
+        private FlowLayoutPanel TalentPanel;
+        private Panel panel1;
+        private Panel panel2;
+        private Panel panel3;
+        private Panel panel4;
+        private Panel panel5;
+        private Panel panel6;
+        private Panel panel7;
+        private FlowLayoutPanel flowLayoutPanel3;
+        private Panel panel11;
+        private Panel panel12;
+        private Panel panel13;
+        private Panel panel14;
+        private Panel panel15;
+        private Panel panel16;
+        private Panel panel17;
+        private Panel panel18;
+        private Panel panel9;
+        private Panel panel8;
+        private Panel panel10;
+        private FlowLayoutPanel flowLayoutPanel4;
+        private TableLayoutPanel tableLayoutPanel2;
+        private Panel panel19;
+        private Panel panel20;
+        private Panel panel21;
     }
 }

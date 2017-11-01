@@ -171,7 +171,7 @@ namespace ArtefaktGenerator
         {
             try
             {
-                controller.zauberListe.RemoveAt(zauber_listbox.SelectedIndex);
+                controller.zauberListe.RemoveAt(zauberGrid.SelectedRows[0].Index);
                 controller.zauberListe = controller.zauberListe;
             }
             catch (System.Exception )
@@ -577,7 +577,6 @@ namespace ArtefaktGenerator
                 this.arcanoviZfPSternMod.DataBindings.Add("Value", controller, "probeZfPSternMod", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.wirkSpruchMod.DataBindings.Add("Value", controller, "probeWirkenderSpruchMod", false, DataSourceUpdateMode.OnPropertyChanged);
 
-                this.zauber_listbox.DataSource = controller.zauberListe;
                 this.zauberGrid.AutoGenerateColumns = false;
 
                 DataGridViewColumn column = new DataGridViewTextBoxColumn();
@@ -905,9 +904,6 @@ namespace ArtefaktGenerator
                 cb_kristalle.Checked = controller.extraKristalle;
                 cb_kristalle.Visible = controller.extraKristalleVisible;
 
-                zauber_listbox.Items.Clear();
-                foreach (Zauber z in controller.zauberListe)
-                    zauber_listbox.Items.Add(z);
                 loads.Value = controller.zauberLadungen;
                 loads.Enabled = controller.zauberLadungenEnabled;
                 loads_lbl.Enabled = controller.zauberLadungenEnabled;
@@ -1392,5 +1388,19 @@ namespace ArtefaktGenerator
             reloadData();
         }
         #endregion
+        private void SFGroupBox_Resize(object sender, EventArgs e)
+        {
+            SFGroupBox.SuspendLayout();
+            SFGroupBox.MinimumSize = new Size(SFPanel.Size.Width, SFPanel.Size.Height + 20);
+            SFGroupBox.ResumeLayout();
+        }
+
+        private void TalentGroupBox_Resize(object sender, EventArgs e)
+        {
+            TalentGroupBox.SuspendLayout();
+            TalentGroupBox.MinimumSize = new Size(TalentPanel.Size.Width, TalentPanel.Size.Height + 20);
+            TalentGroupBox.ResumeLayout();
+        }
+
     }
 }
