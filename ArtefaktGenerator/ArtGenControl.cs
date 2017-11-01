@@ -1402,5 +1402,41 @@ namespace ArtefaktGenerator
             TalentGroupBox.ResumeLayout();
         }
 
+        private void zauberGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            zauberGrid.CommitEdit(DataGridViewDataErrorContexts.Commit);
+        }
+
+        private void zauberGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            zauberGrid.CommitEdit(DataGridViewDataErrorContexts.Commit);
+        }
+
+        private void zauberGrid_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            zauberGrid.CommitEdit(DataGridViewDataErrorContexts.Commit);
+        }
+
+        private void zauberGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            zauberGrid.CommitEdit(DataGridViewDataErrorContexts.Commit);
+        }
+
+        private void zauberGrid_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            zauberGrid.CommitEdit(DataGridViewDataErrorContexts.Commit);
+        }
+
+        private void zauberGrid_CellValueChanged_1(object sender, DataGridViewCellEventArgs e)
+        {
+            zauberGrid.CommitEdit(DataGridViewDataErrorContexts.Commit);
+        }
+
+        private void zauberGrid_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (zauberGrid.CurrentCell.ColumnIndex == 1)
+                zauberGrid.CommitEdit(DataGridViewDataErrorContexts.Commit);
+        }
+
     }
 }

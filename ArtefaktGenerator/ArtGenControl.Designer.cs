@@ -1417,8 +1417,15 @@ namespace ArtefaktGenerator
             this.zauberGrid.Location = new System.Drawing.Point(3, 65);
             this.zauberGrid.MultiSelect = false;
             this.zauberGrid.Name = "zauberGrid";
+            this.zauberGrid.RowHeadersVisible = false;
             this.zauberGrid.Size = new System.Drawing.Size(453, 197);
             this.zauberGrid.TabIndex = 27;
+            this.zauberGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.zauberGrid_CellClick);
+            this.zauberGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.zauberGrid_CellContentClick);
+            this.zauberGrid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.zauberGrid_CellContentDoubleClick);
+            this.zauberGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.zauberGrid_CellDoubleClick);
+            this.zauberGrid.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.zauberGrid_CellValueChanged_1);
+            this.zauberGrid.CurrentCellDirtyStateChanged += new System.EventHandler(this.zauberGrid_CurrentCellDirtyStateChanged);
             // 
             // zauber_add
             // 
@@ -1665,7 +1672,7 @@ namespace ArtefaktGenerator
             this.tabPage2.Location = new System.Drawing.Point(4, 23);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(461, 463);
+            this.tabPage2.Size = new System.Drawing.Size(426, 257);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Analyse";
             // 
@@ -1785,7 +1792,7 @@ namespace ArtefaktGenerator
             this.tabPage3.Controls.Add(this.txt_destruct);
             this.tabPage3.Location = new System.Drawing.Point(4, 23);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(461, 463);
+            this.tabPage3.Size = new System.Drawing.Size(426, 257);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Zerstörung";
             // 
