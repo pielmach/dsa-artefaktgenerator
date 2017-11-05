@@ -718,6 +718,7 @@ namespace ArtefaktGenerator
         {
             ArtefaktGenerator.Properties.Settings.Default.saveAch = controller.optionAchSave;
             ArtefaktGenerator.Properties.Settings.Default.WDA = controller.WDA;
+            ArtefaktGenerator.Properties.Settings.Default.SFHyperNachSRD = controller.optionAlwaysHypervehemenzSRD;
             if (controller.W6 == 1) ArtefaktGenerator.Properties.Settings.Default.diceW6 = 0;
             if (controller.W6 == 3.5m) ArtefaktGenerator.Properties.Settings.Default.diceW6 = 1;
             if (controller.W6 == 4) ArtefaktGenerator.Properties.Settings.Default.diceW6 = 2;
