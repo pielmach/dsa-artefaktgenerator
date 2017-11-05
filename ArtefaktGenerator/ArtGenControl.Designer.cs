@@ -119,23 +119,27 @@ namespace ArtefaktGenerator
             this.label14 = new System.Windows.Forms.Label();
             this.destruct_change = new System.Windows.Forms.NumericUpDown();
             this.wirkendeZauber = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.zauberGrid = new System.Windows.Forms.DataGridView();
-            this.zauber_add = new System.Windows.Forms.Button();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.zauber = new System.Windows.Forms.MaskedTextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.komp_combo = new System.Windows.Forms.ComboBox();
             this.zauber_rep = new System.Windows.Forms.ComboBox();
-            this.zauber_del = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.loads_lbl = new System.Windows.Forms.Label();
-            this.asp = new System.Windows.Forms.NumericUpDown();
-            this.stapelung = new System.Windows.Forms.NumericUpDown();
-            this.loads = new System.Windows.Forms.NumericUpDown();
-            this.zauber = new System.Windows.Forms.MaskedTextBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.lbl_staple = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lbl_staple = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.stapelung = new System.Windows.Forms.NumericUpDown();
+            this.asp = new System.Windows.Forms.NumericUpDown();
+            this.panel20 = new System.Windows.Forms.Panel();
+            this.zauber_add = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.panel21 = new System.Windows.Forms.Panel();
+            this.zauber_del = new System.Windows.Forms.Button();
+            this.loads = new System.Windows.Forms.NumericUpDown();
+            this.loads_lbl = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.txt_create = new System.Windows.Forms.TextBox();
@@ -174,7 +178,6 @@ namespace ArtefaktGenerator
             this.exportierenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.automatischNeuberechenenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.alwaysHypervSRD = new System.Windows.Forms.ToolStripMenuItem();
             this.ach_save = new System.Windows.Forms.ToolStripMenuItem();
             this.regelbasis = new System.Windows.Forms.ToolStripMenuItem();
             this.wegeDerAlchimieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -204,8 +207,6 @@ namespace ArtefaktGenerator
             this.updatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblInfo = new System.Windows.Forms.Label();
             this.hero_name = new System.Windows.Forms.Label();
-            this.dasArtefaktBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dasArtefaktBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.SFGroupBox = new System.Windows.Forms.GroupBox();
             this.SFPanel = new System.Windows.Forms.FlowLayoutPanel();
@@ -220,10 +221,7 @@ namespace ArtefaktGenerator
             this.sf_kraftspeicher = new System.Windows.Forms.CheckBox();
             this.sf_aux = new System.Windows.Forms.CheckBox();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel19 = new System.Windows.Forms.Panel();
-            this.panel20 = new System.Windows.Forms.Panel();
-            this.panel21 = new System.Windows.Forms.Panel();
+            this.alwaysHypervSRD = new System.Windows.Forms.ToolStripMenuItem();
             this.artefakttyp = new CustomControls.RadioGroupBox();
             this.artefakttyp_aux = new CustomControls.RadioGroupBox();
             this.aux_labil = new System.Windows.Forms.RadioButton();
@@ -257,6 +255,8 @@ namespace ArtefaktGenerator
             this.repGroup = new CustomControls.RadioGroupBox();
             this.rep_ach = new System.Windows.Forms.RadioButton();
             this.rep_mag = new System.Windows.Forms.RadioButton();
+            this.dasArtefaktBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dasArtefaktBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.materialGroup.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wirkSpruchMod)).BeginInit();
@@ -305,9 +305,13 @@ namespace ArtefaktGenerator
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.destruct_change)).BeginInit();
             this.wirkendeZauber.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.zauberGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.asp)).BeginInit();
+            this.panel19.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stapelung)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.asp)).BeginInit();
+            this.panel20.SuspendLayout();
+            this.panel21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.loads)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -322,16 +326,10 @@ namespace ArtefaktGenerator
             ((System.ComponentModel.ISupportInitialize)(this.destruct_komplex)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.destruct_mr)).BeginInit();
             this.menu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SFGroupBox.SuspendLayout();
             this.SFPanel.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.panel19.SuspendLayout();
-            this.panel20.SuspendLayout();
-            this.panel21.SuspendLayout();
             this.artefakttyp.SuspendLayout();
             this.artefakttyp_aux.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.type_speicher_value)).BeginInit();
@@ -339,6 +337,8 @@ namespace ArtefaktGenerator
             this.artefakttyp_matrix.SuspendLayout();
             this.artefakttyp_semi.SuspendLayout();
             this.repGroup.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // materialGroup
@@ -1408,6 +1408,24 @@ namespace ArtefaktGenerator
             this.wirkendeZauber.TabStop = false;
             this.wirkendeZauber.Text = "Wirkende Zauber";
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 113F));
+            this.tableLayoutPanel2.Controls.Add(this.zauberGrid, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.panel19, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.panel20, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.panel21, 1, 1);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 62F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(572, 265);
+            this.tableLayoutPanel2.TabIndex = 28;
+            // 
             // zauberGrid
             // 
             this.zauberGrid.AllowUserToAddRows = false;
@@ -1427,15 +1445,40 @@ namespace ArtefaktGenerator
             this.zauberGrid.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.zauberGrid_CellValueChanged_1);
             this.zauberGrid.CurrentCellDirtyStateChanged += new System.EventHandler(this.zauberGrid_CurrentCellDirtyStateChanged);
             // 
-            // zauber_add
+            // panel19
             // 
-            this.zauber_add.Location = new System.Drawing.Point(25, 17);
-            this.zauber_add.Name = "zauber_add";
-            this.zauber_add.Size = new System.Drawing.Size(75, 25);
-            this.zauber_add.TabIndex = 13;
-            this.zauber_add.Text = "Hinzuf.";
-            this.zauber_add.UseVisualStyleBackColor = true;
-            this.zauber_add.Click += new System.EventHandler(this.zauber_add_Click);
+            this.panel19.Controls.Add(this.zauber);
+            this.panel19.Controls.Add(this.label2);
+            this.panel19.Controls.Add(this.komp_combo);
+            this.panel19.Controls.Add(this.zauber_rep);
+            this.panel19.Controls.Add(this.label18);
+            this.panel19.Controls.Add(this.label3);
+            this.panel19.Controls.Add(this.lbl_staple);
+            this.panel19.Controls.Add(this.label9);
+            this.panel19.Controls.Add(this.stapelung);
+            this.panel19.Controls.Add(this.asp);
+            this.panel19.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel19.Location = new System.Drawing.Point(3, 3);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(453, 56);
+            this.panel19.TabIndex = 28;
+            // 
+            // zauber
+            // 
+            this.zauber.Location = new System.Drawing.Point(8, 21);
+            this.zauber.Name = "zauber";
+            this.zauber.Size = new System.Drawing.Size(104, 20);
+            this.zauber.TabIndex = 1;
+            this.zauber.Text = "Manifesto";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(11, 5);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 14);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Zauber";
             // 
             // komp_combo
             // 
@@ -1468,42 +1511,64 @@ namespace ArtefaktGenerator
             this.zauber_rep.Size = new System.Drawing.Size(62, 22);
             this.zauber_rep.TabIndex = 22;
             // 
-            // zauber_del
+            // label18
             // 
-            this.zauber_del.Location = new System.Drawing.Point(23, 3);
-            this.zauber_del.Name = "zauber_del";
-            this.zauber_del.Size = new System.Drawing.Size(75, 25);
-            this.zauber_del.TabIndex = 21;
-            this.zauber_del.Text = "Entf.";
-            this.zauber_del.UseVisualStyleBackColor = true;
-            this.zauber_del.Click += new System.EventHandler(this.zauber_del_Click);
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(247, 4);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(28, 14);
+            this.label18.TabIndex = 23;
+            this.label18.Text = "Rep.";
             // 
-            // label11
+            // label3
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(8, 22);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(18, 14);
-            this.label11.TabIndex = 20;
-            this.label11.Text = "→";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(118, 5);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(39, 14);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Komp.";
             // 
-            // label10
+            // lbl_staple
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(10, 8);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(18, 14);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "→";
+            this.lbl_staple.AutoSize = true;
+            this.lbl_staple.Enabled = false;
+            this.lbl_staple.Location = new System.Drawing.Point(158, 5);
+            this.lbl_staple.Name = "lbl_staple";
+            this.lbl_staple.Size = new System.Drawing.Size(35, 14);
+            this.lbl_staple.TabIndex = 17;
+            this.lbl_staple.Text = "Stapel";
             // 
-            // loads_lbl
+            // label9
             // 
-            this.loads_lbl.AutoSize = true;
-            this.loads_lbl.Location = new System.Drawing.Point(23, 41);
-            this.loads_lbl.Name = "loads_lbl";
-            this.loads_lbl.Size = new System.Drawing.Size(51, 14);
-            this.loads_lbl.TabIndex = 16;
-            this.loads_lbl.Text = "Ladungen";
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(201, 5);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(26, 14);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "AsP";
+            // 
+            // stapelung
+            // 
+            this.stapelung.Location = new System.Drawing.Point(161, 20);
+            this.stapelung.Maximum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.stapelung.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.stapelung.Name = "stapelung";
+            this.stapelung.Size = new System.Drawing.Size(36, 20);
+            this.stapelung.TabIndex = 10;
+            this.stapelung.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // asp
             // 
@@ -1527,27 +1592,56 @@ namespace ArtefaktGenerator
             0,
             0});
             // 
-            // stapelung
+            // panel20
             // 
-            this.stapelung.Location = new System.Drawing.Point(161, 20);
-            this.stapelung.Maximum = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-            this.stapelung.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.stapelung.Name = "stapelung";
-            this.stapelung.Size = new System.Drawing.Size(36, 20);
-            this.stapelung.TabIndex = 10;
-            this.stapelung.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.panel20.Controls.Add(this.zauber_add);
+            this.panel20.Controls.Add(this.label11);
+            this.panel20.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel20.Location = new System.Drawing.Point(462, 3);
+            this.panel20.Name = "panel20";
+            this.panel20.Size = new System.Drawing.Size(107, 56);
+            this.panel20.TabIndex = 29;
+            // 
+            // zauber_add
+            // 
+            this.zauber_add.Location = new System.Drawing.Point(25, 17);
+            this.zauber_add.Name = "zauber_add";
+            this.zauber_add.Size = new System.Drawing.Size(75, 25);
+            this.zauber_add.TabIndex = 13;
+            this.zauber_add.Text = "Hinzuf.";
+            this.zauber_add.UseVisualStyleBackColor = true;
+            this.zauber_add.Click += new System.EventHandler(this.zauber_add_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(8, 22);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(18, 14);
+            this.label11.TabIndex = 20;
+            this.label11.Text = "→";
+            // 
+            // panel21
+            // 
+            this.panel21.Controls.Add(this.zauber_del);
+            this.panel21.Controls.Add(this.loads);
+            this.panel21.Controls.Add(this.loads_lbl);
+            this.panel21.Controls.Add(this.label10);
+            this.panel21.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel21.Location = new System.Drawing.Point(462, 65);
+            this.panel21.Name = "panel21";
+            this.panel21.Size = new System.Drawing.Size(107, 197);
+            this.panel21.TabIndex = 30;
+            // 
+            // zauber_del
+            // 
+            this.zauber_del.Location = new System.Drawing.Point(23, 3);
+            this.zauber_del.Name = "zauber_del";
+            this.zauber_del.Size = new System.Drawing.Size(75, 25);
+            this.zauber_del.TabIndex = 21;
+            this.zauber_del.Text = "Entf.";
+            this.zauber_del.UseVisualStyleBackColor = true;
+            this.zauber_del.Click += new System.EventHandler(this.zauber_del_Click);
             // 
             // loads
             // 
@@ -1572,59 +1666,23 @@ namespace ArtefaktGenerator
             0});
             this.loads.ValueChanged += new System.EventHandler(this.loads_ValueChanged);
             // 
-            // zauber
+            // loads_lbl
             // 
-            this.zauber.Location = new System.Drawing.Point(8, 21);
-            this.zauber.Name = "zauber";
-            this.zauber.Size = new System.Drawing.Size(104, 20);
-            this.zauber.TabIndex = 1;
-            this.zauber.Text = "Manifesto";
+            this.loads_lbl.AutoSize = true;
+            this.loads_lbl.Location = new System.Drawing.Point(23, 41);
+            this.loads_lbl.Name = "loads_lbl";
+            this.loads_lbl.Size = new System.Drawing.Size(51, 14);
+            this.loads_lbl.TabIndex = 16;
+            this.loads_lbl.Text = "Ladungen";
             // 
-            // label18
+            // label10
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(247, 4);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(28, 14);
-            this.label18.TabIndex = 23;
-            this.label18.Text = "Rep.";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(201, 5);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(26, 14);
-            this.label9.TabIndex = 18;
-            this.label9.Text = "AsP";
-            // 
-            // lbl_staple
-            // 
-            this.lbl_staple.AutoSize = true;
-            this.lbl_staple.Enabled = false;
-            this.lbl_staple.Location = new System.Drawing.Point(158, 5);
-            this.lbl_staple.Name = "lbl_staple";
-            this.lbl_staple.Size = new System.Drawing.Size(35, 14);
-            this.lbl_staple.TabIndex = 17;
-            this.lbl_staple.Text = "Stapel";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(118, 5);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 14);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "Komp.";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 5);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 14);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "Zauber";
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(10, 8);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(18, 14);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "→";
             // 
             // tabControl1
             // 
@@ -2002,7 +2060,6 @@ namespace ArtefaktGenerator
             // 
             this.optionenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.automatischNeuberechenenToolStripMenuItem,
-            this.alwaysHypervSRD,
             this.ach_save,
             this.regelbasis,
             this.würfelergebnisseToolStripMenuItem,
@@ -2025,14 +2082,6 @@ namespace ArtefaktGenerator
             this.automatischNeuberechenenToolStripMenuItem.Text = "Automatisch neu berechenen";
             this.automatischNeuberechenenToolStripMenuItem.Visible = false;
             // 
-            // alwaysHypervSRD
-            // 
-            this.alwaysHypervSRD.CheckOnClick = true;
-            this.alwaysHypervSRD.Name = "alwaysHypervSRD";
-            this.alwaysHypervSRD.Size = new System.Drawing.Size(414, 22);
-            this.alwaysHypervSRD.Text = "SF:Hypervehemenz immer nach SRD";
-            this.alwaysHypervSRD.Click += new System.EventHandler(this.alwaysHypervSRD_Click_1);
-            // 
             // ach_save
             // 
             this.ach_save.Checked = true;
@@ -2047,7 +2096,8 @@ namespace ArtefaktGenerator
             // 
             this.regelbasis.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.wegeDerAlchimieToolStripMenuItem,
-            this.staebeRingeDschinnenlampenToolStripMenuItem});
+            this.staebeRingeDschinnenlampenToolStripMenuItem,
+            this.alwaysHypervSRD});
             this.regelbasis.Name = "regelbasis";
             this.regelbasis.Size = new System.Drawing.Size(414, 22);
             this.regelbasis.Text = "Regelbasis";
@@ -2082,7 +2132,7 @@ namespace ArtefaktGenerator
             // 
             this.alleBerechnenToolStripMenuItem.CheckOnClick = true;
             this.alleBerechnenToolStripMenuItem.Name = "alleBerechnenToolStripMenuItem";
-            this.alleBerechnenToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.alleBerechnenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.alleBerechnenToolStripMenuItem.Text = "alle zufällig";
             this.alleBerechnenToolStripMenuItem.Click += new System.EventHandler(this.alleBerechnenToolStripMenuItem_Click);
             // 
@@ -2094,7 +2144,7 @@ namespace ArtefaktGenerator
             this.w6_4,
             this.w6_6});
             this.w6AnnehmenToolStripMenuItem.Name = "w6AnnehmenToolStripMenuItem";
-            this.w6AnnehmenToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.w6AnnehmenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.w6AnnehmenToolStripMenuItem.Text = "W6";
             // 
             // w6_1
@@ -2140,7 +2190,7 @@ namespace ArtefaktGenerator
             this.w20_11,
             this.w20_20});
             this.w20ToolStripMenuItem.Name = "w20ToolStripMenuItem";
-            this.w20ToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.w20ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.w20ToolStripMenuItem.Text = "W20";
             // 
             // w20_1
@@ -2282,14 +2332,6 @@ namespace ArtefaktGenerator
             this.hero_name.Size = new System.Drawing.Size(181, 14);
             this.hero_name.TabIndex = 25;
             this.hero_name.Text = "Held: ";
-            // 
-            // dasArtefaktBindingSource
-            // 
-            this.dasArtefaktBindingSource.DataSource = typeof(ArtefaktGenerator.DasArtefakt);
-            // 
-            // dasArtefaktBindingSource1
-            // 
-            this.dasArtefaktBindingSource1.DataSource = typeof(ArtefaktGenerator.DasArtefakt);
             // 
             // tableLayoutPanel1
             // 
@@ -2481,63 +2523,13 @@ namespace ArtefaktGenerator
             this.flowLayoutPanel4.Size = new System.Drawing.Size(229, 255);
             this.flowLayoutPanel4.TabIndex = 27;
             // 
-            // tableLayoutPanel2
+            // alwaysHypervSRD
             // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 113F));
-            this.tableLayoutPanel2.Controls.Add(this.zauberGrid, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.panel19, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.panel20, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.panel21, 1, 1);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 16);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 62F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(572, 265);
-            this.tableLayoutPanel2.TabIndex = 28;
-            // 
-            // panel19
-            // 
-            this.panel19.Controls.Add(this.zauber);
-            this.panel19.Controls.Add(this.label2);
-            this.panel19.Controls.Add(this.komp_combo);
-            this.panel19.Controls.Add(this.zauber_rep);
-            this.panel19.Controls.Add(this.label18);
-            this.panel19.Controls.Add(this.label3);
-            this.panel19.Controls.Add(this.lbl_staple);
-            this.panel19.Controls.Add(this.label9);
-            this.panel19.Controls.Add(this.stapelung);
-            this.panel19.Controls.Add(this.asp);
-            this.panel19.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel19.Location = new System.Drawing.Point(3, 3);
-            this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(453, 56);
-            this.panel19.TabIndex = 28;
-            // 
-            // panel20
-            // 
-            this.panel20.Controls.Add(this.zauber_add);
-            this.panel20.Controls.Add(this.label11);
-            this.panel20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel20.Location = new System.Drawing.Point(462, 3);
-            this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(107, 56);
-            this.panel20.TabIndex = 29;
-            // 
-            // panel21
-            // 
-            this.panel21.Controls.Add(this.zauber_del);
-            this.panel21.Controls.Add(this.loads);
-            this.panel21.Controls.Add(this.loads_lbl);
-            this.panel21.Controls.Add(this.label10);
-            this.panel21.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel21.Location = new System.Drawing.Point(462, 65);
-            this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(107, 197);
-            this.panel21.TabIndex = 30;
+            this.alwaysHypervSRD.CheckOnClick = true;
+            this.alwaysHypervSRD.Name = "alwaysHypervSRD";
+            this.alwaysHypervSRD.Size = new System.Drawing.Size(267, 22);
+            this.alwaysHypervSRD.Text = "SF:Hypervehemenz immer nach SRD";
+            this.alwaysHypervSRD.Click += new System.EventHandler(this.alwaysHypervSRD_Click);
             // 
             // artefakttyp
             // 
@@ -2971,6 +2963,14 @@ namespace ArtefaktGenerator
             this.rep_mag.Text = "Mag/Hex...";
             this.rep_mag.UseVisualStyleBackColor = true;
             // 
+            // dasArtefaktBindingSource
+            // 
+            this.dasArtefaktBindingSource.DataSource = typeof(ArtefaktGenerator.DasArtefakt);
+            // 
+            // dasArtefaktBindingSource1
+            // 
+            this.dasArtefaktBindingSource1.DataSource = typeof(ArtefaktGenerator.DasArtefakt);
+            // 
             // ArtGenControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -3057,9 +3057,16 @@ namespace ArtefaktGenerator
             this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.destruct_change)).EndInit();
             this.wirkendeZauber.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.zauberGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.asp)).EndInit();
+            this.panel19.ResumeLayout(false);
+            this.panel19.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stapelung)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.asp)).EndInit();
+            this.panel20.ResumeLayout(false);
+            this.panel20.PerformLayout();
+            this.panel21.ResumeLayout(false);
+            this.panel21.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.loads)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -3080,8 +3087,6 @@ namespace ArtefaktGenerator
             ((System.ComponentModel.ISupportInitialize)(this.destruct_mr)).EndInit();
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.SFGroupBox.ResumeLayout(false);
@@ -3089,13 +3094,6 @@ namespace ArtefaktGenerator
             this.SFPanel.ResumeLayout(false);
             this.SFPanel.PerformLayout();
             this.flowLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.panel19.ResumeLayout(false);
-            this.panel19.PerformLayout();
-            this.panel20.ResumeLayout(false);
-            this.panel20.PerformLayout();
-            this.panel21.ResumeLayout(false);
-            this.panel21.PerformLayout();
             this.artefakttyp.ResumeLayout(false);
             this.artefakttyp.PerformLayout();
             this.artefakttyp_aux.ResumeLayout(false);
@@ -3109,6 +3107,8 @@ namespace ArtefaktGenerator
             this.artefakttyp_semi.PerformLayout();
             this.repGroup.ResumeLayout(false);
             this.repGroup.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3300,7 +3300,6 @@ namespace ArtefaktGenerator
         private Label label20;
         private NumericUpDown arcanoviZfPSternMod;
         private Label label19;
-        private ToolStripMenuItem alwaysHypervSRD;
         private TableLayoutPanel tableLayoutPanel1;
         private GroupBox SFGroupBox;
         private FlowLayoutPanel SFPanel;
@@ -3342,5 +3341,6 @@ namespace ArtefaktGenerator
         private Panel panel19;
         private Panel panel20;
         private Panel panel21;
+        private ToolStripMenuItem alwaysHypervSRD;
     }
 }

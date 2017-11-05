@@ -435,7 +435,7 @@ namespace ArtefaktGenerator
             reloadData();
         }
 
-        private void alwaysHypervSRD_Click_1(object sender, EventArgs e)
+        private void alwaysHypervSRD_Click(object sender, EventArgs e)
         {
             if (alwaysHypervSRD.Checked)
                 controller.optionAlwaysHypervehemenzSRD = true;
@@ -1437,6 +1437,5 @@ namespace ArtefaktGenerator
             if (zauberGrid.CurrentCell.ColumnIndex == 1)
                 zauberGrid.CommitEdit(DataGridViewDataErrorContexts.Commit);
         }
-
     }
 }
