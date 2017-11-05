@@ -171,7 +171,7 @@ namespace ArtefaktGenerator
         {
             try
             {
-                controller.zauberListe.RemoveAt(zauberGrid.SelectedRows[0].Index);
+                controller.zauberListe.RemoveAt(zauberGrid.SelectedCells[0].RowIndex);
                 controller.zauberListe = controller.zauberListe;
             }
             catch (System.Exception )
