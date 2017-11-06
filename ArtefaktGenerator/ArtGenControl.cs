@@ -661,6 +661,7 @@ namespace ArtefaktGenerator
             special_ferngespuer_komp.SelectedIndex = 0;
 
             controller.optionAchSave = ArtefaktGenerator.Properties.Settings.Default.saveAch;
+            controller.optionAlwaysHypervehemenzSRD = ArtefaktGenerator.Properties.Settings.Default.SFHyperNachSRD;
             controller.artefakttyp = 1;
             ach_save.Checked = controller.optionAchSave;
             alwaysHypervSRD.Checked = controller.optionAlwaysHypervehemenzSRD;
