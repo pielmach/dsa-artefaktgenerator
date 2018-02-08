@@ -611,7 +611,7 @@ namespace ArtefaktGenerator
                 column5.Name = "AsP";
                 column5.DecimalPlaces = 0;
                 column5.Minimum = 1;
-                column5.Maximum = 99;
+                column5.Maximum = 999;
                 this.zauberGrid.Columns.Add(column5);
 
                 DataGridViewCheckBoxColumn column6 = new DataGridViewCheckBoxColumn();
@@ -661,7 +661,6 @@ namespace ArtefaktGenerator
             special_ferngespuer_komp.SelectedIndex = 0;
 
             controller.optionAchSave = ArtefaktGenerator.Properties.Settings.Default.saveAch;
-            controller.optionAlwaysHypervehemenzSRD = ArtefaktGenerator.Properties.Settings.Default.SFHyperNachSRD;
             controller.artefakttyp = 1;
             ach_save.Checked = controller.optionAchSave;
             alwaysHypervSRD.Checked = controller.optionAlwaysHypervehemenzSRD;

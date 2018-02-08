@@ -182,6 +182,7 @@ namespace ArtefaktGenerator
             this.regelbasis = new System.Windows.Forms.ToolStripMenuItem();
             this.wegeDerAlchimieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.staebeRingeDschinnenlampenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.alwaysHypervSRD = new System.Windows.Forms.ToolStripMenuItem();
             this.würfelergebnisseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alleBerechnenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.w6AnnehmenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -221,7 +222,8 @@ namespace ArtefaktGenerator
             this.sf_kraftspeicher = new System.Windows.Forms.CheckBox();
             this.sf_aux = new System.Windows.Forms.CheckBox();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.alwaysHypervSRD = new System.Windows.Forms.ToolStripMenuItem();
+            this.dasArtefaktBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dasArtefaktBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.artefakttyp = new CustomControls.RadioGroupBox();
             this.artefakttyp_aux = new CustomControls.RadioGroupBox();
             this.aux_labil = new System.Windows.Forms.RadioButton();
@@ -255,8 +257,6 @@ namespace ArtefaktGenerator
             this.repGroup = new CustomControls.RadioGroupBox();
             this.rep_ach = new System.Windows.Forms.RadioButton();
             this.rep_mag = new System.Windows.Forms.RadioButton();
-            this.dasArtefaktBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dasArtefaktBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.materialGroup.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wirkSpruchMod)).BeginInit();
@@ -330,6 +330,8 @@ namespace ArtefaktGenerator
             this.SFGroupBox.SuspendLayout();
             this.SFPanel.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource1)).BeginInit();
             this.artefakttyp.SuspendLayout();
             this.artefakttyp_aux.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.type_speicher_value)).BeginInit();
@@ -337,8 +339,6 @@ namespace ArtefaktGenerator
             this.artefakttyp_matrix.SuspendLayout();
             this.artefakttyp_semi.SuspendLayout();
             this.repGroup.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // materialGroup
@@ -2118,6 +2118,14 @@ namespace ArtefaktGenerator
             this.staebeRingeDschinnenlampenToolStripMenuItem.Text = "Stäbe, Ringe, Dschinnenlampen (4.0)";
             this.staebeRingeDschinnenlampenToolStripMenuItem.Click += new System.EventHandler(this.staebeRingeDschinnenlampenToolStripMenuItem_Click);
             // 
+            // alwaysHypervSRD
+            // 
+            this.alwaysHypervSRD.CheckOnClick = true;
+            this.alwaysHypervSRD.Name = "alwaysHypervSRD";
+            this.alwaysHypervSRD.Size = new System.Drawing.Size(267, 22);
+            this.alwaysHypervSRD.Text = "SF:Hypervehemenz immer nach SRD";
+            this.alwaysHypervSRD.Click += new System.EventHandler(this.alwaysHypervSRD_Click);
+            // 
             // würfelergebnisseToolStripMenuItem
             // 
             this.würfelergebnisseToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -2132,7 +2140,7 @@ namespace ArtefaktGenerator
             // 
             this.alleBerechnenToolStripMenuItem.CheckOnClick = true;
             this.alleBerechnenToolStripMenuItem.Name = "alleBerechnenToolStripMenuItem";
-            this.alleBerechnenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.alleBerechnenToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.alleBerechnenToolStripMenuItem.Text = "alle zufällig";
             this.alleBerechnenToolStripMenuItem.Click += new System.EventHandler(this.alleBerechnenToolStripMenuItem_Click);
             // 
@@ -2144,7 +2152,7 @@ namespace ArtefaktGenerator
             this.w6_4,
             this.w6_6});
             this.w6AnnehmenToolStripMenuItem.Name = "w6AnnehmenToolStripMenuItem";
-            this.w6AnnehmenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.w6AnnehmenToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.w6AnnehmenToolStripMenuItem.Text = "W6";
             // 
             // w6_1
@@ -2190,7 +2198,7 @@ namespace ArtefaktGenerator
             this.w20_11,
             this.w20_20});
             this.w20ToolStripMenuItem.Name = "w20ToolStripMenuItem";
-            this.w20ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.w20ToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.w20ToolStripMenuItem.Text = "W20";
             // 
             // w20_1
@@ -2320,7 +2328,7 @@ namespace ArtefaktGenerator
             this.lblInfo.Name = "lblInfo";
             this.lblInfo.Size = new System.Drawing.Size(250, 14);
             this.lblInfo.TabIndex = 24;
-            this.lblInfo.Text = "ArtefaktGenerator 2.6 BETA_5 by DSA-Hamburg.de";
+            this.lblInfo.Text = "ArtefaktGenerator 2.6 BETA_7 by DSA-Hamburg.de";
             // 
             // hero_name
             // 
@@ -2523,13 +2531,13 @@ namespace ArtefaktGenerator
             this.flowLayoutPanel4.Size = new System.Drawing.Size(229, 255);
             this.flowLayoutPanel4.TabIndex = 27;
             // 
-            // alwaysHypervSRD
+            // dasArtefaktBindingSource
             // 
-            this.alwaysHypervSRD.CheckOnClick = true;
-            this.alwaysHypervSRD.Name = "alwaysHypervSRD";
-            this.alwaysHypervSRD.Size = new System.Drawing.Size(267, 22);
-            this.alwaysHypervSRD.Text = "SF:Hypervehemenz immer nach SRD";
-            this.alwaysHypervSRD.Click += new System.EventHandler(this.alwaysHypervSRD_Click);
+            this.dasArtefaktBindingSource.DataSource = typeof(ArtefaktGenerator.DasArtefakt);
+            // 
+            // dasArtefaktBindingSource1
+            // 
+            this.dasArtefaktBindingSource1.DataSource = typeof(ArtefaktGenerator.DasArtefakt);
             // 
             // artefakttyp
             // 
@@ -2963,14 +2971,6 @@ namespace ArtefaktGenerator
             this.rep_mag.Text = "Mag/Hex...";
             this.rep_mag.UseVisualStyleBackColor = true;
             // 
-            // dasArtefaktBindingSource
-            // 
-            this.dasArtefaktBindingSource.DataSource = typeof(ArtefaktGenerator.DasArtefakt);
-            // 
-            // dasArtefaktBindingSource1
-            // 
-            this.dasArtefaktBindingSource1.DataSource = typeof(ArtefaktGenerator.DasArtefakt);
-            // 
             // ArtGenControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -3094,6 +3094,8 @@ namespace ArtefaktGenerator
             this.SFPanel.ResumeLayout(false);
             this.SFPanel.PerformLayout();
             this.flowLayoutPanel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource1)).EndInit();
             this.artefakttyp.ResumeLayout(false);
             this.artefakttyp.PerformLayout();
             this.artefakttyp_aux.ResumeLayout(false);
@@ -3107,8 +3109,6 @@ namespace ArtefaktGenerator
             this.artefakttyp_semi.PerformLayout();
             this.repGroup.ResumeLayout(false);
             this.repGroup.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
