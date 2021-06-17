@@ -1450,7 +1450,12 @@ namespace ArtefaktGenerator
 
                     // Anzahl Ladungen
                     if (artefakt.typ != Artefakt.ArtefaktType.SEMI) // WDA S.83 "Anzahl der Ladungen"
-                        arcanovi_zfp += (artefakt.loads - 1) * 3;
+                    {
+                        if (artefakt.sf.vielfacheLadung)
+                            arcanovi_zfp += (artefakt.loads - 1);
+                        else
+                            arcanovi_zfp += (artefakt.loads - 1) * 3;
+                    }
                     else
                         arcanovi_erschwernis += artefakt.loads - 1; // WdA S.82 "Kategorie und Präservanz" "jede zusätzliche Anwendung pro Intervall erhöht den Probenzuschlag um +1"
 
