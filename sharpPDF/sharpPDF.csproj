@@ -84,10 +84,14 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <PropertyGroup />
+  <PropertyGroup>
+    <UserSecretsId>ef738db2-cd3c-44cd-8cce-6669805af1a9</UserSecretsId>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.310801">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
   </ItemGroup>
 </Project>

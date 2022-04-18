@@ -59,6 +59,9 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="sharpPDF.dll" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="Ionic.Zip.Reduced">
       <HintPath>..\Ionic.Zip.Reduced.dll</HintPath>
     </Reference>
@@ -110,9 +113,10 @@
   </ItemGroup>
   <PropertyGroup>
     <PostBuildEvent>copy $(SolutionDir)material.mod.artgen $(TargetDir)material.mod.artgen</PostBuildEvent>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
     <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.310801">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
