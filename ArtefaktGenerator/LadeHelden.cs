@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Text.RegularExpressions;
 using Ionic.Zip;
 
@@ -45,6 +46,8 @@ namespace ArtefaktGenerator
 
         public static List<Held> ladeHelden(String filename)
         {
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+
             List<Held> list = new List<Held>();
 
             if (filename.EndsWith(".xml"))
