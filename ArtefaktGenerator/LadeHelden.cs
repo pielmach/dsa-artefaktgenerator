@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
+using System.IO.Compression;
 using System.Text.RegularExpressions;
-using Ionic.Zip;
 
 namespace ArtefaktGenerator
 {
@@ -46,29 +45,24 @@ namespace ArtefaktGenerator
 
         public static List<Held> ladeHelden(String filename)
         {
-            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-
             List<Held> list = new List<Held>();
 
             if (filename.EndsWith(".xml"))
             {
-//                Held held = new Held(readFile(filename));
                 Held held = new Held(File.ReadAllText(filename,System.Text.Encoding.UTF8));
                 list.Add(held);
             }
             else if (filename.EndsWith(".zip.hld") || filename.EndsWith(".zip"))
             {
-                using (ZipFile zip = ZipFile.Read(filename))
+                using (ZipArchive zip = ZipFile.OpenRead(filename))
                 {
-                    foreach (ZipEntry e in zip)
+                    foreach (ZipArchiveEntry e in zip.Entries)
                     {
-                        if (e.FileName.EndsWith(".xml"))
+                        if (e.FullName.EndsWith(".xml"))
                         {
                             using (MemoryStream stream = new MemoryStream())
                             {
-                                e.Extract(stream);
-                                stream.Seek(0, SeekOrigin.Begin);
-                                using (StreamReader reader = new StreamReader(stream))
+                                using (StreamReader reader = new StreamReader(e.Open()))
                                 {
                                     string xml = reader.ReadToEnd();
                                     Held held = new Held(xml);
