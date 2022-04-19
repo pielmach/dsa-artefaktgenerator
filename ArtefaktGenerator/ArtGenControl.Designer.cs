@@ -176,15 +176,20 @@ namespace ArtefaktGenerator
             this.analys_cloack = new System.Windows.Forms.NumericUpDown();
             this.label25 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.destruct_aktive = new System.Windows.Forms.NumericUpDown();
-            this.destruct_infinitum = new System.Windows.Forms.CheckBox();
-            this.label27 = new System.Windows.Forms.Label();
-            this.destruct_komplex = new System.Windows.Forms.NumericUpDown();
-            this.label28 = new System.Windows.Forms.Label();
-            this.destruct_mr = new System.Windows.Forms.NumericUpDown();
-            this.label29 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.txt_destruct = new System.Windows.Forms.TextBox();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel12 = new System.Windows.Forms.FlowLayoutPanel();
+            this.destruct_infinitum = new System.Windows.Forms.CheckBox();
+            this.panel32 = new System.Windows.Forms.Panel();
+            this.destruct_komplex = new System.Windows.Forms.NumericUpDown();
+            this.label29 = new System.Windows.Forms.Label();
+            this.panel33 = new System.Windows.Forms.Panel();
+            this.destruct_mr = new System.Windows.Forms.NumericUpDown();
+            this.label27 = new System.Windows.Forms.Label();
+            this.panel34 = new System.Windows.Forms.Panel();
+            this.destruct_aktive = new System.Windows.Forms.NumericUpDown();
+            this.label28 = new System.Windows.Forms.Label();
             this.menu = new System.Windows.Forms.MenuStrip();
             this.programmToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.importHeldensoftwareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -273,16 +278,10 @@ namespace ArtefaktGenerator
             this.sf_kraftspeicher = new System.Windows.Forms.CheckBox();
             this.sf_aux = new System.Windows.Forms.CheckBox();
             this.repGroup = new CustomControls.RadioGroupBox();
-            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.rep_mag = new System.Windows.Forms.RadioButton();
             this.rep_ach = new System.Windows.Forms.RadioButton();
+            this.rep_mag = new System.Windows.Forms.RadioButton();
             this.dasArtefaktBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dasArtefaktBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.flowLayoutPanel12 = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel32 = new System.Windows.Forms.Panel();
-            this.panel33 = new System.Windows.Forms.Panel();
-            this.panel34 = new System.Windows.Forms.Panel();
             this.materialGroup.SuspendLayout();
             this.flowLayoutPanel10.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -369,10 +368,15 @@ namespace ArtefaktGenerator
             this.panel31.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.analys_cloack)).BeginInit();
             this.tabPage3.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
             this.groupBox10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.destruct_aktive)).BeginInit();
+            this.flowLayoutPanel12.SuspendLayout();
+            this.panel32.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.destruct_komplex)).BeginInit();
+            this.panel33.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.destruct_mr)).BeginInit();
+            this.panel34.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.destruct_aktive)).BeginInit();
             this.menu.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.artefakttyp.SuspendLayout();
@@ -390,20 +394,13 @@ namespace ArtefaktGenerator
             this.SFGroupBox.SuspendLayout();
             this.SFPanel.SuspendLayout();
             this.repGroup.SuspendLayout();
-            this.flowLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource1)).BeginInit();
-            this.tableLayoutPanel5.SuspendLayout();
-            this.flowLayoutPanel12.SuspendLayout();
-            this.panel32.SuspendLayout();
-            this.panel33.SuspendLayout();
-            this.panel34.SuspendLayout();
             this.SuspendLayout();
             // 
             // materialGroup
             // 
             this.materialGroup.Controls.Add(this.flowLayoutPanel10);
-            this.materialGroup.Controls.Add(this.cb_kristalle);
             this.materialGroup.Dock = System.Windows.Forms.DockStyle.Fill;
             this.materialGroup.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.materialGroup.Location = new System.Drawing.Point(709, 219);
@@ -418,10 +415,11 @@ namespace ArtefaktGenerator
             // flowLayoutPanel10
             // 
             this.flowLayoutPanel10.Controls.Add(this.material);
-            this.flowLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flowLayoutPanel10.Controls.Add(this.cb_kristalle);
+            this.flowLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel10.Location = new System.Drawing.Point(3, 28);
             this.flowLayoutPanel10.Name = "flowLayoutPanel10";
-            this.flowLayoutPanel10.Size = new System.Drawing.Size(251, 69);
+            this.flowLayoutPanel10.Size = new System.Drawing.Size(251, 165);
             this.flowLayoutPanel10.TabIndex = 2;
             // 
             // material
@@ -438,7 +436,7 @@ namespace ArtefaktGenerator
             // cb_kristalle
             // 
             this.cb_kristalle.AutoSize = true;
-            this.cb_kristalle.Location = new System.Drawing.Point(12, 148);
+            this.cb_kristalle.Location = new System.Drawing.Point(3, 45);
             this.cb_kristalle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cb_kristalle.Name = "cb_kristalle";
             this.cb_kristalle.Size = new System.Drawing.Size(176, 29);
@@ -484,7 +482,7 @@ namespace ArtefaktGenerator
             this.panel2.Controls.Add(this.probe_ausloes);
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(155, 35);
+            this.panel2.Size = new System.Drawing.Size(155, 36);
             this.panel2.TabIndex = 25;
             // 
             // label4
@@ -508,9 +506,9 @@ namespace ArtefaktGenerator
             // 
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.probe_affine);
-            this.panel3.Location = new System.Drawing.Point(3, 44);
+            this.panel3.Location = new System.Drawing.Point(3, 45);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(211, 35);
+            this.panel3.Size = new System.Drawing.Size(211, 36);
             this.panel3.TabIndex = 26;
             // 
             // label6
@@ -544,9 +542,9 @@ namespace ArtefaktGenerator
             // 
             this.panel4.Controls.Add(this.artefakt_groesse);
             this.panel4.Controls.Add(this.label15);
-            this.panel4.Location = new System.Drawing.Point(3, 85);
+            this.panel4.Location = new System.Drawing.Point(3, 87);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(223, 35);
+            this.panel4.Size = new System.Drawing.Size(223, 36);
             this.panel4.TabIndex = 27;
             // 
             // artefakt_groesse
@@ -575,9 +573,9 @@ namespace ArtefaktGenerator
             // 
             this.panel5.Controls.Add(this.arcanovi_force);
             this.panel5.Controls.Add(this.label17);
-            this.panel5.Location = new System.Drawing.Point(3, 126);
+            this.panel5.Location = new System.Drawing.Point(3, 129);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(248, 35);
+            this.panel5.Size = new System.Drawing.Size(248, 36);
             this.panel5.TabIndex = 28;
             // 
             // arcanovi_force
@@ -611,9 +609,9 @@ namespace ArtefaktGenerator
             // 
             this.panel6.Controls.Add(this.starkonst);
             this.panel6.Controls.Add(this.label26);
-            this.panel6.Location = new System.Drawing.Point(3, 167);
+            this.panel6.Location = new System.Drawing.Point(3, 171);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(256, 35);
+            this.panel6.Size = new System.Drawing.Size(256, 36);
             this.panel6.TabIndex = 28;
             // 
             // starkonst
@@ -647,9 +645,9 @@ namespace ArtefaktGenerator
             // 
             this.panel7.Controls.Add(this.label7);
             this.panel7.Controls.Add(this.arcanoviOtherMod);
-            this.panel7.Location = new System.Drawing.Point(3, 208);
+            this.panel7.Location = new System.Drawing.Point(3, 213);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(256, 35);
+            this.panel7.Size = new System.Drawing.Size(256, 36);
             this.panel7.TabIndex = 29;
             // 
             // label7
@@ -682,9 +680,9 @@ namespace ArtefaktGenerator
             // 
             this.panel22.Controls.Add(this.label19);
             this.panel22.Controls.Add(this.arcanoviZfPSternMod);
-            this.panel22.Location = new System.Drawing.Point(3, 249);
+            this.panel22.Location = new System.Drawing.Point(3, 255);
             this.panel22.Name = "panel22";
-            this.panel22.Size = new System.Drawing.Size(256, 35);
+            this.panel22.Size = new System.Drawing.Size(256, 36);
             this.panel22.TabIndex = 30;
             // 
             // label19
@@ -717,9 +715,9 @@ namespace ArtefaktGenerator
             // 
             this.panel23.Controls.Add(this.label20);
             this.panel23.Controls.Add(this.wirkSpruchMod);
-            this.panel23.Location = new System.Drawing.Point(3, 290);
+            this.panel23.Location = new System.Drawing.Point(3, 297);
             this.panel23.Name = "panel23";
-            this.panel23.Size = new System.Drawing.Size(256, 35);
+            this.panel23.Size = new System.Drawing.Size(256, 36);
             this.panel23.TabIndex = 30;
             // 
             // label20
@@ -789,7 +787,7 @@ namespace ArtefaktGenerator
             this.panel11.Location = new System.Drawing.Point(3, 4);
             this.panel11.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(230, 35);
+            this.panel11.Size = new System.Drawing.Size(230, 36);
             this.panel11.TabIndex = 11;
             // 
             // special_scent
@@ -810,7 +808,7 @@ namespace ArtefaktGenerator
             this.panel14.Location = new System.Drawing.Point(239, 4);
             this.panel14.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(200, 35);
+            this.panel14.Size = new System.Drawing.Size(200, 36);
             this.panel14.TabIndex = 14;
             // 
             // special_apport
@@ -831,7 +829,7 @@ namespace ArtefaktGenerator
             this.panel12.Location = new System.Drawing.Point(445, 4);
             this.panel12.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(210, 35);
+            this.panel12.Size = new System.Drawing.Size(210, 36);
             this.panel12.TabIndex = 12;
             // 
             // special_signet
@@ -852,7 +850,7 @@ namespace ArtefaktGenerator
             this.panel17.Location = new System.Drawing.Point(661, 4);
             this.panel17.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(160, 35);
+            this.panel17.Size = new System.Drawing.Size(160, 36);
             this.panel17.TabIndex = 17;
             // 
             // special_schleier
@@ -870,10 +868,10 @@ namespace ArtefaktGenerator
             // panel15
             // 
             this.panel15.Controls.Add(this.special_resistant);
-            this.panel15.Location = new System.Drawing.Point(3, 47);
+            this.panel15.Location = new System.Drawing.Point(3, 48);
             this.panel15.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(230, 35);
+            this.panel15.Size = new System.Drawing.Size(230, 36);
             this.panel15.TabIndex = 15;
             // 
             // special_resistant
@@ -891,10 +889,10 @@ namespace ArtefaktGenerator
             // panel13
             // 
             this.panel13.Controls.Add(this.special_durable);
-            this.panel13.Location = new System.Drawing.Point(239, 47);
+            this.panel13.Location = new System.Drawing.Point(239, 48);
             this.panel13.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(200, 35);
+            this.panel13.Size = new System.Drawing.Size(200, 36);
             this.panel13.TabIndex = 13;
             // 
             // special_durable
@@ -912,10 +910,10 @@ namespace ArtefaktGenerator
             // panel16
             // 
             this.panel16.Controls.Add(this.special_selfrepair);
-            this.panel16.Location = new System.Drawing.Point(445, 47);
+            this.panel16.Location = new System.Drawing.Point(445, 48);
             this.panel16.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(165, 35);
+            this.panel16.Size = new System.Drawing.Size(165, 36);
             this.panel16.TabIndex = 16;
             // 
             // special_selfrepair
@@ -934,15 +932,15 @@ namespace ArtefaktGenerator
             // 
             this.panel8.Controls.Add(this.special_variable_var);
             this.panel8.Controls.Add(this.special_variablerelease);
-            this.panel8.Location = new System.Drawing.Point(616, 47);
+            this.panel8.Location = new System.Drawing.Point(616, 48);
             this.panel8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(265, 35);
+            this.panel8.Size = new System.Drawing.Size(265, 36);
             this.panel8.TabIndex = 3;
             // 
             // special_variable_var
             // 
-            this.special_variable_var.Location = new System.Drawing.Point(190, 2);
+            this.special_variable_var.Location = new System.Drawing.Point(188, 2);
             this.special_variable_var.Maximum = new decimal(new int[] {
             50,
             0,
@@ -968,10 +966,10 @@ namespace ArtefaktGenerator
             // panel18
             // 
             this.panel18.Controls.Add(this.special_reversalis);
-            this.panel18.Location = new System.Drawing.Point(3, 90);
+            this.panel18.Location = new System.Drawing.Point(3, 92);
             this.panel18.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(180, 35);
+            this.panel18.Size = new System.Drawing.Size(180, 36);
             this.panel18.TabIndex = 18;
             // 
             // special_reversalis
@@ -990,10 +988,10 @@ namespace ArtefaktGenerator
             // 
             this.panel9.Controls.Add(this.special_eatmaterial);
             this.panel9.Controls.Add(this.special_eatmat_var);
-            this.panel9.Location = new System.Drawing.Point(189, 90);
+            this.panel9.Location = new System.Drawing.Point(189, 92);
             this.panel9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(290, 35);
+            this.panel9.Size = new System.Drawing.Size(290, 36);
             this.panel9.TabIndex = 7;
             // 
             // special_eatmaterial
@@ -1033,10 +1031,10 @@ namespace ArtefaktGenerator
             this.panel10.Controls.Add(this.lbl_special_komp);
             this.panel10.Controls.Add(this.lbl_special_asp);
             this.panel10.Controls.Add(this.special_ferngespuer_asp);
-            this.panel10.Location = new System.Drawing.Point(485, 90);
+            this.panel10.Location = new System.Drawing.Point(485, 92);
             this.panel10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(400, 35);
+            this.panel10.Size = new System.Drawing.Size(400, 36);
             this.panel10.TabIndex = 10;
             // 
             // special_ferngespuer
@@ -1183,7 +1181,7 @@ namespace ArtefaktGenerator
             this.panel28.Controls.Add(this.agribaal);
             this.panel28.Location = new System.Drawing.Point(3, 114);
             this.panel28.Name = "panel28";
-            this.panel28.Size = new System.Drawing.Size(336, 35);
+            this.panel28.Size = new System.Drawing.Size(336, 36);
             this.panel28.TabIndex = 32;
             // 
             // label32
@@ -1212,9 +1210,9 @@ namespace ArtefaktGenerator
             // 
             this.panel27.Controls.Add(this.special_ort_occ);
             this.panel27.Controls.Add(this.label30);
-            this.panel27.Location = new System.Drawing.Point(3, 155);
+            this.panel27.Location = new System.Drawing.Point(3, 156);
             this.panel27.Name = "panel27";
-            this.panel27.Size = new System.Drawing.Size(336, 35);
+            this.panel27.Size = new System.Drawing.Size(336, 36);
             this.panel27.TabIndex = 31;
             // 
             // special_ort_occ
@@ -1248,9 +1246,9 @@ namespace ArtefaktGenerator
             // 
             this.panel26.Controls.Add(this.label31);
             this.panel26.Controls.Add(this.special_ort_neben);
-            this.panel26.Location = new System.Drawing.Point(3, 196);
+            this.panel26.Location = new System.Drawing.Point(3, 198);
             this.panel26.Name = "panel26";
-            this.panel26.Size = new System.Drawing.Size(336, 35);
+            this.panel26.Size = new System.Drawing.Size(336, 36);
             this.panel26.TabIndex = 30;
             // 
             // label31
@@ -1284,9 +1282,9 @@ namespace ArtefaktGenerator
             // 
             this.panel25.Controls.Add(this.label16);
             this.panel25.Controls.Add(this.artefakt_super_big);
-            this.panel25.Location = new System.Drawing.Point(3, 237);
+            this.panel25.Location = new System.Drawing.Point(3, 240);
             this.panel25.Name = "panel25";
-            this.panel25.Size = new System.Drawing.Size(330, 35);
+            this.panel25.Size = new System.Drawing.Size(330, 36);
             this.panel25.TabIndex = 29;
             // 
             // label16
@@ -1321,9 +1319,9 @@ namespace ArtefaktGenerator
             // 
             this.panel24.Controls.Add(this.label5);
             this.panel24.Controls.Add(this.special_additional_arcanovi);
-            this.panel24.Location = new System.Drawing.Point(3, 278);
+            this.panel24.Location = new System.Drawing.Point(3, 282);
             this.panel24.Name = "panel24";
-            this.panel24.Size = new System.Drawing.Size(300, 35);
+            this.panel24.Size = new System.Drawing.Size(300, 36);
             this.panel24.TabIndex = 28;
             // 
             // label5
@@ -2063,7 +2061,7 @@ namespace ArtefaktGenerator
             this.groupBox9.Size = new System.Drawing.Size(256, 362);
             this.groupBox9.TabIndex = 2;
             this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "ANALYS-Modifikationen";
+            this.groupBox9.Text = "ANALYS-Modif.";
             // 
             // flowLayoutPanel11
             // 
@@ -2094,7 +2092,7 @@ namespace ArtefaktGenerator
             this.panel29.Controls.Add(this.label24);
             this.panel29.Location = new System.Drawing.Point(3, 40);
             this.panel29.Name = "panel29";
-            this.panel29.Size = new System.Drawing.Size(224, 35);
+            this.panel29.Size = new System.Drawing.Size(224, 36);
             this.panel29.TabIndex = 26;
             // 
             // analys_komplex
@@ -2122,9 +2120,9 @@ namespace ArtefaktGenerator
             // 
             this.panel30.Controls.Add(this.analys_mr);
             this.panel30.Controls.Add(this.label22);
-            this.panel30.Location = new System.Drawing.Point(3, 81);
+            this.panel30.Location = new System.Drawing.Point(3, 82);
             this.panel30.Name = "panel30";
-            this.panel30.Size = new System.Drawing.Size(224, 35);
+            this.panel30.Size = new System.Drawing.Size(224, 36);
             this.panel30.TabIndex = 26;
             // 
             // analys_mr
@@ -2152,9 +2150,9 @@ namespace ArtefaktGenerator
             // 
             this.panel31.Controls.Add(this.analys_cloack);
             this.panel31.Controls.Add(this.label25);
-            this.panel31.Location = new System.Drawing.Point(3, 122);
+            this.panel31.Location = new System.Drawing.Point(3, 124);
             this.panel31.Name = "panel31";
-            this.panel31.Size = new System.Drawing.Size(224, 35);
+            this.panel31.Size = new System.Drawing.Size(224, 36);
             this.panel31.TabIndex = 26;
             // 
             // analys_cloack
@@ -2189,92 +2187,20 @@ namespace ArtefaktGenerator
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Zerstörung";
             // 
-            // groupBox10
+            // tableLayoutPanel5
             // 
-            this.groupBox10.Controls.Add(this.flowLayoutPanel12);
-            this.groupBox10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox10.Location = new System.Drawing.Point(3, 4);
-            this.groupBox10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox10.Size = new System.Drawing.Size(258, 370);
-            this.groupBox10.TabIndex = 4;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "DESTURCTIBO-Modifikationen";
-            // 
-            // destruct_aktive
-            // 
-            this.destruct_aktive.Location = new System.Drawing.Point(3, 2);
-            this.destruct_aktive.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.destruct_aktive.Name = "destruct_aktive";
-            this.destruct_aktive.Size = new System.Drawing.Size(50, 31);
-            this.destruct_aktive.TabIndex = 24;
-            // 
-            // destruct_infinitum
-            // 
-            this.destruct_infinitum.AutoSize = true;
-            this.destruct_infinitum.Location = new System.Drawing.Point(3, 4);
-            this.destruct_infinitum.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.destruct_infinitum.Name = "destruct_infinitum";
-            this.destruct_infinitum.Size = new System.Drawing.Size(109, 29);
-            this.destruct_infinitum.TabIndex = 20;
-            this.destruct_infinitum.Text = "Infinitum";
-            this.destruct_infinitum.UseVisualStyleBackColor = true;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(60, 4);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(146, 25);
-            this.label27.TabIndex = 21;
-            this.label27.Text = "MR Artefaktseele";
-            // 
-            // destruct_komplex
-            // 
-            this.destruct_komplex.Location = new System.Drawing.Point(3, 2);
-            this.destruct_komplex.Maximum = new decimal(new int[] {
-            7,
-            0,
-            0,
-            0});
-            this.destruct_komplex.Name = "destruct_komplex";
-            this.destruct_komplex.Size = new System.Drawing.Size(50, 31);
-            this.destruct_komplex.TabIndex = 18;
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(60, 4);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(157, 25);
-            this.label28.TabIndex = 23;
-            this.label28.Text = "# aktive Ladungen";
-            // 
-            // destruct_mr
-            // 
-            this.destruct_mr.Location = new System.Drawing.Point(3, 2);
-            this.destruct_mr.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.destruct_mr.Name = "destruct_mr";
-            this.destruct_mr.Size = new System.Drawing.Size(50, 31);
-            this.destruct_mr.TabIndex = 22;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(60, 4);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(143, 25);
-            this.label29.TabIndex = 17;
-            this.label29.Text = "bes. Komplexität";
+            this.tableLayoutPanel5.ColumnCount = 2;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanel5.Controls.Add(this.txt_destruct, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.groupBox10, 0, 0);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 1;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(662, 378);
+            this.tableLayoutPanel5.TabIndex = 5;
             // 
             // txt_destruct
             // 
@@ -2289,6 +2215,132 @@ namespace ArtefaktGenerator
             this.txt_destruct.ReadOnly = true;
             this.txt_destruct.Size = new System.Drawing.Size(392, 370);
             this.txt_destruct.TabIndex = 2;
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.flowLayoutPanel12);
+            this.groupBox10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox10.Location = new System.Drawing.Point(3, 4);
+            this.groupBox10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox10.Size = new System.Drawing.Size(258, 370);
+            this.groupBox10.TabIndex = 4;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "DESTURCTIBO-Modif.";
+            // 
+            // flowLayoutPanel12
+            // 
+            this.flowLayoutPanel12.Controls.Add(this.destruct_infinitum);
+            this.flowLayoutPanel12.Controls.Add(this.panel32);
+            this.flowLayoutPanel12.Controls.Add(this.panel33);
+            this.flowLayoutPanel12.Controls.Add(this.panel34);
+            this.flowLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel12.Location = new System.Drawing.Point(3, 28);
+            this.flowLayoutPanel12.Name = "flowLayoutPanel12";
+            this.flowLayoutPanel12.Size = new System.Drawing.Size(252, 338);
+            this.flowLayoutPanel12.TabIndex = 25;
+            // 
+            // destruct_infinitum
+            // 
+            this.destruct_infinitum.AutoSize = true;
+            this.destruct_infinitum.Location = new System.Drawing.Point(3, 4);
+            this.destruct_infinitum.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.destruct_infinitum.Name = "destruct_infinitum";
+            this.destruct_infinitum.Size = new System.Drawing.Size(109, 29);
+            this.destruct_infinitum.TabIndex = 20;
+            this.destruct_infinitum.Text = "Infinitum";
+            this.destruct_infinitum.UseVisualStyleBackColor = true;
+            // 
+            // panel32
+            // 
+            this.panel32.Controls.Add(this.destruct_komplex);
+            this.panel32.Controls.Add(this.label29);
+            this.panel32.Location = new System.Drawing.Point(3, 40);
+            this.panel32.Name = "panel32";
+            this.panel32.Size = new System.Drawing.Size(241, 36);
+            this.panel32.TabIndex = 21;
+            // 
+            // destruct_komplex
+            // 
+            this.destruct_komplex.Location = new System.Drawing.Point(3, 2);
+            this.destruct_komplex.Maximum = new decimal(new int[] {
+            7,
+            0,
+            0,
+            0});
+            this.destruct_komplex.Name = "destruct_komplex";
+            this.destruct_komplex.Size = new System.Drawing.Size(50, 31);
+            this.destruct_komplex.TabIndex = 18;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(60, 4);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(143, 25);
+            this.label29.TabIndex = 17;
+            this.label29.Text = "bes. Komplexität";
+            // 
+            // panel33
+            // 
+            this.panel33.Controls.Add(this.destruct_mr);
+            this.panel33.Controls.Add(this.label27);
+            this.panel33.Location = new System.Drawing.Point(3, 82);
+            this.panel33.Name = "panel33";
+            this.panel33.Size = new System.Drawing.Size(241, 36);
+            this.panel33.TabIndex = 22;
+            // 
+            // destruct_mr
+            // 
+            this.destruct_mr.Location = new System.Drawing.Point(3, 2);
+            this.destruct_mr.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.destruct_mr.Name = "destruct_mr";
+            this.destruct_mr.Size = new System.Drawing.Size(50, 31);
+            this.destruct_mr.TabIndex = 22;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(60, 4);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(146, 25);
+            this.label27.TabIndex = 21;
+            this.label27.Text = "MR Artefaktseele";
+            // 
+            // panel34
+            // 
+            this.panel34.Controls.Add(this.destruct_aktive);
+            this.panel34.Controls.Add(this.label28);
+            this.panel34.Location = new System.Drawing.Point(3, 124);
+            this.panel34.Name = "panel34";
+            this.panel34.Size = new System.Drawing.Size(241, 36);
+            this.panel34.TabIndex = 23;
+            // 
+            // destruct_aktive
+            // 
+            this.destruct_aktive.Location = new System.Drawing.Point(3, 2);
+            this.destruct_aktive.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.destruct_aktive.Name = "destruct_aktive";
+            this.destruct_aktive.Size = new System.Drawing.Size(50, 31);
+            this.destruct_aktive.TabIndex = 24;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(60, 4);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(157, 25);
+            this.label28.TabIndex = 23;
+            this.label28.Text = "# aktive Ladungen";
             // 
             // menu
             // 
@@ -2793,7 +2845,7 @@ namespace ArtefaktGenerator
             this.panel1.Controls.Add(this.lbl_type_speicher_val);
             this.panel1.Location = new System.Drawing.Point(261, 40);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(115, 35);
+            this.panel1.Size = new System.Drawing.Size(115, 36);
             this.panel1.TabIndex = 32;
             // 
             // type_speicher_value
@@ -3299,7 +3351,8 @@ namespace ArtefaktGenerator
             // repGroup
             // 
             this.repGroup.AutoSize = true;
-            this.repGroup.Controls.Add(this.flowLayoutPanel4);
+            this.repGroup.Controls.Add(this.rep_ach);
+            this.repGroup.Controls.Add(this.rep_mag);
             this.repGroup.Dock = System.Windows.Forms.DockStyle.Fill;
             this.repGroup.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.repGroup.Location = new System.Drawing.Point(3, 4);
@@ -3312,40 +3365,31 @@ namespace ArtefaktGenerator
             this.repGroup.TabStop = false;
             this.repGroup.Text = "Repräsentation";
             // 
-            // flowLayoutPanel4
-            // 
-            this.flowLayoutPanel4.Controls.Add(this.rep_mag);
-            this.flowLayoutPanel4.Controls.Add(this.rep_ach);
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(3, 28);
-            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(217, 74);
-            this.flowLayoutPanel4.TabIndex = 3;
-            // 
-            // rep_mag
-            // 
-            this.rep_mag.AutoSize = true;
-            this.rep_mag.Checked = true;
-            this.rep_mag.Location = new System.Drawing.Point(3, 4);
-            this.rep_mag.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.rep_mag.Name = "rep_mag";
-            this.rep_mag.Size = new System.Drawing.Size(168, 29);
-            this.rep_mag.TabIndex = 1;
-            this.rep_mag.TabStop = true;
-            this.rep_mag.Tag = "1";
-            this.rep_mag.Text = "Mag/Hex/Geo/...";
-            this.rep_mag.UseVisualStyleBackColor = true;
-            // 
             // rep_ach
             // 
             this.rep_ach.AutoSize = true;
-            this.rep_ach.Location = new System.Drawing.Point(3, 41);
+            this.rep_ach.Checked = true;
+            this.rep_ach.Location = new System.Drawing.Point(18, 68);
             this.rep_ach.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rep_ach.Name = "rep_ach";
             this.rep_ach.Size = new System.Drawing.Size(67, 29);
             this.rep_ach.TabIndex = 2;
+            this.rep_ach.TabStop = true;
             this.rep_ach.Tag = "0";
             this.rep_ach.Text = "Ach";
             this.rep_ach.UseVisualStyleBackColor = true;
+            // 
+            // rep_mag
+            // 
+            this.rep_mag.AutoSize = true;
+            this.rep_mag.Location = new System.Drawing.Point(18, 36);
+            this.rep_mag.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rep_mag.Name = "rep_mag";
+            this.rep_mag.Size = new System.Drawing.Size(168, 29);
+            this.rep_mag.TabIndex = 1;
+            this.rep_mag.Tag = "1";
+            this.rep_mag.Text = "Mag/Hex/Geo/...";
+            this.rep_mag.UseVisualStyleBackColor = true;
             // 
             // dasArtefaktBindingSource
             // 
@@ -3354,60 +3398,6 @@ namespace ArtefaktGenerator
             // dasArtefaktBindingSource1
             // 
             this.dasArtefaktBindingSource1.DataSource = typeof(ArtefaktGenerator.DasArtefakt);
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.ColumnCount = 2;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel5.Controls.Add(this.txt_destruct, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.groupBox10, 0, 0);
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 1;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(662, 378);
-            this.tableLayoutPanel5.TabIndex = 5;
-            // 
-            // flowLayoutPanel12
-            // 
-            this.flowLayoutPanel12.Controls.Add(this.destruct_infinitum);
-            this.flowLayoutPanel12.Controls.Add(this.panel32);
-            this.flowLayoutPanel12.Controls.Add(this.panel33);
-            this.flowLayoutPanel12.Controls.Add(this.panel34);
-            this.flowLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel12.Location = new System.Drawing.Point(3, 28);
-            this.flowLayoutPanel12.Name = "flowLayoutPanel12";
-            this.flowLayoutPanel12.Size = new System.Drawing.Size(252, 338);
-            this.flowLayoutPanel12.TabIndex = 25;
-            // 
-            // panel32
-            // 
-            this.panel32.Controls.Add(this.destruct_komplex);
-            this.panel32.Controls.Add(this.label29);
-            this.panel32.Location = new System.Drawing.Point(3, 40);
-            this.panel32.Name = "panel32";
-            this.panel32.Size = new System.Drawing.Size(250, 35);
-            this.panel32.TabIndex = 21;
-            // 
-            // panel33
-            // 
-            this.panel33.Controls.Add(this.destruct_mr);
-            this.panel33.Controls.Add(this.label27);
-            this.panel33.Location = new System.Drawing.Point(3, 81);
-            this.panel33.Name = "panel33";
-            this.panel33.Size = new System.Drawing.Size(250, 35);
-            this.panel33.TabIndex = 22;
-            // 
-            // panel34
-            // 
-            this.panel34.Controls.Add(this.destruct_aktive);
-            this.panel34.Controls.Add(this.label28);
-            this.panel34.Location = new System.Drawing.Point(3, 122);
-            this.panel34.Name = "panel34";
-            this.panel34.Size = new System.Drawing.Size(250, 35);
-            this.panel34.TabIndex = 23;
             // 
             // ArtGenControl
             // 
@@ -3426,8 +3416,8 @@ namespace ArtefaktGenerator
             this.SizeChanged += new System.EventHandler(this.ArtGenControl_SizeChanged);
             this.Click += new System.EventHandler(this.ArtGenControl_Click);
             this.materialGroup.ResumeLayout(false);
-            this.materialGroup.PerformLayout();
             this.flowLayoutPanel10.ResumeLayout(false);
+            this.flowLayoutPanel10.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -3554,10 +3544,20 @@ namespace ArtefaktGenerator
             this.panel31.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.analys_cloack)).EndInit();
             this.tabPage3.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
             this.groupBox10.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.destruct_aktive)).EndInit();
+            this.flowLayoutPanel12.ResumeLayout(false);
+            this.flowLayoutPanel12.PerformLayout();
+            this.panel32.ResumeLayout(false);
+            this.panel32.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.destruct_komplex)).EndInit();
+            this.panel33.ResumeLayout(false);
+            this.panel33.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.destruct_mr)).EndInit();
+            this.panel34.ResumeLayout(false);
+            this.panel34.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.destruct_aktive)).EndInit();
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -3585,20 +3585,9 @@ namespace ArtefaktGenerator
             this.SFPanel.ResumeLayout(false);
             this.SFPanel.PerformLayout();
             this.repGroup.ResumeLayout(false);
-            this.flowLayoutPanel4.ResumeLayout(false);
-            this.flowLayoutPanel4.PerformLayout();
+            this.repGroup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dasArtefaktBindingSource1)).EndInit();
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.tableLayoutPanel5.PerformLayout();
-            this.flowLayoutPanel12.ResumeLayout(false);
-            this.flowLayoutPanel12.PerformLayout();
-            this.panel32.ResumeLayout(false);
-            this.panel32.PerformLayout();
-            this.panel33.ResumeLayout(false);
-            this.panel33.PerformLayout();
-            this.panel34.ResumeLayout(false);
-            this.panel34.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3840,7 +3829,6 @@ namespace ArtefaktGenerator
         private Panel panel25;
         private Panel panel24;
         private FlowLayoutPanel flowLayoutPanel2;
-        private FlowLayoutPanel flowLayoutPanel4;
         private FlowLayoutPanel flowLayoutPanel5;
         private FlowLayoutPanel flowLayoutPanel6;
         private FlowLayoutPanel flowLayoutPanel8;
