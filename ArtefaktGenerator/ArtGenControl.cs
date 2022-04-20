@@ -30,15 +30,6 @@ namespace ArtefaktGenerator
             }			            
         }
 
-		
-		
-		public bool isLinux()
-		{
-			int p = (int) Environment.OSVersion.Platform;
-		    return (p == 4) || (p == 6) || (p == 128);
-		}
-
-
         public void plugInHeroFromXml(string xml)
         {
             controller.plugInHeroFromXml(xml);
@@ -331,198 +322,194 @@ namespace ArtefaktGenerator
 
         private void ArtGenControl_Load(object sender, EventArgs e)
         {
-            if (!isLinux())
-            {
-                this.repGroup.DataBindings.Add("Selected", controller, "sfRepresentation", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.sf_kraft.DataBindings.Add("Checked", controller, "sfKraftkontrolle", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.sf_vielLadung.DataBindings.Add("Checked", controller, "sfVielfacheLadung", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.sf_stapel.DataBindings.Add("Checked", controller, "sfStapeleffekt", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.sf_hyper.DataBindings.Add("Checked", controller, "sfHypervehemenz", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.sf_hyper.DataBindings.Add("Enabled", controller, "sfHypervehemenzEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.sf_matrix.DataBindings.Add("Checked", controller, "sfMatrixgeber", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.sf_semiI.DataBindings.Add("Checked", controller, "sfSemipermanenz1", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.sf_semiII.DataBindings.Add("Checked", controller, "sfSemipermanenz2", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.sf_semiII.DataBindings.Add("Enabled", controller, "sfSemipermanenz2Enabled", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.sf_ringkunde.DataBindings.Add("Checked", controller, "sfRingkunde", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.sf_kraftspeicher.DataBindings.Add("Checked", controller, "sfKraftspeicher", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.sf_aux.DataBindings.Add("Checked", controller, "sfAuxiliator", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.sf_aux.DataBindings.Add("Enabled", controller, "sfAuxiliatorEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.sf_aux.DataBindings.Add("Visible", controller, "sfAuxiliatorVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.repGroup.DataBindings.Add("Selected", controller, "sfRepresentation", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_kraft.DataBindings.Add("Checked", controller, "sfKraftkontrolle", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_vielLadung.DataBindings.Add("Checked", controller, "sfVielfacheLadung", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_stapel.DataBindings.Add("Checked", controller, "sfStapeleffekt", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_hyper.DataBindings.Add("Checked", controller, "sfHypervehemenz", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_hyper.DataBindings.Add("Enabled", controller, "sfHypervehemenzEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_matrix.DataBindings.Add("Checked", controller, "sfMatrixgeber", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_semiI.DataBindings.Add("Checked", controller, "sfSemipermanenz1", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_semiII.DataBindings.Add("Checked", controller, "sfSemipermanenz2", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_semiII.DataBindings.Add("Enabled", controller, "sfSemipermanenz2Enabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_ringkunde.DataBindings.Add("Checked", controller, "sfRingkunde", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_kraftspeicher.DataBindings.Add("Checked", controller, "sfKraftspeicher", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_aux.DataBindings.Add("Checked", controller, "sfAuxiliator", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_aux.DataBindings.Add("Enabled", controller, "sfAuxiliatorEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.sf_aux.DataBindings.Add("Visible", controller, "sfAuxiliatorVisible", false, DataSourceUpdateMode.OnPropertyChanged);
 
-                this.arcanovi_change.DataBindings.Add("Value", controller, "tawArcanovi", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.arcanovi_matrix_change.DataBindings.Add("Value", controller, "tawArcanoviMatrix", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.arcanovi_matrix_change.DataBindings.Add("Enabled", controller, "tawArcanoviMatrixEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.arcanovi_matrix_lbl.DataBindings.Add("Enabled", controller, "tawArcanoviMatrixEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.arcanovi_semi_change.DataBindings.Add("Value", controller, "tawArcanoviSemipermanenz", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.arcanovi_semi_change.DataBindings.Add("Enabled", controller, "tawArcanoviSemipermanenzEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.arcanovi_semi_change_lbl.DataBindings.Add("Enabled", controller, "tawArcanoviSemipermanenzEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.odem_change.DataBindings.Add("Value", controller, "tawOdem", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.analys_change.DataBindings.Add("Value", controller, "tawAnalys", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.magiekunde_change.DataBindings.Add("Value", controller, "tawMagiekunde", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.destruct_change.DataBindings.Add("Value", controller, "tawDestructibo", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.arcanovi_change.DataBindings.Add("Value", controller, "tawArcanovi", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.arcanovi_matrix_change.DataBindings.Add("Value", controller, "tawArcanoviMatrix", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.arcanovi_matrix_change.DataBindings.Add("Enabled", controller, "tawArcanoviMatrixEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.arcanovi_matrix_lbl.DataBindings.Add("Enabled", controller, "tawArcanoviMatrixEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.arcanovi_semi_change.DataBindings.Add("Value", controller, "tawArcanoviSemipermanenz", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.arcanovi_semi_change.DataBindings.Add("Enabled", controller, "tawArcanoviSemipermanenzEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.arcanovi_semi_change_lbl.DataBindings.Add("Enabled", controller, "tawArcanoviSemipermanenzEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.odem_change.DataBindings.Add("Value", controller, "tawOdem", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.analys_change.DataBindings.Add("Value", controller, "tawAnalys", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.magiekunde_change.DataBindings.Add("Value", controller, "tawMagiekunde", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.destruct_change.DataBindings.Add("Value", controller, "tawDestructibo", false, DataSourceUpdateMode.OnPropertyChanged);
 
-                this.artefakttyp.DataBindings.Add("Selected", controller, "artefakttyp", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.type_matrix.DataBindings.Add("Enabled", controller, "sfMatrixgeber", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.type_semi.DataBindings.Add("Enabled", controller, "artefakttypSemipermanenzEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.type_aux.DataBindings.Add("Enabled", controller, "artefakttypAuxiliatorEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.type_temp.DataBindings.Add("Enabled", controller, "artefakttypTempEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.type_aux.DataBindings.Add("Visible", controller, "sfAuxiliatorVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.type_speicher.DataBindings.Add("Enabled", controller, "sfKraftspeicher", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.artefakttyp_temp.DataBindings.Add("Selected", controller, "artefakttypTemp", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.artefakttyp_temp.DataBindings.Add("Visible", controller, "artefakttypTempVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.artefakttyp_matrix.DataBindings.Add("Selected", controller, "artefakttypMatrix", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.artefakttyp_matrix.DataBindings.Add("Visible", controller, "artefakttypMatrixVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.artefakttyp_semi.DataBindings.Add("Selected", controller, "artefakttypSemipermanenz", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.artefakttyp_semi.DataBindings.Add("Visible", controller, "artefakttypSemipermanenzVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.type_speicher_value.DataBindings.Add("Visible", controller, "artefakttypKraftspeicherVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.lbl_type_speicher_val.DataBindings.Add("Visible", controller, "artefakttypKraftspeicherVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.wirkendeZauber.DataBindings.Add("Enabled", controller, "wirkendeZauberEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.materialGroup.DataBindings.Add("Enabled", controller, "wirkendeZauberEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.type_speicher_value.DataBindings.Add("Value", controller, "artefakttypKraftspeicher", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.artefakttyp_aux.DataBindings.Add("Selected", controller, "artefakttypAuxiliator", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.artefakttyp_aux.DataBindings.Add("Visible", controller, "artefakttypAuxiliatorVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.aux_merkmal.DataBindings.Add("Checked", controller, "artefakttypAuxiliatorMerkmal", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.artefakttyp.DataBindings.Add("Selected", controller, "artefakttyp", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.type_matrix.DataBindings.Add("Enabled", controller, "sfMatrixgeber", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.type_semi.DataBindings.Add("Enabled", controller, "artefakttypSemipermanenzEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.type_aux.DataBindings.Add("Enabled", controller, "artefakttypAuxiliatorEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.type_temp.DataBindings.Add("Enabled", controller, "artefakttypTempEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.type_aux.DataBindings.Add("Visible", controller, "sfAuxiliatorVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.type_speicher.DataBindings.Add("Enabled", controller, "sfKraftspeicher", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.artefakttyp_temp.DataBindings.Add("Selected", controller, "artefakttypTemp", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.artefakttyp_temp.DataBindings.Add("Visible", controller, "artefakttypTempVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.artefakttyp_matrix.DataBindings.Add("Selected", controller, "artefakttypMatrix", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.artefakttyp_matrix.DataBindings.Add("Visible", controller, "artefakttypMatrixVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.artefakttyp_semi.DataBindings.Add("Selected", controller, "artefakttypSemipermanenz", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.artefakttyp_semi.DataBindings.Add("Visible", controller, "artefakttypSemipermanenzVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.type_speicher_value.DataBindings.Add("Visible", controller, "artefakttypKraftspeicherVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.lbl_type_speicher_val.DataBindings.Add("Visible", controller, "artefakttypKraftspeicherVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.wirkendeZauber.DataBindings.Add("Enabled", controller, "wirkendeZauberEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.materialGroup.DataBindings.Add("Enabled", controller, "wirkendeZauberEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.type_speicher_value.DataBindings.Add("Value", controller, "artefakttypKraftspeicher", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.artefakttyp_aux.DataBindings.Add("Selected", controller, "artefakttypAuxiliator", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.artefakttyp_aux.DataBindings.Add("Visible", controller, "artefakttypAuxiliatorVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.aux_merkmal.DataBindings.Add("Checked", controller, "artefakttypAuxiliatorMerkmal", false, DataSourceUpdateMode.OnPropertyChanged);
 
-                this.special_signet.DataBindings.Add("Checked", controller, "spezialSiegel", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_signet.DataBindings.Add("Enabled", controller, "spezialSiegelEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_durable.DataBindings.Add("Checked", controller, "spezialUnzerbrechlich", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_scent.DataBindings.Add("Checked", controller, "spezialGespuer", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_apport.DataBindings.Add("Checked", controller, "spezialApport", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_resistant.DataBindings.Add("Checked", controller, "spezialResistenz", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_resistant.DataBindings.Add("Visible", controller, "spezialResistenzVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_selfrepair.DataBindings.Add("Checked", controller, "spezialSelbstreparatur", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_selfrepair.DataBindings.Add("Visible", controller, "spezialSelbstreparaturVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_ferngespuer.DataBindings.Add("Checked", controller, "spezialFerngespuer", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_ferngespuer.DataBindings.Add("Visible", controller, "spezialFerngespuerVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_ferngespuer.DataBindings.Add("Enabled", controller, "spezialFerngespuerEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.lbl_special_asp.DataBindings.Add("Visible", controller, "spezialFerngespuerVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.lbl_special_komp.DataBindings.Add("Visible", controller, "spezialFerngespuerVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.lbl_special_asp.DataBindings.Add("Enabled", controller, "spezialFerngespuer", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.lbl_special_komp.DataBindings.Add("Enabled", controller, "spezialFerngespuer", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_ferngespuer_komp.DataBindings.Add("Visible", controller, "spezialFerngespuerVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_ferngespuer_asp.DataBindings.Add("Visible", controller, "spezialFerngespuerVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_ferngespuer_komp.DataBindings.Add("Enabled", controller, "spezialFerngespuer", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_ferngespuer_asp.DataBindings.Add("Enabled", controller, "spezialFerngespuer", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_ferngespuer_asp.DataBindings.Add("Value", controller, "spezialFerngespuerAsp", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_ferngespuer_komp.DataBindings.Add("SelectedIndex", controller, "spezialFerngespuerKomp", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_reversalis.DataBindings.Add("Checked", controller, "spezialUmkehrtalisman", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_reversalis.DataBindings.Add("Visible", controller, "spezialUmkehrtalismanVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_reversalis.DataBindings.Add("Enabled", controller, "spezialUmkehrtalismanEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_variablerelease.DataBindings.Add("Checked", controller, "spezialVariablerAusloeser", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_variablerelease.DataBindings.Add("Visible", controller, "spezialVariablerAusloeserVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_variablerelease.DataBindings.Add("Enabled", controller, "spezialVariablerAusloeserEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_variable_var.DataBindings.Add("Value", controller, "spezialVariablerAusloeserVar", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_variable_var.DataBindings.Add("Visible", controller, "spezialVariablerAusloeserVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_variable_var.DataBindings.Add("Enabled", controller, "spezialVariablerAusloeser", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_schleier.DataBindings.Add("Checked", controller, "spezialVerschleierung", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_schleier.DataBindings.Add("Visible", controller, "spezialVerschleierungVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_schleier.DataBindings.Add("Enabled", controller, "spezialVerschleierungEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_eatmaterial.DataBindings.Add("Checked", controller, "spezialVerzehrend", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_eatmaterial.DataBindings.Add("Visible", controller, "spezialVerzehrendVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_eatmaterial.DataBindings.Add("Enabled", controller, "spezialVerzehrendEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_eatmat_var.DataBindings.Add("Value", controller, "spezialVerzehrendVar", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_eatmat_var.DataBindings.Add("Visible", controller, "spezialVerzehrendVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_eatmat_var.DataBindings.Add("Enabled", controller, "spezialVerzehrend", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_signet.DataBindings.Add("Checked", controller, "spezialSiegel", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_signet.DataBindings.Add("Enabled", controller, "spezialSiegelEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_durable.DataBindings.Add("Checked", controller, "spezialUnzerbrechlich", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_scent.DataBindings.Add("Checked", controller, "spezialGespuer", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_apport.DataBindings.Add("Checked", controller, "spezialApport", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_resistant.DataBindings.Add("Checked", controller, "spezialResistenz", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_resistant.DataBindings.Add("Visible", controller, "spezialResistenzVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_selfrepair.DataBindings.Add("Checked", controller, "spezialSelbstreparatur", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_selfrepair.DataBindings.Add("Visible", controller, "spezialSelbstreparaturVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_ferngespuer.DataBindings.Add("Checked", controller, "spezialFerngespuer", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_ferngespuer.DataBindings.Add("Visible", controller, "spezialFerngespuerVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_ferngespuer.DataBindings.Add("Enabled", controller, "spezialFerngespuerEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.lbl_special_asp.DataBindings.Add("Visible", controller, "spezialFerngespuerVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.lbl_special_komp.DataBindings.Add("Visible", controller, "spezialFerngespuerVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.lbl_special_asp.DataBindings.Add("Enabled", controller, "spezialFerngespuer", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.lbl_special_komp.DataBindings.Add("Enabled", controller, "spezialFerngespuer", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_ferngespuer_komp.DataBindings.Add("Visible", controller, "spezialFerngespuerVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_ferngespuer_asp.DataBindings.Add("Visible", controller, "spezialFerngespuerVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_ferngespuer_komp.DataBindings.Add("Enabled", controller, "spezialFerngespuer", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_ferngespuer_asp.DataBindings.Add("Enabled", controller, "spezialFerngespuer", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_ferngespuer_asp.DataBindings.Add("Value", controller, "spezialFerngespuerAsp", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_ferngespuer_komp.DataBindings.Add("SelectedIndex", controller, "spezialFerngespuerKomp", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_reversalis.DataBindings.Add("Checked", controller, "spezialUmkehrtalisman", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_reversalis.DataBindings.Add("Visible", controller, "spezialUmkehrtalismanVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_reversalis.DataBindings.Add("Enabled", controller, "spezialUmkehrtalismanEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_variablerelease.DataBindings.Add("Checked", controller, "spezialVariablerAusloeser", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_variablerelease.DataBindings.Add("Visible", controller, "spezialVariablerAusloeserVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_variablerelease.DataBindings.Add("Enabled", controller, "spezialVariablerAusloeserEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_variable_var.DataBindings.Add("Value", controller, "spezialVariablerAusloeserVar", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_variable_var.DataBindings.Add("Visible", controller, "spezialVariablerAusloeserVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_variable_var.DataBindings.Add("Enabled", controller, "spezialVariablerAusloeser", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_schleier.DataBindings.Add("Checked", controller, "spezialVerschleierung", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_schleier.DataBindings.Add("Visible", controller, "spezialVerschleierungVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_schleier.DataBindings.Add("Enabled", controller, "spezialVerschleierungEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_eatmaterial.DataBindings.Add("Checked", controller, "spezialVerzehrend", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_eatmaterial.DataBindings.Add("Visible", controller, "spezialVerzehrendVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_eatmaterial.DataBindings.Add("Enabled", controller, "spezialVerzehrendEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_eatmat_var.DataBindings.Add("Value", controller, "spezialVerzehrendVar", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_eatmat_var.DataBindings.Add("Visible", controller, "spezialVerzehrendVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_eatmat_var.DataBindings.Add("Enabled", controller, "spezialVerzehrend", false, DataSourceUpdateMode.OnPropertyChanged);
 
-                this.limbus.DataBindings.Add("Checked", controller, "extraMadeInLimbus", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.namenlos.DataBindings.Add("Checked", controller, "extraNamenloseTage", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.gemeinschaftlich.DataBindings.Add("Checked", controller, "extraGemeinschaftlicheErschaffung", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.agribaal.DataBindings.Add("Value", controller, "extraAgribaal", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_ort_occ.DataBindings.Add("Value", controller, "extraOkkupation", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_ort_neben.DataBindings.Add("Value", controller, "extraNebeneffekt", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.special_additional_arcanovi.DataBindings.Add("Value", controller, "extraZusaetzlicheArcanovi", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.artefakt_super_big.DataBindings.Add("SelectedIndex", controller, "extraExtraGross", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.cb_kristalle.DataBindings.Add("Checked", controller, "extraKristalle", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.cb_kristalle.DataBindings.Add("Visible", controller, "extraKristalleVisible", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.material.DataSource = controller.material;
-                this.material.DataBindings.Add("SelectedIndex", controller, "selectedMaterial", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.limbus.DataBindings.Add("Checked", controller, "extraMadeInLimbus", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.namenlos.DataBindings.Add("Checked", controller, "extraNamenloseTage", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.gemeinschaftlich.DataBindings.Add("Checked", controller, "extraGemeinschaftlicheErschaffung", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.agribaal.DataBindings.Add("Value", controller, "extraAgribaal", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_ort_occ.DataBindings.Add("Value", controller, "extraOkkupation", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_ort_neben.DataBindings.Add("Value", controller, "extraNebeneffekt", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.special_additional_arcanovi.DataBindings.Add("Value", controller, "extraZusaetzlicheArcanovi", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.artefakt_super_big.DataBindings.Add("SelectedIndex", controller, "extraExtraGross", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.cb_kristalle.DataBindings.Add("Checked", controller, "extraKristalle", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.cb_kristalle.DataBindings.Add("Visible", controller, "extraKristalleVisible", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.material.DataSource = controller.material;
+            this.material.DataBindings.Add("SelectedIndex", controller, "selectedMaterial", false, DataSourceUpdateMode.OnPropertyChanged);
 
-                this.probe_ausloes.DataBindings.Add("Value", controller, "probeAusloeser", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.probe_affine.DataBindings.Add("Value", controller, "probeAffin", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.probe_affine.DataBindings.Add("Maximum", controller, "probeAffinMax", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.probe_affine.DataBindings.Add("Minimum", controller, "probeAffinMin", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.artefakt_groesse.DataBindings.Add("Value", controller, "probeGroesse", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.artefakt_groesse.DataBindings.Add("Enabled", controller, "probeGroesseEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.arcanovi_force.DataBindings.Add("Value", controller, "probeErzwingen", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.starkonst.DataBindings.Add("Value", controller, "probeSterne", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.arcanoviOtherMod.DataBindings.Add("Value", controller, "probeAndereMod", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.arcanoviZfPSternMod.DataBindings.Add("Value", controller, "probeZfPSternMod", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.wirkSpruchMod.DataBindings.Add("Value", controller, "probeWirkenderSpruchMod", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.probe_ausloes.DataBindings.Add("Value", controller, "probeAusloeser", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.probe_affine.DataBindings.Add("Value", controller, "probeAffin", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.probe_affine.DataBindings.Add("Maximum", controller, "probeAffinMax", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.probe_affine.DataBindings.Add("Minimum", controller, "probeAffinMin", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.artefakt_groesse.DataBindings.Add("Value", controller, "probeGroesse", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.artefakt_groesse.DataBindings.Add("Enabled", controller, "probeGroesseEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.arcanovi_force.DataBindings.Add("Value", controller, "probeErzwingen", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.starkonst.DataBindings.Add("Value", controller, "probeSterne", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.arcanoviOtherMod.DataBindings.Add("Value", controller, "probeAndereMod", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.arcanoviZfPSternMod.DataBindings.Add("Value", controller, "probeZfPSternMod", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.wirkSpruchMod.DataBindings.Add("Value", controller, "probeWirkenderSpruchMod", false, DataSourceUpdateMode.OnPropertyChanged);
 
-                this.zauberGrid.AutoGenerateColumns = false;
+            this.zauberGrid.AutoGenerateColumns = false;
 
-                DataGridViewColumn column = new DataGridViewTextBoxColumn();
-                column.DataPropertyName = "name";
-                column.Name = "Zauber";
-                this.zauberGrid.Columns.Add(column);
+            DataGridViewColumn column = new DataGridViewTextBoxColumn();
+            column.DataPropertyName = "name";
+            column.Name = "Zauber";
+            this.zauberGrid.Columns.Add(column);
 
-                DataGridViewComboBoxColumn column2 = new DataGridViewComboBoxColumn();
-                column2.DataSource = Enum.GetValues(typeof(Zauber.Komplexitaet));
-                column2.DataPropertyName = "komp";
-                column2.Name = "Komp.";
-                this.zauberGrid.Columns.Add(column2);
+            DataGridViewComboBoxColumn column2 = new DataGridViewComboBoxColumn();
+            column2.DataSource = Enum.GetValues(typeof(Zauber.Komplexitaet));
+            column2.DataPropertyName = "komp";
+            column2.Name = "Komp.";
+            this.zauberGrid.Columns.Add(column2);
 
-                DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn column3 = new DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn();
-                column3.DataPropertyName = "staple";
-                column3.Name = "Stapel";
-                column3.DecimalPlaces = 0;
-                column3.Minimum = 1;
-                column3.Maximum = 99;
-                this.zauberGrid.Columns.Add(column3);
+            DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn column3 = new DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn();
+            column3.DataPropertyName = "staple";
+            column3.Name = "Stapel";
+            column3.DecimalPlaces = 0;
+            column3.Minimum = 1;
+            column3.Maximum = 99;
+            this.zauberGrid.Columns.Add(column3);
 
-                DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn column4 = new DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn();
-                column4.DataPropertyName = "summierung";
-                column4.Name = "Summe";
-                column4.DecimalPlaces = 0;
-                column4.Minimum = 1;
-                column4.Maximum = 99;
-                this.zauberGrid.Columns.Add(column4);
+            DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn column4 = new DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn();
+            column4.DataPropertyName = "summierung";
+            column4.Name = "Summe";
+            column4.DecimalPlaces = 0;
+            column4.Minimum = 1;
+            column4.Maximum = 99;
+            this.zauberGrid.Columns.Add(column4);
 
-                DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn column5 = new DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn();
-                column5.DataPropertyName = "asp";
-                column5.Name = "AsP";
-                column5.DecimalPlaces = 0;
-                column5.Minimum = 1;
-                column5.Maximum = 999;
-                this.zauberGrid.Columns.Add(column5);
+            DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn column5 = new DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn();
+            column5.DataPropertyName = "asp";
+            column5.Name = "AsP";
+            column5.DecimalPlaces = 0;
+            column5.Minimum = 1;
+            column5.Maximum = 999;
+            this.zauberGrid.Columns.Add(column5);
 
-                DataGridViewCheckBoxColumn column6 = new DataGridViewCheckBoxColumn();
-                column6.DataPropertyName = "eigene_rep";
-                column6.Name = "Eigene Rep.";
-                this.zauberGrid.Columns.Add(column6);
+            DataGridViewCheckBoxColumn column6 = new DataGridViewCheckBoxColumn();
+            column6.DataPropertyName = "eigene_rep";
+            column6.Name = "Eigene Rep.";
+            this.zauberGrid.Columns.Add(column6);
 
-                this.zauberGrid.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                this.zauberGrid.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-                this.zauberGrid.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-                this.zauberGrid.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-                this.zauberGrid.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-                this.zauberGrid.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.zauberGrid.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            this.zauberGrid.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.zauberGrid.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.zauberGrid.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.zauberGrid.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.zauberGrid.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
 
-                this.zauberGrid.DataSource = controller.zauberListe;
-                this.zauberGrid.MouseUp += zauberGrid_MouseUp;
+            this.zauberGrid.DataSource = controller.zauberListe;
+            this.zauberGrid.MouseUp += zauberGrid_MouseUp;
 
-                this.stapelung.DataBindings.Add("Maximum", controller, "zauberStapelMax", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.stapelung.DataBindings.Add("Enabled", controller, "zauberStapelEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.lbl_staple.DataBindings.Add("Enabled", controller, "zauberStapelEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.loads.DataBindings.Add("Value", controller, "zauberLadungen", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.loads.DataBindings.Add("Enabled", controller, "zauberLadungenEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.loads_lbl.DataBindings.Add("Enabled", controller, "zauberLadungenEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.stapelung.DataBindings.Add("Maximum", controller, "zauberStapelMax", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.stapelung.DataBindings.Add("Enabled", controller, "zauberStapelEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.lbl_staple.DataBindings.Add("Enabled", controller, "zauberStapelEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.loads.DataBindings.Add("Value", controller, "zauberLadungen", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.loads.DataBindings.Add("Enabled", controller, "zauberLadungenEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.loads_lbl.DataBindings.Add("Enabled", controller, "zauberLadungenEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
 
-                this.txt_create.DataBindings.Add("Text", controller, "resultArcanovi", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.txt_analys.DataBindings.Add("Text", controller, "resultAnalys", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.txt_destruct.DataBindings.Add("Text", controller, "resultDestructibo", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.txt_create.DataBindings.Add("Text", controller, "resultArcanovi", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.txt_analys.DataBindings.Add("Text", controller, "resultAnalys", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.txt_destruct.DataBindings.Add("Text", controller, "resultDestructibo", false, DataSourceUpdateMode.OnPropertyChanged);
 
-                this.analys_broken.DataBindings.Add("Checked", controller, "analysMisslungen", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.analys_komplex.DataBindings.Add("Value", controller, "analysKomplex", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.analys_mr.DataBindings.Add("Value", controller, "analysMR", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.analys_cloack.DataBindings.Add("Value", controller, "analysTarnzauber", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.analys_broken.DataBindings.Add("Checked", controller, "analysMisslungen", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.analys_komplex.DataBindings.Add("Value", controller, "analysKomplex", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.analys_mr.DataBindings.Add("Value", controller, "analysMR", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.analys_cloack.DataBindings.Add("Value", controller, "analysTarnzauber", false, DataSourceUpdateMode.OnPropertyChanged);
 
-                this.destruct_infinitum.DataBindings.Add("Checked", controller, "destructiboInfinitum", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.destruct_komplex.DataBindings.Add("Value", controller, "destructiboKomplex", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.destruct_mr.DataBindings.Add("Value", controller, "destructiboMR", false, DataSourceUpdateMode.OnPropertyChanged);
-                this.destruct_aktive.DataBindings.Add("Value", controller, "destructiboAktiveLadungen", false, DataSourceUpdateMode.OnPropertyChanged);
-
-            }
+            this.destruct_infinitum.DataBindings.Add("Checked", controller, "destructiboInfinitum", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.destruct_komplex.DataBindings.Add("Value", controller, "destructiboKomplex", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.destruct_mr.DataBindings.Add("Value", controller, "destructiboMR", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.destruct_aktive.DataBindings.Add("Value", controller, "destructiboAktiveLadungen", false, DataSourceUpdateMode.OnPropertyChanged);
 
             controller.init();
 
@@ -564,12 +551,7 @@ namespace ArtefaktGenerator
                 alleBerechnenToolStripMenuItem.Checked = true;
                 alleBerechnenToolStripMenuItem_Click(this, null);
             }
-
-            if (isLinux())
-            {
-                foreach (Material m in controller.material)
-                    material.Items.Add(m);
-            }
+            
             material.SelectedIndex = 0;
             reloadData();
         }
@@ -651,154 +633,16 @@ namespace ArtefaktGenerator
         }
 
         #region Linux gedoens
+        // TODO: Verify if this entire reload method could be obsolete on Windows only
         private void reloadData()
         {
-            // TODO
-            // Should be done via DataBinding. Investigate how to databind to column properties
+            // TODO Should be done via DataBinding. Investigate how to databind to column properties
             if (this.zauberGrid.ColumnCount > 0)
             {
                 this.zauberGrid.Columns[2].ReadOnly = !controller.zauberStapelEnabled;
                 ((DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn)(this.zauberGrid.Columns[2])).Minimum = 1;
                 ((DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn)(this.zauberGrid.Columns[2])).Maximum = controller.zauberStapelMax;
-            }
-
-            if (isLinux())
-            {
-
-                repGroup.Selected = controller.sfRepresentation;
-                sf_kraft.Checked = controller.sfKraftkontrolle;
-                sf_vielLadung.Checked = controller.sfVielfacheLadung;
-                sf_stapel.Checked = controller.sfStapeleffekt;
-                sf_hyper.Checked = controller.sfHypervehemenz;
-                sf_hyper.Enabled = controller.sfHypervehemenzEnabled;
-                sf_matrix.Checked = controller.sfMatrixgeber;
-                sf_semiI.Checked = controller.sfSemipermanenz1;
-                sf_semiII.Checked = controller.sfSemipermanenz2;
-                sf_semiII.Enabled = controller.sfSemipermanenz2Enabled;
-                sf_ringkunde.Checked = controller.sfRingkunde;
-                sf_aux.Checked = controller.sfAuxiliator;
-                sf_aux.Enabled = controller.sfAuxiliatorEnabled;
-                sf_aux.Visible = controller.sfAuxiliatorVisible;
-                sf_kraft.Checked = controller.sfKraftspeicher;
-
-                arcanovi_change.Value = controller.tawArcanovi;
-                arcanovi_matrix_change.Value = controller.tawArcanoviMatrix;
-                arcanovi_matrix_change.Enabled = controller.tawArcanoviMatrixEnabled;
-                arcanovi_matrix_lbl.Enabled = controller.tawArcanoviMatrixEnabled;
-                arcanovi_semi_change.Value = controller.tawArcanoviSemipermanenz;
-                arcanovi_semi_change.Enabled = controller.tawArcanoviSemipermanenzEnabled;
-                arcanovi_semi_change_lbl.Enabled = controller.tawArcanoviSemipermanenzEnabled;
-                magiekunde_change.Value = controller.tawMagiekunde;
-                destruct_change.Value = controller.tawDestructibo;
-                odem_change.Value = controller.tawOdem;
-                analys_change.Value = controller.tawAnalys;
-
-                artefakttyp.Selected = controller.artefakttyp;
-                artefakttyp_matrix.Selected = controller.artefakttypMatrix;
-                type_matrix.Enabled = controller.sfMatrixgeber;
-                artefakttyp_matrix.Visible = controller.artefakttypMatrixVisible;
-                type_temp.Enabled = controller.artefakttypTempEnabled;
-                artefakttyp_temp.Selected = controller.artefakttypTemp;
-                artefakttyp_temp.Visible = controller.artefakttypTempVisible;
-                type_semi.Enabled = controller.artefakttypSemipermanenzEnabled;
-                artefakttyp_semi.Selected = controller.artefakttypSemipermanenz;
-                artefakttyp_semi.Visible = controller.artefakttypSemipermanenzVisible;
-                type_aux.Enabled = controller.artefakttypAuxiliatorEnabled;
-                type_aux.Visible = controller.sfAuxiliatorVisible;
-                artefakttyp_aux.Selected = controller.artefakttypAuxiliator;
-                artefakttyp_aux.Visible = controller.artefakttypAuxiliatorVisible;
-                aux_merkmal.Checked = controller.artefakttypAuxiliatorMerkmal;
-                aux_merkmal.Visible = controller.artefakttypAuxiliatorVisible;
-                lbl_type_speicher_val.Visible = controller.artefakttypKraftspeicherVisible;
-                type_speicher_value.Value = controller.artefakttypKraftspeicher;
-                type_speicher_value.Visible = controller.artefakttypKraftspeicherVisible;
-
-                special_apport.Checked = controller.spezialApport;
-                special_ferngespuer.Checked = controller.spezialFerngespuer;
-                special_ferngespuer.Visible = controller.spezialFerngespuerVisible;
-                special_ferngespuer.Enabled = controller.spezialFerngespuerEnabled;
-                special_ferngespuer_asp.Value = controller.spezialFerngespuerAsp;
-                special_ferngespuer_komp.SelectedIndex = controller.spezialFerngespuerKomp;
-                special_ferngespuer_asp.Visible = controller.spezialFerngespuerVisible;
-                special_ferngespuer_komp.Visible = controller.spezialFerngespuerVisible;
-                special_ferngespuer_asp.Enabled = controller.spezialFerngespuerEnabled;
-                special_ferngespuer_komp.Enabled = controller.spezialFerngespuerEnabled;
-                lbl_special_asp.Enabled = controller.spezialFerngespuerEnabled;
-                lbl_special_asp.Visible = controller.spezialFerngespuerVisible;
-                lbl_special_komp.Enabled = controller.spezialFerngespuerEnabled;
-                lbl_special_komp.Visible = controller.spezialFerngespuerVisible;
-                special_durable.Checked = controller.spezialUnzerbrechlich;
-                special_eatmaterial.Checked = controller.spezialVerzehrend;
-                special_eatmaterial.Enabled = controller.spezialVerzehrendEnabled;
-                special_eatmaterial.Visible = controller.spezialVerzehrendVisible;
-                special_eatmat_var.Value = controller.spezialVerzehrendVar;
-                special_eatmat_var.Visible = controller.spezialVerzehrendVisible;
-                special_eatmat_var.Enabled = controller.spezialVerzehrendEnabled;
-                special_resistant.Checked = controller.spezialResistenz;
-                special_resistant.Visible = controller.spezialResistenzVisible;
-                special_reversalis.Checked = controller.spezialUmkehrtalisman;
-                special_reversalis.Enabled = controller.spezialUmkehrtalismanEnabled;
-                special_reversalis.Visible = controller.spezialUmkehrtalismanVisible;
-                special_scent.Checked = controller.spezialGespuer;
-                special_schleier.Checked = controller.spezialVerschleierung;
-                special_schleier.Enabled = controller.spezialVerschleierungEnabled;
-                special_schleier.Visible = controller.spezialVerschleierungVisible;
-                special_selfrepair.Checked = controller.spezialSelbstreparatur;
-                special_selfrepair.Visible = controller.spezialSelbstreparaturVisible;
-                special_signet.Checked = controller.spezialSiegel;
-                special_signet.Enabled = controller.spezialSiegelEnabled;
-                special_variablerelease.Checked = controller.spezialVariablerAusloeser;
-                special_variablerelease.Enabled = controller.spezialVariablerAusloeserEnabled;
-                special_variablerelease.Visible = controller.spezialVariablerAusloeserVisible;
-                special_variable_var.Value = controller.spezialVariablerAusloeserVar;
-                special_variable_var.Visible = controller.spezialVariablerAusloeserVisible;
-                special_variable_var.Enabled = controller.spezialVariablerAusloeserEnabled;
-
-                probe_ausloes.Value = controller.probeAusloeser;
-                //probe_affine.Minimum = controller.probeAffinMax;
-                //probe_affine.Maximum = controller.probeAffinMin;
-                probe_affine.Value = controller.probeAffin;
-                artefakt_groesse.Value = controller.probeGroesse;
-                artefakt_groesse.Enabled = controller.probeGroesseEnabled;
-                starkonst.Value = controller.probeSterne;
-                arcanoviOtherMod.Value = controller.probeAndereMod;
-                arcanoviZfPSternMod.Value = controller.probeZfPSternMod;
-                wirkSpruchMod.Value = controller.probeWirkenderSpruchMod;
-                arcanovi_force.Value = controller.probeErzwingen;
-
-                limbus.Checked = controller.extraMadeInLimbus;
-                namenlos.Checked = controller.extraNamenloseTage;
-                gemeinschaftlich.Checked = controller.extraGemeinschaftlicheErschaffung;
-                agribaal.Value = controller.extraAgribaal;
-                special_ort_neben.Value = controller.extraNebeneffekt;
-                special_additional_arcanovi.Value = controller.extraZusaetzlicheArcanovi;
-                special_ort_occ.Value = controller.extraOkkupation;
-                artefakt_super_big.SelectedIndex = controller.extraExtraGross;
-                if (material.Items.Count > 0) material.SelectedIndex = controller.selectedMaterial;
-                cb_kristalle.Checked = controller.extraKristalle;
-                cb_kristalle.Visible = controller.extraKristalleVisible;
-
-                loads.Value = controller.zauberLadungen;
-                loads.Enabled = controller.zauberLadungenEnabled;
-                loads_lbl.Enabled = controller.zauberLadungenEnabled;
-                stapelung.Enabled = controller.zauberStapelEnabled;
-                stapelung.Maximum = controller.zauberStapelMax;
-                lbl_staple.Enabled = controller.zauberStapelEnabled;
-
-                txt_create.Text = controller.resultArcanovi;
-                txt_analys.Text = controller.resultAnalys;
-                txt_destruct.Text = controller.resultDestructibo;
-
-                analys_broken.Checked = controller.analysMisslungen;
-                analys_cloack.Value = controller.analysTarnzauber;
-                analys_komplex.Value = controller.analysKomplex;
-                analys_mr.Value = controller.analysMR;
-
-                destruct_infinitum.Checked = controller.destructiboInfinitum;
-                destruct_komplex.Value = controller.destructiboKomplex;
-                destruct_mr.Value = controller.destructiboMR;
-                destruct_aktive.Value = controller.destructiboAktiveLadungen;
-            }
+            }            
         }
 
         private void special_variablerelease_CheckedChanged(object sender, EventArgs e)
