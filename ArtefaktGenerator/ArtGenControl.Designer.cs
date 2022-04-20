@@ -2758,11 +2758,13 @@ namespace ArtefaktGenerator
             // type_einaml
             // 
             this.type_einaml.AutoSize = true;
+            this.type_einaml.Checked = true;
             this.type_einaml.Location = new System.Drawing.Point(120, 4);
             this.type_einaml.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.type_einaml.Name = "type_einaml";
             this.type_einaml.Size = new System.Drawing.Size(104, 29);
             this.type_einaml.TabIndex = 1;
+            this.type_einaml.TabStop = true;
             this.type_einaml.Tag = "1";
             this.type_einaml.Text = "einmalig";
             this.type_einaml.UseVisualStyleBackColor = true;
@@ -2784,14 +2786,12 @@ namespace ArtefaktGenerator
             // type_semi
             // 
             this.type_semi.AutoSize = true;
-            this.type_semi.Checked = true;
             this.type_semi.Enabled = false;
             this.type_semi.Location = new System.Drawing.Point(348, 4);
             this.type_semi.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.type_semi.Name = "type_semi";
             this.type_semi.Size = new System.Drawing.Size(160, 29);
             this.type_semi.TabIndex = 4;
-            this.type_semi.TabStop = true;
             this.type_semi.Tag = "4";
             this.type_semi.Text = "semipermanent";
             this.type_semi.UseVisualStyleBackColor = true;
@@ -2833,7 +2833,6 @@ namespace ArtefaktGenerator
             this.type_speicher.Name = "type_speicher";
             this.type_speicher.Size = new System.Drawing.Size(138, 29);
             this.type_speicher.TabIndex = 29;
-            this.type_speicher.TabStop = true;
             this.type_speicher.Tag = "6";
             this.type_speicher.Text = "kraftspeicher";
             this.type_speicher.UseVisualStyleBackColor = true;
