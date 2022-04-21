@@ -38,7 +38,7 @@ namespace ArtefaktGeneratorApp
         private void ArtGenApp_Shown(object sender, EventArgs e)
         {
             if (ArtefaktGenerator.Properties.Settings.Default.showHeldenImport)
-                artGenControl1.showSelectHeroDialog(this);
+                artGenControl1.ShowSelectHeroDialog(this);
         }
 
         private void ArtGenApp_FormClosing(object sender, FormClosingEventArgs e)
@@ -48,7 +48,7 @@ namespace ArtefaktGeneratorApp
 
         private void ArtGenApp_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.artGenControl1.saveOptions();
+            this.artGenControl1.SaveOptions();
         }
     }
 }

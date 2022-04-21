@@ -12,7 +12,7 @@ namespace ArtefaktGenerator
 {
     public partial class ArtGenControl : UserControl
     {
-        public Controller controller = new Controller();
+        public Controller controller = new();
 
         public ArtGenControl() : this (false)
         {
@@ -30,17 +30,17 @@ namespace ArtefaktGenerator
             }			            
         }
 
-        public void plugInHeroFromXml(string xml)
+        public void PlugInHeroFromXml(string xml)
         {
             controller.plugInHeroFromXml(xml);
-            reloadData();
+            ReloadData();
         }
 
         delegate void Del(int e);          
 
-        private void zauber_add_Click(object sender, EventArgs e)
+        private void Zauber_add_Click(object sender, EventArgs e)
         {
-            Zauber zauber = new Zauber();
+            Zauber zauber = new();
             zauber.asp = this.asp.Value;
             //zauber.load = this.loads.Value;
             zauber.staple = this.stapelung.Value;
@@ -57,10 +57,10 @@ namespace ArtefaktGenerator
             z.Add(zauber);
             controller.zauberListe = z;
 
-            reloadData();
+            ReloadData();
         }
 
-        private void zauber_del_Click(object sender, EventArgs e)
+        private void Zauber_del_Click(object sender, EventArgs e)
         {
             try
             {
@@ -71,27 +71,27 @@ namespace ArtefaktGenerator
             {
                 	
             }
-            reloadData();
+            ReloadData();
         }
         
-        private void beendenToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void BeendenToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }        
 
-        private void neuesArtefaktToolStripMenuItem_Click(object sender, EventArgs e)
+        private void NeuesArtefaktToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Alle nicht gespeicherten Änderungen am bisherigen Artefakt gehen verloren.\r\nWillst du wirklich ein neues Artefakt beginnen?", "Hinweis", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
             {
                 controller.clearArtefakt();
-                reloadData();
+                ReloadData();
             }
         }
 
-        private void artefaktLadenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ArtefaktLadenToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            OpenFileDialog openFileDialog = new OpenFileDialog();
+            OpenFileDialog openFileDialog = new();
             openFileDialog.AddExtension = true;
             openFileDialog.CheckFileExists = true;
             openFileDialog.CheckPathExists = true;
@@ -107,20 +107,20 @@ namespace ArtefaktGenerator
             {
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    System.IO.StreamReader reader = new System.IO.StreamReader(openFileDialog.OpenFile());
+                    System.IO.StreamReader reader = new(openFileDialog.OpenFile());
 
                     string xml = reader.ReadToEnd();
                     //string xml = System.IO.File.ReadAllText(@".\test.artefakt");
 
                     controller.loadArtefakt(xml);
-                    reloadData();
+                    ReloadData();
                 }
             }
         }
 
-        private void artefaktSpeichernToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ArtefaktSpeichernToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            SaveFileDialog saveFileDialog1 = new();
 
             saveFileDialog1.Filter = "Artefakte (*.artefakt)|*.artefakt";
             saveFileDialog1.FilterIndex = 1;
@@ -137,7 +137,7 @@ namespace ArtefaktGenerator
             }
         }
 
-        private void alleBerechnenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AlleBerechnenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (alleBerechnenToolStripMenuItem.Checked)
             {
@@ -162,50 +162,50 @@ namespace ArtefaktGenerator
                 if (w20_11.Checked) controller.W20 = 11;
                 if (w20_20.Checked) controller.W20 = 20;
             }
-            reloadData();
+            ReloadData();
         }
 
-        private void w6_1_Click(object sender, EventArgs e)
+        private void W6_1_Click(object sender, EventArgs e)
         {
             controller.W6 = 1;
             if (!w6_1.Checked) w6_1.Checked = true;
             w6_35.Checked = false;
             w6_4.Checked = false;
             w6_6.Checked = false;
-            reloadData();
+            ReloadData();
         }
 
-        private void w6_6_Click(object sender, EventArgs e)
+        private void W6_6_Click(object sender, EventArgs e)
         {
             controller.W6 = 6;
             if (!w6_6.Checked) w6_6.Checked = true;
             w6_35.Checked = false;
             w6_4.Checked = false;
             w6_1.Checked = false;
-            reloadData();
+            ReloadData();
         }
 
-        private void w6_35_Click(object sender, EventArgs e)
+        private void W6_35_Click(object sender, EventArgs e)
         {
             controller.W6 = 3.5m;
             if (!w6_35.Checked) w6_35.Checked = true;
             w6_1.Checked = false;
             w6_4.Checked = false;
             w6_6.Checked = false;
-            reloadData();
+            ReloadData();
         }
 
-        private void w6_4_Click(object sender, EventArgs e)
+        private void W6_4_Click(object sender, EventArgs e)
         {
             controller.W6 = 4;
             if (!w6_4.Checked) w6_4.Checked = true;
             w6_1.Checked = false;
             w6_35.Checked = false;
             w6_6.Checked = false;
-            reloadData();
+            ReloadData();
         }
 
-        private void w20_1_Click(object sender, EventArgs e)
+        private void W20_1_Click(object sender, EventArgs e)
         {
             controller.W20 = 1;
             if (!w20_1.Checked) w20_1.Checked = true;
@@ -213,10 +213,10 @@ namespace ArtefaktGenerator
             w20_105.Checked = false;
             w20_11.Checked = false;
             w20_20.Checked = false;
-            reloadData();
+            ReloadData();
         }
 
-        private void w20_10_Click(object sender, EventArgs e)
+        private void W20_10_Click(object sender, EventArgs e)
         {
             controller.W20 = 10;
             if (!w20_10.Checked) w20_10.Checked = true;
@@ -224,10 +224,10 @@ namespace ArtefaktGenerator
             w20_105.Checked = false;
             w20_11.Checked = false;
             w20_20.Checked = false;
-            reloadData();
+            ReloadData();
         }
 
-        private void w20_105_Click(object sender, EventArgs e)
+        private void W20_105_Click(object sender, EventArgs e)
         {
             controller.W20 = 10.5m;
             if (!w20_105.Checked) w20_105.Checked = true;
@@ -235,10 +235,10 @@ namespace ArtefaktGenerator
             w20_10.Checked = false;
             w20_11.Checked = false;
             w20_20.Checked = false;
-            reloadData();
+            ReloadData();
         }
 
-        private void w20_11_Click(object sender, EventArgs e)
+        private void W20_11_Click(object sender, EventArgs e)
         {
             controller.W20 = 11m;
             if (!w20_11.Checked) w20_11.Checked = true;
@@ -246,10 +246,10 @@ namespace ArtefaktGenerator
             w20_10.Checked = false;
             w20_105.Checked = false;
             w20_20.Checked = false;
-            reloadData();
+            ReloadData();
         }
 
-        private void w20_20_Click(object sender, EventArgs e)
+        private void W20_20_Click(object sender, EventArgs e)
         {
             controller.W20 = 20;
             if (!w20_20.Checked) w20_20.Checked = true;
@@ -257,52 +257,52 @@ namespace ArtefaktGenerator
             w20_105.Checked = false;
             w20_11.Checked = false;
             w20_1.Checked = false;
-            reloadData();
+            ReloadData();
         }
 
-        private void wegeDerAlchimieToolStripMenuItem_Click(object sender, EventArgs e)
+        private void WegeDerAlchimieToolStripMenuItem_Click(object sender, EventArgs e)
         {
             controller.WDA = true;
             wegeDerAlchimieToolStripMenuItem.Checked = true;
             staebeRingeDschinnenlampenToolStripMenuItem.Checked = false;
-            reloadData();
+            ReloadData();
         }
 
-        private void staebeRingeDschinnenlampenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void StaebeRingeDschinnenlampenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             controller.WDA = false;
             wegeDerAlchimieToolStripMenuItem.Checked = false;
             staebeRingeDschinnenlampenToolStripMenuItem.Checked = true;
-            reloadData();
+            ReloadData();
         }
 
 
-        private void ach_save_Click(object sender, EventArgs e)
+        private void Ach_save_Click(object sender, EventArgs e)
         {
             if (ach_save.Checked)
                 controller.optionAchSave = true;
             else
                 controller.optionAchSave = false;
-            reloadData();
+            ReloadData();
         }
 
-        private void alwaysHypervSRD_Click(object sender, EventArgs e)
+        private void AlwaysHypervSRD_Click(object sender, EventArgs e)
         {
             if (alwaysHypervSRD.Checked)
                 controller.optionAlwaysHypervehemenzSRD = true;
             else
                 controller.optionAlwaysHypervehemenzSRD = false;
-            reloadData();
+            ReloadData();
         }
 
-        private void importHeldensoftwareToolStripMenuItem_Click_1(object sender, EventArgs e)
+        private void ImportHeldensoftwareToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            showSelectHeroDialog(Form.ActiveForm);
+            ShowSelectHeroDialog(Form.ActiveForm);
         }
 
-        public void showSelectHeroDialog(Form form)
+        public void ShowSelectHeroDialog(Form form)
         {
-            HeldAuswahl auswahl = new HeldAuswahl(this, LadeHelden.ladeHelden());
+            HeldAuswahl auswahl = new(this, LadeHelden.LadeHeldenFromDefaultPath());
             auswahl.StartPosition = FormStartPosition.CenterParent;
             auswahl.ShowDialog(form);
         }
@@ -427,42 +427,52 @@ namespace ArtefaktGenerator
 
             this.zauberGrid.AutoGenerateColumns = false;
 
-            DataGridViewColumn column = new DataGridViewTextBoxColumn();
-            column.DataPropertyName = "name";
-            column.Name = "Zauber";
+            DataGridViewColumn column = new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "name",
+                Name = "Zauber"
+            };
             this.zauberGrid.Columns.Add(column);
 
-            DataGridViewComboBoxColumn column2 = new DataGridViewComboBoxColumn();
-            column2.DataSource = Enum.GetValues(typeof(Zauber.Komplexitaet));
-            column2.DataPropertyName = "komp";
-            column2.Name = "Komp.";
+            DataGridViewComboBoxColumn column2 = new()
+            {
+                DataSource = Enum.GetValues(typeof(Zauber.Komplexitaet)),
+                DataPropertyName = "komp",
+                Name = "Komp."
+            };
             this.zauberGrid.Columns.Add(column2);
 
-            DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn column3 = new DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn();
-            column3.DataPropertyName = "staple";
-            column3.Name = "Stapel";
-            column3.DecimalPlaces = 0;
-            column3.Minimum = 1;
-            column3.Maximum = 99;
+            DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn column3 = new()
+            {
+                DataPropertyName = "staple",
+                Name = "Stapel",
+                DecimalPlaces = 0,
+                Minimum = 1,
+                Maximum = 99
+            };
             this.zauberGrid.Columns.Add(column3);
 
-            DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn column4 = new DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn();
-            column4.DataPropertyName = "summierung";
-            column4.Name = "Summe";
-            column4.DecimalPlaces = 0;
-            column4.Minimum = 1;
-            column4.Maximum = 99;
+            DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn column4 = new()
+            {
+                DataPropertyName = "summierung",
+                Name = "Summe",
+                DecimalPlaces = 0,
+                Minimum = 1,
+                Maximum = 99
+            };
             this.zauberGrid.Columns.Add(column4);
 
-            DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn column5 = new DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn();
-            column5.DataPropertyName = "asp";
-            column5.Name = "AsP";
-            column5.DecimalPlaces = 0;
-            column5.Minimum = 1;
-            column5.Maximum = 999;
+            DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn column5 = new()
+            {
+                DataPropertyName = "asp",
+                Name = "AsP",
+                DecimalPlaces = 0,
+                Minimum = 1,
+                Maximum = 999
+            };
             this.zauberGrid.Columns.Add(column5);
 
-            DataGridViewCheckBoxColumn column6 = new DataGridViewCheckBoxColumn();
+            DataGridViewCheckBoxColumn column6 = new();
             column6.DataPropertyName = "eigene_rep";
             column6.Name = "Eigene Rep.";
             this.zauberGrid.Columns.Add(column6);
@@ -475,7 +485,7 @@ namespace ArtefaktGenerator
             this.zauberGrid.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
 
             this.zauberGrid.DataSource = controller.zauberListe;
-            this.zauberGrid.MouseUp += zauberGrid_MouseUp;
+            this.zauberGrid.MouseUp += ZauberGrid_MouseUp;
 
             this.stapelung.DataBindings.Add("Maximum", controller, "zauberStapelMax", false, DataSourceUpdateMode.OnPropertyChanged);
             this.stapelung.DataBindings.Add("Enabled", controller, "zauberStapelEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -520,30 +530,30 @@ namespace ArtefaktGenerator
             showPDFToolStripMenuItem.Checked = ArtefaktGenerator.Properties.Settings.Default.showSavedPDF;
             switch(ArtefaktGenerator.Properties.Settings.Default.diceW6)
             {
-                case 0: w6_1_Click(this, null); break;
-                case 1: w6_35_Click(this, null); break;
-                case 2: w6_4_Click(this, null); break;
-                case 3: w6_6_Click(this, null); break;
+                case 0: W6_1_Click(this, null); break;
+                case 1: W6_35_Click(this, null); break;
+                case 2: W6_4_Click(this, null); break;
+                case 3: W6_6_Click(this, null); break;
             }
             switch (ArtefaktGenerator.Properties.Settings.Default.diceW20)
             {
-                case 0: w20_1_Click(this, null); break;
-                case 1: w20_10_Click(this, null); break;
-                case 2: w20_105_Click(this, null); break;
-                case 3: w20_11_Click(this, null); break;
-                case 4: w20_20_Click(this, null); break;
+                case 0: W20_1_Click(this, null); break;
+                case 1: W20_10_Click(this, null); break;
+                case 2: W20_105_Click(this, null); break;
+                case 3: W20_11_Click(this, null); break;
+                case 4: W20_20_Click(this, null); break;
             }
             if (ArtefaktGenerator.Properties.Settings.Default.diceRandom)
             {
                 alleBerechnenToolStripMenuItem.Checked = true;
-                alleBerechnenToolStripMenuItem_Click(this, null);
+                AlleBerechnenToolStripMenuItem_Click(this, null);
             }
             
             material.SelectedIndex = 0;
-            reloadData();
+            ReloadData();
         }
 
-        void zauberGrid_MouseUp(object sender, MouseEventArgs e)
+        void ZauberGrid_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -555,7 +565,7 @@ namespace ArtefaktGenerator
             }
         }
 
-        public void saveOptions()
+        public void SaveOptions()
         {
             ArtefaktGenerator.Properties.Settings.Default.saveAch = controller.optionAchSave;
             ArtefaktGenerator.Properties.Settings.Default.WDA = controller.WDA;
@@ -576,9 +586,9 @@ namespace ArtefaktGenerator
             Properties.Settings.Default.Save();
         }
 
-        private void exportierenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExportierenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveFileDialog2 = new SaveFileDialog();
+            SaveFileDialog saveFileDialog2 = new();
 
             saveFileDialog2.Filter = "PDF (*.pdf)|*.pdf";
             saveFileDialog2.FilterIndex = 1;
@@ -605,14 +615,14 @@ namespace ArtefaktGenerator
         }
 
 
-        private void nebenReRollToolStripMenuItem_Click(object sender, EventArgs e)
+        private void NebenReRollToolStripMenuItem_Click(object sender, EventArgs e)
         {
             controller.optionNebeneffekteNeuWuerfeln = true;
             nebenReRollToolStripMenuItem.Checked = true;
             nebenIgnoreToolStripMenuItem.Checked = false;
         }
 
-        private void nebenIgnoreToolStripMenuItem_Click(object sender, EventArgs e)
+        private void NebenIgnoreToolStripMenuItem_Click(object sender, EventArgs e)
         {
             controller.optionNebeneffekteNeuWuerfeln = false;
             nebenIgnoreToolStripMenuItem.Checked = true;
@@ -621,7 +631,7 @@ namespace ArtefaktGenerator
 
         #region Linux gedoens
         // TODO: Verify if this entire reload method could be obsolete on Windows only
-        private void reloadData()
+        private void ReloadData()
         {
             // TODO Should be done via DataBinding. Investigate how to databind to column properties
             if (this.zauberGrid.ColumnCount > 0)
@@ -632,465 +642,465 @@ namespace ArtefaktGenerator
             }            
         }
 
-        private void special_variablerelease_CheckedChanged(object sender, EventArgs e)
+        private void Special_variablerelease_CheckedChanged(object sender, EventArgs e)
         {
             controller.spezialVariablerAusloeser = special_variablerelease.Checked;
-            reloadData();
+            ReloadData();
         }
 
-        private void special_variable_var_ValueChanged(object sender, EventArgs e)
+        private void Special_variable_var_ValueChanged(object sender, EventArgs e)
         {
             controller.spezialVariablerAusloeserVar = (int)special_variable_var.Value;
-            reloadData();
+            ReloadData();
         }
 
         private void ArtGenControl_Click(object sender, EventArgs e)
         {
         }
 
-        private void rep_mag_Click(object sender, EventArgs e)
+        private void Rep_mag_Click(object sender, EventArgs e)
         {
             controller.sfRepresentation = 1;
-            reloadData();
+            ReloadData();
         }
 
-        private void rep_ach_Click(object sender, EventArgs e)
+        private void Rep_ach_Click(object sender, EventArgs e)
         {
             controller.sfRepresentation = 0;
-            reloadData();
+            ReloadData();
         }
 
-        private void sf_kraft_CheckedChanged(object sender, EventArgs e)
+        private void SF_kraft_CheckedChanged(object sender, EventArgs e)
         {
             controller.sfKraftkontrolle = sf_kraft.Checked;
-            reloadData();
+            ReloadData();
         }
 
-        private void sf_vielLadung_CheckedChanged(object sender, EventArgs e)
+        private void SF_vielLadung_CheckedChanged(object sender, EventArgs e)
         {
             controller.sfVielfacheLadung = sf_vielLadung.Checked;
-            reloadData();
+            ReloadData();
         }
 
-        private void sf_stapel_CheckedChanged(object sender, EventArgs e)
+        private void SF_stapel_CheckedChanged(object sender, EventArgs e)
         {
             controller.sfStapeleffekt = sf_stapel.Checked;
-            reloadData();
+            ReloadData();
         }
 
-        private void sf_hyper_CheckedChanged(object sender, EventArgs e)
+        private void SF_hyper_CheckedChanged(object sender, EventArgs e)
         {
             controller.sfHypervehemenz = sf_hyper.Checked;
-            reloadData();
+            ReloadData();
         }
 
-        private void sf_matrix_CheckedChanged(object sender, EventArgs e)
+        private void SF_matrix_CheckedChanged(object sender, EventArgs e)
         {
             controller.sfMatrixgeber = sf_matrix.Checked;
-            reloadData();
+            ReloadData();
         }
 
-        private void sf_semiI_CheckedChanged(object sender, EventArgs e)
+        private void SF_semiI_CheckedChanged(object sender, EventArgs e)
         {
             controller.sfSemipermanenz1 = sf_semiI.Checked;
-            reloadData();
+            ReloadData();
         }
 
-        private void sf_semiII_CheckedChanged(object sender, EventArgs e)
+        private void SF_semiII_CheckedChanged(object sender, EventArgs e)
         {
             controller.sfSemipermanenz2 = sf_semiII.Checked;
-            reloadData();
+            ReloadData();
         }
 
-        private void sf_ringkunde_CheckedChanged(object sender, EventArgs e)
+        private void SF_ringkunde_CheckedChanged(object sender, EventArgs e)
         {
             controller.sfRingkunde = sf_ringkunde.Checked;
-            reloadData();
+            ReloadData();
         }
 
-        private void sf_kraftspeicher_CheckedChanged(object sender, EventArgs e)
+        private void SF_kraftspeicher_CheckedChanged(object sender, EventArgs e)
         {
             controller.sfKraftspeicher = sf_kraftspeicher.Checked;
-            reloadData();
+            ReloadData();
         }
 
-        private void sf_aux_CheckedChanged(object sender, EventArgs e)
+        private void SF_aux_CheckedChanged(object sender, EventArgs e)
         {
             controller.sfAuxiliator = sf_aux.Checked;
-            reloadData();
+            ReloadData();
         }
 
-        private void arcanovi_change_ValueChanged(object sender, EventArgs e)
+        private void Arcanovi_change_ValueChanged(object sender, EventArgs e)
         {
             controller.tawArcanovi = (int)arcanovi_change.Value;
-            reloadData();
+            ReloadData();
         }
 
-        private void arcanovi_matrix_change_ValueChanged(object sender, EventArgs e)
+        private void Arcanovi_matrix_change_ValueChanged(object sender, EventArgs e)
         {
             controller.tawArcanoviMatrix = (int)arcanovi_matrix_change.Value;
-            reloadData();
+            ReloadData();
         }
 
-        private void arcanovi_semi_change_ValueChanged(object sender, EventArgs e)
+        private void Arcanovi_semi_change_ValueChanged(object sender, EventArgs e)
         {
             controller.tawArcanoviSemipermanenz = (int)arcanovi_semi_change.Value;
-            reloadData();
+            ReloadData();
         }
 
-        private void odem_change_ValueChanged(object sender, EventArgs e)
+        private void Odem_change_ValueChanged(object sender, EventArgs e)
         {
             controller.tawOdem = (int)odem_change.Value;
-            reloadData();
+            ReloadData();
         }
 
-        private void analys_change_ValueChanged(object sender, EventArgs e)
+        private void Analys_change_ValueChanged(object sender, EventArgs e)
         {
             controller.tawAnalys = (int)analys_change.Value;
-            reloadData();
+            ReloadData();
         }
 
-        private void magiekunde_change_ValueChanged(object sender, EventArgs e)
+        private void Magiekunde_change_ValueChanged(object sender, EventArgs e)
         {
             controller.tawMagiekunde = (int)magiekunde_change.Value;
-            reloadData();
+            ReloadData();
         }
 
-        private void destruct_change_ValueChanged(object sender, EventArgs e)
+        private void Destruct_change_ValueChanged(object sender, EventArgs e)
         {
             controller.tawDestructibo = (int)destruct_change.Value;
-            reloadData();
+            ReloadData();
         }
 
-        private void type_temp_Click(object sender, EventArgs e)
+        private void Type_temp_Click(object sender, EventArgs e)
         {
-            controller.artefakttyp = 0;
-            reloadData();
+            controller.artefakttyp = (int)Artefakt.ArtefaktType.TEMP;
+            ReloadData();
         }
 
-        private void type_einaml_Click(object sender, EventArgs e)
+        private void Type_einaml_Click(object sender, EventArgs e)
         {
-            controller.artefakttyp = 1;
-            reloadData();
+            controller.artefakttyp = (int)Artefakt.ArtefaktType.NORMAL;
+            ReloadData();
         }
 
-        private void type_charge_Click(object sender, EventArgs e)
+        private void Type_charge_Click(object sender, EventArgs e)
         {
-            controller.artefakttyp = 2;
-            reloadData();
+            controller.artefakttyp = (int)Artefakt.ArtefaktType.RECHARGE;
+            ReloadData();
         }
 
-        private void type_matrix_Click(object sender, EventArgs e)
+        private void Type_matrix_Click(object sender, EventArgs e)
         {
-            controller.artefakttyp = 3;
-            reloadData();
+            controller.artefakttyp = (int)Artefakt.ArtefaktType.MATRIX;
+            ReloadData();
         }
 
-        private void type_semi_Click(object sender, EventArgs e)
+        private void Type_semi_Click(object sender, EventArgs e)
         {
-            controller.artefakttyp = 4;
-            reloadData();
+            controller.artefakttyp = (int)Artefakt.ArtefaktType.SEMI;
+            ReloadData();
         }
 
-        private void type_speicher_Click(object sender, EventArgs e)
+        private void Type_speicher_Click(object sender, EventArgs e)
         {
-            controller.artefakttyp = 6;
-            reloadData();
+            controller.artefakttyp = (int)Artefakt.ArtefaktType.SPEICHER;
+            ReloadData();
         }
 
-        private void type_aux_Click(object sender, EventArgs e)
+        private void Type_aux_Click(object sender, EventArgs e)
         {
-            controller.artefakttyp = 5;
-            reloadData();
+            controller.artefakttyp = (int)Artefakt.ArtefaktType.AUX;
+            ReloadData();
         }
 
-        private void temp_tag_Click(object sender, EventArgs e)
+        private void Temp_tag_Click(object sender, EventArgs e)
         {
-            controller.artefakttypTemp = 0;
-            reloadData();
+            controller.artefakttypTemp = (int)Artefakt.TempType.TAG;
+            ReloadData();
         }
 
-        private void temp_woche_Click(object sender, EventArgs e)
+        private void Temp_woche_Click(object sender, EventArgs e)
         {
-            controller.artefakttypTemp = 1;
-            reloadData();
+            controller.artefakttypTemp = (int)Artefakt.TempType.WOCHE;
+            ReloadData();
         }
 
-        private void temp_monat_Click(object sender, EventArgs e)
+        private void Temp_monat_Click(object sender, EventArgs e)
         {
-            controller.artefakttypTemp = 2;
-            reloadData();
+            controller.artefakttypTemp = (int)Artefakt.TempType.MONAT;
+            ReloadData();
         }
 
-        private void matrix_labil_Click(object sender, EventArgs e)
+        private void Matrix_labil_Click(object sender, EventArgs e)
         {
-            controller.artefakttypMatrix = 0;
-            reloadData();
+            controller.artefakttypMatrix = (int)Artefakt.MatrixType.LABIL;
+            ReloadData();
         }
 
-        private void matrix_stable_Click(object sender, EventArgs e)
+        private void Matrix_stable_Click(object sender, EventArgs e)
         {
-            controller.artefakttypMatrix = 1;
-            reloadData();
+            controller.artefakttypMatrix = (int)Artefakt.MatrixType.STABIL;
+            ReloadData();
         }
 
-        private void matrix_verystable_Click(object sender, EventArgs e)
+        private void Matrix_verystable_Click(object sender, EventArgs e)
         {
-            controller.artefakttypMatrix = 2;
-            reloadData();
+            controller.artefakttypMatrix = (int)Artefakt.MatrixType.SEHRSTABIL;
+            ReloadData();
         }
 
-        private void matrix_unempfindlich_Click(object sender, EventArgs e)
+        private void Matrix_unempfindlich_Click(object sender, EventArgs e)
         {
-            controller.artefakttypMatrix = 3;
-            reloadData();
+            controller.artefakttypMatrix = (int)Artefakt.MatrixType.UNEMPFINDLICH;
+            ReloadData();
         }
 
-        private void aux_labil_Click(object sender, EventArgs e)
+        private void Aux_labil_Click(object sender, EventArgs e)
         {
-            controller.artefakttypAuxiliator = 0;
-            reloadData();
+            controller.artefakttypAuxiliator = (int)Artefakt.MatrixType.LABIL;
+            ReloadData();
         }
 
-        private void aux_stable_Click(object sender, EventArgs e)
+        private void Aux_stable_Click(object sender, EventArgs e)
         {
-            controller.artefakttypAuxiliator = 1;
-            reloadData();
+            controller.artefakttypAuxiliator = (int)Artefakt.MatrixType.STABIL;
+            ReloadData();
         }
 
-        private void aux_verystable_Click(object sender, EventArgs e)
+        private void Aux_verystable_Click(object sender, EventArgs e)
         {
-            controller.artefakttypAuxiliator = 2;
-            reloadData();
+            controller.artefakttypAuxiliator = (int)Artefakt.MatrixType.SEHRSTABIL;
+            ReloadData();
 
         }
 
-        private void aux_unempfindlich_Click(object sender, EventArgs e)
+        private void Aux_unempfindlich_Click(object sender, EventArgs e)
         {
-            controller.artefakttypAuxiliator = 3;
-            reloadData();
+            controller.artefakttypAuxiliator = (int)Artefakt.MatrixType.UNEMPFINDLICH;
+            ReloadData();
         }
 
-        private void semi_tag_Click(object sender, EventArgs e)
+        private void Semi_tag_Click(object sender, EventArgs e)
         {
-            controller.artefakttypSemipermanenz = 0;
-            reloadData();
+            controller.artefakttypSemipermanenz = (int)Artefakt.SemiType.TAG;
+            ReloadData();
         }
 
-        private void semi_woche_Click(object sender, EventArgs e)
+        private void Semi_woche_Click(object sender, EventArgs e)
         {
-            controller.artefakttypSemipermanenz = 1;
-            reloadData();
+            controller.artefakttypSemipermanenz = (int)Artefakt.SemiType.WOCHE;
+            ReloadData();
         }
 
-        private void semi_monat_Click(object sender, EventArgs e)
+        private void Semi_monat_Click(object sender, EventArgs e)
         {
-            controller.artefakttypSemipermanenz = 2;
-            reloadData();
+            controller.artefakttypSemipermanenz = (int)Artefakt.SemiType.MONAT;
+            ReloadData();
         }
 
-        private void semi_jahr_Click(object sender, EventArgs e)
+        private void Semi_jahr_Click(object sender, EventArgs e)
         {
-            controller.artefakttypSemipermanenz = 3;
-            reloadData();
+            controller.artefakttypSemipermanenz = (int)Artefakt.SemiType.JAHR;
+            ReloadData();
         }
 
-        private void type_speicher_value_ValueChanged(object sender, EventArgs e)
+        private void Type_speicher_value_ValueChanged(object sender, EventArgs e)
         {
             controller.artefakttypKraftspeicher = (int)type_speicher_value.Value;
-            reloadData();
+            ReloadData();
         }
 
-        private void probe_ausloes_ValueChanged(object sender, EventArgs e)
+        private void Probe_ausloes_ValueChanged(object sender, EventArgs e)
         {
             controller.probeAusloeser = (int)probe_ausloes.Value;
-            reloadData();
+            ReloadData();
         }
 
-        private void probe_affine_ValueChanged(object sender, EventArgs e)
+        private void Probe_affine_ValueChanged(object sender, EventArgs e)
         {
             controller.probeAffin = (int)probe_affine.Value;
-            reloadData();
+            ReloadData();
         }
 
-        private void artefakt_groesse_ValueChanged(object sender, EventArgs e)
+        private void Artefakt_groesse_ValueChanged(object sender, EventArgs e)
         {
             controller.probeGroesse = (int)artefakt_groesse.Value;
-            reloadData();
+            ReloadData();
         }
 
-        private void arcanovi_force_ValueChanged(object sender, EventArgs e)
+        private void Arcanovi_force_ValueChanged(object sender, EventArgs e)
         {
             controller.probeErzwingen = (int)arcanovi_force.Value;
-            reloadData();
+            ReloadData();
         }
 
-        private void starkonst_ValueChanged(object sender, EventArgs e)
+        private void Starkonst_ValueChanged(object sender, EventArgs e)
         {
             controller.probeSterne = (int)starkonst.Value;
-            reloadData();
+            ReloadData();
         }
 
-        private void arcanoviOtherMod_ValueChanged(object sender, EventArgs e)
+        private void ArcanoviOtherMod_ValueChanged(object sender, EventArgs e)
         {
             controller.probeAndereMod = (int)arcanoviOtherMod.Value;
-            reloadData();
+            ReloadData();
         }
 
-        private void arcanoviZfPSternMod_ValueChanged(object sender, EventArgs e)
+        private void ArcanoviZfPSternMod_ValueChanged(object sender, EventArgs e)
         {
             controller.probeZfPSternMod = (int)arcanoviZfPSternMod.Value;
-            reloadData();
+            ReloadData();
         }
 
-        private void wirkSpruchMod_ValueChanged(object sender, EventArgs e)
+        private void WirkSpruchMod_ValueChanged(object sender, EventArgs e)
         {
             controller.probeWirkenderSpruchMod = (int)wirkSpruchMod.Value;
-            reloadData();
+            ReloadData();
         }
 
-        private void limbus_CheckedChanged(object sender, EventArgs e)
+        private void Limbus_CheckedChanged(object sender, EventArgs e)
         {
             controller.extraMadeInLimbus = limbus.Checked;
-            reloadData();
+            ReloadData();
         }
 
-        private void namenlos_CheckedChanged(object sender, EventArgs e)
+        private void Namenlos_CheckedChanged(object sender, EventArgs e)
         {
             controller.extraNamenloseTage = namenlos.Checked;
-            reloadData();
+            ReloadData();
         }
 
-        private void gemeinschaftlich_CheckedChanged(object sender, EventArgs e)
+        private void Gemeinschaftlich_CheckedChanged(object sender, EventArgs e)
         {
             controller.extraGemeinschaftlicheErschaffung = gemeinschaftlich.Checked;
-            reloadData();
+            ReloadData();
         }
 
-        private void agribaal_ValueChanged(object sender, EventArgs e)
+        private void Agribaal_ValueChanged(object sender, EventArgs e)
         {
             controller.extraAgribaal = (int)agribaal.Value;
-            reloadData();
+            ReloadData();
         }
 
-        private void special_ort_occ_ValueChanged(object sender, EventArgs e)
+        private void Special_ort_occ_ValueChanged(object sender, EventArgs e)
         {
             controller.extraOkkupation = (int)special_ort_occ.Value;
-            reloadData();
+            ReloadData();
         }
 
-        private void special_ort_neben_ValueChanged(object sender, EventArgs e)
+        private void Special_ort_neben_ValueChanged(object sender, EventArgs e)
         {
             controller.extraNebeneffekt = (int)special_ort_neben.Value;
-            reloadData();
+            ReloadData();
         }
 
-        private void special_additional_arcanovi_ValueChanged(object sender, EventArgs e)
+        private void Special_additional_arcanovi_ValueChanged(object sender, EventArgs e)
         {
             controller.extraZusaetzlicheArcanovi = (int)special_additional_arcanovi.Value;
-            reloadData();
+            ReloadData();
         }
 
-        private void artefakt_super_big_SelectedIndexChanged(object sender, EventArgs e)
+        private void Artefakt_super_big_SelectedIndexChanged(object sender, EventArgs e)
         {
             controller.extraExtraGross = artefakt_super_big.SelectedIndex;
-            reloadData();
+            ReloadData();
         }
 
-        private void material_SelectedIndexChanged(object sender, EventArgs e)
+        private void Material_SelectedIndexChanged(object sender, EventArgs e)
         {
             controller.selectedMaterial = material.SelectedIndex;
-            reloadData();
+            ReloadData();
         }
 
-        private void cb_kristalle_CheckedChanged(object sender, EventArgs e)
+        private void Cb_kristalle_CheckedChanged(object sender, EventArgs e)
         {
             controller.extraKristalle = cb_kristalle.Checked;
-            reloadData();
+            ReloadData();
         }
 
-        private void special_signet_CheckedChanged(object sender, EventArgs e)
+        private void Special_signet_CheckedChanged(object sender, EventArgs e)
         {
             controller.spezialSiegel = special_signet.Checked;
-            reloadData();
+            ReloadData();
         }
 
-        private void special_apport_CheckedChanged(object sender, EventArgs e)
+        private void Special_apport_CheckedChanged(object sender, EventArgs e)
         {
             controller.spezialApport = special_apport.Checked;
-            reloadData();
+            ReloadData();
         }
 
-        private void special_durable_CheckedChanged(object sender, EventArgs e)
+        private void Special_durable_CheckedChanged(object sender, EventArgs e)
         {
             controller.spezialUnzerbrechlich = special_durable.Checked;
-            reloadData();
+            ReloadData();
         }
 
-        private void special_scent_CheckedChanged(object sender, EventArgs e)
+        private void Special_scent_CheckedChanged(object sender, EventArgs e)
         {
             controller.spezialGespuer = special_scent.Checked;
-            reloadData();
+            ReloadData();
         }
 
-        private void special_resistant_CheckedChanged(object sender, EventArgs e)
+        private void Special_resistant_CheckedChanged(object sender, EventArgs e)
         {
             controller.spezialResistenz = special_resistant.Checked;
-            reloadData();
+            ReloadData();
         }
 
-        private void special_selfrepair_CheckedChanged(object sender, EventArgs e)
+        private void Special_selfrepair_CheckedChanged(object sender, EventArgs e)
         {
             controller.spezialSelbstreparatur = special_selfrepair.Checked;
-            reloadData();
+            ReloadData();
         }
 
-        private void special_reversalis_CheckedChanged(object sender, EventArgs e)
+        private void Special_reversalis_CheckedChanged(object sender, EventArgs e)
         {
             controller.spezialUmkehrtalisman = special_reversalis.Checked;
-            reloadData();
+            ReloadData();
         }
 
-        private void special_schleier_CheckedChanged(object sender, EventArgs e)
+        private void Special_schleier_CheckedChanged(object sender, EventArgs e)
         {
             controller.spezialVerschleierung = special_schleier.Checked;
-            reloadData();
+            ReloadData();
         }
 
-        private void special_eatmaterial_CheckedChanged(object sender, EventArgs e)
+        private void Special_eatmaterial_CheckedChanged(object sender, EventArgs e)
         {
             controller.spezialVerzehrend = special_eatmaterial.Checked;
-            reloadData();
+            ReloadData();
         }
 
-        private void special_ferngespuer_CheckedChanged(object sender, EventArgs e)
+        private void Special_ferngespuer_CheckedChanged(object sender, EventArgs e)
         {
             controller.spezialFerngespuer = special_ferngespuer.Checked;
-            reloadData();
+            ReloadData();
         }
 
-        private void special_eatmat_var_ValueChanged(object sender, EventArgs e)
+        private void Special_eatmat_var_ValueChanged(object sender, EventArgs e)
         {
             controller.spezialVerzehrendVar = (int)special_eatmat_var.Value;
-            reloadData();
+            ReloadData();
         }
 
-        private void special_ferngespuer_komp_SelectedIndexChanged(object sender, EventArgs e)
+        private void Special_ferngespuer_komp_SelectedIndexChanged(object sender, EventArgs e)
         {
             controller.spezialFerngespuerKomp = special_ferngespuer_komp.SelectedIndex;
-            reloadData();
+            ReloadData();
         }
 
-        private void special_ferngespuer_asp_ValueChanged(object sender, EventArgs e)
+        private void Special_ferngespuer_asp_ValueChanged(object sender, EventArgs e)
         {
             controller.spezialFerngespuerAsp = (int)special_ferngespuer_asp.Value;
-            reloadData();
+            ReloadData();
         }
 
-        private void loads_ValueChanged(object sender, EventArgs e)
+        private void Loads_ValueChanged(object sender, EventArgs e)
         {
             controller.zauberLadungen = (int)loads.Value;
-            reloadData();
+            ReloadData();
         }
         #endregion
         private void SFGroupBox_Resize(object sender, EventArgs e)
@@ -1107,62 +1117,62 @@ namespace ArtefaktGenerator
             TalentGroupBox.ResumeLayout();
         }
 
-        private void zauberGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void ZauberGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             zauberGrid.CommitEdit(DataGridViewDataErrorContexts.Commit);
         }
 
-        private void zauberGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void ZauberGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             zauberGrid.CommitEdit(DataGridViewDataErrorContexts.Commit);
         }
 
-        private void zauberGrid_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void ZauberGrid_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             zauberGrid.CommitEdit(DataGridViewDataErrorContexts.Commit);
         }
 
-        private void zauberGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void ZauberGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             zauberGrid.CommitEdit(DataGridViewDataErrorContexts.Commit);
         }
 
-        private void zauberGrid_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private void ZauberGrid_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             zauberGrid.CommitEdit(DataGridViewDataErrorContexts.Commit);
         }
 
-        private void zauberGrid_CellValueChanged_1(object sender, DataGridViewCellEventArgs e)
+        private void ZauberGrid_CellValueChanged_1(object sender, DataGridViewCellEventArgs e)
         {
             zauberGrid.CommitEdit(DataGridViewDataErrorContexts.Commit);
         }
 
-        private void zauberGrid_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        private void ZauberGrid_CurrentCellDirtyStateChanged(object sender, EventArgs e)
         {
             if (zauberGrid.CurrentCell.ColumnIndex == 1)
                 zauberGrid.CommitEdit(DataGridViewDataErrorContexts.Commit);
         }
 
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            showAboutDialog();
+            ShowAboutDialog();
         }
 
-        public void showAboutDialog()
+        public static void ShowAboutDialog()
         {
-            AboutForm form = new AboutForm();
+            AboutForm form = new();
             form.StartPosition = FormStartPosition.CenterParent;
             form.ShowDialog();
         }
 
-        private void lizenzToolStripMenuItem_Click(object sender, EventArgs e)
+        private void LizenzToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            showLizenzDialog();
+            ShowLizenzDialog();
         }
 
-        public void showLizenzDialog()
+        public static void ShowLizenzDialog()
         {
-            LizenzForm form = new LizenzForm();
+            LizenzForm form = new();
             form.StartPosition = FormStartPosition.CenterParent;
             form.ShowDialog();
         }

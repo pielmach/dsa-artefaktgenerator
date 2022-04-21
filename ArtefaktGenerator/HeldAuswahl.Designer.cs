@@ -45,7 +45,7 @@
             this.cancelButton.TabIndex = 0;
             this.cancelButton.Text = "Abbrechen";
             this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // okButton
             // 
@@ -57,7 +57,7 @@
             this.okButton.TabIndex = 1;
             this.okButton.Text = "OK";
             this.okButton.UseVisualStyleBackColor = true;
-            this.okButton.Click += new System.EventHandler(this.okButton_Click);
+            this.okButton.Click += new System.EventHandler(this.OkButton_Click);
             // 
             // heroList
             // 
@@ -69,7 +69,7 @@
             this.heroList.Name = "heroList";
             this.heroList.Size = new System.Drawing.Size(323, 108);
             this.heroList.TabIndex = 2;
-            this.heroList.SelectedIndexChanged += new System.EventHandler(this.heroList_SelectedIndexChanged);
+            this.heroList.SelectedIndexChanged += new System.EventHandler(this.HeroList_SelectedIndexChanged);
             // 
             // importButton
             // 
@@ -80,7 +80,7 @@
             this.importButton.TabIndex = 3;
             this.importButton.Text = "Import von XML...";
             this.importButton.UseVisualStyleBackColor = true;
-            this.importButton.Click += new System.EventHandler(this.importButton_Click);
+            this.importButton.Click += new System.EventHandler(this.ImportButton_Click);
             // 
             // label1
             // 

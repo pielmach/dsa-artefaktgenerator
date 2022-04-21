@@ -31,15 +31,15 @@ namespace ArtefaktGenerator
     {
         public string heldName = "";
 
-        public SF sf = new SF();
+        public SF sf = new();
 
-        public TaW taw = new TaW();
+        public TaW taw = new();
 
-        public Probe probe = new Probe();
+        public Probe probe = new();
 
-        public Analys analys = new Analys();
+        public Analys analys = new();
 
-        public Destructibo destructibo = new Destructibo();
+        public Destructibo destructibo = new();
 
         public enum ArtefaktType : short { TEMP = 0, NORMAL = 1, RECHARGE = 2, MATRIX = 3, SEMI = 4, AUX = 5, SPEICHER = 6 };
 
@@ -113,7 +113,7 @@ namespace ArtefaktGenerator
 
         public decimal loads = 1;
 
-        public Material material = new Material("kein");
+        public Material material = new("kein");
 
         public bool kristalle = false;
 

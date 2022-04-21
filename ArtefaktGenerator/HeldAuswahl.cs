@@ -10,17 +10,17 @@ namespace ArtefaktGenerator
 {
     public partial class HeldAuswahl : Form
     {
-        private ArtGenControl mainControl;
+        private readonly ArtGenControl mainControl;
 
         public HeldAuswahl(ArtGenControl mainControl, List<Held> helden)
         {
             this.mainControl = mainControl;
             InitializeComponent();
             if (helden != null)
-                setHelden(helden);
+                SetHelden(helden);
         }
 
-        private void setHelden(List<Held> helden)
+        private void SetHelden(List<Held> helden)
         {
             heroList.Items.Clear();
 
@@ -35,27 +35,27 @@ namespace ArtefaktGenerator
             }
         }
 
-        private void heroList_SelectedIndexChanged(object sender, EventArgs e)
+        private void HeroList_SelectedIndexChanged(object sender, EventArgs e)
         {
             okButton.Enabled = (heroList.SelectedIndex >= 0);
         }
 
-        private void okButton_Click(object sender, EventArgs e)
+        private void OkButton_Click(object sender, EventArgs e)
         {
             Held held = (Held)heroList.SelectedItem;
-            mainControl.plugInHeroFromXml(held.xml);
+            mainControl.PlugInHeroFromXml(held.xml);
 
             this.Close();
         }
 
-        private void cancelButton_Click(object sender, EventArgs e)
+        private void CancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void importButton_Click(object sender, EventArgs e)
+        private void ImportButton_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
+            OpenFileDialog openFileDialog = new();
             openFileDialog.AddExtension = true;
             openFileDialog.CheckFileExists = true;
             openFileDialog.CheckPathExists = true;
@@ -69,8 +69,8 @@ namespace ArtefaktGenerator
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                List<Held> helden = LadeHelden.ladeHelden(openFileDialog.FileName);
-                setHelden(helden);
+                List<Held> helden = LadeHelden.LadeHeldenFromFile(openFileDialog.FileName);
+                SetHelden(helden);
             }
         }
     }
