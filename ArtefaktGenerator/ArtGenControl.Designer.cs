@@ -3422,7 +3422,6 @@ namespace ArtefaktGenerator
             this.Name = "ArtGenControl";
             this.Size = new System.Drawing.Size(1645, 1064);
             this.Load += new System.EventHandler(this.ArtGenControl_Load);
-            this.SizeChanged += new System.EventHandler(this.ArtGenControl_SizeChanged);
             this.Click += new System.EventHandler(this.ArtGenControl_Click);
             this.materialGroup.ResumeLayout(false);
             this.flowLayoutPanel10.ResumeLayout(false);
