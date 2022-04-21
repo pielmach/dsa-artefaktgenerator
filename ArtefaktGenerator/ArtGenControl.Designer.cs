@@ -227,6 +227,7 @@ namespace ArtefaktGenerator
             this.showPDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lizenzToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hilfeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.artefakttyp = new CustomControls.RadioGroupBox();
@@ -2655,6 +2656,7 @@ namespace ArtefaktGenerator
             // 
             this.infoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem,
+            this.lizenzToolStripMenuItem,
             this.hilfeToolStripMenuItem});
             this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
             this.infoToolStripMenuItem.Size = new System.Drawing.Size(60, 39);
@@ -2663,13 +2665,21 @@ namespace ArtefaktGenerator
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 34);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.aboutToolStripMenuItem.Text = "Über";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // lizenzToolStripMenuItem
+            // 
+            this.lizenzToolStripMenuItem.Name = "lizenzToolStripMenuItem";
+            this.lizenzToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.lizenzToolStripMenuItem.Text = "Lizenz";
+            this.lizenzToolStripMenuItem.Click += new System.EventHandler(this.lizenzToolStripMenuItem_Click);
             // 
             // hilfeToolStripMenuItem
             // 
             this.hilfeToolStripMenuItem.Name = "hilfeToolStripMenuItem";
-            this.hilfeToolStripMenuItem.Size = new System.Drawing.Size(152, 34);
+            this.hilfeToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.hilfeToolStripMenuItem.Text = "Hilfe";
             this.hilfeToolStripMenuItem.Visible = false;
             // 
@@ -3845,5 +3855,6 @@ namespace ArtefaktGenerator
         private Panel panel32;
         private Panel panel33;
         private Panel panel34;
+        private ToolStripMenuItem lizenzToolStripMenuItem;
     }
 }

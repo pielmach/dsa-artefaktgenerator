@@ -1155,5 +1155,30 @@ namespace ArtefaktGenerator
             if (zauberGrid.CurrentCell.ColumnIndex == 1)
                 zauberGrid.CommitEdit(DataGridViewDataErrorContexts.Commit);
         }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showAboutDialog();
+        }
+
+        public void showAboutDialog()
+        {
+            AboutForm form = new AboutForm();
+            form.StartPosition = FormStartPosition.CenterParent;
+            form.ShowDialog();
+        }
+
+        private void lizenzToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showLizenzDialog();
+        }
+
+        public void showLizenzDialog()
+        {
+            LizenzForm form = new LizenzForm();
+            form.StartPosition = FormStartPosition.CenterParent;
+            form.ShowDialog();
+        }
+
     }
 }
