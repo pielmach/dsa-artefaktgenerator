@@ -16,10 +16,7 @@
     along with Foobar.  If not, see http://www.gnu.org/licenses/ .
 */
 
-using System;
-using System.Collections.Generic;
 //using System.Linq;
-using System.Text;
 
 namespace ArtefaktGenerator
 {
@@ -46,11 +43,11 @@ namespace ArtefaktGenerator
         }
 
         public Material(
-            string name, 
-            decimal arcanovi_mod, 
-            decimal wirkende_mod, 
-            decimal asp_mod, 
-            decimal pasp_mod, 
+            string name,
+            decimal arcanovi_mod,
+            decimal wirkende_mod,
+            decimal asp_mod,
+            decimal pasp_mod,
             decimal occupation_mod,
             decimal occupation_art_mod,
             decimal nebenwirkung_mod,

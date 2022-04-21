@@ -17,9 +17,7 @@
 */
 
 using System;
-using System.Collections.Generic;
 //using System.Linq;
-using System.Text;
 
 namespace ArtefaktGenerator
 {
@@ -40,7 +38,7 @@ namespace ArtefaktGenerator
 
         public decimal W6
         {
-            get 
+            get
             {
                 if (generatew6)
                     return rand.Next(1, 6);
@@ -53,7 +51,7 @@ namespace ArtefaktGenerator
                     return this._w6;
                 }
             }
-            set 
+            set
             {
                 if (value > 6 || value < 1)
                     generatew6 = true;

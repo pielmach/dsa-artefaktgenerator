@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Xml;
+﻿using System.Xml;
 
 namespace ArtefaktGenerator
 {
@@ -14,7 +10,7 @@ namespace ArtefaktGenerator
         public Held(string xml)
         {
 
-            XmlDocument xmlDoc = new XmlDocument();
+            XmlDocument xmlDoc = new();
             xmlDoc.LoadXml(xml);
 
             XmlNodeList heldNode = xmlDoc.GetElementsByTagName("held");
@@ -28,7 +24,7 @@ namespace ArtefaktGenerator
             }
             else
                 this.name = "Der Namenlose";
-            
+
             this.xml = xml;
         }
 

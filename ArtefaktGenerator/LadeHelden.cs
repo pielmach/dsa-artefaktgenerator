@@ -49,7 +49,7 @@ namespace ArtefaktGenerator
 
             if (filename.EndsWith(".xml"))
             {
-                Held held = new(File.ReadAllText(filename,System.Text.Encoding.UTF8));
+                Held held = new(File.ReadAllText(filename, System.Text.Encoding.UTF8));
                 list.Add(held);
             }
             else if (filename.EndsWith(".zip.hld") || filename.EndsWith(".zip"))

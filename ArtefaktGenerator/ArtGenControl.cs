@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Text;
 using System.Windows.Forms;
-
-using System.Text.RegularExpressions;
 
 namespace ArtefaktGenerator
 {
@@ -14,20 +9,20 @@ namespace ArtefaktGenerator
     {
         public Controller controller = new();
 
-        public ArtGenControl() : this (false)
+        public ArtGenControl() : this(false)
         {
         }
 
         public ArtGenControl(bool plugInMode)
         {
             InitializeComponent();
-            
+
             // Disable Non-PlugIn fields
             if (plugInMode)
             {
                 programmToolStripMenuItem1.Visible = false;
                 heldenimportToolStripMenuItem.Visible = false;
-            }			            
+            }
         }
 
         public void PlugInHeroFromXml(string xml)
@@ -36,7 +31,7 @@ namespace ArtefaktGenerator
             ReloadData();
         }
 
-        delegate void Del(int e);          
+        delegate void Del(int e);
 
         private void Zauber_add_Click(object sender, EventArgs e)
         {
@@ -67,17 +62,17 @@ namespace ArtefaktGenerator
                 controller.zauberListe.RemoveAt(zauberGrid.SelectedCells[0].RowIndex);
                 controller.zauberListe = controller.zauberListe;
             }
-            catch (System.Exception )
+            catch (System.Exception)
             {
-                	
+
             }
             ReloadData();
         }
-        
+
         private void BeendenToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }        
+        }
 
         private void NeuesArtefaktToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -528,7 +523,7 @@ namespace ArtefaktGenerator
             nebenReRollToolStripMenuItem.Checked = controller.optionNebeneffekteNeuWuerfeln;
             nebenIgnoreToolStripMenuItem.Checked = !controller.optionNebeneffekteNeuWuerfeln;
             showPDFToolStripMenuItem.Checked = ArtefaktGenerator.Properties.Settings.Default.showSavedPDF;
-            switch(ArtefaktGenerator.Properties.Settings.Default.diceW6)
+            switch (ArtefaktGenerator.Properties.Settings.Default.diceW6)
             {
                 case 0: W6_1_Click(this, null); break;
                 case 1: W6_35_Click(this, null); break;
@@ -548,7 +543,7 @@ namespace ArtefaktGenerator
                 alleBerechnenToolStripMenuItem.Checked = true;
                 AlleBerechnenToolStripMenuItem_Click(this, null);
             }
-            
+
             material.SelectedIndex = 0;
             ReloadData();
         }
@@ -639,7 +634,7 @@ namespace ArtefaktGenerator
                 this.zauberGrid.Columns[2].ReadOnly = !controller.zauberStapelEnabled;
                 ((DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn)(this.zauberGrid.Columns[2])).Minimum = 1;
                 ((DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn)(this.zauberGrid.Columns[2])).Maximum = controller.zauberStapelMax;
-            }            
+            }
         }
 
         private void Special_variablerelease_CheckedChanged(object sender, EventArgs e)
