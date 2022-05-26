@@ -1,6 +1,8 @@
 # sharpPDF
 
-This folder contains the source of sharpPDF in version 1.3.1 as retrieved from https://sourceforge.net/projects/sharppdf/ where it was published under LGPL Andrea Canegrati. sharpPDF is built as a DLL and linked into ArtefaktGenerator.
+This folder contains the source of sharpPDF in version 1.3.1 as retrieved from https://sourceforge.net/projects/sharppdf/ where it was published under LGPL by Andrea Canegrati.
+
+sharpPDF is built as a stand alone DLL and linked into ArtefaktGenerator.
 
 ## Licence
 
