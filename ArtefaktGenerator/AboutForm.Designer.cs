@@ -66,7 +66,7 @@
             this.Controls.Add(this.linkLabelGitHub);
             this.Controls.Add(this.labelAbout);
             this.Name = "AboutForm";
-            this.Text = "AboutForm";
+            this.Text = "About";
             this.ResumeLayout(false);
             this.PerformLayout();
 
