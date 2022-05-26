@@ -14,7 +14,7 @@ Wer die Software selber kompilieren möchte, kann dies mit Visual Studio 2022 in
 
 ## Abhängigkeiten
 
-Als Laufzeitumgebung wird die .NET 6.0 Desktop Runtime (x86) benötigt. Diese steht kostenfrei unter https://dotnet.microsoft.com/en-us/download/dotnet/6.0/runtime zur Verfügung. Der Installer installiert diese jedoch automatisch.
+Als Laufzeitumgebung wird die .NET 6.0 Desktop Runtime (x86) benötigt. Diese steht kostenfrei unter https://dotnet.microsoft.com/en-us/download/dotnet/6.0/runtime zur Verfügung. Der Installer (``setup.exe``) installiert diese jedoch automatisch.
 
 Weiterhin nutzt der Artefaktgenerator sharpPDF zur Erzeugung der PDF Dokumente. Alles weitere hierzu findet sich im entsprechenden Unterverzeichnis.
 
