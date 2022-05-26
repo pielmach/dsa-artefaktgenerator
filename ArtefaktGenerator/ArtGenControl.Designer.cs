@@ -2665,21 +2665,21 @@ namespace ArtefaktGenerator
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(161, 34);
             this.aboutToolStripMenuItem.Text = "Über";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
             // lizenzToolStripMenuItem
             // 
             this.lizenzToolStripMenuItem.Name = "lizenzToolStripMenuItem";
-            this.lizenzToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.lizenzToolStripMenuItem.Size = new System.Drawing.Size(161, 34);
             this.lizenzToolStripMenuItem.Text = "Lizenz";
             this.lizenzToolStripMenuItem.Click += new System.EventHandler(this.LizenzToolStripMenuItem_Click);
             // 
             // hilfeToolStripMenuItem
             // 
             this.hilfeToolStripMenuItem.Name = "hilfeToolStripMenuItem";
-            this.hilfeToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.hilfeToolStripMenuItem.Size = new System.Drawing.Size(161, 34);
             this.hilfeToolStripMenuItem.Text = "Hilfe";
             this.hilfeToolStripMenuItem.Visible = false;
             // 
@@ -2911,7 +2911,6 @@ namespace ArtefaktGenerator
             // temp_tag
             // 
             this.temp_tag.AutoSize = true;
-            this.temp_tag.Checked = true;
             this.temp_tag.Location = new System.Drawing.Point(3, 4);
             this.temp_tag.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.temp_tag.Name = "temp_tag";
@@ -2926,11 +2925,13 @@ namespace ArtefaktGenerator
             // temp_woche
             // 
             this.temp_woche.AutoSize = true;
+            this.temp_woche.Checked = true;
             this.temp_woche.Location = new System.Drawing.Point(83, 4);
             this.temp_woche.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.temp_woche.Name = "temp_woche";
             this.temp_woche.Size = new System.Drawing.Size(101, 29);
             this.temp_woche.TabIndex = 1;
+            this.temp_woche.TabStop = true;
             this.temp_woche.Tag = "1";
             this.temp_woche.Text = "Woche  ";
             this.temp_woche.UseVisualStyleBackColor = true;
@@ -3004,11 +3005,13 @@ namespace ArtefaktGenerator
             // aux_verystable
             // 
             this.aux_verystable.AutoSize = true;
+            this.aux_verystable.Checked = true;
             this.aux_verystable.Location = new System.Drawing.Point(163, 4);
             this.aux_verystable.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.aux_verystable.Name = "aux_verystable";
             this.aux_verystable.Size = new System.Drawing.Size(117, 29);
             this.aux_verystable.TabIndex = 2;
+            this.aux_verystable.TabStop = true;
             this.aux_verystable.Tag = "2";
             this.aux_verystable.Text = "sehr stabil";
             this.aux_verystable.UseVisualStyleBackColor = true;
@@ -3017,7 +3020,6 @@ namespace ArtefaktGenerator
             // aux_unempfindlich
             // 
             this.aux_unempfindlich.AutoSize = true;
-            this.aux_unempfindlich.Checked = true;
             this.aux_unempfindlich.Location = new System.Drawing.Point(286, 4);
             this.aux_unempfindlich.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.aux_unempfindlich.Name = "aux_unempfindlich";
@@ -3069,7 +3071,6 @@ namespace ArtefaktGenerator
             // semi_tag
             // 
             this.semi_tag.AutoSize = true;
-            this.semi_tag.Checked = true;
             this.semi_tag.Location = new System.Drawing.Point(3, 4);
             this.semi_tag.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.semi_tag.Name = "semi_tag";
@@ -3097,11 +3098,13 @@ namespace ArtefaktGenerator
             // semi_monat
             // 
             this.semi_monat.AutoSize = true;
+            this.semi_monat.Checked = true;
             this.semi_monat.Location = new System.Drawing.Point(190, 4);
             this.semi_monat.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.semi_monat.Name = "semi_monat";
             this.semi_monat.Size = new System.Drawing.Size(99, 29);
             this.semi_monat.TabIndex = 6;
+            this.semi_monat.TabStop = true;
             this.semi_monat.Tag = "2";
             this.semi_monat.Text = "Monat  ";
             this.semi_monat.UseVisualStyleBackColor = true;
@@ -3148,7 +3151,6 @@ namespace ArtefaktGenerator
             // matrix_labil
             // 
             this.matrix_labil.AutoSize = true;
-            this.matrix_labil.Checked = true;
             this.matrix_labil.Location = new System.Drawing.Point(3, 4);
             this.matrix_labil.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.matrix_labil.Name = "matrix_labil";
@@ -3176,11 +3178,13 @@ namespace ArtefaktGenerator
             // matrix_verystable
             // 
             this.matrix_verystable.AutoSize = true;
+            this.matrix_verystable.Checked = true;
             this.matrix_verystable.Location = new System.Drawing.Point(163, 4);
             this.matrix_verystable.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.matrix_verystable.Name = "matrix_verystable";
             this.matrix_verystable.Size = new System.Drawing.Size(117, 29);
             this.matrix_verystable.TabIndex = 2;
+            this.matrix_verystable.TabStop = true;
             this.matrix_verystable.Tag = "2";
             this.matrix_verystable.Text = "sehr stabil";
             this.matrix_verystable.UseVisualStyleBackColor = true;
@@ -3368,7 +3372,7 @@ namespace ArtefaktGenerator
             this.repGroup.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.repGroup.Name = "repGroup";
             this.repGroup.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.repGroup.Selected = 0;
+            this.repGroup.Selected = 1;
             this.repGroup.Size = new System.Drawing.Size(240, 117);
             this.repGroup.TabIndex = 11;
             this.repGroup.TabStop = false;
@@ -3377,13 +3381,11 @@ namespace ArtefaktGenerator
             // rep_ach
             // 
             this.rep_ach.AutoSize = true;
-            this.rep_ach.Checked = true;
             this.rep_ach.Location = new System.Drawing.Point(18, 68);
             this.rep_ach.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rep_ach.Name = "rep_ach";
             this.rep_ach.Size = new System.Drawing.Size(67, 29);
             this.rep_ach.TabIndex = 2;
-            this.rep_ach.TabStop = true;
             this.rep_ach.Tag = "0";
             this.rep_ach.Text = "Ach";
             this.rep_ach.UseVisualStyleBackColor = true;
@@ -3391,11 +3393,13 @@ namespace ArtefaktGenerator
             // rep_mag
             // 
             this.rep_mag.AutoSize = true;
+            this.rep_mag.Checked = true;
             this.rep_mag.Location = new System.Drawing.Point(18, 36);
             this.rep_mag.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rep_mag.Name = "rep_mag";
             this.rep_mag.Size = new System.Drawing.Size(168, 29);
             this.rep_mag.TabIndex = 1;
+            this.rep_mag.TabStop = true;
             this.rep_mag.Tag = "1";
             this.rep_mag.Text = "Mag/Hex/Geo/...";
             this.rep_mag.UseVisualStyleBackColor = true;
