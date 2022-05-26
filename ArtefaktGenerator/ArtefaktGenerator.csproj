@@ -59,6 +59,11 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Properties\DataSources\**" />
+    <EmbeddedResource Remove="Properties\DataSources\**" />
+    <None Remove="Properties\DataSources\**" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="sharpPDF.dll" />
   </ItemGroup>
   <ItemGroup>
@@ -68,10 +73,14 @@
     <Compile Update="DataGridViewNumericUpDownEditingControl.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Update="RadioGroupBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <None Include="Properties\DataSources\ArtefaktGenerator.DasArtefakt.datasource" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -92,7 +101,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ArtefaktGeneratorDLL\ArtefaktGeneratorDLL.csproj" />
-    <ProjectReference Include="..\sharpPDF\sharpPDF.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PublishFile Include="NAppUpdate.Framework">
@@ -107,7 +115,6 @@
     </PublishFile>
   </ItemGroup>
   <PropertyGroup>
-    <PostBuildEvent>copy $(SolutionDir)material.mod.artgen $(TargetDir)material.mod.artgen</PostBuildEvent>
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
@@ -115,5 +122,11 @@
     <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.310801">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 </Project>

@@ -12,6 +12,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArtefaktGenerator", "Artefa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sharpPDF", "sharpPDF\sharpPDF.csproj", "{00B4A076-B134-4E93-BF98-E716FD302EC7}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ArtefaktGenerator-Installer", "ArtefaktGenerator-Installer\ArtefaktGenerator-Installer.vdproj", "{95ECC5EE-5EA7-4906-8262-A6C0B3530EDD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +60,14 @@ Global
 		{00B4A076-B134-4E93-BF98-E716FD302EC7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{00B4A076-B134-4E93-BF98-E716FD302EC7}.Release|x86.ActiveCfg = Release|Any CPU
 		{00B4A076-B134-4E93-BF98-E716FD302EC7}.Release|x86.Build.0 = Release|Any CPU
+		{95ECC5EE-5EA7-4906-8262-A6C0B3530EDD}.Debug|Any CPU.ActiveCfg = Debug
+		{95ECC5EE-5EA7-4906-8262-A6C0B3530EDD}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{95ECC5EE-5EA7-4906-8262-A6C0B3530EDD}.Debug|x86.ActiveCfg = Debug
+		{95ECC5EE-5EA7-4906-8262-A6C0B3530EDD}.Debug|x86.Build.0 = Debug
+		{95ECC5EE-5EA7-4906-8262-A6C0B3530EDD}.Release|Any CPU.ActiveCfg = Release
+		{95ECC5EE-5EA7-4906-8262-A6C0B3530EDD}.Release|Mixed Platforms.ActiveCfg = Release
+		{95ECC5EE-5EA7-4906-8262-A6C0B3530EDD}.Release|x86.ActiveCfg = Release
+		{95ECC5EE-5EA7-4906-8262-A6C0B3530EDD}.Release|x86.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
