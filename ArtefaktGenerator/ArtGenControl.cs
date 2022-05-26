@@ -25,7 +25,6 @@ namespace ArtefaktGenerator
             // Disable Non-PlugIn fields
             if (plugInMode)
             {
-                updatesToolStripMenuItem.Visible = false;
                 programmToolStripMenuItem1.Visible = false;
                 heldenimportToolStripMenuItem.Visible = false;
             }			            
@@ -334,7 +333,6 @@ namespace ArtefaktGenerator
         {
             if (!isLinux())
             {
-                this.hero_name.DataBindings.Add("Text", controller, "heldName", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.repGroup.DataBindings.Add("Selected", controller, "sfRepresentation", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.sf_kraft.DataBindings.Add("Checked", controller, "sfKraftkontrolle", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.sf_vielLadung.DataBindings.Add("Checked", controller, "sfVielfacheLadung", false, DataSourceUpdateMode.OnPropertyChanged);
