@@ -60,8 +60,8 @@
   <data name="labelAbout.Text" xml:space="preserve">
     <value>Der DSA Artefaktgenerator wurde ursprünglich von Mario Rauschenberg (dsa-hamburg.de) entwickelt und unter GPL veröffentlicht. Die letzte offizielle Version war 2.5.0 von 2015.
 
-Diese Version 3.0.0 ist ein Fork des ursprünglichen Quellcodes (https://sourceforge.net/projects/artgen/) durch Dennis Lindemann und Michael Prim.
+Diese Version 3.0.0 ist ein Fork des ursprünglichen Quellcodes (https://sourceforge.net/projects/artgen/) durch Dennis L. und Michael Prim.
 
-Ziel der Weiterentwicklung ist die verschiedenen Wege der Alchemie Errata einzuarbeiten und ein neues UI Design zu intergrieren, dass auch auf modernen Monitoren mit hoher Auflösung noch nutzbar ist.</value>
+Ziel der Weiterentwicklung ist die verschiedenen Wege der Alchemie Errata einzuarbeiten und ein neues UI Design zu integrieren, dass auch auf modernen Monitoren mit hoher Auflösung noch nutzbar ist.</value>
   </data>
 </root>

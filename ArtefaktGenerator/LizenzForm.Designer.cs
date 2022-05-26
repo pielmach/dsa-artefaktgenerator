@@ -87,7 +87,7 @@
             this.Controls.Add(this.label_UlissesDisclaimer);
             this.Controls.Add(this.textBox_GPL);
             this.Name = "LizenzForm";
-            this.Text = "LizenzForm";
+            this.Text = "Lizenz";
             this.ResumeLayout(false);
             this.PerformLayout();
 
