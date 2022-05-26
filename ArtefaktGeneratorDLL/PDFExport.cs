@@ -224,7 +224,7 @@ namespace ArtefaktGenerator
             {
                 myRow = myTable.createRow();
                 myRow[0].columnValue = zaub.name;
-                //myRow[1].columnValue = zaub.komp;
+                myRow[1].columnValue = zaub.KomplexitaetToString(zaub.komp);
                 myRow[2].columnValue = zaub.staple.ToString();
                 myRow[3].columnValue = zaub.asp.ToString();
                 myRow[4].columnValue = (zaub.eigene_rep)?"eigene":"fremde";

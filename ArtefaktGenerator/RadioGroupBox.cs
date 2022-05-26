@@ -34,19 +34,15 @@ namespace CustomControls
                 //RadioButton res = null;
                 foreach (RadioButton radio in radioButton)
                 {
-                    try
+                    if (radio.Tag != null)
                     {
                         int.TryParse(radio.Tag.ToString(), out val);
-                    }
-                    catch (System.Exception)
-                    {
-                    	
-                    }
-                    if (radio.Tag != null && val == value)
-                    {
-                        radio.Checked = true;
-                        _selected = value;
-                        break;
+                        if (val == value)
+                        {
+                            radio.Checked = true;
+                            _selected = value;
+                            break;
+                        }
                     }
                 }
             }

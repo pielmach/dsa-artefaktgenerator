@@ -625,9 +625,10 @@ namespace ArtefaktGenerator
                 if (saveFileDialog2.ShowDialog() == DialogResult.OK)
                 {
                     controller.exportArtefaktAsPDF(saveFileDialog2.FileName);
-                    if (showPDFToolStripMenuItem.Checked) 
-                        System.Diagnostics.Process.Start(saveFileDialog2.FileName);
-                        //System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(saveFileDialog2.FileName) { UseShellExecute = false });
+                    if (showPDFToolStripMenuItem.Checked)
+                    {
+                        System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(saveFileDialog2.FileName) { UseShellExecute = true });
+                    }
                 }
             }
             else

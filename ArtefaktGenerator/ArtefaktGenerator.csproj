@@ -62,11 +62,6 @@
     <None Remove="sharpPDF.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Ionic.Zip.Reduced">
-      <HintPath>..\Ionic.Zip.Reduced.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Update="ArtGenControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

@@ -113,6 +113,32 @@ namespace ArtefaktGenerator
             }
         }
 
+        public string KomplexitaetToString(Komplexitaet komp)
+        {
+            switch (komp)
+            {
+                case Komplexitaet.A:
+                    return "A";
+                case Komplexitaet.B:
+                    return "B";
+                case Komplexitaet.C:
+                    return "C";
+                case Komplexitaet.D:
+                    return "D";
+                case Komplexitaet.E:
+                    return "E";
+                case Komplexitaet.F:
+                    return "F";
+                case Komplexitaet.G:
+                    return "G";
+                case Komplexitaet.H:
+                    return "H";
+                default:
+                    break;
+            }
+            return "X";
+        }
+
         public override string ToString()
         {
             return name + "\t" + komp + "\t" + staple + "\t" + asp + "\t" + (eigene_rep ? "eigene" : "fremde");
