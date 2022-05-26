@@ -21,6 +21,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_5DD48573F7924E58AD01976B1C00053C"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A050BAEA42FA445CBBE752D2FBDBE605"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_AEC7E64D054F4EC5B25D89B5F48F3331"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -142,6 +154,46 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5DD48573F7924E58AD01976B1C00053C"
+            {
+            "SourcePath" = "8:..\\ArtefaktGenerator\\Resources\\readme.txt"
+            "TargetName" = "8:readme.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_C4EB0F7744C04E81A7AD93E7935D6BA0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A050BAEA42FA445CBBE752D2FBDBE605"
+            {
+            "SourcePath" = "8:..\\ArtefaktGenerator\\Resources\\Magier-Icon.ico"
+            "TargetName" = "8:Magier-Icon.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_C4EB0F7744C04E81A7AD93E7935D6BA0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -212,7 +264,7 @@
         "ARPHELPLINK" = "8:"
         "Title" = "8:DSA ArtefaktGenerator"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:dsa-hamburg.de"
+        "ARPCONTACT" = "8:Mario Rauschenberg"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:https://github.com/pielmach/dsa-artefaktgenerator"
@@ -319,9 +371,9 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_F3A47E7B8F504A568C7434F28B39B138"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_2214B8DE091C48E28B38392FC8F1AB5E"
             {
-            "Name" = "8:ArtefaktGenerator"
+            "Name" = "8:DSA ArtefaktGenerator"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
@@ -330,7 +382,21 @@
             "Target" = "8:_AEC7E64D054F4EC5B25D89B5F48F3331"
             "Folder" = "8:_D1120A279F3347689B070A8C8D6C9152"
             "WorkingFolder" = "8:_C4EB0F7744C04E81A7AD93E7935D6BA0"
-            "Icon" = "8:"
+            "Icon" = "8:_A050BAEA42FA445CBBE752D2FBDBE605"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_A422225D034E4DDCB0A177BB19E4B93C"
+            {
+            "Name" = "8:DSA ArtefaktGenerator"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_AEC7E64D054F4EC5B25D89B5F48F3331"
+            "Folder" = "8:_9721CC88CFF74AAEA00DBDCC1F012C5E"
+            "WorkingFolder" = "8:_C4EB0F7744C04E81A7AD93E7935D6BA0"
+            "Icon" = "8:_A050BAEA42FA445CBBE752D2FBDBE605"
             "Feature" = "8:"
             }
         }
