@@ -1,7 +1,6 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Diagnostics;
 
 namespace DataGridViewNumericUpDownElements
 {
@@ -58,7 +57,7 @@ namespace DataGridViewNumericUpDownElements
             }
             set
             {
-                this.Text = (string) value;
+                this.Text = (string)value;
             }
         }
 
@@ -147,37 +146,37 @@ namespace DataGridViewNumericUpDownElements
             switch (keyData & Keys.KeyCode)
             {
                 case Keys.Right:
-                {
-                    TextBox textBox = this.Controls[1] as TextBox;
-                    if (textBox != null)
                     {
-                        // If the end of the selection is at the end of the string,
-                        // let the DataGridView treat the key message
-                        if ((this.RightToLeft == RightToLeft.No && !(textBox.SelectionLength == 0 && textBox.SelectionStart == textBox.Text.Length)) ||
-                            (this.RightToLeft == RightToLeft.Yes && !(textBox.SelectionLength == 0 && textBox.SelectionStart == 0)))
+                        TextBox textBox = this.Controls[1] as TextBox;
+                        if (textBox != null)
                         {
-                            return true;
+                            // If the end of the selection is at the end of the string,
+                            // let the DataGridView treat the key message
+                            if ((this.RightToLeft == RightToLeft.No && !(textBox.SelectionLength == 0 && textBox.SelectionStart == textBox.Text.Length)) ||
+                                (this.RightToLeft == RightToLeft.Yes && !(textBox.SelectionLength == 0 && textBox.SelectionStart == 0)))
+                            {
+                                return true;
+                            }
                         }
+                        break;
                     }
-                    break;
-                }
 
                 case Keys.Left:
-                {
-                    TextBox textBox = this.Controls[1] as TextBox;
-                    if (textBox != null)
                     {
-                        // If the end of the selection is at the begining of the string
-                        // or if the entire text is selected and we did not start editing,
-                        // send this character to the dataGridView, else process the key message
-                        if ((this.RightToLeft == RightToLeft.No && !(textBox.SelectionLength == 0 && textBox.SelectionStart == 0)) ||
-                            (this.RightToLeft == RightToLeft.Yes && !(textBox.SelectionLength == 0 && textBox.SelectionStart == textBox.Text.Length)))
+                        TextBox textBox = this.Controls[1] as TextBox;
+                        if (textBox != null)
                         {
-                            return true;
+                            // If the end of the selection is at the begining of the string
+                            // or if the entire text is selected and we did not start editing,
+                            // send this character to the dataGridView, else process the key message
+                            if ((this.RightToLeft == RightToLeft.No && !(textBox.SelectionLength == 0 && textBox.SelectionStart == 0)) ||
+                                (this.RightToLeft == RightToLeft.Yes && !(textBox.SelectionLength == 0 && textBox.SelectionStart == textBox.Text.Length)))
+                            {
+                                return true;
+                            }
                         }
+                        break;
                     }
-                    break;
-                }
 
                 case Keys.Down:
                     // If the current value hasn't reached its minimum yet, handle the key. Otherwise let
@@ -199,33 +198,33 @@ namespace DataGridViewNumericUpDownElements
 
                 case Keys.Home:
                 case Keys.End:
-                {
-                    // Let the grid handle the key if the entire text is selected.
-                    TextBox textBox = this.Controls[1] as TextBox;
-                    if (textBox != null)
                     {
-                        if (textBox.SelectionLength != textBox.Text.Length)
+                        // Let the grid handle the key if the entire text is selected.
+                        TextBox textBox = this.Controls[1] as TextBox;
+                        if (textBox != null)
                         {
-                            return true;
+                            if (textBox.SelectionLength != textBox.Text.Length)
+                            {
+                                return true;
+                            }
                         }
+                        break;
                     }
-                    break;
-                }
 
                 case Keys.Delete:
-                {
-                    // Let the grid handle the key if the carret is at the end of the text.
-                    TextBox textBox = this.Controls[1] as TextBox;
-                    if (textBox != null)
                     {
-                        if (textBox.SelectionLength > 0 ||
-                            textBox.SelectionStart < textBox.Text.Length)
+                        // Let the grid handle the key if the carret is at the end of the text.
+                        TextBox textBox = this.Controls[1] as TextBox;
+                        if (textBox != null)
                         {
-                            return true;
+                            if (textBox.SelectionLength > 0 ||
+                                textBox.SelectionStart < textBox.Text.Length)
+                            {
+                                return true;
+                            }
                         }
+                        break;
                     }
-                    break;
-                }
             }
             return !dataGridViewWantsInputKey;
         }
@@ -237,7 +236,7 @@ namespace DataGridViewNumericUpDownElements
         {
             bool userEdit = this.UserEdit;
             try
-            {   
+            {
                 // Prevent the Value from being set to Maximum or Minimum when the cell is being painted.
                 this.UserEdit = (context & DataGridViewDataErrorContexts.Display) == 0;
                 return this.Value.ToString((this.ThousandsSeparator ? "N" : "F") + this.DecimalPlaces.ToString());

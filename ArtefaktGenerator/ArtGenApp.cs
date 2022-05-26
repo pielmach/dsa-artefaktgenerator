@@ -17,14 +17,8 @@
 */
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 //using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using ArtefaktGenerator;
 
 namespace ArtefaktGeneratorApp
 {
@@ -38,17 +32,17 @@ namespace ArtefaktGeneratorApp
         private void ArtGenApp_Shown(object sender, EventArgs e)
         {
             if (ArtefaktGenerator.Properties.Settings.Default.showHeldenImport)
-                artGenControl1.showSelectHeroDialog(this);
+                artGenControl1.ShowSelectHeroDialog(this);
         }
 
         private void ArtGenApp_FormClosing(object sender, FormClosingEventArgs e)
         {
-            
+
         }
 
         private void ArtGenApp_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.artGenControl1.saveOptions();
+            this.artGenControl1.SaveOptions();
         }
     }
 }

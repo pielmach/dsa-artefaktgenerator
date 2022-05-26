@@ -17,10 +17,7 @@
 */
 
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-
-using System.Text;
 
 namespace ArtefaktGenerator
 {
@@ -51,24 +48,24 @@ namespace ArtefaktGenerator
         public string name
         {
             get { return _name; }
-            set 
-            { 
-                _name = value; 
-                NotifyPropertyChanged("name"); 
+            set
+            {
+                _name = value;
+                NotifyPropertyChanged("name");
             }
         }
 
         private Komplexitaet _komp;
-        public Komplexitaet komp 
+        public Komplexitaet komp
         {
             get { return _komp; }
             set
             {
                 _komp = value;
-                NotifyPropertyChanged("komp"); 
+                NotifyPropertyChanged("komp");
             }
         }
-        
+
         private Decimal _staple;
         public Decimal staple
         {

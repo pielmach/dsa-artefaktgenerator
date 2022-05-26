@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.ComponentModel;
-using System.Text.RegularExpressions;
-using System.Reflection;
-using System.Windows.Forms;
+using System.Text;
 using System.Xml;
 
 namespace ArtefaktGenerator
@@ -14,13 +11,13 @@ namespace ArtefaktGenerator
 
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
-        private Artefakt artefakt = new Artefakt();
-        private BindingList<Zauber> magic = new BindingList<Zauber>();
-        private Wuerfel dice = new Wuerfel();
-        private MaterialSammlung mat = new MaterialSammlung();
-        private Occupation occ = new Occupation();
-        private Nebeneffekte nebeneffekte = new Nebeneffekte();
-        private Kraftspeicher kraftspeicher = new Kraftspeicher();
+        private Artefakt artefakt = new();
+        private BindingList<Zauber> magic = new();
+        private Wuerfel dice = new();
+        private MaterialSammlung mat = new();
+        private Occupation occ = new();
+        private Nebeneffekte nebeneffekte = new();
+        private Kraftspeicher kraftspeicher = new();
 
         public Controller() { mat = new MaterialSammlung(dice); }
 
@@ -28,8 +25,9 @@ namespace ArtefaktGenerator
         public bool WDA
         {
             get { return artefakt.regelbasis == Artefakt.Regelbasis.WDA; }
-            set { 
-                if (value) 
+            set
+            {
+                if (value)
                 {
                     artefakt.regelbasis = Artefakt.Regelbasis.WDA;
                     sfAuxiliatorVisible = true;
@@ -92,8 +90,8 @@ namespace ArtefaktGenerator
         private bool _alwaysHypervehemenzSRD;
         public bool optionAlwaysHypervehemenzSRD
         {
-            get { return _alwaysHypervehemenzSRD;  }
-            set { _alwaysHypervehemenzSRD = value;  RaisePropertyChanged("optionAlwaysHypervehemenzSRD"); }
+            get { return _alwaysHypervehemenzSRD; }
+            set { _alwaysHypervehemenzSRD = value; RaisePropertyChanged("optionAlwaysHypervehemenzSRD"); }
         }
 
         private bool _allesBerechnen;
@@ -185,7 +183,7 @@ namespace ArtefaktGenerator
                     zauberStapelEnabled = false;
 
                     BindingList<Zauber> z = zauberListe;
-                    for (int i = 0; i < z.Count; i++ )
+                    for (int i = 0; i < z.Count; i++)
                     {
                         if (z[i].staple > 1)
                         {
@@ -376,15 +374,15 @@ namespace ArtefaktGenerator
             }
             set
             {
-                 _sfAuxiliatorVisible = value;
-                 if (value)
-                 {
-                 }
-                 else
-                 {
-                     sfAuxiliator = false;
-                 }
-                 RaisePropertyChanged("sfAuxiliatorVisible");
+                _sfAuxiliatorVisible = value;
+                if (value)
+                {
+                }
+                else
+                {
+                    sfAuxiliator = false;
+                }
+                RaisePropertyChanged("sfAuxiliatorVisible");
             }
         }
         #endregion
@@ -393,7 +391,8 @@ namespace ArtefaktGenerator
         public int tawArcanovi
         {
             get { return (int)artefakt.taw.arcanovi; }
-            set { 
+            set
+            {
                 artefakt.taw.arcanovi = (decimal)value;
                 if (value < 10)
                 {
@@ -430,8 +429,9 @@ namespace ArtefaktGenerator
         public int tawArcanoviMatrix
         {
             get { return (int)artefakt.taw.arcanovi_matrix; }
-            set { 
-                artefakt.taw.arcanovi_matrix = (decimal)value; 
+            set
+            {
+                artefakt.taw.arcanovi_matrix = (decimal)value;
                 if (value < 15)
                 {
                     spezialUmkehrtalisman = false;
@@ -439,7 +439,7 @@ namespace ArtefaktGenerator
                 }
                 else if (artefakttyp == (int)Artefakt.ArtefaktType.AUX)
                     spezialUmkehrtalismanEnabled = true;
-                RaisePropertyChanged("tawArcanoviMatrix"); 
+                RaisePropertyChanged("tawArcanoviMatrix");
             }
         }
         private bool _tawArcanoviMatrixEnabled;
@@ -488,7 +488,8 @@ namespace ArtefaktGenerator
         public int artefakttyp
         {
             get { return (int)artefakt.typ; }
-            set { 
+            set
+            {
                 artefakt.typ = (Artefakt.ArtefaktType)value;
                 if (artefakt.typ == Artefakt.ArtefaktType.TEMP)
                     artefakttypTempVisible = true;
@@ -535,7 +536,7 @@ namespace ArtefaktGenerator
                 else
                     spezialVerzehrendEnabled = false;
 
-                RaisePropertyChanged("artefakttyp"); 
+                RaisePropertyChanged("artefakttyp");
             }
         }
 
@@ -792,7 +793,7 @@ namespace ArtefaktGenerator
             get { return (int)artefakt.spezial_verzehrend_var; }
             set { artefakt.spezial_verzehrend_var = (decimal)value; RaisePropertyChanged("spezialVerzehrendVar"); }
         }
-       
+
         #endregion
 
         #region Artefakt Besondere Umstaende
@@ -837,7 +838,8 @@ namespace ArtefaktGenerator
         public int extraExtraGross
         {
             get { return _extraExtraGross; }
-            set { 
+            set
+            {
                 _extraExtraGross = value;
                 if (WDA)
                 {
@@ -870,7 +872,7 @@ namespace ArtefaktGenerator
                     probeGroesse = 0;
                     probeGroesseEnabled = true;
                 }
-                RaisePropertyChanged("extraExtraGross"); 
+                RaisePropertyChanged("extraExtraGross");
             }
         }
 
@@ -884,7 +886,7 @@ namespace ArtefaktGenerator
         public List<Material> material
         {
             get { return mat.getList(); }
-            set {}
+            set { }
         }
 
         private int _selectedMaterial;
@@ -993,9 +995,10 @@ namespace ArtefaktGenerator
         public BindingList<Zauber> zauberListe
         {
             get { magic.AllowEdit = true; return magic; }
-            set {
+            set
+            {
                 magic = value; RaisePropertyChanged("zauberListe");
-                magic.ListChanged += delegate(object sender, ListChangedEventArgs args)
+                magic.ListChanged += delegate (object sender, ListChangedEventArgs args)
                 {
                     generateArtefakt();
                 };
@@ -1231,7 +1234,7 @@ namespace ArtefaktGenerator
         {
             DasArtefakt art = (DasArtefakt)DeserializeObject(xmlArtefakt);
             magic.Clear();
-            for (int i = 0; i < art.zauber.Count; i++ )
+            for (int i = 0; i < art.zauber.Count; i++)
                 magic.Add(art.zauber[i]);
 
             artefakt = art.artefakt;
@@ -1272,8 +1275,8 @@ namespace ArtefaktGenerator
 
         public void exportArtefaktAsPDF(string path)
         {
-            DasArtefakt art = new DasArtefakt(artefakt,magic);
-            PDFExport.saveArtefaktAsPDF(art,path);
+            DasArtefakt art = new DasArtefakt(artefakt, magic);
+            PDFExport.saveArtefaktAsPDF(art, path);
         }
 
         public void clearArtefakt()
@@ -1388,7 +1391,7 @@ namespace ArtefaktGenerator
                     if (artefakt.sf.vielfacheLadung && (artefakt.typ == Artefakt.ArtefaktType.NORMAL || artefakt.typ == Artefakt.ArtefaktType.RECHARGE || artefakt.typ == Artefakt.ArtefaktType.TEMP))
                         arcanovi_zfp += nrOfCountRelevants;
                     else
-                        for (int i = 0; i < nrOfCountRelevants; i++ )
+                        for (int i = 0; i < nrOfCountRelevants; i++)
                         {
                             arcanovi_zfp += currentZfpAdd;
                             currentZfpAdd++;
@@ -1432,16 +1435,16 @@ namespace ArtefaktGenerator
                         // AsP wirkende Sprüche
                         decimal thismagic_asp = magic[i].asp + artefakt.material.asp_mod;
 
-                        if (artefakt.sf.rep == SF.SFType.ACH && optionAchSave) 
+                        if (artefakt.sf.rep == SF.SFType.ACH && optionAchSave)
                             thismagic_asp = Round(thismagic_asp * 3 / 4);
 
-                        if (artefakt.sf.kraftkontrolle) 
+                        if (artefakt.sf.kraftkontrolle)
                             thismagic_asp -= 1;
 
                         if (artefakt.limbus)
                             thismagic_asp = Round(thismagic_asp / 10);
 
-                        if (thismagic_asp == 0) 
+                        if (thismagic_asp == 0)
                             thismagic_asp = 1;
 
                         magicNumOfCasts[i] = artefakt.loads * magic[i].staple * magic[i].summierung * magic_asp_mult * magic_asp_mult_extra;
@@ -1472,10 +1475,10 @@ namespace ArtefaktGenerator
                         arcanovi_erschwernis += 15;
                     }
 
-                    if (magic_asp <= 0) 
+                    if (magic_asp <= 0)
                         magic_asp = 1;
 
-                    if (artefakt.gemeinschaftlich) 
+                    if (artefakt.gemeinschaftlich)
                         arcanovi_erschwernis += 5;
 
                     // Arcanovi TAW
@@ -1630,15 +1633,15 @@ namespace ArtefaktGenerator
                     }
 
                     List<string> nebens = new List<string>();
-                    foreach(int elem in nebensNumbers)
+                    foreach (int elem in nebensNumbers)
                         nebens.Add("\t" + elem + ": " + nebeneffekte.getNebeneffektDescr(WDA, elem) + "\r\n");
 
                     // WdA 83: Notwendige ZfP* darf maximal doppelter ZfW sein
-                    if (arcanovi_zfp > 2*arcanovi_taw)
+                    if (arcanovi_zfp > 2 * arcanovi_taw)
                     {
                         resArcanovi += "Artefakt leider nicht möglich:\r\n";
                         resArcanovi += "Notwendige ZfP* (" + arcanovi_zfp;
-                        resArcanovi += ") darf die doppelten ZfW des Arcanovi (" + 2*arcanovi_taw + ") nicht übersteigen\r\n";
+                        resArcanovi += ") darf die doppelten ZfW des Arcanovi (" + 2 * arcanovi_taw + ") nicht übersteigen\r\n";
                     }
                     else if ((arcanovi_taw - arcanovi_erschwernis >= 0))
                     {
@@ -1658,7 +1661,7 @@ namespace ArtefaktGenerator
                             resArcanovi += ("Bester Fall: " + arcanovi_count + " Arcanovi für " + arcanovi_asp + " AsP  (" + arcanovi_taw_new + " ZfP* je Arcanovi)\r\n");
                             resArcanovi += ("Erschwernis wirkende Sprüche: " + magic_erschwerniss + "\r\n");
 
-                            resArcanovi += ("Arcanovi ZfP* zur weiteren Verwendung: " + arcanovi_zfpLeft + " wobei " + 2*arcanovi_taw + " = 2*ZfW maximal erlaubt sind\r\n");
+                            resArcanovi += ("Arcanovi ZfP* zur weiteren Verwendung: " + arcanovi_zfpLeft + " wobei " + 2 * arcanovi_taw + " = 2*ZfW maximal erlaubt sind\r\n");
                             resArcanovi += ("AsP für wirkende Sprüche: " + magic_asp + "\r\n");
                         }
                         else
@@ -1911,7 +1914,7 @@ namespace ArtefaktGenerator
 
             bool isMag = false;
             bool isAch = false;
-            
+
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.LoadXml(xml);
 

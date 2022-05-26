@@ -1,10 +1,9 @@
 using System;
-using System.Drawing;
+using System.ComponentModel;
 using System.Diagnostics;
+using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
-using System.Collections.Generic;
-using System.ComponentModel;
 
 namespace DataGridViewNumericUpDownElements
 {
@@ -18,10 +17,10 @@ namespace DataGridViewNumericUpDownElements
         private static extern short VkKeyScan(char key);
 
         // Used in TranslateAlignment function
-        private static readonly DataGridViewContentAlignment anyRight = DataGridViewContentAlignment.TopRight | 
-                                                                        DataGridViewContentAlignment.MiddleRight | 
+        private static readonly DataGridViewContentAlignment anyRight = DataGridViewContentAlignment.TopRight |
+                                                                        DataGridViewContentAlignment.MiddleRight |
                                                                         DataGridViewContentAlignment.BottomRight;
-        private static readonly DataGridViewContentAlignment anyCenter = DataGridViewContentAlignment.TopCenter | 
+        private static readonly DataGridViewContentAlignment anyCenter = DataGridViewContentAlignment.TopCenter |
                                                                          DataGridViewContentAlignment.MiddleCenter |
                                                                          DataGridViewContentAlignment.BottomCenter;
 
@@ -151,7 +150,7 @@ namespace DataGridViewNumericUpDownElements
 
             set
             {
-                if (value < (Decimal) 0.0)
+                if (value < (Decimal)0.0)
                 {
                     throw new ArgumentOutOfRangeException("The Increment property cannot be smaller than 0.");
                 }
@@ -524,7 +523,7 @@ namespace DataGridViewNumericUpDownElements
             }
 
             // First paint the borders and background of the cell.
-            base.Paint(graphics, clipBounds, cellBounds, rowIndex, cellState, value, formattedValue, errorText, cellStyle, advancedBorderStyle, 
+            base.Paint(graphics, clipBounds, cellBounds, rowIndex, cellState, value, formattedValue, errorText, cellStyle, advancedBorderStyle,
                        paintParts & ~(DataGridViewPaintParts.ErrorIcon | DataGridViewPaintParts.ContentForeground));
 
             Point ptCurrentCell = this.DataGridView.CurrentCellAddress;

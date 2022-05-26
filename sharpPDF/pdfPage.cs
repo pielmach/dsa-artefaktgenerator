@@ -418,7 +418,7 @@ namespace sharpPDF
 			paragraphElement objParagraph = new paragraphElement(newText, fontSize, fontType, x, y);
 			_elements.Add(objParagraph);
 			objParagraph = null;
-			} catch (pdfIncorrectParagraghException ex) {
+			} catch (pdfIncorrectParagraghException) {
 				throw new pdfIncorrectParagraghException();
 			}
 		}
@@ -438,7 +438,7 @@ namespace sharpPDF
 			paragraphElement objParagraph = new paragraphElement(newText, fontSize, fontType, x, y, fontColor);
 			_elements.Add(objParagraph);
 			objParagraph = null;
-			} catch (pdfIncorrectParagraghException ex) {
+			} catch (pdfIncorrectParagraghException) {
 				throw new pdfIncorrectParagraghException();
 			}
 		}
@@ -458,7 +458,7 @@ namespace sharpPDF
 			paragraphElement objParagraph = new paragraphElement(newText, fontSize, fontType, x, y, fontColor);
 			_elements.Add(objParagraph);
 			objParagraph = null;
-			} catch (pdfIncorrectParagraghException ex) {
+			} catch (pdfIncorrectParagraghException) {
 				throw new pdfIncorrectParagraghException();
 			}
 		}

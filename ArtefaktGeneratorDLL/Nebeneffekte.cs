@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ArtefaktGenerator
 {
@@ -19,8 +18,8 @@ namespace ArtefaktGenerator
 
     class Nebeneffekte
     {
-        private SortedList<Interval,string> srd = new SortedList<Interval, string>();
-        private SortedList<Interval,string> wda = new SortedList<Interval, string>();
+        private SortedList<Interval, string> srd = new SortedList<Interval, string>();
+        private SortedList<Interval, string> wda = new SortedList<Interval, string>();
 
         public Nebeneffekte()
         {

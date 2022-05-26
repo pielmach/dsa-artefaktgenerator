@@ -11,7 +11,7 @@ namespace ArtefaktGenerator
         private const string HELD_EINSTELLUNGEN_XML_PATH = "/.heldEinstellungen4_1.xml";
         private const string HELDEN_ZIP_PATH = "/helden/helden.zip.hld";
 
-        public static List<Held> ladeHelden()
+        public static List<Held> LadeHeldenFromDefaultPath()
         {
             string home = (Environment.OSVersion.Platform == PlatformID.Unix || Environment.OSVersion.Platform == PlatformID.MacOSX) ?
                 Environment.GetEnvironmentVariable("HOME") : Environment.ExpandEnvironmentVariables("%HOMEDRIVE%%HOMEPATH%");
@@ -21,7 +21,7 @@ namespace ArtefaktGenerator
             string einstellungenXmlFile = home + HELD_EINSTELLUNGEN_XML_PATH;
             if (File.Exists(einstellungenXmlFile))
             {
-                string einstellungenXml = readFile(einstellungenXmlFile);
+                string einstellungenXml = ReadFile(einstellungenXmlFile);
                 Match m = Regex.Match(einstellungenXml, "<pfad customPfad=\"(.+)\" name=\"heldenPfad\"/>");
                 if (m.Success)
                 {
@@ -40,36 +40,29 @@ namespace ArtefaktGenerator
                 return null;
             }
 
-            return ladeHelden(heldenZipPath);
+            return LadeHeldenFromFile(heldenZipPath);
         }
 
-        public static List<Held> ladeHelden(String filename)
+        public static List<Held> LadeHeldenFromFile(string filename)
         {
-            List<Held> list = new List<Held>();
+            List<Held> list = new();
 
             if (filename.EndsWith(".xml"))
             {
-                Held held = new Held(File.ReadAllText(filename,System.Text.Encoding.UTF8));
+                Held held = new(File.ReadAllText(filename, System.Text.Encoding.UTF8));
                 list.Add(held);
             }
             else if (filename.EndsWith(".zip.hld") || filename.EndsWith(".zip"))
             {
-                using (ZipArchive zip = ZipFile.OpenRead(filename))
+                using ZipArchive zip = ZipFile.OpenRead(filename);
+                foreach (ZipArchiveEntry e in zip.Entries)
                 {
-                    foreach (ZipArchiveEntry e in zip.Entries)
+                    if (e.FullName.EndsWith(".xml"))
                     {
-                        if (e.FullName.EndsWith(".xml"))
-                        {
-                            using (MemoryStream stream = new MemoryStream())
-                            {
-                                using (StreamReader reader = new StreamReader(e.Open()))
-                                {
-                                    string xml = reader.ReadToEnd();
-                                    Held held = new Held(xml);
-                                    list.Add(held);
-                                }
-                            }
-                        }
+                        using StreamReader reader = new(e.Open());
+                        string xml = reader.ReadToEnd();
+                        Held held = new(xml);
+                        list.Add(held);
                     }
                 }
             }
@@ -77,9 +70,9 @@ namespace ArtefaktGenerator
             return list;
         }
 
-        private static string readFile(String filename)
+        private static string ReadFile(string filename)
         {
-            StreamReader myFile = new StreamReader(filename, System.Text.Encoding.Default);
+            StreamReader myFile = new(filename, System.Text.Encoding.Default);
             try
             {
                 return myFile.ReadToEnd();

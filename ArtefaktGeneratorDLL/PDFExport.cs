@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using sharpPDF;
+﻿using sharpPDF;
 using sharpPDF.Enumerators;
 
 namespace ArtefaktGenerator
@@ -10,7 +7,7 @@ namespace ArtefaktGenerator
     {
         public static void saveArtefaktAsPDF(DasArtefakt artefakt, string path)
         {
-            pdfDocument myDoc = new pdfDocument("Artefakt",artefakt.artefakt.heldName,false);
+            pdfDocument myDoc = new pdfDocument("Artefakt", artefakt.artefakt.heldName, false);
             pdfPage myFirstPage = myDoc.addPage();
 
             int start = 600;
@@ -21,58 +18,58 @@ namespace ArtefaktGenerator
             sharpPDF.Enumerators.predefinedFont fontEmph = predefinedFont.csTimesBoldOblique;
 
             // Header
-            myFirstPage.addText("Artefaktbrief", 220, 700,predefinedFont.csTimesBold,30);
+            myFirstPage.addText("Artefaktbrief", 220, 700, predefinedFont.csTimesBold, 30);
 
             //Artefakttyp
             myFirstPage.addText("Artefakttyp: ", spalte, start - fontsize * zeile, font, fontsize);
-            string artefakttyp ="";
+            string artefakttyp = "";
             switch (artefakt.artefakt.typ)
             {
-                case Artefakt.ArtefaktType.TEMP: 
-                        artefakttyp += "temporär";
-                        switch (artefakt.artefakt.temp_typ)
-                        {
-                            case Artefakt.TempType.TAG: artefakttyp += " (Tag)"; break;
-                            case Artefakt.TempType.WOCHE: artefakttyp += " (Woche)"; break;
-                            case Artefakt.TempType.MONAT: artefakttyp += " (Monat)"; break;
-                        }
-                        break;
+                case Artefakt.ArtefaktType.TEMP:
+                    artefakttyp += "temporär";
+                    switch (artefakt.artefakt.temp_typ)
+                    {
+                        case Artefakt.TempType.TAG: artefakttyp += " (Tag)"; break;
+                        case Artefakt.TempType.WOCHE: artefakttyp += " (Woche)"; break;
+                        case Artefakt.TempType.MONAT: artefakttyp += " (Monat)"; break;
+                    }
+                    break;
                 case Artefakt.ArtefaktType.MATRIX:
-                        artefakttyp += "Matrixgeber";
-                        switch (artefakt.artefakt.matrix_typ)
-                        {
-                            case Artefakt.MatrixType.LABIL: artefakttyp += " (labil)"; break;
-                            case Artefakt.MatrixType.STABIL: artefakttyp += " (stabil)"; break;
-                            case Artefakt.MatrixType.SEHRSTABIL: artefakttyp += " (sehr stabil)"; break;
-                            case Artefakt.MatrixType.UNEMPFINDLICH: artefakttyp += " (unempfindlich)"; break;
-                        }
-                        break;
+                    artefakttyp += "Matrixgeber";
+                    switch (artefakt.artefakt.matrix_typ)
+                    {
+                        case Artefakt.MatrixType.LABIL: artefakttyp += " (labil)"; break;
+                        case Artefakt.MatrixType.STABIL: artefakttyp += " (stabil)"; break;
+                        case Artefakt.MatrixType.SEHRSTABIL: artefakttyp += " (sehr stabil)"; break;
+                        case Artefakt.MatrixType.UNEMPFINDLICH: artefakttyp += " (unempfindlich)"; break;
+                    }
+                    break;
                 case Artefakt.ArtefaktType.AUX:
-                        artefakttyp += "Auxiliator";
-                        switch (artefakt.artefakt.aux_typ)
-                        {
-                            case Artefakt.MatrixType.LABIL: artefakttyp += " (labil)"; break;
-                            case Artefakt.MatrixType.STABIL: artefakttyp += " (stabil)"; break;
-                            case Artefakt.MatrixType.SEHRSTABIL: artefakttyp += " (sehr stabil)"; break;
-                            case Artefakt.MatrixType.UNEMPFINDLICH: artefakttyp += " (unempfindlich)"; break;
-                        }
-                        break;
+                    artefakttyp += "Auxiliator";
+                    switch (artefakt.artefakt.aux_typ)
+                    {
+                        case Artefakt.MatrixType.LABIL: artefakttyp += " (labil)"; break;
+                        case Artefakt.MatrixType.STABIL: artefakttyp += " (stabil)"; break;
+                        case Artefakt.MatrixType.SEHRSTABIL: artefakttyp += " (sehr stabil)"; break;
+                        case Artefakt.MatrixType.UNEMPFINDLICH: artefakttyp += " (unempfindlich)"; break;
+                    }
+                    break;
                 case Artefakt.ArtefaktType.SEMI:
-                        artefakttyp += "semipermanent";
-                        switch (artefakt.artefakt.semi_typ)
-                        {
-                            case Artefakt.SemiType.TAG: artefakttyp += " (Tag)"; break;
-                            case Artefakt.SemiType.WOCHE: artefakttyp += " (Woche)"; break;
-                            case Artefakt.SemiType.MONAT: artefakttyp += " (Monat)"; break;
-                            case Artefakt.SemiType.JAHR: artefakttyp += " (Jahr)"; break;
-                        }
-                        break;
+                    artefakttyp += "semipermanent";
+                    switch (artefakt.artefakt.semi_typ)
+                    {
+                        case Artefakt.SemiType.TAG: artefakttyp += " (Tag)"; break;
+                        case Artefakt.SemiType.WOCHE: artefakttyp += " (Woche)"; break;
+                        case Artefakt.SemiType.MONAT: artefakttyp += " (Monat)"; break;
+                        case Artefakt.SemiType.JAHR: artefakttyp += " (Jahr)"; break;
+                    }
+                    break;
                 case Artefakt.ArtefaktType.NORMAL:
-                        artefakttyp += "normal";
-                        break;
+                    artefakttyp += "normal";
+                    break;
                 case Artefakt.ArtefaktType.RECHARGE:
-                        artefakttyp += "aufladbar";
-                        break;
+                    artefakttyp += "aufladbar";
+                    break;
             }
             myFirstPage.addText(artefakttyp, spalte + 100, start - fontsize * zeile++, fontEmph, fontsize);
 
@@ -106,9 +103,9 @@ namespace ArtefaktGenerator
             // Spezielle Eigenschaften
             zeile++;
             myFirstPage.addText("Spezielle Artefakteigenschaften:", spalte, start - fontsize * zeile, font, 14);
-            if (artefakt.artefakt.spezial_apport || artefakt.artefakt.spezial_ferngespuer || artefakt.artefakt.spezial_gespuer || 
-                artefakt.artefakt.spezial_reperatur || artefakt.artefakt.spezial_resistent || artefakt.artefakt.spezial_reversalis || 
-                artefakt.artefakt.spezial_siegel || artefakt.artefakt.spezial_unzerbrechlich || artefakt.artefakt.spezial_variablerausloeser || 
+            if (artefakt.artefakt.spezial_apport || artefakt.artefakt.spezial_ferngespuer || artefakt.artefakt.spezial_gespuer ||
+                artefakt.artefakt.spezial_reperatur || artefakt.artefakt.spezial_resistent || artefakt.artefakt.spezial_reversalis ||
+                artefakt.artefakt.spezial_siegel || artefakt.artefakt.spezial_unzerbrechlich || artefakt.artefakt.spezial_variablerausloeser ||
                 artefakt.artefakt.spezial_verschleierung || artefakt.artefakt.spezial_verzehrend)
             {
                 zeile++;
@@ -121,21 +118,21 @@ namespace ArtefaktGenerator
                     myRow = myTable.createRow();
                     myRow[0].columnValue = "Siegel und Zertifikat";
                     myTable.addRow(myRow);
-                    zeile+=2;
+                    zeile += 2;
                 }
                 if (artefakt.artefakt.spezial_unzerbrechlich)
                 {
                     myRow = myTable.createRow();
                     myRow[0].columnValue = "Unzerbrechlichkeit";
                     myTable.addRow(myRow);
-                    zeile+=2;
+                    zeile += 2;
                 }
                 if (artefakt.artefakt.spezial_gespuer)
                 {
                     myRow = myTable.createRow();
                     myRow[0].columnValue = "Gespür des Schöpfers";
                     myTable.addRow(myRow);
-                    zeile+=2;
+                    zeile += 2;
                 }
                 if (artefakt.artefakt.spezial_apport)
                 {
@@ -199,7 +196,7 @@ namespace ArtefaktGenerator
                 myTable.alternateRowStyle = new pdfTableRowStyle(predefinedFont.csCourier, 10, new pdfColor(predefinedColor.csBlack), new pdfColor(predefinedColor.csLightGray));
                 myTable.cellpadding = 5;
                 myFirstPage.addTable(myTable, spalte, start - fontsize * zstart);
-                zeile+=2;
+                zeile += 2;
                 myTable = null;
             }
             else
@@ -214,8 +211,8 @@ namespace ArtefaktGenerator
             zstart = zeile;
             myTable = new pdfTable();
             myTable.borderSize = 1;
-            myTable.tableHeader.addColumn(new pdfTableColumn("Zauber",predefinedAlignment.csLeft,170));
-            myTable.tableHeader.addColumn(new pdfTableColumn("Komp.",predefinedAlignment.csCenter,80));
+            myTable.tableHeader.addColumn(new pdfTableColumn("Zauber", predefinedAlignment.csLeft, 170));
+            myTable.tableHeader.addColumn(new pdfTableColumn("Komp.", predefinedAlignment.csCenter, 80));
             myTable.tableHeader.addColumn(new pdfTableColumn("Stapel", predefinedAlignment.csCenter, 80));
             myTable.tableHeader.addColumn(new pdfTableColumn("AsP", predefinedAlignment.csCenter, 80));
             myTable.tableHeader.addColumn(new pdfTableColumn("Rep.", predefinedAlignment.csCenter, 90));
@@ -227,16 +224,16 @@ namespace ArtefaktGenerator
                 myRow[1].columnValue = zaub.KomplexitaetToString(zaub.komp);
                 myRow[2].columnValue = zaub.staple.ToString();
                 myRow[3].columnValue = zaub.asp.ToString();
-                myRow[4].columnValue = (zaub.eigene_rep)?"eigene":"fremde";
+                myRow[4].columnValue = (zaub.eigene_rep) ? "eigene" : "fremde";
                 myTable.addRow(myRow);
-                zeile+=2;
+                zeile += 2;
             }
-            myTable.tableHeaderStyle = new pdfTableRowStyle(predefinedFont.csCourierBoldOblique,12,new pdfColor(predefinedColor.csBlack),new pdfColor(predefinedColor.csGray));
-            myTable.rowStyle = new pdfTableRowStyle(predefinedFont.csCourier,10,new pdfColor(predefinedColor.csBlack),new pdfColor(predefinedColor.csWhite));
-            myTable.alternateRowStyle = new pdfTableRowStyle(predefinedFont.csCourier,10,new pdfColor(predefinedColor.csBlack),new pdfColor(predefinedColor.csLightGray));
+            myTable.tableHeaderStyle = new pdfTableRowStyle(predefinedFont.csCourierBoldOblique, 12, new pdfColor(predefinedColor.csBlack), new pdfColor(predefinedColor.csGray));
+            myTable.rowStyle = new pdfTableRowStyle(predefinedFont.csCourier, 10, new pdfColor(predefinedColor.csBlack), new pdfColor(predefinedColor.csWhite));
+            myTable.alternateRowStyle = new pdfTableRowStyle(predefinedFont.csCourier, 10, new pdfColor(predefinedColor.csBlack), new pdfColor(predefinedColor.csLightGray));
             myTable.cellpadding = 5;
             myFirstPage.addTable(myTable, spalte, start - fontsize * zstart);
-            zeile+=2;
+            zeile += 2;
 
 
             myTable = null;

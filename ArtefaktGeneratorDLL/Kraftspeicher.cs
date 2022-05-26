@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace ArtefaktGenerator
 {
     public class Kraftspeicher
     {
-        private SortedList<Interval,string> srd = new SortedList<Interval, string>();
-        private SortedList<Interval,string> wda = new SortedList<Interval, string>();
+        private SortedList<Interval, string> srd = new SortedList<Interval, string>();
+        private SortedList<Interval, string> wda = new SortedList<Interval, string>();
 
         public Kraftspeicher()
         {
