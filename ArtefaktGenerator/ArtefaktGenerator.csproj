@@ -56,8 +56,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>
-    </StartupObject>
+    <StartupObject>ArtefaktGeneratorApp.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
@@ -207,18 +206,26 @@
       <Project>{F156CD3C-E2B2-4353-815A-2D425B452860}</Project>
       <Name>ArtefaktGeneratorDLL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\NAppUpdate.Framework\NAppUpdate.Framework.csproj">
-      <Project>{5C07EBDF-D43F-4BE9-B560-D7A443C0EDCE}</Project>
-      <Name>NAppUpdate.Framework</Name>
-    </ProjectReference>
     <ProjectReference Include="..\sharpPDF\sharpPDF.csproj">
       <Project>{00B4A076-B134-4E93-BF98-E716FD302EC7}</Project>
       <Name>sharpPDF</Name>
     </ProjectReference>
   </ItemGroup>
-  <!--<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />-->
+  <ItemGroup>
+    <PublishFile Include="NAppUpdate.Framework">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!--Import Project="$(MSBuildExtensionsPath)\Ilmerge.CSharp.targets" /-->
-  <Import Project="..\customBuildTarget\Ilmerge.CSharp.targets" />
+  <!--<Import Project="..\customBuildTarget\Ilmerge.CSharp.targets" />-->
   <PropertyGroup>
     <PostBuildEvent>copy $(SolutionDir)material.mod.artgen $(TargetDir)material.mod.artgen</PostBuildEvent>
   </PropertyGroup>

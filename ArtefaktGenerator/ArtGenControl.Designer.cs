@@ -1999,8 +1999,7 @@ namespace ArtefaktGenerator
             // 
             this.updateSuchenToolStripMenuItem.Name = "updateSuchenToolStripMenuItem";
             this.updateSuchenToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.updateSuchenToolStripMenuItem.Text = "Update suchen";
-            this.updateSuchenToolStripMenuItem.Click += new System.EventHandler(this.updateSuchenToolStripMenuItem_Click);
+            this.updateSuchenToolStripMenuItem.Text = "Update suchen";            
             // 
             // updateInstallierenToolStripMenuItem
             // 
@@ -2008,7 +2007,6 @@ namespace ArtefaktGenerator
             this.updateInstallierenToolStripMenuItem.Name = "updateInstallierenToolStripMenuItem";
             this.updateInstallierenToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.updateInstallierenToolStripMenuItem.Text = "Update installieren";
-            this.updateInstallierenToolStripMenuItem.Click += new System.EventHandler(this.updateInstallierenToolStripMenuItem_Click);
             // 
             // beendenToolStripMenuItem1
             // 
@@ -2317,7 +2315,6 @@ namespace ArtefaktGenerator
             this.updatesToolStripMenuItem.Name = "updatesToolStripMenuItem";
             this.updatesToolStripMenuItem.Size = new System.Drawing.Size(133, 20);
             this.updatesToolStripMenuItem.Text = "suche nach updates...";
-            this.updatesToolStripMenuItem.Click += new System.EventHandler(this.updatesToolStripMenuItem_Click);
             // 
             // lblInfo
             // 

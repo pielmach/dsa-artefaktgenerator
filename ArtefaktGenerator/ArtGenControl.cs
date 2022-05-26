@@ -8,9 +8,6 @@ using System.Windows.Forms;
 
 using System.Text.RegularExpressions;
 
-using NAppUpdate.Framework;
-using NAppUpdate.Framework.Sources;
-
 namespace ArtefaktGenerator
 {
     public partial class ArtGenControl : UserControl
@@ -31,21 +28,7 @@ namespace ArtefaktGenerator
                 updatesToolStripMenuItem.Visible = false;
                 programmToolStripMenuItem1.Visible = false;
                 heldenimportToolStripMenuItem.Visible = false;
-            }
-			
-            UpdateManager updManager = UpdateManager.Instance;
-            updManager.UpdateFeedReader = new NAppUpdate.Framework.FeedReaders.NauXmlFeedReader();
-            updManager.TempFolder = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ArtefaktGenerator");
-            if (!plugInMode)
-                updManager.UpdateSource = new NAppUpdate.Framework.Sources.SimpleWebSource("http://www.dsa-hamburg.de/artgen/update/update.xml");
-            else
-                updManager.UpdateSource = new NAppUpdate.Framework.Sources.SimpleWebSource("http://www.dsa-hamburg.de/artgen/update/updatedll.xml");
-
-			if (isLinux())
-				updatesToolStripMenuItem.Visible = false;
-			
-            if (!plugInMode && !isLinux())
-                CheckForUpdates();
+            }			            
         }
 
 		
@@ -63,87 +46,7 @@ namespace ArtefaktGenerator
             reloadData();
         }
 
-        private void OnPrepareUpdatesCompleted(bool succeeded)
-        {
-            if (!succeeded)
-            {
-                MessageBox.Show("Update fehlgeschlagen!");
-                this.Enabled = true;
-            }
-            else
-            {
-                // Get a local pointer to the UpdateManager instance
-                UpdateManager updManager = UpdateManager.Instance;
-
-                // This is a synchronous method by design, make sure to save all user work before calling
-                // it as it might restart your application
-                if (!updManager.ApplyUpdates())
-                    MessageBox.Show("Error while trying to install software updates");
-            }
-        }
-
-        delegate void Del(int e);
-
-        private void OnCheckUpdatesComplete(int e)
-        {
-            // Fixed threaded unsynced access
-            Del del = delegate(int x)
-            {
-                if (x >= 1)
-                {
-                    updatesToolStripMenuItem.Text = "Update verfügbar - hier klicken zum installieren";
-                    updatesToolStripMenuItem.ForeColor = Color.Green;
-                    updatesToolStripMenuItem.Enabled = true;
-                    updateInstallierenToolStripMenuItem.Enabled = true;
-                    updateInstallierenToolStripMenuItem.ForeColor = Color.Green;
-                }
-                else
-                {
-                    updatesToolStripMenuItem.Text = "kein Update verfügbar";
-                    updatesToolStripMenuItem.Enabled = false;
-                    updateInstallierenToolStripMenuItem.Enabled = false;
-                }
-            };
-
-            if (InvokeRequired)
-                this.Invoke(del, new Object[] { e });
-            else
-                del(e);
-        }
-
-        private void CheckForUpdates()
-        {
-            updatesToolStripMenuItem.Text = "Suche nach updates...";
-
-            UpdateManager updManager = UpdateManager.Instance;
-
-            // Only check for updates if we haven't done so already
-/*            if (updManager.State != UpdateManager.UpdateProcessState.NotChecked)
-            {
-                MessageBox.Show("Update process has already initialized; current state: " + updManager.State.ToString());
-                return;
-            }
-            */
-            try
-            {
-                updManager.CheckForUpdateAsync(OnCheckUpdatesComplete);
-            }
-            catch (Exception ex)
-            {
-                if (ex is NAppUpdateException)
-                {
-                    updatesToolStripMenuItem.Text = "kein Update verfügbar";
-                    updatesToolStripMenuItem.Enabled = false;
-                    updateInstallierenToolStripMenuItem.Enabled = false;
-                }
-                else
-                {
-                    updatesToolStripMenuItem.Text = "kein Update verfügbar";
-                    updatesToolStripMenuItem.Enabled = false;
-                    updateInstallierenToolStripMenuItem.Enabled = false;
-                }
-            }
-        }
+        delegate void Del(int e);          
 
         private void zauber_add_Click(object sender, EventArgs e)
         {
@@ -197,36 +100,7 @@ namespace ArtefaktGenerator
         private void beendenToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void updateSuchenToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CheckForUpdates();
-        }
-
-
-        private void updateInstallierenToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            updatesToolStripMenuItem_Click(this,new EventArgs());
-        }
-
-        private void updatesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            UpdateManager updManager = UpdateManager.Instance;
-            DialogResult dr = MessageBox.Show(
-        "Möchtest du jetzt das Update installieren? Alle nicht gespeicherten Änderungen gehen dabei verloren!",
-        "Update installieren",
-         MessageBoxButtons.YesNo);
-
-            if (dr == DialogResult.Yes)
-            {
-                updManager.PrepareUpdatesAsync(OnPrepareUpdatesCompleted);
-                this.Enabled = false;
-                updatesToolStripMenuItem.Text = "Update wird installiert...";
-                updatesToolStripMenuItem.ForeColor = Color.Green;
-                updatesToolStripMenuItem.Enabled = false;
-            }
-        }
+        }        
 
         private void neuesArtefaktToolStripMenuItem_Click(object sender, EventArgs e)
         {
