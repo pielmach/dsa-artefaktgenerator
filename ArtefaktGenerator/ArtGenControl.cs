@@ -82,22 +82,33 @@ namespace ArtefaktGenerator
             }
         }
 
+        delegate void Del(int e);
+
         private void OnCheckUpdatesComplete(int e)
         {
-            if (e >= 1)
+            // Fixed threaded unsynced access
+            Del del = delegate(int x)
             {
-                updatesToolStripMenuItem.Text = "Update verfügbar - hier klicken zum installieren";
-                updatesToolStripMenuItem.ForeColor = Color.Green;
-                updatesToolStripMenuItem.Enabled = true;
-                updateInstallierenToolStripMenuItem.Enabled = true;
-                updateInstallierenToolStripMenuItem.ForeColor = Color.Green;
-            } 
+                if (x >= 1)
+                {
+                    updatesToolStripMenuItem.Text = "Update verfügbar - hier klicken zum installieren";
+                    updatesToolStripMenuItem.ForeColor = Color.Green;
+                    updatesToolStripMenuItem.Enabled = true;
+                    updateInstallierenToolStripMenuItem.Enabled = true;
+                    updateInstallierenToolStripMenuItem.ForeColor = Color.Green;
+                }
+                else
+                {
+                    updatesToolStripMenuItem.Text = "kein Update verfügbar";
+                    updatesToolStripMenuItem.Enabled = false;
+                    updateInstallierenToolStripMenuItem.Enabled = false;
+                }
+            };
+
+            if (InvokeRequired)
+                this.Invoke(del, new Object[] { e });
             else
-            {
-                updatesToolStripMenuItem.Text = "kein Update verfügbar";
-                updatesToolStripMenuItem.Enabled = false;
-                updateInstallierenToolStripMenuItem.Enabled = false;
-            }
+                del(e);
         }
 
         private void CheckForUpdates()
@@ -140,7 +151,8 @@ namespace ArtefaktGenerator
             zauber.asp = this.asp.Value;
             //zauber.load = this.loads.Value;
             zauber.staple = this.stapelung.Value;
-            zauber.komp = this.komp_combo.Text;
+            Array vals = Enum.GetValues(typeof(Zauber.Komplexitaet));
+            zauber.komp = (Zauber.Komplexitaet)(vals.GetValue(this.komp_combo.SelectedIndex));
             zauber.name = this.zauber.Text;
             if (this.zauber_rep.SelectedIndex == 0)
                 zauber.eigene_rep = true;
@@ -151,6 +163,7 @@ namespace ArtefaktGenerator
             BindingList<Zauber> z = controller.zauberListe;
             z.Add(zauber);
             controller.zauberListe = z;
+
             reloadData();
         }
 
@@ -158,10 +171,10 @@ namespace ArtefaktGenerator
         {
             try
             {
-                controller.zauberListe.RemoveAt(zauber_listbox.SelectedIndex);
+                controller.zauberListe.RemoveAt(zauberGrid.SelectedCells[0].RowIndex);
                 controller.zauberListe = controller.zauberListe;
             }
-            catch (System.Exception ex)
+            catch (System.Exception )
             {
                 	
             }
@@ -422,6 +435,15 @@ namespace ArtefaktGenerator
             reloadData();
         }
 
+        private void alwaysHypervSRD_Click(object sender, EventArgs e)
+        {
+            if (alwaysHypervSRD.Checked)
+                controller.optionAlwaysHypervehemenzSRD = true;
+            else
+                controller.optionAlwaysHypervehemenzSRD = false;
+            reloadData();
+        }
+
         private void importHeldensoftwareToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             showSelectHeroDialog(Form.ActiveForm);
@@ -536,6 +558,7 @@ namespace ArtefaktGenerator
                 this.agribaal.DataBindings.Add("Value", controller, "extraAgribaal", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.special_ort_occ.DataBindings.Add("Value", controller, "extraOkkupation", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.special_ort_neben.DataBindings.Add("Value", controller, "extraNebeneffekt", false, DataSourceUpdateMode.OnPropertyChanged);
+                this.special_additional_arcanovi.DataBindings.Add("Value", controller, "extraZusaetzlicheArcanovi", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.artefakt_super_big.DataBindings.Add("SelectedIndex", controller, "extraExtraGross", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.cb_kristalle.DataBindings.Add("Checked", controller, "extraKristalle", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.cb_kristalle.DataBindings.Add("Visible", controller, "extraKristalleVisible", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -550,8 +573,62 @@ namespace ArtefaktGenerator
                 this.artefakt_groesse.DataBindings.Add("Enabled", controller, "probeGroesseEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.arcanovi_force.DataBindings.Add("Value", controller, "probeErzwingen", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.starkonst.DataBindings.Add("Value", controller, "probeSterne", false, DataSourceUpdateMode.OnPropertyChanged);
+                this.arcanoviOtherMod.DataBindings.Add("Value", controller, "probeAndereMod", false, DataSourceUpdateMode.OnPropertyChanged);
+                this.arcanoviZfPSternMod.DataBindings.Add("Value", controller, "probeZfPSternMod", false, DataSourceUpdateMode.OnPropertyChanged);
+                this.wirkSpruchMod.DataBindings.Add("Value", controller, "probeWirkenderSpruchMod", false, DataSourceUpdateMode.OnPropertyChanged);
 
-                this.zauber_listbox.DataSource = controller.zauberListe;
+                this.zauberGrid.AutoGenerateColumns = false;
+
+                DataGridViewColumn column = new DataGridViewTextBoxColumn();
+                column.DataPropertyName = "name";
+                column.Name = "Zauber";
+                this.zauberGrid.Columns.Add(column);
+
+                DataGridViewComboBoxColumn column2 = new DataGridViewComboBoxColumn();
+                column2.DataSource = Enum.GetValues(typeof(Zauber.Komplexitaet));
+                column2.DataPropertyName = "komp";
+                column2.Name = "Komp.";
+                this.zauberGrid.Columns.Add(column2);
+
+                DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn column3 = new DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn();
+                column3.DataPropertyName = "staple";
+                column3.Name = "Stapel";
+                column3.DecimalPlaces = 0;
+                column3.Minimum = 1;
+                column3.Maximum = 99;
+                this.zauberGrid.Columns.Add(column3);
+
+                DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn column4 = new DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn();
+                column4.DataPropertyName = "summierung";
+                column4.Name = "Summe";
+                column4.DecimalPlaces = 0;
+                column4.Minimum = 1;
+                column4.Maximum = 99;
+                this.zauberGrid.Columns.Add(column4);
+
+                DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn column5 = new DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn();
+                column5.DataPropertyName = "asp";
+                column5.Name = "AsP";
+                column5.DecimalPlaces = 0;
+                column5.Minimum = 1;
+                column5.Maximum = 999;
+                this.zauberGrid.Columns.Add(column5);
+
+                DataGridViewCheckBoxColumn column6 = new DataGridViewCheckBoxColumn();
+                column6.DataPropertyName = "eigene_rep";
+                column6.Name = "Eigene Rep.";
+                this.zauberGrid.Columns.Add(column6);
+
+                this.zauberGrid.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                this.zauberGrid.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+                this.zauberGrid.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+                this.zauberGrid.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+                this.zauberGrid.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+                this.zauberGrid.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+
+                this.zauberGrid.DataSource = controller.zauberListe;
+                this.zauberGrid.MouseUp += zauberGrid_MouseUp;
+
                 this.stapelung.DataBindings.Add("Maximum", controller, "zauberStapelMax", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.stapelung.DataBindings.Add("Enabled", controller, "zauberStapelEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
                 this.lbl_staple.DataBindings.Add("Enabled", controller, "zauberStapelEnabled", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -586,6 +663,7 @@ namespace ArtefaktGenerator
             controller.optionAchSave = ArtefaktGenerator.Properties.Settings.Default.saveAch;
             controller.artefakttyp = 1;
             ach_save.Checked = controller.optionAchSave;
+            alwaysHypervSRD.Checked = controller.optionAlwaysHypervehemenzSRD;
             controller.WDA = ArtefaktGenerator.Properties.Settings.Default.WDA;
             wegeDerAlchimieToolStripMenuItem.Checked = controller.WDA;
             staebeRingeDschinnenlampenToolStripMenuItem.Checked = !controller.WDA;
@@ -624,10 +702,23 @@ namespace ArtefaktGenerator
             reloadData();
         }
 
+        void zauberGrid_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                DataGridView.HitTestInfo hitTestInfo = zauberGrid.HitTest(e.X, e.Y);
+                if (hitTestInfo.Type == DataGridViewHitTestType.Cell)
+                    zauberGrid.BeginEdit(true);
+                else
+                    zauberGrid.EndEdit();
+            }
+        }
+
         public void saveOptions()
         {
             ArtefaktGenerator.Properties.Settings.Default.saveAch = controller.optionAchSave;
             ArtefaktGenerator.Properties.Settings.Default.WDA = controller.WDA;
+            ArtefaktGenerator.Properties.Settings.Default.SFHyperNachSRD = controller.optionAlwaysHypervehemenzSRD;
             if (controller.W6 == 1) ArtefaktGenerator.Properties.Settings.Default.diceW6 = 0;
             if (controller.W6 == 3.5m) ArtefaktGenerator.Properties.Settings.Default.diceW6 = 1;
             if (controller.W6 == 4) ArtefaktGenerator.Properties.Settings.Default.diceW6 = 2;
@@ -689,6 +780,15 @@ namespace ArtefaktGenerator
         #region Linux gedoens
         private void reloadData()
         {
+            // TODO
+            // Should be done via DataBinding. Investigate how to databind to column properties
+            if (this.zauberGrid.ColumnCount > 0)
+            {
+                this.zauberGrid.Columns[2].ReadOnly = !controller.zauberStapelEnabled;
+                ((DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn)(this.zauberGrid.Columns[2])).Minimum = 1;
+                ((DataGridViewNumericUpDownElements.DataGridViewNumericUpDownColumn)(this.zauberGrid.Columns[2])).Maximum = controller.zauberStapelMax;
+            }
+
             if (isLinux())
             {
 
@@ -788,6 +888,9 @@ namespace ArtefaktGenerator
                 artefakt_groesse.Value = controller.probeGroesse;
                 artefakt_groesse.Enabled = controller.probeGroesseEnabled;
                 starkonst.Value = controller.probeSterne;
+                arcanoviOtherMod.Value = controller.probeAndereMod;
+                arcanoviZfPSternMod.Value = controller.probeZfPSternMod;
+                wirkSpruchMod.Value = controller.probeWirkenderSpruchMod;
                 arcanovi_force.Value = controller.probeErzwingen;
 
                 limbus.Checked = controller.extraMadeInLimbus;
@@ -795,15 +898,13 @@ namespace ArtefaktGenerator
                 gemeinschaftlich.Checked = controller.extraGemeinschaftlicheErschaffung;
                 agribaal.Value = controller.extraAgribaal;
                 special_ort_neben.Value = controller.extraNebeneffekt;
+                special_additional_arcanovi.Value = controller.extraZusaetzlicheArcanovi;
                 special_ort_occ.Value = controller.extraOkkupation;
                 artefakt_super_big.SelectedIndex = controller.extraExtraGross;
                 if (material.Items.Count > 0) material.SelectedIndex = controller.selectedMaterial;
                 cb_kristalle.Checked = controller.extraKristalle;
                 cb_kristalle.Visible = controller.extraKristalleVisible;
 
-                zauber_listbox.Items.Clear();
-                foreach (Zauber z in controller.zauberListe)
-                    zauber_listbox.Items.Add(z);
                 loads.Value = controller.zauberLadungen;
                 loads.Enabled = controller.zauberLadungenEnabled;
                 loads_lbl.Enabled = controller.zauberLadungenEnabled;
@@ -1126,6 +1227,24 @@ namespace ArtefaktGenerator
             reloadData();
         }
 
+        private void arcanoviOtherMod_ValueChanged(object sender, EventArgs e)
+        {
+            controller.probeAndereMod = (int)arcanoviOtherMod.Value;
+            reloadData();
+        }
+
+        private void arcanoviZfPSternMod_ValueChanged(object sender, EventArgs e)
+        {
+            controller.probeZfPSternMod = (int)arcanoviZfPSternMod.Value;
+            reloadData();
+        }
+
+        private void wirkSpruchMod_ValueChanged(object sender, EventArgs e)
+        {
+            controller.probeWirkenderSpruchMod = (int)wirkSpruchMod.Value;
+            reloadData();
+        }
+
         private void limbus_CheckedChanged(object sender, EventArgs e)
         {
             controller.extraMadeInLimbus = limbus.Checked;
@@ -1159,6 +1278,12 @@ namespace ArtefaktGenerator
         private void special_ort_neben_ValueChanged(object sender, EventArgs e)
         {
             controller.extraNebeneffekt = (int)special_ort_neben.Value;
+            reloadData();
+        }
+
+        private void special_additional_arcanovi_ValueChanged(object sender, EventArgs e)
+        {
+            controller.extraZusaetzlicheArcanovi = (int)special_additional_arcanovi.Value;
             reloadData();
         }
 
@@ -1264,6 +1389,54 @@ namespace ArtefaktGenerator
             reloadData();
         }
         #endregion
+        private void SFGroupBox_Resize(object sender, EventArgs e)
+        {
+            SFGroupBox.SuspendLayout();
+            SFGroupBox.MinimumSize = new Size(SFPanel.Size.Width, SFPanel.Size.Height + 20);
+            SFGroupBox.ResumeLayout();
+        }
 
+        private void TalentGroupBox_Resize(object sender, EventArgs e)
+        {
+            TalentGroupBox.SuspendLayout();
+            TalentGroupBox.MinimumSize = new Size(TalentPanel.Size.Width, TalentPanel.Size.Height + 20);
+            TalentGroupBox.ResumeLayout();
+        }
+
+        private void zauberGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            zauberGrid.CommitEdit(DataGridViewDataErrorContexts.Commit);
+        }
+
+        private void zauberGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            zauberGrid.CommitEdit(DataGridViewDataErrorContexts.Commit);
+        }
+
+        private void zauberGrid_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            zauberGrid.CommitEdit(DataGridViewDataErrorContexts.Commit);
+        }
+
+        private void zauberGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            zauberGrid.CommitEdit(DataGridViewDataErrorContexts.Commit);
+        }
+
+        private void zauberGrid_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            zauberGrid.CommitEdit(DataGridViewDataErrorContexts.Commit);
+        }
+
+        private void zauberGrid_CellValueChanged_1(object sender, DataGridViewCellEventArgs e)
+        {
+            zauberGrid.CommitEdit(DataGridViewDataErrorContexts.Commit);
+        }
+
+        private void zauberGrid_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (zauberGrid.CurrentCell.ColumnIndex == 1)
+                zauberGrid.CommitEdit(DataGridViewDataErrorContexts.Commit);
+        }
     }
 }

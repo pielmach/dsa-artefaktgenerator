@@ -88,6 +88,14 @@ namespace ArtefaktGenerator
             get { return _achSave; }
             set { _achSave = value; RaisePropertyChanged("optionAchSave"); }
         }
+
+        private bool _alwaysHypervehemenzSRD;
+        public bool optionAlwaysHypervehemenzSRD
+        {
+            get { return _alwaysHypervehemenzSRD;  }
+            set { _alwaysHypervehemenzSRD = value;  RaisePropertyChanged("optionAlwaysHypervehemenzSRD"); }
+        }
+
         private bool _allesBerechnen;
         public bool optionAllesBerechnen
         {
@@ -168,6 +176,7 @@ namespace ArtefaktGenerator
                 {
                     sfHypervehemenzEnabled = true;
                     zauberStapelEnabled = true;
+                    zauberStapelMax = 3;
                 }
                 else
                 {
@@ -187,7 +196,7 @@ namespace ArtefaktGenerator
                         }
                     }
                     zauberListe = z;
-
+                    zauberStapelMax = 1;
                 }
                 RaisePropertyChanged("sfStapeleffekt");
             }
@@ -865,6 +874,12 @@ namespace ArtefaktGenerator
             }
         }
 
+        public int extraZusaetzlicheArcanovi
+        {
+            get { return (int)artefakt.special_additional_arcanovi; }
+            set { artefakt.special_additional_arcanovi = (decimal)value; RaisePropertyChanged("extraZusaetzlicheArcanovi"); }
+        }
+
         //Material
         public List<Material> material
         {
@@ -941,6 +956,23 @@ namespace ArtefaktGenerator
             get { return (int)artefakt.probe.stars; }
             set { artefakt.probe.stars = (decimal)value; RaisePropertyChanged("probeSterne"); }
         }
+        public int probeAndereMod
+        {
+            get { return (int)artefakt.probe.otherMods; }
+            set { artefakt.probe.otherMods = (decimal)value; RaisePropertyChanged("probeAndereMod"); }
+        }
+        public int probeZfPSternMod
+        {
+            get { return (int)artefakt.probe.zfpSternMod; }
+            set { artefakt.probe.zfpSternMod = (decimal)value; RaisePropertyChanged("probeZfPSternMod"); }
+        }
+
+        public int probeWirkenderSpruchMod
+        {
+            get { return (int)artefakt.probe.wirkenderSpruchMod; }
+            set { artefakt.probe.wirkenderSpruchMod = (decimal)value; RaisePropertyChanged("probeWirkenderSpruch"); }
+        }
+
         #endregion
 
         #region Zauber Liste
@@ -963,6 +995,10 @@ namespace ArtefaktGenerator
             get { magic.AllowEdit = true; return magic; }
             set {
                 magic = value; RaisePropertyChanged("zauberListe");
+                magic.ListChanged += delegate(object sender, ListChangedEventArgs args)
+                {
+                    generateArtefakt();
+                };
             }
         }
 
@@ -1115,6 +1151,7 @@ namespace ArtefaktGenerator
             heldName = heldName;
             WDA = WDA;
             optionAchSave = optionAchSave;
+            optionAlwaysHypervehemenzSRD = optionAlwaysHypervehemenzSRD;
             optionAllesBerechnen = optionAllesBerechnen;
             sfHypervehemenz = sfHypervehemenz;
             sfVielfacheLadung = sfVielfacheLadung;
@@ -1158,7 +1195,7 @@ namespace ArtefaktGenerator
                 return XmlizedString;
             }
 
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }
@@ -1264,7 +1301,7 @@ namespace ArtefaktGenerator
                 {
                     // DEBUG
                     decimal agribaal_zfp = artefakt.agribaal;
-                    decimal arcanovi_erschwernis = artefakt.probe.affine + artefakt.probe.ausloeser + artefakt.probe.material + artefakt.material.arcanovi_mod + artefakt.probe.superBig_zuschlag + artefakt.probe.erzwingen + artefakt.probe.stars;
+                    decimal arcanovi_erschwernis = artefakt.probe.affine + artefakt.probe.ausloeser + artefakt.probe.material + artefakt.material.arcanovi_mod + artefakt.probe.superBig_zuschlag + artefakt.probe.erzwingen + artefakt.probe.stars + artefakt.probe.otherMods;
                     if (artefakt.probe.superBig_zuschlag == 0) arcanovi_erschwernis += artefakt.probe.groesse;
                     //spezielle Eigenschaften
                     if (artefakt.spezial_apport) arcanovi_erschwernis += 4;
@@ -1341,7 +1378,7 @@ namespace ArtefaktGenerator
                         }
                     }
 
-                    decimal arcanovi_zfp = 0;
+                    decimal arcanovi_zfp = artefakt.probe.zfpSternMod; // Arcanovi Erschwernis // TODO: Ist das hier wirklich "Arcanovi Erschwernis"? und nicht eher die notwendigen ZfP* für die Arcanovi Probe? wird zumindest so verwendet
                     decimal magic_asp = 0;
                     decimal eigene_rep_count = 0;
 
@@ -1357,28 +1394,43 @@ namespace ArtefaktGenerator
                             currentZfpAdd++;
                         }
 
+                    // Anzahl Zauberdurchgaenge je wirkendem Spruch
+                    // Semipermanent bei zB 3 mal pro Monat muss 3*2=6 mal der Zauber gesprochen werden (2 für Monat, 3 wegen 3 Ladungen)
+                    // Kann durch SF SemiP2 verbessert werden, was aber schon in "magic_asp_mult" steckt (siehe oben)
+                    decimal[] magicNumOfCasts = new decimal[magic.Count];
+
                     // Komplexität
                     for (int i = 0; i < magic.Count; i++)
                     {
                         // Rep
-                        if (magic[i].eigene_rep) eigene_rep_count++;
+                        if (magic[i].eigene_rep)
+                            eigene_rep_count++;
+
                         // komplexität
                         switch (magic[i].komp)
                         {
-                            case "A": break;
-                            case "B": arcanovi_zfp += 1 * artefakt.loads * magic_asp_mult; break;
-                            case "C": arcanovi_zfp += 1 * artefakt.loads * magic_asp_mult; break;
-                            case "D": arcanovi_zfp += 2 * artefakt.loads * magic_asp_mult; break;
-                            case "E": arcanovi_zfp += 2 * artefakt.loads * magic_asp_mult; break;
+                            case Zauber.Komplexitaet.A: break;
+                            case Zauber.Komplexitaet.B: arcanovi_zfp += 1 * artefakt.loads * magic_asp_mult; break;
+                            case Zauber.Komplexitaet.C: arcanovi_zfp += 1 * artefakt.loads * magic_asp_mult; break;
+                            case Zauber.Komplexitaet.D: arcanovi_zfp += 2 * artefakt.loads * magic_asp_mult; break;
+                            case Zauber.Komplexitaet.E: arcanovi_zfp += 2 * artefakt.loads * magic_asp_mult; break;
                             default: arcanovi_zfp += 3 * artefakt.loads * magic_asp_mult; break;
                         }
 
                         // Stapel
-                        if (magic[i].staple > 1) 
-                            arcanovi_zfp += magic[i].staple * 2;
+                        if (magic[i].staple > 1)
+                        {
+                            // SF:Hypervehemenz: WdA S.109 ergänzt WdZ S.55 wo wiederum auf SRD S.123 verwiesen wird.
+                            // Dort steht, dass mit dieser SF die notwendigen ZfP* nur 1 pro Stapel steigen und nicht 2
+                            if (artefakt.sf.hyper && (optionAlwaysHypervehemenzSRD || !WDA))
+                                arcanovi_zfp += magic[i].staple * 1;
+                            else
+                                arcanovi_zfp += magic[i].staple * 2;
+
+                        }
 
                         // AsP wirkende Sprüche
-                        decimal thismagic_asp = magic[i].asp;
+                        decimal thismagic_asp = magic[i].asp + artefakt.material.asp_mod;
 
                         if (artefakt.sf.rep == SF.SFType.ACH && optionAchSave) 
                             thismagic_asp = Round(thismagic_asp * 3 / 4);
@@ -1386,22 +1438,37 @@ namespace ArtefaktGenerator
                         if (artefakt.sf.kraftkontrolle) 
                             thismagic_asp -= 1;
 
+                        if (artefakt.limbus)
+                            thismagic_asp = Round(thismagic_asp / 10);
+
                         if (thismagic_asp == 0) 
                             thismagic_asp = 1;
 
-                        magic_asp += thismagic_asp * artefakt.loads * magic[i].staple * magic_asp_mult * magic_asp_mult_extra;
+                        magicNumOfCasts[i] = artefakt.loads * magic[i].staple * magic[i].summierung * magic_asp_mult * magic_asp_mult_extra;
+                        magic_asp += thismagic_asp * magicNumOfCasts[i];
                     }
 
                     // Anzahl Ladungen
                     if (artefakt.typ != Artefakt.ArtefaktType.SEMI) // WDA S.83 "Anzahl der Ladungen"
-                        arcanovi_zfp += (artefakt.loads - 1) * 3;
+                    {
+                        if (artefakt.sf.vielfacheLadung)
+                            arcanovi_zfp += (artefakt.loads - 1);
+                        else
+                            arcanovi_zfp += (artefakt.loads - 1) * 3;
+                    }
+                    else
+                        arcanovi_erschwernis += artefakt.loads - 1; // WdA S.82 "Kategorie und Präservanz" "jede zusätzliche Anwendung pro Intervall erhöht den Probenzuschlag um +1"
+
+                    if (arcanovi_zfp < 0)
+                        arcanovi_zfp = 0;
 
                     if (artefakt.typ == Artefakt.ArtefaktType.SPEICHER)
                         magic_asp = artefakt.kraftspeicher_asp;
 
                     if (artefakt.limbus)
                     {
-                        magic_asp = Round(magic_asp / 10);
+                        // Diese Rechnung magic_asp = Round(magic_asp / 10); passiert nun nicht mehr hier für die Summe der Kosten sondern oben JE zauber, 
+                        // da jeder Zauber auch im Limbus für sich alleine schon 1AsP kostet und nicht etwa 9 Zauber a 6 AsP = 9*6=54, 54/10=5 denn korrekt ist leider 9*1=9
                         arcanovi_erschwernis += 15;
                     }
 
@@ -1422,23 +1489,23 @@ namespace ArtefaktGenerator
                     }
 
                     // Arcanovi mit Agribaal
-                    decimal arcanovi_count = 0;
+                    decimal arcanovi_count = 1;
                     decimal agribaal_for_arcanovi = agribaal_zfp;
-                    while (true)
+                    decimal arcanovi_taw_new = 0; // Uebrige ZfP* pro Arcanovi Durchfuehrung
+
+                    arcanovi_taw_new = arcanovi_taw - arcanovi_erschwernis;
+                    if (arcanovi_taw_new == 0) arcanovi_taw_new = 1;
+                    if (arcanovi_taw_new > arcanovi_taw) arcanovi_taw_new = arcanovi_taw;
+                    if (arcanovi_taw_new > 0)
                     {
-                        decimal arcanovi_taw_new = arcanovi_taw - arcanovi_erschwernis;
-                        if (arcanovi_taw_new == 0) arcanovi_taw_new = 1;
-                        if (arcanovi_taw_new > arcanovi_taw) arcanovi_taw_new = arcanovi_taw;
-                        if (arcanovi_taw_new > 0)
-                            arcanovi_count = Math.Ceiling(arcanovi_zfp / arcanovi_taw_new);
-                        if ((arcanovi_taw_new < 0 || arcanovi_count > 1) && agribaal_zfp > 0)
-                        {
-                            --agribaal_zfp;
-                            --arcanovi_erschwernis;
-                        }
-                        else break;
+                        arcanovi_count = Math.Ceiling(arcanovi_zfp / arcanovi_taw_new);
+                        if (arcanovi_count == 0)
+                            arcanovi_count = 1;
                     }
-                    if (arcanovi_count == 0) arcanovi_count = 1;
+
+                    arcanovi_count += artefakt.special_additional_arcanovi;
+                    decimal arcanovi_zfpLeft = arcanovi_count * arcanovi_taw_new - arcanovi_zfp;
+
                     agribaal_for_arcanovi = agribaal_for_arcanovi - agribaal_zfp;
 
                     decimal arcanovi_asp = 0;
@@ -1473,6 +1540,9 @@ namespace ArtefaktGenerator
                         arcanovi_base_asp = arcanovi_base_asp - 1;
                     if (artefakt.limbus)
                         arcanovi_base_asp = Round(arcanovi_base_asp / 10);
+
+                    if (arcanovi_base_asp < 1)
+                        arcanovi_base_asp = 1;
 
                     arcanovi_asp += arcanovi_count * arcanovi_base_asp;
 
@@ -1520,7 +1590,7 @@ namespace ArtefaktGenerator
                     if (artefakt.kristalle && pasp > 0) pasp -= 1;
 
                     // Erschwerniss Wirkende Zauber
-                    decimal magic_erschwerniss = 2 + artefakt.material.wirkende_mod;
+                    decimal magic_erschwerniss = 2 + artefakt.material.wirkende_mod + artefakt.probe.wirkenderSpruchMod;
                     if (artefakt.gemeinschaftlich) magic_erschwerniss += 5;
 
                     // Nebeneffekte
@@ -1563,7 +1633,14 @@ namespace ArtefaktGenerator
                     foreach(int elem in nebensNumbers)
                         nebens.Add("\t" + elem + ": " + nebeneffekte.getNebeneffektDescr(WDA, elem) + "\r\n");
 
-                    if ((arcanovi_taw - arcanovi_erschwernis >= 0))
+                    // WdA 83: Notwendige ZfP* darf maximal doppelter ZfW sein
+                    if (arcanovi_zfp > 2*arcanovi_taw)
+                    {
+                        resArcanovi += "Artefakt leider nicht möglich:\r\n";
+                        resArcanovi += "Notwendige ZfP* (" + arcanovi_zfp;
+                        resArcanovi += ") darf die doppelten ZfW des Arcanovi (" + 2*arcanovi_taw + ") nicht übersteigen\r\n";
+                    }
+                    else if ((arcanovi_taw - arcanovi_erschwernis >= 0))
                     {
                         if (arcanovi_taw >= 7 && artefakt.taw.magiekunde >= 7)
                         {
@@ -1573,19 +1650,15 @@ namespace ArtefaktGenerator
                         else
                             resArcanovi += ("Artefaktthesis kann nicht selber erstellt werden. TaW ARCANOVI bzw. Magiekunde zu gering.\r\n\r\n");
 
-                        if (artefakt.agribaal == 0)
-                            resArcanovi += ("Erschwernis für Arcanovi: " + arcanovi_erschwernis + "\r\n");
-                        else
-                            resArcanovi += ("Erschwernis für Arcanovi: " + arcanovi_erschwernis + " (erleichterung von " + agribaal_for_arcanovi + " durch Agribaal)\r\n");
+                        resArcanovi += ("Erschwernis für Arcanovi: " + arcanovi_erschwernis + "\r\n");
 
                         resArcanovi += ("Erforderliche Arcanovi ZfP*: " + arcanovi_zfp + "\r\n");
                         if (!(artefakt.typ == Artefakt.ArtefaktType.SPEICHER))
                         {
-                            resArcanovi += ("Bester Fall: " + arcanovi_count + " Arcanovi für " + arcanovi_asp + " AsP\r\n");
-                            if (artefakt.agribaal == 0)
-                                resArcanovi += ("Erschwernis wirkende Sprüche: " + magic_erschwerniss + "\r\n");
-                            else
-                                resArcanovi += ("Erschwernis wirkende Sprüche: " + (magic_erschwerniss - agribaal_zfp) + "(erleichterung von " + agribaal_zfp + " durch Agribaal)\r\n");
+                            resArcanovi += ("Bester Fall: " + arcanovi_count + " Arcanovi für " + arcanovi_asp + " AsP  (" + arcanovi_taw_new + " ZfP* je Arcanovi)\r\n");
+                            resArcanovi += ("Erschwernis wirkende Sprüche: " + magic_erschwerniss + "\r\n");
+
+                            resArcanovi += ("Arcanovi ZfP* zur weiteren Verwendung: " + arcanovi_zfpLeft + " wobei " + 2*arcanovi_taw + " = 2*ZfW maximal erlaubt sind\r\n");
                             resArcanovi += ("AsP für wirkende Sprüche: " + magic_asp + "\r\n");
                         }
                         else
@@ -1638,12 +1711,37 @@ namespace ArtefaktGenerator
                             else resArcanovi += ("Occupation: keine\r\n");
                         }
 
+                        // Zauberdurchgaenge pro Zauber:
+                        if (artefakt.typ != Artefakt.ArtefaktType.SPEICHER)
+                        {
+                            resArcanovi += "Anzahl Zauberdurchgaenge je wirkendem Spruch: ";
+                            for (int i = 0; i < magic.Count; i++)
+                            {
+                                resArcanovi += "Spruch" + (i + 1) + ":" + magicNumOfCasts[i] + "x";
+                                if (i < magic.Count - 1) // current i ist not last i
+                                    resArcanovi += "  ";
+                                else
+                                    resArcanovi += "\r\n";
+                            }
+
+                            // resArcanovi += "Anzahl Summierung je wirkendem Spruch:\r\n";
+                            // for (int i = 0; i < magic.Count; i++)
+                            // resArcanovi += "Summierung" + i + ":" + magic[i].summierung + "\r\n";
+                        }
+
+                        // Freie Punkte durch Agribaal
+                        if (artefakt.agribaal == 1)
+                            resArcanovi += "Insgesamt 7 (max. 4 jeweils) dürfen von den 3 Feldern, welche mit A) markiert sind, abgezogen werden.\r\n";
+                        else if (artefakt.agribaal == 2)
+                            resArcanovi += "Insgesamt 12 (max. 4 jeweils) dürfen von den 3 Feldern, welche mit A) markiert sind, abgezogen werden.\r\n";
                     }
                     else
-                        resArcanovi += ("Artefakt nicht möglich. ZfW Arcanovi zu gering.");
+                    {
+                        resArcanovi += "Artefakt leider nicht möglich:\r\n";
+                        resArcanovi += "ZfW Arcanovi (" + arcanovi_taw + ") zu gering für Erschwernis (" + arcanovi_erschwernis + ").\r\n";
+                    }
 
                     // Analys
-
                     decimal odem_erschwernis = 0;
                     if (WDA)
                     {

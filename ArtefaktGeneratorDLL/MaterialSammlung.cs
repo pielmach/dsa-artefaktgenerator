@@ -99,7 +99,7 @@ namespace ArtefaktGenerator
                     sammlung.Add(mod.sammlung[i]);
                 }
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
             }
 
