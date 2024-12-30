@@ -1,22 +1,4 @@
-﻿/*
-    This file is part of ArtefaktGenerator.
- 
-    Copyright (C) 2009,2010 Mario Rauschenberg (www.dsa-hamburg.de)
-
-    ArtefaktGenerator is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License version 2 as published by
-    the Free Software Foundation.
-
-    ArtefaktGenerator is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with Foobar.  If not, see http://www.gnu.org/licenses/ .
-*/
-
-using System.Reflection;
+﻿using System.Reflection;
 using System.Resources;
 using System.Runtime.InteropServices;
 
@@ -26,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("ArtefaktGenerator")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("DSA-Hamburg.de")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("ArtefaktGenerator")]
-[assembly: AssemblyCopyright("Copyright © 2009,2010,2011,2012 Mario Rauschenberg")]
+[assembly: AssemblyCopyright("Michael Prim, based on previous work from Mario Rauschenberg")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -50,6 +32,6 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("3.0.0.0")]
-[assembly: AssemblyFileVersion("3.0.0.0")]
+[assembly: AssemblyVersion("4.0.0.0")]
+[assembly: AssemblyFileVersion("4.0.0.0")]
 [assembly: NeutralResourcesLanguageAttribute("de")]
