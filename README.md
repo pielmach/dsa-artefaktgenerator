@@ -32,7 +32,7 @@ Nach kurzem Kontakt hat Michael beschlossen das Tool auf .NET 6.0 zu aktualisier
 
 Die nun entstandene Version 3.0.0 unterstützt hoffentlich die nächste Dekade aller artefaktbegeisterter DSA 4.1 Spieler. Und vielleicht erfährt sie in Zukunft ja auch noch ein wenig Weiterentwicklung.
 
-Eine Dekade war es nicht ganz, da Microsoft den Support für .NET 6.0 auslaufen hat lassen. Daher gibt es nun die Version 4.0 mit .NET 8.0 als Basis und einem neuen PDF Generator, da die alte Bibliothek nicht mehr kompatibel war. Das Layout der PDFs hat sich dadurch leicht geändert, dafür sind die Artefaktladungen nun enthalten. Inhaltlich gibt es aber keine weiteren Veränderungen am Generator. Darüber hinaus wurde das Programm fit gemacht um es im Scriptorium Aventuris einstellen zu können. Durch die Neuauflage des 4.1 Regelwerkes erreicht es so vielleicht ein paar mehr Spieler.
+Eine Dekade war es nicht ganz, da Microsoft den Support für .NET 6.0 auslaufen hat lassen. Daher gibt es nun, kurz vor Ende 2024, die Version 4.0.0 mit .NET 8.0 als Basis und einem neuen PDF Generator, da die alte Bibliothek nicht mehr kompatibel war. Das Layout der PDFs hat sich dadurch leicht geändert, dafür sind die Artefaktladungen nun enthalten. Inhaltlich gibt es aber keine weiteren Veränderungen am Generator. Darüber hinaus wurde das Programm fit gemacht um es im Scriptorium Aventuris einstellen zu können. Durch die Neuauflage des 4.1 Regelwerkes erreicht es so vielleicht ein paar mehr Spieler.
 
 ## Danksagung
 
