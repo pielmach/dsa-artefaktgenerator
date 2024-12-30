@@ -1,11 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup Condition="'$(TargetingClr2Framework)' == 'true'">
-    <ResGenExecuteAsTool>true</ResGenExecuteAsTool>
-    <ResGenToolArchitecture>ManagedIL</ResGenToolArchitecture>
-    <ResGenTrackerSdkPath>$(SDK40ToolsPath)\x64</ResGenTrackerSdkPath>
-  </PropertyGroup>
   <PropertyGroup>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
     <OutputType>Library</OutputType>
     <RootNamespace>ArtefaktGenerator</RootNamespace>
     <StartupObject>
@@ -47,7 +42,7 @@
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>False</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>ArtGen.snk</AssemblyOriginatorKeyFile>
@@ -84,18 +79,12 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\sharpPDF\sharpPDF.csproj" />
-  </ItemGroup>
   <PropertyGroup>
-    <PlatformTarget>x86</PlatformTarget>
+    <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   <Target Name="AfterCompile" />
   <ItemGroup>
-    <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.310801">
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Windows.Compatibility" Version="6.0.0" />
+    <PackageReference Include="MigraDocCore.Rendering" Version="1.3.65" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Properties\Settings.Designer.cs">

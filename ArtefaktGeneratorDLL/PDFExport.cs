@@ -1,27 +1,29 @@
-﻿using sharpPDF;
-using sharpPDF.Enumerators;
+﻿using MigraDocCore.DocumentObjectModel;
+using MigraDocCore.DocumentObjectModel.Tables;
+using MigraDocCore.Rendering;
 
 namespace ArtefaktGenerator
 {
     public class PDFExport
-    {
+    {        
         public static void saveArtefaktAsPDF(DasArtefakt artefakt, string path)
         {
-            pdfDocument myDoc = new pdfDocument("Artefakt", artefakt.artefakt.heldName, false);
-            pdfPage myFirstPage = myDoc.addPage();
+            Document document = new Document();
+            Section section = document.AddSection();
 
-            int start = 600;
-            int fontsize = 14;
-            int zeile = 0;
-            int spalte = 50;
-            sharpPDF.Enumerators.predefinedFont font = predefinedFont.csTimes;
-            sharpPDF.Enumerators.predefinedFont fontEmph = predefinedFont.csTimesBoldOblique;
+            // title
+            Paragraph partitle = section.AddParagraph();
+            partitle.AddFormattedText("Artefaktbrief", TextFormat.Bold);
+            partitle.Format.Alignment = ParagraphAlignment.Center;
+            partitle.Format.Font.Size = 30;
+            partitle.Format.SpaceAfter = 20;
 
-            // Header
-            myFirstPage.addText("Artefaktbrief", 220, 700, predefinedFont.csTimesBold, 30);
+            // artefakttyp
+            Paragraph parartefakttyp = section.AddParagraph();
+            parartefakttyp.Format.Font.Size = 14;
+            parartefakttyp.Format.SpaceAfter = 14;
+            parartefakttyp.AddText("Artefakttyp: ");
 
-            //Artefakttyp
-            myFirstPage.addText("Artefakttyp: ", spalte, start - fontsize * zeile, font, fontsize);
             string artefakttyp = "";
             switch (artefakt.artefakt.typ)
             {
@@ -71,173 +73,172 @@ namespace ArtefaktGenerator
                     artefakttyp += "aufladbar";
                     break;
             }
-            myFirstPage.addText(artefakttyp, spalte + 100, start - fontsize * zeile++, fontEmph, fontsize);
 
-            //Material
-            myFirstPage.addText("Material: ", spalte, start - fontsize * zeile, font, fontsize);
+            parartefakttyp.AddFormattedText(artefakttyp, TextFormat.Bold | TextFormat.Italic);
+
+            // material
+            Paragraph parartefaktmaterial = section.AddParagraph();
+            parartefaktmaterial.Format.Font.Size = 14;
+            parartefaktmaterial.Format.SpaceAfter = 14;
+            parartefaktmaterial.AddText("Material: ");
+
             string matString = artefakt.artefakt.material.name;
             if (artefakt.artefakt.regelbasis == Artefakt.Regelbasis.SRD && artefakt.artefakt.kristalle)
                 matString += " (tragender Kristall)";
-            myFirstPage.addText(matString, spalte + 100, start - fontsize * zeile++, fontEmph, fontsize);
 
-            //Proben-Modifkatoren
-            zeile++;
-            myFirstPage.addText("Probenmodifikationen:", spalte, start - fontsize * zeile++, font, fontsize);
-            string temp = "Ausloeser: " + artefakt.artefakt.probe.ausloeser;
-            myFirstPage.addText(temp, spalte, start - fontsize * zeile++, font, fontsize);
-            temp = "Artefaktgröße: " + artefakt.artefakt.probe.groesse;
-            myFirstPage.addText(temp, spalte, start - fontsize * zeile++, font, fontsize);
-            temp = "Objektaffinität: " + artefakt.artefakt.probe.affine;
-            myFirstPage.addText(temp, spalte, start - fontsize * zeile++, font, fontsize);
-            temp = "Sternenkonstellation: " + artefakt.artefakt.probe.stars;
-            myFirstPage.addText(temp, spalte, start - fontsize * zeile++, font, fontsize);
-            temp = "Arcanovi erzwingen: " + artefakt.artefakt.probe.erzwingen;
-            myFirstPage.addText(temp, spalte, start - fontsize * zeile++, font, fontsize);
+            parartefaktmaterial.AddFormattedText(matString, TextFormat.Bold | TextFormat.Italic);
 
+            // modifikatoren
+            Paragraph parmodifikatoren = section.AddParagraph();
+            parmodifikatoren.Format.Font.Size = 14;
+            parmodifikatoren.Format.SpaceAfter = 14;
+            parmodifikatoren.AddText("Probenmodifikatoren:");            
+            Paragraph parmodifikatorenDetail = section.AddParagraph();
+            parmodifikatorenDetail.Format.Font.Size = 14;
+            parmodifikatorenDetail.Format.LeftIndent = "1cm";
+            parmodifikatorenDetail.Format.SpaceAfter = 14;
+            parmodifikatorenDetail.AddText("Auslöser: " + artefakt.artefakt.probe.ausloeser);
+            parmodifikatorenDetail.AddLineBreak();
+            parmodifikatorenDetail.AddText("Artefaktgröße: " + artefakt.artefakt.probe.groesse);
+            parmodifikatorenDetail.AddLineBreak();
+            parmodifikatorenDetail.AddText("Objektaffinität: " + artefakt.artefakt.probe.affine);
+            parmodifikatorenDetail.AddLineBreak();
+            parmodifikatorenDetail.AddText("Sternenkonstellation: " + artefakt.artefakt.probe.stars);
+            parmodifikatorenDetail.AddLineBreak();
+            parmodifikatorenDetail.AddText("Arcanovi erzwingen: " + artefakt.artefakt.probe.erzwingen);
+            parmodifikatorenDetail.AddLineBreak();
+            
 
+            // spez. Eigenschaften
+            Paragraph parspezEigenschaften = section.AddParagraph();
+            parspezEigenschaften.Format.Font.Size = 14;
+            parspezEigenschaften.AddText("Spezielle Artefakteigenschaften: ");
+            parspezEigenschaften.Format.SpaceAfter = 14;
 
-            pdfTable myTable = new pdfTable();
-            pdfTableRow myRow;
-            int zstart;
-
-            // Spezielle Eigenschaften
-            zeile++;
-            myFirstPage.addText("Spezielle Artefakteigenschaften:", spalte, start - fontsize * zeile, font, 14);
             if (artefakt.artefakt.spezial_apport || artefakt.artefakt.spezial_ferngespuer || artefakt.artefakt.spezial_gespuer ||
                 artefakt.artefakt.spezial_reperatur || artefakt.artefakt.spezial_resistent || artefakt.artefakt.spezial_reversalis ||
                 artefakt.artefakt.spezial_siegel || artefakt.artefakt.spezial_unzerbrechlich || artefakt.artefakt.spezial_variablerausloeser ||
                 artefakt.artefakt.spezial_verschleierung || artefakt.artefakt.spezial_verzehrend)
             {
-                zeile++;
-                zstart = zeile;
-                myTable.borderSize = 1;
-                myTable.tableHeader.addColumn(new pdfTableColumn("Eigenschaft", predefinedAlignment.csLeft, 230));
+                Paragraph parspezEigenschaftenDetail = section.AddParagraph();
+                parspezEigenschaftenDetail.Format.Font.Size = 14;
+                parspezEigenschaftenDetail.Format.LeftIndent = "1cm";
+                parspezEigenschaftenDetail.Format.SpaceAfter = 14;
 
                 if (artefakt.artefakt.spezial_siegel)
                 {
-                    myRow = myTable.createRow();
-                    myRow[0].columnValue = "Siegel und Zertifikat";
-                    myTable.addRow(myRow);
-                    zeile += 2;
+                    parspezEigenschaftenDetail.AddFormattedText("Siegel und Zertifikat", TextFormat.Italic);
+                    parspezEigenschaftenDetail.AddLineBreak();                
                 }
                 if (artefakt.artefakt.spezial_unzerbrechlich)
                 {
-                    myRow = myTable.createRow();
-                    myRow[0].columnValue = "Unzerbrechlichkeit";
-                    myTable.addRow(myRow);
-                    zeile += 2;
+                    parspezEigenschaftenDetail.AddFormattedText("Unzerbrechlichkeit", TextFormat.Italic);
+                    parspezEigenschaftenDetail.AddLineBreak();                            
                 }
                 if (artefakt.artefakt.spezial_gespuer)
                 {
-                    myRow = myTable.createRow();
-                    myRow[0].columnValue = "Gespür des Schöpfers";
-                    myTable.addRow(myRow);
-                    zeile += 2;
+                    parspezEigenschaftenDetail.AddFormattedText("Gespür des Schöpfers", TextFormat.Italic);
+                    parspezEigenschaftenDetail.AddLineBreak();
                 }
                 if (artefakt.artefakt.spezial_apport)
                 {
-                    myRow = myTable.createRow();
-                    myRow[0].columnValue = "Magischer Apport";
-                    myTable.addRow(myRow);
-                    zeile += 2;
+                    parspezEigenschaftenDetail.AddFormattedText("Magischer Apport", TextFormat.Italic);
+                    parspezEigenschaftenDetail.AddLineBreak();
                 }
                 if (artefakt.artefakt.spezial_resistent)
                 {
-                    myRow = myTable.createRow();
-                    myRow[0].columnValue = "Resistenz geg. profanen Schaden";
-                    myTable.addRow(myRow);
-                    zeile += 2;
+                    parspezEigenschaftenDetail.AddFormattedText("Resistenz geg. profanen Schaden", TextFormat.Italic);
+                    parspezEigenschaftenDetail.AddLineBreak();                    
                 }
                 if (artefakt.artefakt.spezial_reperatur)
                 {
-                    myRow = myTable.createRow();
-                    myRow[0].columnValue = "Selbstreparatur";
-                    myTable.addRow(myRow);
-                    zeile += 2;
+                    parspezEigenschaftenDetail.AddFormattedText("Selbstreparatur", TextFormat.Italic);
+                    parspezEigenschaftenDetail.AddLineBreak();                    
                 }
                 if (artefakt.artefakt.spezial_ferngespuer)
                 {
-                    myRow = myTable.createRow();
-                    myRow[0].columnValue = "Ferngespür";
-                    myTable.addRow(myRow);
-                    zeile += 2;
+                    parspezEigenschaftenDetail.AddFormattedText("Ferngespür", TextFormat.Italic);
+                    parspezEigenschaftenDetail.AddLineBreak();                    
                 }
                 if (artefakt.artefakt.spezial_reversalis)
                 {
-                    myRow = myTable.createRow();
-                    myRow[0].columnValue = "Umkehrtalisman";
-                    myTable.addRow(myRow);
-                    zeile += 2;
+                    parspezEigenschaftenDetail.AddFormattedText("Umkehrtalisman", TextFormat.Italic);
+                    parspezEigenschaftenDetail.AddLineBreak();                    
                 }
                 if (artefakt.artefakt.spezial_variablerausloeser)
                 {
-                    myRow = myTable.createRow();
-                    myRow[0].columnValue = "Variabler Auslöser";
-                    myTable.addRow(myRow);
-                    zeile += 2;
+                    parspezEigenschaftenDetail.AddFormattedText("Variabler Auslöser", TextFormat.Italic);
+                    parspezEigenschaftenDetail.AddLineBreak();                    
                 }
                 if (artefakt.artefakt.spezial_verschleierung)
                 {
-                    myRow = myTable.createRow();
-                    myRow[0].columnValue = "Verschleierung";
-                    myTable.addRow(myRow);
-                    zeile += 2;
+                    parspezEigenschaftenDetail.AddFormattedText("Verschleierung", TextFormat.Italic);
+                    parspezEigenschaftenDetail.AddLineBreak();                    
                 }
                 if (artefakt.artefakt.spezial_verzehrend)
                 {
-                    myRow = myTable.createRow();
-                    myRow[0].columnValue = "Verzehrender Zauber";
-                    myTable.addRow(myRow);
-                    zeile += 2;
+                    parspezEigenschaftenDetail.AddFormattedText("Verzehrender Zauber", TextFormat.Italic);
+                    parspezEigenschaftenDetail.AddLineBreak();                    
                 }
-
-                myTable.tableHeaderStyle = new pdfTableRowStyle(predefinedFont.csCourierBoldOblique, 12, new pdfColor(predefinedColor.csBlack), new pdfColor(predefinedColor.csGray));
-                myTable.rowStyle = new pdfTableRowStyle(predefinedFont.csCourier, 10, new pdfColor(predefinedColor.csBlack), new pdfColor(predefinedColor.csWhite));
-                myTable.alternateRowStyle = new pdfTableRowStyle(predefinedFont.csCourier, 10, new pdfColor(predefinedColor.csBlack), new pdfColor(predefinedColor.csLightGray));
-                myTable.cellpadding = 5;
-                myFirstPage.addTable(myTable, spalte, start - fontsize * zstart);
-                zeile += 2;
-                myTable = null;
             }
             else
             {
-                myFirstPage.addText("keine", spalte + 200, start - fontsize * zeile++, fontEmph, fontsize);
+                parspezEigenschaften.AddFormattedText("keine", TextFormat.Bold | TextFormat.Italic);
             }
 
+            // ladungen
+            Paragraph ladungen = section.AddParagraph();
+            ladungen.Format.Font.Size = 14;
+            ladungen.Format.SpaceAfter = 14;
+            ladungen.AddText("Ladungen: ");
+            ladungen.AddFormattedText(artefakt.artefakt.loads.ToString(), TextFormat.Bold | TextFormat.Italic);
 
+            // wirkende Zauber
+            Paragraph parwirkZauber = section.AddParagraph();
+            parwirkZauber.Format.Font.Size = 14;
+            parwirkZauber.Format.SpaceAfter = 14;
+            parwirkZauber.AddText("Wirkende Zauber:");
 
-            // Wirkende Zauber 
-            myFirstPage.addText("Wirkende Zauber", spalte, start - fontsize * zeile++, font, 14);
-            zstart = zeile;
-            myTable = new pdfTable();
-            myTable.borderSize = 1;
-            myTable.tableHeader.addColumn(new pdfTableColumn("Zauber", predefinedAlignment.csLeft, 170));
-            myTable.tableHeader.addColumn(new pdfTableColumn("Komp.", predefinedAlignment.csCenter, 80));
-            myTable.tableHeader.addColumn(new pdfTableColumn("Stapel", predefinedAlignment.csCenter, 80));
-            myTable.tableHeader.addColumn(new pdfTableColumn("AsP", predefinedAlignment.csCenter, 80));
-            myTable.tableHeader.addColumn(new pdfTableColumn("Rep.", predefinedAlignment.csCenter, 90));
+            Table wirkZauber = section.AddTable();
+            wirkZauber.Borders.Visible = true;
+
+            Column cZauber = wirkZauber.AddColumn("6cm");
+            cZauber.Format.Alignment = ParagraphAlignment.Left;
+            Column cKomp = wirkZauber.AddColumn("2.5cm");
+            cKomp.Format.Alignment = ParagraphAlignment.Center;
+            Column cStapel = wirkZauber.AddColumn("2.5cm");
+            cStapel.Format.Alignment = ParagraphAlignment.Center;
+            Column cAsp = wirkZauber.AddColumn("2.5cm");
+            cAsp.Format.Alignment = ParagraphAlignment.Center;
+            Column cRep = wirkZauber.AddColumn("3cm");
+            cRep.Format.Alignment = ParagraphAlignment.Center;
+
+            Row row = wirkZauber.AddRow();
+            row.HeadingFormat = true;
+            row.Format.Alignment = ParagraphAlignment.Center;
+            row.Format.Font.Bold = true;
+            row.Format.Font.Size = 12;
+            row.Cells[0].AddParagraph("Zauber");
+            row.Cells[1].AddParagraph("Komp.");
+            row.Cells[2].AddParagraph("Stapel");
+            row.Cells[3].AddParagraph("AsP");
+            row.Cells[4].AddParagraph("Rep.");
 
             foreach (Zauber zaub in artefakt.zauber)
             {
-                myRow = myTable.createRow();
-                myRow[0].columnValue = zaub.name;
-                myRow[1].columnValue = zaub.KomplexitaetToString(zaub.komp);
-                myRow[2].columnValue = zaub.staple.ToString();
-                myRow[3].columnValue = zaub.asp.ToString();
-                myRow[4].columnValue = (zaub.eigene_rep) ? "eigene" : "fremde";
-                myTable.addRow(myRow);
-                zeile += 2;
+                row = wirkZauber.AddRow();
+                row.Format.Font.Size = 12;
+                row.Cells[0].AddParagraph(zaub.name);
+                row.Cells[1].AddParagraph(zaub.KomplexitaetToString(zaub.komp));
+                row.Cells[2].AddParagraph(zaub.staple.ToString());
+                row.Cells[3].AddParagraph(zaub.asp.ToString());
+                row.Cells[4].AddParagraph((zaub.eigene_rep) ? "eigene" : "fremde");
             }
-            myTable.tableHeaderStyle = new pdfTableRowStyle(predefinedFont.csCourierBoldOblique, 12, new pdfColor(predefinedColor.csBlack), new pdfColor(predefinedColor.csGray));
-            myTable.rowStyle = new pdfTableRowStyle(predefinedFont.csCourier, 10, new pdfColor(predefinedColor.csBlack), new pdfColor(predefinedColor.csWhite));
-            myTable.alternateRowStyle = new pdfTableRowStyle(predefinedFont.csCourier, 10, new pdfColor(predefinedColor.csBlack), new pdfColor(predefinedColor.csLightGray));
-            myTable.cellpadding = 5;
-            myFirstPage.addTable(myTable, spalte, start - fontsize * zstart);
-            zeile += 2;
 
-
-            myTable = null;
-            myDoc.createPDF(path);
+            PdfDocumentRenderer pdfRenderer = new PdfDocumentRenderer();
+            pdfRenderer.Document = document;
+            pdfRenderer.RenderDocument();
+            pdfRenderer.PdfDocument.Save(path);
         }
     }
 }

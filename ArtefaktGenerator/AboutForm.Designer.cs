@@ -29,47 +29,45 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutForm));
-            this.labelAbout = new System.Windows.Forms.Label();
-            this.linkLabelGitHub = new System.Windows.Forms.LinkLabel();
-            this.SuspendLayout();
+            labelAbout = new Label();
+            linkLabelGitHub = new LinkLabel();
+            SuspendLayout();
             // 
             // labelAbout
             // 
-            this.labelAbout.AutoSize = true;
-            this.labelAbout.Location = new System.Drawing.Point(40, 37);
-            this.labelAbout.MaximumSize = new System.Drawing.Size(730, 0);
-            this.labelAbout.Name = "labelAbout";
-            this.labelAbout.Size = new System.Drawing.Size(716, 250);
-            this.labelAbout.TabIndex = 0;
-            this.labelAbout.Text = resources.GetString("labelAbout.Text");
+            labelAbout.AutoSize = true;
+            labelAbout.Location = new Point(40, 37);
+            labelAbout.MaximumSize = new Size(730, 0);
+            labelAbout.Name = "labelAbout";
+            labelAbout.Size = new Size(722, 375);
+            labelAbout.TabIndex = 0;
+            labelAbout.Text = resources.GetString("labelAbout.Text");
             // 
             // linkLabelGitHub
             // 
-            this.linkLabelGitHub.AutoSize = true;
-            this.linkLabelGitHub.LinkArea = new System.Windows.Forms.LinkArea(40, 89);
-            this.linkLabelGitHub.Location = new System.Drawing.Point(40, 309);
-            this.linkLabelGitHub.MaximumSize = new System.Drawing.Size(780, 30);
-            this.linkLabelGitHub.Name = "linkLabelGitHub";
-            this.linkLabelGitHub.Size = new System.Drawing.Size(757, 30);
-            this.linkLabelGitHub.TabIndex = 1;
-            this.linkLabelGitHub.TabStop = true;
-            this.linkLabelGitHub.Text = "Alle weiteren Informationen auf GitHub: https://github.com/pielmach/dsa-artefaktg" +
-    "enerator";
-            this.linkLabelGitHub.UseCompatibleTextRendering = true;
-            this.linkLabelGitHub.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelGitHub_LinkClicked);
+            linkLabelGitHub.AutoSize = true;
+            linkLabelGitHub.LinkArea = new LinkArea(40, 89);
+            linkLabelGitHub.Location = new Point(40, 429);
+            linkLabelGitHub.MaximumSize = new Size(780, 30);
+            linkLabelGitHub.Name = "linkLabelGitHub";
+            linkLabelGitHub.Size = new Size(757, 30);
+            linkLabelGitHub.TabIndex = 1;
+            linkLabelGitHub.TabStop = true;
+            linkLabelGitHub.Text = "Alle weiteren Informationen auf GitHub: https://github.com/pielmach/dsa-artefaktgenerator";
+            linkLabelGitHub.UseCompatibleTextRendering = true;
+            linkLabelGitHub.LinkClicked += linkLabelGitHub_LinkClicked;
             // 
             // AboutForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 387);
-            this.Controls.Add(this.linkLabelGitHub);
-            this.Controls.Add(this.labelAbout);
-            this.Name = "AboutForm";
-            this.Text = "About";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 491);
+            Controls.Add(linkLabelGitHub);
+            Controls.Add(labelAbout);
+            Name = "AboutForm";
+            Text = "About";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
