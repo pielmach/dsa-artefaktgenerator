@@ -124,6 +124,8 @@ Die Version 3.0.0 ist ein Fork des ursprünglichen Quellcodes (https://sourcefor
 
 Ziel der Weiterentwicklung war die verschiedenen Wege der Alchemie Errata einzuarbeiten und ein neues UI Design zu integrieren, dass auch auf modernen Monitoren mit hoher Auflösung noch nutzbar ist.
 
-Die Version 4.0.0 wurde fit gemacht für das Scriptorium Aventuris um mit der Neuauflage des 4.1 Regelwerkes mehr Spieler zu erreichen. Dabei wurde der PDF Generator ausgetauscht, wodurch sich das Layout der PDFs geändert hat und die Artefaktladungen nun exportiert werden.</value>
+Die Version 4.0.0 wurde fit gemacht für das Scriptorium Aventuris um mit der Neuauflage des 4.1 Regelwerkes mehr Spieler zu erreichen. Dabei wurde der PDF Generator ausgetauscht, wodurch sich das Layout der PDFs geändert hat und die Artefaktladungen nun exportiert werden.
+
+Version 4.1.0 aktualisiert nur auf .NET 10.0 und wird nur noch für 64-bit Systeme ausgeliefert.</value>
   </data>
 </root>

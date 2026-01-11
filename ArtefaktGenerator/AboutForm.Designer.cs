@@ -39,7 +39,7 @@
             labelAbout.Location = new Point(40, 37);
             labelAbout.MaximumSize = new Size(730, 0);
             labelAbout.Name = "labelAbout";
-            labelAbout.Size = new Size(722, 375);
+            labelAbout.Size = new Size(722, 450);
             labelAbout.TabIndex = 0;
             labelAbout.Text = resources.GetString("labelAbout.Text");
             // 
@@ -47,7 +47,7 @@
             // 
             linkLabelGitHub.AutoSize = true;
             linkLabelGitHub.LinkArea = new LinkArea(40, 89);
-            linkLabelGitHub.Location = new Point(40, 429);
+            linkLabelGitHub.Location = new Point(41, 505);
             linkLabelGitHub.MaximumSize = new Size(780, 30);
             linkLabelGitHub.Name = "linkLabelGitHub";
             linkLabelGitHub.Size = new Size(757, 30);
@@ -61,7 +61,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 491);
+            ClientSize = new Size(800, 561);
             Controls.Add(linkLabelGitHub);
             Controls.Add(labelAbout);
             Name = "AboutForm";

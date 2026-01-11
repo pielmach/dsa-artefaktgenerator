@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace CustomControls
@@ -9,6 +10,9 @@ namespace CustomControls
         public event EventHandler SelectedChanged = delegate { };
 
         int _selected;
+        [Browsable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [DefaultValue(0)]
         public int Selected
         {
             get

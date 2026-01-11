@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -34,6 +35,7 @@ namespace DataGridViewNumericUpDownElements
         /// <summary>
         /// Property which caches the grid that uses this editing control
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public virtual DataGridView EditingControlDataGridView
         {
             get
@@ -49,6 +51,7 @@ namespace DataGridViewNumericUpDownElements
         /// <summary>
         /// Property which represents the current formatted value of the editing control
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public virtual object EditingControlFormattedValue
         {
             get
@@ -64,6 +67,7 @@ namespace DataGridViewNumericUpDownElements
         /// <summary>
         /// Property which represents the row in which the editing control resides
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public virtual int EditingControlRowIndex
         {
             get
@@ -79,6 +83,7 @@ namespace DataGridViewNumericUpDownElements
         /// <summary>
         /// Property which indicates whether the value of the editing control has changed or not
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public virtual bool EditingControlValueChanged
         {
             get
